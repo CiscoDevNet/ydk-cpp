@@ -26,6 +26,7 @@ class EsAcl : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Accesses : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class EsAcl : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Access : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class EsAcl : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class AccessListEntries : public Entity
             {
@@ -72,6 +75,7 @@ class EsAcl : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AccessListEntry : public Entity
                 {
                     public:
@@ -85,22 +89,23 @@ class EsAcl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value sequence_number; //type: uint32
-                        Value grant; //type: EsAclGrantEnumEnum
-                        Value vlan1; //type: uint16
-                        Value vlan2; //type: uint16
-                        Value cos; //type: uint8
-                        Value dei; //type: uint8
-                        Value inner_vlan1; //type: uint16
-                        Value inner_vlan2; //type: uint16
-                        Value inner_cos; //type: uint8
-                        Value inner_dei; //type: uint8
-                        Value remark; //type: string
-                        Value ether_type_number; //type: uint16
-                        Value capture; //type: boolean
-                        Value log_option; //type: uint8
-                        Value sequence_str; //type: string
 
+
+                        YLeaf sequence_number; //type: uint32
+                        YLeaf grant; //type: EsAclGrantEnumEnum
+                        YLeaf vlan1; //type: uint16
+                        YLeaf vlan2; //type: uint16
+                        YLeaf cos; //type: uint8
+                        YLeaf dei; //type: uint8
+                        YLeaf inner_vlan1; //type: uint16
+                        YLeaf inner_vlan2; //type: uint16
+                        YLeaf inner_cos; //type: uint8
+                        YLeaf inner_dei; //type: uint8
+                        YLeaf remark; //type: string
+                        YLeaf ether_type_number; //type: uint16
+                        YLeaf capture; //type: boolean
+                        YLeaf log_option; //type: uint8
+                        YLeaf sequence_str; //type: string
 
                     class SourceNetwork : public Entity
                     {
@@ -115,9 +120,10 @@ class EsAcl : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value source_wild_card_bits; //type: string
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf source_wild_card_bits; //type: string
 
 
 
@@ -137,9 +143,10 @@ class EsAcl : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_address; //type: string
-                            Value destination_wild_card_bits; //type: string
 
+
+                            YLeaf destination_address; //type: string
+                            YLeaf destination_wild_card_bits; //type: string
 
 
 
@@ -148,7 +155,6 @@ class EsAcl : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork> destination_network;
                         std::unique_ptr<Cisco_IOS_XR_es_acl_cfg::EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork> source_network;
-                        class EsAclGrantEnumEnum;
 
 
                 }; // EsAcl::Accesses::Access::AccessListEntries::AccessListEntry
@@ -181,8 +187,8 @@ class EsAcl : public Entity
 class EsAclGrantEnumEnum : public Enum
 {
     public:
-        static const Enum::Value deny;
-        static const Enum::Value permit;
+        static const Enum::YLeaf deny;
+        static const Enum::YLeaf permit;
 
 };
 

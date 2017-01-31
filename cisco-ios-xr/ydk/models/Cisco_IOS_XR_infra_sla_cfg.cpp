@@ -46,7 +46,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::B
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -137,7 +137,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::A
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -222,8 +222,8 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::has_ope
 	|| is_set(statistic_name.operation)
 	|| is_set(buckets_archive.operation)
 	|| is_set(enable.operation)
-	|| (aggregation !=  nullptr && is_set(aggregation->operation))
-	|| (buckets_size !=  nullptr && is_set(buckets_size->operation));
+	|| (aggregation !=  nullptr && aggregation->has_operation())
+	|| (buckets_size !=  nullptr && buckets_size->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::get_segment_path() const
@@ -240,7 +240,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -383,7 +383,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Statistics::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -505,7 +505,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Schedule::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -635,7 +635,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -746,7 +746,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -828,8 +828,8 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::Probe::has_operation() const
     return is_set(operation)
 	|| is_set(priority.operation)
 	|| is_set(synthetic_loss_calculation_packets.operation)
-	|| (packet_size_and_padding !=  nullptr && is_set(packet_size_and_padding->operation))
-	|| (send !=  nullptr && is_set(send->operation));
+	|| (packet_size_and_padding !=  nullptr && packet_size_and_padding->has_operation())
+	|| (send !=  nullptr && send->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_segment_path() const
@@ -846,7 +846,7 @@ EntityPath Sla::Protocols::Ethernet::Profiles::Profile::Probe::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -977,9 +977,9 @@ bool Sla::Protocols::Ethernet::Profiles::Profile::has_operation() const
     return is_set(operation)
 	|| is_set(profile_name.operation)
 	|| is_set(packet_type.operation)
-	|| (probe !=  nullptr && is_set(probe->operation))
-	|| (schedule !=  nullptr && is_set(schedule->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (probe !=  nullptr && probe->has_operation())
+	|| (schedule !=  nullptr && schedule->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Profiles::Profile::get_segment_path() const
@@ -1244,7 +1244,7 @@ bool Sla::Protocols::Ethernet::has_data() const
 bool Sla::Protocols::Ethernet::has_operation() const
 {
     return is_set(operation)
-	|| (profiles !=  nullptr && is_set(profiles->operation));
+	|| (profiles !=  nullptr && profiles->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::get_segment_path() const
@@ -1345,7 +1345,7 @@ bool Sla::Protocols::has_data() const
 bool Sla::Protocols::has_operation() const
 {
     return is_set(operation)
-	|| (ethernet !=  nullptr && is_set(ethernet->operation));
+	|| (ethernet !=  nullptr && ethernet->has_operation());
 }
 
 std::string Sla::Protocols::get_segment_path() const
@@ -1446,7 +1446,7 @@ bool Sla::has_data() const
 bool Sla::has_operation() const
 {
     return is_set(operation)
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string Sla::get_segment_path() const
@@ -1463,7 +1463,7 @@ EntityPath Sla::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

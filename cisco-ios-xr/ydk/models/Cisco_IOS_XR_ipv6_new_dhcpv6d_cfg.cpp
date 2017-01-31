@@ -158,7 +158,7 @@ EntityPath Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -250,7 +250,7 @@ EntityPath Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -344,7 +344,7 @@ bool Dhcpv6::Profiles::Profile::Relay::has_operation() const
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(iana_route_add.operation)
-	|| (helper_addresses !=  nullptr && is_set(helper_addresses->operation));
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Relay::get_segment_path() const
@@ -361,7 +361,7 @@ EntityPath Dhcpv6::Profiles::Profile::Relay::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -472,7 +472,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -564,7 +564,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -665,7 +665,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -744,7 +744,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Relay::Option::has_operation() const
 	|| is_set(remote_i_dreceived.operation)
 	|| is_set(remote_id.operation)
 	|| is_set(subscriber_id.operation)
-	|| (interface_id !=  nullptr && is_set(interface_id->operation));
+	|| (interface_id !=  nullptr && interface_id->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_segment_path() const
@@ -761,7 +761,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -865,7 +865,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Relay::has_data() const
 bool Dhcpv6::Profiles::Profile::Proxy::Relay::has_operation() const
 {
     return is_set(operation)
-	|| (option !=  nullptr && is_set(option->operation));
+	|| (option !=  nullptr && option->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Relay::get_segment_path() const
@@ -882,7 +882,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Relay::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -986,7 +986,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1083,7 +1083,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1174,7 +1174,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (helper_addresses !=  nullptr && is_set(helper_addresses->operation));
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_segment_path() const
@@ -1191,7 +1191,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1301,7 +1301,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1405,7 +1405,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::H
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1497,7 +1497,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1591,7 +1591,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_operation() const
     return is_set(operation)
 	|| is_set(class_name.operation)
 	|| is_set(link_address.operation)
-	|| (helper_addresses !=  nullptr && is_set(helper_addresses->operation));
+	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_segment_path() const
@@ -1608,7 +1608,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1723,7 +1723,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Classes::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1830,7 +1830,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1906,7 +1906,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::has_data() const
 bool Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::has_operation() const
 {
     return is_set(operation)
-	|| (throttle !=  nullptr && is_set(throttle->operation));
+	|| (throttle !=  nullptr && throttle->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_segment_path() const
@@ -1923,7 +1923,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2007,7 +2007,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Sessions::has_data() const
 bool Dhcpv6::Profiles::Profile::Proxy::Sessions::has_operation() const
 {
     return is_set(operation)
-	|| (mac !=  nullptr && is_set(mac->operation));
+	|| (mac !=  nullptr && mac->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::Sessions::get_segment_path() const
@@ -2024,7 +2024,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::Sessions::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2138,11 +2138,11 @@ bool Dhcpv6::Profiles::Profile::Proxy::has_operation() const
 	|| is_set(enable.operation)
 	|| is_set(link_address.operation)
 	|| is_set(src_intf_name.operation)
-	|| (classes !=  nullptr && is_set(classes->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (relay !=  nullptr && is_set(relay->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (classes !=  nullptr && classes->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Proxy::get_segment_path() const
@@ -2159,7 +2159,7 @@ EntityPath Dhcpv6::Profiles::Profile::Proxy::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2370,7 +2370,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2446,7 +2446,7 @@ bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_data() const
 bool Dhcpv6::Profiles::Profile::Server::Sessions::Mac::has_operation() const
 {
     return is_set(operation)
-	|| (throttle !=  nullptr && is_set(throttle->operation));
+	|| (throttle !=  nullptr && throttle->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_segment_path() const
@@ -2463,7 +2463,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2547,7 +2547,7 @@ bool Dhcpv6::Profiles::Profile::Server::Sessions::has_data() const
 bool Dhcpv6::Profiles::Profile::Server::Sessions::has_operation() const
 {
     return is_set(operation)
-	|| (mac !=  nullptr && is_set(mac->operation));
+	|| (mac !=  nullptr && mac->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::Sessions::get_segment_path() const
@@ -2564,7 +2564,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Sessions::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2639,7 +2639,7 @@ Dhcpv6::Profiles::Profile::Server::DnsServers::~DnsServers()
 
 bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_data() const
 {
-    for (auto const & leaf : dns_server.getValues())
+    for (auto const & leaf : dns_server.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2649,12 +2649,13 @@ bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_data() const
 
 bool Dhcpv6::Profiles::Profile::Server::DnsServers::has_operation() const
 {
-    for (auto const & leaf : dns_server.getValues())
+    for (auto const & leaf : dns_server.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(dns_server.operation);
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::DnsServers::get_segment_path() const
@@ -2671,7 +2672,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::DnsServers::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2729,7 +2730,7 @@ Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::~DnsServers()
 
 bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_data() const
 {
-    for (auto const & leaf : dns_server.getValues())
+    for (auto const & leaf : dns_server.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2739,12 +2740,13 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_data() 
 
 bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_operation() const
 {
-    for (auto const & leaf : dns_server.getValues())
+    for (auto const & leaf : dns_server.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(dns_server.operation);
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_segment_path() const
@@ -2761,7 +2763,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2844,7 +2846,7 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_operation() const
 	|| is_set(domain_name.operation)
 	|| is_set(preference.operation)
 	|| is_set(prefix_pool.operation)
-	|| (dns_servers !=  nullptr && is_set(dns_servers->operation));
+	|| (dns_servers !=  nullptr && dns_servers->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_segment_path() const
@@ -2861,7 +2863,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2991,7 +2993,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Classes::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3101,7 +3103,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Lease::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3199,7 +3201,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3270,7 +3272,7 @@ bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_data() const
 bool Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::has_operation() const
 {
     return is_set(operation)
-	|| (vendor_options !=  nullptr && is_set(vendor_options->operation));
+	|| (vendor_options !=  nullptr && vendor_options->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_segment_path() const
@@ -3287,7 +3289,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3413,11 +3415,11 @@ bool Dhcpv6::Profiles::Profile::Server::has_operation() const
 	|| is_set(preference.operation)
 	|| is_set(prefix_pool.operation)
 	|| is_set(rapid_commit.operation)
-	|| (classes !=  nullptr && is_set(classes->operation))
-	|| (dhcpv6_options !=  nullptr && is_set(dhcpv6_options->operation))
-	|| (dns_servers !=  nullptr && is_set(dns_servers->operation))
-	|| (lease !=  nullptr && is_set(lease->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (classes !=  nullptr && classes->has_operation())
+	|| (dhcpv6_options !=  nullptr && dhcpv6_options->has_operation())
+	|| (dns_servers !=  nullptr && dns_servers->has_operation())
+	|| (lease !=  nullptr && lease->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::Server::get_segment_path() const
@@ -3434,7 +3436,7 @@ EntityPath Dhcpv6::Profiles::Profile::Server::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3650,9 +3652,9 @@ bool Dhcpv6::Profiles::Profile::has_operation() const
 {
     return is_set(operation)
 	|| is_set(profile_name.operation)
-	|| (proxy !=  nullptr && is_set(proxy->operation))
-	|| (relay !=  nullptr && is_set(relay->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (proxy !=  nullptr && proxy->has_operation())
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Dhcpv6::Profiles::Profile::get_segment_path() const
@@ -3926,7 +3928,7 @@ EntityPath Dhcpv6::Interfaces::Interface::Pppoe::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4006,7 +4008,7 @@ EntityPath Dhcpv6::Interfaces::Interface::Proxy::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4086,7 +4088,7 @@ EntityPath Dhcpv6::Interfaces::Interface::Server::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4166,7 +4168,7 @@ EntityPath Dhcpv6::Interfaces::Interface::Relay::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4251,10 +4253,10 @@ bool Dhcpv6::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (pppoe !=  nullptr && is_set(pppoe->operation))
-	|| (proxy !=  nullptr && is_set(proxy->operation))
-	|| (relay !=  nullptr && is_set(relay->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (pppoe !=  nullptr && pppoe->has_operation())
+	|| (proxy !=  nullptr && proxy->has_operation())
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Dhcpv6::Interfaces::Interface::get_segment_path() const
@@ -4554,9 +4556,9 @@ bool Dhcpv6::has_operation() const
     return is_set(operation)
 	|| is_set(allow_duid_change.operation)
 	|| is_set(enable.operation)
-	|| (database !=  nullptr && is_set(database->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (profiles !=  nullptr && is_set(profiles->operation));
+	|| (database !=  nullptr && database->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (profiles !=  nullptr && profiles->has_operation());
 }
 
 std::string Dhcpv6::get_segment_path() const
@@ -4573,7 +4575,7 @@ EntityPath Dhcpv6::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4693,13 +4695,13 @@ std::unique_ptr<Entity> Dhcpv6::clone_ptr()
     return std::make_unique<Dhcpv6>();
 }
 
-const Enum::Value InsertEnum::local {0, "local"};
-const Enum::Value InsertEnum::received {1, "received"};
-const Enum::Value InsertEnum::pppoe {2, "pppoe"};
+const Enum::YLeaf InsertEnum::local {0, "local"};
+const Enum::YLeaf InsertEnum::received {1, "received"};
+const Enum::YLeaf InsertEnum::pppoe {2, "pppoe"};
 
-const Enum::Value LinkLayerAddrEnum::set {4, "set"};
+const Enum::YLeaf LinkLayerAddrEnum::set {4, "set"};
 
-const Enum::Value SubscriberIdEnum::pppoe {3, "pppoe"};
+const Enum::YLeaf SubscriberIdEnum::pppoe {3, "pppoe"};
 
 
 }

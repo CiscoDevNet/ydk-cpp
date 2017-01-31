@@ -46,7 +46,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -138,7 +138,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -245,7 +245,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -342,7 +342,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -461,7 +461,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -571,7 +571,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Rpf::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -654,7 +654,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -745,7 +745,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -835,7 +835,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Nsf::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -918,7 +918,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1006,7 +1006,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGlobalGroupMappings::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1094,7 +1094,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GlobalRoutes::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1182,7 +1182,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1270,7 +1270,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GlobalGroupMappingsAutoRp::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1358,7 +1358,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1446,7 +1446,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1534,7 +1534,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGlobalCandidateRpCache::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1622,7 +1622,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1710,7 +1710,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GlobalRegisterStates::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1798,7 +1798,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::GlobalRouteInterfaces::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1886,7 +1886,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2013,18 +2013,18 @@ bool Pim::Vrfs::Vrf::Ipv6::Maximum::has_operation() const
     return is_set(operation)
 	|| is_set(gloabal_high_priority_packet_queue.operation)
 	|| is_set(gloabal_low_priority_packet_queue.operation)
-	|| (bsr_candidate_rp_cache !=  nullptr && is_set(bsr_candidate_rp_cache->operation))
-	|| (bsr_global_candidate_rp_cache !=  nullptr && is_set(bsr_global_candidate_rp_cache->operation))
-	|| (bsr_global_group_mappings !=  nullptr && is_set(bsr_global_group_mappings->operation))
-	|| (bsr_group_mappings !=  nullptr && is_set(bsr_group_mappings->operation))
-	|| (global_group_mappings_auto_rp !=  nullptr && is_set(global_group_mappings_auto_rp->operation))
-	|| (global_register_states !=  nullptr && is_set(global_register_states->operation))
-	|| (global_route_interfaces !=  nullptr && is_set(global_route_interfaces->operation))
-	|| (global_routes !=  nullptr && is_set(global_routes->operation))
-	|| (group_mappings_auto_rp !=  nullptr && is_set(group_mappings_auto_rp->operation))
-	|| (register_states !=  nullptr && is_set(register_states->operation))
-	|| (route_interfaces !=  nullptr && is_set(route_interfaces->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
+	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
+	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
+	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
+	|| (global_group_mappings_auto_rp !=  nullptr && global_group_mappings_auto_rp->has_operation())
+	|| (global_register_states !=  nullptr && global_register_states->has_operation())
+	|| (global_route_interfaces !=  nullptr && global_route_interfaces->has_operation())
+	|| (global_routes !=  nullptr && global_routes->has_operation())
+	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
+	|| (register_states !=  nullptr && register_states->has_operation())
+	|| (route_interfaces !=  nullptr && route_interfaces->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Maximum::get_segment_path() const
@@ -2041,7 +2041,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Maximum::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2405,7 +2405,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Ssm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2496,7 +2496,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2593,7 +2593,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2703,7 +2703,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::Sm::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2807,7 +2807,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::Bidir::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2897,8 +2897,8 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (bidir !=  nullptr && is_set(bidir->operation))
-	|| (sm !=  nullptr && is_set(sm->operation));
+	|| (bidir !=  nullptr && bidir->has_operation())
+	|| (sm !=  nullptr && sm->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -2915,7 +2915,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3048,7 +3048,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3155,7 +3155,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3233,8 +3233,8 @@ bool Pim::Vrfs::Vrf::Ipv6::Bsr::has_data() const
 bool Pim::Vrfs::Vrf::Ipv6::Bsr::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_bsr !=  nullptr && is_set(candidate_bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation));
+	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Bsr::get_segment_path() const
@@ -3251,7 +3251,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Bsr::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3378,7 +3378,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::RedirectBundle::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3474,7 +3474,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3570,7 +3570,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Oor::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3687,9 +3687,9 @@ bool Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_operation() const
 	|| is_set(neighbor_filter.operation)
 	|| is_set(override_interval.operation)
 	|| is_set(propagation_delay.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (oor !=  nullptr && is_set(oor->operation))
-	|| (redirect_bundle !=  nullptr && is_set(redirect_bundle->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (oor !=  nullptr && oor->has_operation())
+	|| (redirect_bundle !=  nullptr && redirect_bundle->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -3706,7 +3706,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3912,7 +3912,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Interfaces::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4016,7 +4016,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::AllowRp::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4104,7 +4104,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::Convergence::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4280,20 +4280,20 @@ bool Pim::Vrfs::Vrf::Ipv6::has_operation() const
 	|| is_set(ssm_allow_override.operation)
 	|| is_set(suppress_data_registers.operation)
 	|| is_set(suppress_rpf_prunes.operation)
-	|| (allow_rp !=  nullptr && is_set(allow_rp->operation))
-	|| (bidir_rp_addresses !=  nullptr && is_set(bidir_rp_addresses->operation))
-	|| (bsr !=  nullptr && is_set(bsr->operation))
-	|| (convergence !=  nullptr && is_set(convergence->operation))
-	|| (embedded_rp_addresses !=  nullptr && is_set(embedded_rp_addresses->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (rpf_vector_enable !=  nullptr && is_set(rpf_vector_enable->operation))
-	|| (sg_expiry_timer !=  nullptr && is_set(sg_expiry_timer->operation))
-	|| (sparse_mode_rp_addresses !=  nullptr && is_set(sparse_mode_rp_addresses->operation))
-	|| (ssm !=  nullptr && is_set(ssm->operation));
+	|| (allow_rp !=  nullptr && allow_rp->has_operation())
+	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
+	|| (bsr !=  nullptr && bsr->has_operation())
+	|| (convergence !=  nullptr && convergence->has_operation())
+	|| (embedded_rp_addresses !=  nullptr && embedded_rp_addresses->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (rpf_vector_enable !=  nullptr && rpf_vector_enable->has_operation())
+	|| (sg_expiry_timer !=  nullptr && sg_expiry_timer->has_operation())
+	|| (sparse_mode_rp_addresses !=  nullptr && sparse_mode_rp_addresses->has_operation())
+	|| (ssm !=  nullptr && ssm->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv6::get_segment_path() const
@@ -4310,7 +4310,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4791,7 +4791,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::CsMulticastOnlyFrr::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4893,7 +4893,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CsMulticastOnlyFrrs::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5003,7 +5003,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::MulticastOnlyFrr::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5098,7 +5098,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::RpfRedirect::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5157,7 +5157,7 @@ Pim::Vrfs::Vrf::Ipv4::Paths::Path::~Path()
 
 bool Pim::Vrfs::Vrf::Ipv4::Paths::Path::has_data() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5168,14 +5168,15 @@ bool Pim::Vrfs::Vrf::Ipv4::Paths::Path::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Paths::Path::has_operation() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| is_set(source_address.operation);
+	|| is_set(source_address.operation)
+	|| is_set(rpf_proxy_address.operation);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_segment_path() const
@@ -5192,7 +5193,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5290,7 +5291,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Paths::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5400,7 +5401,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::CjMulticastOnlyFrr::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5502,7 +5503,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CjMulticastOnlyFrrs::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5600,7 +5601,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::AutoRp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5681,7 +5682,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::Parameters::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5774,7 +5775,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::CacheLimit::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5844,8 +5845,8 @@ bool Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::has_data() const
 bool Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::has_operation() const
 {
     return is_set(operation)
-	|| (cache_limit !=  nullptr && is_set(cache_limit->operation))
-	|| (parameters !=  nullptr && is_set(parameters->operation));
+	|| (cache_limit !=  nullptr && cache_limit->has_operation())
+	|| (parameters !=  nullptr && parameters->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::get_segment_path() const
@@ -5862,7 +5863,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::AutoRpMappingAgent::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5989,7 +5990,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp::CandidateRpRange::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6069,7 +6070,7 @@ bool Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(protocol_mode.operation)
-	|| (candidate_rp_range !=  nullptr && is_set(candidate_rp_range->operation));
+	|| (candidate_rp_range !=  nullptr && candidate_rp_range->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp::get_segment_path() const
@@ -6086,7 +6087,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6201,7 +6202,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::CandidateRps::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6281,7 +6282,7 @@ Pim::Vrfs::Vrf::Ipv4::Injects::Inject::~Inject()
 
 bool Pim::Vrfs::Vrf::Ipv4::Injects::Inject::has_data() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6292,14 +6293,15 @@ bool Pim::Vrfs::Vrf::Ipv4::Injects::Inject::has_data() const
 
 bool Pim::Vrfs::Vrf::Ipv4::Injects::Inject::has_operation() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| is_set(source_address.operation);
+	|| is_set(source_address.operation)
+	|| is_set(rpf_proxy_address.operation);
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_segment_path() const
@@ -6316,7 +6318,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6414,7 +6416,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Injects::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6521,7 +6523,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6618,7 +6620,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6737,7 +6739,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6847,7 +6849,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Rpf::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6930,7 +6932,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7021,7 +7023,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7111,7 +7113,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Nsf::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7194,7 +7196,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7282,7 +7284,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGlobalGroupMappings::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7370,7 +7372,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GlobalRoutes::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7458,7 +7460,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7546,7 +7548,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GlobalGroupMappingsAutoRp::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7634,7 +7636,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7722,7 +7724,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7810,7 +7812,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGlobalCandidateRpCache::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7898,7 +7900,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7986,7 +7988,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GlobalRegisterStates::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8074,7 +8076,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::GlobalRouteInterfaces::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8162,7 +8164,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8289,18 +8291,18 @@ bool Pim::Vrfs::Vrf::Ipv4::Maximum::has_operation() const
     return is_set(operation)
 	|| is_set(gloabal_high_priority_packet_queue.operation)
 	|| is_set(gloabal_low_priority_packet_queue.operation)
-	|| (bsr_candidate_rp_cache !=  nullptr && is_set(bsr_candidate_rp_cache->operation))
-	|| (bsr_global_candidate_rp_cache !=  nullptr && is_set(bsr_global_candidate_rp_cache->operation))
-	|| (bsr_global_group_mappings !=  nullptr && is_set(bsr_global_group_mappings->operation))
-	|| (bsr_group_mappings !=  nullptr && is_set(bsr_group_mappings->operation))
-	|| (global_group_mappings_auto_rp !=  nullptr && is_set(global_group_mappings_auto_rp->operation))
-	|| (global_register_states !=  nullptr && is_set(global_register_states->operation))
-	|| (global_route_interfaces !=  nullptr && is_set(global_route_interfaces->operation))
-	|| (global_routes !=  nullptr && is_set(global_routes->operation))
-	|| (group_mappings_auto_rp !=  nullptr && is_set(group_mappings_auto_rp->operation))
-	|| (register_states !=  nullptr && is_set(register_states->operation))
-	|| (route_interfaces !=  nullptr && is_set(route_interfaces->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
+	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
+	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
+	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
+	|| (global_group_mappings_auto_rp !=  nullptr && global_group_mappings_auto_rp->has_operation())
+	|| (global_register_states !=  nullptr && global_register_states->has_operation())
+	|| (global_route_interfaces !=  nullptr && global_route_interfaces->has_operation())
+	|| (global_routes !=  nullptr && global_routes->has_operation())
+	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
+	|| (register_states !=  nullptr && register_states->has_operation())
+	|| (route_interfaces !=  nullptr && route_interfaces->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Maximum::get_segment_path() const
@@ -8317,7 +8319,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Maximum::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8681,7 +8683,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Ssm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8772,7 +8774,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8869,7 +8871,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8979,7 +8981,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::Sm::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9083,7 +9085,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::Bidir::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9173,8 +9175,8 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (bidir !=  nullptr && is_set(bidir->operation))
-	|| (sm !=  nullptr && is_set(sm->operation));
+	|| (bidir !=  nullptr && bidir->has_operation())
+	|| (sm !=  nullptr && sm->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -9191,7 +9193,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9324,7 +9326,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9431,7 +9433,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9509,8 +9511,8 @@ bool Pim::Vrfs::Vrf::Ipv4::Bsr::has_data() const
 bool Pim::Vrfs::Vrf::Ipv4::Bsr::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_bsr !=  nullptr && is_set(candidate_bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation));
+	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Bsr::get_segment_path() const
@@ -9527,7 +9529,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Bsr::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9654,7 +9656,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::RedirectBundle::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9750,7 +9752,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9846,7 +9848,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Oor::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9963,9 +9965,9 @@ bool Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_operation() const
 	|| is_set(neighbor_filter.operation)
 	|| is_set(override_interval.operation)
 	|| is_set(propagation_delay.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (oor !=  nullptr && is_set(oor->operation))
-	|| (redirect_bundle !=  nullptr && is_set(redirect_bundle->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (oor !=  nullptr && oor->has_operation())
+	|| (redirect_bundle !=  nullptr && redirect_bundle->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -9982,7 +9984,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10188,7 +10190,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Interfaces::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10292,7 +10294,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::AllowRp::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10380,7 +10382,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::Convergence::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10596,28 +10598,28 @@ bool Pim::Vrfs::Vrf::Ipv4::has_operation() const
 	|| is_set(ssm_allow_override.operation)
 	|| is_set(suppress_data_registers.operation)
 	|| is_set(suppress_rpf_prunes.operation)
-	|| (allow_rp !=  nullptr && is_set(allow_rp->operation))
-	|| (auto_rp !=  nullptr && is_set(auto_rp->operation))
-	|| (auto_rp_mapping_agent !=  nullptr && is_set(auto_rp_mapping_agent->operation))
-	|| (bidir_rp_addresses !=  nullptr && is_set(bidir_rp_addresses->operation))
-	|| (bsr !=  nullptr && is_set(bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation))
-	|| (cj_multicast_only_frrs !=  nullptr && is_set(cj_multicast_only_frrs->operation))
-	|| (convergence !=  nullptr && is_set(convergence->operation))
-	|| (cs_multicast_only_frrs !=  nullptr && is_set(cs_multicast_only_frrs->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (injects !=  nullptr && is_set(injects->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (multicast_only_frr !=  nullptr && is_set(multicast_only_frr->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (paths !=  nullptr && is_set(paths->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (rpf_redirect !=  nullptr && is_set(rpf_redirect->operation))
-	|| (rpf_vector_enable !=  nullptr && is_set(rpf_vector_enable->operation))
-	|| (sg_expiry_timer !=  nullptr && is_set(sg_expiry_timer->operation))
-	|| (sparse_mode_rp_addresses !=  nullptr && is_set(sparse_mode_rp_addresses->operation))
-	|| (ssm !=  nullptr && is_set(ssm->operation));
+	|| (allow_rp !=  nullptr && allow_rp->has_operation())
+	|| (auto_rp !=  nullptr && auto_rp->has_operation())
+	|| (auto_rp_mapping_agent !=  nullptr && auto_rp_mapping_agent->has_operation())
+	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
+	|| (bsr !=  nullptr && bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation())
+	|| (cj_multicast_only_frrs !=  nullptr && cj_multicast_only_frrs->has_operation())
+	|| (convergence !=  nullptr && convergence->has_operation())
+	|| (cs_multicast_only_frrs !=  nullptr && cs_multicast_only_frrs->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (injects !=  nullptr && injects->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (multicast_only_frr !=  nullptr && multicast_only_frr->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (paths !=  nullptr && paths->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (rpf_redirect !=  nullptr && rpf_redirect->has_operation())
+	|| (rpf_vector_enable !=  nullptr && rpf_vector_enable->has_operation())
+	|| (sg_expiry_timer !=  nullptr && sg_expiry_timer->has_operation())
+	|| (sparse_mode_rp_addresses !=  nullptr && sparse_mode_rp_addresses->has_operation())
+	|| (ssm !=  nullptr && ssm->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::Ipv4::get_segment_path() const
@@ -10634,7 +10636,7 @@ EntityPath Pim::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11285,8 +11287,8 @@ bool Pim::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Pim::Vrfs::Vrf::get_segment_path() const
@@ -13507,18 +13509,18 @@ bool Pim::DefaultContext::Ipv6::Maximum::has_operation() const
     return is_set(operation)
 	|| is_set(gloabal_high_priority_packet_queue.operation)
 	|| is_set(gloabal_low_priority_packet_queue.operation)
-	|| (bsr_candidate_rp_cache !=  nullptr && is_set(bsr_candidate_rp_cache->operation))
-	|| (bsr_global_candidate_rp_cache !=  nullptr && is_set(bsr_global_candidate_rp_cache->operation))
-	|| (bsr_global_group_mappings !=  nullptr && is_set(bsr_global_group_mappings->operation))
-	|| (bsr_group_mappings !=  nullptr && is_set(bsr_group_mappings->operation))
-	|| (global_group_mappings_auto_rp !=  nullptr && is_set(global_group_mappings_auto_rp->operation))
-	|| (global_register_states !=  nullptr && is_set(global_register_states->operation))
-	|| (global_route_interfaces !=  nullptr && is_set(global_route_interfaces->operation))
-	|| (global_routes !=  nullptr && is_set(global_routes->operation))
-	|| (group_mappings_auto_rp !=  nullptr && is_set(group_mappings_auto_rp->operation))
-	|| (register_states !=  nullptr && is_set(register_states->operation))
-	|| (route_interfaces !=  nullptr && is_set(route_interfaces->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
+	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
+	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
+	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
+	|| (global_group_mappings_auto_rp !=  nullptr && global_group_mappings_auto_rp->has_operation())
+	|| (global_register_states !=  nullptr && global_register_states->has_operation())
+	|| (global_route_interfaces !=  nullptr && global_route_interfaces->has_operation())
+	|| (global_routes !=  nullptr && global_routes->has_operation())
+	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
+	|| (register_states !=  nullptr && register_states->has_operation())
+	|| (route_interfaces !=  nullptr && route_interfaces->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv6::Maximum::get_segment_path() const
@@ -14197,7 +14199,7 @@ EntityPath Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::Sm::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14301,7 +14303,7 @@ EntityPath Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::Bidir::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14391,8 +14393,8 @@ bool Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::has_operation() 
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (bidir !=  nullptr && is_set(bidir->operation))
-	|| (sm !=  nullptr && is_set(sm->operation));
+	|| (bidir !=  nullptr && bidir->has_operation())
+	|| (sm !=  nullptr && sm->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -14727,8 +14729,8 @@ bool Pim::DefaultContext::Ipv6::Bsr::has_data() const
 bool Pim::DefaultContext::Ipv6::Bsr::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_bsr !=  nullptr && is_set(candidate_bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation));
+	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv6::Bsr::get_segment_path() const
@@ -14872,7 +14874,7 @@ EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::RedirectBundle::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14968,7 +14970,7 @@ EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15064,7 +15066,7 @@ EntityPath Pim::DefaultContext::Ipv6::Interfaces::Interface::Oor::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15181,9 +15183,9 @@ bool Pim::DefaultContext::Ipv6::Interfaces::Interface::has_operation() const
 	|| is_set(neighbor_filter.operation)
 	|| is_set(override_interval.operation)
 	|| is_set(propagation_delay.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (oor !=  nullptr && is_set(oor->operation))
-	|| (redirect_bundle !=  nullptr && is_set(redirect_bundle->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (oor !=  nullptr && oor->has_operation())
+	|| (redirect_bundle !=  nullptr && redirect_bundle->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -15774,20 +15776,20 @@ bool Pim::DefaultContext::Ipv6::has_operation() const
 	|| is_set(ssm_allow_override.operation)
 	|| is_set(suppress_data_registers.operation)
 	|| is_set(suppress_rpf_prunes.operation)
-	|| (allow_rp !=  nullptr && is_set(allow_rp->operation))
-	|| (bidir_rp_addresses !=  nullptr && is_set(bidir_rp_addresses->operation))
-	|| (bsr !=  nullptr && is_set(bsr->operation))
-	|| (convergence !=  nullptr && is_set(convergence->operation))
-	|| (embedded_rp_addresses !=  nullptr && is_set(embedded_rp_addresses->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (rpf_vector_enable !=  nullptr && is_set(rpf_vector_enable->operation))
-	|| (sg_expiry_timer !=  nullptr && is_set(sg_expiry_timer->operation))
-	|| (sparse_mode_rp_addresses !=  nullptr && is_set(sparse_mode_rp_addresses->operation))
-	|| (ssm !=  nullptr && is_set(ssm->operation));
+	|| (allow_rp !=  nullptr && allow_rp->has_operation())
+	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
+	|| (bsr !=  nullptr && bsr->has_operation())
+	|| (convergence !=  nullptr && convergence->has_operation())
+	|| (embedded_rp_addresses !=  nullptr && embedded_rp_addresses->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (rpf_vector_enable !=  nullptr && rpf_vector_enable->has_operation())
+	|| (sg_expiry_timer !=  nullptr && sg_expiry_timer->has_operation())
+	|| (sparse_mode_rp_addresses !=  nullptr && sparse_mode_rp_addresses->has_operation())
+	|| (ssm !=  nullptr && ssm->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv6::get_segment_path() const
@@ -16651,7 +16653,7 @@ Pim::DefaultContext::Ipv4::Paths::Path::~Path()
 
 bool Pim::DefaultContext::Ipv4::Paths::Path::has_data() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16662,14 +16664,15 @@ bool Pim::DefaultContext::Ipv4::Paths::Path::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Paths::Path::has_operation() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| is_set(source_address.operation);
+	|| is_set(source_address.operation)
+	|| is_set(rpf_proxy_address.operation);
 }
 
 std::string Pim::DefaultContext::Ipv4::Paths::Path::get_segment_path() const
@@ -17338,8 +17341,8 @@ bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::has_data() const
 bool Pim::DefaultContext::Ipv4::AutoRpMappingAgent::has_operation() const
 {
     return is_set(operation)
-	|| (cache_limit !=  nullptr && is_set(cache_limit->operation))
-	|| (parameters !=  nullptr && is_set(parameters->operation));
+	|| (cache_limit !=  nullptr && cache_limit->has_operation())
+	|| (parameters !=  nullptr && parameters->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::AutoRpMappingAgent::get_segment_path() const
@@ -17483,7 +17486,7 @@ EntityPath Pim::DefaultContext::Ipv4::CandidateRps::CandidateRp::CandidateRpRang
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17563,7 +17566,7 @@ bool Pim::DefaultContext::Ipv4::CandidateRps::CandidateRp::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(protocol_mode.operation)
-	|| (candidate_rp_range !=  nullptr && is_set(candidate_rp_range->operation));
+	|| (candidate_rp_range !=  nullptr && candidate_rp_range->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::CandidateRps::CandidateRp::get_segment_path() const
@@ -17775,7 +17778,7 @@ Pim::DefaultContext::Ipv4::Injects::Inject::~Inject()
 
 bool Pim::DefaultContext::Ipv4::Injects::Inject::has_data() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -17786,14 +17789,15 @@ bool Pim::DefaultContext::Ipv4::Injects::Inject::has_data() const
 
 bool Pim::DefaultContext::Ipv4::Injects::Inject::has_operation() const
 {
-    for (auto const & leaf : rpf_proxy_address.getValues())
+    for (auto const & leaf : rpf_proxy_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(prefix_length.operation)
-	|| is_set(source_address.operation);
+	|| is_set(source_address.operation)
+	|| is_set(rpf_proxy_address.operation);
 }
 
 std::string Pim::DefaultContext::Ipv4::Injects::Inject::get_segment_path() const
@@ -19783,18 +19787,18 @@ bool Pim::DefaultContext::Ipv4::Maximum::has_operation() const
     return is_set(operation)
 	|| is_set(gloabal_high_priority_packet_queue.operation)
 	|| is_set(gloabal_low_priority_packet_queue.operation)
-	|| (bsr_candidate_rp_cache !=  nullptr && is_set(bsr_candidate_rp_cache->operation))
-	|| (bsr_global_candidate_rp_cache !=  nullptr && is_set(bsr_global_candidate_rp_cache->operation))
-	|| (bsr_global_group_mappings !=  nullptr && is_set(bsr_global_group_mappings->operation))
-	|| (bsr_group_mappings !=  nullptr && is_set(bsr_group_mappings->operation))
-	|| (global_group_mappings_auto_rp !=  nullptr && is_set(global_group_mappings_auto_rp->operation))
-	|| (global_register_states !=  nullptr && is_set(global_register_states->operation))
-	|| (global_route_interfaces !=  nullptr && is_set(global_route_interfaces->operation))
-	|| (global_routes !=  nullptr && is_set(global_routes->operation))
-	|| (group_mappings_auto_rp !=  nullptr && is_set(group_mappings_auto_rp->operation))
-	|| (register_states !=  nullptr && is_set(register_states->operation))
-	|| (route_interfaces !=  nullptr && is_set(route_interfaces->operation))
-	|| (routes !=  nullptr && is_set(routes->operation));
+	|| (bsr_candidate_rp_cache !=  nullptr && bsr_candidate_rp_cache->has_operation())
+	|| (bsr_global_candidate_rp_cache !=  nullptr && bsr_global_candidate_rp_cache->has_operation())
+	|| (bsr_global_group_mappings !=  nullptr && bsr_global_group_mappings->has_operation())
+	|| (bsr_group_mappings !=  nullptr && bsr_group_mappings->has_operation())
+	|| (global_group_mappings_auto_rp !=  nullptr && global_group_mappings_auto_rp->has_operation())
+	|| (global_register_states !=  nullptr && global_register_states->has_operation())
+	|| (global_route_interfaces !=  nullptr && global_route_interfaces->has_operation())
+	|| (global_routes !=  nullptr && global_routes->has_operation())
+	|| (group_mappings_auto_rp !=  nullptr && group_mappings_auto_rp->has_operation())
+	|| (register_states !=  nullptr && register_states->has_operation())
+	|| (route_interfaces !=  nullptr && route_interfaces->has_operation())
+	|| (routes !=  nullptr && routes->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::Maximum::get_segment_path() const
@@ -20473,7 +20477,7 @@ EntityPath Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::Sm::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20577,7 +20581,7 @@ EntityPath Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::Bidir::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20667,8 +20671,8 @@ bool Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::has_operation() 
 {
     return is_set(operation)
 	|| is_set(address.operation)
-	|| (bidir !=  nullptr && is_set(bidir->operation))
-	|| (sm !=  nullptr && is_set(sm->operation));
+	|| (bidir !=  nullptr && bidir->has_operation())
+	|| (sm !=  nullptr && sm->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::get_segment_path() const
@@ -21003,8 +21007,8 @@ bool Pim::DefaultContext::Ipv4::Bsr::has_data() const
 bool Pim::DefaultContext::Ipv4::Bsr::has_operation() const
 {
     return is_set(operation)
-	|| (candidate_bsr !=  nullptr && is_set(candidate_bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation));
+	|| (candidate_bsr !=  nullptr && candidate_bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::Bsr::get_segment_path() const
@@ -21148,7 +21152,7 @@ EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21244,7 +21248,7 @@ EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21340,7 +21344,7 @@ EntityPath Pim::DefaultContext::Ipv4::Interfaces::Interface::Oor::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21457,9 +21461,9 @@ bool Pim::DefaultContext::Ipv4::Interfaces::Interface::has_operation() const
 	|| is_set(neighbor_filter.operation)
 	|| is_set(override_interval.operation)
 	|| is_set(propagation_delay.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (oor !=  nullptr && is_set(oor->operation))
-	|| (redirect_bundle !=  nullptr && is_set(redirect_bundle->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (oor !=  nullptr && oor->has_operation())
+	|| (redirect_bundle !=  nullptr && redirect_bundle->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -22090,28 +22094,28 @@ bool Pim::DefaultContext::Ipv4::has_operation() const
 	|| is_set(ssm_allow_override.operation)
 	|| is_set(suppress_data_registers.operation)
 	|| is_set(suppress_rpf_prunes.operation)
-	|| (allow_rp !=  nullptr && is_set(allow_rp->operation))
-	|| (auto_rp !=  nullptr && is_set(auto_rp->operation))
-	|| (auto_rp_mapping_agent !=  nullptr && is_set(auto_rp_mapping_agent->operation))
-	|| (bidir_rp_addresses !=  nullptr && is_set(bidir_rp_addresses->operation))
-	|| (bsr !=  nullptr && is_set(bsr->operation))
-	|| (candidate_rps !=  nullptr && is_set(candidate_rps->operation))
-	|| (cj_multicast_only_frrs !=  nullptr && is_set(cj_multicast_only_frrs->operation))
-	|| (convergence !=  nullptr && is_set(convergence->operation))
-	|| (cs_multicast_only_frrs !=  nullptr && is_set(cs_multicast_only_frrs->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (injects !=  nullptr && is_set(injects->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (multicast_only_frr !=  nullptr && is_set(multicast_only_frr->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (paths !=  nullptr && is_set(paths->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation))
-	|| (rpf_redirect !=  nullptr && is_set(rpf_redirect->operation))
-	|| (rpf_vector_enable !=  nullptr && is_set(rpf_vector_enable->operation))
-	|| (sg_expiry_timer !=  nullptr && is_set(sg_expiry_timer->operation))
-	|| (sparse_mode_rp_addresses !=  nullptr && is_set(sparse_mode_rp_addresses->operation))
-	|| (ssm !=  nullptr && is_set(ssm->operation));
+	|| (allow_rp !=  nullptr && allow_rp->has_operation())
+	|| (auto_rp !=  nullptr && auto_rp->has_operation())
+	|| (auto_rp_mapping_agent !=  nullptr && auto_rp_mapping_agent->has_operation())
+	|| (bidir_rp_addresses !=  nullptr && bidir_rp_addresses->has_operation())
+	|| (bsr !=  nullptr && bsr->has_operation())
+	|| (candidate_rps !=  nullptr && candidate_rps->has_operation())
+	|| (cj_multicast_only_frrs !=  nullptr && cj_multicast_only_frrs->has_operation())
+	|| (convergence !=  nullptr && convergence->has_operation())
+	|| (cs_multicast_only_frrs !=  nullptr && cs_multicast_only_frrs->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (injects !=  nullptr && injects->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (multicast_only_frr !=  nullptr && multicast_only_frr->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (paths !=  nullptr && paths->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation())
+	|| (rpf_redirect !=  nullptr && rpf_redirect->has_operation())
+	|| (rpf_vector_enable !=  nullptr && rpf_vector_enable->has_operation())
+	|| (sg_expiry_timer !=  nullptr && sg_expiry_timer->has_operation())
+	|| (sparse_mode_rp_addresses !=  nullptr && sparse_mode_rp_addresses->has_operation())
+	|| (ssm !=  nullptr && ssm->has_operation());
 }
 
 std::string Pim::DefaultContext::Ipv4::get_segment_path() const
@@ -22775,8 +22779,8 @@ bool Pim::DefaultContext::has_data() const
 bool Pim::DefaultContext::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Pim::DefaultContext::get_segment_path() const
@@ -22902,8 +22906,8 @@ bool Pim::has_data() const
 bool Pim::has_operation() const
 {
     return is_set(operation)
-	|| (default_context !=  nullptr && is_set(default_context->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_context !=  nullptr && default_context->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Pim::get_segment_path() const
@@ -22920,7 +22924,7 @@ EntityPath Pim::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -23007,11 +23011,11 @@ std::unique_ptr<Entity> Pim::clone_ptr()
     return std::make_unique<Pim>();
 }
 
-const Enum::Value PimMultipathEnum::enable {0, "enable"};
-const Enum::Value PimMultipathEnum::interface_hash {1, "interface-hash"};
-const Enum::Value PimMultipathEnum::source_hash {2, "source-hash"};
-const Enum::Value PimMultipathEnum::source_next_hop_hash {3, "source-next-hop-hash"};
-const Enum::Value PimMultipathEnum::source_group_hash {4, "source-group-hash"};
+const Enum::YLeaf PimMultipathEnum::enable {0, "enable"};
+const Enum::YLeaf PimMultipathEnum::interface_hash {1, "interface-hash"};
+const Enum::YLeaf PimMultipathEnum::source_hash {2, "source-hash"};
+const Enum::YLeaf PimMultipathEnum::source_next_hop_hash {3, "source-next-hop-hash"};
+const Enum::YLeaf PimMultipathEnum::source_group_hash {4, "source-group-hash"};
 
 
 }

@@ -327,9 +327,9 @@ bool IpTcp::has_operation() const
 	|| is_set(syn_wait_time.operation)
 	|| is_set(timestamp.operation)
 	|| is_set(window_size.operation)
-	|| (directory !=  nullptr && is_set(directory->operation))
-	|| (num_thread !=  nullptr && is_set(num_thread->operation))
-	|| (throttle !=  nullptr && is_set(throttle->operation));
+	|| (directory !=  nullptr && directory->has_operation())
+	|| (num_thread !=  nullptr && num_thread->has_operation())
+	|| (throttle !=  nullptr && throttle->has_operation());
 }
 
 std::string IpTcp::get_segment_path() const
@@ -346,7 +346,7 @@ EntityPath IpTcp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -692,8 +692,8 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::has_data() const
 bool Ip::Cinetd::Services::Ipv4::SmallServers::has_operation() const
 {
     return is_set(operation)
-	|| (tcp_small_servers !=  nullptr && is_set(tcp_small_servers->operation))
-	|| (udp_small_servers !=  nullptr && is_set(udp_small_servers->operation));
+	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation())
+	|| (udp_small_servers !=  nullptr && udp_small_servers->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Ipv4::SmallServers::get_segment_path() const
@@ -817,7 +817,7 @@ bool Ip::Cinetd::Services::Ipv4::has_data() const
 bool Ip::Cinetd::Services::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (small_servers !=  nullptr && is_set(small_servers->operation));
+	|| (small_servers !=  nullptr && small_servers->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Ipv4::get_segment_path() const
@@ -935,7 +935,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1003,7 +1003,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_operation() const
 {
     return is_set(operation)
-	|| (tcp !=  nullptr && is_set(tcp->operation));
+	|| (tcp !=  nullptr && tcp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_segment_path() const
@@ -1020,7 +1020,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1127,7 +1127,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1205,7 +1205,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_operation() const
 {
     return is_set(operation)
-	|| (udp !=  nullptr && is_set(udp->operation));
+	|| (udp !=  nullptr && udp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_segment_path() const
@@ -1222,7 +1222,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1311,8 +1311,8 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (telnet !=  nullptr && is_set(telnet->operation))
-	|| (tftp !=  nullptr && is_set(tftp->operation));
+	|| (telnet !=  nullptr && telnet->has_operation())
+	|| (tftp !=  nullptr && tftp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_segment_path() const
@@ -1329,7 +1329,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1453,7 +1453,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1521,7 +1521,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_operation() const
 {
     return is_set(operation)
-	|| (tcp !=  nullptr && is_set(tcp->operation));
+	|| (tcp !=  nullptr && tcp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_segment_path() const
@@ -1538,7 +1538,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1645,7 +1645,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1723,7 +1723,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_operation() const
 {
     return is_set(operation)
-	|| (udp !=  nullptr && is_set(udp->operation));
+	|| (udp !=  nullptr && udp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_segment_path() const
@@ -1740,7 +1740,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1829,8 +1829,8 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_data() const
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (telnet !=  nullptr && is_set(telnet->operation))
-	|| (tftp !=  nullptr && is_set(tftp->operation));
+	|| (telnet !=  nullptr && telnet->has_operation())
+	|| (tftp !=  nullptr && tftp->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_segment_path() const
@@ -1847,7 +1847,7 @@ EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1963,8 +1963,8 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::get_segment_path() const
@@ -2286,7 +2286,7 @@ bool Ip::Cinetd::Services::Ipv6::SmallServers::has_data() const
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_operation() const
 {
     return is_set(operation)
-	|| (tcp_small_servers !=  nullptr && is_set(tcp_small_servers->operation));
+	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Ipv6::SmallServers::get_segment_path() const
@@ -2387,7 +2387,7 @@ bool Ip::Cinetd::Services::Ipv6::has_data() const
 bool Ip::Cinetd::Services::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (small_servers !=  nullptr && is_set(small_servers->operation));
+	|| (small_servers !=  nullptr && small_servers->has_operation());
 }
 
 std::string Ip::Cinetd::Services::Ipv6::get_segment_path() const
@@ -2498,9 +2498,9 @@ bool Ip::Cinetd::Services::has_data() const
 bool Ip::Cinetd::Services::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ip::Cinetd::Services::get_segment_path() const
@@ -2647,7 +2647,7 @@ bool Ip::Cinetd::has_data() const
 bool Ip::Cinetd::has_operation() const
 {
     return is_set(operation)
-	|| (services !=  nullptr && is_set(services->operation));
+	|| (services !=  nullptr && services->has_operation());
 }
 
 std::string Ip::Cinetd::get_segment_path() const
@@ -2948,7 +2948,7 @@ bool Ip::ForwardProtocol::Udp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(disable.operation)
-	|| (ports !=  nullptr && is_set(ports->operation));
+	|| (ports !=  nullptr && ports->has_operation());
 }
 
 std::string Ip::ForwardProtocol::Udp::get_segment_path() const
@@ -3054,7 +3054,7 @@ bool Ip::ForwardProtocol::has_data() const
 bool Ip::ForwardProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (udp !=  nullptr && is_set(udp->operation));
+	|| (udp !=  nullptr && udp->has_operation());
 }
 
 std::string Ip::ForwardProtocol::get_segment_path() const
@@ -3160,8 +3160,8 @@ bool Ip::has_data() const
 bool Ip::has_operation() const
 {
     return is_set(operation)
-	|| (cinetd !=  nullptr && is_set(cinetd->operation))
-	|| (forward_protocol !=  nullptr && is_set(forward_protocol->operation));
+	|| (cinetd !=  nullptr && cinetd->has_operation())
+	|| (forward_protocol !=  nullptr && forward_protocol->has_operation());
 }
 
 std::string Ip::get_segment_path() const
@@ -3178,7 +3178,7 @@ EntityPath Ip::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

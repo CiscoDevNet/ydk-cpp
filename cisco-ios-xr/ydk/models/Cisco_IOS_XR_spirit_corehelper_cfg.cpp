@@ -125,7 +125,7 @@ bool Exception::has_data() const
 bool Exception::has_operation() const
 {
     return is_set(operation)
-	|| (file !=  nullptr && is_set(file->operation));
+	|| (file !=  nullptr && file->has_operation());
 }
 
 std::string Exception::get_segment_path() const
@@ -142,7 +142,7 @@ EntityPath Exception::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -14,9 +14,9 @@ namespace Cisco_IOS_XR_es_acl_datatypes {
 class AclUsageAppIdEnumEnum : public Enum
 {
     public:
-        static const Enum::Value pfilter;
-        static const Enum::Value bgp;
-        static const Enum::Value ospf;
+        static const Enum::YLeaf pfilter;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf ospf;
 
 };
 

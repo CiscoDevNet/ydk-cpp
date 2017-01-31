@@ -82,7 +82,7 @@ EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -230,7 +230,7 @@ EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -307,8 +307,8 @@ bool MacSecKeychains::MacSecKeychain::Keies::Key::has_operation() const
 {
     return is_set(operation)
 	|| is_set(key_id.operation)
-	|| (key_string !=  nullptr && is_set(key_string->operation))
-	|| (lifetime !=  nullptr && is_set(lifetime->operation));
+	|| (key_string !=  nullptr && key_string->has_operation())
+	|| (lifetime !=  nullptr && lifetime->has_operation());
 }
 
 std::string MacSecKeychains::MacSecKeychain::Keies::Key::get_segment_path() const
@@ -325,7 +325,7 @@ EntityPath MacSecKeychains::MacSecKeychain::Keies::Key::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -458,7 +458,7 @@ EntityPath MacSecKeychains::MacSecKeychain::Keies::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -549,7 +549,7 @@ bool MacSecKeychains::MacSecKeychain::has_operation() const
 {
     return is_set(operation)
 	|| is_set(chain_name.operation)
-	|| (keies !=  nullptr && is_set(keies->operation));
+	|| (keies !=  nullptr && keies->has_operation());
 }
 
 std::string MacSecKeychains::MacSecKeychain::get_segment_path() const
@@ -676,7 +676,7 @@ EntityPath MacSecKeychains::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -743,21 +743,21 @@ std::unique_ptr<Entity> MacSecKeychains::clone_ptr()
     return std::make_unique<MacSecKeychains>();
 }
 
-const Enum::Value MacSecKeyChainMonthEnum::jan {0, "jan"};
-const Enum::Value MacSecKeyChainMonthEnum::feb {1, "feb"};
-const Enum::Value MacSecKeyChainMonthEnum::mar {2, "mar"};
-const Enum::Value MacSecKeyChainMonthEnum::apr {3, "apr"};
-const Enum::Value MacSecKeyChainMonthEnum::may {4, "may"};
-const Enum::Value MacSecKeyChainMonthEnum::jun {5, "jun"};
-const Enum::Value MacSecKeyChainMonthEnum::jul {6, "jul"};
-const Enum::Value MacSecKeyChainMonthEnum::aug {7, "aug"};
-const Enum::Value MacSecKeyChainMonthEnum::sep {8, "sep"};
-const Enum::Value MacSecKeyChainMonthEnum::oct {9, "oct"};
-const Enum::Value MacSecKeyChainMonthEnum::nov {10, "nov"};
-const Enum::Value MacSecKeyChainMonthEnum::dec {11, "dec"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::jan {0, "jan"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::feb {1, "feb"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::mar {2, "mar"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::apr {3, "apr"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::may {4, "may"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::jun {5, "jun"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::jul {6, "jul"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::aug {7, "aug"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::sep {8, "sep"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::oct {9, "oct"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::nov {10, "nov"};
+const Enum::YLeaf MacSecKeyChainMonthEnum::dec {11, "dec"};
 
-const Enum::Value MacSecCryptoAlgEnum::aes_128_cmac {7, "aes-128-cmac"};
-const Enum::Value MacSecCryptoAlgEnum::aes_256_cmac {8, "aes-256-cmac"};
+const Enum::YLeaf MacSecCryptoAlgEnum::aes_128_cmac {7, "aes-128-cmac"};
+const Enum::YLeaf MacSecCryptoAlgEnum::aes_256_cmac {8, "aes-256-cmac"};
 
 
 }

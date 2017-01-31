@@ -26,6 +26,7 @@ class TelemetrySystem : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class SensorGroups : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class TelemetrySystem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SensorGroup : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class TelemetrySystem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-                Value sensor_group_id;
 
+
+                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
+                YLeaf sensor_group_id;
 
             class Config : public Entity
             {
@@ -71,8 +74,9 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sensor_group_id; //type: string
 
+
+                    YLeaf sensor_group_id; //type: string
 
 
 
@@ -92,8 +96,9 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value sensor_group_id; //type: string
 
+
+                    YLeaf sensor_group_id; //type: string
 
 
 
@@ -115,6 +120,7 @@ class TelemetrySystem : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SensorPath : public Entity
                 {
                     public:
@@ -128,9 +134,10 @@ class TelemetrySystem : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::path)
-                        Value path;
 
+
+                        //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::path)
+                        YLeaf path;
 
                     class Config : public Entity
                     {
@@ -145,9 +152,10 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path; //type: string
-                            Value exclude_filter; //type: string
 
+
+                            YLeaf path; //type: string
+                            YLeaf exclude_filter; //type: string
 
 
 
@@ -167,9 +175,10 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value path; //type: string
-                            Value exclude_filter; //type: string
 
+
+                            YLeaf path; //type: string
+                            YLeaf exclude_filter; //type: string
 
 
 
@@ -218,6 +227,7 @@ class TelemetrySystem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DestinationGroup : public Entity
         {
             public:
@@ -231,9 +241,10 @@ class TelemetrySystem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                //type: string (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Config::group_id)
-                Value group_id;
 
+
+                //type: string (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Config::group_id)
+                YLeaf group_id;
 
             class Config : public Entity
             {
@@ -248,8 +259,9 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value group_id; //type: string
 
+
+                    YLeaf group_id; //type: string
 
 
 
@@ -269,8 +281,9 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value group_id; //type: string
 
+
+                    YLeaf group_id; //type: string
 
 
 
@@ -292,6 +305,7 @@ class TelemetrySystem : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Destination : public Entity
                 {
                     public:
@@ -305,11 +319,12 @@ class TelemetrySystem : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        //type: union (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_address)
-                        Value destination_address;
-                        //type: uint16 (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_port)
-                        Value destination_port;
 
+
+                        //type: union (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_address)
+                        YLeaf destination_address;
+                        //type: uint16 (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_port)
+                        YLeaf destination_port;
 
                     class Config : public Entity
                     {
@@ -324,12 +339,12 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_address; //type: string
-                            Value destination_port; //type: uint16
-                            Value destination_protocol; //type: TelemetryStreamProtocolEnum
 
 
-                            class TelemetryStreamProtocolEnum;
+                            YLeaf destination_address; //type: string
+                            YLeaf destination_port; //type: uint16
+                            YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
+
 
 
                     }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config
@@ -348,12 +363,12 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_address; //type: string
-                            Value destination_port; //type: uint16
-                            Value destination_protocol; //type: TelemetryStreamProtocolEnum
 
 
-                            class TelemetryStreamProtocolEnum;
+                            YLeaf destination_address; //type: string
+                            YLeaf destination_port; //type: uint16
+                            YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
+
 
 
                     }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State
@@ -401,6 +416,7 @@ class TelemetrySystem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Persistent : public Entity
         {
             public:
@@ -416,6 +432,7 @@ class TelemetrySystem : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Subscription : public Entity
             {
                 public:
@@ -429,9 +446,10 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::Config::subscription_id)
-                    Value subscription_id;
 
+
+                    //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::Config::subscription_id)
+                    YLeaf subscription_id;
 
                 class Config : public Entity
                 {
@@ -446,10 +464,11 @@ class TelemetrySystem : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value subscription_id; //type: uint64
-                        Value local_source_address; //type: string
-                        Value originated_qos_marking; //type: uint8
 
+
+                        YLeaf subscription_id; //type: uint64
+                        YLeaf local_source_address; //type: string
+                        YLeaf originated_qos_marking; //type: uint8
 
 
 
@@ -469,10 +488,11 @@ class TelemetrySystem : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value subscription_id; //type: uint64
-                        Value local_source_address; //type: string
-                        Value originated_qos_marking; //type: uint8
 
+
+                        YLeaf subscription_id; //type: uint64
+                        YLeaf local_source_address; //type: string
+                        YLeaf originated_qos_marking; //type: uint8
 
 
 
@@ -494,6 +514,7 @@ class TelemetrySystem : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SensorProfile : public Entity
                     {
                         public:
@@ -507,9 +528,10 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::sensor_group)
-                            Value sensor_group;
 
+
+                            //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::sensor_group)
+                            YLeaf sensor_group;
 
                         class Config : public Entity
                         {
@@ -524,12 +546,13 @@ class TelemetrySystem : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-                                Value sensor_group;
-                                Value sample_interval; //type: uint64
-                                Value heartbeat_interval; //type: uint64
-                                Value suppress_redundant; //type: boolean
 
+
+                                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
+                                YLeaf sensor_group;
+                                YLeaf sample_interval; //type: uint64
+                                YLeaf heartbeat_interval; //type: uint64
+                                YLeaf suppress_redundant; //type: boolean
 
 
 
@@ -549,12 +572,13 @@ class TelemetrySystem : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-                                Value sensor_group;
-                                Value sample_interval; //type: uint64
-                                Value heartbeat_interval; //type: uint64
-                                Value suppress_redundant; //type: boolean
 
+
+                                //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
+                                YLeaf sensor_group;
+                                YLeaf sample_interval; //type: uint64
+                                YLeaf heartbeat_interval; //type: uint64
+                                YLeaf suppress_redundant; //type: boolean
 
 
 
@@ -589,6 +613,7 @@ class TelemetrySystem : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DestinationGroup : public Entity
                     {
                         public:
@@ -602,9 +627,10 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::group_id)
-                            Value group_id;
 
+
+                            //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::group_id)
+                            YLeaf group_id;
 
                         class Config : public Entity
                         {
@@ -619,9 +645,10 @@ class TelemetrySystem : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
-                                Value group_id;
 
+
+                                //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
+                                YLeaf group_id;
 
 
 
@@ -641,9 +668,10 @@ class TelemetrySystem : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
-                                Value group_id;
 
+
+                                //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
+                                YLeaf group_id;
 
 
 
@@ -693,6 +721,7 @@ class TelemetrySystem : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Subscription : public Entity
             {
                 public:
@@ -706,9 +735,10 @@ class TelemetrySystem : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::State::subscription_id)
-                    Value subscription_id;
 
+
+                    //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::State::subscription_id)
+                    YLeaf subscription_id;
 
                 class State : public Entity
                 {
@@ -723,17 +753,17 @@ class TelemetrySystem : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value subscription_id; //type: uint64
-                        Value destination_address; //type: string
-                        Value destination_port; //type: uint16
-                        Value destination_protocol; //type: TelemetryStreamProtocolEnum
-                        Value sample_interval; //type: uint64
-                        Value heartbeat_interval; //type: uint64
-                        Value suppress_redundant; //type: boolean
-                        Value originated_qos_marking; //type: uint8
 
 
-                        class TelemetryStreamProtocolEnum;
+                        YLeaf subscription_id; //type: uint64
+                        YLeaf destination_address; //type: string
+                        YLeaf destination_port; //type: uint16
+                        YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
+                        YLeaf sample_interval; //type: uint64
+                        YLeaf heartbeat_interval; //type: uint64
+                        YLeaf suppress_redundant; //type: boolean
+                        YLeaf originated_qos_marking; //type: uint8
+
 
 
                 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::State
@@ -754,6 +784,7 @@ class TelemetrySystem : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SensorPath : public Entity
                     {
                         public:
@@ -767,9 +798,10 @@ class TelemetrySystem : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::path)
-                            Value path;
 
+
+                            //type: string (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::path)
+                            YLeaf path;
 
                         class State : public Entity
                         {
@@ -784,9 +816,10 @@ class TelemetrySystem : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value path; //type: string
-                                Value exclude_filter; //type: string
 
+
+                                YLeaf path; //type: string
+                                YLeaf exclude_filter; //type: string
 
 
 
@@ -836,8 +869,8 @@ class TelemetrySystem : public Entity
 class TelemetryStreamProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value TCP;
-        static const Enum::Value UDP;
+        static const Enum::YLeaf TCP;
+        static const Enum::YLeaf UDP;
 
 };
 

@@ -46,7 +46,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::AlarmInfo::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -234,7 +234,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::CommitInfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -345,7 +345,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::OirInfo::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -435,7 +435,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -518,7 +518,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::StartupInfo::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -603,7 +603,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::BackupInfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -706,13 +706,13 @@ bool CfgHistGl::RecordType::Record::Info::has_operation() const
     return is_set(operation)
 	|| is_set(a.operation)
 	|| is_set(type.operation)
-	|| (alarm_info !=  nullptr && is_set(alarm_info->operation))
-	|| (backup_info !=  nullptr && is_set(backup_info->operation))
-	|| (cfscheck_info !=  nullptr && is_set(cfscheck_info->operation))
-	|| (commit_info !=  nullptr && is_set(commit_info->operation))
-	|| (oir_info !=  nullptr && is_set(oir_info->operation))
-	|| (shutdown_info !=  nullptr && is_set(shutdown_info->operation))
-	|| (startup_info !=  nullptr && is_set(startup_info->operation));
+	|| (alarm_info !=  nullptr && alarm_info->has_operation())
+	|| (backup_info !=  nullptr && backup_info->has_operation())
+	|| (cfscheck_info !=  nullptr && cfscheck_info->has_operation())
+	|| (commit_info !=  nullptr && commit_info->has_operation())
+	|| (oir_info !=  nullptr && oir_info->has_operation())
+	|| (shutdown_info !=  nullptr && shutdown_info->has_operation())
+	|| (startup_info !=  nullptr && startup_info->has_operation());
 }
 
 std::string CfgHistGl::RecordType::Record::Info::get_segment_path() const
@@ -729,7 +729,7 @@ EntityPath CfgHistGl::RecordType::Record::Info::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -971,7 +971,7 @@ bool CfgHistGl::RecordType::Record::has_operation() const
 	|| is_set(record.operation)
 	|| is_set(record_type.operation)
 	|| is_set(timestamp.operation)
-	|| (info !=  nullptr && is_set(info->operation));
+	|| (info !=  nullptr && info->has_operation());
 }
 
 std::string CfgHistGl::RecordType::Record::get_segment_path() const
@@ -988,7 +988,7 @@ EntityPath CfgHistGl::RecordType::Record::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1224,7 +1224,7 @@ EntityPath CfgHistGl::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1291,16 +1291,16 @@ std::unique_ptr<Entity> CfgHistGl::clone_ptr()
     return std::make_unique<CfgHistGl>();
 }
 
-const Enum::Value HistRecordEnum::cfghist_bag_record_all {0, "cfghist-bag-record-all"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_alarm {1, "cfghist-bag-record-alarm"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_cfs_check {2, "cfghist-bag-record-cfs-check"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_commit {3, "cfghist-bag-record-commit"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_oir {4, "cfghist-bag-record-oir"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_shutdown {5, "cfghist-bag-record-shutdown"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_startup {6, "cfghist-bag-record-startup"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_backup {7, "cfghist-bag-record-backup"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_rebase {8, "cfghist-bag-record-rebase"};
-const Enum::Value HistRecordEnum::cfghist_bag_record_last {9, "cfghist-bag-record-last"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_all {0, "cfghist-bag-record-all"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_alarm {1, "cfghist-bag-record-alarm"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_cfs_check {2, "cfghist-bag-record-cfs-check"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_commit {3, "cfghist-bag-record-commit"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_oir {4, "cfghist-bag-record-oir"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_shutdown {5, "cfghist-bag-record-shutdown"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_startup {6, "cfghist-bag-record-startup"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_backup {7, "cfghist-bag-record-backup"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_rebase {8, "cfghist-bag-record-rebase"};
+const Enum::YLeaf HistRecordEnum::cfghist_bag_record_last {9, "cfghist-bag-record-last"};
 
 
 }

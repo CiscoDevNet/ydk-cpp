@@ -67,7 +67,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -202,7 +202,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -308,8 +308,8 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::Class
 	|| is_set(class_id.operation)
 	|| is_set(class_name.operation)
 	|| is_set(counter_validity_bitmask.operation)
-	|| (general_stats !=  nullptr && is_set(general_stats->operation))
-	|| (httpr_stats !=  nullptr && is_set(httpr_stats->operation));
+	|| (general_stats !=  nullptr && general_stats->has_operation())
+	|| (httpr_stats !=  nullptr && httpr_stats->has_operation());
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_segment_path() const
@@ -326,7 +326,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -481,7 +481,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -588,7 +588,7 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::has_data() c
 bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::has_operation() const
 {
     return is_set(operation)
-	|| (input !=  nullptr && is_set(input->operation));
+	|| (input !=  nullptr && input->has_operation());
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_segment_path() const
@@ -605,7 +605,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -693,7 +693,7 @@ bool Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (direction !=  nullptr && is_set(direction->operation));
+	|| (direction !=  nullptr && direction->has_operation());
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_segment_path() const
@@ -710,7 +710,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -820,7 +820,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::Interfaces::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -907,7 +907,7 @@ bool Pbr::Nodes::Node::PolicyMap::has_data() const
 bool Pbr::Nodes::Node::PolicyMap::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Pbr::Nodes::Node::PolicyMap::get_segment_path() const
@@ -924,7 +924,7 @@ EntityPath Pbr::Nodes::Node::PolicyMap::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1012,7 +1012,7 @@ bool Pbr::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (policy_map !=  nullptr && is_set(policy_map->operation));
+	|| (policy_map !=  nullptr && policy_map->has_operation());
 }
 
 std::string Pbr::Nodes::Node::get_segment_path() const
@@ -1226,7 +1226,7 @@ bool Pbr::has_data() const
 bool Pbr::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Pbr::get_segment_path() const
@@ -1243,7 +1243,7 @@ EntityPath Pbr::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1307,8 +1307,8 @@ std::unique_ptr<Entity> Pbr::clone_ptr()
     return std::make_unique<Pbr>();
 }
 
-const Enum::Value PolicyStateEnum::active {0, "active"};
-const Enum::Value PolicyStateEnum::suspended {1, "suspended"};
+const Enum::YLeaf PolicyStateEnum::active {0, "active"};
+const Enum::YLeaf PolicyStateEnum::suspended {1, "suspended"};
 
 
 }

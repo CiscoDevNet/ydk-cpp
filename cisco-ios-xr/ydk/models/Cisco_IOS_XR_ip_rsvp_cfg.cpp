@@ -52,7 +52,7 @@ EntityPath Rsvp::Neighbors::Neighbor::Authentication::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -137,7 +137,7 @@ bool Rsvp::Neighbors::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(neighbor.operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation));
+	|| (authentication !=  nullptr && authentication->has_operation());
 }
 
 std::string Rsvp::Neighbors::Neighbor::get_segment_path() const
@@ -368,7 +368,7 @@ EntityPath Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -439,7 +439,7 @@ bool Rsvp::Controllers::Controller::CntlSignalling::has_data() const
 bool Rsvp::Controllers::Controller::CntlSignalling::has_operation() const
 {
     return is_set(operation)
-	|| (out_of_band !=  nullptr && is_set(out_of_band->operation));
+	|| (out_of_band !=  nullptr && out_of_band->has_operation());
 }
 
 std::string Rsvp::Controllers::Controller::CntlSignalling::get_segment_path() const
@@ -456,7 +456,7 @@ EntityPath Rsvp::Controllers::Controller::CntlSignalling::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -547,7 +547,7 @@ bool Rsvp::Controllers::Controller::has_operation() const
     return is_set(operation)
 	|| is_set(controller_name.operation)
 	|| is_set(enable.operation)
-	|| (cntl_signalling !=  nullptr && is_set(cntl_signalling->operation));
+	|| (cntl_signalling !=  nullptr && cntl_signalling->has_operation());
 }
 
 std::string Rsvp::Controllers::Controller::get_segment_path() const
@@ -1043,8 +1043,8 @@ bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::has_data() const
 bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::has_operation() const
 {
     return is_set(operation)
-	|| (mam !=  nullptr && is_set(mam->operation))
-	|| (rdm !=  nullptr && is_set(rdm->operation));
+	|| (mam !=  nullptr && mam->has_operation())
+	|| (rdm !=  nullptr && rdm->has_operation());
 }
 
 std::string Rsvp::GlobalBandwidth::DefaultInterfacePercent::get_segment_path() const
@@ -1168,7 +1168,7 @@ bool Rsvp::GlobalBandwidth::has_data() const
 bool Rsvp::GlobalBandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (default_interface_percent !=  nullptr && is_set(default_interface_percent->operation));
+	|| (default_interface_percent !=  nullptr && default_interface_percent->has_operation());
 }
 
 std::string Rsvp::GlobalBandwidth::get_segment_path() const
@@ -1301,7 +1301,7 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1414,7 +1414,7 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1502,7 +1502,7 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1599,9 +1599,9 @@ bool Rsvp::Interfaces::Interface::IfSignalling::has_operation() const
 	|| is_set(missed_messages.operation)
 	|| is_set(pacing.operation)
 	|| is_set(refresh_interval.operation)
-	|| (interval_rate !=  nullptr && is_set(interval_rate->operation))
-	|| (out_of_band !=  nullptr && is_set(out_of_band->operation))
-	|| (refresh_reduction !=  nullptr && is_set(refresh_reduction->operation));
+	|| (interval_rate !=  nullptr && interval_rate->has_operation())
+	|| (out_of_band !=  nullptr && out_of_band->has_operation())
+	|| (refresh_reduction !=  nullptr && refresh_reduction->has_operation());
 }
 
 std::string Rsvp::Interfaces::Interface::IfSignalling::get_segment_path() const
@@ -1618,7 +1618,7 @@ EntityPath Rsvp::Interfaces::Interface::IfSignalling::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1799,7 +1799,7 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::Mam::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1917,7 +1917,7 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::Rdm::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2018,8 +2018,8 @@ bool Rsvp::Interfaces::Interface::Bandwidth::has_data() const
 bool Rsvp::Interfaces::Interface::Bandwidth::has_operation() const
 {
     return is_set(operation)
-	|| (mam !=  nullptr && is_set(mam->operation))
-	|| (rdm !=  nullptr && is_set(rdm->operation));
+	|| (mam !=  nullptr && mam->has_operation())
+	|| (rdm !=  nullptr && rdm->has_operation());
 }
 
 std::string Rsvp::Interfaces::Interface::Bandwidth::get_segment_path() const
@@ -2036,7 +2036,7 @@ EntityPath Rsvp::Interfaces::Interface::Bandwidth::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2166,7 +2166,7 @@ EntityPath Rsvp::Interfaces::Interface::Authentication::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2264,9 +2264,9 @@ bool Rsvp::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(enable.operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (if_signalling !=  nullptr && is_set(if_signalling->operation));
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (if_signalling !=  nullptr && if_signalling->has_operation());
 }
 
 std::string Rsvp::Interfaces::Interface::get_segment_path() const
@@ -2791,7 +2791,7 @@ bool Rsvp::Signalling::PrefixFiltering::has_operation() const
 {
     return is_set(operation)
 	|| is_set(acl.operation)
-	|| (default_deny_action !=  nullptr && is_set(default_deny_action->operation));
+	|| (default_deny_action !=  nullptr && default_deny_action->has_operation());
 }
 
 std::string Rsvp::Signalling::PrefixFiltering::get_segment_path() const
@@ -3084,11 +3084,11 @@ bool Rsvp::Signalling::has_operation() const
     return is_set(operation)
 	|| is_set(hello_graceful_restart_interval.operation)
 	|| is_set(hello_graceful_restart_misses.operation)
-	|| (checksum !=  nullptr && is_set(checksum->operation))
-	|| (global_out_of_band !=  nullptr && is_set(global_out_of_band->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (pesr !=  nullptr && is_set(pesr->operation))
-	|| (prefix_filtering !=  nullptr && is_set(prefix_filtering->operation));
+	|| (checksum !=  nullptr && checksum->has_operation())
+	|| (global_out_of_band !=  nullptr && global_out_of_band->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (pesr !=  nullptr && pesr->has_operation())
+	|| (prefix_filtering !=  nullptr && prefix_filtering->has_operation());
 }
 
 std::string Rsvp::Signalling::get_segment_path() const
@@ -3425,13 +3425,13 @@ bool Rsvp::has_data() const
 bool Rsvp::has_operation() const
 {
     return is_set(operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (controllers !=  nullptr && is_set(controllers->operation))
-	|| (global_bandwidth !=  nullptr && is_set(global_bandwidth->operation))
-	|| (global_logging !=  nullptr && is_set(global_logging->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (neighbors !=  nullptr && is_set(neighbors->operation))
-	|| (signalling !=  nullptr && is_set(signalling->operation));
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (controllers !=  nullptr && controllers->has_operation())
+	|| (global_bandwidth !=  nullptr && global_bandwidth->has_operation())
+	|| (global_logging !=  nullptr && global_logging->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (neighbors !=  nullptr && neighbors->has_operation())
+	|| (signalling !=  nullptr && signalling->has_operation());
 }
 
 std::string Rsvp::get_segment_path() const
@@ -3448,7 +3448,7 @@ EntityPath Rsvp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3650,19 +3650,19 @@ std::unique_ptr<Entity> Rsvp::clone_ptr()
     return std::make_unique<Rsvp>();
 }
 
-const Enum::Value RsvpBwCfgEnum::absolute {0, "absolute"};
-const Enum::Value RsvpBwCfgEnum::percentage {1, "percentage"};
+const Enum::YLeaf RsvpBwCfgEnum::absolute {0, "absolute"};
+const Enum::YLeaf RsvpBwCfgEnum::percentage {1, "percentage"};
 
-const Enum::Value RsvpBc0Enum::bc0 {1, "bc0"};
-const Enum::Value RsvpBc0Enum::global_pool {2, "global-pool"};
-const Enum::Value RsvpBc0Enum::not_specified {3, "not-specified"};
+const Enum::YLeaf RsvpBc0Enum::bc0 {1, "bc0"};
+const Enum::YLeaf RsvpBc0Enum::global_pool {2, "global-pool"};
+const Enum::YLeaf RsvpBc0Enum::not_specified {3, "not-specified"};
 
-const Enum::Value RsvpBc1Enum::bc1 {1, "bc1"};
-const Enum::Value RsvpBc1Enum::sub_pool {2, "sub-pool"};
+const Enum::YLeaf RsvpBc1Enum::bc1 {1, "bc1"};
+const Enum::YLeaf RsvpBc1Enum::sub_pool {2, "sub-pool"};
 
-const Enum::Value RsvpRdmEnum::rdm {1, "rdm"};
-const Enum::Value RsvpRdmEnum::not_specified {2, "not-specified"};
-const Enum::Value RsvpRdmEnum::use_default_bandwidth {3, "use-default-bandwidth"};
+const Enum::YLeaf RsvpRdmEnum::rdm {1, "rdm"};
+const Enum::YLeaf RsvpRdmEnum::not_specified {2, "not-specified"};
+const Enum::YLeaf RsvpRdmEnum::use_default_bandwidth {3, "use-default-bandwidth"};
 
 
 }

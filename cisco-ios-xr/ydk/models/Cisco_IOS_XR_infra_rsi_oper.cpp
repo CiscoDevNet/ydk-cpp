@@ -43,7 +43,7 @@ EntityPath VrfGroup::Nodes::Node::Groups::Group::Vrf::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -139,7 +139,7 @@ EntityPath VrfGroup::Nodes::Node::Groups::Group::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -262,7 +262,7 @@ EntityPath VrfGroup::Nodes::Node::Groups::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -353,7 +353,7 @@ bool VrfGroup::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string VrfGroup::Nodes::Node::get_segment_path() const
@@ -567,7 +567,7 @@ bool VrfGroup::has_data() const
 bool VrfGroup::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string VrfGroup::get_segment_path() const
@@ -584,7 +584,7 @@ EntityPath VrfGroup::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -893,7 +893,7 @@ EntityPath Srlg::Nodes::Node::SrlgMaps::SrlgMap::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -990,7 +990,7 @@ EntityPath Srlg::Nodes::Node::SrlgMaps::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1097,7 +1097,7 @@ EntityPath Srlg::Nodes::Node::Groups::Group::SrlgAttribute::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1203,7 +1203,7 @@ EntityPath Srlg::Nodes::Node::Groups::Group::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1326,7 +1326,7 @@ EntityPath Srlg::Nodes::Node::Groups::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1433,7 +1433,7 @@ EntityPath Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1539,7 +1539,7 @@ EntityPath Srlg::Nodes::Node::InheritNodes::InheritNode::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1662,7 +1662,7 @@ EntityPath Srlg::Nodes::Node::InheritNodes::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1744,7 +1744,7 @@ Srlg::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Srlg::Nodes::Node::Interfaces::Interface::has_data() const
 {
-    for (auto const & leaf : srlg_value.getValues())
+    for (auto const & leaf : srlg_value.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1757,7 +1757,7 @@ bool Srlg::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool Srlg::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    for (auto const & leaf : srlg_value.getValues())
+    for (auto const & leaf : srlg_value.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1766,6 +1766,7 @@ bool Srlg::Nodes::Node::Interfaces::Interface::has_operation() const
 	|| is_set(interface_name.operation)
 	|| is_set(interface_name_xr.operation)
 	|| is_set(registrations.operation)
+	|| is_set(srlg_value.operation)
 	|| is_set(value_count.operation);
 }
 
@@ -1783,7 +1784,7 @@ EntityPath Srlg::Nodes::Node::Interfaces::Interface::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1891,7 +1892,7 @@ EntityPath Srlg::Nodes::Node::Interfaces::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2004,7 +2005,7 @@ EntityPath Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2120,7 +2121,7 @@ EntityPath Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2243,7 +2244,7 @@ EntityPath Srlg::Nodes::Node::InterfaceDetails::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2322,7 +2323,7 @@ Srlg::Nodes::Node::SrlgValues::SrlgValue::~SrlgValue()
 
 bool Srlg::Nodes::Node::SrlgValues::SrlgValue::has_data() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2332,13 +2333,14 @@ bool Srlg::Nodes::Node::SrlgValues::SrlgValue::has_data() const
 
 bool Srlg::Nodes::Node::SrlgValues::SrlgValue::has_operation() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(value_.operation);
+	|| is_set(value_.operation)
+	|| is_set(interface_name.operation);
 }
 
 std::string Srlg::Nodes::Node::SrlgValues::SrlgValue::get_segment_path() const
@@ -2355,7 +2357,7 @@ EntityPath Srlg::Nodes::Node::SrlgValues::SrlgValue::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2448,7 +2450,7 @@ EntityPath Srlg::Nodes::Node::SrlgValues::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2526,7 +2528,7 @@ Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::~Interface
 
 bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_data() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2536,12 +2538,13 @@ bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_d
 
 bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_operation() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(interface_name.operation);
 }
 
 std::string Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::get_segment_path() const
@@ -2558,7 +2561,7 @@ EntityPath Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2635,7 +2638,7 @@ bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::has_operation() c
 	|| is_set(srlg_name.operation)
 	|| is_set(srlg_name_xr.operation)
 	|| is_set(srlg_value.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::get_segment_path() const
@@ -2652,7 +2655,7 @@ EntityPath Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2772,7 +2775,7 @@ EntityPath Srlg::Nodes::Node::InterfaceSrlgNames::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2893,13 +2896,13 @@ bool Srlg::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (groups !=  nullptr && is_set(groups->operation))
-	|| (inherit_nodes !=  nullptr && is_set(inherit_nodes->operation))
-	|| (interface_details !=  nullptr && is_set(interface_details->operation))
-	|| (interface_srlg_names !=  nullptr && is_set(interface_srlg_names->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (srlg_maps !=  nullptr && is_set(srlg_maps->operation))
-	|| (srlg_values !=  nullptr && is_set(srlg_values->operation));
+	|| (groups !=  nullptr && groups->has_operation())
+	|| (inherit_nodes !=  nullptr && inherit_nodes->has_operation())
+	|| (interface_details !=  nullptr && interface_details->has_operation())
+	|| (interface_srlg_names !=  nullptr && interface_srlg_names->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (srlg_maps !=  nullptr && srlg_maps->has_operation())
+	|| (srlg_values !=  nullptr && srlg_values->has_operation());
 }
 
 std::string Srlg::Nodes::Node::get_segment_path() const
@@ -3242,7 +3245,7 @@ Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::~Interfaces()
 
 bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_data() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3252,12 +3255,13 @@ bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_data() const
 
 bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_operation() const
 {
-    for (auto const & leaf : interface_name.getValues())
+    for (auto const & leaf : interface_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(interface_name.operation);
 }
 
 std::string Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::get_segment_path() const
@@ -3274,7 +3278,7 @@ EntityPath Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3351,7 +3355,7 @@ bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::has_operation() const
 	|| is_set(srlg_name.operation)
 	|| is_set(srlg_name_xr.operation)
 	|| is_set(srlg_value.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Srlg::InterfaceSrlgNames::InterfaceSrlgName::get_segment_path() const
@@ -3585,9 +3589,9 @@ bool Srlg::has_data() const
 bool Srlg::has_operation() const
 {
     return is_set(operation)
-	|| (interface_srlg_names !=  nullptr && is_set(interface_srlg_names->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation))
-	|| (srlg_maps !=  nullptr && is_set(srlg_maps->operation));
+	|| (interface_srlg_names !=  nullptr && interface_srlg_names->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation())
+	|| (srlg_maps !=  nullptr && srlg_maps->has_operation());
 }
 
 std::string Srlg::get_segment_path() const
@@ -3604,7 +3608,7 @@ EntityPath Srlg::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3823,7 +3827,7 @@ bool SelectiveVrfDownload::has_data() const
 bool SelectiveVrfDownload::has_operation() const
 {
     return is_set(operation)
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string SelectiveVrfDownload::get_segment_path() const
@@ -3840,7 +3844,7 @@ EntityPath SelectiveVrfDownload::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3904,20 +3908,20 @@ std::unique_ptr<Entity> SelectiveVrfDownload::clone_ptr()
     return std::make_unique<SelectiveVrfDownload>();
 }
 
-const Enum::Value PriorityEnum::critical {0, "critical"};
-const Enum::Value PriorityEnum::high {1, "high"};
-const Enum::Value PriorityEnum::medium {2, "medium"};
-const Enum::Value PriorityEnum::low {3, "low"};
-const Enum::Value PriorityEnum::very_low {4, "very-low"};
+const Enum::YLeaf PriorityEnum::critical {0, "critical"};
+const Enum::YLeaf PriorityEnum::high {1, "high"};
+const Enum::YLeaf PriorityEnum::medium {2, "medium"};
+const Enum::YLeaf PriorityEnum::low {3, "low"};
+const Enum::YLeaf PriorityEnum::very_low {4, "very-low"};
 
-const Enum::Value SourceEnum::configured {1, "configured"};
-const Enum::Value SourceEnum::from_group {2, "from-group"};
-const Enum::Value SourceEnum::inherited {4, "inherited"};
-const Enum::Value SourceEnum::from_optical {8, "from-optical"};
-const Enum::Value SourceEnum::configured_and_notified {17, "configured-and-notified"};
-const Enum::Value SourceEnum::from_group_and_notified {18, "from-group-and-notified"};
-const Enum::Value SourceEnum::inherited_and_notified {20, "inherited-and-notified"};
-const Enum::Value SourceEnum::from_optical_and_notified {24, "from-optical-and-notified"};
+const Enum::YLeaf SourceEnum::configured {1, "configured"};
+const Enum::YLeaf SourceEnum::from_group {2, "from-group"};
+const Enum::YLeaf SourceEnum::inherited {4, "inherited"};
+const Enum::YLeaf SourceEnum::from_optical {8, "from-optical"};
+const Enum::YLeaf SourceEnum::configured_and_notified {17, "configured-and-notified"};
+const Enum::YLeaf SourceEnum::from_group_and_notified {18, "from-group-and-notified"};
+const Enum::YLeaf SourceEnum::inherited_and_notified {20, "inherited-and-notified"};
+const Enum::YLeaf SourceEnum::from_optical_and_notified {24, "from-optical-and-notified"};
 
 
 }

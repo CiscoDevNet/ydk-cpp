@@ -57,7 +57,6 @@ NetconfClient::NetconfClient(string  username, string  password,
 }
 
 
-
 int NetconfClient::connect()
 {
 	session = nc_session_connect(hostname.c_str(), port, username.c_str(), NULL);
@@ -115,13 +114,13 @@ nc_rpc* NetconfClient::build_rpc_request(const string & payload)
 	if (rpc == NULL)
 	{
           BOOST_LOG_TRIVIAL(error) << "Could not build rpc payload:-" << payload ;
-	      BOOST_THROW_EXCEPTION(YDKClientException{"Could not build payload"});
+	      BOOST_THROW_EXCEPTION(YCPPClientError{"Could not build payload"});
 	}
 	else if(NC_RPC_UNKNOWN==nc_rpc_get_type(rpc))
 	{
 		nc_rpc_free(rpc);
         BOOST_LOG_TRIVIAL(error)<< "Rpc type is unknown";
-		BOOST_THROW_EXCEPTION(YDKClientException{"Could not build payload"});
+		BOOST_THROW_EXCEPTION(YCPPClientError{"Could not build payload"});
 	}
 	return rpc;
 }
@@ -137,7 +136,7 @@ string NetconfClient::process_rpc_reply(int reply_type, const nc_reply* reply)
 		case NC_MSG_NONE:
 		case NC_MSG_UNKNOWN:
             BOOST_LOG_TRIVIAL(error) << "RPC error occurred";
-			BOOST_THROW_EXCEPTION(YDKClientException{"RPC error occured"});
+			BOOST_THROW_EXCEPTION(YCPPClientError{"RPC error occured"});
 	}
 	return {};
 }
@@ -189,7 +188,7 @@ void NetconfClient::perform_session_check(string message)
 	if (session == NULL)
 	{
         BOOST_LOG_TRIVIAL(error) << message;
-		BOOST_THROW_EXCEPTION(YDKClientException{message});
+		BOOST_THROW_EXCEPTION(YCPPClientError{message});
 	}
 }
 

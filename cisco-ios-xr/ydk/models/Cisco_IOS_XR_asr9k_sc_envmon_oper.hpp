@@ -26,6 +26,7 @@ class EnvironmentalMonitoring : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Racks : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class EnvironmentalMonitoring : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Rack : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class EnvironmentalMonitoring : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value rack; //type: int32
 
+
+                YLeaf rack; //type: int32
 
             class Slots : public Entity
             {
@@ -72,6 +75,7 @@ class EnvironmentalMonitoring : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Slot : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class EnvironmentalMonitoring : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value slot; //type: string
 
+
+                        YLeaf slot; //type: string
 
                     class Modules : public Entity
                     {
@@ -103,6 +108,7 @@ class EnvironmentalMonitoring : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Module : public Entity
                         {
                             public:
@@ -116,8 +122,9 @@ class EnvironmentalMonitoring : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value module; //type: string
 
+
+                                YLeaf module; //type: string
 
                             class Power : public Entity
                             {
@@ -134,6 +141,7 @@ class EnvironmentalMonitoring : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PowerBag : public Entity
                                 {
                                     public:
@@ -147,17 +155,18 @@ class EnvironmentalMonitoring : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value power_value; //type: int32
-                                        Value power_max_value; //type: int32
-                                        Value power_unit_multiplier; //type: uint32
-                                        Value power_accuracy; //type: uint32
-                                        Value power_measure_caliber; //type: uint32
-                                        Value power_current_type; //type: uint32
-                                        Value power_origin; //type: uint32
-                                        Value power_admin_state; //type: uint32
-                                        Value power_oper_state; //type: uint32
-                                        Value power_state_enter_reason; //type: string
 
+
+                                        YLeaf power_value; //type: int32
+                                        YLeaf power_max_value; //type: int32
+                                        YLeaf power_unit_multiplier; //type: uint32
+                                        YLeaf power_accuracy; //type: uint32
+                                        YLeaf power_measure_caliber; //type: uint32
+                                        YLeaf power_current_type; //type: uint32
+                                        YLeaf power_origin; //type: uint32
+                                        YLeaf power_admin_state; //type: uint32
+                                        YLeaf power_oper_state; //type: uint32
+                                        YLeaf power_state_enter_reason; //type: string
 
 
 
@@ -185,6 +194,7 @@ class EnvironmentalMonitoring : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SensorType : public Entity
                                 {
                                     public:
@@ -198,8 +208,9 @@ class EnvironmentalMonitoring : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: string
 
+
+                                        YLeaf type; //type: string
 
                                     class SensorNames : public Entity
                                     {
@@ -216,6 +227,7 @@ class EnvironmentalMonitoring : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class SensorName : public Entity
                                         {
                                             public:
@@ -229,9 +241,10 @@ class EnvironmentalMonitoring : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value name; //type: string
-                                                Value value_brief; //type: int32
 
+
+                                                YLeaf name; //type: string
+                                                YLeaf value_brief; //type: int32
 
                                             class Thresholds : public Entity
                                             {
@@ -248,6 +261,7 @@ class EnvironmentalMonitoring : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Threshold : public Entity
                                                 {
                                                     public:
@@ -261,10 +275,11 @@ class EnvironmentalMonitoring : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value type; //type: string
-                                                        Value trap; //type: boolean
-                                                        Value value_brief; //type: int32
 
+
+                                                        YLeaf type; //type: string
+                                                        YLeaf trap; //type: boolean
+                                                        YLeaf value_brief; //type: int32
 
                                                     class ValueDetailed : public Entity
                                                     {
@@ -279,12 +294,13 @@ class EnvironmentalMonitoring : public Entity
                                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                             void set_value(const std::string & value_path, std::string value) override;
                                                             std::map<std::string, Entity*> & get_children() override;
-                                                            Value threshold_severity; //type: uint32
-                                                            Value threshold_relation; //type: uint32
-                                                            Value threshold_value; //type: uint32
-                                                            Value threshold_evaluation; //type: boolean
-                                                            Value threshold_notification_enabled; //type: boolean
 
+
+                                                            YLeaf threshold_severity; //type: uint32
+                                                            YLeaf threshold_relation; //type: uint32
+                                                            YLeaf threshold_value; //type: uint32
+                                                            YLeaf threshold_evaluation; //type: boolean
+                                                            YLeaf threshold_notification_enabled; //type: boolean
 
 
 
@@ -316,19 +332,20 @@ class EnvironmentalMonitoring : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value field_validity_bitmap; //type: uint32
-                                                    Value device_description; //type: string
-                                                    Value units; //type: string
-                                                    Value device_id; //type: uint32
-                                                    Value value_; //type: uint32
-                                                    Value alarm_type; //type: uint32
-                                                    Value data_type; //type: uint32
-                                                    Value scale; //type: uint32
-                                                    Value precision; //type: uint32
-                                                    Value status; //type: uint32
-                                                    Value age_time_stamp; //type: uint32
-                                                    Value update_rate; //type: uint32
 
+
+                                                    YLeaf field_validity_bitmap; //type: uint32
+                                                    YLeaf device_description; //type: string
+                                                    YLeaf units; //type: string
+                                                    YLeaf device_id; //type: uint32
+                                                    YLeaf value_; //type: uint32
+                                                    YLeaf alarm_type; //type: uint32
+                                                    YLeaf data_type; //type: uint32
+                                                    YLeaf scale; //type: uint32
+                                                    YLeaf precision; //type: uint32
+                                                    YLeaf status; //type: uint32
+                                                    YLeaf age_time_stamp; //type: uint32
+                                                    YLeaf update_rate; //type: uint32
 
 
 

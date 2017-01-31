@@ -14,10 +14,10 @@ namespace Cisco_IOS_XR_aaa_locald_cfg {
 class AaaLocaldTaskClassEnum : public Enum
 {
     public:
-        static const Enum::Value read;
-        static const Enum::Value write;
-        static const Enum::Value execute;
-        static const Enum::Value debug;
+        static const Enum::YLeaf read;
+        static const Enum::YLeaf write;
+        static const Enum::YLeaf execute;
+        static const Enum::YLeaf debug;
 
 };
 

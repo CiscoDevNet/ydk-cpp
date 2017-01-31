@@ -24,8 +24,9 @@ class Qos : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value fabric_service_policy; //type: string
 
+
+        YLeaf fabric_service_policy; //type: string
 
 
 
@@ -35,14 +36,14 @@ class Qos : public Entity
 class QosFieldNotSupportedEnum : public Enum
 {
     public:
-        static const Enum::Value not_supported;
+        static const Enum::YLeaf not_supported;
 
 };
 
 class QosPolicyAccountEnum : public Enum
 {
     public:
-        static const Enum::Value user_defined;
+        static const Enum::YLeaf user_defined;
 
 };
 

@@ -26,6 +26,7 @@ class Ospf : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Processes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Ospf : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Process : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class Ospf : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value process_name; //type: string
-                Value start; //type: empty
-                Value nsr; //type: NsrEnum
-                Value protocol_shutdown; //type: OspfShutdownEnum
-                Value running; //type: empty
 
+
+                YLeaf process_name; //type: string
+                YLeaf start; //type: empty
+                YLeaf nsr; //type: NsrEnum
+                YLeaf protocol_shutdown; //type: OspfShutdownEnum
+                YLeaf running; //type: empty
 
             class Snmp : public Entity
             {
@@ -76,6 +79,7 @@ class Ospf : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class TrapRateLimit : public Entity
                 {
                     public:
@@ -89,9 +93,10 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value window_size; //type: uint32
-                        Value max_window_traps; //type: uint32
 
+
+                        YLeaf window_size; //type: uint32
+                        YLeaf max_window_traps; //type: uint32
 
 
 
@@ -117,9 +122,10 @@ class Ospf : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value throttle; //type: uint32
-                    Value instance_id; //type: uint32
 
+
+                    YLeaf throttle; //type: uint32
+                    YLeaf instance_id; //type: uint32
 
 
 
@@ -141,6 +147,7 @@ class Ospf : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -154,23 +161,24 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value vrf_start; //type: empty
-                        Value snmp_trap_enabled; //type: boolean
-                        Value domain_tag; //type: uint32
-                        Value vrf_lite; //type: empty
-                        Value disable_dn_bit_check; //type: empty
-                        Value ignore_mospf; //type: empty
-                        Value router_id; //type: string
-                        Value type7; //type: empty
-                        Value snmp_context; //type: string
-                        Value maximum_interfaces; //type: uint32
-                        Value no_opaque; //type: empty
-                        Value spf_prefix_priority; //type: string
-                        Value maximum_paths; //type: uint32
-                        Value adjacency_changes; //type: OspfLogAdjEnum
-                        Value default_metric; //type: uint32
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf vrf_start; //type: empty
+                        YLeaf snmp_trap_enabled; //type: boolean
+                        YLeaf domain_tag; //type: uint32
+                        YLeaf vrf_lite; //type: empty
+                        YLeaf disable_dn_bit_check; //type: empty
+                        YLeaf ignore_mospf; //type: empty
+                        YLeaf router_id; //type: string
+                        YLeaf type7; //type: empty
+                        YLeaf snmp_context; //type: string
+                        YLeaf maximum_interfaces; //type: uint32
+                        YLeaf no_opaque; //type: empty
+                        YLeaf spf_prefix_priority; //type: string
+                        YLeaf maximum_paths; //type: uint32
+                        YLeaf adjacency_changes; //type: OspfLogAdjEnum
+                        YLeaf default_metric; //type: uint32
 
                     class DomainId : public Entity
                     {
@@ -187,6 +195,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PrimaryDomainId : public Entity
                         {
                             public:
@@ -200,11 +209,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value domain_id_type; //type: OspfDomainIdEnum
-                                Value domain_id_name; //type: string
 
 
-                                class OspfDomainIdEnum;
+                                YLeaf domain_id_type; //type: OspfDomainIdEnum
+                                YLeaf domain_id_name; //type: string
+
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::DomainId::PrimaryDomainId
@@ -225,6 +234,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SecondaryDomainId : public Entity
                             {
                                 public:
@@ -238,11 +248,11 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value domain_id_type; //type: OspfDomainIdEnum
-                                    Value domain_id_name; //type: string
 
 
-                                    class OspfDomainIdEnum;
+                                    YLeaf domain_id_type; //type: OspfDomainIdEnum
+                                    YLeaf domain_id_name; //type: string
+
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::DomainId::SecondaryDomainIds::SecondaryDomainId
@@ -276,6 +286,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Avoidance : public Entity
                         {
                             public:
@@ -289,11 +300,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: OspfUloopAvoidanceEnum
-                                Value rib_update_delay; //type: uint32
 
 
-                                class OspfUloopAvoidanceEnum;
+                                YLeaf enable; //type: OspfUloopAvoidanceEnum
+                                YLeaf rib_update_delay; //type: uint32
+
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::Microloop::Avoidance
@@ -318,10 +329,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value number_of_prefixes; //type: uint32
-                            Value threshold; //type: uint32
-                            Value warning_only; //type: boolean
 
+
+                            YLeaf number_of_prefixes; //type: uint32
+                            YLeaf threshold; //type: uint32
+                            YLeaf warning_only; //type: boolean
 
 
 
@@ -341,13 +353,13 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value always_advertise; //type: boolean
-                            Value metric; //type: uint32
-                            Value metric_type; //type: OspfLinkStateMetricEnum
-                            Value route_policy_name; //type: string
 
 
-                            class OspfLinkStateMetricEnum;
+                            YLeaf always_advertise; //type: boolean
+                            YLeaf metric; //type: uint32
+                            YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                            YLeaf route_policy_name; //type: string
+
 
 
                     }; // Ospf::Processes::Process::Vrfs::Vrf::DefaultInformation
@@ -366,12 +378,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: OspfAddressFamilyEnum
-                            Value saf_name; //type: OspfSubAddressFamilyEnum
 
 
-                            class OspfAddressFamilyEnum;
-                            class OspfSubAddressFamilyEnum;
+                            YLeaf af_name; //type: OspfAddressFamilyEnum
+                            YLeaf saf_name; //type: OspfSubAddressFamilyEnum
+
 
 
                     }; // Ospf::Processes::Process::Vrfs::Vrf::Af
@@ -390,14 +401,15 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dispatch_rate_limited_flush; //type: uint32
-                            Value limit_high; //type: uint32
-                            Value dispatch_spf_lsa_limit; //type: uint32
-                            Value limit_low; //type: uint32
-                            Value dispatch_rate_limited; //type: uint32
-                            Value limit_medium; //type: uint32
-                            Value dispatch_incoming; //type: uint32
 
+
+                            YLeaf dispatch_rate_limited_flush; //type: uint32
+                            YLeaf limit_high; //type: uint32
+                            YLeaf dispatch_spf_lsa_limit; //type: uint32
+                            YLeaf limit_low; //type: uint32
+                            YLeaf dispatch_rate_limited; //type: uint32
+                            YLeaf limit_medium; //type: uint32
+                            YLeaf dispatch_incoming; //type: uint32
 
 
 
@@ -417,8 +429,9 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value max_metric_no_abr_off; //type: empty
 
+
+                            YLeaf max_metric_no_abr_off; //type: empty
 
                         class MaxMetricOnProcRestart : public Entity
                         {
@@ -433,14 +446,15 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value wait_for_bgp; //type: boolean
-                                Value startup_max; //type: uint32
-                                Value include_stub; //type: boolean
-                                Value summary_lsa; //type: boolean
-                                Value summary_lsa_maximum_metric; //type: uint32
-                                Value external_lsa; //type: boolean
-                                Value external_lsa_maximum_metric; //type: uint32
 
+
+                                YLeaf wait_for_bgp; //type: boolean
+                                YLeaf startup_max; //type: uint32
+                                YLeaf include_stub; //type: boolean
+                                YLeaf summary_lsa; //type: boolean
+                                YLeaf summary_lsa_maximum_metric; //type: uint32
+                                YLeaf external_lsa; //type: boolean
+                                YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -460,14 +474,15 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value wait_for_bgp; //type: boolean
-                                Value startup_max; //type: uint32
-                                Value include_stub; //type: boolean
-                                Value summary_lsa; //type: boolean
-                                Value summary_lsa_maximum_metric; //type: uint32
-                                Value external_lsa; //type: boolean
-                                Value external_lsa_maximum_metric; //type: uint32
 
+
+                                YLeaf wait_for_bgp; //type: boolean
+                                YLeaf startup_max; //type: uint32
+                                YLeaf include_stub; //type: boolean
+                                YLeaf summary_lsa; //type: boolean
+                                YLeaf summary_lsa_maximum_metric; //type: uint32
+                                YLeaf external_lsa; //type: boolean
+                                YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -487,14 +502,15 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value wait_for_bgp; //type: boolean
-                                Value startup_max; //type: uint32
-                                Value include_stub; //type: boolean
-                                Value summary_lsa; //type: boolean
-                                Value summary_lsa_maximum_metric; //type: uint32
-                                Value external_lsa; //type: boolean
-                                Value external_lsa_maximum_metric; //type: uint32
 
+
+                                YLeaf wait_for_bgp; //type: boolean
+                                YLeaf startup_max; //type: uint32
+                                YLeaf include_stub; //type: boolean
+                                YLeaf summary_lsa; //type: boolean
+                                YLeaf summary_lsa_maximum_metric; //type: uint32
+                                YLeaf external_lsa; //type: boolean
+                                YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -514,12 +530,13 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value include_stub; //type: boolean
-                                Value summary_lsa; //type: boolean
-                                Value summary_lsa_maximum_metric; //type: uint32
-                                Value external_lsa; //type: boolean
-                                Value external_lsa_maximum_metric; //type: uint32
 
+
+                                YLeaf include_stub; //type: boolean
+                                YLeaf summary_lsa; //type: boolean
+                                YLeaf summary_lsa_maximum_metric; //type: uint32
+                                YLeaf external_lsa; //type: boolean
+                                YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -539,14 +556,15 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value wait_for_bgp; //type: boolean
-                                Value startup_max; //type: uint32
-                                Value include_stub; //type: boolean
-                                Value summary_lsa; //type: boolean
-                                Value summary_lsa_maximum_metric; //type: uint32
-                                Value external_lsa; //type: boolean
-                                Value external_lsa_maximum_metric; //type: uint32
 
+
+                                YLeaf wait_for_bgp; //type: boolean
+                                YLeaf startup_max; //type: uint32
+                                YLeaf include_stub; //type: boolean
+                                YLeaf summary_lsa; //type: boolean
+                                YLeaf summary_lsa_maximum_metric; //type: uint32
+                                YLeaf external_lsa; //type: boolean
+                                YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -576,18 +594,16 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lifetime; //type: uint32
-                            Value ietf; //type: OspfIetfNsfEnum
-                            Value ietf_support_role; //type: OspfIetfNsfSupportEnum
-                            Value cisco; //type: OspfCiscoNsfEnum
-                            Value interval; //type: uint32
-                            Value flush_delay_time; //type: uint32
-                            Value ietf_strict_lsa_checking; //type: empty
 
 
-                            class OspfCiscoNsfEnum;
-                            class OspfIetfNsfEnum;
-                            class OspfIetfNsfSupportEnum;
+                            YLeaf lifetime; //type: uint32
+                            YLeaf ietf; //type: OspfIetfNsfEnum
+                            YLeaf ietf_support_role; //type: OspfIetfNsfSupportEnum
+                            YLeaf cisco; //type: OspfCiscoNsfEnum
+                            YLeaf interval; //type: uint32
+                            YLeaf flush_delay_time; //type: uint32
+                            YLeaf ietf_strict_lsa_checking; //type: empty
+
 
 
                     }; // Ospf::Processes::Process::Vrfs::Vrf::Nsf
@@ -606,30 +622,31 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value cost; //type: uint32
-                            Value external_out; //type: boolean
-                            Value prefix_suppression_primary; //type: boolean
-                            Value mtu_ignore; //type: boolean
-                            Value ldp_sync_igp_shortcuts; //type: boolean
-                            Value ldp_auto_config; //type: empty
-                            Value summary_in; //type: boolean
-                            Value network_type; //type: OspfNetworkEnum
-                            Value hello_interval; //type: uint32
-                            Value loopback_stub_network; //type: boolean
-                            Value prefix_suppression_secondary; //type: boolean
-                            Value demand_circuit; //type: boolean
-                            Value segment_routing; //type: OspfSegmentRoutingEnum
-                            Value passive; //type: boolean
-                            Value transmit_delay; //type: uint32
-                            Value packet_size; //type: uint32
-                            Value ldp_sync; //type: boolean
-                            Value database_filter; //type: boolean
-                            Value link_down_fast_detect; //type: boolean
-                            Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                            Value retransmit_interval; //type: uint32
-                            Value priority; //type: uint32
-                            Value flood_reduction; //type: boolean
 
+
+                            YLeaf cost; //type: uint32
+                            YLeaf external_out; //type: boolean
+                            YLeaf prefix_suppression_primary; //type: boolean
+                            YLeaf mtu_ignore; //type: boolean
+                            YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                            YLeaf ldp_auto_config; //type: empty
+                            YLeaf summary_in; //type: boolean
+                            YLeaf network_type; //type: OspfNetworkEnum
+                            YLeaf hello_interval; //type: uint32
+                            YLeaf loopback_stub_network; //type: boolean
+                            YLeaf prefix_suppression_secondary; //type: boolean
+                            YLeaf demand_circuit; //type: boolean
+                            YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                            YLeaf passive; //type: boolean
+                            YLeaf transmit_delay; //type: uint32
+                            YLeaf packet_size; //type: uint32
+                            YLeaf ldp_sync; //type: boolean
+                            YLeaf database_filter; //type: boolean
+                            YLeaf link_down_fast_detect; //type: boolean
+                            YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                            YLeaf retransmit_interval; //type: uint32
+                            YLeaf priority; //type: uint32
+                            YLeaf flood_reduction; //type: boolean
 
                         class Srgb : public Entity
                         {
@@ -644,9 +661,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lower_bound; //type: uint32
-                                Value upper_bound; //type: uint32
 
+
+                                YLeaf lower_bound; //type: uint32
+                                YLeaf upper_bound; //type: uint32
 
 
 
@@ -666,8 +684,9 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fast_reroute_enable; //type: OspfProcFastRerouteEnum
 
+
+                                YLeaf fast_reroute_enable; //type: OspfProcFastRerouteEnum
 
                             class PerLink : public Entity
                             {
@@ -682,8 +701,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                    YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                 class CandidateInterfaces : public Entity
                                 {
@@ -700,6 +720,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class CandidateInterface : public Entity
                                     {
                                         public:
@@ -713,8 +734,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
 
+
+                                            YLeaf interface_name; //type: string
 
 
 
@@ -742,6 +764,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class ExcludeInterface : public Entity
                                     {
                                         public:
@@ -755,8 +778,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
 
+
+                                            YLeaf interface_name; //type: string
 
 
 
@@ -789,9 +813,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value topology_independent_lfa; //type: boolean
-                                    Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                    YLeaf topology_independent_lfa; //type: boolean
+                                    YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                 class RemoteLfa : public Entity
                                 {
@@ -806,11 +831,11 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tunnel; //type: OspfProcFrrRlfaTunnelEnum
-                                        Value maximum_cost; //type: uint32
 
 
-                                        class OspfProcFrrRlfaTunnelEnum;
+                                        YLeaf tunnel; //type: OspfProcFrrRlfaTunnelEnum
+                                        YLeaf maximum_cost; //type: uint32
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix::RemoteLfa
@@ -831,6 +856,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class CandidateInterface : public Entity
                                     {
                                         public:
@@ -844,8 +870,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
 
+
+                                            YLeaf interface_name; //type: string
 
 
 
@@ -873,6 +900,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class ExcludeInterface : public Entity
                                     {
                                         public:
@@ -886,8 +914,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
 
+
+                                            YLeaf interface_name; //type: string
 
 
 
@@ -910,7 +939,6 @@ class Ospf : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerLink> per_link;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute::PerPrefix> per_prefix;
-                                class OspfProcFastRerouteEnum;
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute
@@ -929,9 +957,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_list_name; //type: string
-                                Value route_policy_name; //type: string
 
+
+                                YLeaf access_list_name; //type: string
+                                YLeaf route_policy_name; //type: string
 
 
 
@@ -951,12 +980,12 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interval; //type: uint32
-                                Value detection_multiplier; //type: uint32
-                                Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                class BfdEnableModeEnum;
+                                YLeaf interval; //type: uint32
+                                YLeaf detection_multiplier; //type: uint32
+                                YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Bfd
@@ -975,8 +1004,9 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value key; //type: string
 
+
+                                YLeaf key; //type: string
 
                             class Type : public Entity
                             {
@@ -991,13 +1021,12 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value authen_type; //type: OspfAuthenticationEnum
-                                    Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                    Value keychain_name; //type: string
 
 
-                                    class OspfAuthenticationEnum;
-                                    class OspfKeychainAuthEnum;
+                                    YLeaf authen_type; //type: OspfAuthenticationEnum
+                                    YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                    YLeaf keychain_name; //type: string
+
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Authentication::Type
@@ -1018,6 +1047,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class MessageDigestKey : public Entity
                                 {
                                     public:
@@ -1031,9 +1061,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key_id; //type: uint32
-                                        Value password; //type: string
 
+
+                                        YLeaf key_id; //type: uint32
+                                        YLeaf password; //type: string
 
 
 
@@ -1068,6 +1099,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Ttl : public Entity
                             {
                                 public:
@@ -1081,9 +1113,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable; //type: boolean
-                                    Value hop_count; //type: uint32
 
+
+                                    YLeaf enable; //type: boolean
+                                    YLeaf hop_count; //type: uint32
 
 
 
@@ -1109,9 +1142,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interval; //type: uint32
-                                Value multiplier; //type: uint32
 
+
+                                YLeaf interval; //type: uint32
+                                YLeaf multiplier; //type: uint32
 
 
 
@@ -1131,9 +1165,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value cost; //type: uint32
-                                Value threshold; //type: uint32
 
+
+                                YLeaf cost; //type: uint32
+                                YLeaf threshold; //type: uint32
 
 
 
@@ -1148,9 +1183,6 @@ class Ospf : public Entity
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::FastReroute> fast_reroute;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Security> security;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ProcessScope::Srgb> srgb; // presence node
-                            class OspfNetworkEnum;
-                            class OspfSegmentRoutingEnum;
-                            class OspfSegmentRoutingForwardingEnum;
 
 
                     }; // Ospf::Processes::Process::Vrfs::Vrf::ProcessScope
@@ -1171,6 +1203,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Redistributes : public Entity
                         {
                             public:
@@ -1186,6 +1219,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Redistribute : public Entity
                             {
                                 public:
@@ -1199,8 +1233,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value protocol_name; //type: OspfRedistProtocolEnum
 
+
+                                    YLeaf protocol_name; //type: OspfRedistProtocolEnum
 
                                 class ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip : public Entity
                                 {
@@ -1215,28 +1250,23 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value classful; //type: boolean
-                                        Value default_redistributed_route_metric; //type: uint32
-                                        Value tag; //type: int32
-                                        Value metric_type; //type: OspfLinkStateMetricEnum
-                                        Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                        Value isis_levels; //type: OspfRouteLevelEnum
-                                        Value ospf_internal; //type: boolean
-                                        Value ospf_external; //type: OspfRouteLevelEnum
-                                        Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                        Value route_policy_name; //type: string
-                                        Value bgp_preserve_med; //type: boolean
-                                        Value bgp_preserve_default_info; //type: boolean
-                                        Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                        Value ospfnssa_only; //type: boolean
 
 
-                                        class OspfEigrpRouteEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfLinkStateMetricEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRedistLsaEnum;
+                                        YLeaf classful; //type: boolean
+                                        YLeaf default_redistributed_route_metric; //type: uint32
+                                        YLeaf tag; //type: int32
+                                        YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                        YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                        YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_internal; //type: boolean
+                                        YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf bgp_preserve_med; //type: boolean
+                                        YLeaf bgp_preserve_default_info; //type: boolean
+                                        YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                        YLeaf ospfnssa_only; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip
@@ -1255,29 +1285,24 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value instance_name; //type: string
-                                        Value classful; //type: boolean
-                                        Value default_redistributed_route_metric; //type: uint32
-                                        Value tag; //type: int32
-                                        Value metric_type; //type: OspfLinkStateMetricEnum
-                                        Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                        Value isis_levels; //type: OspfRouteLevelEnum
-                                        Value ospf_internal; //type: boolean
-                                        Value ospf_external; //type: OspfRouteLevelEnum
-                                        Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                        Value route_policy_name; //type: string
-                                        Value bgp_preserve_med; //type: boolean
-                                        Value bgp_preserve_default_info; //type: boolean
-                                        Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                        Value ospfnssa_only; //type: boolean
 
 
-                                        class OspfEigrpRouteEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfLinkStateMetricEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRedistLsaEnum;
+                                        YLeaf instance_name; //type: string
+                                        YLeaf classful; //type: boolean
+                                        YLeaf default_redistributed_route_metric; //type: uint32
+                                        YLeaf tag; //type: int32
+                                        YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                        YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                        YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_internal; //type: boolean
+                                        YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf bgp_preserve_med; //type: boolean
+                                        YLeaf bgp_preserve_default_info; //type: boolean
+                                        YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                        YLeaf ospfnssa_only; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf
@@ -1296,31 +1321,26 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value instance_name; //type: string
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value classful; //type: boolean
-                                        Value default_redistributed_route_metric; //type: uint32
-                                        Value tag; //type: int32
-                                        Value metric_type; //type: OspfLinkStateMetricEnum
-                                        Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                        Value isis_levels; //type: OspfRouteLevelEnum
-                                        Value ospf_internal; //type: boolean
-                                        Value ospf_external; //type: OspfRouteLevelEnum
-                                        Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                        Value route_policy_name; //type: string
-                                        Value bgp_preserve_med; //type: boolean
-                                        Value bgp_preserve_default_info; //type: boolean
-                                        Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                        Value ospfnssa_only; //type: boolean
 
 
-                                        class OspfEigrpRouteEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfLinkStateMetricEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRedistLsaEnum;
+                                        YLeaf instance_name; //type: string
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf classful; //type: boolean
+                                        YLeaf default_redistributed_route_metric; //type: uint32
+                                        YLeaf tag; //type: int32
+                                        YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                        YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                        YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_internal; //type: boolean
+                                        YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf bgp_preserve_med; //type: boolean
+                                        YLeaf bgp_preserve_default_info; //type: boolean
+                                        YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                        YLeaf ospfnssa_only; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Bgp
@@ -1339,30 +1359,25 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value instance_name; //type: string
-                                        Value as_xx; //type: uint32
-                                        Value classful; //type: boolean
-                                        Value default_redistributed_route_metric; //type: uint32
-                                        Value tag; //type: int32
-                                        Value metric_type; //type: OspfLinkStateMetricEnum
-                                        Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                        Value isis_levels; //type: OspfRouteLevelEnum
-                                        Value ospf_internal; //type: boolean
-                                        Value ospf_external; //type: OspfRouteLevelEnum
-                                        Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                        Value route_policy_name; //type: string
-                                        Value bgp_preserve_med; //type: boolean
-                                        Value bgp_preserve_default_info; //type: boolean
-                                        Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                        Value ospfnssa_only; //type: boolean
 
 
-                                        class OspfEigrpRouteEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfLinkStateMetricEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRouteLevelEnum;
-                                        class OspfRedistLsaEnum;
+                                        YLeaf instance_name; //type: string
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf classful; //type: boolean
+                                        YLeaf default_redistributed_route_metric; //type: uint32
+                                        YLeaf tag; //type: int32
+                                        YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                        YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                        YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_internal; //type: boolean
+                                        YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                        YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf bgp_preserve_med; //type: boolean
+                                        YLeaf bgp_preserve_default_info; //type: boolean
+                                        YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                        YLeaf ospfnssa_only; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Eigrp
@@ -1372,7 +1387,6 @@ class Ospf : public Entity
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Bgp> > bgp;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip> connected_or_static_or_dagr_or_subscriber_or_mobile_or_rip; // presence node
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute::Eigrp> > eigrp;
-                                    class OspfRedistProtocolEnum;
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::Redistribution::Redistributes::Redistribute
@@ -1403,10 +1417,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value disable; //type: empty
-                            Value initial_nbr; //type: uint32
-                            Value max_nbr; //type: uint32
 
+
+                            YLeaf disable; //type: empty
+                            YLeaf initial_nbr; //type: uint32
+                            YLeaf max_nbr; //type: uint32
 
 
 
@@ -1426,13 +1441,14 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value max_lsa_limit; //type: uint32
-                            Value max_lsa_threshold; //type: uint32
-                            Value max_lsa_warning_only; //type: boolean
-                            Value max_lsa_ignore_time; //type: uint32
-                            Value max_lsa_ignore_count; //type: uint32
-                            Value max_lsa_reset_time; //type: uint32
 
+
+                            YLeaf max_lsa_limit; //type: uint32
+                            YLeaf max_lsa_threshold; //type: uint32
+                            YLeaf max_lsa_warning_only; //type: boolean
+                            YLeaf max_lsa_ignore_time; //type: uint32
+                            YLeaf max_lsa_ignore_count; //type: uint32
+                            YLeaf max_lsa_reset_time; //type: uint32
 
 
 
@@ -1452,9 +1468,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value disable; //type: boolean
-                            Value bandwidth; //type: uint32
 
+
+                            YLeaf disable; //type: boolean
+                            YLeaf bandwidth; //type: uint32
 
 
 
@@ -1474,8 +1491,9 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value delay_interval; //type: uint32
 
+
+                            YLeaf delay_interval; //type: uint32
 
                         class Enable : public Entity
                         {
@@ -1490,9 +1508,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value variance; //type: uint32
-                                Value prefix_list_name; //type: string
 
+
+                                YLeaf variance; //type: uint32
+                                YLeaf prefix_list_name; //type: string
 
 
 
@@ -1514,6 +1533,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class ExcludeInterface : public Entity
                             {
                                 public:
@@ -1527,8 +1547,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -1563,6 +1584,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PerLink : public Entity
                         {
                             public:
@@ -1576,10 +1598,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority; //type: OspfFastReroutePriorityEnum
 
 
-                                class OspfFastReroutePriorityEnum;
+                                YLeaf priority; //type: OspfFastReroutePriorityEnum
+
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerLink
@@ -1598,9 +1620,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value load_sharing_disable; //type: empty
-                                Value priority; //type: OspfFastReroutePriorityEnum
 
+
+                                YLeaf load_sharing_disable; //type: empty
+                                YLeaf priority; //type: OspfFastReroutePriorityEnum
 
                             class Tiebreakers : public Entity
                             {
@@ -1617,6 +1640,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Tiebreaker : public Entity
                                 {
                                     public:
@@ -1630,11 +1654,11 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value tiebreaker_type; //type: OspfFastRerouteTiebreakersEnum
-                                        Value tiebreaker_index; //type: uint32
 
 
-                                        class OspfFastRerouteTiebreakersEnum;
+                                        YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersEnum
+                                        YLeaf tiebreaker_index; //type: uint32
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -1647,7 +1671,6 @@ class Ospf : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix::Tiebreakers> tiebreakers;
-                                class OspfFastReroutePriorityEnum;
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::FastReroute::PerPrefix
@@ -1675,6 +1698,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SummaryPrefixData : public Entity
                         {
                             public:
@@ -1688,9 +1712,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value not_advertise; //type: boolean
-                                Value tag; //type: int32
 
+
+                                YLeaf not_advertise; //type: boolean
+                                YLeaf tag; //type: int32
 
 
 
@@ -1710,11 +1735,12 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value netmask; //type: string
-                                Value not_advertise; //type: boolean
-                                Value tag; //type: int32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf netmask; //type: string
+                                YLeaf not_advertise; //type: boolean
+                                YLeaf tag; //type: int32
 
 
 
@@ -1734,10 +1760,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value prefix; //type: string
-                                Value not_advertise; //type: boolean
-                                Value tag; //type: int32
 
+
+                                YLeaf prefix; //type: string
+                                YLeaf not_advertise; //type: boolean
+                                YLeaf tag; //type: int32
 
 
 
@@ -1757,10 +1784,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value netmask; //type: string
-                                Value not_advertise; //type: boolean
-                                Value tag; //type: int32
 
+
+                                YLeaf netmask; //type: string
+                                YLeaf not_advertise; //type: boolean
+                                YLeaf tag; //type: int32
 
 
 
@@ -1791,6 +1819,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class OutgoingRouteUpdate : public Entity
                         {
                             public:
@@ -1804,14 +1833,14 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol_name; //type: OspfDistListProtocolEnum
-                                Value access_list_name; //type: string
-                                Value as_xx; //type: uint32
-                                Value as_yy; //type: uint32
-                                Value ospf_process_name; //type: string
 
 
-                                class OspfDistListProtocolEnum;
+                                YLeaf protocol_name; //type: OspfDistListProtocolEnum
+                                YLeaf access_list_name; //type: string
+                                YLeaf as_xx; //type: uint32
+                                YLeaf as_yy; //type: uint32
+                                YLeaf ospf_process_name; //type: string
+
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates::OutgoingRouteUpdate
@@ -1836,8 +1865,9 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value admin_distance; //type: uint32
 
+
+                            YLeaf admin_distance; //type: uint32
 
                         class OspfDistance : public Entity
                         {
@@ -1852,10 +1882,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value intra_area; //type: uint32
-                                Value inter_area; //type: uint32
-                                Value external_routes; //type: uint32
 
+
+                                YLeaf intra_area; //type: uint32
+                                YLeaf inter_area; //type: uint32
+                                YLeaf external_routes; //type: uint32
 
 
 
@@ -1877,6 +1908,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class IpDistance : public Entity
                             {
                                 public:
@@ -1890,11 +1922,12 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value wildcard; //type: string
-                                    Value distance; //type: uint32
-                                    Value access_list_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf wildcard; //type: string
+                                    YLeaf distance; //type: uint32
+                                    YLeaf access_list_name; //type: string
 
 
 
@@ -1929,6 +1962,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AreaAddress : public Entity
                         {
                             public:
@@ -1942,17 +1976,18 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
-                                Value route_policy_in; //type: string
-                                Value default_cost; //type: uint32
-                                Value route_policy_out; //type: string
-                                Value stub; //type: boolean
-                                Value mpls_traffic_eng; //type: empty
-                                Value external_out; //type: boolean
-                                Value summary_in; //type: boolean
-                                Value segment_routing; //type: OspfSegmentRoutingEnum
-                                Value running; //type: empty
 
+
+                                YLeaf address; //type: string
+                                YLeaf route_policy_in; //type: string
+                                YLeaf default_cost; //type: uint32
+                                YLeaf route_policy_out; //type: string
+                                YLeaf stub; //type: boolean
+                                YLeaf mpls_traffic_eng; //type: empty
+                                YLeaf external_out; //type: boolean
+                                YLeaf summary_in; //type: boolean
+                                YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                                YLeaf running; //type: empty
 
                             class VirtualLinkScopes : public Entity
                             {
@@ -1969,6 +2004,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class VirtualLinkScope : public Entity
                                 {
                                     public:
@@ -1982,12 +2018,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value hello_interval; //type: uint32
-                                        Value transmit_delay; //type: uint32
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class Authentication : public Entity
                                     {
@@ -2002,8 +2039,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -2018,13 +2056,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication::Type
@@ -2045,6 +2082,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -2058,9 +2096,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -2093,9 +2132,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -2130,6 +2170,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ShamLinkScope : public Entity
                                 {
                                     public:
@@ -2143,15 +2184,16 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_address; //type: string
-                                        Value destination_address; //type: string
-                                        Value source; //type: string
-                                        Value cost; //type: uint32
-                                        Value hello_interval; //type: uint32
-                                        Value transmit_delay; //type: uint32
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf source_address; //type: string
+                                        YLeaf destination_address; //type: string
+                                        YLeaf source; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class Authentication : public Entity
                                     {
@@ -2166,8 +2208,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -2182,13 +2225,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication::Type
@@ -2209,6 +2251,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -2222,9 +2265,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -2257,9 +2301,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -2292,27 +2337,28 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value cost; //type: uint32
-                                    Value prefix_suppression_primary; //type: boolean
-                                    Value mtu_ignore; //type: boolean
-                                    Value ldp_sync_igp_shortcuts; //type: boolean
-                                    Value ldp_auto_config; //type: empty
-                                    Value network_type; //type: OspfNetworkEnum
-                                    Value hello_interval; //type: uint32
-                                    Value loopback_stub_network; //type: boolean
-                                    Value prefix_suppression_secondary; //type: boolean
-                                    Value demand_circuit; //type: boolean
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value ldp_sync; //type: boolean
-                                    Value database_filter; //type: boolean
-                                    Value link_down_fast_detect; //type: boolean
-                                    Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                    Value retransmit_interval; //type: uint32
-                                    Value priority; //type: uint32
-                                    Value flood_reduction; //type: boolean
 
+
+                                    YLeaf cost; //type: uint32
+                                    YLeaf prefix_suppression_primary; //type: boolean
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                    YLeaf ldp_auto_config; //type: empty
+                                    YLeaf network_type; //type: OspfNetworkEnum
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf loopback_stub_network; //type: boolean
+                                    YLeaf prefix_suppression_secondary; //type: boolean
+                                    YLeaf demand_circuit; //type: boolean
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf ldp_sync; //type: boolean
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf link_down_fast_detect; //type: boolean
+                                    YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf priority; //type: uint32
+                                    YLeaf flood_reduction; //type: boolean
 
                                 class DistributeList : public Entity
                                 {
@@ -2327,9 +2373,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -2349,12 +2396,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value detection_multiplier; //type: uint32
-                                        Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                        class BfdEnableModeEnum;
+                                        YLeaf interval; //type: uint32
+                                        YLeaf detection_multiplier; //type: uint32
+                                        YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Bfd
@@ -2373,8 +2420,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -2389,13 +2437,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Authentication::Type
@@ -2416,6 +2463,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -2429,9 +2477,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -2466,6 +2515,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Ttl : public Entity
                                     {
                                         public:
@@ -2479,9 +2529,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: boolean
-                                            Value hop_count; //type: uint32
 
+
+                                            YLeaf enable; //type: boolean
+                                            YLeaf hop_count; //type: uint32
 
 
 
@@ -2507,9 +2558,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -2529,8 +2581,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -2545,8 +2598,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -2563,6 +2617,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -2576,8 +2631,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -2605,6 +2661,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -2618,8 +2675,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -2652,9 +2710,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -2669,11 +2728,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::RemoteLfa
@@ -2694,6 +2753,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -2707,11 +2767,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -2738,6 +2798,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -2751,8 +2812,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -2780,6 +2842,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -2793,8 +2856,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -2818,7 +2882,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute
@@ -2837,9 +2900,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -2853,8 +2917,6 @@ class Ospf : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::DistributeList> distribute_list; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::FastReroute> fast_reroute;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope::Security> security;
-                                    class OspfNetworkEnum;
-                                    class OspfSegmentRoutingForwardingEnum;
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
@@ -2875,6 +2937,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class NameScope : public Entity
                                 {
                                     public:
@@ -2888,29 +2951,30 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value cost; //type: uint32
-                                        Value prefix_suppression_primary; //type: boolean
-                                        Value mtu_ignore; //type: boolean
-                                        Value ldp_sync_igp_shortcuts; //type: boolean
-                                        Value ldp_auto_config; //type: empty
-                                        Value network_type; //type: OspfNetworkEnum
-                                        Value hello_interval; //type: uint32
-                                        Value loopback_stub_network; //type: boolean
-                                        Value prefix_suppression_secondary; //type: boolean
-                                        Value demand_circuit; //type: boolean
-                                        Value passive; //type: boolean
-                                        Value transmit_delay; //type: uint32
-                                        Value packet_size; //type: uint32
-                                        Value ldp_sync; //type: boolean
-                                        Value database_filter; //type: boolean
-                                        Value link_down_fast_detect; //type: boolean
-                                        Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                        Value retransmit_interval; //type: uint32
-                                        Value priority; //type: uint32
-                                        Value flood_reduction; //type: boolean
-                                        Value running; //type: empty
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf prefix_suppression_primary; //type: boolean
+                                        YLeaf mtu_ignore; //type: boolean
+                                        YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                        YLeaf ldp_auto_config; //type: empty
+                                        YLeaf network_type; //type: OspfNetworkEnum
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf loopback_stub_network; //type: boolean
+                                        YLeaf prefix_suppression_secondary; //type: boolean
+                                        YLeaf demand_circuit; //type: boolean
+                                        YLeaf passive; //type: boolean
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf packet_size; //type: uint32
+                                        YLeaf ldp_sync; //type: boolean
+                                        YLeaf database_filter; //type: boolean
+                                        YLeaf link_down_fast_detect; //type: boolean
+                                        YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf priority; //type: uint32
+                                        YLeaf flood_reduction; //type: boolean
+                                        YLeaf running; //type: empty
 
                                     class PrefixSid : public Entity
                                     {
@@ -2925,13 +2989,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sid_value; //type: uint32
-                                            Value explicit_null; //type: boolean
-                                            Value type; //type: OspfSidEnum
-                                            Value n_flag_clear; //type: boolean
 
 
-                                            class OspfSidEnum;
+                                            YLeaf sid_value; //type: uint32
+                                            YLeaf explicit_null; //type: boolean
+                                            YLeaf type; //type: OspfSidEnum
+                                            YLeaf n_flag_clear; //type: boolean
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid
@@ -2950,13 +3014,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sid_value; //type: uint32
-                                            Value explicit_null; //type: boolean
-                                            Value type; //type: OspfSidEnum
-                                            Value n_flag_clear; //type: boolean
 
 
-                                            class OspfSidEnum;
+                                            YLeaf sid_value; //type: uint32
+                                            YLeaf explicit_null; //type: boolean
+                                            YLeaf type; //type: OspfSidEnum
+                                            YLeaf n_flag_clear; //type: boolean
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict
@@ -2975,9 +3039,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value access_list_name; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf access_list_name; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -2997,12 +3062,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value detection_multiplier; //type: uint32
-                                            Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                            class BfdEnableModeEnum;
+                                            YLeaf interval; //type: uint32
+                                            YLeaf detection_multiplier; //type: uint32
+                                            YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Bfd
@@ -3021,8 +3086,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -3037,13 +3103,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Authentication::Type
@@ -3064,6 +3129,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -3077,9 +3143,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -3114,6 +3181,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Ttl : public Entity
                                         {
                                             public:
@@ -3127,9 +3195,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value hop_count; //type: uint32
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf hop_count; //type: uint32
 
 
 
@@ -3157,6 +3226,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Neighbor : public Entity
                                         {
                                             public:
@@ -3170,12 +3240,13 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_address; //type: string
-                                                Value priority; //type: uint32
-                                                Value poll_interval; //type: uint32
-                                                Value cost; //type: uint32
-                                                Value database_filter; //type: boolean
 
+
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf priority; //type: uint32
+                                                YLeaf poll_interval; //type: uint32
+                                                YLeaf cost; //type: uint32
+                                                YLeaf database_filter; //type: boolean
 
 
 
@@ -3201,9 +3272,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -3223,8 +3295,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                            YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                         class PerLink : public Entity
                                         {
@@ -3239,8 +3312,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class CandidateInterfaces : public Entity
                                             {
@@ -3257,6 +3331,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -3270,8 +3345,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3299,6 +3375,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -3312,8 +3389,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3346,9 +3424,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value topology_independent_lfa; //type: boolean
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf topology_independent_lfa; //type: boolean
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class RemoteLfa : public Entity
                                             {
@@ -3363,11 +3442,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                    Value maximum_cost; //type: uint32
 
 
-                                                    class OspfFrrRlfaTunnelEnum;
+                                                    YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                    YLeaf maximum_cost; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa
@@ -3388,6 +3467,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Tiebreaker : public Entity
                                                 {
                                                     public:
@@ -3401,11 +3481,11 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                        Value tiebreaker_index; //type: uint32
 
 
-                                                        class OspfFastRerouteTiebreakersIntfEnum;
+                                                        YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                        YLeaf tiebreaker_index; //type: uint32
+
 
 
                                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -3432,6 +3512,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -3445,8 +3526,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3474,6 +3556,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -3487,8 +3570,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3512,7 +3596,6 @@ class Ospf : public Entity
 
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink> per_link;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix> per_prefix;
-                                            class OspfFastRerouteEnum;
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute
@@ -3531,9 +3614,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value cost; //type: uint32
-                                            Value threshold; //type: uint32
 
+
+                                            YLeaf cost; //type: uint32
+                                            YLeaf threshold; //type: uint32
 
 
 
@@ -3550,8 +3634,6 @@ class Ospf : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Security> security;
-                                        class OspfNetworkEnum;
-                                        class OspfSegmentRoutingForwardingEnum;
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope
@@ -3578,6 +3660,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class MultiAreaInterfaceScope : public Entity
                                 {
                                     public:
@@ -3591,17 +3674,18 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value cost; //type: uint32
-                                        Value mtu_ignore; //type: boolean
-                                        Value hello_interval; //type: uint32
-                                        Value passive; //type: boolean
-                                        Value transmit_delay; //type: uint32
-                                        Value packet_size; //type: uint32
-                                        Value database_filter; //type: boolean
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf mtu_ignore; //type: boolean
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf passive; //type: boolean
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf packet_size; //type: uint32
+                                        YLeaf database_filter; //type: boolean
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class DistributeList : public Entity
                                     {
@@ -3616,9 +3700,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value access_list_name; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf access_list_name; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -3638,8 +3723,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -3654,13 +3740,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type
@@ -3681,6 +3766,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -3694,9 +3780,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -3731,6 +3818,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Neighbor : public Entity
                                         {
                                             public:
@@ -3744,12 +3832,13 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_address; //type: string
-                                                Value priority; //type: uint32
-                                                Value poll_interval; //type: uint32
-                                                Value cost; //type: uint32
-                                                Value database_filter; //type: boolean
 
+
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf priority; //type: uint32
+                                                YLeaf poll_interval; //type: uint32
+                                                YLeaf cost; //type: uint32
+                                                YLeaf database_filter; //type: boolean
 
 
 
@@ -3775,9 +3864,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -3797,8 +3887,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                            YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                         class PerLink : public Entity
                                         {
@@ -3813,8 +3904,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class CandidateInterfaces : public Entity
                                             {
@@ -3831,6 +3923,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -3844,8 +3937,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3873,6 +3967,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -3886,8 +3981,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -3920,9 +4016,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value topology_independent_lfa; //type: boolean
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf topology_independent_lfa; //type: boolean
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class RemoteLfa : public Entity
                                             {
@@ -3937,11 +4034,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                    Value maximum_cost; //type: uint32
 
 
-                                                    class OspfFrrRlfaTunnelEnum;
+                                                    YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                    YLeaf maximum_cost; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa
@@ -3962,6 +4059,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Tiebreaker : public Entity
                                                 {
                                                     public:
@@ -3975,11 +4073,11 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                        Value tiebreaker_index; //type: uint32
 
 
-                                                        class OspfFastRerouteTiebreakersIntfEnum;
+                                                        YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                        YLeaf tiebreaker_index; //type: uint32
+
 
 
                                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -4006,6 +4104,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -4019,8 +4118,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -4048,6 +4148,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -4061,8 +4162,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -4086,7 +4188,6 @@ class Ospf : public Entity
 
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink> per_link;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix> per_prefix;
-                                            class OspfFastRerouteEnum;
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute
@@ -4105,9 +4206,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value cost; //type: uint32
-                                            Value threshold; //type: uint32
 
+
+                                            YLeaf cost; //type: uint32
+                                            YLeaf threshold; //type: uint32
 
 
 
@@ -4146,6 +4248,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class AreaRange : public Entity
                                 {
                                     public:
@@ -4159,10 +4262,11 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value netmask; //type: string
-                                        Value not_advertise; //type: boolean
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf netmask; //type: string
+                                        YLeaf not_advertise; //type: boolean
 
 
 
@@ -4188,14 +4292,14 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value no_redistribution; //type: boolean
-                                    Value default_info_originate; //type: boolean
-                                    Value no_summary; //type: boolean
-                                    Value nssa_def_metric; //type: uint32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
 
 
-                                    class OspfLinkStateMetricEnum;
+                                    YLeaf no_redistribution; //type: boolean
+                                    YLeaf default_info_originate; //type: boolean
+                                    YLeaf no_summary; //type: boolean
+                                    YLeaf nssa_def_metric; //type: uint32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa
@@ -4208,7 +4312,6 @@ class Ospf : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::Nssa> nssa;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes> sham_link_scopes;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes> virtual_link_scopes;
-                                class OspfSegmentRoutingEnum;
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress
@@ -4227,17 +4330,18 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value area_id; //type: int32
-                                Value route_policy_in; //type: string
-                                Value default_cost; //type: uint32
-                                Value route_policy_out; //type: string
-                                Value stub; //type: boolean
-                                Value mpls_traffic_eng; //type: empty
-                                Value external_out; //type: boolean
-                                Value summary_in; //type: boolean
-                                Value segment_routing; //type: OspfSegmentRoutingEnum
-                                Value running; //type: empty
 
+
+                                YLeaf area_id; //type: int32
+                                YLeaf route_policy_in; //type: string
+                                YLeaf default_cost; //type: uint32
+                                YLeaf route_policy_out; //type: string
+                                YLeaf stub; //type: boolean
+                                YLeaf mpls_traffic_eng; //type: empty
+                                YLeaf external_out; //type: boolean
+                                YLeaf summary_in; //type: boolean
+                                YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                                YLeaf running; //type: empty
 
                             class VirtualLinkScopes : public Entity
                             {
@@ -4254,6 +4358,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class VirtualLinkScope : public Entity
                                 {
                                     public:
@@ -4267,12 +4372,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value hello_interval; //type: uint32
-                                        Value transmit_delay; //type: uint32
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class Authentication : public Entity
                                     {
@@ -4287,8 +4393,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -4303,13 +4410,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type
@@ -4330,6 +4436,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -4343,9 +4450,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -4378,9 +4486,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -4415,6 +4524,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ShamLinkScope : public Entity
                                 {
                                     public:
@@ -4428,15 +4538,16 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value source_address; //type: string
-                                        Value destination_address; //type: string
-                                        Value source; //type: string
-                                        Value cost; //type: uint32
-                                        Value hello_interval; //type: uint32
-                                        Value transmit_delay; //type: uint32
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf source_address; //type: string
+                                        YLeaf destination_address; //type: string
+                                        YLeaf source; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class Authentication : public Entity
                                     {
@@ -4451,8 +4562,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -4467,13 +4579,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type
@@ -4494,6 +4605,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -4507,9 +4619,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -4542,9 +4655,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -4577,27 +4691,28 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value cost; //type: uint32
-                                    Value prefix_suppression_primary; //type: boolean
-                                    Value mtu_ignore; //type: boolean
-                                    Value ldp_sync_igp_shortcuts; //type: boolean
-                                    Value ldp_auto_config; //type: empty
-                                    Value network_type; //type: OspfNetworkEnum
-                                    Value hello_interval; //type: uint32
-                                    Value loopback_stub_network; //type: boolean
-                                    Value prefix_suppression_secondary; //type: boolean
-                                    Value demand_circuit; //type: boolean
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value ldp_sync; //type: boolean
-                                    Value database_filter; //type: boolean
-                                    Value link_down_fast_detect; //type: boolean
-                                    Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                    Value retransmit_interval; //type: uint32
-                                    Value priority; //type: uint32
-                                    Value flood_reduction; //type: boolean
 
+
+                                    YLeaf cost; //type: uint32
+                                    YLeaf prefix_suppression_primary; //type: boolean
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                    YLeaf ldp_auto_config; //type: empty
+                                    YLeaf network_type; //type: OspfNetworkEnum
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf loopback_stub_network; //type: boolean
+                                    YLeaf prefix_suppression_secondary; //type: boolean
+                                    YLeaf demand_circuit; //type: boolean
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf ldp_sync; //type: boolean
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf link_down_fast_detect; //type: boolean
+                                    YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf priority; //type: uint32
+                                    YLeaf flood_reduction; //type: boolean
 
                                 class DistributeList : public Entity
                                 {
@@ -4612,9 +4727,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -4634,12 +4750,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value detection_multiplier; //type: uint32
-                                        Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                        class BfdEnableModeEnum;
+                                        YLeaf interval; //type: uint32
+                                        YLeaf detection_multiplier; //type: uint32
+                                        YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Bfd
@@ -4658,8 +4774,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -4674,13 +4791,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type
@@ -4701,6 +4817,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -4714,9 +4831,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -4751,6 +4869,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Ttl : public Entity
                                     {
                                         public:
@@ -4764,9 +4883,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: boolean
-                                            Value hop_count; //type: uint32
 
+
+                                            YLeaf enable; //type: boolean
+                                            YLeaf hop_count; //type: uint32
 
 
 
@@ -4792,9 +4912,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -4814,8 +4935,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -4830,8 +4952,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -4848,6 +4971,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -4861,8 +4985,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -4890,6 +5015,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -4903,8 +5029,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -4937,9 +5064,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -4954,11 +5082,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa
@@ -4979,6 +5107,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -4992,11 +5121,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -5023,6 +5152,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -5036,8 +5166,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -5065,6 +5196,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -5078,8 +5210,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -5103,7 +5236,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute
@@ -5122,9 +5254,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -5138,8 +5271,6 @@ class Ospf : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList> distribute_list; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute> fast_reroute;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::Security> security;
-                                    class OspfNetworkEnum;
-                                    class OspfSegmentRoutingForwardingEnum;
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope
@@ -5160,6 +5291,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class NameScope : public Entity
                                 {
                                     public:
@@ -5173,29 +5305,30 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value cost; //type: uint32
-                                        Value prefix_suppression_primary; //type: boolean
-                                        Value mtu_ignore; //type: boolean
-                                        Value ldp_sync_igp_shortcuts; //type: boolean
-                                        Value ldp_auto_config; //type: empty
-                                        Value network_type; //type: OspfNetworkEnum
-                                        Value hello_interval; //type: uint32
-                                        Value loopback_stub_network; //type: boolean
-                                        Value prefix_suppression_secondary; //type: boolean
-                                        Value demand_circuit; //type: boolean
-                                        Value passive; //type: boolean
-                                        Value transmit_delay; //type: uint32
-                                        Value packet_size; //type: uint32
-                                        Value ldp_sync; //type: boolean
-                                        Value database_filter; //type: boolean
-                                        Value link_down_fast_detect; //type: boolean
-                                        Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                        Value retransmit_interval; //type: uint32
-                                        Value priority; //type: uint32
-                                        Value flood_reduction; //type: boolean
-                                        Value running; //type: empty
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf prefix_suppression_primary; //type: boolean
+                                        YLeaf mtu_ignore; //type: boolean
+                                        YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                        YLeaf ldp_auto_config; //type: empty
+                                        YLeaf network_type; //type: OspfNetworkEnum
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf loopback_stub_network; //type: boolean
+                                        YLeaf prefix_suppression_secondary; //type: boolean
+                                        YLeaf demand_circuit; //type: boolean
+                                        YLeaf passive; //type: boolean
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf packet_size; //type: uint32
+                                        YLeaf ldp_sync; //type: boolean
+                                        YLeaf database_filter; //type: boolean
+                                        YLeaf link_down_fast_detect; //type: boolean
+                                        YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf priority; //type: uint32
+                                        YLeaf flood_reduction; //type: boolean
+                                        YLeaf running; //type: empty
 
                                     class PrefixSid : public Entity
                                     {
@@ -5210,13 +5343,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sid_value; //type: uint32
-                                            Value explicit_null; //type: boolean
-                                            Value type; //type: OspfSidEnum
-                                            Value n_flag_clear; //type: boolean
 
 
-                                            class OspfSidEnum;
+                                            YLeaf sid_value; //type: uint32
+                                            YLeaf explicit_null; //type: boolean
+                                            YLeaf type; //type: OspfSidEnum
+                                            YLeaf n_flag_clear; //type: boolean
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid
@@ -5235,13 +5368,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sid_value; //type: uint32
-                                            Value explicit_null; //type: boolean
-                                            Value type; //type: OspfSidEnum
-                                            Value n_flag_clear; //type: boolean
 
 
-                                            class OspfSidEnum;
+                                            YLeaf sid_value; //type: uint32
+                                            YLeaf explicit_null; //type: boolean
+                                            YLeaf type; //type: OspfSidEnum
+                                            YLeaf n_flag_clear; //type: boolean
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict
@@ -5260,9 +5393,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value access_list_name; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf access_list_name; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -5282,12 +5416,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value detection_multiplier; //type: uint32
-                                            Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                            class BfdEnableModeEnum;
+                                            YLeaf interval; //type: uint32
+                                            YLeaf detection_multiplier; //type: uint32
+                                            YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd
@@ -5306,8 +5440,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -5322,13 +5457,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type
@@ -5349,6 +5483,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -5362,9 +5497,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -5399,6 +5535,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Ttl : public Entity
                                         {
                                             public:
@@ -5412,9 +5549,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value enable; //type: boolean
-                                                Value hop_count; //type: uint32
 
+
+                                                YLeaf enable; //type: boolean
+                                                YLeaf hop_count; //type: uint32
 
 
 
@@ -5442,6 +5580,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Neighbor : public Entity
                                         {
                                             public:
@@ -5455,12 +5594,13 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_address; //type: string
-                                                Value priority; //type: uint32
-                                                Value poll_interval; //type: uint32
-                                                Value cost; //type: uint32
-                                                Value database_filter; //type: boolean
 
+
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf priority; //type: uint32
+                                                YLeaf poll_interval; //type: uint32
+                                                YLeaf cost; //type: uint32
+                                                YLeaf database_filter; //type: boolean
 
 
 
@@ -5486,9 +5626,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -5508,8 +5649,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                            YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                         class PerLink : public Entity
                                         {
@@ -5524,8 +5666,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class CandidateInterfaces : public Entity
                                             {
@@ -5542,6 +5685,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -5555,8 +5699,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -5584,6 +5729,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -5597,8 +5743,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -5631,9 +5778,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value topology_independent_lfa; //type: boolean
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf topology_independent_lfa; //type: boolean
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class RemoteLfa : public Entity
                                             {
@@ -5648,11 +5796,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                    Value maximum_cost; //type: uint32
 
 
-                                                    class OspfFrrRlfaTunnelEnum;
+                                                    YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                    YLeaf maximum_cost; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa
@@ -5673,6 +5821,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Tiebreaker : public Entity
                                                 {
                                                     public:
@@ -5686,11 +5835,11 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                        Value tiebreaker_index; //type: uint32
 
 
-                                                        class OspfFastRerouteTiebreakersIntfEnum;
+                                                        YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                        YLeaf tiebreaker_index; //type: uint32
+
 
 
                                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -5717,6 +5866,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -5730,8 +5880,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -5759,6 +5910,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -5772,8 +5924,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -5797,7 +5950,6 @@ class Ospf : public Entity
 
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink> per_link;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix> per_prefix;
-                                            class OspfFastRerouteEnum;
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute
@@ -5816,9 +5968,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value cost; //type: uint32
-                                            Value threshold; //type: uint32
 
+
+                                            YLeaf cost; //type: uint32
+                                            YLeaf threshold; //type: uint32
 
 
 
@@ -5835,8 +5988,6 @@ class Ospf : public Entity
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security> security;
-                                        class OspfNetworkEnum;
-                                        class OspfSegmentRoutingForwardingEnum;
 
 
                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope
@@ -5863,6 +6014,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class MultiAreaInterfaceScope : public Entity
                                 {
                                     public:
@@ -5876,17 +6028,18 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
-                                        Value cost; //type: uint32
-                                        Value mtu_ignore; //type: boolean
-                                        Value hello_interval; //type: uint32
-                                        Value passive; //type: boolean
-                                        Value transmit_delay; //type: uint32
-                                        Value packet_size; //type: uint32
-                                        Value database_filter; //type: boolean
-                                        Value retransmit_interval; //type: uint32
-                                        Value running; //type: empty
 
+
+                                        YLeaf interface_name; //type: string
+                                        YLeaf cost; //type: uint32
+                                        YLeaf mtu_ignore; //type: boolean
+                                        YLeaf hello_interval; //type: uint32
+                                        YLeaf passive; //type: boolean
+                                        YLeaf transmit_delay; //type: uint32
+                                        YLeaf packet_size; //type: uint32
+                                        YLeaf database_filter; //type: boolean
+                                        YLeaf retransmit_interval; //type: uint32
+                                        YLeaf running; //type: empty
 
                                     class DistributeList : public Entity
                                     {
@@ -5901,9 +6054,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value access_list_name; //type: string
-                                            Value route_policy_name; //type: string
 
+
+                                            YLeaf access_list_name; //type: string
+                                            YLeaf route_policy_name; //type: string
 
 
 
@@ -5923,8 +6077,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key; //type: string
 
+
+                                            YLeaf key; //type: string
 
                                         class Type : public Entity
                                         {
@@ -5939,13 +6094,12 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value authen_type; //type: OspfAuthenticationEnum
-                                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                                Value keychain_name; //type: string
 
 
-                                                class OspfAuthenticationEnum;
-                                                class OspfKeychainAuthEnum;
+                                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                                YLeaf keychain_name; //type: string
+
 
 
                                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type
@@ -5966,6 +6120,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class MessageDigestKey : public Entity
                                             {
                                                 public:
@@ -5979,9 +6134,10 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value key_id; //type: uint32
-                                                    Value password; //type: string
 
+
+                                                    YLeaf key_id; //type: uint32
+                                                    YLeaf password; //type: string
 
 
 
@@ -6016,6 +6172,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Neighbor : public Entity
                                         {
                                             public:
@@ -6029,12 +6186,13 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value neighbor_address; //type: string
-                                                Value priority; //type: uint32
-                                                Value poll_interval; //type: uint32
-                                                Value cost; //type: uint32
-                                                Value database_filter; //type: boolean
 
+
+                                                YLeaf neighbor_address; //type: string
+                                                YLeaf priority; //type: uint32
+                                                YLeaf poll_interval; //type: uint32
+                                                YLeaf cost; //type: uint32
+                                                YLeaf database_filter; //type: boolean
 
 
 
@@ -6060,9 +6218,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interval; //type: uint32
-                                            Value multiplier; //type: uint32
 
+
+                                            YLeaf interval; //type: uint32
+                                            YLeaf multiplier; //type: uint32
 
 
 
@@ -6082,8 +6241,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                            YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                         class PerLink : public Entity
                                         {
@@ -6098,8 +6258,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class CandidateInterfaces : public Entity
                                             {
@@ -6116,6 +6277,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -6129,8 +6291,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -6158,6 +6321,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -6171,8 +6335,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -6205,9 +6370,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value topology_independent_lfa; //type: boolean
-                                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                                YLeaf topology_independent_lfa; //type: boolean
+                                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                             class RemoteLfa : public Entity
                                             {
@@ -6222,11 +6388,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                    Value maximum_cost; //type: uint32
 
 
-                                                    class OspfFrrRlfaTunnelEnum;
+                                                    YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                    YLeaf maximum_cost; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa
@@ -6247,6 +6413,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class Tiebreaker : public Entity
                                                 {
                                                     public:
@@ -6260,11 +6427,11 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                        Value tiebreaker_index; //type: uint32
 
 
-                                                        class OspfFastRerouteTiebreakersIntfEnum;
+                                                        YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                        YLeaf tiebreaker_index; //type: uint32
+
 
 
                                                 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -6291,6 +6458,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class CandidateInterface : public Entity
                                                 {
                                                     public:
@@ -6304,8 +6472,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -6333,6 +6502,7 @@ class Ospf : public Entity
                                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                                 class ExcludeInterface : public Entity
                                                 {
                                                     public:
@@ -6346,8 +6516,9 @@ class Ospf : public Entity
                                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                         void set_value(const std::string & value_path, std::string value) override;
                                                         std::map<std::string, Entity*> & get_children() override;
-                                                        Value interface_name; //type: string
 
+
+                                                        YLeaf interface_name; //type: string
 
 
 
@@ -6371,7 +6542,6 @@ class Ospf : public Entity
 
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink> per_link;
                                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix> per_prefix;
-                                            class OspfFastRerouteEnum;
 
 
                                     }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute
@@ -6390,9 +6560,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value cost; //type: uint32
-                                            Value threshold; //type: uint32
 
+
+                                            YLeaf cost; //type: uint32
+                                            YLeaf threshold; //type: uint32
 
 
 
@@ -6431,6 +6602,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class AreaRange : public Entity
                                 {
                                     public:
@@ -6444,10 +6616,11 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address; //type: string
-                                        Value netmask; //type: string
-                                        Value not_advertise; //type: boolean
 
+
+                                        YLeaf address; //type: string
+                                        YLeaf netmask; //type: string
+                                        YLeaf not_advertise; //type: boolean
 
 
 
@@ -6473,14 +6646,14 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value no_redistribution; //type: boolean
-                                    Value default_info_originate; //type: boolean
-                                    Value no_summary; //type: boolean
-                                    Value nssa_def_metric; //type: uint32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
 
 
-                                    class OspfLinkStateMetricEnum;
+                                    YLeaf no_redistribution; //type: boolean
+                                    YLeaf default_info_originate; //type: boolean
+                                    YLeaf no_summary; //type: boolean
+                                    YLeaf nssa_def_metric; //type: uint32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+
 
 
                             }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa
@@ -6493,7 +6666,6 @@ class Ospf : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::Nssa> nssa;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes> sham_link_scopes;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes> virtual_link_scopes;
-                                class OspfSegmentRoutingEnum;
 
 
                         }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId
@@ -6519,12 +6691,13 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lsa_pacing_flood; //type: uint32
-                            Value fast_reroute_timer; //type: uint32
-                            Value lsa_refresh; //type: uint32
-                            Value lsa_group_pacing; //type: uint32
-                            Value lsa_min_arrival; //type: uint32
 
+
+                            YLeaf lsa_pacing_flood; //type: uint32
+                            YLeaf fast_reroute_timer; //type: uint32
+                            YLeaf lsa_refresh; //type: uint32
+                            YLeaf lsa_group_pacing; //type: uint32
+                            YLeaf lsa_min_arrival; //type: uint32
 
                         class SpfTimer : public Entity
                         {
@@ -6539,10 +6712,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value initial_delay; //type: uint32
-                                Value backoff_increment; //type: uint32
-                                Value max_delay; //type: uint32
 
+
+                                YLeaf initial_delay; //type: uint32
+                                YLeaf backoff_increment; //type: uint32
+                                YLeaf max_delay; //type: uint32
 
 
 
@@ -6562,10 +6736,11 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value initial_delay; //type: uint32
-                                Value backoff_increment; //type: uint32
-                                Value max_delay; //type: uint32
 
+
+                                YLeaf initial_delay; //type: uint32
+                                YLeaf backoff_increment; //type: uint32
+                                YLeaf max_delay; //type: uint32
 
 
 
@@ -6599,7 +6774,6 @@ class Ospf : public Entity
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes> summary_prefixes;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Timers> timers;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Ucmp> ucmp;
-                        class OspfLogAdjEnum;
 
 
                 }; // Ospf::Processes::Process::Vrfs::Vrf
@@ -6624,17 +6798,18 @@ class Ospf : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ignore_mospf; //type: empty
-                    Value router_id; //type: string
-                    Value type7; //type: empty
-                    Value snmp_context; //type: string
-                    Value maximum_interfaces; //type: uint32
-                    Value no_opaque; //type: empty
-                    Value spf_prefix_priority; //type: string
-                    Value maximum_paths; //type: uint32
-                    Value adjacency_changes; //type: OspfLogAdjEnum
-                    Value default_metric; //type: uint32
 
+
+                    YLeaf ignore_mospf; //type: empty
+                    YLeaf router_id; //type: string
+                    YLeaf type7; //type: empty
+                    YLeaf snmp_context; //type: string
+                    YLeaf maximum_interfaces; //type: uint32
+                    YLeaf no_opaque; //type: empty
+                    YLeaf spf_prefix_priority; //type: string
+                    YLeaf maximum_paths; //type: uint32
+                    YLeaf adjacency_changes; //type: OspfLogAdjEnum
+                    YLeaf default_metric; //type: uint32
 
                 class MonitorConvergence : public Entity
                 {
@@ -6649,12 +6824,13 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: empty
-                        Value prefix_list; //type: string
-                        Value track_ip_frr; //type: empty
-                        Value track_external_routes; //type: empty
-                        Value track_summary_routes; //type: empty
 
+
+                        YLeaf enable; //type: empty
+                        YLeaf prefix_list; //type: string
+                        YLeaf track_ip_frr; //type: empty
+                        YLeaf track_external_routes; //type: empty
+                        YLeaf track_summary_routes; //type: empty
 
 
 
@@ -6674,10 +6850,11 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value prefix_sid_map_receive_disable; //type: empty
-                        Value prefix_sid_map_advertise_local; //type: empty
-                        Value strict_spf_disable; //type: empty
 
+
+                        YLeaf prefix_sid_map_receive_disable; //type: empty
+                        YLeaf prefix_sid_map_advertise_local; //type: empty
+                        YLeaf strict_spf_disable; //type: empty
 
                     class SrPrefer : public Entity
                     {
@@ -6692,9 +6869,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: boolean
-                            Value prefix_list_name; //type: string
 
+
+                            YLeaf enable; //type: boolean
+                            YLeaf prefix_list_name; //type: string
 
 
 
@@ -6720,11 +6898,12 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value igp_intact; //type: empty
-                        Value ldp_sync_update; //type: empty
-                        Value multicast_intact; //type: empty
-                        Value autoroute_exclude; //type: string
 
+
+                        YLeaf igp_intact; //type: empty
+                        YLeaf ldp_sync_update; //type: empty
+                        YLeaf multicast_intact; //type: empty
+                        YLeaf autoroute_exclude; //type: string
 
                     class MplsRouterId : public Entity
                     {
@@ -6739,9 +6918,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value interface_name; //type: string
 
+
+                            YLeaf address; //type: string
+                            YLeaf interface_name; //type: string
 
 
 
@@ -6769,6 +6949,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Avoidance : public Entity
                     {
                         public:
@@ -6782,11 +6963,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable; //type: OspfUloopAvoidanceEnum
-                            Value rib_update_delay; //type: uint32
 
 
-                            class OspfUloopAvoidanceEnum;
+                            YLeaf enable; //type: OspfUloopAvoidanceEnum
+                            YLeaf rib_update_delay; //type: uint32
+
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::Microloop::Avoidance
@@ -6811,10 +6992,11 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value number_of_prefixes; //type: uint32
-                        Value threshold; //type: uint32
-                        Value warning_only; //type: boolean
 
+
+                        YLeaf number_of_prefixes; //type: uint32
+                        YLeaf threshold; //type: uint32
+                        YLeaf warning_only; //type: boolean
 
 
 
@@ -6834,13 +7016,13 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value always_advertise; //type: boolean
-                        Value metric; //type: uint32
-                        Value metric_type; //type: OspfLinkStateMetricEnum
-                        Value route_policy_name; //type: string
 
 
-                        class OspfLinkStateMetricEnum;
+                        YLeaf always_advertise; //type: boolean
+                        YLeaf metric; //type: uint32
+                        YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                        YLeaf route_policy_name; //type: string
+
 
 
                 }; // Ospf::Processes::Process::DefaultVrf::DefaultInformation
@@ -6859,12 +7041,11 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: OspfAddressFamilyEnum
-                        Value saf_name; //type: OspfSubAddressFamilyEnum
 
 
-                        class OspfAddressFamilyEnum;
-                        class OspfSubAddressFamilyEnum;
+                        YLeaf af_name; //type: OspfAddressFamilyEnum
+                        YLeaf saf_name; //type: OspfSubAddressFamilyEnum
+
 
 
                 }; // Ospf::Processes::Process::DefaultVrf::Af
@@ -6883,14 +7064,15 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value dispatch_rate_limited_flush; //type: uint32
-                        Value limit_high; //type: uint32
-                        Value dispatch_spf_lsa_limit; //type: uint32
-                        Value limit_low; //type: uint32
-                        Value dispatch_rate_limited; //type: uint32
-                        Value limit_medium; //type: uint32
-                        Value dispatch_incoming; //type: uint32
 
+
+                        YLeaf dispatch_rate_limited_flush; //type: uint32
+                        YLeaf limit_high; //type: uint32
+                        YLeaf dispatch_spf_lsa_limit; //type: uint32
+                        YLeaf limit_low; //type: uint32
+                        YLeaf dispatch_rate_limited; //type: uint32
+                        YLeaf limit_medium; //type: uint32
+                        YLeaf dispatch_incoming; //type: uint32
 
 
 
@@ -6910,8 +7092,9 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_metric_no_abr_off; //type: empty
 
+
+                        YLeaf max_metric_no_abr_off; //type: empty
 
                     class MaxMetricOnProcRestart : public Entity
                     {
@@ -6926,14 +7109,15 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value wait_for_bgp; //type: boolean
-                            Value startup_max; //type: uint32
-                            Value include_stub; //type: boolean
-                            Value summary_lsa; //type: boolean
-                            Value summary_lsa_maximum_metric; //type: uint32
-                            Value external_lsa; //type: boolean
-                            Value external_lsa_maximum_metric; //type: uint32
 
+
+                            YLeaf wait_for_bgp; //type: boolean
+                            YLeaf startup_max; //type: uint32
+                            YLeaf include_stub; //type: boolean
+                            YLeaf summary_lsa; //type: boolean
+                            YLeaf summary_lsa_maximum_metric; //type: uint32
+                            YLeaf external_lsa; //type: boolean
+                            YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -6953,14 +7137,15 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value wait_for_bgp; //type: boolean
-                            Value startup_max; //type: uint32
-                            Value include_stub; //type: boolean
-                            Value summary_lsa; //type: boolean
-                            Value summary_lsa_maximum_metric; //type: uint32
-                            Value external_lsa; //type: boolean
-                            Value external_lsa_maximum_metric; //type: uint32
 
+
+                            YLeaf wait_for_bgp; //type: boolean
+                            YLeaf startup_max; //type: uint32
+                            YLeaf include_stub; //type: boolean
+                            YLeaf summary_lsa; //type: boolean
+                            YLeaf summary_lsa_maximum_metric; //type: uint32
+                            YLeaf external_lsa; //type: boolean
+                            YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -6980,14 +7165,15 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value wait_for_bgp; //type: boolean
-                            Value startup_max; //type: uint32
-                            Value include_stub; //type: boolean
-                            Value summary_lsa; //type: boolean
-                            Value summary_lsa_maximum_metric; //type: uint32
-                            Value external_lsa; //type: boolean
-                            Value external_lsa_maximum_metric; //type: uint32
 
+
+                            YLeaf wait_for_bgp; //type: boolean
+                            YLeaf startup_max; //type: uint32
+                            YLeaf include_stub; //type: boolean
+                            YLeaf summary_lsa; //type: boolean
+                            YLeaf summary_lsa_maximum_metric; //type: uint32
+                            YLeaf external_lsa; //type: boolean
+                            YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -7007,12 +7193,13 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value include_stub; //type: boolean
-                            Value summary_lsa; //type: boolean
-                            Value summary_lsa_maximum_metric; //type: uint32
-                            Value external_lsa; //type: boolean
-                            Value external_lsa_maximum_metric; //type: uint32
 
+
+                            YLeaf include_stub; //type: boolean
+                            YLeaf summary_lsa; //type: boolean
+                            YLeaf summary_lsa_maximum_metric; //type: uint32
+                            YLeaf external_lsa; //type: boolean
+                            YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -7032,14 +7219,15 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value wait_for_bgp; //type: boolean
-                            Value startup_max; //type: uint32
-                            Value include_stub; //type: boolean
-                            Value summary_lsa; //type: boolean
-                            Value summary_lsa_maximum_metric; //type: uint32
-                            Value external_lsa; //type: boolean
-                            Value external_lsa_maximum_metric; //type: uint32
 
+
+                            YLeaf wait_for_bgp; //type: boolean
+                            YLeaf startup_max; //type: uint32
+                            YLeaf include_stub; //type: boolean
+                            YLeaf summary_lsa; //type: boolean
+                            YLeaf summary_lsa_maximum_metric; //type: uint32
+                            YLeaf external_lsa; //type: boolean
+                            YLeaf external_lsa_maximum_metric; //type: uint32
 
 
 
@@ -7069,18 +7257,16 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lifetime; //type: uint32
-                        Value ietf; //type: OspfIetfNsfEnum
-                        Value ietf_support_role; //type: OspfIetfNsfSupportEnum
-                        Value cisco; //type: OspfCiscoNsfEnum
-                        Value interval; //type: uint32
-                        Value flush_delay_time; //type: uint32
-                        Value ietf_strict_lsa_checking; //type: empty
 
 
-                        class OspfCiscoNsfEnum;
-                        class OspfIetfNsfEnum;
-                        class OspfIetfNsfSupportEnum;
+                        YLeaf lifetime; //type: uint32
+                        YLeaf ietf; //type: OspfIetfNsfEnum
+                        YLeaf ietf_support_role; //type: OspfIetfNsfSupportEnum
+                        YLeaf cisco; //type: OspfCiscoNsfEnum
+                        YLeaf interval; //type: uint32
+                        YLeaf flush_delay_time; //type: uint32
+                        YLeaf ietf_strict_lsa_checking; //type: empty
+
 
 
                 }; // Ospf::Processes::Process::DefaultVrf::Nsf
@@ -7099,30 +7285,31 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value cost; //type: uint32
-                        Value external_out; //type: boolean
-                        Value prefix_suppression_primary; //type: boolean
-                        Value mtu_ignore; //type: boolean
-                        Value ldp_sync_igp_shortcuts; //type: boolean
-                        Value ldp_auto_config; //type: empty
-                        Value summary_in; //type: boolean
-                        Value network_type; //type: OspfNetworkEnum
-                        Value hello_interval; //type: uint32
-                        Value loopback_stub_network; //type: boolean
-                        Value prefix_suppression_secondary; //type: boolean
-                        Value demand_circuit; //type: boolean
-                        Value segment_routing; //type: OspfSegmentRoutingEnum
-                        Value passive; //type: boolean
-                        Value transmit_delay; //type: uint32
-                        Value packet_size; //type: uint32
-                        Value ldp_sync; //type: boolean
-                        Value database_filter; //type: boolean
-                        Value link_down_fast_detect; //type: boolean
-                        Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                        Value retransmit_interval; //type: uint32
-                        Value priority; //type: uint32
-                        Value flood_reduction; //type: boolean
 
+
+                        YLeaf cost; //type: uint32
+                        YLeaf external_out; //type: boolean
+                        YLeaf prefix_suppression_primary; //type: boolean
+                        YLeaf mtu_ignore; //type: boolean
+                        YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                        YLeaf ldp_auto_config; //type: empty
+                        YLeaf summary_in; //type: boolean
+                        YLeaf network_type; //type: OspfNetworkEnum
+                        YLeaf hello_interval; //type: uint32
+                        YLeaf loopback_stub_network; //type: boolean
+                        YLeaf prefix_suppression_secondary; //type: boolean
+                        YLeaf demand_circuit; //type: boolean
+                        YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                        YLeaf passive; //type: boolean
+                        YLeaf transmit_delay; //type: uint32
+                        YLeaf packet_size; //type: uint32
+                        YLeaf ldp_sync; //type: boolean
+                        YLeaf database_filter; //type: boolean
+                        YLeaf link_down_fast_detect; //type: boolean
+                        YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                        YLeaf retransmit_interval; //type: uint32
+                        YLeaf priority; //type: uint32
+                        YLeaf flood_reduction; //type: boolean
 
                     class Srgb : public Entity
                     {
@@ -7137,9 +7324,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lower_bound; //type: uint32
-                            Value upper_bound; //type: uint32
 
+
+                            YLeaf lower_bound; //type: uint32
+                            YLeaf upper_bound; //type: uint32
 
 
 
@@ -7159,8 +7347,9 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value fast_reroute_enable; //type: OspfProcFastRerouteEnum
 
+
+                            YLeaf fast_reroute_enable; //type: OspfProcFastRerouteEnum
 
                         class PerLink : public Entity
                         {
@@ -7175,8 +7364,9 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                             class CandidateInterfaces : public Entity
                             {
@@ -7193,6 +7383,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class CandidateInterface : public Entity
                                 {
                                     public:
@@ -7206,8 +7397,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -7235,6 +7427,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ExcludeInterface : public Entity
                                 {
                                     public:
@@ -7248,8 +7441,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -7282,9 +7476,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value topology_independent_lfa; //type: boolean
-                                Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                YLeaf topology_independent_lfa; //type: boolean
+                                YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                             class RemoteLfa : public Entity
                             {
@@ -7299,11 +7494,11 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tunnel; //type: OspfProcFrrRlfaTunnelEnum
-                                    Value maximum_cost; //type: uint32
 
 
-                                    class OspfProcFrrRlfaTunnelEnum;
+                                    YLeaf tunnel; //type: OspfProcFrrRlfaTunnelEnum
+                                    YLeaf maximum_cost; //type: uint32
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix::RemoteLfa
@@ -7324,6 +7519,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class CandidateInterface : public Entity
                                 {
                                     public:
@@ -7337,8 +7533,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -7366,6 +7563,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ExcludeInterface : public Entity
                                 {
                                     public:
@@ -7379,8 +7577,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -7403,7 +7602,6 @@ class Ospf : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerLink> per_link;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute::PerPrefix> per_prefix;
-                            class OspfProcFastRerouteEnum;
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute
@@ -7422,9 +7620,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value access_list_name; //type: string
-                            Value route_policy_name; //type: string
 
+
+                            YLeaf access_list_name; //type: string
+                            YLeaf route_policy_name; //type: string
 
 
 
@@ -7444,12 +7643,12 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interval; //type: uint32
-                            Value detection_multiplier; //type: uint32
-                            Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                            class BfdEnableModeEnum;
+                            YLeaf interval; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
+                            YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::ProcessScope::Bfd
@@ -7468,8 +7667,9 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value key; //type: string
 
+
+                            YLeaf key; //type: string
 
                         class Type : public Entity
                         {
@@ -7484,13 +7684,12 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value authen_type; //type: OspfAuthenticationEnum
-                                Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                Value keychain_name; //type: string
 
 
-                                class OspfAuthenticationEnum;
-                                class OspfKeychainAuthEnum;
+                                YLeaf authen_type; //type: OspfAuthenticationEnum
+                                YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                YLeaf keychain_name; //type: string
+
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::ProcessScope::Authentication::Type
@@ -7511,6 +7710,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MessageDigestKey : public Entity
                             {
                                 public:
@@ -7524,9 +7724,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key_id; //type: uint32
-                                    Value password; //type: string
 
+
+                                    YLeaf key_id; //type: uint32
+                                    YLeaf password; //type: string
 
 
 
@@ -7561,6 +7762,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Ttl : public Entity
                         {
                             public:
@@ -7574,9 +7776,10 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: boolean
-                                Value hop_count; //type: uint32
 
+
+                                YLeaf enable; //type: boolean
+                                YLeaf hop_count; //type: uint32
 
 
 
@@ -7602,9 +7805,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interval; //type: uint32
-                            Value multiplier; //type: uint32
 
+
+                            YLeaf interval; //type: uint32
+                            YLeaf multiplier; //type: uint32
 
 
 
@@ -7624,9 +7828,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value cost; //type: uint32
-                            Value threshold; //type: uint32
 
+
+                            YLeaf cost; //type: uint32
+                            YLeaf threshold; //type: uint32
 
 
 
@@ -7641,9 +7846,6 @@ class Ospf : public Entity
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ProcessScope::FastReroute> fast_reroute;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ProcessScope::Security> security;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::ProcessScope::Srgb> srgb; // presence node
-                        class OspfNetworkEnum;
-                        class OspfSegmentRoutingEnum;
-                        class OspfSegmentRoutingForwardingEnum;
 
 
                 }; // Ospf::Processes::Process::DefaultVrf::ProcessScope
@@ -7664,6 +7866,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Redistributes : public Entity
                     {
                         public:
@@ -7679,6 +7882,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Redistribute : public Entity
                         {
                             public:
@@ -7692,8 +7896,9 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol_name; //type: OspfRedistProtocolEnum
 
+
+                                YLeaf protocol_name; //type: OspfRedistProtocolEnum
 
                             class ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip : public Entity
                             {
@@ -7708,28 +7913,23 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value classful; //type: boolean
-                                    Value default_redistributed_route_metric; //type: uint32
-                                    Value tag; //type: int32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
-                                    Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                    Value isis_levels; //type: OspfRouteLevelEnum
-                                    Value ospf_internal; //type: boolean
-                                    Value ospf_external; //type: OspfRouteLevelEnum
-                                    Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                    Value route_policy_name; //type: string
-                                    Value bgp_preserve_med; //type: boolean
-                                    Value bgp_preserve_default_info; //type: boolean
-                                    Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                    Value ospfnssa_only; //type: boolean
 
 
-                                    class OspfEigrpRouteEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfLinkStateMetricEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRedistLsaEnum;
+                                    YLeaf classful; //type: boolean
+                                    YLeaf default_redistributed_route_metric; //type: uint32
+                                    YLeaf tag; //type: int32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                    YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                    YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_internal; //type: boolean
+                                    YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                    YLeaf route_policy_name; //type: string
+                                    YLeaf bgp_preserve_med; //type: boolean
+                                    YLeaf bgp_preserve_default_info; //type: boolean
+                                    YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                    YLeaf ospfnssa_only; //type: boolean
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip
@@ -7748,29 +7948,24 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value instance_name; //type: string
-                                    Value classful; //type: boolean
-                                    Value default_redistributed_route_metric; //type: uint32
-                                    Value tag; //type: int32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
-                                    Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                    Value isis_levels; //type: OspfRouteLevelEnum
-                                    Value ospf_internal; //type: boolean
-                                    Value ospf_external; //type: OspfRouteLevelEnum
-                                    Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                    Value route_policy_name; //type: string
-                                    Value bgp_preserve_med; //type: boolean
-                                    Value bgp_preserve_default_info; //type: boolean
-                                    Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                    Value ospfnssa_only; //type: boolean
 
 
-                                    class OspfEigrpRouteEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfLinkStateMetricEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRedistLsaEnum;
+                                    YLeaf instance_name; //type: string
+                                    YLeaf classful; //type: boolean
+                                    YLeaf default_redistributed_route_metric; //type: uint32
+                                    YLeaf tag; //type: int32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                    YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                    YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_internal; //type: boolean
+                                    YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                    YLeaf route_policy_name; //type: string
+                                    YLeaf bgp_preserve_med; //type: boolean
+                                    YLeaf bgp_preserve_default_info; //type: boolean
+                                    YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                    YLeaf ospfnssa_only; //type: boolean
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ApplicationOrIsisOrOspf
@@ -7789,31 +7984,26 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value instance_name; //type: string
-                                    Value as_xx; //type: uint32
-                                    Value as_yy; //type: uint32
-                                    Value classful; //type: boolean
-                                    Value default_redistributed_route_metric; //type: uint32
-                                    Value tag; //type: int32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
-                                    Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                    Value isis_levels; //type: OspfRouteLevelEnum
-                                    Value ospf_internal; //type: boolean
-                                    Value ospf_external; //type: OspfRouteLevelEnum
-                                    Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                    Value route_policy_name; //type: string
-                                    Value bgp_preserve_med; //type: boolean
-                                    Value bgp_preserve_default_info; //type: boolean
-                                    Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                    Value ospfnssa_only; //type: boolean
 
 
-                                    class OspfEigrpRouteEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfLinkStateMetricEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRedistLsaEnum;
+                                    YLeaf instance_name; //type: string
+                                    YLeaf as_xx; //type: uint32
+                                    YLeaf as_yy; //type: uint32
+                                    YLeaf classful; //type: boolean
+                                    YLeaf default_redistributed_route_metric; //type: uint32
+                                    YLeaf tag; //type: int32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                    YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                    YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_internal; //type: boolean
+                                    YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                    YLeaf route_policy_name; //type: string
+                                    YLeaf bgp_preserve_med; //type: boolean
+                                    YLeaf bgp_preserve_default_info; //type: boolean
+                                    YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                    YLeaf ospfnssa_only; //type: boolean
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp
@@ -7832,30 +8022,25 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value instance_name; //type: string
-                                    Value as_xx; //type: uint32
-                                    Value classful; //type: boolean
-                                    Value default_redistributed_route_metric; //type: uint32
-                                    Value tag; //type: int32
-                                    Value metric_type; //type: OspfLinkStateMetricEnum
-                                    Value eigrp_route_type; //type: OspfEigrpRouteEnum
-                                    Value isis_levels; //type: OspfRouteLevelEnum
-                                    Value ospf_internal; //type: boolean
-                                    Value ospf_external; //type: OspfRouteLevelEnum
-                                    Value ospf_nssa_level; //type: OspfRouteLevelEnum
-                                    Value route_policy_name; //type: string
-                                    Value bgp_preserve_med; //type: boolean
-                                    Value bgp_preserve_default_info; //type: boolean
-                                    Value ospf_redist_lsa_type; //type: OspfRedistLsaEnum
-                                    Value ospfnssa_only; //type: boolean
 
 
-                                    class OspfEigrpRouteEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfLinkStateMetricEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRouteLevelEnum;
-                                    class OspfRedistLsaEnum;
+                                    YLeaf instance_name; //type: string
+                                    YLeaf as_xx; //type: uint32
+                                    YLeaf classful; //type: boolean
+                                    YLeaf default_redistributed_route_metric; //type: uint32
+                                    YLeaf tag; //type: int32
+                                    YLeaf metric_type; //type: OspfLinkStateMetricEnum
+                                    YLeaf eigrp_route_type; //type: OspfEigrpRouteEnum
+                                    YLeaf isis_levels; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_internal; //type: boolean
+                                    YLeaf ospf_external; //type: OspfRouteLevelEnum
+                                    YLeaf ospf_nssa_level; //type: OspfRouteLevelEnum
+                                    YLeaf route_policy_name; //type: string
+                                    YLeaf bgp_preserve_med; //type: boolean
+                                    YLeaf bgp_preserve_default_info; //type: boolean
+                                    YLeaf ospf_redist_lsa_type; //type: OspfRedistLsaEnum
+                                    YLeaf ospfnssa_only; //type: boolean
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp
@@ -7865,7 +8050,6 @@ class Ospf : public Entity
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Bgp> > bgp;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::ConnectedOrStaticOrDagrOrSubscriberOrMobileOrRip> connected_or_static_or_dagr_or_subscriber_or_mobile_or_rip; // presence node
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute::Eigrp> > eigrp;
-                                class OspfRedistProtocolEnum;
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::Redistribution::Redistributes::Redistribute
@@ -7896,10 +8080,11 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: empty
-                        Value initial_nbr; //type: uint32
-                        Value max_nbr; //type: uint32
 
+
+                        YLeaf disable; //type: empty
+                        YLeaf initial_nbr; //type: uint32
+                        YLeaf max_nbr; //type: uint32
 
 
 
@@ -7919,13 +8104,14 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_lsa_limit; //type: uint32
-                        Value max_lsa_threshold; //type: uint32
-                        Value max_lsa_warning_only; //type: boolean
-                        Value max_lsa_ignore_time; //type: uint32
-                        Value max_lsa_ignore_count; //type: uint32
-                        Value max_lsa_reset_time; //type: uint32
 
+
+                        YLeaf max_lsa_limit; //type: uint32
+                        YLeaf max_lsa_threshold; //type: uint32
+                        YLeaf max_lsa_warning_only; //type: boolean
+                        YLeaf max_lsa_ignore_time; //type: uint32
+                        YLeaf max_lsa_ignore_count; //type: uint32
+                        YLeaf max_lsa_reset_time; //type: uint32
 
 
 
@@ -7945,9 +8131,10 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: boolean
-                        Value bandwidth; //type: uint32
 
+
+                        YLeaf disable; //type: boolean
+                        YLeaf bandwidth; //type: uint32
 
 
 
@@ -7967,8 +8154,9 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value delay_interval; //type: uint32
 
+
+                        YLeaf delay_interval; //type: uint32
 
                     class Enable : public Entity
                     {
@@ -7983,9 +8171,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value variance; //type: uint32
-                            Value prefix_list_name; //type: string
 
+
+                            YLeaf variance; //type: uint32
+                            YLeaf prefix_list_name; //type: string
 
 
 
@@ -8007,6 +8196,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ExcludeInterface : public Entity
                         {
                             public:
@@ -8020,8 +8210,9 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interface_name; //type: string
 
+
+                                YLeaf interface_name; //type: string
 
 
 
@@ -8056,6 +8247,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class PerLink : public Entity
                     {
                         public:
@@ -8069,10 +8261,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value priority; //type: OspfFastReroutePriorityEnum
 
 
-                            class OspfFastReroutePriorityEnum;
+                            YLeaf priority; //type: OspfFastReroutePriorityEnum
+
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::FastReroute::PerLink
@@ -8091,9 +8283,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value load_sharing_disable; //type: empty
-                            Value priority; //type: OspfFastReroutePriorityEnum
 
+
+                            YLeaf load_sharing_disable; //type: empty
+                            YLeaf priority; //type: OspfFastReroutePriorityEnum
 
                         class Tiebreakers : public Entity
                         {
@@ -8110,6 +8303,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Tiebreaker : public Entity
                             {
                                 public:
@@ -8123,11 +8317,11 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersEnum
-                                    Value tiebreaker_index; //type: uint32
 
 
-                                    class OspfFastRerouteTiebreakersEnum;
+                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersEnum
+                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -8140,7 +8334,6 @@ class Ospf : public Entity
 
 
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreakers> tiebreakers;
-                            class OspfFastReroutePriorityEnum;
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::FastReroute::PerPrefix
@@ -8168,6 +8361,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SummaryPrefixData : public Entity
                     {
                         public:
@@ -8181,9 +8375,10 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value not_advertise; //type: boolean
-                            Value tag; //type: int32
 
+
+                            YLeaf not_advertise; //type: boolean
+                            YLeaf tag; //type: int32
 
 
 
@@ -8203,11 +8398,12 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value netmask; //type: string
-                            Value not_advertise; //type: boolean
-                            Value tag; //type: int32
 
+
+                            YLeaf prefix; //type: string
+                            YLeaf netmask; //type: string
+                            YLeaf not_advertise; //type: boolean
+                            YLeaf tag; //type: int32
 
 
 
@@ -8227,10 +8423,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value prefix; //type: string
-                            Value not_advertise; //type: boolean
-                            Value tag; //type: int32
 
+
+                            YLeaf prefix; //type: string
+                            YLeaf not_advertise; //type: boolean
+                            YLeaf tag; //type: int32
 
 
 
@@ -8250,10 +8447,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value netmask; //type: string
-                            Value not_advertise; //type: boolean
-                            Value tag; //type: int32
 
+
+                            YLeaf netmask; //type: string
+                            YLeaf not_advertise; //type: boolean
+                            YLeaf tag; //type: int32
 
 
 
@@ -8284,6 +8482,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class OutgoingRouteUpdate : public Entity
                     {
                         public:
@@ -8297,14 +8496,14 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol_name; //type: OspfDistListProtocolEnum
-                            Value access_list_name; //type: string
-                            Value as_xx; //type: uint32
-                            Value as_yy; //type: uint32
-                            Value ospf_process_name; //type: string
 
 
-                            class OspfDistListProtocolEnum;
+                            YLeaf protocol_name; //type: OspfDistListProtocolEnum
+                            YLeaf access_list_name; //type: string
+                            YLeaf as_xx; //type: uint32
+                            YLeaf as_yy; //type: uint32
+                            YLeaf ospf_process_name; //type: string
+
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::OutgoingRouteUpdates::OutgoingRouteUpdate
@@ -8329,8 +8528,9 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value admin_distance; //type: uint32
 
+
+                        YLeaf admin_distance; //type: uint32
 
                     class OspfDistance : public Entity
                     {
@@ -8345,10 +8545,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value intra_area; //type: uint32
-                            Value inter_area; //type: uint32
-                            Value external_routes; //type: uint32
 
+
+                            YLeaf intra_area; //type: uint32
+                            YLeaf inter_area; //type: uint32
+                            YLeaf external_routes; //type: uint32
 
 
 
@@ -8370,6 +8571,7 @@ class Ospf : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class IpDistance : public Entity
                         {
                             public:
@@ -8383,11 +8585,12 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
-                                Value wildcard; //type: string
-                                Value distance; //type: uint32
-                                Value access_list_name; //type: string
 
+
+                                YLeaf address; //type: string
+                                YLeaf wildcard; //type: string
+                                YLeaf distance; //type: uint32
+                                YLeaf access_list_name; //type: string
 
 
 
@@ -8422,6 +8625,7 @@ class Ospf : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AreaAddress : public Entity
                     {
                         public:
@@ -8435,17 +8639,18 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value route_policy_in; //type: string
-                            Value default_cost; //type: uint32
-                            Value route_policy_out; //type: string
-                            Value stub; //type: boolean
-                            Value mpls_traffic_eng; //type: empty
-                            Value external_out; //type: boolean
-                            Value summary_in; //type: boolean
-                            Value segment_routing; //type: OspfSegmentRoutingEnum
-                            Value running; //type: empty
 
+
+                            YLeaf address; //type: string
+                            YLeaf route_policy_in; //type: string
+                            YLeaf default_cost; //type: uint32
+                            YLeaf route_policy_out; //type: string
+                            YLeaf stub; //type: boolean
+                            YLeaf mpls_traffic_eng; //type: empty
+                            YLeaf external_out; //type: boolean
+                            YLeaf summary_in; //type: boolean
+                            YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                            YLeaf running; //type: empty
 
                         class VirtualLinkScopes : public Entity
                         {
@@ -8462,6 +8667,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class VirtualLinkScope : public Entity
                             {
                                 public:
@@ -8475,12 +8681,13 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value hello_interval; //type: uint32
-                                    Value transmit_delay; //type: uint32
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class Authentication : public Entity
                                 {
@@ -8495,8 +8702,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -8511,13 +8719,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication::Type
@@ -8538,6 +8745,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -8551,9 +8759,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -8586,9 +8795,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -8623,6 +8833,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class ShamLinkScope : public Entity
                             {
                                 public:
@@ -8636,15 +8847,16 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_address; //type: string
-                                    Value destination_address; //type: string
-                                    Value source; //type: string
-                                    Value cost; //type: uint32
-                                    Value hello_interval; //type: uint32
-                                    Value transmit_delay; //type: uint32
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf source_address; //type: string
+                                    YLeaf destination_address; //type: string
+                                    YLeaf source; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class Authentication : public Entity
                                 {
@@ -8659,8 +8871,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -8675,13 +8888,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication::Type
@@ -8702,6 +8914,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -8715,9 +8928,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -8750,9 +8964,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -8785,27 +9000,28 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value cost; //type: uint32
-                                Value prefix_suppression_primary; //type: boolean
-                                Value mtu_ignore; //type: boolean
-                                Value ldp_sync_igp_shortcuts; //type: boolean
-                                Value ldp_auto_config; //type: empty
-                                Value network_type; //type: OspfNetworkEnum
-                                Value hello_interval; //type: uint32
-                                Value loopback_stub_network; //type: boolean
-                                Value prefix_suppression_secondary; //type: boolean
-                                Value demand_circuit; //type: boolean
-                                Value passive; //type: boolean
-                                Value transmit_delay; //type: uint32
-                                Value packet_size; //type: uint32
-                                Value ldp_sync; //type: boolean
-                                Value database_filter; //type: boolean
-                                Value link_down_fast_detect; //type: boolean
-                                Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                Value retransmit_interval; //type: uint32
-                                Value priority; //type: uint32
-                                Value flood_reduction; //type: boolean
 
+
+                                YLeaf cost; //type: uint32
+                                YLeaf prefix_suppression_primary; //type: boolean
+                                YLeaf mtu_ignore; //type: boolean
+                                YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                YLeaf ldp_auto_config; //type: empty
+                                YLeaf network_type; //type: OspfNetworkEnum
+                                YLeaf hello_interval; //type: uint32
+                                YLeaf loopback_stub_network; //type: boolean
+                                YLeaf prefix_suppression_secondary; //type: boolean
+                                YLeaf demand_circuit; //type: boolean
+                                YLeaf passive; //type: boolean
+                                YLeaf transmit_delay; //type: uint32
+                                YLeaf packet_size; //type: uint32
+                                YLeaf ldp_sync; //type: boolean
+                                YLeaf database_filter; //type: boolean
+                                YLeaf link_down_fast_detect; //type: boolean
+                                YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                YLeaf retransmit_interval; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf flood_reduction; //type: boolean
 
                             class DistributeList : public Entity
                             {
@@ -8820,9 +9036,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value route_policy_name; //type: string
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf route_policy_name; //type: string
 
 
 
@@ -8842,12 +9059,12 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interval; //type: uint32
-                                    Value detection_multiplier; //type: uint32
-                                    Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                    class BfdEnableModeEnum;
+                                    YLeaf interval; //type: uint32
+                                    YLeaf detection_multiplier; //type: uint32
+                                    YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::Bfd
@@ -8866,8 +9083,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: string
 
+
+                                    YLeaf key; //type: string
 
                                 class Type : public Entity
                                 {
@@ -8882,13 +9100,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value authen_type; //type: OspfAuthenticationEnum
-                                        Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                        Value keychain_name; //type: string
 
 
-                                        class OspfAuthenticationEnum;
-                                        class OspfKeychainAuthEnum;
+                                        YLeaf authen_type; //type: OspfAuthenticationEnum
+                                        YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                        YLeaf keychain_name; //type: string
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::Authentication::Type
@@ -8909,6 +9126,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class MessageDigestKey : public Entity
                                     {
                                         public:
@@ -8922,9 +9140,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key_id; //type: uint32
-                                            Value password; //type: string
 
+
+                                            YLeaf key_id; //type: uint32
+                                            YLeaf password; //type: string
 
 
 
@@ -8959,6 +9178,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Ttl : public Entity
                                 {
                                     public:
@@ -8972,9 +9192,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: boolean
-                                        Value hop_count; //type: uint32
 
+
+                                        YLeaf enable; //type: boolean
+                                        YLeaf hop_count; //type: uint32
 
 
 
@@ -9000,9 +9221,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interval; //type: uint32
-                                    Value multiplier; //type: uint32
 
+
+                                    YLeaf interval; //type: uint32
+                                    YLeaf multiplier; //type: uint32
 
 
 
@@ -9022,8 +9244,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                    YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                 class PerLink : public Entity
                                 {
@@ -9038,8 +9261,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                        YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                     class CandidateInterfaces : public Entity
                                     {
@@ -9056,6 +9280,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class CandidateInterface : public Entity
                                         {
                                             public:
@@ -9069,8 +9294,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -9098,6 +9324,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class ExcludeInterface : public Entity
                                         {
                                             public:
@@ -9111,8 +9338,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -9145,9 +9373,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value topology_independent_lfa; //type: boolean
-                                        Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                        YLeaf topology_independent_lfa; //type: boolean
+                                        YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                     class RemoteLfa : public Entity
                                     {
@@ -9162,11 +9391,11 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                            Value maximum_cost; //type: uint32
 
 
-                                            class OspfFrrRlfaTunnelEnum;
+                                            YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                            YLeaf maximum_cost; //type: uint32
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::RemoteLfa
@@ -9187,6 +9416,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Tiebreaker : public Entity
                                         {
                                             public:
@@ -9200,11 +9430,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                Value tiebreaker_index; //type: uint32
 
 
-                                                class OspfFastRerouteTiebreakersIntfEnum;
+                                                YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                YLeaf tiebreaker_index; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -9231,6 +9461,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class CandidateInterface : public Entity
                                         {
                                             public:
@@ -9244,8 +9475,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -9273,6 +9505,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class ExcludeInterface : public Entity
                                         {
                                             public:
@@ -9286,8 +9519,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -9311,7 +9545,6 @@ class Ospf : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink> per_link;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix> per_prefix;
-                                    class OspfFastRerouteEnum;
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute
@@ -9330,9 +9563,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value cost; //type: uint32
-                                    Value threshold; //type: uint32
 
+
+                                    YLeaf cost; //type: uint32
+                                    YLeaf threshold; //type: uint32
 
 
 
@@ -9346,8 +9580,6 @@ class Ospf : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::DistributeList> distribute_list; // presence node
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute> fast_reroute;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::Security> security;
-                                class OspfNetworkEnum;
-                                class OspfSegmentRoutingForwardingEnum;
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope
@@ -9368,6 +9600,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NameScope : public Entity
                             {
                                 public:
@@ -9381,29 +9614,30 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value cost; //type: uint32
-                                    Value prefix_suppression_primary; //type: boolean
-                                    Value mtu_ignore; //type: boolean
-                                    Value ldp_sync_igp_shortcuts; //type: boolean
-                                    Value ldp_auto_config; //type: empty
-                                    Value network_type; //type: OspfNetworkEnum
-                                    Value hello_interval; //type: uint32
-                                    Value loopback_stub_network; //type: boolean
-                                    Value prefix_suppression_secondary; //type: boolean
-                                    Value demand_circuit; //type: boolean
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value ldp_sync; //type: boolean
-                                    Value database_filter; //type: boolean
-                                    Value link_down_fast_detect; //type: boolean
-                                    Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                    Value retransmit_interval; //type: uint32
-                                    Value priority; //type: uint32
-                                    Value flood_reduction; //type: boolean
-                                    Value running; //type: empty
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf prefix_suppression_primary; //type: boolean
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                    YLeaf ldp_auto_config; //type: empty
+                                    YLeaf network_type; //type: OspfNetworkEnum
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf loopback_stub_network; //type: boolean
+                                    YLeaf prefix_suppression_secondary; //type: boolean
+                                    YLeaf demand_circuit; //type: boolean
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf ldp_sync; //type: boolean
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf link_down_fast_detect; //type: boolean
+                                    YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf priority; //type: uint32
+                                    YLeaf flood_reduction; //type: boolean
+                                    YLeaf running; //type: empty
 
                                 class PrefixSid : public Entity
                                 {
@@ -9418,13 +9652,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value explicit_null; //type: boolean
-                                        Value type; //type: OspfSidEnum
-                                        Value n_flag_clear; //type: boolean
 
 
-                                        class OspfSidEnum;
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf explicit_null; //type: boolean
+                                        YLeaf type; //type: OspfSidEnum
+                                        YLeaf n_flag_clear; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid
@@ -9443,13 +9677,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value explicit_null; //type: boolean
-                                        Value type; //type: OspfSidEnum
-                                        Value n_flag_clear; //type: boolean
 
 
-                                        class OspfSidEnum;
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf explicit_null; //type: boolean
+                                        YLeaf type; //type: OspfSidEnum
+                                        YLeaf n_flag_clear; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict
@@ -9468,9 +9702,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -9490,12 +9725,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value detection_multiplier; //type: uint32
-                                        Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                        class BfdEnableModeEnum;
+                                        YLeaf interval; //type: uint32
+                                        YLeaf detection_multiplier; //type: uint32
+                                        YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Bfd
@@ -9514,8 +9749,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -9530,13 +9766,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Authentication::Type
@@ -9557,6 +9792,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -9570,9 +9806,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -9607,6 +9844,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Ttl : public Entity
                                     {
                                         public:
@@ -9620,9 +9858,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: boolean
-                                            Value hop_count; //type: uint32
 
+
+                                            YLeaf enable; //type: boolean
+                                            YLeaf hop_count; //type: uint32
 
 
 
@@ -9650,6 +9889,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Neighbor : public Entity
                                     {
                                         public:
@@ -9663,12 +9903,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor_address; //type: string
-                                            Value priority; //type: uint32
-                                            Value poll_interval; //type: uint32
-                                            Value cost; //type: uint32
-                                            Value database_filter; //type: boolean
 
+
+                                            YLeaf neighbor_address; //type: string
+                                            YLeaf priority; //type: uint32
+                                            YLeaf poll_interval; //type: uint32
+                                            YLeaf cost; //type: uint32
+                                            YLeaf database_filter; //type: boolean
 
 
 
@@ -9694,9 +9935,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -9716,8 +9958,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -9732,8 +9975,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -9750,6 +9994,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -9763,8 +10008,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -9792,6 +10038,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -9805,8 +10052,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -9839,9 +10087,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -9856,11 +10105,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa
@@ -9881,6 +10130,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -9894,11 +10144,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -9925,6 +10175,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -9938,8 +10189,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -9967,6 +10219,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -9980,8 +10233,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -10005,7 +10259,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute
@@ -10024,9 +10277,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -10043,8 +10297,6 @@ class Ospf : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope::Security> security;
-                                    class OspfNetworkEnum;
-                                    class OspfSegmentRoutingForwardingEnum;
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::NameScopes::NameScope
@@ -10071,6 +10323,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MultiAreaInterfaceScope : public Entity
                             {
                                 public:
@@ -10084,17 +10337,18 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value cost; //type: uint32
-                                    Value mtu_ignore; //type: boolean
-                                    Value hello_interval; //type: uint32
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value database_filter; //type: boolean
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class DistributeList : public Entity
                                 {
@@ -10109,9 +10363,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -10131,8 +10386,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -10147,13 +10403,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type
@@ -10174,6 +10429,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -10187,9 +10443,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -10224,6 +10481,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Neighbor : public Entity
                                     {
                                         public:
@@ -10237,12 +10495,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor_address; //type: string
-                                            Value priority; //type: uint32
-                                            Value poll_interval; //type: uint32
-                                            Value cost; //type: uint32
-                                            Value database_filter; //type: boolean
 
+
+                                            YLeaf neighbor_address; //type: string
+                                            YLeaf priority; //type: uint32
+                                            YLeaf poll_interval; //type: uint32
+                                            YLeaf cost; //type: uint32
+                                            YLeaf database_filter; //type: boolean
 
 
 
@@ -10268,9 +10527,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -10290,8 +10550,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -10306,8 +10567,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -10324,6 +10586,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -10337,8 +10600,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -10366,6 +10630,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -10379,8 +10644,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -10413,9 +10679,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -10430,11 +10697,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa
@@ -10455,6 +10722,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -10468,11 +10736,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -10499,6 +10767,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -10512,8 +10781,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -10541,6 +10811,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -10554,8 +10825,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -10579,7 +10851,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute
@@ -10598,9 +10869,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -10639,6 +10911,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AreaRange : public Entity
                             {
                                 public:
@@ -10652,10 +10925,11 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value netmask; //type: string
-                                    Value not_advertise; //type: boolean
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf netmask; //type: string
+                                    YLeaf not_advertise; //type: boolean
 
 
 
@@ -10681,14 +10955,14 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value no_redistribution; //type: boolean
-                                Value default_info_originate; //type: boolean
-                                Value no_summary; //type: boolean
-                                Value nssa_def_metric; //type: uint32
-                                Value metric_type; //type: OspfLinkStateMetricEnum
 
 
-                                class OspfLinkStateMetricEnum;
+                                YLeaf no_redistribution; //type: boolean
+                                YLeaf default_info_originate; //type: boolean
+                                YLeaf no_summary; //type: boolean
+                                YLeaf nssa_def_metric; //type: uint32
+                                YLeaf metric_type; //type: OspfLinkStateMetricEnum
+
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Nssa
@@ -10701,7 +10975,6 @@ class Ospf : public Entity
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Nssa> nssa;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLinkScopes> sham_link_scopes;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::VirtualLinkScopes> virtual_link_scopes;
-                            class OspfSegmentRoutingEnum;
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress
@@ -10720,17 +10993,18 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value area_id; //type: int32
-                            Value route_policy_in; //type: string
-                            Value default_cost; //type: uint32
-                            Value route_policy_out; //type: string
-                            Value stub; //type: boolean
-                            Value mpls_traffic_eng; //type: empty
-                            Value external_out; //type: boolean
-                            Value summary_in; //type: boolean
-                            Value segment_routing; //type: OspfSegmentRoutingEnum
-                            Value running; //type: empty
 
+
+                            YLeaf area_id; //type: int32
+                            YLeaf route_policy_in; //type: string
+                            YLeaf default_cost; //type: uint32
+                            YLeaf route_policy_out; //type: string
+                            YLeaf stub; //type: boolean
+                            YLeaf mpls_traffic_eng; //type: empty
+                            YLeaf external_out; //type: boolean
+                            YLeaf summary_in; //type: boolean
+                            YLeaf segment_routing; //type: OspfSegmentRoutingEnum
+                            YLeaf running; //type: empty
 
                         class VirtualLinkScopes : public Entity
                         {
@@ -10747,6 +11021,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class VirtualLinkScope : public Entity
                             {
                                 public:
@@ -10760,12 +11035,13 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value hello_interval; //type: uint32
-                                    Value transmit_delay; //type: uint32
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class Authentication : public Entity
                                 {
@@ -10780,8 +11056,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -10796,13 +11073,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication::Type
@@ -10823,6 +11099,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -10836,9 +11113,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -10871,9 +11149,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -10908,6 +11187,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class ShamLinkScope : public Entity
                             {
                                 public:
@@ -10921,15 +11201,16 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_address; //type: string
-                                    Value destination_address; //type: string
-                                    Value source; //type: string
-                                    Value cost; //type: uint32
-                                    Value hello_interval; //type: uint32
-                                    Value transmit_delay; //type: uint32
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf source_address; //type: string
+                                    YLeaf destination_address; //type: string
+                                    YLeaf source; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class Authentication : public Entity
                                 {
@@ -10944,8 +11225,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -10960,13 +11242,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication::Type
@@ -10987,6 +11268,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -11000,9 +11282,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -11035,9 +11318,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -11070,27 +11354,28 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value cost; //type: uint32
-                                Value prefix_suppression_primary; //type: boolean
-                                Value mtu_ignore; //type: boolean
-                                Value ldp_sync_igp_shortcuts; //type: boolean
-                                Value ldp_auto_config; //type: empty
-                                Value network_type; //type: OspfNetworkEnum
-                                Value hello_interval; //type: uint32
-                                Value loopback_stub_network; //type: boolean
-                                Value prefix_suppression_secondary; //type: boolean
-                                Value demand_circuit; //type: boolean
-                                Value passive; //type: boolean
-                                Value transmit_delay; //type: uint32
-                                Value packet_size; //type: uint32
-                                Value ldp_sync; //type: boolean
-                                Value database_filter; //type: boolean
-                                Value link_down_fast_detect; //type: boolean
-                                Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                Value retransmit_interval; //type: uint32
-                                Value priority; //type: uint32
-                                Value flood_reduction; //type: boolean
 
+
+                                YLeaf cost; //type: uint32
+                                YLeaf prefix_suppression_primary; //type: boolean
+                                YLeaf mtu_ignore; //type: boolean
+                                YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                YLeaf ldp_auto_config; //type: empty
+                                YLeaf network_type; //type: OspfNetworkEnum
+                                YLeaf hello_interval; //type: uint32
+                                YLeaf loopback_stub_network; //type: boolean
+                                YLeaf prefix_suppression_secondary; //type: boolean
+                                YLeaf demand_circuit; //type: boolean
+                                YLeaf passive; //type: boolean
+                                YLeaf transmit_delay; //type: uint32
+                                YLeaf packet_size; //type: uint32
+                                YLeaf ldp_sync; //type: boolean
+                                YLeaf database_filter; //type: boolean
+                                YLeaf link_down_fast_detect; //type: boolean
+                                YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                YLeaf retransmit_interval; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf flood_reduction; //type: boolean
 
                             class DistributeList : public Entity
                             {
@@ -11105,9 +11390,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value route_policy_name; //type: string
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf route_policy_name; //type: string
 
 
 
@@ -11127,12 +11413,12 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interval; //type: uint32
-                                    Value detection_multiplier; //type: uint32
-                                    Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                    class BfdEnableModeEnum;
+                                    YLeaf interval; //type: uint32
+                                    YLeaf detection_multiplier; //type: uint32
+                                    YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::Bfd
@@ -11151,8 +11437,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value key; //type: string
 
+
+                                    YLeaf key; //type: string
 
                                 class Type : public Entity
                                 {
@@ -11167,13 +11454,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value authen_type; //type: OspfAuthenticationEnum
-                                        Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                        Value keychain_name; //type: string
 
 
-                                        class OspfAuthenticationEnum;
-                                        class OspfKeychainAuthEnum;
+                                        YLeaf authen_type; //type: OspfAuthenticationEnum
+                                        YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                        YLeaf keychain_name; //type: string
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::Authentication::Type
@@ -11194,6 +11480,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class MessageDigestKey : public Entity
                                     {
                                         public:
@@ -11207,9 +11494,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value key_id; //type: uint32
-                                            Value password; //type: string
 
+
+                                            YLeaf key_id; //type: uint32
+                                            YLeaf password; //type: string
 
 
 
@@ -11244,6 +11532,7 @@ class Ospf : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Ttl : public Entity
                                 {
                                     public:
@@ -11257,9 +11546,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value enable; //type: boolean
-                                        Value hop_count; //type: uint32
 
+
+                                        YLeaf enable; //type: boolean
+                                        YLeaf hop_count; //type: uint32
 
 
 
@@ -11285,9 +11575,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interval; //type: uint32
-                                    Value multiplier; //type: uint32
 
+
+                                    YLeaf interval; //type: uint32
+                                    YLeaf multiplier; //type: uint32
 
 
 
@@ -11307,8 +11598,9 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                    YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                 class PerLink : public Entity
                                 {
@@ -11323,8 +11615,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                        YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                     class CandidateInterfaces : public Entity
                                     {
@@ -11341,6 +11634,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class CandidateInterface : public Entity
                                         {
                                             public:
@@ -11354,8 +11648,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -11383,6 +11678,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class ExcludeInterface : public Entity
                                         {
                                             public:
@@ -11396,8 +11692,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -11430,9 +11727,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value topology_independent_lfa; //type: boolean
-                                        Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                        YLeaf topology_independent_lfa; //type: boolean
+                                        YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                     class RemoteLfa : public Entity
                                     {
@@ -11447,11 +11745,11 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                            Value maximum_cost; //type: uint32
 
 
-                                            class OspfFrrRlfaTunnelEnum;
+                                            YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                            YLeaf maximum_cost; //type: uint32
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::RemoteLfa
@@ -11472,6 +11770,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class Tiebreaker : public Entity
                                         {
                                             public:
@@ -11485,11 +11784,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                Value tiebreaker_index; //type: uint32
 
 
-                                                class OspfFastRerouteTiebreakersIntfEnum;
+                                                YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                YLeaf tiebreaker_index; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -11516,6 +11815,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class CandidateInterface : public Entity
                                         {
                                             public:
@@ -11529,8 +11829,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -11558,6 +11859,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class ExcludeInterface : public Entity
                                         {
                                             public:
@@ -11571,8 +11873,9 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
 
+
+                                                YLeaf interface_name; //type: string
 
 
 
@@ -11596,7 +11899,6 @@ class Ospf : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink> per_link;
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix> per_prefix;
-                                    class OspfFastRerouteEnum;
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute
@@ -11615,9 +11917,10 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value cost; //type: uint32
-                                    Value threshold; //type: uint32
 
+
+                                    YLeaf cost; //type: uint32
+                                    YLeaf threshold; //type: uint32
 
 
 
@@ -11631,8 +11934,6 @@ class Ospf : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::DistributeList> distribute_list; // presence node
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute> fast_reroute;
                                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::Security> security;
-                                class OspfNetworkEnum;
-                                class OspfSegmentRoutingForwardingEnum;
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope
@@ -11653,6 +11954,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class NameScope : public Entity
                             {
                                 public:
@@ -11666,29 +11968,30 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value cost; //type: uint32
-                                    Value prefix_suppression_primary; //type: boolean
-                                    Value mtu_ignore; //type: boolean
-                                    Value ldp_sync_igp_shortcuts; //type: boolean
-                                    Value ldp_auto_config; //type: empty
-                                    Value network_type; //type: OspfNetworkEnum
-                                    Value hello_interval; //type: uint32
-                                    Value loopback_stub_network; //type: boolean
-                                    Value prefix_suppression_secondary; //type: boolean
-                                    Value demand_circuit; //type: boolean
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value ldp_sync; //type: boolean
-                                    Value database_filter; //type: boolean
-                                    Value link_down_fast_detect; //type: boolean
-                                    Value segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
-                                    Value retransmit_interval; //type: uint32
-                                    Value priority; //type: uint32
-                                    Value flood_reduction; //type: boolean
-                                    Value running; //type: empty
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf prefix_suppression_primary; //type: boolean
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf ldp_sync_igp_shortcuts; //type: boolean
+                                    YLeaf ldp_auto_config; //type: empty
+                                    YLeaf network_type; //type: OspfNetworkEnum
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf loopback_stub_network; //type: boolean
+                                    YLeaf prefix_suppression_secondary; //type: boolean
+                                    YLeaf demand_circuit; //type: boolean
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf ldp_sync; //type: boolean
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf link_down_fast_detect; //type: boolean
+                                    YLeaf segment_routing_forwarding; //type: OspfSegmentRoutingForwardingEnum
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf priority; //type: uint32
+                                    YLeaf flood_reduction; //type: boolean
+                                    YLeaf running; //type: empty
 
                                 class PrefixSid : public Entity
                                 {
@@ -11703,13 +12006,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value explicit_null; //type: boolean
-                                        Value type; //type: OspfSidEnum
-                                        Value n_flag_clear; //type: boolean
 
 
-                                        class OspfSidEnum;
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf explicit_null; //type: boolean
+                                        YLeaf type; //type: OspfSidEnum
+                                        YLeaf n_flag_clear; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid
@@ -11728,13 +12031,13 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sid_value; //type: uint32
-                                        Value explicit_null; //type: boolean
-                                        Value type; //type: OspfSidEnum
-                                        Value n_flag_clear; //type: boolean
 
 
-                                        class OspfSidEnum;
+                                        YLeaf sid_value; //type: uint32
+                                        YLeaf explicit_null; //type: boolean
+                                        YLeaf type; //type: OspfSidEnum
+                                        YLeaf n_flag_clear; //type: boolean
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict
@@ -11753,9 +12056,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -11775,12 +12079,12 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value detection_multiplier; //type: uint32
-                                        Value fast_detect_mode; //type: BfdEnableModeEnum
 
 
-                                        class BfdEnableModeEnum;
+                                        YLeaf interval; //type: uint32
+                                        YLeaf detection_multiplier; //type: uint32
+                                        YLeaf fast_detect_mode; //type: BfdEnableModeEnum
+
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd
@@ -11799,8 +12103,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -11815,13 +12120,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Authentication::Type
@@ -11842,6 +12146,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -11855,9 +12160,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -11892,6 +12198,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Ttl : public Entity
                                     {
                                         public:
@@ -11905,9 +12212,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value enable; //type: boolean
-                                            Value hop_count; //type: uint32
 
+
+                                            YLeaf enable; //type: boolean
+                                            YLeaf hop_count; //type: uint32
 
 
 
@@ -11935,6 +12243,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Neighbor : public Entity
                                     {
                                         public:
@@ -11948,12 +12257,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor_address; //type: string
-                                            Value priority; //type: uint32
-                                            Value poll_interval; //type: uint32
-                                            Value cost; //type: uint32
-                                            Value database_filter; //type: boolean
 
+
+                                            YLeaf neighbor_address; //type: string
+                                            YLeaf priority; //type: uint32
+                                            YLeaf poll_interval; //type: uint32
+                                            YLeaf cost; //type: uint32
+                                            YLeaf database_filter; //type: boolean
 
 
 
@@ -11979,9 +12289,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -12001,8 +12312,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -12017,8 +12329,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -12035,6 +12348,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -12048,8 +12362,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12077,6 +12392,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -12090,8 +12406,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12124,9 +12441,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -12141,11 +12459,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::RemoteLfa
@@ -12166,6 +12484,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -12179,11 +12498,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -12210,6 +12529,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -12223,8 +12543,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12252,6 +12573,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -12265,8 +12587,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12290,7 +12613,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute
@@ -12309,9 +12631,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -12328,8 +12651,6 @@ class Ospf : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Security> security;
-                                    class OspfNetworkEnum;
-                                    class OspfSegmentRoutingForwardingEnum;
 
 
                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::NameScopes::NameScope
@@ -12356,6 +12677,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MultiAreaInterfaceScope : public Entity
                             {
                                 public:
@@ -12369,17 +12691,18 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_name; //type: string
-                                    Value cost; //type: uint32
-                                    Value mtu_ignore; //type: boolean
-                                    Value hello_interval; //type: uint32
-                                    Value passive; //type: boolean
-                                    Value transmit_delay; //type: uint32
-                                    Value packet_size; //type: uint32
-                                    Value database_filter; //type: boolean
-                                    Value retransmit_interval; //type: uint32
-                                    Value running; //type: empty
 
+
+                                    YLeaf interface_name; //type: string
+                                    YLeaf cost; //type: uint32
+                                    YLeaf mtu_ignore; //type: boolean
+                                    YLeaf hello_interval; //type: uint32
+                                    YLeaf passive; //type: boolean
+                                    YLeaf transmit_delay; //type: uint32
+                                    YLeaf packet_size; //type: uint32
+                                    YLeaf database_filter; //type: boolean
+                                    YLeaf retransmit_interval; //type: uint32
+                                    YLeaf running; //type: empty
 
                                 class DistributeList : public Entity
                                 {
@@ -12394,9 +12717,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value access_list_name; //type: string
-                                        Value route_policy_name; //type: string
 
+
+                                        YLeaf access_list_name; //type: string
+                                        YLeaf route_policy_name; //type: string
 
 
 
@@ -12416,8 +12740,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value key; //type: string
 
+
+                                        YLeaf key; //type: string
 
                                     class Type : public Entity
                                     {
@@ -12432,13 +12757,12 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value authen_type; //type: OspfAuthenticationEnum
-                                            Value keychain_authen_type; //type: OspfKeychainAuthEnum
-                                            Value keychain_name; //type: string
 
 
-                                            class OspfAuthenticationEnum;
-                                            class OspfKeychainAuthEnum;
+                                            YLeaf authen_type; //type: OspfAuthenticationEnum
+                                            YLeaf keychain_authen_type; //type: OspfKeychainAuthEnum
+                                            YLeaf keychain_name; //type: string
+
 
 
                                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication::Type
@@ -12459,6 +12783,7 @@ class Ospf : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class MessageDigestKey : public Entity
                                         {
                                             public:
@@ -12472,9 +12797,10 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value key_id; //type: uint32
-                                                Value password; //type: string
 
+
+                                                YLeaf key_id; //type: uint32
+                                                YLeaf password; //type: string
 
 
 
@@ -12509,6 +12835,7 @@ class Ospf : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Neighbor : public Entity
                                     {
                                         public:
@@ -12522,12 +12849,13 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value neighbor_address; //type: string
-                                            Value priority; //type: uint32
-                                            Value poll_interval; //type: uint32
-                                            Value cost; //type: uint32
-                                            Value database_filter; //type: boolean
 
+
+                                            YLeaf neighbor_address; //type: string
+                                            YLeaf priority; //type: uint32
+                                            YLeaf poll_interval; //type: uint32
+                                            YLeaf cost; //type: uint32
+                                            YLeaf database_filter; //type: boolean
 
 
 
@@ -12553,9 +12881,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interval; //type: uint32
-                                        Value multiplier; //type: uint32
 
+
+                                        YLeaf interval; //type: uint32
+                                        YLeaf multiplier; //type: uint32
 
 
 
@@ -12575,8 +12904,9 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value fast_reroute_enable; //type: OspfFastRerouteEnum
 
+
+                                        YLeaf fast_reroute_enable; //type: OspfFastRerouteEnum
 
                                     class PerLink : public Entity
                                     {
@@ -12591,8 +12921,9 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class CandidateInterfaces : public Entity
                                         {
@@ -12609,6 +12940,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -12622,8 +12954,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12651,6 +12984,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -12664,8 +12998,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12698,9 +13033,10 @@ class Ospf : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value topology_independent_lfa; //type: boolean
-                                            Value fast_reroute_use_candidate_only; //type: boolean
 
+
+                                            YLeaf topology_independent_lfa; //type: boolean
+                                            YLeaf fast_reroute_use_candidate_only; //type: boolean
 
                                         class RemoteLfa : public Entity
                                         {
@@ -12715,11 +13051,11 @@ class Ospf : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value tunnel; //type: OspfFrrRlfaTunnelEnum
-                                                Value maximum_cost; //type: uint32
 
 
-                                                class OspfFrrRlfaTunnelEnum;
+                                                YLeaf tunnel; //type: OspfFrrRlfaTunnelEnum
+                                                YLeaf maximum_cost; //type: uint32
+
 
 
                                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::RemoteLfa
@@ -12740,6 +13076,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class Tiebreaker : public Entity
                                             {
                                                 public:
@@ -12753,11 +13090,11 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
-                                                    Value tiebreaker_index; //type: uint32
 
 
-                                                    class OspfFastRerouteTiebreakersIntfEnum;
+                                                    YLeaf tiebreaker_type; //type: OspfFastRerouteTiebreakersIntfEnum
+                                                    YLeaf tiebreaker_index; //type: uint32
+
 
 
                                             }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
@@ -12784,6 +13121,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class CandidateInterface : public Entity
                                             {
                                                 public:
@@ -12797,8 +13135,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12826,6 +13165,7 @@ class Ospf : public Entity
                                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                                             class ExcludeInterface : public Entity
                                             {
                                                 public:
@@ -12839,8 +13179,9 @@ class Ospf : public Entity
                                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                     void set_value(const std::string & value_path, std::string value) override;
                                                     std::map<std::string, Entity*> & get_children() override;
-                                                    Value interface_name; //type: string
 
+
+                                                    YLeaf interface_name; //type: string
 
 
 
@@ -12864,7 +13205,6 @@ class Ospf : public Entity
 
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerLink> per_link;
                                         std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute::PerPrefix> per_prefix;
-                                        class OspfFastRerouteEnum;
 
 
                                 }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::FastReroute
@@ -12883,9 +13223,10 @@ class Ospf : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value cost; //type: uint32
-                                        Value threshold; //type: uint32
 
+
+                                        YLeaf cost; //type: uint32
+                                        YLeaf threshold; //type: uint32
 
 
 
@@ -12924,6 +13265,7 @@ class Ospf : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AreaRange : public Entity
                             {
                                 public:
@@ -12937,10 +13279,11 @@ class Ospf : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value netmask; //type: string
-                                    Value not_advertise; //type: boolean
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf netmask; //type: string
+                                    YLeaf not_advertise; //type: boolean
 
 
 
@@ -12966,14 +13309,14 @@ class Ospf : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value no_redistribution; //type: boolean
-                                Value default_info_originate; //type: boolean
-                                Value no_summary; //type: boolean
-                                Value nssa_def_metric; //type: uint32
-                                Value metric_type; //type: OspfLinkStateMetricEnum
 
 
-                                class OspfLinkStateMetricEnum;
+                                YLeaf no_redistribution; //type: boolean
+                                YLeaf default_info_originate; //type: boolean
+                                YLeaf no_summary; //type: boolean
+                                YLeaf nssa_def_metric; //type: uint32
+                                YLeaf metric_type; //type: OspfLinkStateMetricEnum
+
 
 
                         }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Nssa
@@ -12986,7 +13329,6 @@ class Ospf : public Entity
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Nssa> nssa;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLinkScopes> sham_link_scopes;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::VirtualLinkScopes> virtual_link_scopes;
-                            class OspfSegmentRoutingEnum;
 
 
                     }; // Ospf::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId
@@ -13012,12 +13354,13 @@ class Ospf : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lsa_pacing_flood; //type: uint32
-                        Value fast_reroute_timer; //type: uint32
-                        Value lsa_refresh; //type: uint32
-                        Value lsa_group_pacing; //type: uint32
-                        Value lsa_min_arrival; //type: uint32
 
+
+                        YLeaf lsa_pacing_flood; //type: uint32
+                        YLeaf fast_reroute_timer; //type: uint32
+                        YLeaf lsa_refresh; //type: uint32
+                        YLeaf lsa_group_pacing; //type: uint32
+                        YLeaf lsa_min_arrival; //type: uint32
 
                     class SpfTimer : public Entity
                     {
@@ -13032,10 +13375,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value initial_delay; //type: uint32
-                            Value backoff_increment; //type: uint32
-                            Value max_delay; //type: uint32
 
+
+                            YLeaf initial_delay; //type: uint32
+                            YLeaf backoff_increment; //type: uint32
+                            YLeaf max_delay; //type: uint32
 
 
 
@@ -13055,10 +13399,11 @@ class Ospf : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value initial_delay; //type: uint32
-                            Value backoff_increment; //type: uint32
-                            Value max_delay; //type: uint32
 
+
+                            YLeaf initial_delay; //type: uint32
+                            YLeaf backoff_increment; //type: uint32
+                            YLeaf max_delay; //type: uint32
 
 
 
@@ -13094,7 +13439,6 @@ class Ospf : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::SummaryPrefixes> summary_prefixes;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Timers> timers;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::DefaultVrf::Ucmp> ucmp;
-                    class OspfLogAdjEnum;
 
 
             }; // Ospf::Processes::Process::DefaultVrf
@@ -13104,8 +13448,6 @@ class Ospf : public Entity
                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Distribute> distribute; // presence node
                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Snmp> snmp;
                 std::unique_ptr<Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs> vrfs;
-                class NsrEnum;
-                class OspfShutdownEnum;
 
 
         }; // Ospf::Processes::Process
@@ -13130,8 +13472,9 @@ class Ospf : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value dns_name_lookup; //type: empty
 
+
+            YLeaf dns_name_lookup; //type: empty
 
 
 
@@ -13148,274 +13491,274 @@ class Ospf : public Entity
 class OspfFastRerouteTiebreakersEnum : public Enum
 {
     public:
-        static const Enum::Value downstream;
-        static const Enum::Value line_card_disjoint;
-        static const Enum::Value lowest_metric;
-        static const Enum::Value node_protect;
-        static const Enum::Value primary_path;
-        static const Enum::Value secondary_path;
-        static const Enum::Value srlg_disjoint;
+        static const Enum::YLeaf downstream;
+        static const Enum::YLeaf line_card_disjoint;
+        static const Enum::YLeaf lowest_metric;
+        static const Enum::YLeaf node_protect;
+        static const Enum::YLeaf primary_path;
+        static const Enum::YLeaf secondary_path;
+        static const Enum::YLeaf srlg_disjoint;
 
 };
 
 class OspfFastRerouteEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value per_link;
-        static const Enum::Value per_prefix;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf per_link;
+        static const Enum::YLeaf per_prefix;
 
 };
 
 class OspfRedistLsaEnum : public Enum
 {
     public:
-        static const Enum::Value summary;
-        static const Enum::Value external;
+        static const Enum::YLeaf summary;
+        static const Enum::YLeaf external;
 
 };
 
 class OspfIetfNsfEnum : public Enum
 {
     public:
-        static const Enum::Value all;
+        static const Enum::YLeaf all;
 
 };
 
 class BfdEnableModeEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value default_;
-        static const Enum::Value strict;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf strict;
 
 };
 
 class OspfFastReroutePriorityEnum : public Enum
 {
     public:
-        static const Enum::Value critical;
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
 
 };
 
 class OspfCiscoNsfEnum : public Enum
 {
     public:
-        static const Enum::Value always;
-        static const Enum::Value require_nsf_neighbors;
+        static const Enum::YLeaf always;
+        static const Enum::YLeaf require_nsf_neighbors;
 
 };
 
 class OspfRedistProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value connected;
-        static const Enum::Value static_;
-        static const Enum::Value bgp;
-        static const Enum::Value rip;
-        static const Enum::Value isis;
-        static const Enum::Value ospf;
-        static const Enum::Value eigrp;
-        static const Enum::Value dagr;
-        static const Enum::Value subscriber;
-        static const Enum::Value application;
-        static const Enum::Value mobile;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf rip;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf eigrp;
+        static const Enum::YLeaf dagr;
+        static const Enum::YLeaf subscriber;
+        static const Enum::YLeaf application;
+        static const Enum::YLeaf mobile;
 
 };
 
 class OspfSegmentRoutingEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value mpls;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf mpls;
 
 };
 
 class OspfUloopAvoidanceEnum : public Enum
 {
     public:
-        static const Enum::Value protected_;
-        static const Enum::Value all;
+        static const Enum::YLeaf protected_;
+        static const Enum::YLeaf all;
 
 };
 
 class OspfSegmentRoutingForwardingEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value mpls;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf mpls;
 
 };
 
 class OspfAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
+        static const Enum::YLeaf ipv4;
 
 };
 
 class OspfProcFastRerouteEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value per_link;
-        static const Enum::Value per_prefix;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf per_link;
+        static const Enum::YLeaf per_prefix;
 
 };
 
 class OspfProcFrrRlfaTunnelEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value mpls_ldp;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf mpls_ldp;
 
 };
 
 class OspfIetfNsfSupportEnum : public Enum
 {
     public:
-        static const Enum::Value never;
+        static const Enum::YLeaf never;
 
 };
 
 class OspfLinkStateMetricEnum : public Enum
 {
     public:
-        static const Enum::Value type1;
-        static const Enum::Value type2;
+        static const Enum::YLeaf type1;
+        static const Enum::YLeaf type2;
 
 };
 
 class OspfAuthenticationEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value plain;
-        static const Enum::Value md5;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf plain;
+        static const Enum::YLeaf md5;
 
 };
 
 class OspfLogAdjEnum : public Enum
 {
     public:
-        static const Enum::Value brief;
-        static const Enum::Value detail;
-        static const Enum::Value suppress;
+        static const Enum::YLeaf brief;
+        static const Enum::YLeaf detail;
+        static const Enum::YLeaf suppress;
 
 };
 
 class OspfSubAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value unicast;
+        static const Enum::YLeaf unicast;
 
 };
 
 class OspfDomainIdEnum : public Enum
 {
     public:
-        static const Enum::Value type0005;
-        static const Enum::Value type0105;
-        static const Enum::Value type0205;
-        static const Enum::Value type8005;
+        static const Enum::YLeaf type0005;
+        static const Enum::YLeaf type0105;
+        static const Enum::YLeaf type0205;
+        static const Enum::YLeaf type8005;
 
 };
 
 class OspfEigrpRouteEnum : public Enum
 {
     public:
-        static const Enum::Value internal;
-        static const Enum::Value external;
+        static const Enum::YLeaf internal;
+        static const Enum::YLeaf external;
 
 };
 
 class OspfSidEnum : public Enum
 {
     public:
-        static const Enum::Value index_;
-        static const Enum::Value absolute;
+        static const Enum::YLeaf index_;
+        static const Enum::YLeaf absolute;
 
 };
 
 class NsrEnum : public Enum
 {
     public:
-        static const Enum::Value true_;
-        static const Enum::Value false_;
+        static const Enum::YLeaf true_;
+        static const Enum::YLeaf false_;
 
 };
 
 class OspfFastRerouteTiebreakersIntfEnum : public Enum
 {
     public:
-        static const Enum::Value downstream;
-        static const Enum::Value line_card_disjoint;
-        static const Enum::Value lowest_metric;
-        static const Enum::Value node_protect;
-        static const Enum::Value primary_path;
-        static const Enum::Value secondary_path;
-        static const Enum::Value srlg_disjoint;
+        static const Enum::YLeaf downstream;
+        static const Enum::YLeaf line_card_disjoint;
+        static const Enum::YLeaf lowest_metric;
+        static const Enum::YLeaf node_protect;
+        static const Enum::YLeaf primary_path;
+        static const Enum::YLeaf secondary_path;
+        static const Enum::YLeaf srlg_disjoint;
 
 };
 
 class OspfDistListProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value connected;
-        static const Enum::Value static_;
-        static const Enum::Value bgp;
-        static const Enum::Value ospf;
-        static const Enum::Value dagr;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf dagr;
 
 };
 
 class OspfRouteLevelEnum : public Enum
 {
     public:
-        static const Enum::Value type1;
-        static const Enum::Value type2;
-        static const Enum::Value type1_and2;
+        static const Enum::YLeaf type1;
+        static const Enum::YLeaf type2;
+        static const Enum::YLeaf type1_and2;
 
 };
 
 class OspfNetworkEnum : public Enum
 {
     public:
-        static const Enum::Value broadcast;
-        static const Enum::Value non_broadcast;
-        static const Enum::Value point_to_point;
-        static const Enum::Value point_to_multipoint;
-        static const Enum::Value non_broadcast_point_to_multipoint;
+        static const Enum::YLeaf broadcast;
+        static const Enum::YLeaf non_broadcast;
+        static const Enum::YLeaf point_to_point;
+        static const Enum::YLeaf point_to_multipoint;
+        static const Enum::YLeaf non_broadcast_point_to_multipoint;
 
 };
 
 class OspfFrrRlfaTunnelEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value mpls_ldp;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf mpls_ldp;
 
 };
 
 class OspfShutdownEnum : public Enum
 {
     public:
-        static const Enum::Value full;
-        static const Enum::Value hostmode;
-        static const Enum::Value onreload;
+        static const Enum::YLeaf full;
+        static const Enum::YLeaf hostmode;
+        static const Enum::YLeaf onreload;
 
 };
 
 class OspfKeychainAuthEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value keychain;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf keychain;
 
 };
 

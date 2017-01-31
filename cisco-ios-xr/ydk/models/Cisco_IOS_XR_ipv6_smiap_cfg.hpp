@@ -24,8 +24,9 @@ class Ipv6Virtual : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value use_as_source_address; //type: empty
 
+
+        YLeaf use_as_source_address; //type: empty
 
     class Vrfs : public Entity
     {
@@ -42,6 +43,7 @@ class Ipv6Virtual : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -55,8 +57,9 @@ class Ipv6Virtual : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Address : public Entity
             {
@@ -71,9 +74,10 @@ class Ipv6Virtual : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
-                    Value prefix_length; //type: uint8
 
+
+                    YLeaf address; //type: string
+                    YLeaf prefix_length; //type: uint8
 
 
 

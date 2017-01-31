@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_clns_isis_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_clns_isis_cfg {
@@ -28,6 +27,7 @@ class Isis : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Instances : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class Isis : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Instance : public Entity
         {
             public:
@@ -56,17 +57,18 @@ class Isis : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value instance_name; //type: string
-                Value running; //type: empty
-                Value log_adjacency_changes; //type: empty
-                Value ignore_lsp_errors; //type: boolean
-                Value is_type; //type: IsisConfigurableLevelsEnum
-                Value tracing_mode; //type: IsisTracingModeEnum
-                Value instance_id; //type: uint32
-                Value dynamic_host_name; //type: boolean
-                Value nsr; //type: empty
-                Value log_pdu_drops; //type: empty
 
+
+                YLeaf instance_name; //type: string
+                YLeaf running; //type: empty
+                YLeaf log_adjacency_changes; //type: empty
+                YLeaf ignore_lsp_errors; //type: boolean
+                YLeaf is_type; //type: IsisConfigurableLevelsEnum
+                YLeaf tracing_mode; //type: IsisTracingModeEnum
+                YLeaf instance_id; //type: uint32
+                YLeaf dynamic_host_name; //type: boolean
+                YLeaf nsr; //type: empty
+                YLeaf log_pdu_drops; //type: empty
 
             class Srgb : public Entity
             {
@@ -81,9 +83,10 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lower_bound; //type: uint32
-                    Value upper_bound; //type: uint32
 
+
+                    YLeaf lower_bound; //type: uint32
+                    YLeaf upper_bound; //type: uint32
 
 
 
@@ -105,6 +108,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspGenerationInterval : public Entity
                 {
                     public:
@@ -118,13 +122,13 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value maximum_wait; //type: uint32
-                        Value initial_wait; //type: uint32
-                        Value secondary_wait; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf maximum_wait; //type: uint32
+                        YLeaf initial_wait; //type: uint32
+                        YLeaf secondary_wait; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspGenerationIntervals::LspGenerationInterval
@@ -151,6 +155,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspArrivalTime : public Entity
                 {
                     public:
@@ -164,13 +169,13 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value maximum_wait; //type: uint32
-                        Value initial_wait; //type: uint32
-                        Value secondary_wait; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf maximum_wait; //type: uint32
+                        YLeaf initial_wait; //type: uint32
+                        YLeaf secondary_wait; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspArrivalTimes::LspArrivalTime
@@ -195,11 +200,12 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value detailed; //type: uint32
-                    Value standard; //type: uint32
-                    Value severe; //type: uint32
-                    Value hello; //type: uint32
 
+
+                    YLeaf detailed; //type: uint32
+                    YLeaf standard; //type: uint32
+                    YLeaf severe; //type: uint32
+                    YLeaf hello; //type: uint32
 
 
 
@@ -221,6 +227,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class MaxLinkMetric : public Entity
                 {
                     public:
@@ -234,10 +241,10 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+
 
 
                 }; // Isis::Instances::Instance::MaxLinkMetrics::MaxLinkMetric
@@ -264,6 +271,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -277,9 +285,10 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: IsisAddressFamilyEnum
-                        Value saf_name; //type: IsisSubAddressFamilyEnum
 
+
+                        YLeaf af_name; //type: IsisAddressFamilyEnum
+                        YLeaf saf_name; //type: IsisSubAddressFamilyEnum
 
                     class AfData : public Entity
                     {
@@ -294,18 +303,19 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_paths; //type: uint32
-                            Value topology_id; //type: uint32
-                            Value single_topology; //type: empty
-                            Value adjacency_check; //type: IsisAdjCheckEnum
-                            Value advertise_link_attributes; //type: boolean
-                            Value apply_weight; //type: IsisApplyWeightEnum
-                            Value default_admin_distance; //type: uint32
-                            Value advertise_passive_only; //type: empty
-                            Value ignore_attached_bit; //type: boolean
-                            Value attached_bit; //type: IsisAttachedBitEnum
-                            Value route_source_first_hop; //type: boolean
 
+
+                            YLeaf maximum_paths; //type: uint32
+                            YLeaf topology_id; //type: uint32
+                            YLeaf single_topology; //type: empty
+                            YLeaf adjacency_check; //type: IsisAdjCheckEnum
+                            YLeaf advertise_link_attributes; //type: boolean
+                            YLeaf apply_weight; //type: IsisApplyWeightEnum
+                            YLeaf default_admin_distance; //type: uint32
+                            YLeaf advertise_passive_only; //type: empty
+                            YLeaf ignore_attached_bit; //type: boolean
+                            YLeaf attached_bit; //type: IsisAttachedBitEnum
+                            YLeaf route_source_first_hop; //type: boolean
 
                         class SegmentRouting : public Entity
                         {
@@ -320,8 +330,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mpls; //type: IsisLabelPreferenceEnum
 
+
+                                YLeaf mpls; //type: IsisLabelPreferenceEnum
 
                             class PrefixSidMap : public Entity
                             {
@@ -336,9 +347,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value advertise_local; //type: empty
-                                    Value receive; //type: boolean
 
+
+                                    YLeaf advertise_local; //type: empty
+                                    YLeaf receive; //type: boolean
 
 
 
@@ -346,7 +358,6 @@ class Isis : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap> prefix_sid_map;
-                                class IsisLabelPreferenceEnum;
 
 
                         }; // Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting
@@ -367,6 +378,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MetricStyle : public Entity
                             {
                                 public:
@@ -380,14 +392,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value style; //type: IsisMetricStyleEnum
-                                    Value transition_state; //type: IsisMetricStyleTransitionEnum
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisMetricStyleEnum;
-                                    class IsisMetricStyleTransitionEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf style; //type: IsisMetricStyleEnum
+                                    YLeaf transition_state; //type: IsisMetricStyleTransitionEnum
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::MetricStyles::MetricStyle
@@ -414,6 +424,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FrrLoadSharings : public Entity
                             {
                                 public:
@@ -429,6 +440,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrLoadSharing : public Entity
                                 {
                                     public:
@@ -442,12 +454,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value load_sharing; //type: IsisfrrLoadSharingEnum
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisfrrLoadSharingEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf load_sharing; //type: IsisfrrLoadSharingEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrLoadSharings::FrrLoadSharing
@@ -474,6 +485,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PriorityLimit : public Entity
                                 {
                                     public:
@@ -487,14 +499,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value frr_type; //type: IsisfrrEnum
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
 
-                                        class IsisfrrEnum;
-                                        class IsisInternalLevelEnum;
-                                        class IsisPrefixPriorityEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf frr_type; //type: IsisfrrEnum
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit
@@ -521,6 +531,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrRemoteLfaPrefix : public Entity
                                 {
                                     public:
@@ -534,11 +545,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value prefix_list_name; //type: string
 
 
-                                        class IsisInternalLevelEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf prefix_list_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
@@ -565,6 +576,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrTiebreaker : public Entity
                                 {
                                     public:
@@ -578,13 +590,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value tiebreaker; //type: IsisfrrTiebreakerEnum
-                                        Value index_; //type: uint32
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisfrrTiebreakerEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf tiebreaker; //type: IsisfrrTiebreakerEnum
+                                        YLeaf index_; //type: uint32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrTiebreakers::FrrTiebreaker
@@ -611,6 +622,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrUseCandOnly : public Entity
                                 {
                                     public:
@@ -624,12 +636,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value frr_type; //type: IsisfrrEnum
 
 
-                                        class IsisfrrEnum;
-                                        class IsisInternalLevelEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf frr_type; //type: IsisfrrEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
@@ -664,9 +675,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
-                                Value interface_name; //type: string
 
+
+                                YLeaf address; //type: string
+                                YLeaf interface_name; //type: string
 
 
 
@@ -688,6 +700,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfPrefixPriority : public Entity
                             {
                                 public:
@@ -701,14 +714,13 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value prefix_priority_type; //type: IsisPrefixPriorityEnum
-                                    Value admin_tag; //type: uint32
-                                    Value access_list_name; //type: string
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisPrefixPriorityEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf prefix_priority_type; //type: IsisPrefixPriorityEnum
+                                    YLeaf admin_tag; //type: uint32
+                                    YLeaf access_list_name; //type: string
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPrefixPriorities::SpfPrefixPriority
@@ -735,6 +747,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SummaryPrefix : public Entity
                             {
                                 public:
@@ -748,10 +761,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_prefix; //type: string
-                                    Value tag; //type: uint32
-                                    Value level; //type: uint32
 
+
+                                    YLeaf address_prefix; //type: string
+                                    YLeaf tag; //type: uint32
+                                    YLeaf level; //type: uint32
 
 
 
@@ -777,11 +791,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: IsisMicroLoopAvoidanceEnum
-                                Value rib_update_delay; //type: uint32
 
 
-                                class IsisMicroLoopAvoidanceEnum;
+                                YLeaf enable; //type: IsisMicroLoopAvoidanceEnum
+                                YLeaf rib_update_delay; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Afs::Af::AfData::MicroLoopAvoidance
@@ -800,8 +814,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value delay_interval; //type: uint32
 
+
+                                YLeaf delay_interval; //type: uint32
 
                             class Enable : public Entity
                             {
@@ -816,9 +831,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value variance; //type: uint32
-                                    Value prefix_list_name; //type: string
 
+
+                                    YLeaf variance; //type: uint32
+                                    YLeaf prefix_list_name; //type: string
 
 
 
@@ -840,6 +856,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ExcludeInterface : public Entity
                                 {
                                     public:
@@ -853,8 +870,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -889,6 +907,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MaxRedistPrefix : public Entity
                             {
                                 public:
@@ -902,11 +921,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value prefix_limit; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf prefix_limit; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::MaxRedistPrefixes::MaxRedistPrefix
@@ -933,6 +952,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Propagation : public Entity
                             {
                                 public:
@@ -946,13 +966,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_level; //type: IsisInternalLevelEnum
-                                    Value destination_level; //type: IsisInternalLevelEnum
-                                    Value route_policy_name; //type: string
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisInternalLevelEnum;
+                                    YLeaf source_level; //type: IsisInternalLevelEnum
+                                    YLeaf destination_level; //type: IsisInternalLevelEnum
+                                    YLeaf route_policy_name; //type: string
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::Propagations::Propagation
@@ -979,6 +998,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Redistribution : public Entity
                             {
                                 public:
@@ -992,8 +1012,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value protocol_name; //type: IsisRedistProtoEnum
 
+
+                                    YLeaf protocol_name; //type: IsisRedistProtoEnum
 
                                 class ConnectedOrStaticOrRipOrSubscriberOrMobile : public Entity
                                 {
@@ -1008,15 +1029,14 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
@@ -1035,16 +1055,15 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value instance_name; //type: string
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf instance_name; //type: string
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
@@ -1063,17 +1082,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Bgp
@@ -1092,16 +1110,15 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_zz; //type: uint32
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf as_zz; //type: uint32
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp
@@ -1111,7 +1128,6 @@ class Isis : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile> connected_or_static_or_rip_or_subscriber_or_mobile; // presence node
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::Eigrp> > eigrp;
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication> > ospf_or_ospfv3_or_isis_or_application;
-                                    class IsisRedistProtoEnum;
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::Redistributions::Redistribution
@@ -1138,6 +1154,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfPeriodicInterval : public Entity
                             {
                                 public:
@@ -1151,11 +1168,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value periodic_interval; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf periodic_interval; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::SpfPeriodicIntervals::SpfPeriodicInterval
@@ -1182,6 +1199,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfInterval : public Entity
                             {
                                 public:
@@ -1195,13 +1213,13 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value maximum_wait; //type: uint32
-                                    Value initial_wait; //type: uint32
-                                    Value secondary_wait; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf maximum_wait; //type: uint32
+                                    YLeaf initial_wait; //type: uint32
+                                    YLeaf secondary_wait; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::SpfIntervals::SpfInterval
@@ -1226,10 +1244,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
-                                Value track_ip_frr; //type: empty
-                                Value prefix_list; //type: string
 
+
+                                YLeaf enable; //type: empty
+                                YLeaf track_ip_frr; //type: empty
+                                YLeaf prefix_list; //type: string
 
 
 
@@ -1249,10 +1268,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value use_policy; //type: boolean
-                                Value policy_name; //type: string
-                                Value external; //type: empty
 
+
+                                YLeaf use_policy; //type: boolean
+                                YLeaf policy_name; //type: string
+                                YLeaf external; //type: empty
 
 
 
@@ -1274,6 +1294,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AdminDistance : public Entity
                             {
                                 public:
@@ -1287,10 +1308,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_prefix; //type: string
-                                    Value distance; //type: uint32
-                                    Value prefix_list; //type: string
 
+
+                                    YLeaf address_prefix; //type: string
+                                    YLeaf distance; //type: uint32
+                                    YLeaf prefix_list; //type: string
 
 
 
@@ -1318,6 +1340,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class States : public Entity
                             {
                                 public:
@@ -1333,6 +1356,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class State : public Entity
                                 {
                                     public:
@@ -1346,12 +1370,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value state; //type: IsisispfStateEnum
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisispfStateEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf state; //type: IsisispfStateEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::AfData::Ispf::States::State
@@ -1382,8 +1405,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value auto_config; //type: boolean
 
+
+                                YLeaf auto_config; //type: boolean
 
 
 
@@ -1403,10 +1427,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value igp_intact; //type: empty
-                                Value level; //type: IsisConfigurableLevelsEnum
-                                Value multicast_intact; //type: empty
 
+
+                                YLeaf igp_intact; //type: empty
+                                YLeaf level; //type: IsisConfigurableLevelsEnum
+                                YLeaf multicast_intact; //type: empty
 
                             class RouterId : public Entity
                             {
@@ -1421,9 +1446,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -1431,7 +1457,6 @@ class Isis : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Mpls::RouterId> router_id;
-                                class IsisConfigurableLevelsEnum;
 
 
                         }; // Isis::Instances::Instance::Afs::Af::AfData::Mpls
@@ -1452,6 +1477,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Metric : public Entity
                             {
                                 public:
@@ -1465,11 +1491,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value metric; //type: one of uint32, enumeration
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf metric; //type: one of uint32, enumeration
+
                                     class MetricEnum;
 
 
@@ -1497,6 +1523,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Weight : public Entity
                             {
                                 public:
@@ -1510,11 +1537,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value weight; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf weight; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::AfData::Weights::Weight
@@ -1547,9 +1574,6 @@ class Isis : public Entity
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::SummaryPrefixes> summary_prefixes;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Ucmp> ucmp;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData::Weights> weights;
-                            class IsisAdjCheckEnum;
-                            class IsisApplyWeightEnum;
-                            class IsisAttachedBitEnum;
 
 
                     }; // Isis::Instances::Instance::Afs::Af::AfData
@@ -1568,19 +1592,20 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value topology_name; //type: string
-                            Value maximum_paths; //type: uint32
-                            Value topology_id; //type: uint32
-                            Value single_topology; //type: empty
-                            Value adjacency_check; //type: IsisAdjCheckEnum
-                            Value advertise_link_attributes; //type: boolean
-                            Value apply_weight; //type: IsisApplyWeightEnum
-                            Value default_admin_distance; //type: uint32
-                            Value advertise_passive_only; //type: empty
-                            Value ignore_attached_bit; //type: boolean
-                            Value attached_bit; //type: IsisAttachedBitEnum
-                            Value route_source_first_hop; //type: boolean
 
+
+                            YLeaf topology_name; //type: string
+                            YLeaf maximum_paths; //type: uint32
+                            YLeaf topology_id; //type: uint32
+                            YLeaf single_topology; //type: empty
+                            YLeaf adjacency_check; //type: IsisAdjCheckEnum
+                            YLeaf advertise_link_attributes; //type: boolean
+                            YLeaf apply_weight; //type: IsisApplyWeightEnum
+                            YLeaf default_admin_distance; //type: uint32
+                            YLeaf advertise_passive_only; //type: empty
+                            YLeaf ignore_attached_bit; //type: boolean
+                            YLeaf attached_bit; //type: IsisAttachedBitEnum
+                            YLeaf route_source_first_hop; //type: boolean
 
                         class SegmentRouting : public Entity
                         {
@@ -1595,8 +1620,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mpls; //type: IsisLabelPreferenceEnum
 
+
+                                YLeaf mpls; //type: IsisLabelPreferenceEnum
 
                             class PrefixSidMap : public Entity
                             {
@@ -1611,9 +1637,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value advertise_local; //type: empty
-                                    Value receive; //type: boolean
 
+
+                                    YLeaf advertise_local; //type: empty
+                                    YLeaf receive; //type: boolean
 
 
 
@@ -1621,7 +1648,6 @@ class Isis : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap> prefix_sid_map;
-                                class IsisLabelPreferenceEnum;
 
 
                         }; // Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting
@@ -1642,6 +1668,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MetricStyle : public Entity
                             {
                                 public:
@@ -1655,14 +1682,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value style; //type: IsisMetricStyleEnum
-                                    Value transition_state; //type: IsisMetricStyleTransitionEnum
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisMetricStyleEnum;
-                                    class IsisMetricStyleTransitionEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf style; //type: IsisMetricStyleEnum
+                                    YLeaf transition_state; //type: IsisMetricStyleTransitionEnum
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::MetricStyles::MetricStyle
@@ -1689,6 +1714,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class FrrLoadSharings : public Entity
                             {
                                 public:
@@ -1704,6 +1730,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrLoadSharing : public Entity
                                 {
                                     public:
@@ -1717,12 +1744,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value load_sharing; //type: IsisfrrLoadSharingEnum
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisfrrLoadSharingEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf load_sharing; //type: IsisfrrLoadSharingEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrLoadSharings::FrrLoadSharing
@@ -1749,6 +1775,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PriorityLimit : public Entity
                                 {
                                     public:
@@ -1762,14 +1789,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value frr_type; //type: IsisfrrEnum
-                                        Value priority; //type: IsisPrefixPriorityEnum
 
 
-                                        class IsisfrrEnum;
-                                        class IsisInternalLevelEnum;
-                                        class IsisPrefixPriorityEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf frr_type; //type: IsisfrrEnum
+                                        YLeaf priority; //type: IsisPrefixPriorityEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit
@@ -1796,6 +1821,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrRemoteLfaPrefix : public Entity
                                 {
                                     public:
@@ -1809,11 +1835,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value prefix_list_name; //type: string
 
 
-                                        class IsisInternalLevelEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf prefix_list_name; //type: string
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrRemoteLfaPrefixes::FrrRemoteLfaPrefix
@@ -1840,6 +1866,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrTiebreaker : public Entity
                                 {
                                     public:
@@ -1853,13 +1880,12 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value tiebreaker; //type: IsisfrrTiebreakerEnum
-                                        Value index_; //type: uint32
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisfrrTiebreakerEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf tiebreaker; //type: IsisfrrTiebreakerEnum
+                                        YLeaf index_; //type: uint32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrTiebreakers::FrrTiebreaker
@@ -1886,6 +1912,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class FrrUseCandOnly : public Entity
                                 {
                                     public:
@@ -1899,12 +1926,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value frr_type; //type: IsisfrrEnum
 
 
-                                        class IsisfrrEnum;
-                                        class IsisInternalLevelEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf frr_type; //type: IsisfrrEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrUseCandOnlies::FrrUseCandOnly
@@ -1939,9 +1965,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
-                                Value interface_name; //type: string
 
+
+                                YLeaf address; //type: string
+                                YLeaf interface_name; //type: string
 
 
 
@@ -1963,6 +1990,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfPrefixPriority : public Entity
                             {
                                 public:
@@ -1976,14 +2004,13 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value prefix_priority_type; //type: IsisPrefixPriorityEnum
-                                    Value admin_tag; //type: uint32
-                                    Value access_list_name; //type: string
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisPrefixPriorityEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf prefix_priority_type; //type: IsisPrefixPriorityEnum
+                                    YLeaf admin_tag; //type: uint32
+                                    YLeaf access_list_name; //type: string
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPrefixPriorities::SpfPrefixPriority
@@ -2010,6 +2037,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SummaryPrefix : public Entity
                             {
                                 public:
@@ -2023,10 +2051,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_prefix; //type: string
-                                    Value tag; //type: uint32
-                                    Value level; //type: uint32
 
+
+                                    YLeaf address_prefix; //type: string
+                                    YLeaf tag; //type: uint32
+                                    YLeaf level; //type: uint32
 
 
 
@@ -2052,11 +2081,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: IsisMicroLoopAvoidanceEnum
-                                Value rib_update_delay; //type: uint32
 
 
-                                class IsisMicroLoopAvoidanceEnum;
+                                YLeaf enable; //type: IsisMicroLoopAvoidanceEnum
+                                YLeaf rib_update_delay; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Afs::Af::TopologyName::MicroLoopAvoidance
@@ -2075,8 +2104,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value delay_interval; //type: uint32
 
+
+                                YLeaf delay_interval; //type: uint32
 
                             class Enable : public Entity
                             {
@@ -2091,9 +2121,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value variance; //type: uint32
-                                    Value prefix_list_name; //type: string
 
+
+                                    YLeaf variance; //type: uint32
+                                    YLeaf prefix_list_name; //type: string
 
 
 
@@ -2115,6 +2146,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class ExcludeInterface : public Entity
                                 {
                                     public:
@@ -2128,8 +2160,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -2164,6 +2197,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class MaxRedistPrefix : public Entity
                             {
                                 public:
@@ -2177,11 +2211,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value prefix_limit; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf prefix_limit; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::MaxRedistPrefixes::MaxRedistPrefix
@@ -2208,6 +2242,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Propagation : public Entity
                             {
                                 public:
@@ -2221,13 +2256,12 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value source_level; //type: IsisInternalLevelEnum
-                                    Value destination_level; //type: IsisInternalLevelEnum
-                                    Value route_policy_name; //type: string
 
 
-                                    class IsisInternalLevelEnum;
-                                    class IsisInternalLevelEnum;
+                                    YLeaf source_level; //type: IsisInternalLevelEnum
+                                    YLeaf destination_level; //type: IsisInternalLevelEnum
+                                    YLeaf route_policy_name; //type: string
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::Propagations::Propagation
@@ -2254,6 +2288,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Redistribution : public Entity
                             {
                                 public:
@@ -2267,8 +2302,9 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value protocol_name; //type: IsisRedistProtoEnum
 
+
+                                    YLeaf protocol_name; //type: IsisRedistProtoEnum
 
                                 class ConnectedOrStaticOrRipOrSubscriberOrMobile : public Entity
                                 {
@@ -2283,15 +2319,14 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile
@@ -2310,16 +2345,15 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value instance_name; //type: string
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf instance_name; //type: string
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication
@@ -2338,17 +2372,16 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_xx; //type: uint32
-                                        Value as_yy; //type: uint32
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf as_xx; //type: uint32
+                                        YLeaf as_yy; //type: uint32
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Bgp
@@ -2367,16 +2400,15 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value as_zz; //type: uint32
-                                        Value metric; //type: uint32
-                                        Value levels; //type: IsisConfigurableLevelsEnum
-                                        Value route_policy_name; //type: string
-                                        Value metric_type; //type: IsisMetricEnum
-                                        Value ospf_route_type; //type: int32
 
 
-                                        class IsisConfigurableLevelsEnum;
-                                        class IsisMetricEnum;
+                                        YLeaf as_zz; //type: uint32
+                                        YLeaf metric; //type: uint32
+                                        YLeaf levels; //type: IsisConfigurableLevelsEnum
+                                        YLeaf route_policy_name; //type: string
+                                        YLeaf metric_type; //type: IsisMetricEnum
+                                        YLeaf ospf_route_type; //type: int32
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp
@@ -2386,7 +2418,6 @@ class Isis : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::ConnectedOrStaticOrRipOrSubscriberOrMobile> connected_or_static_or_rip_or_subscriber_or_mobile; // presence node
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::Eigrp> > eigrp;
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution::OspfOrOspfv3OrIsisOrApplication> > ospf_or_ospfv3_or_isis_or_application;
-                                    class IsisRedistProtoEnum;
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::Redistributions::Redistribution
@@ -2413,6 +2444,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfPeriodicInterval : public Entity
                             {
                                 public:
@@ -2426,11 +2458,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value periodic_interval; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf periodic_interval; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfPeriodicIntervals::SpfPeriodicInterval
@@ -2457,6 +2489,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class SpfInterval : public Entity
                             {
                                 public:
@@ -2470,13 +2503,13 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value maximum_wait; //type: uint32
-                                    Value initial_wait; //type: uint32
-                                    Value secondary_wait; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf maximum_wait; //type: uint32
+                                    YLeaf initial_wait; //type: uint32
+                                    YLeaf secondary_wait; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::SpfIntervals::SpfInterval
@@ -2501,10 +2534,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
-                                Value track_ip_frr; //type: empty
-                                Value prefix_list; //type: string
 
+
+                                YLeaf enable; //type: empty
+                                YLeaf track_ip_frr; //type: empty
+                                YLeaf prefix_list; //type: string
 
 
 
@@ -2524,10 +2558,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value use_policy; //type: boolean
-                                Value policy_name; //type: string
-                                Value external; //type: empty
 
+
+                                YLeaf use_policy; //type: boolean
+                                YLeaf policy_name; //type: string
+                                YLeaf external; //type: empty
 
 
 
@@ -2549,6 +2584,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class AdminDistance : public Entity
                             {
                                 public:
@@ -2562,10 +2598,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_prefix; //type: string
-                                    Value distance; //type: uint32
-                                    Value prefix_list; //type: string
 
+
+                                    YLeaf address_prefix; //type: string
+                                    YLeaf distance; //type: uint32
+                                    YLeaf prefix_list; //type: string
 
 
 
@@ -2593,6 +2630,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class States : public Entity
                             {
                                 public:
@@ -2608,6 +2646,7 @@ class Isis : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class State : public Entity
                                 {
                                     public:
@@ -2621,12 +2660,11 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value level; //type: IsisInternalLevelEnum
-                                        Value state; //type: IsisispfStateEnum
 
 
-                                        class IsisInternalLevelEnum;
-                                        class IsisispfStateEnum;
+                                        YLeaf level; //type: IsisInternalLevelEnum
+                                        YLeaf state; //type: IsisispfStateEnum
+
 
 
                                 }; // Isis::Instances::Instance::Afs::Af::TopologyName::Ispf::States::State
@@ -2657,8 +2695,9 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value auto_config; //type: boolean
 
+
+                                YLeaf auto_config; //type: boolean
 
 
 
@@ -2678,10 +2717,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value igp_intact; //type: empty
-                                Value level; //type: IsisConfigurableLevelsEnum
-                                Value multicast_intact; //type: empty
 
+
+                                YLeaf igp_intact; //type: empty
+                                YLeaf level; //type: IsisConfigurableLevelsEnum
+                                YLeaf multicast_intact; //type: empty
 
                             class RouterId : public Entity
                             {
@@ -2696,9 +2736,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address; //type: string
-                                    Value interface_name; //type: string
 
+
+                                    YLeaf address; //type: string
+                                    YLeaf interface_name; //type: string
 
 
 
@@ -2706,7 +2747,6 @@ class Isis : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Mpls::RouterId> router_id;
-                                class IsisConfigurableLevelsEnum;
 
 
                         }; // Isis::Instances::Instance::Afs::Af::TopologyName::Mpls
@@ -2727,6 +2767,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Metric : public Entity
                             {
                                 public:
@@ -2740,11 +2781,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value metric; //type: one of uint32, enumeration
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf metric; //type: one of uint32, enumeration
+
                                     class MetricEnum;
 
 
@@ -2772,6 +2813,7 @@ class Isis : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Weight : public Entity
                             {
                                 public:
@@ -2785,11 +2827,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value level; //type: IsisInternalLevelEnum
-                                    Value weight; //type: uint32
 
 
-                                    class IsisInternalLevelEnum;
+                                    YLeaf level; //type: IsisInternalLevelEnum
+                                    YLeaf weight; //type: uint32
+
 
 
                             }; // Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight
@@ -2822,9 +2864,6 @@ class Isis : public Entity
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::SummaryPrefixes> summary_prefixes;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Ucmp> ucmp;
                             std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName::Weights> weights;
-                            class IsisAdjCheckEnum;
-                            class IsisApplyWeightEnum;
-                            class IsisAttachedBitEnum;
 
 
                     }; // Isis::Instances::Instance::Afs::Af::TopologyName
@@ -2832,8 +2871,6 @@ class Isis : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::AfData> af_data; // presence node
                         std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Afs::Af::TopologyName> > topology_name;
-                        class IsisAddressFamilyEnum;
-                        class IsisSubAddressFamilyEnum;
 
 
                 }; // Isis::Instances::Instance::Afs::Af
@@ -2860,6 +2897,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspRefreshInterval : public Entity
                 {
                     public:
@@ -2873,11 +2911,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value interval; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf interval; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval
@@ -2902,12 +2940,12 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dist_inst_id; //type: uint32
-                    Value level; //type: IsisConfigurableLevelsEnum
-                    Value dist_throttle; //type: uint32
 
 
-                    class IsisConfigurableLevelsEnum;
+                    YLeaf dist_inst_id; //type: uint32
+                    YLeaf level; //type: IsisConfigurableLevelsEnum
+                    YLeaf dist_throttle; //type: uint32
+
 
 
             }; // Isis::Instances::Instance::Distribute
@@ -2928,6 +2966,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspAcceptPassword : public Entity
                 {
                     public:
@@ -2941,11 +2980,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value password; //type: string
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf password; //type: string
+
 
 
                 }; // Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPassword
@@ -2972,6 +3011,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspMtu : public Entity
                 {
                     public:
@@ -2985,11 +3025,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value mtu; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf mtu; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspMtus::LspMtu
@@ -3014,13 +3054,13 @@ class Isis : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value flavor; //type: IsisNsfFlavorEnum
-                    Value interface_timer; //type: uint32
-                    Value max_interface_timer_expiry; //type: uint32
-                    Value lifetime; //type: uint32
 
 
-                    class IsisNsfFlavorEnum;
+                    YLeaf flavor; //type: IsisNsfFlavorEnum
+                    YLeaf interface_timer; //type: uint32
+                    YLeaf max_interface_timer_expiry; //type: uint32
+                    YLeaf lifetime; //type: uint32
+
 
 
             }; // Isis::Instances::Instance::Nsf
@@ -3041,6 +3081,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LinkGroup : public Entity
                 {
                     public:
@@ -3054,12 +3095,13 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value link_group_name; //type: string
-                        Value enable; //type: empty
-                        Value metric_offset; //type: uint32
-                        Value revert_members; //type: uint32
-                        Value minimum_members; //type: uint32
 
+
+                        YLeaf link_group_name; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf metric_offset; //type: uint32
+                        YLeaf revert_members; //type: uint32
+                        YLeaf minimum_members; //type: uint32
 
 
 
@@ -3087,6 +3129,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspCheckInterval : public Entity
                 {
                     public:
@@ -3100,11 +3143,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value interval; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf interval; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspCheckIntervals::LspCheckInterval
@@ -3131,6 +3174,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspPassword : public Entity
                 {
                     public:
@@ -3144,17 +3188,14 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value algorithm; //type: IsisAuthenticationAlgorithmEnum
-                        Value failure_mode; //type: IsisAuthenticationFailureModeEnum
-                        Value authentication_type; //type: IsisSnpAuthEnum
-                        Value password; //type: string
 
 
-                        class IsisInternalLevelEnum;
-                        class IsisAuthenticationAlgorithmEnum;
-                        class IsisSnpAuthEnum;
-                        class IsisAuthenticationFailureModeEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf algorithm; //type: IsisAuthenticationAlgorithmEnum
+                        YLeaf failure_mode; //type: IsisAuthenticationFailureModeEnum
+                        YLeaf authentication_type; //type: IsisSnpAuthEnum
+                        YLeaf password; //type: string
+
 
 
                 }; // Isis::Instances::Instance::LspPasswords::LspPassword
@@ -3181,6 +3222,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Net : public Entity
                 {
                     public:
@@ -3194,8 +3236,9 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value net_name; //type: string
 
+
+                        YLeaf net_name; //type: string
 
 
 
@@ -3223,6 +3266,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LspLifetime : public Entity
                 {
                     public:
@@ -3236,11 +3280,11 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value lifetime; //type: uint32
 
 
-                        class IsisInternalLevelEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf lifetime; //type: uint32
+
 
 
                 }; // Isis::Instances::Instance::LspLifetimes::LspLifetime
@@ -3267,6 +3311,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OverloadBit : public Entity
                 {
                     public:
@@ -3280,17 +3325,14 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: IsisInternalLevelEnum
-                        Value overload_bit_mode; //type: IsisOverloadBitModeEnum
-                        Value hippity_period; //type: uint32
-                        Value external_adv_type; //type: IsisAdvTypeExternalEnum
-                        Value inter_level_adv_type; //type: IsisAdvTypeInterLevelEnum
 
 
-                        class IsisInternalLevelEnum;
-                        class IsisAdvTypeExternalEnum;
-                        class IsisAdvTypeInterLevelEnum;
-                        class IsisOverloadBitModeEnum;
+                        YLeaf level; //type: IsisInternalLevelEnum
+                        YLeaf overload_bit_mode; //type: IsisOverloadBitModeEnum
+                        YLeaf hippity_period; //type: uint32
+                        YLeaf external_adv_type; //type: IsisAdvTypeExternalEnum
+                        YLeaf inter_level_adv_type; //type: IsisAdvTypeInterLevelEnum
+
 
 
                 }; // Isis::Instances::Instance::OverloadBits::OverloadBit
@@ -3317,6 +3359,7 @@ class Isis : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -3330,14 +3373,15 @@ class Isis : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value running; //type: empty
-                        Value circuit_type; //type: IsisConfigurableLevelsEnum
-                        Value point_to_point; //type: empty
-                        Value state; //type: IsisInterfaceStateEnum
-                        Value mesh_group; //type: one of uint32, enumeration
-                        Value link_down_fast_detect; //type: empty
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf running; //type: empty
+                        YLeaf circuit_type; //type: IsisConfigurableLevelsEnum
+                        YLeaf point_to_point; //type: empty
+                        YLeaf state; //type: IsisInterfaceStateEnum
+                        YLeaf mesh_group; //type: one of uint32, enumeration
+                        YLeaf link_down_fast_detect; //type: empty
 
                     class LspRetransmitThrottleIntervals : public Entity
                     {
@@ -3354,6 +3398,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LspRetransmitThrottleInterval : public Entity
                         {
                             public:
@@ -3367,11 +3412,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value interval; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf interval; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval
@@ -3398,6 +3443,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LspRetransmitInterval : public Entity
                         {
                             public:
@@ -3411,11 +3457,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value interval; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf interval; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval
@@ -3440,11 +3486,12 @@ class Isis : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value enable_ipv6; //type: boolean
-                            Value enable_ipv4; //type: boolean
-                            Value interval; //type: uint32
-                            Value detection_multiplier; //type: uint32
 
+
+                            YLeaf enable_ipv6; //type: boolean
+                            YLeaf enable_ipv4; //type: boolean
+                            YLeaf interval; //type: uint32
+                            YLeaf detection_multiplier; //type: uint32
 
 
 
@@ -3466,6 +3513,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Priority : public Entity
                         {
                             public:
@@ -3479,11 +3527,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value priority_value; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf priority_value; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority
@@ -3510,6 +3558,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HelloAcceptPassword : public Entity
                         {
                             public:
@@ -3523,11 +3572,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value password; //type: string
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf password; //type: string
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword
@@ -3554,6 +3603,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HelloPassword : public Entity
                         {
                             public:
@@ -3567,15 +3617,13 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value algorithm; //type: IsisAuthenticationAlgorithmEnum
-                                Value failure_mode; //type: IsisAuthenticationFailureModeEnum
-                                Value password; //type: string
 
 
-                                class IsisInternalLevelEnum;
-                                class IsisAuthenticationAlgorithmEnum;
-                                class IsisAuthenticationFailureModeEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf algorithm; //type: IsisAuthenticationAlgorithmEnum
+                                YLeaf failure_mode; //type: IsisAuthenticationFailureModeEnum
+                                YLeaf password; //type: string
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword
@@ -3602,6 +3650,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HelloPadding : public Entity
                         {
                             public:
@@ -3615,12 +3664,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value padding_type; //type: IsisHelloPaddingEnum
 
 
-                                class IsisInternalLevelEnum;
-                                class IsisHelloPaddingEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf padding_type; //type: IsisHelloPaddingEnum
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding
@@ -3647,6 +3695,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HelloMultiplier : public Entity
                         {
                             public:
@@ -3660,11 +3709,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value multiplier; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf multiplier; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier
@@ -3691,6 +3740,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LspFastFloodThreshold : public Entity
                         {
                             public:
@@ -3704,11 +3754,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value count; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf count; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold
@@ -3735,6 +3785,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class HelloInterval : public Entity
                         {
                             public:
@@ -3748,11 +3799,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value interval; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf interval; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval
@@ -3779,6 +3830,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class InterfaceAf : public Entity
                         {
                             public:
@@ -3792,9 +3844,10 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af_name; //type: IsisAddressFamilyEnum
-                                Value saf_name; //type: IsisSubAddressFamilyEnum
 
+
+                                YLeaf af_name; //type: IsisAddressFamilyEnum
+                                YLeaf saf_name; //type: IsisSubAddressFamilyEnum
 
                             class InterfaceAfData : public Entity
                             {
@@ -3809,9 +3862,10 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value interface_af_state; //type: IsisInterfaceAfStateEnum
-                                    Value running; //type: empty
 
+
+                                    YLeaf interface_af_state; //type: IsisInterfaceAfStateEnum
+                                    YLeaf running; //type: empty
 
                                 class PrefixSid : public Entity
                                 {
@@ -3826,17 +3880,14 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: IsissidEnum
-                                        Value value_; //type: uint32
-                                        Value php; //type: IsisphpFlagEnum
-                                        Value explicit_null; //type: IsisexplicitNullFlagEnum
-                                        Value nflag_clear; //type: NflagClearEnum
 
 
-                                        class IsisexplicitNullFlagEnum;
-                                        class NflagClearEnum;
-                                        class IsisphpFlagEnum;
-                                        class IsissidEnum;
+                                        YLeaf type; //type: IsissidEnum
+                                        YLeaf value_; //type: uint32
+                                        YLeaf php; //type: IsisphpFlagEnum
+                                        YLeaf explicit_null; //type: IsisexplicitNullFlagEnum
+                                        YLeaf nflag_clear; //type: NflagClearEnum
+
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid
@@ -3857,6 +3908,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class FrrlfaCandidateInterfaces : public Entity
                                     {
                                         public:
@@ -3872,6 +3924,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrlfaCandidateInterface : public Entity
                                         {
                                             public:
@@ -3885,12 +3938,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value frr_type; //type: IsisfrrEnum
-                                                Value level; //type: uint32
 
 
-                                                class IsisfrrEnum;
+                                                YLeaf interface_name; //type: string
+                                                YLeaf frr_type; //type: IsisfrrEnum
+                                                YLeaf level; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface
@@ -3917,6 +3970,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrRemoteLfaMaxMetric : public Entity
                                         {
                                             public:
@@ -3930,11 +3984,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value max_metric; //type: uint32
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf max_metric; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric
@@ -3961,6 +4015,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrType : public Entity
                                         {
                                             public:
@@ -3974,12 +4029,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value type; //type: IsisfrrEnum
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisfrrEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf type; //type: IsisfrrEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType
@@ -4006,6 +4060,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrRemoteLfaType : public Entity
                                         {
                                             public:
@@ -4019,12 +4074,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value type; //type: IsisRemoteLfaEnum
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisRemoteLfaEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf type; //type: IsisRemoteLfaEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType
@@ -4051,6 +4105,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class InterfaceFrrTiebreakerDefault : public Entity
                                         {
                                             public:
@@ -4064,10 +4119,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault
@@ -4094,6 +4149,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrtilfaType : public Entity
                                         {
                                             public:
@@ -4107,10 +4163,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType
@@ -4137,6 +4193,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrExcludeInterface : public Entity
                                         {
                                             public:
@@ -4150,12 +4207,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value frr_type; //type: IsisfrrEnum
-                                                Value level; //type: uint32
 
 
-                                                class IsisfrrEnum;
+                                                YLeaf interface_name; //type: string
+                                                YLeaf frr_type; //type: IsisfrrEnum
+                                                YLeaf level; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface
@@ -4182,6 +4239,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class InterfaceFrrTiebreaker : public Entity
                                         {
                                             public:
@@ -4195,13 +4253,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value tiebreaker; //type: IsisInterfaceFrrTiebreakerEnum
-                                                Value index_; //type: uint32
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisInterfaceFrrTiebreakerEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf tiebreaker; //type: IsisInterfaceFrrTiebreakerEnum
+                                                YLeaf index_; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker
@@ -4239,8 +4296,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sync_level; //type: uint32
 
+
+                                        YLeaf sync_level; //type: uint32
 
 
 
@@ -4262,6 +4320,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AutoMetric : public Entity
                                     {
                                         public:
@@ -4275,11 +4334,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value proactive_protect; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf proactive_protect; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric
@@ -4306,6 +4365,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AdminTag : public Entity
                                     {
                                         public:
@@ -4319,11 +4379,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value admin_tag; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf admin_tag; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag
@@ -4348,9 +4408,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_group; //type: string
-                                        Value level; //type: uint32
 
+
+                                        YLeaf link_group; //type: string
+                                        YLeaf level; //type: uint32
 
 
 
@@ -4372,6 +4433,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Metric : public Entity
                                     {
                                         public:
@@ -4385,11 +4447,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value metric; //type: one of uint32, enumeration
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf metric; //type: one of uint32, enumeration
+
                                             class MetricEnum;
 
 
@@ -4417,6 +4479,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Weight : public Entity
                                     {
                                         public:
@@ -4430,11 +4493,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value weight; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf weight; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight
@@ -4454,7 +4517,6 @@ class Isis : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::MplsLdp> mpls_ldp;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::PrefixSid> prefix_sid; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights> weights;
-                                    class IsisInterfaceAfStateEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData
@@ -4473,10 +4535,11 @@ class Isis : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value topology_name; //type: string
-                                    Value interface_af_state; //type: IsisInterfaceAfStateEnum
-                                    Value running; //type: empty
 
+
+                                    YLeaf topology_name; //type: string
+                                    YLeaf interface_af_state; //type: IsisInterfaceAfStateEnum
+                                    YLeaf running; //type: empty
 
                                 class PrefixSid : public Entity
                                 {
@@ -4491,17 +4554,14 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value type; //type: IsissidEnum
-                                        Value value_; //type: uint32
-                                        Value php; //type: IsisphpFlagEnum
-                                        Value explicit_null; //type: IsisexplicitNullFlagEnum
-                                        Value nflag_clear; //type: NflagClearEnum
 
 
-                                        class IsisexplicitNullFlagEnum;
-                                        class NflagClearEnum;
-                                        class IsisphpFlagEnum;
-                                        class IsissidEnum;
+                                        YLeaf type; //type: IsissidEnum
+                                        YLeaf value_; //type: uint32
+                                        YLeaf php; //type: IsisphpFlagEnum
+                                        YLeaf explicit_null; //type: IsisexplicitNullFlagEnum
+                                        YLeaf nflag_clear; //type: NflagClearEnum
+
 
 
                                 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSid
@@ -4522,6 +4582,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class FrrlfaCandidateInterfaces : public Entity
                                     {
                                         public:
@@ -4537,6 +4598,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrlfaCandidateInterface : public Entity
                                         {
                                             public:
@@ -4550,12 +4612,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value frr_type; //type: IsisfrrEnum
-                                                Value level; //type: uint32
 
 
-                                                class IsisfrrEnum;
+                                                YLeaf interface_name; //type: string
+                                                YLeaf frr_type; //type: IsisfrrEnum
+                                                YLeaf level; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface
@@ -4582,6 +4644,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrRemoteLfaMaxMetric : public Entity
                                         {
                                             public:
@@ -4595,11 +4658,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value max_metric; //type: uint32
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf max_metric; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric
@@ -4626,6 +4689,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrType : public Entity
                                         {
                                             public:
@@ -4639,12 +4703,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value type; //type: IsisfrrEnum
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisfrrEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf type; //type: IsisfrrEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType
@@ -4671,6 +4734,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrRemoteLfaType : public Entity
                                         {
                                             public:
@@ -4684,12 +4748,11 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value type; //type: IsisRemoteLfaEnum
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisRemoteLfaEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf type; //type: IsisRemoteLfaEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType
@@ -4716,6 +4779,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class InterfaceFrrTiebreakerDefault : public Entity
                                         {
                                             public:
@@ -4729,10 +4793,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault
@@ -4759,6 +4823,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrtilfaType : public Entity
                                         {
                                             public:
@@ -4772,10 +4837,10 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
 
 
-                                                class IsisInternalLevelEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType
@@ -4802,6 +4867,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class FrrExcludeInterface : public Entity
                                         {
                                             public:
@@ -4815,12 +4881,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value interface_name; //type: string
-                                                Value frr_type; //type: IsisfrrEnum
-                                                Value level; //type: uint32
 
 
-                                                class IsisfrrEnum;
+                                                YLeaf interface_name; //type: string
+                                                YLeaf frr_type; //type: IsisfrrEnum
+                                                YLeaf level; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface
@@ -4847,6 +4913,7 @@ class Isis : public Entity
                                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                                         class InterfaceFrrTiebreaker : public Entity
                                         {
                                             public:
@@ -4860,13 +4927,12 @@ class Isis : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value level; //type: IsisInternalLevelEnum
-                                                Value tiebreaker; //type: IsisInterfaceFrrTiebreakerEnum
-                                                Value index_; //type: uint32
 
 
-                                                class IsisInternalLevelEnum;
-                                                class IsisInterfaceFrrTiebreakerEnum;
+                                                YLeaf level; //type: IsisInternalLevelEnum
+                                                YLeaf tiebreaker; //type: IsisInterfaceFrrTiebreakerEnum
+                                                YLeaf index_; //type: uint32
+
 
 
                                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker
@@ -4904,8 +4970,9 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value sync_level; //type: uint32
 
+
+                                        YLeaf sync_level; //type: uint32
 
 
 
@@ -4927,6 +4994,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AutoMetric : public Entity
                                     {
                                         public:
@@ -4940,11 +5008,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value proactive_protect; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf proactive_protect; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric
@@ -4971,6 +5039,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class AdminTag : public Entity
                                     {
                                         public:
@@ -4984,11 +5053,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value admin_tag; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf admin_tag; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag
@@ -5013,9 +5082,10 @@ class Isis : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value link_group; //type: string
-                                        Value level; //type: uint32
 
+
+                                        YLeaf link_group; //type: string
+                                        YLeaf level; //type: uint32
 
 
 
@@ -5037,6 +5107,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Metric : public Entity
                                     {
                                         public:
@@ -5050,11 +5121,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value metric; //type: one of uint32, enumeration
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf metric; //type: one of uint32, enumeration
+
                                             class MetricEnum;
 
 
@@ -5082,6 +5153,7 @@ class Isis : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Weight : public Entity
                                     {
                                         public:
@@ -5095,11 +5167,11 @@ class Isis : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value level; //type: IsisInternalLevelEnum
-                                            Value weight; //type: uint32
 
 
-                                            class IsisInternalLevelEnum;
+                                            YLeaf level; //type: IsisInternalLevelEnum
+                                            YLeaf weight; //type: uint32
+
 
 
                                     }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight
@@ -5119,7 +5191,6 @@ class Isis : public Entity
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::MplsLdp> mpls_ldp;
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::PrefixSid> prefix_sid; // presence node
                                     std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights> weights;
-                                    class IsisInterfaceAfStateEnum;
 
 
                             }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName
@@ -5127,8 +5198,6 @@ class Isis : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData> interface_af_data;
                                 std::vector<std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName> > topology_name;
-                                class IsisAddressFamilyEnum;
-                                class IsisSubAddressFamilyEnum;
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
@@ -5155,6 +5224,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class CsnpInterval : public Entity
                         {
                             public:
@@ -5168,11 +5238,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value interval; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf interval; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval
@@ -5199,6 +5269,7 @@ class Isis : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LspInterval : public Entity
                         {
                             public:
@@ -5212,11 +5283,11 @@ class Isis : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value level; //type: IsisInternalLevelEnum
-                                Value interval; //type: uint32
 
 
-                                class IsisInternalLevelEnum;
+                                YLeaf level; //type: IsisInternalLevelEnum
+                                YLeaf interval; //type: uint32
+
 
 
                         }; // Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
@@ -5241,9 +5312,7 @@ class Isis : public Entity
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals> lsp_retransmit_intervals;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals> lsp_retransmit_throttle_intervals;
                         std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Priorities> priorities;
-                        class IsisConfigurableLevelsEnum;
                         class MeshGroupEnum;
-                        class IsisInterfaceStateEnum;
 
 
                 }; // Isis::Instances::Instance::Interfaces::Interface
@@ -5273,8 +5342,6 @@ class Isis : public Entity
                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::OverloadBits> overload_bits;
                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Srgb> srgb; // presence node
                 std::unique_ptr<Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::TraceBufferSize> trace_buffer_size;
-                class IsisConfigurableLevelsEnum;
-                class IsisTracingModeEnum;
 
 
         }; // Isis::Instances::Instance
@@ -5295,460 +5362,460 @@ class Isis : public Entity
 class IsisSnpAuthEnum : public Enum
 {
     public:
-        static const Enum::Value send_only;
-        static const Enum::Value full;
+        static const Enum::YLeaf send_only;
+        static const Enum::YLeaf full;
 
 };
 
 class IsisMibMaxAreaAddressMismatchBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibLspTooLargeToPropagateBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibSequenceNumberSkipBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisInterfaceFrrTiebreakerEnum : public Enum
 {
     public:
-        static const Enum::Value node_protecting;
-        static const Enum::Value srlg_disjoint;
+        static const Enum::YLeaf node_protecting;
+        static const Enum::YLeaf srlg_disjoint;
 
 };
 
 class IsisAuthenticationAlgorithmEnum : public Enum
 {
     public:
-        static const Enum::Value cleartext;
-        static const Enum::Value hmac_md5;
-        static const Enum::Value keychain;
+        static const Enum::YLeaf cleartext;
+        static const Enum::YLeaf hmac_md5;
+        static const Enum::YLeaf keychain;
 
 };
 
 class IsisOverloadBitModeEnum : public Enum
 {
     public:
-        static const Enum::Value permanently_set;
-        static const Enum::Value startup_period;
-        static const Enum::Value wait_for_bgp;
+        static const Enum::YLeaf permanently_set;
+        static const Enum::YLeaf startup_period;
+        static const Enum::YLeaf wait_for_bgp;
 
 };
 
 class IsisMibRejectedAdjacencyBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibCorruptedLspDetectedBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisAdjCheckEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
+        static const Enum::YLeaf disabled;
 
 };
 
 class IsisispfStateEnum : public Enum
 {
     public:
-        static const Enum::Value enabled;
+        static const Enum::YLeaf enabled;
 
 };
 
 class IsisfrrLoadSharingEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
+        static const Enum::YLeaf disable;
 
 };
 
 class IsisMibAuthenticationFailureBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisInterfaceStateEnum : public Enum
 {
     public:
-        static const Enum::Value shutdown;
-        static const Enum::Value suppressed;
-        static const Enum::Value passive;
+        static const Enum::YLeaf shutdown;
+        static const Enum::YLeaf suppressed;
+        static const Enum::YLeaf passive;
 
 };
 
 class IsisTracingModeEnum : public Enum
 {
     public:
-        static const Enum::Value off;
-        static const Enum::Value basic;
-        static const Enum::Value enhanced;
+        static const Enum::YLeaf off;
+        static const Enum::YLeaf basic;
+        static const Enum::YLeaf enhanced;
 
 };
 
 class IsisMetricStyleEnum : public Enum
 {
     public:
-        static const Enum::Value old_metric_style;
-        static const Enum::Value new_metric_style;
-        static const Enum::Value both_metric_style;
+        static const Enum::YLeaf old_metric_style;
+        static const Enum::YLeaf new_metric_style;
+        static const Enum::YLeaf both_metric_style;
 
 };
 
 class IsisNsfFlavorEnum : public Enum
 {
     public:
-        static const Enum::Value cisco_proprietary_nsf;
-        static const Enum::Value ietf_standard_nsf;
+        static const Enum::YLeaf cisco_proprietary_nsf;
+        static const Enum::YLeaf ietf_standard_nsf;
 
 };
 
 class IsisInterfaceAfStateEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
+        static const Enum::YLeaf disable;
 
 };
 
 class IsisApplyWeightEnum : public Enum
 {
     public:
-        static const Enum::Value ecmp_only;
-        static const Enum::Value ucmp_only;
+        static const Enum::YLeaf ecmp_only;
+        static const Enum::YLeaf ucmp_only;
 
 };
 
 class IsisPrefixPriorityEnum : public Enum
 {
     public:
-        static const Enum::Value critical_priority;
-        static const Enum::Value high_priority;
-        static const Enum::Value medium_priority;
+        static const Enum::YLeaf critical_priority;
+        static const Enum::YLeaf high_priority;
+        static const Enum::YLeaf medium_priority;
 
 };
 
 class IsisMibAuthenticationTypeFailureBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMicroLoopAvoidanceEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value micro_loop_avoidance_all;
-        static const Enum::Value micro_loop_avoidance_protected;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf micro_loop_avoidance_all;
+        static const Enum::YLeaf micro_loop_avoidance_protected;
 
 };
 
 class IsisAdvTypeExternalEnum : public Enum
 {
     public:
-        static const Enum::Value external;
+        static const Enum::YLeaf external;
 
 };
 
 class IsisRemoteLfaEnum : public Enum
 {
     public:
-        static const Enum::Value remote_lfa_none;
-        static const Enum::Value remote_lfa_tunnel_ldp;
+        static const Enum::YLeaf remote_lfa_none;
+        static const Enum::YLeaf remote_lfa_tunnel_ldp;
 
 };
 
 class IsisMibAreaMismatchBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibAttemptToExceedMaxSequenceBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisConfigurableLevelsEnum : public Enum
 {
     public:
-        static const Enum::Value level1;
-        static const Enum::Value level2;
-        static const Enum::Value level1_and2;
+        static const Enum::YLeaf level1;
+        static const Enum::YLeaf level2;
+        static const Enum::YLeaf level1_and2;
 
 };
 
 class IsisfrrTiebreakerEnum : public Enum
 {
     public:
-        static const Enum::Value downstream;
-        static const Enum::Value lc_disjoint;
-        static const Enum::Value lowest_backup_metric;
-        static const Enum::Value node_protecting;
-        static const Enum::Value primary_path;
-        static const Enum::Value secondary_path;
-        static const Enum::Value srlg_disjoint;
+        static const Enum::YLeaf downstream;
+        static const Enum::YLeaf lc_disjoint;
+        static const Enum::YLeaf lowest_backup_metric;
+        static const Enum::YLeaf node_protecting;
+        static const Enum::YLeaf primary_path;
+        static const Enum::YLeaf secondary_path;
+        static const Enum::YLeaf srlg_disjoint;
 
 };
 
 class IsisMibManualAddressDropsBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMetricStyleTransitionEnum : public Enum
 {
     public:
-        static const Enum::Value disabled;
-        static const Enum::Value enabled;
+        static const Enum::YLeaf disabled;
+        static const Enum::YLeaf enabled;
 
 };
 
 class IsisexplicitNullFlagEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class IsisMetricEnum : public Enum
 {
     public:
-        static const Enum::Value internal;
-        static const Enum::Value external;
+        static const Enum::YLeaf internal;
+        static const Enum::YLeaf external;
 
 };
 
 class IsisHelloPaddingEnum : public Enum
 {
     public:
-        static const Enum::Value never;
-        static const Enum::Value sometimes;
+        static const Enum::YLeaf never;
+        static const Enum::YLeaf sometimes;
 
 };
 
 class IsisMibDatabaseOverFlowBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisAdvTypeInterLevelEnum : public Enum
 {
     public:
-        static const Enum::Value inter_level;
+        static const Enum::YLeaf inter_level;
 
 };
 
 class IsisAuthenticationFailureModeEnum : public Enum
 {
     public:
-        static const Enum::Value drop;
-        static const Enum::Value send_only;
+        static const Enum::YLeaf drop;
+        static const Enum::YLeaf send_only;
 
 };
 
 class IsisMibProtocolsSupportedMismatchBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisRedistProtoEnum : public Enum
 {
     public:
-        static const Enum::Value connected;
-        static const Enum::Value static_;
-        static const Enum::Value ospf;
-        static const Enum::Value bgp;
-        static const Enum::Value isis;
-        static const Enum::Value ospfv3;
-        static const Enum::Value rip;
-        static const Enum::Value eigrp;
-        static const Enum::Value subscriber;
-        static const Enum::Value application;
-        static const Enum::Value mobile;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf bgp;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf ospfv3;
+        static const Enum::YLeaf rip;
+        static const Enum::YLeaf eigrp;
+        static const Enum::YLeaf subscriber;
+        static const Enum::YLeaf application;
+        static const Enum::YLeaf mobile;
 
 };
 
 class IsisphpFlagEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value disable;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf disable;
 
 };
 
 class IsisMibIdLengthMismatchBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibAllBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibOriginatedLspBufferSizeMismatchBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsissidEnum : public Enum
 {
     public:
-        static const Enum::Value index_;
-        static const Enum::Value absolute;
+        static const Enum::YLeaf index_;
+        static const Enum::YLeaf absolute;
 
 };
 
 class IsisfrrEnum : public Enum
 {
     public:
-        static const Enum::Value per_link;
-        static const Enum::Value per_prefix;
+        static const Enum::YLeaf per_link;
+        static const Enum::YLeaf per_prefix;
 
 };
 
 class IsisAttachedBitEnum : public Enum
 {
     public:
-        static const Enum::Value area;
-        static const Enum::Value on;
-        static const Enum::Value off;
+        static const Enum::YLeaf area;
+        static const Enum::YLeaf on;
+        static const Enum::YLeaf off;
 
 };
 
 class NflagClearEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class IsisLabelPreferenceEnum : public Enum
 {
     public:
-        static const Enum::Value ldp;
-        static const Enum::Value segment_routing;
+        static const Enum::YLeaf ldp;
+        static const Enum::YLeaf segment_routing;
 
 };
 
 class IsisMibAdjacencyChangeBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibLspErrorDetectedBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibOwnLspPurgeBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class IsisMibVersionSkewBooleanEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::MetricEnum : public Enum
 {
     public:
-        static const Enum::Value maximum;
+        static const Enum::YLeaf maximum;
 
 };
 
 class Isis::Instances::Instance::Afs::Af::TopologyName::Metrics::Metric::MetricEnum : public Enum
 {
     public:
-        static const Enum::Value maximum;
+        static const Enum::YLeaf maximum;
 
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::MeshGroupEnum : public Enum
 {
     public:
-        static const Enum::Value blocked;
+        static const Enum::YLeaf blocked;
 
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::MetricEnum : public Enum
 {
     public:
-        static const Enum::Value maximum;
+        static const Enum::YLeaf maximum;
 
 };
 
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric::MetricEnum : public Enum
 {
     public:
-        static const Enum::Value maximum;
+        static const Enum::YLeaf maximum;
 
 };
 

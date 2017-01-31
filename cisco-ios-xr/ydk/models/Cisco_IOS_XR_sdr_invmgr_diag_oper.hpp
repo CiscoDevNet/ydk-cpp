@@ -26,6 +26,7 @@ class Diag : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Racks : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Diag : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Rack : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Diag : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value rack_name; //type: string
 
+
+                YLeaf rack_name; //type: string
 
             class PowerShelfs : public Entity
             {
@@ -72,6 +75,7 @@ class Diag : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PowerShelf : public Entity
                 {
                     public:
@@ -85,8 +89,9 @@ class Diag : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value power_shelf_name; //type: string
 
+
+                        YLeaf power_shelf_name; //type: string
 
                     class PowerSupplies : public Entity
                     {
@@ -103,6 +108,7 @@ class Diag : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class PowerSupply : public Entity
                         {
                             public:
@@ -116,8 +122,9 @@ class Diag : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value power_supply_name; //type: string
 
+
+                                YLeaf power_supply_name; //type: string
 
                             class Information : public Entity
                             {
@@ -132,63 +139,64 @@ class Diag : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value description; //type: string
-                                    Value idprom_format_rev; //type: string
-                                    Value controller_family; //type: string
-                                    Value controller_type; //type: string
-                                    Value vid; //type: string
-                                    Value hwid; //type: string
-                                    Value pid; //type: string
-                                    Value udi_description; //type: string
-                                    Value udi_name; //type: string
-                                    Value clei; //type: string
-                                    Value eci; //type: string
-                                    Value top_assem_part_num; //type: string
-                                    Value top_assem_vid; //type: string
-                                    Value pca_num; //type: string
-                                    Value pcavid; //type: string
-                                    Value chassis_sid; //type: string
-                                    Value dev_num1; //type: string
-                                    Value dev_num2; //type: string
-                                    Value dev_num3; //type: string
-                                    Value dev_num4; //type: string
-                                    Value dev_num5; //type: string
-                                    Value dev_num6; //type: string
-                                    Value dev_num7; //type: string
-                                    Value manu_test_data; //type: string
-                                    Value asset_id; //type: string
-                                    Value asset_alias; //type: string
-                                    Value base_mac_address1; //type: string
-                                    Value mac_add_blk_size1; //type: string
-                                    Value base_mac_address2; //type: string
-                                    Value mac_add_blk_size2; //type: string
-                                    Value base_mac_address3; //type: string
-                                    Value mac_add_blk_size3; //type: string
-                                    Value base_mac_address4; //type: string
-                                    Value mac_add_blk_size4; //type: string
-                                    Value pcb_serial_num; //type: string
-                                    Value power_supply_type; //type: string
-                                    Value power_consumption; //type: string
-                                    Value block_signature; //type: string
-                                    Value block_version; //type: string
-                                    Value block_length; //type: string
-                                    Value block_checksum; //type: string
-                                    Value eeprom_size; //type: string
-                                    Value block_count; //type: string
-                                    Value fru_major_type; //type: string
-                                    Value fru_minor_type; //type: string
-                                    Value oem_string; //type: string
-                                    Value product_id; //type: string
-                                    Value serial_number; //type: string
-                                    Value part_number; //type: string
-                                    Value part_revision; //type: string
-                                    Value mfg_deviation; //type: string
-                                    Value hw_version; //type: string
-                                    Value mfg_bits; //type: string
-                                    Value engineer_use; //type: string
-                                    Value snmpoid; //type: string
-                                    Value rma_code; //type: string
 
+
+                                    YLeaf description; //type: string
+                                    YLeaf idprom_format_rev; //type: string
+                                    YLeaf controller_family; //type: string
+                                    YLeaf controller_type; //type: string
+                                    YLeaf vid; //type: string
+                                    YLeaf hwid; //type: string
+                                    YLeaf pid; //type: string
+                                    YLeaf udi_description; //type: string
+                                    YLeaf udi_name; //type: string
+                                    YLeaf clei; //type: string
+                                    YLeaf eci; //type: string
+                                    YLeaf top_assem_part_num; //type: string
+                                    YLeaf top_assem_vid; //type: string
+                                    YLeaf pca_num; //type: string
+                                    YLeaf pcavid; //type: string
+                                    YLeaf chassis_sid; //type: string
+                                    YLeaf dev_num1; //type: string
+                                    YLeaf dev_num2; //type: string
+                                    YLeaf dev_num3; //type: string
+                                    YLeaf dev_num4; //type: string
+                                    YLeaf dev_num5; //type: string
+                                    YLeaf dev_num6; //type: string
+                                    YLeaf dev_num7; //type: string
+                                    YLeaf manu_test_data; //type: string
+                                    YLeaf asset_id; //type: string
+                                    YLeaf asset_alias; //type: string
+                                    YLeaf base_mac_address1; //type: string
+                                    YLeaf mac_add_blk_size1; //type: string
+                                    YLeaf base_mac_address2; //type: string
+                                    YLeaf mac_add_blk_size2; //type: string
+                                    YLeaf base_mac_address3; //type: string
+                                    YLeaf mac_add_blk_size3; //type: string
+                                    YLeaf base_mac_address4; //type: string
+                                    YLeaf mac_add_blk_size4; //type: string
+                                    YLeaf pcb_serial_num; //type: string
+                                    YLeaf power_supply_type; //type: string
+                                    YLeaf power_consumption; //type: string
+                                    YLeaf block_signature; //type: string
+                                    YLeaf block_version; //type: string
+                                    YLeaf block_length; //type: string
+                                    YLeaf block_checksum; //type: string
+                                    YLeaf eeprom_size; //type: string
+                                    YLeaf block_count; //type: string
+                                    YLeaf fru_major_type; //type: string
+                                    YLeaf fru_minor_type; //type: string
+                                    YLeaf oem_string; //type: string
+                                    YLeaf product_id; //type: string
+                                    YLeaf serial_number; //type: string
+                                    YLeaf part_number; //type: string
+                                    YLeaf part_revision; //type: string
+                                    YLeaf mfg_deviation; //type: string
+                                    YLeaf hw_version; //type: string
+                                    YLeaf mfg_bits; //type: string
+                                    YLeaf engineer_use; //type: string
+                                    YLeaf snmpoid; //type: string
+                                    YLeaf rma_code; //type: string
 
                                 class Rma : public Entity
                                 {
@@ -203,10 +211,11 @@ class Diag : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value test_history; //type: string
-                                        Value rma_number; //type: string
-                                        Value rma_history; //type: string
 
+
+                                        YLeaf test_history; //type: string
+                                        YLeaf rma_number; //type: string
+                                        YLeaf rma_history; //type: string
 
 
 
@@ -258,6 +267,7 @@ class Diag : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class FanTray : public Entity
                 {
                     public:
@@ -271,8 +281,9 @@ class Diag : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value fan_tray_name; //type: string
 
+
+                        YLeaf fan_tray_name; //type: string
 
                     class Fanses : public Entity
                     {
@@ -289,6 +300,7 @@ class Diag : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Fans : public Entity
                         {
                             public:
@@ -302,8 +314,9 @@ class Diag : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value fans_name; //type: string
 
+
+                                YLeaf fans_name; //type: string
 
                             class Information : public Entity
                             {
@@ -318,63 +331,64 @@ class Diag : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value description; //type: string
-                                    Value idprom_format_rev; //type: string
-                                    Value controller_family; //type: string
-                                    Value controller_type; //type: string
-                                    Value vid; //type: string
-                                    Value hwid; //type: string
-                                    Value pid; //type: string
-                                    Value udi_description; //type: string
-                                    Value udi_name; //type: string
-                                    Value clei; //type: string
-                                    Value eci; //type: string
-                                    Value top_assem_part_num; //type: string
-                                    Value top_assem_vid; //type: string
-                                    Value pca_num; //type: string
-                                    Value pcavid; //type: string
-                                    Value chassis_sid; //type: string
-                                    Value dev_num1; //type: string
-                                    Value dev_num2; //type: string
-                                    Value dev_num3; //type: string
-                                    Value dev_num4; //type: string
-                                    Value dev_num5; //type: string
-                                    Value dev_num6; //type: string
-                                    Value dev_num7; //type: string
-                                    Value manu_test_data; //type: string
-                                    Value asset_id; //type: string
-                                    Value asset_alias; //type: string
-                                    Value base_mac_address1; //type: string
-                                    Value mac_add_blk_size1; //type: string
-                                    Value base_mac_address2; //type: string
-                                    Value mac_add_blk_size2; //type: string
-                                    Value base_mac_address3; //type: string
-                                    Value mac_add_blk_size3; //type: string
-                                    Value base_mac_address4; //type: string
-                                    Value mac_add_blk_size4; //type: string
-                                    Value pcb_serial_num; //type: string
-                                    Value power_supply_type; //type: string
-                                    Value power_consumption; //type: string
-                                    Value block_signature; //type: string
-                                    Value block_version; //type: string
-                                    Value block_length; //type: string
-                                    Value block_checksum; //type: string
-                                    Value eeprom_size; //type: string
-                                    Value block_count; //type: string
-                                    Value fru_major_type; //type: string
-                                    Value fru_minor_type; //type: string
-                                    Value oem_string; //type: string
-                                    Value product_id; //type: string
-                                    Value serial_number; //type: string
-                                    Value part_number; //type: string
-                                    Value part_revision; //type: string
-                                    Value mfg_deviation; //type: string
-                                    Value hw_version; //type: string
-                                    Value mfg_bits; //type: string
-                                    Value engineer_use; //type: string
-                                    Value snmpoid; //type: string
-                                    Value rma_code; //type: string
 
+
+                                    YLeaf description; //type: string
+                                    YLeaf idprom_format_rev; //type: string
+                                    YLeaf controller_family; //type: string
+                                    YLeaf controller_type; //type: string
+                                    YLeaf vid; //type: string
+                                    YLeaf hwid; //type: string
+                                    YLeaf pid; //type: string
+                                    YLeaf udi_description; //type: string
+                                    YLeaf udi_name; //type: string
+                                    YLeaf clei; //type: string
+                                    YLeaf eci; //type: string
+                                    YLeaf top_assem_part_num; //type: string
+                                    YLeaf top_assem_vid; //type: string
+                                    YLeaf pca_num; //type: string
+                                    YLeaf pcavid; //type: string
+                                    YLeaf chassis_sid; //type: string
+                                    YLeaf dev_num1; //type: string
+                                    YLeaf dev_num2; //type: string
+                                    YLeaf dev_num3; //type: string
+                                    YLeaf dev_num4; //type: string
+                                    YLeaf dev_num5; //type: string
+                                    YLeaf dev_num6; //type: string
+                                    YLeaf dev_num7; //type: string
+                                    YLeaf manu_test_data; //type: string
+                                    YLeaf asset_id; //type: string
+                                    YLeaf asset_alias; //type: string
+                                    YLeaf base_mac_address1; //type: string
+                                    YLeaf mac_add_blk_size1; //type: string
+                                    YLeaf base_mac_address2; //type: string
+                                    YLeaf mac_add_blk_size2; //type: string
+                                    YLeaf base_mac_address3; //type: string
+                                    YLeaf mac_add_blk_size3; //type: string
+                                    YLeaf base_mac_address4; //type: string
+                                    YLeaf mac_add_blk_size4; //type: string
+                                    YLeaf pcb_serial_num; //type: string
+                                    YLeaf power_supply_type; //type: string
+                                    YLeaf power_consumption; //type: string
+                                    YLeaf block_signature; //type: string
+                                    YLeaf block_version; //type: string
+                                    YLeaf block_length; //type: string
+                                    YLeaf block_checksum; //type: string
+                                    YLeaf eeprom_size; //type: string
+                                    YLeaf block_count; //type: string
+                                    YLeaf fru_major_type; //type: string
+                                    YLeaf fru_minor_type; //type: string
+                                    YLeaf oem_string; //type: string
+                                    YLeaf product_id; //type: string
+                                    YLeaf serial_number; //type: string
+                                    YLeaf part_number; //type: string
+                                    YLeaf part_revision; //type: string
+                                    YLeaf mfg_deviation; //type: string
+                                    YLeaf hw_version; //type: string
+                                    YLeaf mfg_bits; //type: string
+                                    YLeaf engineer_use; //type: string
+                                    YLeaf snmpoid; //type: string
+                                    YLeaf rma_code; //type: string
 
                                 class Rma : public Entity
                                 {
@@ -389,10 +403,11 @@ class Diag : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value test_history; //type: string
-                                        Value rma_number; //type: string
-                                        Value rma_history; //type: string
 
+
+                                        YLeaf test_history; //type: string
+                                        YLeaf rma_number; //type: string
+                                        YLeaf rma_history; //type: string
 
 
 
@@ -444,6 +459,7 @@ class Diag : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Slot : public Entity
                 {
                     public:
@@ -457,8 +473,9 @@ class Diag : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value slot_name; //type: string
 
+
+                        YLeaf slot_name; //type: string
 
                     class Instances : public Entity
                     {
@@ -475,6 +492,7 @@ class Diag : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Instance : public Entity
                         {
                             public:
@@ -488,8 +506,9 @@ class Diag : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
 
+
+                                YLeaf name; //type: string
 
                             class Detail : public Entity
                             {
@@ -504,8 +523,9 @@ class Diag : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_operational_state; //type: string
 
+
+                                    YLeaf node_operational_state; //type: string
 
                                 class CardInstance : public Entity
                                 {
@@ -520,63 +540,64 @@ class Diag : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value description; //type: string
-                                        Value idprom_format_rev; //type: string
-                                        Value controller_family; //type: string
-                                        Value controller_type; //type: string
-                                        Value vid; //type: string
-                                        Value hwid; //type: string
-                                        Value pid; //type: string
-                                        Value udi_description; //type: string
-                                        Value udi_name; //type: string
-                                        Value clei; //type: string
-                                        Value eci; //type: string
-                                        Value top_assem_part_num; //type: string
-                                        Value top_assem_vid; //type: string
-                                        Value pca_num; //type: string
-                                        Value pcavid; //type: string
-                                        Value chassis_sid; //type: string
-                                        Value dev_num1; //type: string
-                                        Value dev_num2; //type: string
-                                        Value dev_num3; //type: string
-                                        Value dev_num4; //type: string
-                                        Value dev_num5; //type: string
-                                        Value dev_num6; //type: string
-                                        Value dev_num7; //type: string
-                                        Value manu_test_data; //type: string
-                                        Value asset_id; //type: string
-                                        Value asset_alias; //type: string
-                                        Value base_mac_address1; //type: string
-                                        Value mac_add_blk_size1; //type: string
-                                        Value base_mac_address2; //type: string
-                                        Value mac_add_blk_size2; //type: string
-                                        Value base_mac_address3; //type: string
-                                        Value mac_add_blk_size3; //type: string
-                                        Value base_mac_address4; //type: string
-                                        Value mac_add_blk_size4; //type: string
-                                        Value pcb_serial_num; //type: string
-                                        Value power_supply_type; //type: string
-                                        Value power_consumption; //type: string
-                                        Value block_signature; //type: string
-                                        Value block_version; //type: string
-                                        Value block_length; //type: string
-                                        Value block_checksum; //type: string
-                                        Value eeprom_size; //type: string
-                                        Value block_count; //type: string
-                                        Value fru_major_type; //type: string
-                                        Value fru_minor_type; //type: string
-                                        Value oem_string; //type: string
-                                        Value product_id; //type: string
-                                        Value serial_number; //type: string
-                                        Value part_number; //type: string
-                                        Value part_revision; //type: string
-                                        Value mfg_deviation; //type: string
-                                        Value hw_version; //type: string
-                                        Value mfg_bits; //type: string
-                                        Value engineer_use; //type: string
-                                        Value snmpoid; //type: string
-                                        Value rma_code; //type: string
 
+
+                                        YLeaf description; //type: string
+                                        YLeaf idprom_format_rev; //type: string
+                                        YLeaf controller_family; //type: string
+                                        YLeaf controller_type; //type: string
+                                        YLeaf vid; //type: string
+                                        YLeaf hwid; //type: string
+                                        YLeaf pid; //type: string
+                                        YLeaf udi_description; //type: string
+                                        YLeaf udi_name; //type: string
+                                        YLeaf clei; //type: string
+                                        YLeaf eci; //type: string
+                                        YLeaf top_assem_part_num; //type: string
+                                        YLeaf top_assem_vid; //type: string
+                                        YLeaf pca_num; //type: string
+                                        YLeaf pcavid; //type: string
+                                        YLeaf chassis_sid; //type: string
+                                        YLeaf dev_num1; //type: string
+                                        YLeaf dev_num2; //type: string
+                                        YLeaf dev_num3; //type: string
+                                        YLeaf dev_num4; //type: string
+                                        YLeaf dev_num5; //type: string
+                                        YLeaf dev_num6; //type: string
+                                        YLeaf dev_num7; //type: string
+                                        YLeaf manu_test_data; //type: string
+                                        YLeaf asset_id; //type: string
+                                        YLeaf asset_alias; //type: string
+                                        YLeaf base_mac_address1; //type: string
+                                        YLeaf mac_add_blk_size1; //type: string
+                                        YLeaf base_mac_address2; //type: string
+                                        YLeaf mac_add_blk_size2; //type: string
+                                        YLeaf base_mac_address3; //type: string
+                                        YLeaf mac_add_blk_size3; //type: string
+                                        YLeaf base_mac_address4; //type: string
+                                        YLeaf mac_add_blk_size4; //type: string
+                                        YLeaf pcb_serial_num; //type: string
+                                        YLeaf power_supply_type; //type: string
+                                        YLeaf power_consumption; //type: string
+                                        YLeaf block_signature; //type: string
+                                        YLeaf block_version; //type: string
+                                        YLeaf block_length; //type: string
+                                        YLeaf block_checksum; //type: string
+                                        YLeaf eeprom_size; //type: string
+                                        YLeaf block_count; //type: string
+                                        YLeaf fru_major_type; //type: string
+                                        YLeaf fru_minor_type; //type: string
+                                        YLeaf oem_string; //type: string
+                                        YLeaf product_id; //type: string
+                                        YLeaf serial_number; //type: string
+                                        YLeaf part_number; //type: string
+                                        YLeaf part_revision; //type: string
+                                        YLeaf mfg_deviation; //type: string
+                                        YLeaf hw_version; //type: string
+                                        YLeaf mfg_bits; //type: string
+                                        YLeaf engineer_use; //type: string
+                                        YLeaf snmpoid; //type: string
+                                        YLeaf rma_code; //type: string
 
                                     class Rma : public Entity
                                     {
@@ -591,10 +612,11 @@ class Diag : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value test_history; //type: string
-                                            Value rma_number; //type: string
-                                            Value rma_history; //type: string
 
+
+                                            YLeaf test_history; //type: string
+                                            YLeaf rma_number; //type: string
+                                            YLeaf rma_history; //type: string
 
 
 
@@ -650,63 +672,64 @@ class Diag : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value description; //type: string
-                    Value idprom_format_rev; //type: string
-                    Value controller_family; //type: string
-                    Value controller_type; //type: string
-                    Value vid; //type: string
-                    Value hwid; //type: string
-                    Value pid; //type: string
-                    Value udi_description; //type: string
-                    Value udi_name; //type: string
-                    Value clei; //type: string
-                    Value eci; //type: string
-                    Value top_assem_part_num; //type: string
-                    Value top_assem_vid; //type: string
-                    Value pca_num; //type: string
-                    Value pcavid; //type: string
-                    Value chassis_sid; //type: string
-                    Value dev_num1; //type: string
-                    Value dev_num2; //type: string
-                    Value dev_num3; //type: string
-                    Value dev_num4; //type: string
-                    Value dev_num5; //type: string
-                    Value dev_num6; //type: string
-                    Value dev_num7; //type: string
-                    Value manu_test_data; //type: string
-                    Value asset_id; //type: string
-                    Value asset_alias; //type: string
-                    Value base_mac_address1; //type: string
-                    Value mac_add_blk_size1; //type: string
-                    Value base_mac_address2; //type: string
-                    Value mac_add_blk_size2; //type: string
-                    Value base_mac_address3; //type: string
-                    Value mac_add_blk_size3; //type: string
-                    Value base_mac_address4; //type: string
-                    Value mac_add_blk_size4; //type: string
-                    Value pcb_serial_num; //type: string
-                    Value power_supply_type; //type: string
-                    Value power_consumption; //type: string
-                    Value block_signature; //type: string
-                    Value block_version; //type: string
-                    Value block_length; //type: string
-                    Value block_checksum; //type: string
-                    Value eeprom_size; //type: string
-                    Value block_count; //type: string
-                    Value fru_major_type; //type: string
-                    Value fru_minor_type; //type: string
-                    Value oem_string; //type: string
-                    Value product_id; //type: string
-                    Value serial_number; //type: string
-                    Value part_number; //type: string
-                    Value part_revision; //type: string
-                    Value mfg_deviation; //type: string
-                    Value hw_version; //type: string
-                    Value mfg_bits; //type: string
-                    Value engineer_use; //type: string
-                    Value snmpoid; //type: string
-                    Value rma_code; //type: string
 
+
+                    YLeaf description; //type: string
+                    YLeaf idprom_format_rev; //type: string
+                    YLeaf controller_family; //type: string
+                    YLeaf controller_type; //type: string
+                    YLeaf vid; //type: string
+                    YLeaf hwid; //type: string
+                    YLeaf pid; //type: string
+                    YLeaf udi_description; //type: string
+                    YLeaf udi_name; //type: string
+                    YLeaf clei; //type: string
+                    YLeaf eci; //type: string
+                    YLeaf top_assem_part_num; //type: string
+                    YLeaf top_assem_vid; //type: string
+                    YLeaf pca_num; //type: string
+                    YLeaf pcavid; //type: string
+                    YLeaf chassis_sid; //type: string
+                    YLeaf dev_num1; //type: string
+                    YLeaf dev_num2; //type: string
+                    YLeaf dev_num3; //type: string
+                    YLeaf dev_num4; //type: string
+                    YLeaf dev_num5; //type: string
+                    YLeaf dev_num6; //type: string
+                    YLeaf dev_num7; //type: string
+                    YLeaf manu_test_data; //type: string
+                    YLeaf asset_id; //type: string
+                    YLeaf asset_alias; //type: string
+                    YLeaf base_mac_address1; //type: string
+                    YLeaf mac_add_blk_size1; //type: string
+                    YLeaf base_mac_address2; //type: string
+                    YLeaf mac_add_blk_size2; //type: string
+                    YLeaf base_mac_address3; //type: string
+                    YLeaf mac_add_blk_size3; //type: string
+                    YLeaf base_mac_address4; //type: string
+                    YLeaf mac_add_blk_size4; //type: string
+                    YLeaf pcb_serial_num; //type: string
+                    YLeaf power_supply_type; //type: string
+                    YLeaf power_consumption; //type: string
+                    YLeaf block_signature; //type: string
+                    YLeaf block_version; //type: string
+                    YLeaf block_length; //type: string
+                    YLeaf block_checksum; //type: string
+                    YLeaf eeprom_size; //type: string
+                    YLeaf block_count; //type: string
+                    YLeaf fru_major_type; //type: string
+                    YLeaf fru_minor_type; //type: string
+                    YLeaf oem_string; //type: string
+                    YLeaf product_id; //type: string
+                    YLeaf serial_number; //type: string
+                    YLeaf part_number; //type: string
+                    YLeaf part_revision; //type: string
+                    YLeaf mfg_deviation; //type: string
+                    YLeaf hw_version; //type: string
+                    YLeaf mfg_bits; //type: string
+                    YLeaf engineer_use; //type: string
+                    YLeaf snmpoid; //type: string
+                    YLeaf rma_code; //type: string
 
                 class Rma : public Entity
                 {
@@ -721,10 +744,11 @@ class Diag : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value test_history; //type: string
-                        Value rma_number; //type: string
-                        Value rma_history; //type: string
 
+
+                        YLeaf test_history; //type: string
+                        YLeaf rma_number; //type: string
+                        YLeaf rma_history; //type: string
 
 
 

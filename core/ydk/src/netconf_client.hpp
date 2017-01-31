@@ -38,15 +38,6 @@ typedef struct capabilities {
 namespace ydk
 {
 
-struct YDKClientException : public YDKException
-{
-	YDKClientException(const std::string& msg) : YDKException{msg}, err_msg{msg}
-	{
-	}
-
-	std::string err_msg;
-};
-
 class NetconfClient
 {
 

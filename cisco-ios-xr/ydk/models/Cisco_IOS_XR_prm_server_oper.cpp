@@ -64,7 +64,7 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -186,7 +186,7 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -273,7 +273,7 @@ bool HardwareModule::Nodes::Node::Np::Cpu::has_data() const
 bool HardwareModule::Nodes::Node::Np::Cpu::has_operation() const
 {
     return is_set(operation)
-	|| (indexes !=  nullptr && is_set(indexes->operation));
+	|| (indexes !=  nullptr && indexes->has_operation());
 }
 
 std::string HardwareModule::Nodes::Node::Np::Cpu::get_segment_path() const
@@ -290,7 +290,7 @@ EntityPath HardwareModule::Nodes::Node::Np::Cpu::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -424,7 +424,7 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -571,7 +571,7 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -678,7 +678,7 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -775,7 +775,7 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -867,8 +867,8 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_data() const
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_operation() const
 {
     return is_set(operation)
-	|| (idxes !=  nullptr && is_set(idxes->operation))
-	|| (indxes !=  nullptr && is_set(indxes->operation));
+	|| (idxes !=  nullptr && idxes->has_operation())
+	|| (indxes !=  nullptr && indxes->has_operation());
 }
 
 std::string HardwareModule::Nodes::Node::Np::PlatformDrop::get_segment_path() const
@@ -885,7 +885,7 @@ EntityPath HardwareModule::Nodes::Node::Np::PlatformDrop::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -997,8 +997,8 @@ bool HardwareModule::Nodes::Node::Np::has_data() const
 bool HardwareModule::Nodes::Node::Np::has_operation() const
 {
     return is_set(operation)
-	|| (cpu !=  nullptr && is_set(cpu->operation))
-	|| (platform_drop !=  nullptr && is_set(platform_drop->operation));
+	|| (cpu !=  nullptr && cpu->has_operation())
+	|| (platform_drop !=  nullptr && platform_drop->has_operation());
 }
 
 std::string HardwareModule::Nodes::Node::Np::get_segment_path() const
@@ -1015,7 +1015,7 @@ EntityPath HardwareModule::Nodes::Node::Np::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1126,7 +1126,7 @@ bool HardwareModule::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (np !=  nullptr && is_set(np->operation));
+	|| (np !=  nullptr && np->has_operation());
 }
 
 std::string HardwareModule::Nodes::Node::get_segment_path() const
@@ -1340,7 +1340,7 @@ bool HardwareModule::has_data() const
 bool HardwareModule::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string HardwareModule::get_segment_path() const
@@ -1357,7 +1357,7 @@ EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1483,7 +1483,7 @@ EntityPath Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1615,7 +1615,7 @@ EntityPath Prm::Nodes::Node::Server::Resource::Indexes::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1702,7 +1702,7 @@ bool Prm::Nodes::Node::Server::Resource::has_data() const
 bool Prm::Nodes::Node::Server::Resource::has_operation() const
 {
     return is_set(operation)
-	|| (indexes !=  nullptr && is_set(indexes->operation));
+	|| (indexes !=  nullptr && indexes->has_operation());
 }
 
 std::string Prm::Nodes::Node::Server::Resource::get_segment_path() const
@@ -1719,7 +1719,7 @@ EntityPath Prm::Nodes::Node::Server::Resource::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1803,7 +1803,7 @@ bool Prm::Nodes::Node::Server::has_data() const
 bool Prm::Nodes::Node::Server::has_operation() const
 {
     return is_set(operation)
-	|| (resource !=  nullptr && is_set(resource->operation));
+	|| (resource !=  nullptr && resource->has_operation());
 }
 
 std::string Prm::Nodes::Node::Server::get_segment_path() const
@@ -1820,7 +1820,7 @@ EntityPath Prm::Nodes::Node::Server::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1908,7 +1908,7 @@ bool Prm::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Prm::Nodes::Node::get_segment_path() const
@@ -2122,7 +2122,7 @@ bool Prm::has_data() const
 bool Prm::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Prm::get_segment_path() const
@@ -2139,7 +2139,7 @@ EntityPath Prm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

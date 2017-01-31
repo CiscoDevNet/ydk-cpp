@@ -26,6 +26,7 @@ class SystemMonitoring : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class CpuUtilization : public Entity
     {
         public:
@@ -39,11 +40,12 @@ class SystemMonitoring : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value node_name; //type: string
-            Value total_cpu_one_minute; //type: uint32
-            Value total_cpu_five_minute; //type: uint32
-            Value total_cpu_fifteen_minute; //type: uint32
 
+
+            YLeaf node_name; //type: string
+            YLeaf total_cpu_one_minute; //type: uint32
+            YLeaf total_cpu_five_minute; //type: uint32
+            YLeaf total_cpu_fifteen_minute; //type: uint32
 
         class ProcessCpu : public Entity
         {
@@ -58,12 +60,13 @@ class SystemMonitoring : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value process_name; //type: string
-                Value process_id; //type: uint32
-                Value process_cpu_one_minute; //type: uint32
-                Value process_cpu_five_minute; //type: uint32
-                Value process_cpu_fifteen_minute; //type: uint32
 
+
+                YLeaf process_name; //type: string
+                YLeaf process_id; //type: uint32
+                YLeaf process_cpu_one_minute; //type: uint32
+                YLeaf process_cpu_five_minute; //type: uint32
+                YLeaf process_cpu_fifteen_minute; //type: uint32
 
 
 

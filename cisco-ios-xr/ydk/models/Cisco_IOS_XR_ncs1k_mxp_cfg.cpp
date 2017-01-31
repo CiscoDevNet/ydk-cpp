@@ -52,7 +52,7 @@ EntityPath HardwareModule::Node::Slice::Values::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -140,7 +140,7 @@ bool HardwareModule::Node::Slice::has_operation() const
     return is_set(operation)
 	|| is_set(slice_id.operation)
 	|| is_set(lldp.operation)
-	|| (values !=  nullptr && is_set(values->operation));
+	|| (values !=  nullptr && values->has_operation());
 }
 
 std::string HardwareModule::Node::Slice::get_segment_path() const
@@ -157,7 +157,7 @@ EntityPath HardwareModule::Node::Slice::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -388,7 +388,7 @@ EntityPath HardwareModule::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -455,16 +455,16 @@ std::unique_ptr<Entity> HardwareModule::clone_ptr()
     return std::make_unique<HardwareModule>();
 }
 
-const Enum::Value ClientDataRateEnum::ten_gig {1, "ten-gig"};
-const Enum::Value ClientDataRateEnum::forty_gig {2, "forty-gig"};
-const Enum::Value ClientDataRateEnum::hundred_gig {3, "hundred-gig"};
+const Enum::YLeaf ClientDataRateEnum::ten_gig {1, "ten-gig"};
+const Enum::YLeaf ClientDataRateEnum::forty_gig {2, "forty-gig"};
+const Enum::YLeaf ClientDataRateEnum::hundred_gig {3, "hundred-gig"};
 
-const Enum::Value TrunkDataRateEnum::hundred_gig {2, "hundred-gig"};
-const Enum::Value TrunkDataRateEnum::two_hundred_gig {3, "two-hundred-gig"};
-const Enum::Value TrunkDataRateEnum::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
+const Enum::YLeaf TrunkDataRateEnum::hundred_gig {2, "hundred-gig"};
+const Enum::YLeaf TrunkDataRateEnum::two_hundred_gig {3, "two-hundred-gig"};
+const Enum::YLeaf TrunkDataRateEnum::two_hundred_fifty_gig {4, "two-hundred-fifty-gig"};
 
-const Enum::Value FecEnum::sd7 {1, "sd7"};
-const Enum::Value FecEnum::sd20 {2, "sd20"};
+const Enum::YLeaf FecEnum::sd7 {1, "sd7"};
+const Enum::YLeaf FecEnum::sd20 {2, "sd20"};
 
 
 }

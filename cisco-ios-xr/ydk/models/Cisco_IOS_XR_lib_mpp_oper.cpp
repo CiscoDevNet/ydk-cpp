@@ -138,7 +138,7 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -241,7 +241,7 @@ EntityPath ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -567,8 +567,8 @@ bool ManagementPlaneProtection::Outband::has_data() const
 bool ManagementPlaneProtection::Outband::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (vrf !=  nullptr && is_set(vrf->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (vrf !=  nullptr && vrf->has_operation());
 }
 
 std::string ManagementPlaneProtection::Outband::get_segment_path() const
@@ -712,7 +712,7 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -815,7 +815,7 @@ EntityPath ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1136,7 +1136,7 @@ bool ManagementPlaneProtection::Inband::has_data() const
 bool ManagementPlaneProtection::Inband::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string ManagementPlaneProtection::Inband::get_segment_path() const
@@ -1242,8 +1242,8 @@ bool ManagementPlaneProtection::has_data() const
 bool ManagementPlaneProtection::has_operation() const
 {
     return is_set(operation)
-	|| (inband !=  nullptr && is_set(inband->operation))
-	|| (outband !=  nullptr && is_set(outband->operation));
+	|| (inband !=  nullptr && inband->has_operation())
+	|| (outband !=  nullptr && outband->has_operation());
 }
 
 std::string ManagementPlaneProtection::get_segment_path() const
@@ -1260,7 +1260,7 @@ EntityPath ManagementPlaneProtection::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1365,14 +1365,14 @@ Ipv6Identity::~Ipv6Identity()
 }
 
 
-const Enum::Value MppAllowEnum::ssh {0, "ssh"};
-const Enum::Value MppAllowEnum::telnet {1, "telnet"};
-const Enum::Value MppAllowEnum::snmp {2, "snmp"};
-const Enum::Value MppAllowEnum::tftp {3, "tftp"};
-const Enum::Value MppAllowEnum::http {4, "http"};
-const Enum::Value MppAllowEnum::xr_xml {5, "xr-xml"};
-const Enum::Value MppAllowEnum::netconf {6, "netconf"};
-const Enum::Value MppAllowEnum::all {7, "all"};
+const Enum::YLeaf MppAllowEnum::ssh {0, "ssh"};
+const Enum::YLeaf MppAllowEnum::telnet {1, "telnet"};
+const Enum::YLeaf MppAllowEnum::snmp {2, "snmp"};
+const Enum::YLeaf MppAllowEnum::tftp {3, "tftp"};
+const Enum::YLeaf MppAllowEnum::http {4, "http"};
+const Enum::YLeaf MppAllowEnum::xr_xml {5, "xr-xml"};
+const Enum::YLeaf MppAllowEnum::netconf {6, "netconf"};
+const Enum::YLeaf MppAllowEnum::all {7, "all"};
 
 
 }

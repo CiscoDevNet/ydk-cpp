@@ -52,7 +52,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkCreate::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -156,7 +156,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::OptsEaBulkUpdate::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -260,7 +260,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkCreate::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -364,7 +364,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::DspEaBulkUpdate::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -468,7 +468,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOnStats::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -572,7 +572,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::LaserOffStats::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -676,7 +676,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::WlOpStats::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -780,7 +780,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::TxpwrOpStats::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -884,7 +884,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdminOpStats::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -988,7 +988,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::CdmaxOpStats::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1092,7 +1092,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::TraffictypeOpStat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1222,13 +1222,13 @@ bool Coherent::Nodes::Node::CoherentTimeStats::PortStat::has_operation() const
 	|| is_set(traffic_type.operation)
 	|| is_set(tx_power.operation)
 	|| is_set(wavelength.operation)
-	|| (cdmax_op_stats !=  nullptr && is_set(cdmax_op_stats->operation))
-	|| (cdmin_op_stats !=  nullptr && is_set(cdmin_op_stats->operation))
-	|| (laser_off_stats !=  nullptr && is_set(laser_off_stats->operation))
-	|| (laser_on_stats !=  nullptr && is_set(laser_on_stats->operation))
-	|| (traffictype_op_stats !=  nullptr && is_set(traffictype_op_stats->operation))
-	|| (txpwr_op_stats !=  nullptr && is_set(txpwr_op_stats->operation))
-	|| (wl_op_stats !=  nullptr && is_set(wl_op_stats->operation));
+	|| (cdmax_op_stats !=  nullptr && cdmax_op_stats->has_operation())
+	|| (cdmin_op_stats !=  nullptr && cdmin_op_stats->has_operation())
+	|| (laser_off_stats !=  nullptr && laser_off_stats->has_operation())
+	|| (laser_on_stats !=  nullptr && laser_on_stats->has_operation())
+	|| (traffictype_op_stats !=  nullptr && traffictype_op_stats->has_operation())
+	|| (txpwr_op_stats !=  nullptr && txpwr_op_stats->has_operation())
+	|| (wl_op_stats !=  nullptr && wl_op_stats->has_operation());
 }
 
 std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_segment_path() const
@@ -1245,7 +1245,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1541,10 +1541,10 @@ bool Coherent::Nodes::Node::CoherentTimeStats::has_operation() const
 	|| is_set(dsp_controllers_created.operation)
 	|| is_set(eth_intf_created.operation)
 	|| is_set(optics_controllers_created.operation)
-	|| (dsp_ea_bulk_create !=  nullptr && is_set(dsp_ea_bulk_create->operation))
-	|| (dsp_ea_bulk_update !=  nullptr && is_set(dsp_ea_bulk_update->operation))
-	|| (opts_ea_bulk_create !=  nullptr && is_set(opts_ea_bulk_create->operation))
-	|| (opts_ea_bulk_update !=  nullptr && is_set(opts_ea_bulk_update->operation));
+	|| (dsp_ea_bulk_create !=  nullptr && dsp_ea_bulk_create->has_operation())
+	|| (dsp_ea_bulk_update !=  nullptr && dsp_ea_bulk_update->has_operation())
+	|| (opts_ea_bulk_create !=  nullptr && opts_ea_bulk_create->has_operation())
+	|| (opts_ea_bulk_update !=  nullptr && opts_ea_bulk_update->has_operation());
 }
 
 std::string Coherent::Nodes::Node::CoherentTimeStats::get_segment_path() const
@@ -1561,7 +1561,7 @@ EntityPath Coherent::Nodes::Node::CoherentTimeStats::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1790,7 +1790,7 @@ EntityPath Coherent::Nodes::Node::Devicemapping::DevMap::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1890,7 +1890,7 @@ EntityPath Coherent::Nodes::Node::Devicemapping::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2032,7 +2032,7 @@ EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::CtpInfo::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2178,7 +2178,7 @@ EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2278,7 +2278,7 @@ EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2412,8 +2412,8 @@ bool Coherent::Nodes::Node::Coherenthealth::PortData::has_operation() const
 	|| is_set(traffic_type.operation)
 	|| is_set(wavelength.operation)
 	|| is_set(wlen_op_rc.operation)
-	|| (ctp_info !=  nullptr && is_set(ctp_info->operation))
-	|| (interface_info !=  nullptr && is_set(interface_info->operation));
+	|| (ctp_info !=  nullptr && ctp_info->has_operation())
+	|| (interface_info !=  nullptr && interface_info->has_operation());
 }
 
 std::string Coherent::Nodes::Node::Coherenthealth::PortData::get_segment_path() const
@@ -2430,7 +2430,7 @@ EntityPath Coherent::Nodes::Node::Coherenthealth::PortData::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2669,7 +2669,7 @@ EntityPath Coherent::Nodes::Node::Coherenthealth::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2867,7 +2867,7 @@ EntityPath Coherent::Nodes::Node::PortModeAllInfo::PortmodeEntry::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2977,7 +2977,7 @@ EntityPath Coherent::Nodes::Node::PortModeAllInfo::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3088,10 +3088,10 @@ bool Coherent::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (coherent_time_stats !=  nullptr && is_set(coherent_time_stats->operation))
-	|| (coherenthealth !=  nullptr && is_set(coherenthealth->operation))
-	|| (devicemapping !=  nullptr && is_set(devicemapping->operation))
-	|| (port_mode_all_info !=  nullptr && is_set(port_mode_all_info->operation));
+	|| (coherent_time_stats !=  nullptr && coherent_time_stats->has_operation())
+	|| (coherenthealth !=  nullptr && coherenthealth->has_operation())
+	|| (devicemapping !=  nullptr && devicemapping->has_operation())
+	|| (port_mode_all_info !=  nullptr && port_mode_all_info->has_operation());
 }
 
 std::string Coherent::Nodes::Node::get_segment_path() const
@@ -3374,7 +3374,7 @@ bool Coherent::has_data() const
 bool Coherent::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Coherent::get_segment_path() const
@@ -3391,7 +3391,7 @@ EntityPath Coherent::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

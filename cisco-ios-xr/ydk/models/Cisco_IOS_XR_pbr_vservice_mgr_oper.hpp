@@ -26,6 +26,7 @@ class GlobalServiceFunctionChaining : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ServiceFunctionPath : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class GlobalServiceFunctionChaining : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class PathIds : public Entity
@@ -56,6 +58,7 @@ class GlobalServiceFunctionChaining : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PathId : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class GlobalServiceFunctionChaining : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value id; //type: uint32
 
+
+                    YLeaf id; //type: uint32
 
                 class Stats : public Entity
                 {
@@ -85,6 +89,7 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Detail : public Entity
@@ -102,6 +107,7 @@ class GlobalServiceFunctionChaining : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Data : public Entity
                         {
                             public:
@@ -115,8 +121,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: VsNshStatsEnum
 
+
+                                YLeaf type; //type: VsNshStatsEnum
 
                             class Sfp : public Entity
                             {
@@ -133,6 +140,7 @@ class GlobalServiceFunctionChaining : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SpiSi : public Entity
                                 {
                                     public:
@@ -146,9 +154,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -168,9 +177,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -197,9 +207,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -219,9 +230,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value terminated_pkts; //type: uint64
-                                    Value terminated_bytes; //type: uint64
 
+
+                                    YLeaf terminated_pkts; //type: uint64
+                                    YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -241,9 +253,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -263,9 +276,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -285,11 +299,12 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value malformed_err_pkts; //type: uint64
-                                    Value lookup_err_pkts; //type: uint64
-                                    Value malformed_err_bytes; //type: uint64
-                                    Value lookup_err_bytes; //type: uint64
 
+
+                                    YLeaf malformed_err_pkts; //type: uint64
+                                    YLeaf lookup_err_pkts; //type: uint64
+                                    YLeaf malformed_err_bytes; //type: uint64
+                                    YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -302,7 +317,6 @@ class GlobalServiceFunctionChaining : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp> sfp;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::SpiSi> spi_si;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Term> term;
-                                class VsNshStatsEnum;
 
 
                         }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data
@@ -321,8 +335,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value si; //type: uint8
 
+
+                                YLeaf si; //type: uint8
 
                             class Data : public Entity
                             {
@@ -337,8 +352,9 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: VsNshStatsEnum
 
+
+                                    YLeaf type; //type: VsNshStatsEnum
 
                                 class SpiSi : public Entity
                                 {
@@ -353,9 +369,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -375,9 +392,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -386,7 +404,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::SpiSi> spi_si;
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::Term> term;
-                                    class VsNshStatsEnum;
 
 
                             }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data
@@ -420,6 +437,7 @@ class GlobalServiceFunctionChaining : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Data : public Entity
                         {
                             public:
@@ -433,8 +451,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: VsNshStatsEnum
 
+
+                                YLeaf type; //type: VsNshStatsEnum
 
                             class Sfp : public Entity
                             {
@@ -451,6 +470,7 @@ class GlobalServiceFunctionChaining : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SpiSi : public Entity
                                 {
                                     public:
@@ -464,9 +484,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -486,9 +507,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -515,9 +537,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -537,9 +560,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value terminated_pkts; //type: uint64
-                                    Value terminated_bytes; //type: uint64
 
+
+                                    YLeaf terminated_pkts; //type: uint64
+                                    YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -559,9 +583,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -581,9 +606,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -603,11 +629,12 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value malformed_err_pkts; //type: uint64
-                                    Value lookup_err_pkts; //type: uint64
-                                    Value malformed_err_bytes; //type: uint64
-                                    Value lookup_err_bytes; //type: uint64
 
+
+                                    YLeaf malformed_err_pkts; //type: uint64
+                                    YLeaf lookup_err_pkts; //type: uint64
+                                    YLeaf malformed_err_bytes; //type: uint64
+                                    YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -620,7 +647,6 @@ class GlobalServiceFunctionChaining : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp> sfp;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::SpiSi> spi_si;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Term> term;
-                                class VsNshStatsEnum;
 
 
                         }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data
@@ -639,8 +665,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value si; //type: uint8
 
+
+                                YLeaf si; //type: uint8
 
                             class Data : public Entity
                             {
@@ -655,8 +682,9 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: VsNshStatsEnum
 
+
+                                    YLeaf type; //type: VsNshStatsEnum
 
                                 class SpiSi : public Entity
                                 {
@@ -671,9 +699,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -693,9 +722,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -704,7 +734,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::SpiSi> spi_si;
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::Term> term;
-                                    class VsNshStatsEnum;
 
 
                             }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data
@@ -745,6 +774,7 @@ class GlobalServiceFunctionChaining : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ServiceIndex : public Entity
                     {
                         public:
@@ -758,8 +788,9 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value index_; //type: uint32
 
+
+                            YLeaf index_; //type: uint32
 
                         class Data : public Entity
                         {
@@ -774,8 +805,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: VsNshStatsEnum
 
+
+                                YLeaf type; //type: VsNshStatsEnum
 
                             class Sfp : public Entity
                             {
@@ -792,6 +824,7 @@ class GlobalServiceFunctionChaining : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class SpiSi : public Entity
                                 {
                                     public:
@@ -805,9 +838,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -827,9 +861,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -856,9 +891,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -878,9 +914,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value terminated_pkts; //type: uint64
-                                    Value terminated_bytes; //type: uint64
 
+
+                                    YLeaf terminated_pkts; //type: uint64
+                                    YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -900,9 +937,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -922,9 +960,10 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value processed_pkts; //type: uint64
-                                    Value processed_bytes; //type: uint64
 
+
+                                    YLeaf processed_pkts; //type: uint64
+                                    YLeaf processed_bytes; //type: uint64
 
 
 
@@ -944,11 +983,12 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value malformed_err_pkts; //type: uint64
-                                    Value lookup_err_pkts; //type: uint64
-                                    Value malformed_err_bytes; //type: uint64
-                                    Value lookup_err_bytes; //type: uint64
 
+
+                                    YLeaf malformed_err_pkts; //type: uint64
+                                    YLeaf lookup_err_pkts; //type: uint64
+                                    YLeaf malformed_err_bytes; //type: uint64
+                                    YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -961,7 +1001,6 @@ class GlobalServiceFunctionChaining : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp> sfp;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::SpiSi> spi_si;
                                 std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Term> term;
-                                class VsNshStatsEnum;
 
 
                         }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data
@@ -980,8 +1019,9 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value si; //type: uint8
 
+
+                                YLeaf si; //type: uint8
 
                             class Data : public Entity
                             {
@@ -996,8 +1036,9 @@ class GlobalServiceFunctionChaining : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value type; //type: VsNshStatsEnum
 
+
+                                    YLeaf type; //type: VsNshStatsEnum
 
                                 class SpiSi : public Entity
                                 {
@@ -1012,9 +1053,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value processed_pkts; //type: uint64
-                                        Value processed_bytes; //type: uint64
 
+
+                                        YLeaf processed_pkts; //type: uint64
+                                        YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1034,9 +1076,10 @@ class GlobalServiceFunctionChaining : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value terminated_pkts; //type: uint64
-                                        Value terminated_bytes; //type: uint64
 
+
+                                        YLeaf terminated_pkts; //type: uint64
+                                        YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1045,7 +1088,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::SpiSi> spi_si;
                                     std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::Term> term;
-                                    class VsNshStatsEnum;
 
 
                             }; // GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data
@@ -1104,6 +1146,7 @@ class GlobalServiceFunctionChaining : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SfNames : public Entity
         {
             public:
@@ -1119,6 +1162,7 @@ class GlobalServiceFunctionChaining : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SfName : public Entity
             {
                 public:
@@ -1132,8 +1176,9 @@ class GlobalServiceFunctionChaining : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Data : public Entity
                 {
@@ -1148,8 +1193,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: VsNshStatsEnum
 
+
+                        YLeaf type; //type: VsNshStatsEnum
 
                     class Sfp : public Entity
                     {
@@ -1166,6 +1212,7 @@ class GlobalServiceFunctionChaining : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SpiSi : public Entity
                         {
                             public:
@@ -1179,9 +1226,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1201,9 +1249,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1230,9 +1279,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1252,9 +1302,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value terminated_pkts; //type: uint64
-                            Value terminated_bytes; //type: uint64
 
+
+                            YLeaf terminated_pkts; //type: uint64
+                            YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1274,9 +1325,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1296,9 +1348,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1318,11 +1371,12 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value malformed_err_pkts; //type: uint64
-                            Value lookup_err_pkts; //type: uint64
-                            Value malformed_err_bytes; //type: uint64
-                            Value lookup_err_bytes; //type: uint64
 
+
+                            YLeaf malformed_err_pkts; //type: uint64
+                            YLeaf lookup_err_pkts; //type: uint64
+                            YLeaf malformed_err_bytes; //type: uint64
+                            YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -1335,7 +1389,6 @@ class GlobalServiceFunctionChaining : public Entity
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Sfp> sfp;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::SpiSi> spi_si;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data::Term> term;
-                        class VsNshStatsEnum;
 
 
                 }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::Data
@@ -1354,8 +1407,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value si; //type: uint8
 
+
+                        YLeaf si; //type: uint8
 
                     class Data : public Entity
                     {
@@ -1370,8 +1424,9 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: VsNshStatsEnum
 
+
+                            YLeaf type; //type: VsNshStatsEnum
 
                         class SpiSi : public Entity
                         {
@@ -1386,9 +1441,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1408,9 +1464,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1419,7 +1476,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::SpiSi> spi_si;
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data::Term> term;
-                            class VsNshStatsEnum;
 
 
                     }; // GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiArr::Data
@@ -1465,6 +1521,7 @@ class GlobalServiceFunctionChaining : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SffNames : public Entity
         {
             public:
@@ -1480,6 +1537,7 @@ class GlobalServiceFunctionChaining : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class SffName : public Entity
             {
                 public:
@@ -1493,8 +1551,9 @@ class GlobalServiceFunctionChaining : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Data : public Entity
                 {
@@ -1509,8 +1568,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: VsNshStatsEnum
 
+
+                        YLeaf type; //type: VsNshStatsEnum
 
                     class Sfp : public Entity
                     {
@@ -1527,6 +1587,7 @@ class GlobalServiceFunctionChaining : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SpiSi : public Entity
                         {
                             public:
@@ -1540,9 +1601,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1562,9 +1624,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1591,9 +1654,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1613,9 +1677,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value terminated_pkts; //type: uint64
-                            Value terminated_bytes; //type: uint64
 
+
+                            YLeaf terminated_pkts; //type: uint64
+                            YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1635,9 +1700,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1657,9 +1723,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1679,11 +1746,12 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value malformed_err_pkts; //type: uint64
-                            Value lookup_err_pkts; //type: uint64
-                            Value malformed_err_bytes; //type: uint64
-                            Value lookup_err_bytes; //type: uint64
 
+
+                            YLeaf malformed_err_pkts; //type: uint64
+                            YLeaf lookup_err_pkts; //type: uint64
+                            YLeaf malformed_err_bytes; //type: uint64
+                            YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -1696,7 +1764,6 @@ class GlobalServiceFunctionChaining : public Entity
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp> sfp;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::SpiSi> spi_si;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data::Term> term;
-                        class VsNshStatsEnum;
 
 
                 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::Data
@@ -1715,8 +1782,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value si; //type: uint8
 
+
+                        YLeaf si; //type: uint8
 
                     class Data : public Entity
                     {
@@ -1731,8 +1799,9 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: VsNshStatsEnum
 
+
+                            YLeaf type; //type: VsNshStatsEnum
 
                         class SpiSi : public Entity
                         {
@@ -1747,9 +1816,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1769,9 +1839,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1780,7 +1851,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::SpiSi> spi_si;
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::Term> term;
-                            class VsNshStatsEnum;
 
 
                     }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data
@@ -1820,6 +1890,7 @@ class GlobalServiceFunctionChaining : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Error : public Entity
             {
                 public:
@@ -1835,6 +1906,7 @@ class GlobalServiceFunctionChaining : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Data : public Entity
                 {
                     public:
@@ -1848,8 +1920,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: VsNshStatsEnum
 
+
+                        YLeaf type; //type: VsNshStatsEnum
 
                     class Sfp : public Entity
                     {
@@ -1866,6 +1939,7 @@ class GlobalServiceFunctionChaining : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SpiSi : public Entity
                         {
                             public:
@@ -1879,9 +1953,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1901,9 +1976,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1930,9 +2006,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1952,9 +2029,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value terminated_pkts; //type: uint64
-                            Value terminated_bytes; //type: uint64
 
+
+                            YLeaf terminated_pkts; //type: uint64
+                            YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -1974,9 +2052,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -1996,9 +2075,10 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value processed_pkts; //type: uint64
-                            Value processed_bytes; //type: uint64
 
+
+                            YLeaf processed_pkts; //type: uint64
+                            YLeaf processed_bytes; //type: uint64
 
 
 
@@ -2018,11 +2098,12 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value malformed_err_pkts; //type: uint64
-                            Value lookup_err_pkts; //type: uint64
-                            Value malformed_err_bytes; //type: uint64
-                            Value lookup_err_bytes; //type: uint64
 
+
+                            YLeaf malformed_err_pkts; //type: uint64
+                            YLeaf lookup_err_pkts; //type: uint64
+                            YLeaf malformed_err_bytes; //type: uint64
+                            YLeaf lookup_err_bytes; //type: uint64
 
 
 
@@ -2035,7 +2116,6 @@ class GlobalServiceFunctionChaining : public Entity
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Sfp> sfp;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::SpiSi> spi_si;
                         std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data::Term> term;
-                        class VsNshStatsEnum;
 
 
                 }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::Data
@@ -2054,8 +2134,9 @@ class GlobalServiceFunctionChaining : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value si; //type: uint8
 
+
+                        YLeaf si; //type: uint8
 
                     class Data : public Entity
                     {
@@ -2070,8 +2151,9 @@ class GlobalServiceFunctionChaining : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: VsNshStatsEnum
 
+
+                            YLeaf type; //type: VsNshStatsEnum
 
                         class SpiSi : public Entity
                         {
@@ -2086,9 +2168,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value processed_pkts; //type: uint64
-                                Value processed_bytes; //type: uint64
 
+
+                                YLeaf processed_pkts; //type: uint64
+                                YLeaf processed_bytes; //type: uint64
 
 
 
@@ -2108,9 +2191,10 @@ class GlobalServiceFunctionChaining : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value terminated_pkts; //type: uint64
-                                Value terminated_bytes; //type: uint64
 
+
+                                YLeaf terminated_pkts; //type: uint64
+                                YLeaf terminated_bytes; //type: uint64
 
 
 
@@ -2119,7 +2203,6 @@ class GlobalServiceFunctionChaining : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::SpiSi> spi_si;
                             std::unique_ptr<Cisco_IOS_XR_pbr_vservice_mgr_oper::GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data::Term> term;
-                            class VsNshStatsEnum;
 
 
                     }; // GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Error::SiArr::Data
@@ -2162,14 +2245,14 @@ class GlobalServiceFunctionChaining : public Entity
 class VsNshStatsEnum : public Enum
 {
     public:
-        static const Enum::Value vs_nsh_stats_spi_si;
-        static const Enum::Value vs_nsh_stats_ter_min_ate;
-        static const Enum::Value vs_nsh_stats_sf;
-        static const Enum::Value vs_nsh_stats_sff;
-        static const Enum::Value vs_nsh_stats_sff_local;
-        static const Enum::Value vs_nsh_stats_sfp;
-        static const Enum::Value vs_nsh_stats_sfp_detail;
-        static const Enum::Value vs_nsh_stats_max;
+        static const Enum::YLeaf vs_nsh_stats_spi_si;
+        static const Enum::YLeaf vs_nsh_stats_ter_min_ate;
+        static const Enum::YLeaf vs_nsh_stats_sf;
+        static const Enum::YLeaf vs_nsh_stats_sff;
+        static const Enum::YLeaf vs_nsh_stats_sff_local;
+        static const Enum::YLeaf vs_nsh_stats_sfp;
+        static const Enum::YLeaf vs_nsh_stats_sfp_detail;
+        static const Enum::YLeaf vs_nsh_stats_max;
 
 };
 

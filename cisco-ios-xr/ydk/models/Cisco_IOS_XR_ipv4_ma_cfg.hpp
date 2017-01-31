@@ -24,10 +24,11 @@ class Ipv4NetworkGlobal : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value source_route; //type: boolean
-        Value reassemble_max_packets; //type: uint32
-        Value reassemble_time_out; //type: uint32
 
+
+        YLeaf source_route; //type: boolean
+        YLeaf reassemble_max_packets; //type: uint32
+        YLeaf reassemble_time_out; //type: uint32
 
     class Unnumbered : public Entity
     {
@@ -42,6 +43,7 @@ class Ipv4NetworkGlobal : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Mpls : public Entity
@@ -59,6 +61,7 @@ class Ipv4NetworkGlobal : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Te : public Entity
             {
                 public:
@@ -72,8 +75,9 @@ class Ipv4NetworkGlobal : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface; //type: string
 
+
+                    YLeaf interface; //type: string
 
 
 
@@ -105,12 +109,11 @@ class Ipv4NetworkGlobal : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value source; //type: Ipv4QppbEnum
-            Value destination; //type: Ipv4QppbEnum
 
 
-            class Ipv4QppbEnum;
-            class Ipv4QppbEnum;
+            YLeaf source; //type: Ipv4QppbEnum
+            YLeaf destination; //type: Ipv4QppbEnum
+
 
 
     }; // Ipv4NetworkGlobal::Qppb
@@ -136,8 +139,9 @@ class SubscriberPta : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value tcp_mss_adjust; //type: uint32
 
+
+        YLeaf tcp_mss_adjust; //type: uint32
 
 
 
@@ -147,10 +151,10 @@ class SubscriberPta : public Entity
 class Ipv4QppbEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ip_prec;
-        static const Enum::Value qos_grp;
-        static const Enum::Value both;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ip_prec;
+        static const Enum::YLeaf qos_grp;
+        static const Enum::YLeaf both;
 
 };
 

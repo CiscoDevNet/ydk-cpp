@@ -43,7 +43,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeInterface::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -126,7 +126,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -218,7 +218,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -305,7 +305,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_operation() const
 {
     return is_set(operation)
-	|| (threshold_up_values !=  nullptr && is_set(threshold_up_values->operation));
+	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_segment_path() const
@@ -322,7 +322,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::Threshold
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -406,7 +406,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_data() cons
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_operation() const
 {
     return is_set(operation)
-	|| (threshold_limits !=  nullptr && is_set(threshold_limits->operation));
+	|| (threshold_limits !=  nullptr && threshold_limits->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_segment_path() const
@@ -423,7 +423,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -524,7 +524,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -616,7 +616,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -720,7 +720,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -812,7 +812,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -899,7 +899,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_operation() const
 {
     return is_set(operation)
-	|| (threshold_up_values !=  nullptr && is_set(threshold_up_values->operation));
+	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_segment_path() const
@@ -916,7 +916,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::Thres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1000,7 +1000,7 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_data() 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_operation() const
 {
     return is_set(operation)
-	|| (threshold_limits !=  nullptr && is_set(threshold_limits->operation));
+	|| (threshold_limits !=  nullptr && threshold_limits->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_segment_path() const
@@ -1017,7 +1017,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1118,7 +1118,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::Obj
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1210,7 +1210,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1312,10 +1312,10 @@ bool ObjectTrackings::ObjectTracking::TypeList::has_data() const
 bool ObjectTrackings::ObjectTracking::TypeList::has_operation() const
 {
     return is_set(operation)
-	|| (threshold_percentage !=  nullptr && is_set(threshold_percentage->operation))
-	|| (threshold_percentage_object !=  nullptr && is_set(threshold_percentage_object->operation))
-	|| (threshold_weight !=  nullptr && is_set(threshold_weight->operation))
-	|| (threshold_weight_object !=  nullptr && is_set(threshold_weight_object->operation));
+	|| (threshold_percentage !=  nullptr && threshold_percentage->has_operation())
+	|| (threshold_percentage_object !=  nullptr && threshold_percentage_object->has_operation())
+	|| (threshold_weight !=  nullptr && threshold_weight->has_operation())
+	|| (threshold_weight_object !=  nullptr && threshold_weight_object->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::get_segment_path() const
@@ -1332,7 +1332,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeList::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1502,7 +1502,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeRoute::IpAddress::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1574,7 +1574,7 @@ bool ObjectTrackings::ObjectTracking::TypeRoute::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf.operation)
-	|| (ip_address !=  nullptr && is_set(ip_address->operation));
+	|| (ip_address !=  nullptr && ip_address->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeRoute::get_segment_path() const
@@ -1591,7 +1591,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeRoute::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1697,7 +1697,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::OrObject
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1789,7 +1789,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::OrObjects::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1893,7 +1893,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::AndObje
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1985,7 +1985,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::AndObjects::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2077,8 +2077,8 @@ bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_data() const
 bool ObjectTrackings::ObjectTracking::TypeBooleanList::has_operation() const
 {
     return is_set(operation)
-	|| (and_objects !=  nullptr && is_set(and_objects->operation))
-	|| (or_objects !=  nullptr && is_set(or_objects->operation));
+	|| (and_objects !=  nullptr && and_objects->has_operation())
+	|| (or_objects !=  nullptr && or_objects->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeBooleanList::get_segment_path() const
@@ -2095,7 +2095,7 @@ EntityPath ObjectTrackings::ObjectTracking::TypeBooleanList::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2242,10 +2242,10 @@ bool ObjectTrackings::ObjectTracking::has_operation() const
 	|| is_set(type_boolean_list_or_enable.operation)
 	|| is_set(type_interface_enable.operation)
 	|| is_set(type_route_enable.operation)
-	|| (type_boolean_list !=  nullptr && is_set(type_boolean_list->operation))
-	|| (type_interface !=  nullptr && is_set(type_interface->operation))
-	|| (type_list !=  nullptr && is_set(type_list->operation))
-	|| (type_route !=  nullptr && is_set(type_route->operation));
+	|| (type_boolean_list !=  nullptr && type_boolean_list->has_operation())
+	|| (type_interface !=  nullptr && type_interface->has_operation())
+	|| (type_list !=  nullptr && type_list->has_operation())
+	|| (type_route !=  nullptr && type_route->has_operation());
 }
 
 std::string ObjectTrackings::ObjectTracking::get_segment_path() const
@@ -2476,7 +2476,7 @@ EntityPath ObjectTrackings::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

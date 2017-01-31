@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ethernet_cfm_oper.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_infra_sla_oper {
@@ -28,6 +27,7 @@ class Sla : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Protocols : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class Sla : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Ethernet : public Entity
@@ -58,6 +59,7 @@ class Sla : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class StatisticsOnDemandCurrents : public Entity
             {
                 public:
@@ -73,6 +75,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class StatisticsOnDemandCurrent : public Entity
                 {
                     public:
@@ -86,16 +89,17 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value operation_id; //type: uint32
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value probe_type; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value flr_calculation_interval; //type: uint32
 
+
+                        YLeaf operation_id; //type: uint32
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf probe_type; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf flr_calculation_interval; //type: uint32
 
                     class SpecificOptions : public Entity
                     {
@@ -110,8 +114,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -126,8 +131,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -147,9 +153,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -158,7 +165,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions
@@ -177,11 +183,12 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_time; //type: uint32
-                            Value start_time_configured; //type: boolean
-                            Value schedule_duration; //type: uint32
-                            Value schedule_interval; //type: uint32
 
+
+                            YLeaf start_time; //type: uint32
+                            YLeaf start_time_configured; //type: boolean
+                            YLeaf schedule_duration; //type: uint32
+                            YLeaf schedule_interval; //type: uint32
 
 
 
@@ -203,6 +210,7 @@ class Sla : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -216,16 +224,15 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value metric_type; //type: SlaRecordableMetricEnum
-                                Value bins_count; //type: uint16
-                                Value bins_width; //type: uint16
-                                Value bucket_size; //type: uint8
-                                Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                Value buckets_archive; //type: uint32
 
 
-                                class SlaBucketSizeEnum;
-                                class SlaRecordableMetricEnum;
+                                YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                YLeaf bins_count; //type: uint16
+                                YLeaf bins_width; //type: uint16
+                                YLeaf bucket_size; //type: uint8
+                                YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                YLeaf buckets_archive; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config
@@ -244,38 +251,39 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_at; //type: uint32
-                                Value duration; //type: uint32
-                                Value sent; //type: uint32
-                                Value lost; //type: uint32
-                                Value corrupt; //type: uint32
-                                Value out_of_order; //type: uint32
-                                Value duplicates; //type: uint32
-                                Value minimum; //type: int32
-                                Value maximum; //type: int32
-                                Value time_of_minimum; //type: uint32
-                                Value time_of_maximum; //type: uint32
-                                Value average; //type: int32
-                                Value standard_deviation; //type: int32
-                                Value result_count; //type: uint32
-                                Value data_sent_count; //type: uint32
-                                Value data_lost_count; //type: uint32
-                                Value overall_flr; //type: int32
-                                Value suspect_start_mid_bucket; //type: boolean
-                                Value suspect_schedule_latency; //type: boolean
-                                Value suspect_send_fail; //type: boolean
-                                Value suspect_premature_end; //type: boolean
-                                Value suspect_clock_drift; //type: boolean
-                                Value suspect_memory_allocation_failed; //type: boolean
-                                Value suspect_cleared_mid_bucket; //type: boolean
-                                Value suspect_probe_restarted; //type: boolean
-                                Value suspect_management_latency; //type: boolean
-                                Value suspect_multiple_buckets; //type: boolean
-                                Value suspect_misordering; //type: boolean
-                                Value suspect_flr_low_packet_count; //type: boolean
-                                Value premature_reason; //type: uint32
-                                Value premature_reason_string; //type: string
 
+
+                                YLeaf start_at; //type: uint32
+                                YLeaf duration; //type: uint32
+                                YLeaf sent; //type: uint32
+                                YLeaf lost; //type: uint32
+                                YLeaf corrupt; //type: uint32
+                                YLeaf out_of_order; //type: uint32
+                                YLeaf duplicates; //type: uint32
+                                YLeaf minimum; //type: int32
+                                YLeaf maximum; //type: int32
+                                YLeaf time_of_minimum; //type: uint32
+                                YLeaf time_of_maximum; //type: uint32
+                                YLeaf average; //type: int32
+                                YLeaf standard_deviation; //type: int32
+                                YLeaf result_count; //type: uint32
+                                YLeaf data_sent_count; //type: uint32
+                                YLeaf data_lost_count; //type: uint32
+                                YLeaf overall_flr; //type: int32
+                                YLeaf suspect_start_mid_bucket; //type: boolean
+                                YLeaf suspect_schedule_latency; //type: boolean
+                                YLeaf suspect_send_fail; //type: boolean
+                                YLeaf suspect_premature_end; //type: boolean
+                                YLeaf suspect_clock_drift; //type: boolean
+                                YLeaf suspect_memory_allocation_failed; //type: boolean
+                                YLeaf suspect_cleared_mid_bucket; //type: boolean
+                                YLeaf suspect_probe_restarted; //type: boolean
+                                YLeaf suspect_management_latency; //type: boolean
+                                YLeaf suspect_multiple_buckets; //type: boolean
+                                YLeaf suspect_misordering; //type: boolean
+                                YLeaf suspect_flr_low_packet_count; //type: boolean
+                                YLeaf premature_reason; //type: uint32
+                                YLeaf premature_reason_string; //type: string
 
                             class Contents : public Entity
                             {
@@ -290,8 +298,9 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bucket_type; //type: SlaOperBucketEnum
 
+
+                                    YLeaf bucket_type; //type: SlaOperBucketEnum
 
                                 class Aggregated : public Entity
                                 {
@@ -308,6 +317,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Bins : public Entity
                                     {
                                         public:
@@ -321,13 +331,14 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value lower_bound; //type: int32
-                                            Value upper_bound; //type: int32
-                                            Value lower_bound_tenths; //type: int32
-                                            Value upper_bound_tenths; //type: int32
-                                            Value sum; //type: int64
-                                            Value count; //type: uint32
 
+
+                                            YLeaf lower_bound; //type: int32
+                                            YLeaf upper_bound; //type: int32
+                                            YLeaf lower_bound_tenths; //type: int32
+                                            YLeaf upper_bound_tenths; //type: int32
+                                            YLeaf sum; //type: int64
+                                            YLeaf count; //type: uint32
 
 
 
@@ -355,6 +366,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Sample : public Entity
                                     {
                                         public:
@@ -368,16 +380,17 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sent_at; //type: uint32
-                                            Value sent; //type: boolean
-                                            Value timed_out; //type: boolean
-                                            Value corrupt; //type: boolean
-                                            Value out_of_order; //type: boolean
-                                            Value no_data_packets; //type: boolean
-                                            Value result; //type: int32
-                                            Value frames_sent; //type: uint32
-                                            Value frames_lost; //type: uint32
 
+
+                                            YLeaf sent_at; //type: uint32
+                                            YLeaf sent; //type: boolean
+                                            YLeaf timed_out; //type: boolean
+                                            YLeaf corrupt; //type: boolean
+                                            YLeaf out_of_order; //type: boolean
+                                            YLeaf no_data_packets; //type: boolean
+                                            YLeaf result; //type: int32
+                                            YLeaf frames_sent; //type: uint32
+                                            YLeaf frames_lost; //type: uint32
 
 
 
@@ -392,7 +405,6 @@ class Sla : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated> aggregated;
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-                                    class SlaOperBucketEnum;
 
 
                             }; // Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents
@@ -440,6 +452,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Operation_ : public Entity
                 {
                     public:
@@ -453,15 +466,16 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value profile_name; //type: string
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value last_run; //type: uint32
 
+
+                        YLeaf profile_name; //type: string
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf last_run; //type: uint32
 
                     class ProfileOptions : public Entity
                     {
@@ -476,13 +490,14 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value probe_type; //type: string
-                            Value packets_per_burst; //type: uint16
-                            Value inter_packet_interval; //type: uint16
-                            Value bursts_per_probe; //type: uint32
-                            Value inter_burst_interval; //type: uint32
-                            Value flr_calculation_interval; //type: uint32
 
+
+                            YLeaf probe_type; //type: string
+                            YLeaf packets_per_burst; //type: uint16
+                            YLeaf inter_packet_interval; //type: uint16
+                            YLeaf bursts_per_probe; //type: uint32
+                            YLeaf inter_burst_interval; //type: uint32
+                            YLeaf flr_calculation_interval; //type: uint32
 
                         class PacketPadding : public Entity
                         {
@@ -497,12 +512,12 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value packet_pad_size; //type: uint16
-                                Value test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
-                                Value test_pattern_pad_hex_string; //type: uint32
 
 
-                                class SlaOperTestPatternSchemeEnum;
+                                YLeaf packet_pad_size; //type: uint16
+                                YLeaf test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
+                                YLeaf test_pattern_pad_hex_string; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding
@@ -521,11 +536,11 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority_type; //type: SlaOperPacketPriorityEnum
-                                Value cos; //type: uint8
 
 
-                                class SlaOperPacketPriorityEnum;
+                                YLeaf priority_type; //type: SlaOperPacketPriorityEnum
+                                YLeaf cos; //type: uint8
+
 
 
                         }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
@@ -544,11 +559,12 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_time; //type: uint32
-                                Value start_time_configured; //type: boolean
-                                Value schedule_duration; //type: uint32
-                                Value schedule_interval; //type: uint32
 
+
+                                YLeaf start_time; //type: uint32
+                                YLeaf start_time_configured; //type: boolean
+                                YLeaf schedule_duration; //type: uint32
+                                YLeaf schedule_interval; //type: uint32
 
 
 
@@ -568,8 +584,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value current_buckets_archive; //type: uint32
 
+
+                                YLeaf current_buckets_archive; //type: uint32
 
                             class MetricConfig : public Entity
                             {
@@ -584,16 +601,15 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value metric_type; //type: SlaRecordableMetricEnum
-                                    Value bins_count; //type: uint16
-                                    Value bins_width; //type: uint16
-                                    Value bucket_size; //type: uint8
-                                    Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                    Value buckets_archive; //type: uint32
 
 
-                                    class SlaBucketSizeEnum;
-                                    class SlaRecordableMetricEnum;
+                                    YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                    YLeaf bins_count; //type: uint16
+                                    YLeaf bins_width; //type: uint16
+                                    YLeaf bucket_size; //type: uint8
+                                    YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                    YLeaf buckets_archive; //type: uint32
+
 
 
                             }; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig
@@ -627,8 +643,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -643,8 +660,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -664,9 +682,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -675,7 +694,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions
@@ -709,6 +727,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class StatisticsHistorical : public Entity
                 {
                     public:
@@ -722,16 +741,17 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value profile_name; //type: string
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value probe_type; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value flr_calculation_interval; //type: uint32
 
+
+                        YLeaf profile_name; //type: string
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf probe_type; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf flr_calculation_interval; //type: uint32
 
                     class SpecificOptions : public Entity
                     {
@@ -746,8 +766,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -762,8 +783,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -783,9 +805,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -794,7 +817,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions
@@ -813,11 +835,12 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_time; //type: uint32
-                            Value start_time_configured; //type: boolean
-                            Value schedule_duration; //type: uint32
-                            Value schedule_interval; //type: uint32
 
+
+                            YLeaf start_time; //type: uint32
+                            YLeaf start_time_configured; //type: boolean
+                            YLeaf schedule_duration; //type: uint32
+                            YLeaf schedule_interval; //type: uint32
 
 
 
@@ -839,6 +862,7 @@ class Sla : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -852,16 +876,15 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value metric_type; //type: SlaRecordableMetricEnum
-                                Value bins_count; //type: uint16
-                                Value bins_width; //type: uint16
-                                Value bucket_size; //type: uint8
-                                Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                Value buckets_archive; //type: uint32
 
 
-                                class SlaBucketSizeEnum;
-                                class SlaRecordableMetricEnum;
+                                YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                YLeaf bins_count; //type: uint16
+                                YLeaf bins_width; //type: uint16
+                                YLeaf bucket_size; //type: uint8
+                                YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                YLeaf buckets_archive; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config
@@ -880,38 +903,39 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_at; //type: uint32
-                                Value duration; //type: uint32
-                                Value sent; //type: uint32
-                                Value lost; //type: uint32
-                                Value corrupt; //type: uint32
-                                Value out_of_order; //type: uint32
-                                Value duplicates; //type: uint32
-                                Value minimum; //type: int32
-                                Value maximum; //type: int32
-                                Value time_of_minimum; //type: uint32
-                                Value time_of_maximum; //type: uint32
-                                Value average; //type: int32
-                                Value standard_deviation; //type: int32
-                                Value result_count; //type: uint32
-                                Value data_sent_count; //type: uint32
-                                Value data_lost_count; //type: uint32
-                                Value overall_flr; //type: int32
-                                Value suspect_start_mid_bucket; //type: boolean
-                                Value suspect_schedule_latency; //type: boolean
-                                Value suspect_send_fail; //type: boolean
-                                Value suspect_premature_end; //type: boolean
-                                Value suspect_clock_drift; //type: boolean
-                                Value suspect_memory_allocation_failed; //type: boolean
-                                Value suspect_cleared_mid_bucket; //type: boolean
-                                Value suspect_probe_restarted; //type: boolean
-                                Value suspect_management_latency; //type: boolean
-                                Value suspect_multiple_buckets; //type: boolean
-                                Value suspect_misordering; //type: boolean
-                                Value suspect_flr_low_packet_count; //type: boolean
-                                Value premature_reason; //type: uint32
-                                Value premature_reason_string; //type: string
 
+
+                                YLeaf start_at; //type: uint32
+                                YLeaf duration; //type: uint32
+                                YLeaf sent; //type: uint32
+                                YLeaf lost; //type: uint32
+                                YLeaf corrupt; //type: uint32
+                                YLeaf out_of_order; //type: uint32
+                                YLeaf duplicates; //type: uint32
+                                YLeaf minimum; //type: int32
+                                YLeaf maximum; //type: int32
+                                YLeaf time_of_minimum; //type: uint32
+                                YLeaf time_of_maximum; //type: uint32
+                                YLeaf average; //type: int32
+                                YLeaf standard_deviation; //type: int32
+                                YLeaf result_count; //type: uint32
+                                YLeaf data_sent_count; //type: uint32
+                                YLeaf data_lost_count; //type: uint32
+                                YLeaf overall_flr; //type: int32
+                                YLeaf suspect_start_mid_bucket; //type: boolean
+                                YLeaf suspect_schedule_latency; //type: boolean
+                                YLeaf suspect_send_fail; //type: boolean
+                                YLeaf suspect_premature_end; //type: boolean
+                                YLeaf suspect_clock_drift; //type: boolean
+                                YLeaf suspect_memory_allocation_failed; //type: boolean
+                                YLeaf suspect_cleared_mid_bucket; //type: boolean
+                                YLeaf suspect_probe_restarted; //type: boolean
+                                YLeaf suspect_management_latency; //type: boolean
+                                YLeaf suspect_multiple_buckets; //type: boolean
+                                YLeaf suspect_misordering; //type: boolean
+                                YLeaf suspect_flr_low_packet_count; //type: boolean
+                                YLeaf premature_reason; //type: uint32
+                                YLeaf premature_reason_string; //type: string
 
                             class Contents : public Entity
                             {
@@ -926,8 +950,9 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bucket_type; //type: SlaOperBucketEnum
 
+
+                                    YLeaf bucket_type; //type: SlaOperBucketEnum
 
                                 class Aggregated : public Entity
                                 {
@@ -944,6 +969,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Bins : public Entity
                                     {
                                         public:
@@ -957,13 +983,14 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value lower_bound; //type: int32
-                                            Value upper_bound; //type: int32
-                                            Value lower_bound_tenths; //type: int32
-                                            Value upper_bound_tenths; //type: int32
-                                            Value sum; //type: int64
-                                            Value count; //type: uint32
 
+
+                                            YLeaf lower_bound; //type: int32
+                                            YLeaf upper_bound; //type: int32
+                                            YLeaf lower_bound_tenths; //type: int32
+                                            YLeaf upper_bound_tenths; //type: int32
+                                            YLeaf sum; //type: int64
+                                            YLeaf count; //type: uint32
 
 
 
@@ -991,6 +1018,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Sample : public Entity
                                     {
                                         public:
@@ -1004,16 +1032,17 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sent_at; //type: uint32
-                                            Value sent; //type: boolean
-                                            Value timed_out; //type: boolean
-                                            Value corrupt; //type: boolean
-                                            Value out_of_order; //type: boolean
-                                            Value no_data_packets; //type: boolean
-                                            Value result; //type: int32
-                                            Value frames_sent; //type: uint32
-                                            Value frames_lost; //type: uint32
 
+
+                                            YLeaf sent_at; //type: uint32
+                                            YLeaf sent; //type: boolean
+                                            YLeaf timed_out; //type: boolean
+                                            YLeaf corrupt; //type: boolean
+                                            YLeaf out_of_order; //type: boolean
+                                            YLeaf no_data_packets; //type: boolean
+                                            YLeaf result; //type: int32
+                                            YLeaf frames_sent; //type: uint32
+                                            YLeaf frames_lost; //type: uint32
 
 
 
@@ -1028,7 +1057,6 @@ class Sla : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated> aggregated;
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-                                    class SlaOperBucketEnum;
 
 
                             }; // Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents
@@ -1076,6 +1104,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class StatisticsOnDemandHistorical : public Entity
                 {
                     public:
@@ -1089,16 +1118,17 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value operation_id; //type: uint32
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value probe_type; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value flr_calculation_interval; //type: uint32
 
+
+                        YLeaf operation_id; //type: uint32
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf probe_type; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf flr_calculation_interval; //type: uint32
 
                     class SpecificOptions : public Entity
                     {
@@ -1113,8 +1143,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -1129,8 +1160,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -1150,9 +1182,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -1161,7 +1194,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions
@@ -1180,11 +1212,12 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_time; //type: uint32
-                            Value start_time_configured; //type: boolean
-                            Value schedule_duration; //type: uint32
-                            Value schedule_interval; //type: uint32
 
+
+                            YLeaf start_time; //type: uint32
+                            YLeaf start_time_configured; //type: boolean
+                            YLeaf schedule_duration; //type: uint32
+                            YLeaf schedule_interval; //type: uint32
 
 
 
@@ -1206,6 +1239,7 @@ class Sla : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1219,16 +1253,15 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value metric_type; //type: SlaRecordableMetricEnum
-                                Value bins_count; //type: uint16
-                                Value bins_width; //type: uint16
-                                Value bucket_size; //type: uint8
-                                Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                Value buckets_archive; //type: uint32
 
 
-                                class SlaBucketSizeEnum;
-                                class SlaRecordableMetricEnum;
+                                YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                YLeaf bins_count; //type: uint16
+                                YLeaf bins_width; //type: uint16
+                                YLeaf bucket_size; //type: uint8
+                                YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                YLeaf buckets_archive; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config
@@ -1247,38 +1280,39 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_at; //type: uint32
-                                Value duration; //type: uint32
-                                Value sent; //type: uint32
-                                Value lost; //type: uint32
-                                Value corrupt; //type: uint32
-                                Value out_of_order; //type: uint32
-                                Value duplicates; //type: uint32
-                                Value minimum; //type: int32
-                                Value maximum; //type: int32
-                                Value time_of_minimum; //type: uint32
-                                Value time_of_maximum; //type: uint32
-                                Value average; //type: int32
-                                Value standard_deviation; //type: int32
-                                Value result_count; //type: uint32
-                                Value data_sent_count; //type: uint32
-                                Value data_lost_count; //type: uint32
-                                Value overall_flr; //type: int32
-                                Value suspect_start_mid_bucket; //type: boolean
-                                Value suspect_schedule_latency; //type: boolean
-                                Value suspect_send_fail; //type: boolean
-                                Value suspect_premature_end; //type: boolean
-                                Value suspect_clock_drift; //type: boolean
-                                Value suspect_memory_allocation_failed; //type: boolean
-                                Value suspect_cleared_mid_bucket; //type: boolean
-                                Value suspect_probe_restarted; //type: boolean
-                                Value suspect_management_latency; //type: boolean
-                                Value suspect_multiple_buckets; //type: boolean
-                                Value suspect_misordering; //type: boolean
-                                Value suspect_flr_low_packet_count; //type: boolean
-                                Value premature_reason; //type: uint32
-                                Value premature_reason_string; //type: string
 
+
+                                YLeaf start_at; //type: uint32
+                                YLeaf duration; //type: uint32
+                                YLeaf sent; //type: uint32
+                                YLeaf lost; //type: uint32
+                                YLeaf corrupt; //type: uint32
+                                YLeaf out_of_order; //type: uint32
+                                YLeaf duplicates; //type: uint32
+                                YLeaf minimum; //type: int32
+                                YLeaf maximum; //type: int32
+                                YLeaf time_of_minimum; //type: uint32
+                                YLeaf time_of_maximum; //type: uint32
+                                YLeaf average; //type: int32
+                                YLeaf standard_deviation; //type: int32
+                                YLeaf result_count; //type: uint32
+                                YLeaf data_sent_count; //type: uint32
+                                YLeaf data_lost_count; //type: uint32
+                                YLeaf overall_flr; //type: int32
+                                YLeaf suspect_start_mid_bucket; //type: boolean
+                                YLeaf suspect_schedule_latency; //type: boolean
+                                YLeaf suspect_send_fail; //type: boolean
+                                YLeaf suspect_premature_end; //type: boolean
+                                YLeaf suspect_clock_drift; //type: boolean
+                                YLeaf suspect_memory_allocation_failed; //type: boolean
+                                YLeaf suspect_cleared_mid_bucket; //type: boolean
+                                YLeaf suspect_probe_restarted; //type: boolean
+                                YLeaf suspect_management_latency; //type: boolean
+                                YLeaf suspect_multiple_buckets; //type: boolean
+                                YLeaf suspect_misordering; //type: boolean
+                                YLeaf suspect_flr_low_packet_count; //type: boolean
+                                YLeaf premature_reason; //type: uint32
+                                YLeaf premature_reason_string; //type: string
 
                             class Contents : public Entity
                             {
@@ -1293,8 +1327,9 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bucket_type; //type: SlaOperBucketEnum
 
+
+                                    YLeaf bucket_type; //type: SlaOperBucketEnum
 
                                 class Aggregated : public Entity
                                 {
@@ -1311,6 +1346,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Bins : public Entity
                                     {
                                         public:
@@ -1324,13 +1360,14 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value lower_bound; //type: int32
-                                            Value upper_bound; //type: int32
-                                            Value lower_bound_tenths; //type: int32
-                                            Value upper_bound_tenths; //type: int32
-                                            Value sum; //type: int64
-                                            Value count; //type: uint32
 
+
+                                            YLeaf lower_bound; //type: int32
+                                            YLeaf upper_bound; //type: int32
+                                            YLeaf lower_bound_tenths; //type: int32
+                                            YLeaf upper_bound_tenths; //type: int32
+                                            YLeaf sum; //type: int64
+                                            YLeaf count; //type: uint32
 
 
 
@@ -1358,6 +1395,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Sample : public Entity
                                     {
                                         public:
@@ -1371,16 +1409,17 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sent_at; //type: uint32
-                                            Value sent; //type: boolean
-                                            Value timed_out; //type: boolean
-                                            Value corrupt; //type: boolean
-                                            Value out_of_order; //type: boolean
-                                            Value no_data_packets; //type: boolean
-                                            Value result; //type: int32
-                                            Value frames_sent; //type: uint32
-                                            Value frames_lost; //type: uint32
 
+
+                                            YLeaf sent_at; //type: uint32
+                                            YLeaf sent; //type: boolean
+                                            YLeaf timed_out; //type: boolean
+                                            YLeaf corrupt; //type: boolean
+                                            YLeaf out_of_order; //type: boolean
+                                            YLeaf no_data_packets; //type: boolean
+                                            YLeaf result; //type: int32
+                                            YLeaf frames_sent; //type: uint32
+                                            YLeaf frames_lost; //type: uint32
 
 
 
@@ -1395,7 +1434,6 @@ class Sla : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated> aggregated;
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-                                    class SlaOperBucketEnum;
 
 
                             }; // Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents
@@ -1443,6 +1481,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ConfigError : public Entity
                 {
                     public:
@@ -1456,31 +1495,32 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value profile_name; //type: string
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value profile_name_xr; //type: string
-                        Value display_short; //type: string
-                        Value rt_delay_inconsistent; //type: boolean
-                        Value ow_delay_sd_inconsistent; //type: boolean
-                        Value ow_delay_ds_inconsistent; //type: boolean
-                        Value rt_jitter_inconsistent; //type: boolean
-                        Value ow_jitter_sd_inconsistent; //type: boolean
-                        Value ow_jitter_ds_inconsistent; //type: boolean
-                        Value ow_loss_sd_inconsistent; //type: boolean
-                        Value ow_loss_ds_inconsistent; //type: boolean
-                        Value packet_pad_inconsistent; //type: boolean
-                        Value packet_rand_pad_inconsistent; //type: boolean
-                        Value min_packet_interval_inconsistent; //type: boolean
-                        Value priority_inconsistent; //type: boolean
-                        Value packet_type_inconsistent; //type: boolean
-                        Value profile_doesnt_exist; //type: boolean
-                        Value synthetic_loss_not_supported; //type: boolean
-                        Value probe_too_big; //type: boolean
-                        ValueList error_string; //type: list of  string
 
+
+                        YLeaf profile_name; //type: string
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf profile_name_xr; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf rt_delay_inconsistent; //type: boolean
+                        YLeaf ow_delay_sd_inconsistent; //type: boolean
+                        YLeaf ow_delay_ds_inconsistent; //type: boolean
+                        YLeaf rt_jitter_inconsistent; //type: boolean
+                        YLeaf ow_jitter_sd_inconsistent; //type: boolean
+                        YLeaf ow_jitter_ds_inconsistent; //type: boolean
+                        YLeaf ow_loss_sd_inconsistent; //type: boolean
+                        YLeaf ow_loss_ds_inconsistent; //type: boolean
+                        YLeaf packet_pad_inconsistent; //type: boolean
+                        YLeaf packet_rand_pad_inconsistent; //type: boolean
+                        YLeaf min_packet_interval_inconsistent; //type: boolean
+                        YLeaf priority_inconsistent; //type: boolean
+                        YLeaf packet_type_inconsistent; //type: boolean
+                        YLeaf profile_doesnt_exist; //type: boolean
+                        YLeaf synthetic_loss_not_supported; //type: boolean
+                        YLeaf probe_too_big; //type: boolean
+                        YLeafList error_string; //type: list of  string
 
 
 
@@ -1508,6 +1548,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OnDemandOperation : public Entity
                 {
                     public:
@@ -1521,15 +1562,16 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value operation_id; //type: uint32
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value last_run; //type: uint32
 
+
+                        YLeaf operation_id; //type: uint32
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf last_run; //type: uint32
 
                     class ProfileOptions : public Entity
                     {
@@ -1544,13 +1586,14 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value probe_type; //type: string
-                            Value packets_per_burst; //type: uint16
-                            Value inter_packet_interval; //type: uint16
-                            Value bursts_per_probe; //type: uint32
-                            Value inter_burst_interval; //type: uint32
-                            Value flr_calculation_interval; //type: uint32
 
+
+                            YLeaf probe_type; //type: string
+                            YLeaf packets_per_burst; //type: uint16
+                            YLeaf inter_packet_interval; //type: uint16
+                            YLeaf bursts_per_probe; //type: uint32
+                            YLeaf inter_burst_interval; //type: uint32
+                            YLeaf flr_calculation_interval; //type: uint32
 
                         class PacketPadding : public Entity
                         {
@@ -1565,12 +1608,12 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value packet_pad_size; //type: uint16
-                                Value test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
-                                Value test_pattern_pad_hex_string; //type: uint32
 
 
-                                class SlaOperTestPatternSchemeEnum;
+                                YLeaf packet_pad_size; //type: uint16
+                                YLeaf test_pattern_pad_scheme; //type: SlaOperTestPatternSchemeEnum
+                                YLeaf test_pattern_pad_hex_string; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding
@@ -1589,11 +1632,11 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value priority_type; //type: SlaOperPacketPriorityEnum
-                                Value cos; //type: uint8
 
 
-                                class SlaOperPacketPriorityEnum;
+                                YLeaf priority_type; //type: SlaOperPacketPriorityEnum
+                                YLeaf cos; //type: uint8
+
 
 
                         }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority
@@ -1612,11 +1655,12 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_time; //type: uint32
-                                Value start_time_configured; //type: boolean
-                                Value schedule_duration; //type: uint32
-                                Value schedule_interval; //type: uint32
 
+
+                                YLeaf start_time; //type: uint32
+                                YLeaf start_time_configured; //type: boolean
+                                YLeaf schedule_duration; //type: uint32
+                                YLeaf schedule_interval; //type: uint32
 
 
 
@@ -1636,8 +1680,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value current_buckets_archive; //type: uint32
 
+
+                                YLeaf current_buckets_archive; //type: uint32
 
                             class MetricConfig : public Entity
                             {
@@ -1652,16 +1697,15 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value metric_type; //type: SlaRecordableMetricEnum
-                                    Value bins_count; //type: uint16
-                                    Value bins_width; //type: uint16
-                                    Value bucket_size; //type: uint8
-                                    Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                    Value buckets_archive; //type: uint32
 
 
-                                    class SlaBucketSizeEnum;
-                                    class SlaRecordableMetricEnum;
+                                    YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                    YLeaf bins_count; //type: uint16
+                                    YLeaf bins_width; //type: uint16
+                                    YLeaf bucket_size; //type: uint8
+                                    YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                    YLeaf buckets_archive; //type: uint32
+
 
 
                             }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig
@@ -1695,8 +1739,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -1711,8 +1756,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -1732,9 +1778,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -1743,7 +1790,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
@@ -1777,6 +1823,7 @@ class Sla : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class StatisticsCurrent : public Entity
                 {
                     public:
@@ -1790,16 +1837,17 @@ class Sla : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value profile_name; //type: string
-                        Value domain_name; //type: string
-                        Value interface_name; //type: string
-                        Value mep_id; //type: uint32
-                        Value mac_address; //type: string
-                        Value probe_type; //type: string
-                        Value display_short; //type: string
-                        Value display_long; //type: string
-                        Value flr_calculation_interval; //type: uint32
 
+
+                        YLeaf profile_name; //type: string
+                        YLeaf domain_name; //type: string
+                        YLeaf interface_name; //type: string
+                        YLeaf mep_id; //type: uint32
+                        YLeaf mac_address; //type: string
+                        YLeaf probe_type; //type: string
+                        YLeaf display_short; //type: string
+                        YLeaf display_long; //type: string
+                        YLeaf flr_calculation_interval; //type: uint32
 
                     class SpecificOptions : public Entity
                     {
@@ -1814,8 +1862,9 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value oper_type; //type: SlaOperOperationEnum
 
+
+                            YLeaf oper_type; //type: SlaOperOperationEnum
 
                         class ConfiguredOperationOptions : public Entity
                         {
@@ -1830,8 +1879,9 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value profile_name; //type: string
 
+
+                                YLeaf profile_name; //type: string
 
 
 
@@ -1851,9 +1901,10 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ondemand_operation_id; //type: uint32
-                                Value probe_count; //type: uint8
 
+
+                                YLeaf ondemand_operation_id; //type: uint32
+                                YLeaf probe_count; //type: uint8
 
 
 
@@ -1862,7 +1913,6 @@ class Sla : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
                             std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
-                            class SlaOperOperationEnum;
 
 
                     }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
@@ -1881,11 +1931,12 @@ class Sla : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value start_time; //type: uint32
-                            Value start_time_configured; //type: boolean
-                            Value schedule_duration; //type: uint32
-                            Value schedule_interval; //type: uint32
 
+
+                            YLeaf start_time; //type: uint32
+                            YLeaf start_time_configured; //type: boolean
+                            YLeaf schedule_duration; //type: uint32
+                            YLeaf schedule_interval; //type: uint32
 
 
 
@@ -1907,6 +1958,7 @@ class Sla : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Config : public Entity
                         {
                             public:
@@ -1920,16 +1972,15 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value metric_type; //type: SlaRecordableMetricEnum
-                                Value bins_count; //type: uint16
-                                Value bins_width; //type: uint16
-                                Value bucket_size; //type: uint8
-                                Value bucket_size_unit; //type: SlaBucketSizeEnum
-                                Value buckets_archive; //type: uint32
 
 
-                                class SlaBucketSizeEnum;
-                                class SlaRecordableMetricEnum;
+                                YLeaf metric_type; //type: SlaRecordableMetricEnum
+                                YLeaf bins_count; //type: uint16
+                                YLeaf bins_width; //type: uint16
+                                YLeaf bucket_size; //type: uint8
+                                YLeaf bucket_size_unit; //type: SlaBucketSizeEnum
+                                YLeaf buckets_archive; //type: uint32
+
 
 
                         }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config
@@ -1948,38 +1999,39 @@ class Sla : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value start_at; //type: uint32
-                                Value duration; //type: uint32
-                                Value sent; //type: uint32
-                                Value lost; //type: uint32
-                                Value corrupt; //type: uint32
-                                Value out_of_order; //type: uint32
-                                Value duplicates; //type: uint32
-                                Value minimum; //type: int32
-                                Value maximum; //type: int32
-                                Value time_of_minimum; //type: uint32
-                                Value time_of_maximum; //type: uint32
-                                Value average; //type: int32
-                                Value standard_deviation; //type: int32
-                                Value result_count; //type: uint32
-                                Value data_sent_count; //type: uint32
-                                Value data_lost_count; //type: uint32
-                                Value overall_flr; //type: int32
-                                Value suspect_start_mid_bucket; //type: boolean
-                                Value suspect_schedule_latency; //type: boolean
-                                Value suspect_send_fail; //type: boolean
-                                Value suspect_premature_end; //type: boolean
-                                Value suspect_clock_drift; //type: boolean
-                                Value suspect_memory_allocation_failed; //type: boolean
-                                Value suspect_cleared_mid_bucket; //type: boolean
-                                Value suspect_probe_restarted; //type: boolean
-                                Value suspect_management_latency; //type: boolean
-                                Value suspect_multiple_buckets; //type: boolean
-                                Value suspect_misordering; //type: boolean
-                                Value suspect_flr_low_packet_count; //type: boolean
-                                Value premature_reason; //type: uint32
-                                Value premature_reason_string; //type: string
 
+
+                                YLeaf start_at; //type: uint32
+                                YLeaf duration; //type: uint32
+                                YLeaf sent; //type: uint32
+                                YLeaf lost; //type: uint32
+                                YLeaf corrupt; //type: uint32
+                                YLeaf out_of_order; //type: uint32
+                                YLeaf duplicates; //type: uint32
+                                YLeaf minimum; //type: int32
+                                YLeaf maximum; //type: int32
+                                YLeaf time_of_minimum; //type: uint32
+                                YLeaf time_of_maximum; //type: uint32
+                                YLeaf average; //type: int32
+                                YLeaf standard_deviation; //type: int32
+                                YLeaf result_count; //type: uint32
+                                YLeaf data_sent_count; //type: uint32
+                                YLeaf data_lost_count; //type: uint32
+                                YLeaf overall_flr; //type: int32
+                                YLeaf suspect_start_mid_bucket; //type: boolean
+                                YLeaf suspect_schedule_latency; //type: boolean
+                                YLeaf suspect_send_fail; //type: boolean
+                                YLeaf suspect_premature_end; //type: boolean
+                                YLeaf suspect_clock_drift; //type: boolean
+                                YLeaf suspect_memory_allocation_failed; //type: boolean
+                                YLeaf suspect_cleared_mid_bucket; //type: boolean
+                                YLeaf suspect_probe_restarted; //type: boolean
+                                YLeaf suspect_management_latency; //type: boolean
+                                YLeaf suspect_multiple_buckets; //type: boolean
+                                YLeaf suspect_misordering; //type: boolean
+                                YLeaf suspect_flr_low_packet_count; //type: boolean
+                                YLeaf premature_reason; //type: uint32
+                                YLeaf premature_reason_string; //type: string
 
                             class Contents : public Entity
                             {
@@ -1994,8 +2046,9 @@ class Sla : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value bucket_type; //type: SlaOperBucketEnum
 
+
+                                    YLeaf bucket_type; //type: SlaOperBucketEnum
 
                                 class Aggregated : public Entity
                                 {
@@ -2012,6 +2065,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Bins : public Entity
                                     {
                                         public:
@@ -2025,13 +2079,14 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value lower_bound; //type: int32
-                                            Value upper_bound; //type: int32
-                                            Value lower_bound_tenths; //type: int32
-                                            Value upper_bound_tenths; //type: int32
-                                            Value sum; //type: int64
-                                            Value count; //type: uint32
 
+
+                                            YLeaf lower_bound; //type: int32
+                                            YLeaf upper_bound; //type: int32
+                                            YLeaf lower_bound_tenths; //type: int32
+                                            YLeaf upper_bound_tenths; //type: int32
+                                            YLeaf sum; //type: int64
+                                            YLeaf count; //type: uint32
 
 
 
@@ -2059,6 +2114,7 @@ class Sla : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Sample : public Entity
                                     {
                                         public:
@@ -2072,16 +2128,17 @@ class Sla : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value sent_at; //type: uint32
-                                            Value sent; //type: boolean
-                                            Value timed_out; //type: boolean
-                                            Value corrupt; //type: boolean
-                                            Value out_of_order; //type: boolean
-                                            Value no_data_packets; //type: boolean
-                                            Value result; //type: int32
-                                            Value frames_sent; //type: uint32
-                                            Value frames_lost; //type: uint32
 
+
+                                            YLeaf sent_at; //type: uint32
+                                            YLeaf sent; //type: boolean
+                                            YLeaf timed_out; //type: boolean
+                                            YLeaf corrupt; //type: boolean
+                                            YLeaf out_of_order; //type: boolean
+                                            YLeaf no_data_packets; //type: boolean
+                                            YLeaf result; //type: int32
+                                            YLeaf frames_sent; //type: uint32
+                                            YLeaf frames_lost; //type: uint32
 
 
 
@@ -2096,7 +2153,6 @@ class Sla : public Entity
 
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated> aggregated;
                                     std::unique_ptr<Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated> unaggregated;
-                                    class SlaOperBucketEnum;
 
 
                             }; // Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents
@@ -2166,6 +2222,7 @@ class SlaNodes : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 

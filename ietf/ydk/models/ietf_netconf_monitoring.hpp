@@ -50,6 +50,7 @@ class NetconfState : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Capabilities : public Entity
     {
         public:
@@ -63,8 +64,9 @@ class NetconfState : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            ValueList capability; //type: list of  string
 
+
+            YLeafList capability; //type: list of  string
 
 
 
@@ -86,6 +88,7 @@ class NetconfState : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Datastore : public Entity
         {
             public:
@@ -99,8 +102,9 @@ class NetconfState : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: NetconfDatastoreTypeEnum
 
+
+                YLeaf name; //type: NetconfDatastoreTypeEnum
 
             class Locks : public Entity
             {
@@ -117,6 +121,7 @@ class NetconfState : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class GlobalLock : public Entity
                 {
                     public:
@@ -130,9 +135,10 @@ class NetconfState : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value locked_by_session; //type: uint32
-                        Value locked_time; //type: string
 
+
+                        YLeaf locked_by_session; //type: uint32
+                        YLeaf locked_time; //type: string
 
 
 
@@ -152,12 +158,13 @@ class NetconfState : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lock_id; //type: uint32
-                        Value locked_by_session; //type: uint32
-                        Value locked_time; //type: string
-                        ValueList select; //type: list of  string
-                        ValueList locked_node; //type: list of  instance-identifier
 
+
+                        YLeaf lock_id; //type: uint32
+                        YLeaf locked_by_session; //type: uint32
+                        YLeaf locked_time; //type: string
+                        YLeafList select; //type: list of  string
+                        YLeafList locked_node; //type: list of  instance-identifier
 
 
 
@@ -172,7 +179,6 @@ class NetconfState : public Entity
 
 
                 std::unique_ptr<ietf_netconf_monitoring::NetconfState::Datastores::Datastore::Locks> locks; // presence node
-                class NetconfDatastoreTypeEnum;
 
 
         }; // NetconfState::Datastores::Datastore
@@ -199,6 +205,7 @@ class NetconfState : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Schema : public Entity
         {
             public:
@@ -212,12 +219,13 @@ class NetconfState : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value identifier; //type: string
-                Value version; //type: string
-                Value format; //type: SchemaFormatIdentity
-                Value namespace_; //type: string
-                ValueList location; //type: list of  one of string, enumeration
 
+
+                YLeaf identifier; //type: string
+                YLeaf version; //type: string
+                YLeaf format; //type: SchemaFormatIdentity
+                YLeaf namespace_; //type: string
+                YLeafList location; //type: list of  one of string, enumeration
 
                 class LocationEnum;
 
@@ -246,6 +254,7 @@ class NetconfState : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Session : public Entity
         {
             public:
@@ -259,16 +268,17 @@ class NetconfState : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_id; //type: uint32
-                Value transport; //type: TransportIdentity
-                Value username; //type: string
-                Value source_host; //type: one of union, string
-                Value login_time; //type: string
-                Value in_rpcs; //type: uint32
-                Value in_bad_rpcs; //type: uint32
-                Value out_rpc_errors; //type: uint32
-                Value out_notifications; //type: uint32
 
+
+                YLeaf session_id; //type: uint32
+                YLeaf transport; //type: TransportIdentity
+                YLeaf username; //type: string
+                YLeaf source_host; //type: one of union, string
+                YLeaf login_time; //type: string
+                YLeaf in_rpcs; //type: uint32
+                YLeaf in_bad_rpcs; //type: uint32
+                YLeaf out_rpc_errors; //type: uint32
+                YLeaf out_notifications; //type: uint32
 
 
 
@@ -294,15 +304,16 @@ class NetconfState : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value netconf_start_time; //type: string
-            Value in_bad_hellos; //type: uint32
-            Value in_sessions; //type: uint32
-            Value dropped_sessions; //type: uint32
-            Value in_rpcs; //type: uint32
-            Value in_bad_rpcs; //type: uint32
-            Value out_rpc_errors; //type: uint32
-            Value out_notifications; //type: uint32
 
+
+            YLeaf netconf_start_time; //type: string
+            YLeaf in_bad_hellos; //type: uint32
+            YLeaf in_sessions; //type: uint32
+            YLeaf dropped_sessions; //type: uint32
+            YLeaf in_rpcs; //type: uint32
+            YLeaf in_bad_rpcs; //type: uint32
+            YLeaf out_rpc_errors; //type: uint32
+            YLeaf out_notifications; //type: uint32
 
 
 
@@ -332,10 +343,11 @@ class GetSchemaRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value identifier; //type: string
-        Value version; //type: string
-        Value format; //type: SchemaFormatIdentity
 
+
+        YLeaf identifier; //type: string
+        YLeaf version; //type: string
+        YLeaf format; //type: SchemaFormatIdentity
 
     class Output : public Entity
     {
@@ -350,6 +362,7 @@ class GetSchemaRpc : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
 
@@ -476,16 +489,16 @@ class NetconfSoapOverHttpsIdentity : public ietf_netconf_monitoring::TransportId
 class NetconfDatastoreTypeEnum : public Enum
 {
     public:
-        static const Enum::Value running;
-        static const Enum::Value candidate;
-        static const Enum::Value startup;
+        static const Enum::YLeaf running;
+        static const Enum::YLeaf candidate;
+        static const Enum::YLeaf startup;
 
 };
 
 class NetconfState::Schemas::Schema::LocationEnum : public Enum
 {
     public:
-        static const Enum::Value NETCONF;
+        static const Enum::YLeaf NETCONF;
 
 };
 

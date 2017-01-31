@@ -55,7 +55,7 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::InterfaceDamp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -167,7 +167,7 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -257,7 +257,7 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::has_op
 {
     return is_set(operation)
 	|| is_set(capsulation_number.operation)
-	|| (capsulation_dampening !=  nullptr && is_set(capsulation_dampening->operation));
+	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::get_segment_path() const
@@ -274,7 +274,7 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::Capsulation::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -398,7 +398,7 @@ bool InterfaceDampening::Interfaces::Interface::IfDampening::has_operation() con
 	|| is_set(reuse_threshold.operation)
 	|| is_set(state_transition_count.operation)
 	|| is_set(suppress_threshold.operation)
-	|| (interface_dampening !=  nullptr && is_set(interface_dampening->operation));
+	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Interfaces::Interface::IfDampening::get_segment_path() const
@@ -415,7 +415,7 @@ EntityPath InterfaceDampening::Interfaces::Interface::IfDampening::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -569,7 +569,7 @@ bool InterfaceDampening::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (if_dampening !=  nullptr && is_set(if_dampening->operation));
+	|| (if_dampening !=  nullptr && if_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Interfaces::Interface::get_segment_path() const
@@ -809,7 +809,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -921,7 +921,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1011,7 +1011,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Caps
 {
     return is_set(operation)
 	|| is_set(capsulation_number.operation)
-	|| (capsulation_dampening !=  nullptr && is_set(capsulation_dampening->operation));
+	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::Capsulation::get_segment_path() const
@@ -1028,7 +1028,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1155,7 +1155,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::has_
 	|| is_set(reuse_threshold.operation)
 	|| is_set(state_transition_count.operation)
 	|| is_set(suppress_threshold.operation)
-	|| (interface_dampening !=  nullptr && is_set(interface_dampening->operation));
+	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle::get_segment_path() const
@@ -1172,7 +1172,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::IfHandle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1348,7 +1348,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::IfHandles::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1461,7 +1461,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1573,7 +1573,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1663,7 +1663,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Ca
 {
     return is_set(operation)
 	|| is_set(capsulation_number.operation)
-	|| (capsulation_dampening !=  nullptr && is_set(capsulation_dampening->operation));
+	|| (capsulation_dampening !=  nullptr && capsulation_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::Capsulation::get_segment_path() const
@@ -1680,7 +1680,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1807,7 +1807,7 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::ha
 	|| is_set(reuse_threshold.operation)
 	|| is_set(state_transition_count.operation)
 	|| is_set(suppress_threshold.operation)
-	|| (interface_dampening !=  nullptr && is_set(interface_dampening->operation));
+	|| (interface_dampening !=  nullptr && interface_dampening->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interface::get_segment_path() const
@@ -1824,7 +1824,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::Interfa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2000,7 +2000,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::Interfaces::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2092,8 +2092,8 @@ bool InterfaceDampening::Nodes::Node::Show::Dampening::has_data() const
 bool InterfaceDampening::Nodes::Node::Show::Dampening::has_operation() const
 {
     return is_set(operation)
-	|| (if_handles !=  nullptr && is_set(if_handles->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (if_handles !=  nullptr && if_handles->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::Dampening::get_segment_path() const
@@ -2110,7 +2110,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::Dampening::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2217,7 +2217,7 @@ bool InterfaceDampening::Nodes::Node::Show::has_data() const
 bool InterfaceDampening::Nodes::Node::Show::has_operation() const
 {
     return is_set(operation)
-	|| (dampening !=  nullptr && is_set(dampening->operation));
+	|| (dampening !=  nullptr && dampening->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::Show::get_segment_path() const
@@ -2234,7 +2234,7 @@ EntityPath InterfaceDampening::Nodes::Node::Show::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2322,7 +2322,7 @@ bool InterfaceDampening::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (show !=  nullptr && is_set(show->operation));
+	|| (show !=  nullptr && show->has_operation());
 }
 
 std::string InterfaceDampening::Nodes::Node::get_segment_path() const
@@ -2541,8 +2541,8 @@ bool InterfaceDampening::has_data() const
 bool InterfaceDampening::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string InterfaceDampening::get_segment_path() const
@@ -2559,7 +2559,7 @@ EntityPath InterfaceDampening::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2720,7 +2720,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2872,7 +2872,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2963,7 +2963,7 @@ bool InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::has_
 {
     return is_set(operation)
 	|| is_set(locationview_name.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview::get_segment_path() const
@@ -2980,7 +2980,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::Locationview
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3090,7 +3090,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::Locationviews::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3230,7 +3230,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3382,7 +3382,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3473,7 +3473,7 @@ bool InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::
 {
     return is_set(operation)
 	|| is_set(pq_node_name.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLocation::get_segment_path() const
@@ -3490,7 +3490,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::PqNodeLoca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3600,7 +3600,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::PqNodeLocations::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3740,7 +3740,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3892,7 +3892,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::Interfaces::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3979,7 +3979,7 @@ bool InterfaceProperties::DataNodes::DataNode::SystemView::has_data() const
 bool InterfaceProperties::DataNodes::DataNode::SystemView::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::SystemView::get_segment_path() const
@@ -3996,7 +3996,7 @@ EntityPath InterfaceProperties::DataNodes::DataNode::SystemView::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4094,9 +4094,9 @@ bool InterfaceProperties::DataNodes::DataNode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(data_node_name.operation)
-	|| (locationviews !=  nullptr && is_set(locationviews->operation))
-	|| (pq_node_locations !=  nullptr && is_set(pq_node_locations->operation))
-	|| (system_view !=  nullptr && is_set(system_view->operation));
+	|| (locationviews !=  nullptr && locationviews->has_operation())
+	|| (pq_node_locations !=  nullptr && pq_node_locations->has_operation())
+	|| (system_view !=  nullptr && system_view->has_operation());
 }
 
 std::string InterfaceProperties::DataNodes::DataNode::get_segment_path() const
@@ -4356,7 +4356,7 @@ bool InterfaceProperties::has_data() const
 bool InterfaceProperties::has_operation() const
 {
     return is_set(operation)
-	|| (data_nodes !=  nullptr && is_set(data_nodes->operation));
+	|| (data_nodes !=  nullptr && data_nodes->has_operation());
 }
 
 std::string InterfaceProperties::get_segment_path() const
@@ -4373,7 +4373,7 @@ EntityPath InterfaceProperties::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4437,25 +4437,25 @@ std::unique_ptr<Entity> InterfaceProperties::clone_ptr()
     return std::make_unique<InterfaceProperties>();
 }
 
-const Enum::Value ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::Value ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::Value ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::Value ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::Value ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::Value ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::Value ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::Value ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::Value ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::Value ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::Value ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::Value ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::Value ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::Value ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
 
 
 }

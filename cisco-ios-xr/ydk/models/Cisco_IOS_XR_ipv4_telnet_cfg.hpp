@@ -26,6 +26,7 @@ class Ipv6Telnet : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Client : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class Ipv6Telnet : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value source_interface; //type: string
 
+
+            YLeaf source_interface; //type: string
 
 
 
@@ -68,6 +70,7 @@ class Ipv4Telnet : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Client : public Entity
     {
         public:
@@ -81,8 +84,9 @@ class Ipv4Telnet : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value source_interface; //type: string
 
+
+            YLeaf source_interface; //type: string
 
 
 

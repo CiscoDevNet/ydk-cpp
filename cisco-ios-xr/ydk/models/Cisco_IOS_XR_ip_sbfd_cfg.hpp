@@ -26,6 +26,7 @@ class Sbfd : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class RemoteTarget : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Sbfd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Ipv4Addresses : public Entity
@@ -56,6 +58,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4Address : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
 
+
+                    YLeaf address; //type: string
 
                 class RemoteDiscriminator : public Entity
                 {
@@ -85,8 +89,9 @@ class Sbfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value remote_discriminator; //type: uint32
 
+
+                        YLeaf remote_discriminator; //type: uint32
 
 
 
@@ -120,6 +125,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv6Address : public Entity
             {
                 public:
@@ -133,8 +139,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
 
+
+                    YLeaf address; //type: string
 
                 class RemoteDiscriminator : public Entity
                 {
@@ -149,8 +156,9 @@ class Sbfd : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value remote_discriminator; //type: uint32
 
+
+                        YLeaf remote_discriminator; //type: uint32
 
 
 
@@ -191,6 +199,7 @@ class Sbfd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IntfDiscriminators : public Entity
         {
             public:
@@ -206,6 +215,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IntfDiscriminator : public Entity
             {
                 public:
@@ -219,8 +229,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
 
+
+                    YLeaf interface_name; //type: string
 
 
 
@@ -248,6 +259,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class DynamicDiscriminator : public Entity
             {
                 public:
@@ -261,8 +273,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminator; //type: uint32
 
+
+                    YLeaf discriminator; //type: uint32
 
 
 
@@ -290,6 +303,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4Discriminator : public Entity
             {
                 public:
@@ -303,8 +317,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value address; //type: string
 
+
+                    YLeaf address; //type: string
 
 
 
@@ -332,6 +347,7 @@ class Sbfd : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Val32Discriminator : public Entity
             {
                 public:
@@ -345,8 +361,9 @@ class Sbfd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value discriminator; //type: uint32
 
+
+                    YLeaf discriminator; //type: uint32
 
 
 

@@ -43,7 +43,7 @@ EntityPath Components::Component::Config::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -144,7 +144,7 @@ EntityPath Components::Component::State::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -262,7 +262,7 @@ EntityPath Components::Component::Properties::Property::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -353,7 +353,7 @@ EntityPath Components::Component::Properties::Property::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -438,8 +438,8 @@ bool Components::Component::Properties::Property::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Components::Component::Properties::Property::get_segment_path() const
@@ -456,7 +456,7 @@ EntityPath Components::Component::Properties::Property::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -589,7 +589,7 @@ EntityPath Components::Component::Properties::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -690,7 +690,7 @@ EntityPath Components::Component::Subcomponents::Subcomponent::Config::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -770,7 +770,7 @@ EntityPath Components::Component::Subcomponents::Subcomponent::State::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -845,8 +845,8 @@ bool Components::Component::Subcomponents::Subcomponent::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Components::Component::Subcomponents::Subcomponent::get_segment_path() const
@@ -863,7 +863,7 @@ EntityPath Components::Component::Subcomponents::Subcomponent::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -996,7 +996,7 @@ EntityPath Components::Component::Subcomponents::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1100,7 +1100,7 @@ EntityPath Components::Component::Transceiver::Config::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1224,7 +1224,7 @@ EntityPath Components::Component::Transceiver::State::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1378,7 +1378,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::Config
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1482,7 +1482,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1586,7 +1586,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1690,7 +1690,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1797,9 +1797,9 @@ bool Components::Component::Transceiver::PhysicalChannels::Channel::State::has_o
 	|| is_set(output_frequency.operation)
 	|| is_set(target_output_power.operation)
 	|| is_set(tx_laser.operation)
-	|| (input_power !=  nullptr && is_set(input_power->operation))
-	|| (laser_bias_current !=  nullptr && is_set(laser_bias_current->operation))
-	|| (output_power !=  nullptr && is_set(output_power->operation));
+	|| (input_power !=  nullptr && input_power->has_operation())
+	|| (laser_bias_current !=  nullptr && laser_bias_current->has_operation())
+	|| (output_power !=  nullptr && output_power->has_operation());
 }
 
 std::string Components::Component::Transceiver::PhysicalChannels::Channel::State::get_segment_path() const
@@ -1816,7 +1816,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1980,8 +1980,8 @@ bool Components::Component::Transceiver::PhysicalChannels::Channel::has_operatio
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Components::Component::Transceiver::PhysicalChannels::Channel::get_segment_path() const
@@ -1998,7 +1998,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::Channel::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2131,7 +2131,7 @@ EntityPath Components::Component::Transceiver::PhysicalChannels::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2228,9 +2228,9 @@ bool Components::Component::Transceiver::has_data() const
 bool Components::Component::Transceiver::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (physical_channels !=  nullptr && is_set(physical_channels->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (physical_channels !=  nullptr && physical_channels->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Components::Component::Transceiver::get_segment_path() const
@@ -2247,7 +2247,7 @@ EntityPath Components::Component::Transceiver::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2401,11 +2401,11 @@ bool Components::Component::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (properties !=  nullptr && is_set(properties->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (subcomponents !=  nullptr && is_set(subcomponents->operation))
-	|| (transceiver !=  nullptr && is_set(transceiver->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (properties !=  nullptr && properties->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (subcomponents !=  nullptr && subcomponents->has_operation())
+	|| (transceiver !=  nullptr && transceiver->has_operation());
 }
 
 std::string Components::Component::get_segment_path() const
@@ -2624,7 +2624,7 @@ EntityPath Components::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2691,8 +2691,8 @@ std::unique_ptr<Entity> Components::clone_ptr()
     return std::make_unique<Components>();
 }
 
-const Enum::Value Components::Component::Transceiver::State::PresentEnum::PRESENT {0, "PRESENT"};
-const Enum::Value Components::Component::Transceiver::State::PresentEnum::NOT_PRESENT {1, "NOT_PRESENT"};
+const Enum::YLeaf Components::Component::Transceiver::State::PresentEnum::PRESENT {0, "PRESENT"};
+const Enum::YLeaf Components::Component::Transceiver::State::PresentEnum::NOT_PRESENT {1, "NOT_PRESENT"};
 
 
 }

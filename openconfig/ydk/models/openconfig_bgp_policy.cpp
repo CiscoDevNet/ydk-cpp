@@ -8,13 +8,13 @@ namespace ydk {
 namespace openconfig_bgp_policy {
 
 
-const Enum::Value BgpNextHopTypeEnum::SELF {0, "SELF"};
+const Enum::YLeaf BgpNextHopTypeEnum::SELF {0, "SELF"};
 
-const Enum::Value BgpSetMedTypeEnum::IGP {0, "IGP"};
+const Enum::YLeaf BgpSetMedTypeEnum::IGP {0, "IGP"};
 
-const Enum::Value BgpSetCommunityOptionTypeEnum::ADD {0, "ADD"};
-const Enum::Value BgpSetCommunityOptionTypeEnum::REMOVE {1, "REMOVE"};
-const Enum::Value BgpSetCommunityOptionTypeEnum::REPLACE {2, "REPLACE"};
+const Enum::YLeaf BgpSetCommunityOptionTypeEnum::ADD {0, "ADD"};
+const Enum::YLeaf BgpSetCommunityOptionTypeEnum::REMOVE {1, "REMOVE"};
+const Enum::YLeaf BgpSetCommunityOptionTypeEnum::REPLACE {2, "REPLACE"};
 
 
 }

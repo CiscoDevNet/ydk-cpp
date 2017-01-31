@@ -26,6 +26,7 @@ class RoutingPolicy : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Limits : public Entity
     {
         public:
@@ -39,14 +40,15 @@ class RoutingPolicy : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value maximum_lines_of_policy; //type: uint32
-            Value current_lines_of_policy_limit; //type: uint32
-            Value current_lines_of_policy_used; //type: uint32
-            Value maximum_number_of_policies; //type: uint32
-            Value current_number_of_policies_limit; //type: uint32
-            Value current_number_of_policies_used; //type: uint32
-            Value compiled_policies_length; //type: uint32
 
+
+            YLeaf maximum_lines_of_policy; //type: uint32
+            YLeaf current_lines_of_policy_limit; //type: uint32
+            YLeaf current_lines_of_policy_used; //type: uint32
+            YLeaf maximum_number_of_policies; //type: uint32
+            YLeaf current_number_of_policies_limit; //type: uint32
+            YLeaf current_number_of_policies_used; //type: uint32
+            YLeaf compiled_policies_length; //type: uint32
 
 
 
@@ -68,6 +70,7 @@ class RoutingPolicy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RoutePolicies : public Entity
         {
             public:
@@ -83,6 +86,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class RoutePolicy : public Entity
             {
                 public:
@@ -96,8 +100,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value route_policy_name; //type: string
 
+
+                    YLeaf route_policy_name; //type: string
 
                 class PolicyUses : public Entity
                 {
@@ -114,6 +119,7 @@ class RoutingPolicy : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DirectlyUsedPolicies : public Entity
                     {
                         public:
@@ -127,8 +133,9 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList object; //type: list of  string
 
+
+                            YLeafList object; //type: list of  string
 
 
 
@@ -150,6 +157,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sets : public Entity
                         {
                             public:
@@ -163,9 +171,10 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value set_domain; //type: string
-                                ValueList set_name; //type: list of  string
 
+
+                                YLeaf set_domain; //type: string
+                                YLeafList set_name; //type: list of  string
 
 
 
@@ -193,6 +202,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sets : public Entity
                         {
                             public:
@@ -206,9 +216,10 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value set_domain; //type: string
-                                ValueList set_name; //type: list of  string
 
+
+                                YLeaf set_domain; //type: string
+                                YLeafList set_name; //type: list of  string
 
 
 
@@ -234,8 +245,9 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList object; //type: list of  string
 
+
+                            YLeafList object; //type: list of  string
 
 
 
@@ -266,6 +278,7 @@ class RoutingPolicy : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Reference : public Entity
                     {
                         public:
@@ -279,12 +292,12 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value route_policy_name; //type: string
-                            Value used_directly; //type: boolean
-                            Value status; //type: ObjectStatusEnum
 
 
-                            class ObjectStatusEnum;
+                            YLeaf route_policy_name; //type: string
+                            YLeaf used_directly; //type: boolean
+                            YLeaf status; //type: ObjectStatusEnum
+
 
 
                     }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference
@@ -311,6 +324,7 @@ class RoutingPolicy : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Binding : public Entity
                     {
                         public:
@@ -324,33 +338,29 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value protocol; //type: string
-                            Value vrf_name; //type: string
-                            Value proto_instance; //type: string
-                            Value af_name; //type: AddressFamilyEnum
-                            Value saf_name; //type: SubAddressFamilyEnum
-                            Value neighbor_address; //type: string
-                            Value neighbor_af_name; //type: AddressFamilyEnum
-                            Value group_name; //type: string
-                            Value direction; //type: AttachPointDirectionEnum
-                            Value group; //type: GroupEnum
-                            Value source_protocol; //type: string
-                            Value aggregate_network_address; //type: string
-                            Value interface_name; //type: string
-                            Value instance; //type: string
-                            Value area_id; //type: string
-                            Value propogate_from; //type: int32
-                            Value propogate_to; //type: int32
-                            Value route_policy_name; //type: string
-                            Value attached_policy; //type: string
-                            Value attach_point; //type: string
 
 
-                            class AddressFamilyEnum;
-                            class AttachPointDirectionEnum;
-                            class GroupEnum;
-                            class AddressFamilyEnum;
-                            class SubAddressFamilyEnum;
+                            YLeaf protocol; //type: string
+                            YLeaf vrf_name; //type: string
+                            YLeaf proto_instance; //type: string
+                            YLeaf af_name; //type: AddressFamilyEnum
+                            YLeaf saf_name; //type: SubAddressFamilyEnum
+                            YLeaf neighbor_address; //type: string
+                            YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                            YLeaf group_name; //type: string
+                            YLeaf direction; //type: AttachPointDirectionEnum
+                            YLeaf group; //type: GroupEnum
+                            YLeaf source_protocol; //type: string
+                            YLeaf aggregate_network_address; //type: string
+                            YLeaf interface_name; //type: string
+                            YLeaf instance; //type: string
+                            YLeaf area_id; //type: string
+                            YLeaf propogate_from; //type: int32
+                            YLeaf propogate_to; //type: int32
+                            YLeaf route_policy_name; //type: string
+                            YLeaf attached_policy; //type: string
+                            YLeaf attach_point; //type: string
+
 
 
                     }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding
@@ -389,8 +399,9 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                ValueList object; //type: list of  string
 
+
+                YLeafList object; //type: list of  string
 
 
 
@@ -410,8 +421,9 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                ValueList object; //type: list of  string
 
+
+                YLeafList object; //type: list of  string
 
 
 
@@ -431,8 +443,9 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                ValueList object; //type: list of  string
 
+
+                YLeafList object; //type: list of  string
 
 
 
@@ -463,6 +476,7 @@ class RoutingPolicy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OspfArea : public Entity
         {
             public:
@@ -476,6 +490,7 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Sets_ : public Entity
@@ -493,6 +508,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -506,8 +522,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -524,6 +541,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -537,12 +555,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference
@@ -569,6 +587,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -582,33 +601,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding
@@ -646,8 +661,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -667,8 +683,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -688,8 +705,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -720,6 +738,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -735,6 +754,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -748,8 +768,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -766,6 +787,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -779,12 +801,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
@@ -811,6 +833,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -824,33 +847,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding
@@ -888,8 +907,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -909,8 +929,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -930,8 +951,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -962,6 +984,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -977,6 +1000,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -990,8 +1014,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -1008,6 +1033,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -1021,12 +1047,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference
@@ -1053,6 +1079,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -1066,33 +1093,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding
@@ -1130,8 +1153,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1151,8 +1175,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1172,8 +1197,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1204,6 +1230,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -1219,6 +1246,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -1232,8 +1260,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -1250,6 +1279,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -1263,12 +1293,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference
@@ -1295,6 +1325,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -1308,33 +1339,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding
@@ -1372,8 +1399,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1393,8 +1421,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1414,8 +1443,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1446,6 +1476,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -1461,6 +1492,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -1474,8 +1506,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -1492,6 +1525,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -1505,12 +1539,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference
@@ -1537,6 +1571,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -1550,33 +1585,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding
@@ -1614,8 +1645,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1635,8 +1667,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1656,8 +1689,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1688,6 +1722,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -1703,6 +1738,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -1716,8 +1752,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -1734,6 +1771,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -1747,12 +1785,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference
@@ -1779,6 +1817,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -1792,33 +1831,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding
@@ -1856,8 +1891,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1877,8 +1913,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1898,8 +1935,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -1930,6 +1968,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -1945,6 +1984,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -1958,8 +1998,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -1976,6 +2017,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -1989,12 +2031,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference
@@ -2021,6 +2063,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -2034,33 +2077,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding
@@ -2098,8 +2137,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2119,8 +2159,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2140,8 +2181,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2172,6 +2214,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -2187,6 +2230,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -2200,8 +2244,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -2218,6 +2263,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -2231,12 +2277,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference
@@ -2263,6 +2309,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -2276,33 +2323,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding
@@ -2340,8 +2383,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2361,8 +2405,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2382,8 +2427,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2414,6 +2460,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -2429,6 +2476,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -2442,8 +2490,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -2460,6 +2509,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -2473,12 +2523,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference
@@ -2505,6 +2555,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -2518,33 +2569,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding
@@ -2582,8 +2629,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2603,8 +2651,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2634,6 +2683,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -2649,6 +2699,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -2662,8 +2713,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -2680,6 +2732,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -2693,12 +2746,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference
@@ -2725,6 +2778,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -2738,33 +2792,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding
@@ -2802,8 +2852,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2823,8 +2874,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2844,8 +2896,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -2876,6 +2929,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -2891,6 +2945,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -2904,8 +2959,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -2922,6 +2978,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -2935,12 +2992,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference
@@ -2967,6 +3024,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -2980,33 +3038,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding
@@ -3044,8 +3098,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3065,8 +3120,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3086,8 +3142,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3118,6 +3175,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sets_ : public Entity
             {
                 public:
@@ -3133,6 +3191,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Set : public Entity
                 {
                     public:
@@ -3146,8 +3205,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value set_name; //type: string
 
+
+                        YLeaf set_name; //type: string
 
                     class UsedBy : public Entity
                     {
@@ -3164,6 +3224,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Reference : public Entity
                         {
                             public:
@@ -3177,12 +3238,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value route_policy_name; //type: string
-                                Value used_directly; //type: boolean
-                                Value status; //type: ObjectStatusEnum
 
 
-                                class ObjectStatusEnum;
+                                YLeaf route_policy_name; //type: string
+                                YLeaf used_directly; //type: boolean
+                                YLeaf status; //type: ObjectStatusEnum
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference
@@ -3209,6 +3270,7 @@ class RoutingPolicy : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Binding : public Entity
                         {
                             public:
@@ -3222,33 +3284,29 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value protocol; //type: string
-                                Value vrf_name; //type: string
-                                Value proto_instance; //type: string
-                                Value af_name; //type: AddressFamilyEnum
-                                Value saf_name; //type: SubAddressFamilyEnum
-                                Value neighbor_address; //type: string
-                                Value neighbor_af_name; //type: AddressFamilyEnum
-                                Value group_name; //type: string
-                                Value direction; //type: AttachPointDirectionEnum
-                                Value group; //type: GroupEnum
-                                Value source_protocol; //type: string
-                                Value aggregate_network_address; //type: string
-                                Value interface_name; //type: string
-                                Value instance; //type: string
-                                Value area_id; //type: string
-                                Value propogate_from; //type: int32
-                                Value propogate_to; //type: int32
-                                Value route_policy_name; //type: string
-                                Value attached_policy; //type: string
-                                Value attach_point; //type: string
 
 
-                                class AddressFamilyEnum;
-                                class AttachPointDirectionEnum;
-                                class GroupEnum;
-                                class AddressFamilyEnum;
-                                class SubAddressFamilyEnum;
+                                YLeaf protocol; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf proto_instance; //type: string
+                                YLeaf af_name; //type: AddressFamilyEnum
+                                YLeaf saf_name; //type: SubAddressFamilyEnum
+                                YLeaf neighbor_address; //type: string
+                                YLeaf neighbor_af_name; //type: AddressFamilyEnum
+                                YLeaf group_name; //type: string
+                                YLeaf direction; //type: AttachPointDirectionEnum
+                                YLeaf group; //type: GroupEnum
+                                YLeaf source_protocol; //type: string
+                                YLeaf aggregate_network_address; //type: string
+                                YLeaf interface_name; //type: string
+                                YLeaf instance; //type: string
+                                YLeaf area_id; //type: string
+                                YLeaf propogate_from; //type: int32
+                                YLeaf propogate_to; //type: int32
+                                YLeaf route_policy_name; //type: string
+                                YLeaf attached_policy; //type: string
+                                YLeaf attach_point; //type: string
+
 
 
                         }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding
@@ -3286,8 +3344,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3307,8 +3366,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3328,8 +3388,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList object; //type: list of  string
 
+
+                    YLeafList object; //type: list of  string
 
 
 
@@ -3373,59 +3434,59 @@ class RoutingPolicy : public Entity
 class GroupEnum : public Enum
 {
     public:
-        static const Enum::Value address_family_group;
-        static const Enum::Value session_group;
-        static const Enum::Value neighbor_group;
-        static const Enum::Value neighbor;
-        static const Enum::Value error_group;
+        static const Enum::YLeaf address_family_group;
+        static const Enum::YLeaf session_group;
+        static const Enum::YLeaf neighbor_group;
+        static const Enum::YLeaf neighbor;
+        static const Enum::YLeaf error_group;
 
 };
 
 class AttachPointDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value in;
-        static const Enum::Value out;
+        static const Enum::YLeaf in;
+        static const Enum::YLeaf out;
 
 };
 
 class SubAddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value unicast;
-        static const Enum::Value multicast;
-        static const Enum::Value label;
-        static const Enum::Value tunnel;
-        static const Enum::Value vpn;
-        static const Enum::Value mdt;
-        static const Enum::Value vpls;
-        static const Enum::Value rt_constraint;
-        static const Enum::Value mvpn;
-        static const Enum::Value flow;
-        static const Enum::Value vpn_mcast;
-        static const Enum::Value saf_none;
-        static const Enum::Value saf_unknown;
+        static const Enum::YLeaf unicast;
+        static const Enum::YLeaf multicast;
+        static const Enum::YLeaf label;
+        static const Enum::YLeaf tunnel;
+        static const Enum::YLeaf vpn;
+        static const Enum::YLeaf mdt;
+        static const Enum::YLeaf vpls;
+        static const Enum::YLeaf rt_constraint;
+        static const Enum::YLeaf mvpn;
+        static const Enum::YLeaf flow;
+        static const Enum::YLeaf vpn_mcast;
+        static const Enum::YLeaf saf_none;
+        static const Enum::YLeaf saf_unknown;
 
 };
 
 class AddressFamilyEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value l2vpn;
-        static const Enum::Value ls;
-        static const Enum::Value af_none;
-        static const Enum::Value af_unknown;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf l2vpn;
+        static const Enum::YLeaf ls;
+        static const Enum::YLeaf af_none;
+        static const Enum::YLeaf af_unknown;
 
 };
 
 class ObjectStatusEnum : public Enum
 {
     public:
-        static const Enum::Value active;
-        static const Enum::Value inactive;
-        static const Enum::Value unused;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf inactive;
+        static const Enum::YLeaf unused;
 
 };
 

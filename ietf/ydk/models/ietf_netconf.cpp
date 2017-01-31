@@ -206,8 +206,8 @@ bool GetConfigRpc::has_operation() const
 {
     return is_set(operation)
 	|| is_set(with_defaults.operation)
-	|| (output !=  nullptr && is_set(output->operation))
-	|| (source !=  nullptr && is_set(source->operation));
+	|| (output !=  nullptr && output->has_operation())
+	|| (source !=  nullptr && source->has_operation());
 }
 
 std::string GetConfigRpc::get_segment_path() const
@@ -224,7 +224,7 @@ EntityPath GetConfigRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -438,7 +438,7 @@ bool EditConfigRpc::has_operation() const
 	|| is_set(error_option.operation)
 	|| is_set(test_option.operation)
 	|| is_set(url.operation)
-	|| (target !=  nullptr && is_set(target->operation));
+	|| (target !=  nullptr && target->has_operation());
 }
 
 std::string EditConfigRpc::get_segment_path() const
@@ -455,7 +455,7 @@ EntityPath EditConfigRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -777,8 +777,8 @@ bool CopyConfigRpc::has_operation() const
 {
     return is_set(operation)
 	|| is_set(with_defaults.operation)
-	|| (source !=  nullptr && is_set(source->operation))
-	|| (target !=  nullptr && is_set(target->operation));
+	|| (source !=  nullptr && source->has_operation())
+	|| (target !=  nullptr && target->has_operation());
 }
 
 std::string CopyConfigRpc::get_segment_path() const
@@ -795,7 +795,7 @@ EntityPath CopyConfigRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -996,7 +996,7 @@ bool DeleteConfigRpc::has_data() const
 bool DeleteConfigRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && is_set(target->operation));
+	|| (target !=  nullptr && target->has_operation());
 }
 
 std::string DeleteConfigRpc::get_segment_path() const
@@ -1013,7 +1013,7 @@ EntityPath DeleteConfigRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1194,7 +1194,7 @@ bool LockRpc::has_data() const
 bool LockRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && is_set(target->operation));
+	|| (target !=  nullptr && target->has_operation());
 }
 
 std::string LockRpc::get_segment_path() const
@@ -1211,7 +1211,7 @@ EntityPath LockRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1392,7 +1392,7 @@ bool UnlockRpc::has_data() const
 bool UnlockRpc::has_operation() const
 {
     return is_set(operation)
-	|| (target !=  nullptr && is_set(target->operation));
+	|| (target !=  nullptr && target->has_operation());
 }
 
 std::string UnlockRpc::get_segment_path() const
@@ -1409,7 +1409,7 @@ EntityPath UnlockRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1570,7 +1570,7 @@ bool GetRpc::has_operation() const
 {
     return is_set(operation)
 	|| is_set(with_defaults.operation)
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string GetRpc::get_segment_path() const
@@ -1587,7 +1587,7 @@ EntityPath GetRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1688,7 +1688,7 @@ EntityPath CloseSessionRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1764,7 +1764,7 @@ EntityPath KillSessionRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1854,7 +1854,7 @@ EntityPath CommitRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1947,7 +1947,7 @@ EntityPath DiscardChangesRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2023,7 +2023,7 @@ EntityPath CancelCommitRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2194,7 +2194,7 @@ bool ValidateRpc::has_data() const
 bool ValidateRpc::has_operation() const
 {
     return is_set(operation)
-	|| (source !=  nullptr && is_set(source->operation));
+	|| (source !=  nullptr && source->has_operation());
 }
 
 std::string ValidateRpc::get_segment_path() const
@@ -2211,7 +2211,7 @@ EntityPath ValidateRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2275,47 +2275,47 @@ std::unique_ptr<Entity> ValidateRpc::clone_ptr()
     return std::make_unique<ValidateRpc>();
 }
 
-const Enum::Value ErrorSeverityTypeEnum::error {0, "error"};
-const Enum::Value ErrorSeverityTypeEnum::warning {1, "warning"};
+const Enum::YLeaf ErrorSeverityTypeEnum::error {0, "error"};
+const Enum::YLeaf ErrorSeverityTypeEnum::warning {1, "warning"};
 
-const Enum::Value ErrorTagTypeEnum::in_use {0, "in-use"};
-const Enum::Value ErrorTagTypeEnum::invalid_value {1, "invalid-value"};
-const Enum::Value ErrorTagTypeEnum::too_big {2, "too-big"};
-const Enum::Value ErrorTagTypeEnum::missing_attribute {3, "missing-attribute"};
-const Enum::Value ErrorTagTypeEnum::bad_attribute {4, "bad-attribute"};
-const Enum::Value ErrorTagTypeEnum::unknown_attribute {5, "unknown-attribute"};
-const Enum::Value ErrorTagTypeEnum::missing_element {6, "missing-element"};
-const Enum::Value ErrorTagTypeEnum::bad_element {7, "bad-element"};
-const Enum::Value ErrorTagTypeEnum::unknown_element {8, "unknown-element"};
-const Enum::Value ErrorTagTypeEnum::unknown_namespace {9, "unknown-namespace"};
-const Enum::Value ErrorTagTypeEnum::access_denied {10, "access-denied"};
-const Enum::Value ErrorTagTypeEnum::lock_denied {11, "lock-denied"};
-const Enum::Value ErrorTagTypeEnum::resource_denied {12, "resource-denied"};
-const Enum::Value ErrorTagTypeEnum::rollback_failed {13, "rollback-failed"};
-const Enum::Value ErrorTagTypeEnum::data_exists {14, "data-exists"};
-const Enum::Value ErrorTagTypeEnum::data_missing {15, "data-missing"};
-const Enum::Value ErrorTagTypeEnum::operation_not_supported {16, "operation-not-supported"};
-const Enum::Value ErrorTagTypeEnum::operation_failed {17, "operation-failed"};
-const Enum::Value ErrorTagTypeEnum::partial_operation {18, "partial-operation"};
-const Enum::Value ErrorTagTypeEnum::malformed_message {19, "malformed-message"};
+const Enum::YLeaf ErrorTagTypeEnum::in_use {0, "in-use"};
+const Enum::YLeaf ErrorTagTypeEnum::invalid_value {1, "invalid-value"};
+const Enum::YLeaf ErrorTagTypeEnum::too_big {2, "too-big"};
+const Enum::YLeaf ErrorTagTypeEnum::missing_attribute {3, "missing-attribute"};
+const Enum::YLeaf ErrorTagTypeEnum::bad_attribute {4, "bad-attribute"};
+const Enum::YLeaf ErrorTagTypeEnum::unknown_attribute {5, "unknown-attribute"};
+const Enum::YLeaf ErrorTagTypeEnum::missing_element {6, "missing-element"};
+const Enum::YLeaf ErrorTagTypeEnum::bad_element {7, "bad-element"};
+const Enum::YLeaf ErrorTagTypeEnum::unknown_element {8, "unknown-element"};
+const Enum::YLeaf ErrorTagTypeEnum::unknown_namespace {9, "unknown-namespace"};
+const Enum::YLeaf ErrorTagTypeEnum::access_denied {10, "access-denied"};
+const Enum::YLeaf ErrorTagTypeEnum::lock_denied {11, "lock-denied"};
+const Enum::YLeaf ErrorTagTypeEnum::resource_denied {12, "resource-denied"};
+const Enum::YLeaf ErrorTagTypeEnum::rollback_failed {13, "rollback-failed"};
+const Enum::YLeaf ErrorTagTypeEnum::data_exists {14, "data-exists"};
+const Enum::YLeaf ErrorTagTypeEnum::data_missing {15, "data-missing"};
+const Enum::YLeaf ErrorTagTypeEnum::operation_not_supported {16, "operation-not-supported"};
+const Enum::YLeaf ErrorTagTypeEnum::operation_failed {17, "operation-failed"};
+const Enum::YLeaf ErrorTagTypeEnum::partial_operation {18, "partial-operation"};
+const Enum::YLeaf ErrorTagTypeEnum::malformed_message {19, "malformed-message"};
 
-const Enum::Value EditOperationTypeEnum::merge {0, "merge"};
-const Enum::Value EditOperationTypeEnum::replace {1, "replace"};
-const Enum::Value EditOperationTypeEnum::create {2, "create"};
-const Enum::Value EditOperationTypeEnum::delete_ {3, "delete"};
-const Enum::Value EditOperationTypeEnum::remove {4, "remove"};
+const Enum::YLeaf EditOperationTypeEnum::merge {0, "merge"};
+const Enum::YLeaf EditOperationTypeEnum::replace {1, "replace"};
+const Enum::YLeaf EditOperationTypeEnum::create {2, "create"};
+const Enum::YLeaf EditOperationTypeEnum::delete_ {3, "delete"};
+const Enum::YLeaf EditOperationTypeEnum::remove {4, "remove"};
 
-const Enum::Value EditConfigRpc::DefaultOperationEnum::merge {0, "merge"};
-const Enum::Value EditConfigRpc::DefaultOperationEnum::replace {1, "replace"};
-const Enum::Value EditConfigRpc::DefaultOperationEnum::none {2, "none"};
+const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::merge {0, "merge"};
+const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::replace {1, "replace"};
+const Enum::YLeaf EditConfigRpc::DefaultOperationEnum::none {2, "none"};
 
-const Enum::Value EditConfigRpc::TestOptionEnum::test_then_set {0, "test-then-set"};
-const Enum::Value EditConfigRpc::TestOptionEnum::set {1, "set"};
-const Enum::Value EditConfigRpc::TestOptionEnum::test_only {2, "test-only"};
+const Enum::YLeaf EditConfigRpc::TestOptionEnum::test_then_set {0, "test-then-set"};
+const Enum::YLeaf EditConfigRpc::TestOptionEnum::set {1, "set"};
+const Enum::YLeaf EditConfigRpc::TestOptionEnum::test_only {2, "test-only"};
 
-const Enum::Value EditConfigRpc::ErrorOptionEnum::stop_on_error {0, "stop-on-error"};
-const Enum::Value EditConfigRpc::ErrorOptionEnum::continue_on_error {1, "continue-on-error"};
-const Enum::Value EditConfigRpc::ErrorOptionEnum::rollback_on_error {2, "rollback-on-error"};
+const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::stop_on_error {0, "stop-on-error"};
+const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::continue_on_error {1, "continue-on-error"};
+const Enum::YLeaf EditConfigRpc::ErrorOptionEnum::rollback_on_error {2, "rollback-on-error"};
 
 
 }

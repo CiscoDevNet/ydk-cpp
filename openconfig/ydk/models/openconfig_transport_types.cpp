@@ -764,13 +764,13 @@ CfpIdentity::~CfpIdentity()
 }
 
 
-const Enum::Value LoopbackModeTypeEnum::NONE {0, "NONE"};
-const Enum::Value LoopbackModeTypeEnum::FACILITY {1, "FACILITY"};
-const Enum::Value LoopbackModeTypeEnum::TERMINAL {2, "TERMINAL"};
+const Enum::YLeaf LoopbackModeTypeEnum::NONE {0, "NONE"};
+const Enum::YLeaf LoopbackModeTypeEnum::FACILITY {1, "FACILITY"};
+const Enum::YLeaf LoopbackModeTypeEnum::TERMINAL {2, "TERMINAL"};
 
-const Enum::Value AdminStateTypeEnum::ENABLED {0, "ENABLED"};
-const Enum::Value AdminStateTypeEnum::DISABLED {1, "DISABLED"};
-const Enum::Value AdminStateTypeEnum::MAINT {2, "MAINT"};
+const Enum::YLeaf AdminStateTypeEnum::ENABLED {0, "ENABLED"};
+const Enum::YLeaf AdminStateTypeEnum::DISABLED {1, "DISABLED"};
+const Enum::YLeaf AdminStateTypeEnum::MAINT {2, "MAINT"};
 
 
 }

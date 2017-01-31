@@ -61,7 +61,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -179,7 +179,7 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::has_op
 	|| is_set(peer_meps_that_timed_out.operation)
 	|| is_set(peer_port_status.operation)
 	|| is_set(unexpected.operation)
-	|| (remote_meps_defects !=  nullptr && is_set(remote_meps_defects->operation));
+	|| (remote_meps_defects !=  nullptr && remote_meps_defects->has_operation());
 }
 
 std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::get_segment_path() const
@@ -196,7 +196,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -332,7 +332,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStart
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -408,7 +408,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::~Statistics()
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::has_data() const
 {
-    for (auto const & leaf : via_level.getValues())
+    for (auto const & leaf : via_level.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -424,7 +424,7 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::has_data() cons
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::has_operation() const
 {
-    for (auto const & leaf : via_level.getValues())
+    for (auto const & leaf : via_level.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -435,8 +435,9 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::has_operation()
 	|| is_set(sent_packets.operation)
 	|| is_set(transmission_interval.operation)
 	|| is_set(transmission_level.operation)
-	|| (defects !=  nullptr && is_set(defects->operation))
-	|| (last_started !=  nullptr && is_set(last_started->operation));
+	|| is_set(via_level.operation)
+	|| (defects !=  nullptr && defects->has_operation())
+	|| (last_started !=  nullptr && last_started->has_operation());
 }
 
 std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_segment_path() const
@@ -453,7 +454,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -610,7 +611,7 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_operation() const
 	|| is_set(interface_state.operation)
 	|| is_set(interworking_state.operation)
 	|| is_set(stp_state.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_segment_path() const
@@ -627,7 +628,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -762,7 +763,7 @@ EntityPath Cfm::Nodes::Node::InterfaceAises::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -872,7 +873,7 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -960,7 +961,7 @@ bool Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::has_operation() 
     return is_set(operation)
 	|| is_set(interface.operation)
 	|| is_set(interface_xr.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_segment_path() const
@@ -977,7 +978,7 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1092,7 +1093,7 @@ EntityPath Cfm::Nodes::Node::InterfaceStatistics::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1268,7 +1269,7 @@ EntityPath Cfm::Nodes::Node::Summary::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1500,7 +1501,7 @@ EntityPath Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1632,7 +1633,7 @@ EntityPath Cfm::Nodes::Node::CcmLearningDatabases::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1738,10 +1739,10 @@ bool Cfm::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (ccm_learning_databases !=  nullptr && is_set(ccm_learning_databases->operation))
-	|| (interface_aises !=  nullptr && is_set(interface_aises->operation))
-	|| (interface_statistics !=  nullptr && is_set(interface_statistics->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (ccm_learning_databases !=  nullptr && ccm_learning_databases->has_operation())
+	|| (interface_aises !=  nullptr && interface_aises->has_operation())
+	|| (interface_statistics !=  nullptr && interface_statistics->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Cfm::Nodes::Node::get_segment_path() const
@@ -2041,7 +2042,7 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2132,7 +2133,7 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2217,8 +2218,8 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInforma
 {
     return is_set(operation)
 	|| is_set(mode.operation)
-	|| (basic_options !=  nullptr && is_set(basic_options->operation))
-	|| (exploratory_options !=  nullptr && is_set(exploratory_options->operation));
+	|| (basic_options !=  nullptr && basic_options->has_operation())
+	|| (exploratory_options !=  nullptr && exploratory_options->has_operation());
 }
 
 std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::get_segment_path() const
@@ -2235,7 +2236,7 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2384,7 +2385,7 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInforma
 	|| is_set(timestamp.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(ttl.operation)
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::get_segment_path() const
@@ -2401,7 +2402,7 @@ EntityPath Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2564,7 +2565,7 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::has_operation() c
 	|| is_set(service.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(time_left.operation)
-	|| (traceroute_information !=  nullptr && is_set(traceroute_information->operation));
+	|| (traceroute_information !=  nullptr && traceroute_information->has_operation());
 }
 
 std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_segment_path() const
@@ -2832,7 +2833,7 @@ EntityPath Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2939,7 +2940,7 @@ bool Cfm::Global::MaintenancePoints::MaintenancePoint::has_operation() const
 	|| is_set(service.operation)
 	|| is_set(mac_address.operation)
 	|| is_set(mep_has_error.operation)
-	|| (maintenance_point !=  nullptr && is_set(maintenance_point->operation));
+	|| (maintenance_point !=  nullptr && maintenance_point->has_operation());
 }
 
 std::string Cfm::Global::MaintenancePoints::MaintenancePoint::get_segment_path() const
@@ -3199,7 +3200,7 @@ EntityPath Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::Bri
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3307,7 +3308,7 @@ bool Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::has_opera
 	|| is_set(l2_fib_download_error.operation)
 	|| is_set(level.operation)
 	|| is_set(service_name.operation)
-	|| (bridge_domain_id !=  nullptr && is_set(bridge_domain_id->operation));
+	|| (bridge_domain_id !=  nullptr && bridge_domain_id->has_operation());
 }
 
 std::string Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_segment_path() const
@@ -3580,7 +3581,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3697,7 +3698,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3809,7 +3810,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Interface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3912,7 +3913,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4000,7 +4001,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4088,7 +4089,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4169,9 +4170,9 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabi
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::has_operation() const
 {
     return is_set(operation)
-	|| (delay_measurement !=  nullptr && is_set(delay_measurement->operation))
-	|| (loopback !=  nullptr && is_set(loopback->operation))
-	|| (synthetic_loss_measurement !=  nullptr && is_set(synthetic_loss_measurement->operation));
+	|| (delay_measurement !=  nullptr && delay_measurement->has_operation())
+	|| (loopback !=  nullptr && loopback->has_operation())
+	|| (synthetic_loss_measurement !=  nullptr && synthetic_loss_measurement->has_operation());
 }
 
 std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::get_segment_path() const
@@ -4188,7 +4189,7 @@ EntityPath Cfm::Global::MepConfigurationErrors::MepConfigurationError::Satellite
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4415,10 +4416,10 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_operation()
 	|| is_set(sla_delay_measurement_operations_disabled.operation)
 	|| is_set(sla_loopback_operations_disabled.operation)
 	|| is_set(sla_synthetic_loss_operations_disabled.operation)
-	|| (interface_bridge_domain !=  nullptr && is_set(interface_bridge_domain->operation))
-	|| (mep !=  nullptr && is_set(mep->operation))
-	|| (satellite_capabilities !=  nullptr && is_set(satellite_capabilities->operation))
-	|| (service_bridge_domain !=  nullptr && is_set(service_bridge_domain->operation));
+	|| (interface_bridge_domain !=  nullptr && interface_bridge_domain->has_operation())
+	|| (mep !=  nullptr && mep->has_operation())
+	|| (satellite_capabilities !=  nullptr && satellite_capabilities->has_operation())
+	|| (service_bridge_domain !=  nullptr && service_bridge_domain->has_operation());
 }
 
 std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_segment_path() const
@@ -4848,7 +4849,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4939,7 +4940,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5024,8 +5025,8 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Opti
 {
     return is_set(operation)
 	|| is_set(mode.operation)
-	|| (basic_options !=  nullptr && is_set(basic_options->operation))
-	|| (exploratory_options !=  nullptr && is_set(exploratory_options->operation));
+	|| (basic_options !=  nullptr && basic_options->has_operation())
+	|| (exploratory_options !=  nullptr && exploratory_options->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::get_segment_path() const
@@ -5042,7 +5043,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5191,7 +5192,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::has_
 	|| is_set(timestamp.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(ttl.operation)
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::get_segment_path() const
@@ -5208,7 +5209,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5387,7 +5388,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Heade
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5511,7 +5512,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5602,7 +5603,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::C
 	|| is_set(chassis_id.operation)
 	|| is_set(chassis_id_type.operation)
 	|| is_set(chassis_id_type_value.operation)
-	|| (chassis_id_value !=  nullptr && is_set(chassis_id_value->operation));
+	|| (chassis_id_value !=  nullptr && chassis_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::get_segment_path() const
@@ -5619,7 +5620,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5725,7 +5726,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::h
     return is_set(operation)
 	|| is_set(management_address.operation)
 	|| is_set(management_address_domain.operation)
-	|| (chassis_id !=  nullptr && is_set(chassis_id->operation));
+	|| (chassis_id !=  nullptr && chassis_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::get_segment_path() const
@@ -5742,7 +5743,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Sende
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5853,7 +5854,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5941,7 +5942,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6017,8 +6018,8 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::h
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::has_operation() const
 {
     return is_set(operation)
-	|| (last_egress_id !=  nullptr && is_set(last_egress_id->operation))
-	|| (next_egress_id !=  nullptr && is_set(next_egress_id->operation));
+	|| (last_egress_id !=  nullptr && last_egress_id->has_operation())
+	|| (next_egress_id !=  nullptr && next_egress_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::get_segment_path() const
@@ -6035,7 +6036,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Egres
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6165,7 +6166,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6256,7 +6257,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngres
 	|| is_set(port_id.operation)
 	|| is_set(port_id_type.operation)
 	|| is_set(port_id_type_value.operation)
-	|| (port_id_value !=  nullptr && is_set(port_id_value->operation));
+	|| (port_id_value !=  nullptr && port_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::get_segment_path() const
@@ -6273,7 +6274,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6379,7 +6380,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngres
     return is_set(operation)
 	|| is_set(action.operation)
 	|| is_set(mac_address.operation)
-	|| (port_id !=  nullptr && is_set(port_id->operation));
+	|| (port_id !=  nullptr && port_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::get_segment_path() const
@@ -6396,7 +6397,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6513,7 +6514,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6604,7 +6605,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress
 	|| is_set(port_id.operation)
 	|| is_set(port_id_type.operation)
 	|| is_set(port_id_type_value.operation)
-	|| (port_id_value !=  nullptr && is_set(port_id_value->operation));
+	|| (port_id_value !=  nullptr && port_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::get_segment_path() const
@@ -6621,7 +6622,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6727,7 +6728,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress
     return is_set(operation)
 	|| is_set(action.operation)
 	|| is_set(mac_address.operation)
-	|| (port_id !=  nullptr && is_set(port_id->operation));
+	|| (port_id !=  nullptr && port_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::get_segment_path() const
@@ -6744,7 +6745,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Reply
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6855,7 +6856,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6933,7 +6934,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::ha
     return is_set(operation)
 	|| is_set(host_name.operation)
 	|| is_set(last_hop_format.operation)
-	|| (egress_id !=  nullptr && is_set(egress_id->operation));
+	|| (egress_id !=  nullptr && egress_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::get_segment_path() const
@@ -6950,7 +6951,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastH
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7064,7 +7065,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Organ
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7157,7 +7158,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Unkno
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7277,12 +7278,12 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::has_operati
     }
     return is_set(operation)
 	|| is_set(raw_data.operation)
-	|| (egress_id !=  nullptr && is_set(egress_id->operation))
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (last_hop !=  nullptr && is_set(last_hop->operation))
-	|| (reply_egress !=  nullptr && is_set(reply_egress->operation))
-	|| (reply_ingress !=  nullptr && is_set(reply_ingress->operation))
-	|| (sender_id !=  nullptr && is_set(sender_id->operation));
+	|| (egress_id !=  nullptr && egress_id->has_operation())
+	|| (header !=  nullptr && header->has_operation())
+	|| (last_hop !=  nullptr && last_hop->has_operation())
+	|| (reply_egress !=  nullptr && reply_egress->has_operation())
+	|| (reply_ingress !=  nullptr && reply_ingress->has_operation())
+	|| (sender_id !=  nullptr && sender_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_segment_path() const
@@ -7299,7 +7300,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7596,7 +7597,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7730,7 +7731,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7821,7 +7822,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
 	|| is_set(chassis_id.operation)
 	|| is_set(chassis_id_type.operation)
 	|| is_set(chassis_id_type_value.operation)
-	|| (chassis_id_value !=  nullptr && is_set(chassis_id_value->operation));
+	|| (chassis_id_value !=  nullptr && chassis_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::get_segment_path() const
@@ -7838,7 +7839,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7944,7 +7945,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
     return is_set(operation)
 	|| is_set(management_address.operation)
 	|| is_set(management_address_domain.operation)
-	|| (chassis_id !=  nullptr && is_set(chassis_id->operation));
+	|| (chassis_id !=  nullptr && chassis_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::get_segment_path() const
@@ -7961,7 +7962,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8072,7 +8073,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8160,7 +8161,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8254,7 +8255,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8345,7 +8346,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
 	|| is_set(port_id.operation)
 	|| is_set(port_id_type.operation)
 	|| is_set(port_id_type_value.operation)
-	|| (port_id_value !=  nullptr && is_set(port_id_value->operation));
+	|| (port_id_value !=  nullptr && port_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::get_segment_path() const
@@ -8362,7 +8363,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8478,9 +8479,9 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
     return is_set(operation)
 	|| is_set(action.operation)
 	|| is_set(mac_address.operation)
-	|| (last_egress_id !=  nullptr && is_set(last_egress_id->operation))
-	|| (next_egress_id !=  nullptr && is_set(next_egress_id->operation))
-	|| (port_id !=  nullptr && is_set(port_id->operation));
+	|| (last_egress_id !=  nullptr && last_egress_id->has_operation())
+	|| (next_egress_id !=  nullptr && next_egress_id->has_operation())
+	|| (port_id !=  nullptr && port_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::get_segment_path() const
@@ -8497,7 +8498,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8654,7 +8655,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8742,7 +8743,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8836,7 +8837,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8927,7 +8928,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
 	|| is_set(port_id.operation)
 	|| is_set(port_id_type.operation)
 	|| is_set(port_id_type_value.operation)
-	|| (port_id_value !=  nullptr && is_set(port_id_value->operation));
+	|| (port_id_value !=  nullptr && port_id_value->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::get_segment_path() const
@@ -8944,7 +8945,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9060,9 +9061,9 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
     return is_set(operation)
 	|| is_set(action.operation)
 	|| is_set(mac_address.operation)
-	|| (last_egress_id !=  nullptr && is_set(last_egress_id->operation))
-	|| (next_egress_id !=  nullptr && is_set(next_egress_id->operation))
-	|| (port_id !=  nullptr && is_set(port_id->operation));
+	|| (last_egress_id !=  nullptr && last_egress_id->has_operation())
+	|| (next_egress_id !=  nullptr && next_egress_id->has_operation())
+	|| (port_id !=  nullptr && port_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::get_segment_path() const
@@ -9079,7 +9080,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9236,7 +9237,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9314,7 +9315,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
     return is_set(operation)
 	|| is_set(host_name.operation)
 	|| is_set(last_hop_format.operation)
-	|| (egress_id !=  nullptr && is_set(egress_id->operation));
+	|| (egress_id !=  nullptr && egress_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::get_segment_path() const
@@ -9331,7 +9332,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9445,7 +9446,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9538,7 +9539,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9653,11 +9654,11 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
     }
     return is_set(operation)
 	|| is_set(raw_data.operation)
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (last_hop !=  nullptr && is_set(last_hop->operation))
-	|| (reply_egress !=  nullptr && is_set(reply_egress->operation))
-	|| (reply_ingress !=  nullptr && is_set(reply_ingress->operation))
-	|| (sender_id !=  nullptr && is_set(sender_id->operation));
+	|| (header !=  nullptr && header->has_operation())
+	|| (last_hop !=  nullptr && last_hop->has_operation())
+	|| (reply_egress !=  nullptr && reply_egress->has_operation())
+	|| (reply_ingress !=  nullptr && reply_ingress->has_operation())
+	|| (sender_id !=  nullptr && sender_id->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::get_segment_path() const
@@ -9674,7 +9675,7 @@ EntityPath Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9946,7 +9947,7 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::has_operation() const
 	|| is_set(service.operation)
 	|| is_set(transaction_id.operation)
 	|| is_set(replies_dropped.operation)
-	|| (traceroute_information !=  nullptr && is_set(traceroute_information->operation));
+	|| (traceroute_information !=  nullptr && traceroute_information->has_operation());
 }
 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::get_segment_path() const
@@ -10332,7 +10333,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Statistics::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10550,7 +10551,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10638,7 +10639,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10733,8 +10734,8 @@ bool Cfm::Global::LocalMeps::LocalMep::AisStatistics::has_operation() const
 	|| is_set(level.operation)
 	|| is_set(receiving_ais.operation)
 	|| is_set(sending_ais.operation)
-	|| (receiving_start !=  nullptr && is_set(receiving_start->operation))
-	|| (sending_start !=  nullptr && is_set(sending_start->operation));
+	|| (receiving_start !=  nullptr && receiving_start->has_operation())
+	|| (sending_start !=  nullptr && sending_start->has_operation());
 }
 
 std::string Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_segment_path() const
@@ -10751,7 +10752,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::AisStatistics::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10920,7 +10921,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11038,7 +11039,7 @@ bool Cfm::Global::LocalMeps::LocalMep::Defects::has_operation() const
 	|| is_set(peer_meps_that_timed_out.operation)
 	|| is_set(peer_port_status.operation)
 	|| is_set(unexpected.operation)
-	|| (remote_meps_defects !=  nullptr && is_set(remote_meps_defects->operation));
+	|| (remote_meps_defects !=  nullptr && remote_meps_defects->has_operation());
 }
 
 std::string Cfm::Global::LocalMeps::LocalMep::Defects::get_segment_path() const
@@ -11055,7 +11056,7 @@ EntityPath Cfm::Global::LocalMeps::LocalMep::Defects::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11287,9 +11288,9 @@ bool Cfm::Global::LocalMeps::LocalMep::has_operation() const
 	|| is_set(service_xr.operation)
 	|| is_set(standby.operation)
 	|| is_set(stp_state.operation)
-	|| (ais_statistics !=  nullptr && is_set(ais_statistics->operation))
-	|| (defects !=  nullptr && is_set(defects->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (ais_statistics !=  nullptr && ais_statistics->has_operation())
+	|| (defects !=  nullptr && defects->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Cfm::Global::LocalMeps::LocalMep::get_segment_path() const
@@ -11746,7 +11747,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11859,7 +11860,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11947,7 +11948,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12031,7 +12032,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
 	|| is_set(mdid_data.operation)
 	|| is_set(mdid_format_value.operation)
 	|| is_set(string_name.operation)
-	|| (mac_name !=  nullptr && is_set(mac_name->operation));
+	|| (mac_name !=  nullptr && mac_name->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_segment_path() const
@@ -12048,7 +12049,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12169,7 +12170,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12259,7 +12260,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
 	|| is_set(short_ma_name_format_value.operation)
 	|| is_set(string_name.operation)
 	|| is_set(vlan_id_name.operation)
-	|| (vpn_id_name !=  nullptr && is_set(vpn_id_name->operation));
+	|| (vpn_id_name !=  nullptr && vpn_id_name->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_segment_path() const
@@ -12276,7 +12277,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12420,8 +12421,8 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_o
 	|| is_set(sequence_number.operation)
 	|| is_set(short_ma_name_format.operation)
 	|| is_set(version.operation)
-	|| (mdid !=  nullptr && is_set(mdid->operation))
-	|| (short_ma_name !=  nullptr && is_set(short_ma_name->operation));
+	|| (mdid !=  nullptr && mdid->has_operation())
+	|| (short_ma_name !=  nullptr && short_ma_name->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_segment_path() const
@@ -12438,7 +12439,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12608,7 +12609,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12699,7 +12700,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
 	|| is_set(chassis_id.operation)
 	|| is_set(chassis_id_type.operation)
 	|| is_set(chassis_id_type_value.operation)
-	|| (chassis_id_value !=  nullptr && is_set(chassis_id_value->operation));
+	|| (chassis_id_value !=  nullptr && chassis_id_value->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_segment_path() const
@@ -12716,7 +12717,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12822,7 +12823,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has
     return is_set(operation)
 	|| is_set(management_address.operation)
 	|| is_set(management_address_domain.operation)
-	|| (chassis_id !=  nullptr && is_set(chassis_id->operation));
+	|| (chassis_id !=  nullptr && chassis_id->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_segment_path() const
@@ -12839,7 +12840,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12947,7 +12948,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13033,7 +13034,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Organiz
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13126,7 +13127,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Unknown
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13240,9 +13241,9 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_operation
 	|| is_set(interface_status.operation)
 	|| is_set(port_status.operation)
 	|| is_set(raw_data.operation)
-	|| (header !=  nullptr && is_set(header->operation))
-	|| (mep_name !=  nullptr && is_set(mep_name->operation))
-	|| (sender_id !=  nullptr && is_set(sender_id->operation));
+	|| (header !=  nullptr && header->has_operation())
+	|| (mep_name !=  nullptr && mep_name->has_operation())
+	|| (sender_id !=  nullptr && sender_id->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_segment_path() const
@@ -13259,7 +13260,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13478,7 +13479,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmRecei
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13577,7 +13578,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_operation() co
 	|| is_set(ccms_received.operation)
 	|| is_set(ccms_wrong_level.operation)
 	|| is_set(last_ccm_sequence_number.operation)
-	|| (last_ccm_received_time !=  nullptr && is_set(last_ccm_received_time->operation));
+	|| (last_ccm_received_time !=  nullptr && last_ccm_received_time->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_segment_path() const
@@ -13594,7 +13595,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13754,10 +13755,10 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_operation() const
 	|| is_set(mac_address.operation)
 	|| is_set(mep_id.operation)
 	|| is_set(peer_mep_state.operation)
-	|| (error_state !=  nullptr && is_set(error_state->operation))
-	|| (last_ccm_received !=  nullptr && is_set(last_ccm_received->operation))
-	|| (last_up_down_time !=  nullptr && is_set(last_up_down_time->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (error_state !=  nullptr && error_state->has_operation())
+	|| (last_ccm_received !=  nullptr && last_ccm_received->has_operation())
+	|| (last_up_down_time !=  nullptr && last_up_down_time->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_segment_path() const
@@ -13774,7 +13775,7 @@ EntityPath Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13992,7 +13993,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::has_operation() const
 	|| is_set(mep_id.operation)
 	|| is_set(service_xr.operation)
 	|| is_set(standby.operation)
-	|| (peer_mep !=  nullptr && is_set(peer_mep->operation));
+	|| (peer_mep !=  nullptr && peer_mep->has_operation());
 }
 
 std::string Cfm::Global::PeerMePv2S::PeerMePv2::get_segment_path() const
@@ -14296,13 +14297,13 @@ bool Cfm::Global::has_data() const
 bool Cfm::Global::has_operation() const
 {
     return is_set(operation)
-	|| (global_configuration_errors !=  nullptr && is_set(global_configuration_errors->operation))
-	|| (incomplete_traceroutes !=  nullptr && is_set(incomplete_traceroutes->operation))
-	|| (local_meps !=  nullptr && is_set(local_meps->operation))
-	|| (maintenance_points !=  nullptr && is_set(maintenance_points->operation))
-	|| (mep_configuration_errors !=  nullptr && is_set(mep_configuration_errors->operation))
-	|| (peer_me_pv2s !=  nullptr && is_set(peer_me_pv2s->operation))
-	|| (traceroute_caches !=  nullptr && is_set(traceroute_caches->operation));
+	|| (global_configuration_errors !=  nullptr && global_configuration_errors->has_operation())
+	|| (incomplete_traceroutes !=  nullptr && incomplete_traceroutes->has_operation())
+	|| (local_meps !=  nullptr && local_meps->has_operation())
+	|| (maintenance_points !=  nullptr && maintenance_points->has_operation())
+	|| (mep_configuration_errors !=  nullptr && mep_configuration_errors->has_operation())
+	|| (peer_me_pv2s !=  nullptr && peer_me_pv2s->has_operation())
+	|| (traceroute_caches !=  nullptr && traceroute_caches->has_operation());
 }
 
 std::string Cfm::Global::get_segment_path() const
@@ -14546,8 +14547,8 @@ bool Cfm::has_data() const
 bool Cfm::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Cfm::get_segment_path() const
@@ -14564,7 +14565,7 @@ EntityPath Cfm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -14651,317 +14652,317 @@ std::unique_ptr<Entity> Cfm::clone_ptr()
     return std::make_unique<Cfm>();
 }
 
-const Enum::Value CfmPmElrIngressActionEnum::elr_ingress_ok {1, "elr-ingress-ok"};
-const Enum::Value CfmPmElrIngressActionEnum::elr_ingress_down {2, "elr-ingress-down"};
-const Enum::Value CfmPmElrIngressActionEnum::elr_ingress_blocked {3, "elr-ingress-blocked"};
-const Enum::Value CfmPmElrIngressActionEnum::elr_ingress_vid {4, "elr-ingress-vid"};
+const Enum::YLeaf CfmPmElrIngressActionEnum::elr_ingress_ok {1, "elr-ingress-ok"};
+const Enum::YLeaf CfmPmElrIngressActionEnum::elr_ingress_down {2, "elr-ingress-down"};
+const Enum::YLeaf CfmPmElrIngressActionEnum::elr_ingress_blocked {3, "elr-ingress-blocked"};
+const Enum::YLeaf CfmPmElrIngressActionEnum::elr_ingress_vid {4, "elr-ingress-vid"};
 
-const Enum::Value CfmPmRelayActionEnum::relay_hit {1, "relay-hit"};
-const Enum::Value CfmPmRelayActionEnum::relay_fdb {2, "relay-fdb"};
-const Enum::Value CfmPmRelayActionEnum::relay_mpdb {3, "relay-mpdb"};
+const Enum::YLeaf CfmPmRelayActionEnum::relay_hit {1, "relay-hit"};
+const Enum::YLeaf CfmPmRelayActionEnum::relay_fdb {2, "relay-fdb"};
+const Enum::YLeaf CfmPmRelayActionEnum::relay_mpdb {3, "relay-mpdb"};
 
-const Enum::Value CfmBagSmanFmtEnum::sman_vlan_id {1, "sman-vlan-id"};
-const Enum::Value CfmBagSmanFmtEnum::sman_string {2, "sman-string"};
-const Enum::Value CfmBagSmanFmtEnum::sman_uint16 {3, "sman-uint16"};
-const Enum::Value CfmBagSmanFmtEnum::sman_vpn_id {4, "sman-vpn-id"};
-const Enum::Value CfmBagSmanFmtEnum::sman_icc {32, "sman-icc"};
-const Enum::Value CfmBagSmanFmtEnum::sman_unknown {33, "sman-unknown"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_vlan_id {1, "sman-vlan-id"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_string {2, "sman-string"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_uint16 {3, "sman-uint16"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_vpn_id {4, "sman-vpn-id"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_icc {32, "sman-icc"};
+const Enum::YLeaf CfmBagSmanFmtEnum::sman_unknown {33, "sman-unknown"};
 
-const Enum::Value CfmBagDirectionEnum::direction_up {0, "direction-up"};
-const Enum::Value CfmBagDirectionEnum::direction_down {1, "direction-down"};
-const Enum::Value CfmBagDirectionEnum::direction_invalid {2, "direction-invalid"};
+const Enum::YLeaf CfmBagDirectionEnum::direction_up {0, "direction-up"};
+const Enum::YLeaf CfmBagDirectionEnum::direction_down {1, "direction-down"};
+const Enum::YLeaf CfmBagDirectionEnum::direction_invalid {2, "direction-invalid"};
 
-const Enum::Value CfmPmIngressActionEnum::ingress_ok {1, "ingress-ok"};
-const Enum::Value CfmPmIngressActionEnum::ingress_down {2, "ingress-down"};
-const Enum::Value CfmPmIngressActionEnum::ingress_blocked {3, "ingress-blocked"};
-const Enum::Value CfmPmIngressActionEnum::ingress_vid {4, "ingress-vid"};
+const Enum::YLeaf CfmPmIngressActionEnum::ingress_ok {1, "ingress-ok"};
+const Enum::YLeaf CfmPmIngressActionEnum::ingress_down {2, "ingress-down"};
+const Enum::YLeaf CfmPmIngressActionEnum::ingress_blocked {3, "ingress-blocked"};
+const Enum::YLeaf CfmPmIngressActionEnum::ingress_vid {4, "ingress-vid"};
 
-const Enum::Value CfmBagCcmIntervalEnum::interval_none {0, "interval-none"};
-const Enum::Value CfmBagCcmIntervalEnum::interval3_3ms {1, "interval3-3ms"};
-const Enum::Value CfmBagCcmIntervalEnum::interval10ms {2, "interval10ms"};
-const Enum::Value CfmBagCcmIntervalEnum::interval100ms {3, "interval100ms"};
-const Enum::Value CfmBagCcmIntervalEnum::interval1s {4, "interval1s"};
-const Enum::Value CfmBagCcmIntervalEnum::interval10s {5, "interval10s"};
-const Enum::Value CfmBagCcmIntervalEnum::interval1m {6, "interval1m"};
-const Enum::Value CfmBagCcmIntervalEnum::interval10m {7, "interval10m"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval_none {0, "interval-none"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval3_3ms {1, "interval3-3ms"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval10ms {2, "interval10ms"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval100ms {3, "interval100ms"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval1s {4, "interval1s"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval10s {5, "interval10s"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval1m {6, "interval1m"};
+const Enum::YLeaf CfmBagCcmIntervalEnum::interval10m {7, "interval10m"};
 
-const Enum::Value CfmPmElrEgressActionEnum::elr_egress_ok {1, "elr-egress-ok"};
-const Enum::Value CfmPmElrEgressActionEnum::elr_egress_down {2, "elr-egress-down"};
-const Enum::Value CfmPmElrEgressActionEnum::elr_egress_blocked {3, "elr-egress-blocked"};
-const Enum::Value CfmPmElrEgressActionEnum::elr_egress_vid {4, "elr-egress-vid"};
-const Enum::Value CfmPmElrEgressActionEnum::elr_egress_mac {255, "elr-egress-mac"};
+const Enum::YLeaf CfmPmElrEgressActionEnum::elr_egress_ok {1, "elr-egress-ok"};
+const Enum::YLeaf CfmPmElrEgressActionEnum::elr_egress_down {2, "elr-egress-down"};
+const Enum::YLeaf CfmPmElrEgressActionEnum::elr_egress_blocked {3, "elr-egress-blocked"};
+const Enum::YLeaf CfmPmElrEgressActionEnum::elr_egress_vid {4, "elr-egress-vid"};
+const Enum::YLeaf CfmPmElrEgressActionEnum::elr_egress_mac {255, "elr-egress-mac"};
 
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_chassis_component {1, "chassis-id-chassis-component"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_interface_alias {2, "chassis-id-interface-alias"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_port_component {3, "chassis-id-port-component"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_mac_address {4, "chassis-id-mac-address"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_network_address {5, "chassis-id-network-address"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_interface_name {6, "chassis-id-interface-name"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_local {7, "chassis-id-local"};
-const Enum::Value CfmPmChassisIdFmtEnum::chassis_id_unknown_type {8, "chassis-id-unknown-type"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_chassis_component {1, "chassis-id-chassis-component"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_interface_alias {2, "chassis-id-interface-alias"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_port_component {3, "chassis-id-port-component"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_mac_address {4, "chassis-id-mac-address"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_network_address {5, "chassis-id-network-address"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_interface_name {6, "chassis-id-interface-name"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_local {7, "chassis-id-local"};
+const Enum::YLeaf CfmPmChassisIdFmtEnum::chassis_id_unknown_type {8, "chassis-id-unknown-type"};
 
-const Enum::Value CfmPmMepFngStateEnum::fng_reset {1, "fng-reset"};
-const Enum::Value CfmPmMepFngStateEnum::fng_defect {2, "fng-defect"};
-const Enum::Value CfmPmMepFngStateEnum::fng_report_defect {3, "fng-report-defect"};
-const Enum::Value CfmPmMepFngStateEnum::fng_defect_reported {4, "fng-defect-reported"};
-const Enum::Value CfmPmMepFngStateEnum::fng_defect_clearing {5, "fng-defect-clearing"};
+const Enum::YLeaf CfmPmMepFngStateEnum::fng_reset {1, "fng-reset"};
+const Enum::YLeaf CfmPmMepFngStateEnum::fng_defect {2, "fng-defect"};
+const Enum::YLeaf CfmPmMepFngStateEnum::fng_report_defect {3, "fng-report-defect"};
+const Enum::YLeaf CfmPmMepFngStateEnum::fng_defect_reported {4, "fng-defect-reported"};
+const Enum::YLeaf CfmPmMepFngStateEnum::fng_defect_clearing {5, "fng-defect-clearing"};
 
-const Enum::Value CfmPmLastHopFmtEnum::last_hop_none {0, "last-hop-none"};
-const Enum::Value CfmPmLastHopFmtEnum::last_hop_host_name {1, "last-hop-host-name"};
-const Enum::Value CfmPmLastHopFmtEnum::last_hop_egress_id {2, "last-hop-egress-id"};
+const Enum::YLeaf CfmPmLastHopFmtEnum::last_hop_none {0, "last-hop-none"};
+const Enum::YLeaf CfmPmLastHopFmtEnum::last_hop_host_name {1, "last-hop-host-name"};
+const Enum::YLeaf CfmPmLastHopFmtEnum::last_hop_egress_id {2, "last-hop-egress-id"};
 
-const Enum::Value CfmPmIdFmtEnum::id_format_is_string {0, "id-format-is-string"};
-const Enum::Value CfmPmIdFmtEnum::id_format_is_mac_address {1, "id-format-is-mac-address"};
-const Enum::Value CfmPmIdFmtEnum::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
+const Enum::YLeaf CfmPmIdFmtEnum::id_format_is_string {0, "id-format-is-string"};
+const Enum::YLeaf CfmPmIdFmtEnum::id_format_is_mac_address {1, "id-format-is-mac-address"};
+const Enum::YLeaf CfmPmIdFmtEnum::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
 
-const Enum::Value CfmPmRmepStateEnum::peer_mep_idle {1, "peer-mep-idle"};
-const Enum::Value CfmPmRmepStateEnum::peer_mep_start {2, "peer-mep-start"};
-const Enum::Value CfmPmRmepStateEnum::peer_mep_failed {3, "peer-mep-failed"};
-const Enum::Value CfmPmRmepStateEnum::peer_mep_ok {4, "peer-mep-ok"};
+const Enum::YLeaf CfmPmRmepStateEnum::peer_mep_idle {1, "peer-mep-idle"};
+const Enum::YLeaf CfmPmRmepStateEnum::peer_mep_start {2, "peer-mep-start"};
+const Enum::YLeaf CfmPmRmepStateEnum::peer_mep_failed {3, "peer-mep-failed"};
+const Enum::YLeaf CfmPmRmepStateEnum::peer_mep_ok {4, "peer-mep-ok"};
 
-const Enum::Value CfmBagCcmOffloadEnum::offload_none {0, "offload-none"};
-const Enum::Value CfmBagCcmOffloadEnum::offload_software {1, "offload-software"};
-const Enum::Value CfmBagCcmOffloadEnum::offload_hardware {2, "offload-hardware"};
+const Enum::YLeaf CfmBagCcmOffloadEnum::offload_none {0, "offload-none"};
+const Enum::YLeaf CfmBagCcmOffloadEnum::offload_software {1, "offload-software"};
+const Enum::YLeaf CfmBagCcmOffloadEnum::offload_hardware {2, "offload-hardware"};
 
-const Enum::Value CfmPmAisReceiveEnum::receive_none {0, "receive-none"};
-const Enum::Value CfmPmAisReceiveEnum::receive_ais {1, "receive-ais"};
-const Enum::Value CfmPmAisReceiveEnum::receive_lck {2, "receive-lck"};
-const Enum::Value CfmPmAisReceiveEnum::receive_direct {3, "receive-direct"};
+const Enum::YLeaf CfmPmAisReceiveEnum::receive_none {0, "receive-none"};
+const Enum::YLeaf CfmPmAisReceiveEnum::receive_ais {1, "receive-ais"};
+const Enum::YLeaf CfmPmAisReceiveEnum::receive_lck {2, "receive-lck"};
+const Enum::YLeaf CfmPmAisReceiveEnum::receive_direct {3, "receive-direct"};
 
-const Enum::Value CfmMaMpVarietyEnum::mip {0, "mip"};
-const Enum::Value CfmMaMpVarietyEnum::up_mep {1, "up-mep"};
-const Enum::Value CfmMaMpVarietyEnum::downmep {2, "downmep"};
-const Enum::Value CfmMaMpVarietyEnum::unknown_mep {3, "unknown-mep"};
+const Enum::YLeaf CfmMaMpVarietyEnum::mip {0, "mip"};
+const Enum::YLeaf CfmMaMpVarietyEnum::up_mep {1, "up-mep"};
+const Enum::YLeaf CfmMaMpVarietyEnum::downmep {2, "downmep"};
+const Enum::YLeaf CfmMaMpVarietyEnum::unknown_mep {3, "unknown-mep"};
 
-const Enum::Value CfmPmPktActionEnum::packet_processed {0, "packet-processed"};
-const Enum::Value CfmPmPktActionEnum::packet_forwarded {1, "packet-forwarded"};
-const Enum::Value CfmPmPktActionEnum::unknown_opcode {2, "unknown-opcode"};
-const Enum::Value CfmPmPktActionEnum::filter_level {3, "filter-level"};
-const Enum::Value CfmPmPktActionEnum::filter_blocked {4, "filter-blocked"};
-const Enum::Value CfmPmPktActionEnum::filter_local_mac {5, "filter-local-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_ccm_size {6, "malformed-ccm-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_ccm_mep_id {7, "malformed-ccm-mep-id"};
-const Enum::Value CfmPmPktActionEnum::malformed_too_short {8, "malformed-too-short"};
-const Enum::Value CfmPmPktActionEnum::malformed_destination_mac_unicast {9, "malformed-destination-mac-unicast"};
-const Enum::Value CfmPmPktActionEnum::malformed_destination_mac_multicast {10, "malformed-destination-mac-multicast"};
-const Enum::Value CfmPmPktActionEnum::malformed_tlv_offset {11, "malformed-tlv-offset"};
-const Enum::Value CfmPmPktActionEnum::malformed_lbm_source_mac {12, "malformed-lbm-source-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_ltr_relay_action {13, "malformed-ltr-relay-action"};
-const Enum::Value CfmPmPktActionEnum::malformed_ltr_reply_tlv {14, "malformed-ltr-reply-tlv"};
-const Enum::Value CfmPmPktActionEnum::malformed_lt_origin {15, "malformed-lt-origin"};
-const Enum::Value CfmPmPktActionEnum::malformed_ltm_target {16, "malformed-ltm-target"};
-const Enum::Value CfmPmPktActionEnum::malformed_source_mac {17, "malformed-source-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_header_too_short {18, "malformed-header-too-short"};
-const Enum::Value CfmPmPktActionEnum::malformed_tlv_header_overrun {19, "malformed-tlv-header-overrun"};
-const Enum::Value CfmPmPktActionEnum::malformed_tlv_overrun {20, "malformed-tlv-overrun"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_sender_id {21, "malformed-duplicate-sender-id"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_port_status {22, "malformed-duplicate-port-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_interface_status {23, "malformed-duplicate-interface-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_wrong_tlv {24, "malformed-wrong-tlv"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_data {25, "malformed-duplicate-data"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_ltr_egress_id {26, "malformed-duplicate-ltr-egress-id"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_reply_ingress {27, "malformed-duplicate-reply-ingress"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_reply_egress {28, "malformed-duplicate-reply-egress"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_ltm_egress_id {29, "malformed-duplicate-ltm-egress-id"};
-const Enum::Value CfmPmPktActionEnum::malformed_sender_id_size {30, "malformed-sender-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_chassis_id_size {31, "malformed-chassis-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_mgmt_address_domain_size {32, "malformed-mgmt-address-domain-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_mgmt_address_size {33, "malformed-mgmt-address-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_port_status_size {34, "malformed-port-status-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_port_status {35, "malformed-port-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_interface_status_size {36, "malformed-interface-status-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_interface_status {37, "malformed-interface-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_organization_specific_tlv_size {38, "malformed-organization-specific-tlv-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_mep_name {39, "malformed-duplicate-mep-name"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_additional_interface_status {40, "malformed-duplicate-additional-interface-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_ltr_egress_id_size {41, "malformed-ltr-egress-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_reply_ingress_size {42, "malformed-reply-ingress-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_ingress_action {43, "malformed-ingress-action"};
-const Enum::Value CfmPmPktActionEnum::malformed_reply_ingress_mac {44, "malformed-reply-ingress-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_ingress_port_length_size {45, "malformed-ingress-port-length-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_ingress_port_id_length {46, "malformed-ingress-port-id-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_ingress_port_id_size {47, "malformed-ingress-port-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_reply_egress_size {48, "malformed-reply-egress-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_egress_action {49, "malformed-egress-action"};
-const Enum::Value CfmPmPktActionEnum::malformed_reply_egress_mac {50, "malformed-reply-egress-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_egress_port_length_size {51, "malformed-egress-port-length-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_egress_port_id_length {52, "malformed-egress-port-id-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_egress_port_id_size {53, "malformed-egress-port-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_ltm_egress_id_size {54, "malformed-ltm-egress-id-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_mep_name_size {55, "malformed-mep-name-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_mep_name_name_length {56, "malformed-mep-name-name-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_additional_interface_status_size {57, "malformed-additional-interface-status-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_additional_interface_status {58, "malformed-additional-interface-status"};
-const Enum::Value CfmPmPktActionEnum::malformed_ccm_interval {59, "malformed-ccm-interval"};
-const Enum::Value CfmPmPktActionEnum::malformed_mdid_mac_address_length {60, "malformed-mdid-mac-address-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_mdid_length {61, "malformed-mdid-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_sman_length {62, "malformed-sman-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_sman2_byte_length {63, "malformed-sman2-byte-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_sman_vpn_id_length {64, "malformed-sman-vpn-id-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_no_reply_tlv {65, "malformed-elr-no-reply-tlv"};
-const Enum::Value CfmPmPktActionEnum::malformed_separate_elr_reply_egress {66, "malformed-separate-elr-reply-egress"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_destination_multicast {67, "malformed-dcm-destination-multicast"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_embed_length {68, "malformed-dcm-embed-length"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_embed_level {69, "malformed-dcm-embed-level"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_embed_version {70, "malformed-dcm-embed-version"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_relay_action {71, "malformed-elr-relay-action"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_tt_ls {73, "malformed-elr-tt-ls"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_ttl_ingress {74, "malformed-elr-ttl-ingress"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_ttl_egress {75, "malformed-elr-ttl-egress"};
-const Enum::Value CfmPmPktActionEnum::malformed_elm_destination_unicast {76, "malformed-elm-destination-unicast"};
-const Enum::Value CfmPmPktActionEnum::malformed_elm_egress_id {77, "malformed-elm-egress-id"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_embed_oui {78, "malformed-dcm-embed-oui"};
-const Enum::Value CfmPmPktActionEnum::malformed_dcm_embed_opcode {79, "malformed-dcm-embed-opcode"};
-const Enum::Value CfmPmPktActionEnum::malformed_elm_constant_zero {80, "malformed-elm-constant-zero"};
-const Enum::Value CfmPmPktActionEnum::malformed_elr_timeout_zero {81, "malformed-elr-timeout-zero"};
-const Enum::Value CfmPmPktActionEnum::malformed_duplicate_test {82, "malformed-duplicate-test"};
-const Enum::Value CfmPmPktActionEnum::malformed_dmm_source_mac {83, "malformed-dmm-source-mac"};
-const Enum::Value CfmPmPktActionEnum::malformed_test_size {84, "malformed-test-size"};
-const Enum::Value CfmPmPktActionEnum::malformed_dmr_time_stamps {85, "malformed-dmr-time-stamps"};
-const Enum::Value CfmPmPktActionEnum::malformed_dm_time_stamp_fmt {86, "malformed-dm-time-stamp-fmt"};
-const Enum::Value CfmPmPktActionEnum::malformed_ais_interval {87, "malformed-ais-interval"};
-const Enum::Value CfmPmPktActionEnum::filter_interface_down {88, "filter-interface-down"};
-const Enum::Value CfmPmPktActionEnum::filter_forward_standby {89, "filter-forward-standby"};
-const Enum::Value CfmPmPktActionEnum::malformed_sman_icc_based_length {90, "malformed-sman-icc-based-length"};
-const Enum::Value CfmPmPktActionEnum::filter_foward_issu_secondary {120, "filter-foward-issu-secondary"};
-const Enum::Value CfmPmPktActionEnum::filter_response_standby {121, "filter-response-standby"};
-const Enum::Value CfmPmPktActionEnum::filter_response_issu_secondary {122, "filter-response-issu-secondary"};
+const Enum::YLeaf CfmPmPktActionEnum::packet_processed {0, "packet-processed"};
+const Enum::YLeaf CfmPmPktActionEnum::packet_forwarded {1, "packet-forwarded"};
+const Enum::YLeaf CfmPmPktActionEnum::unknown_opcode {2, "unknown-opcode"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_level {3, "filter-level"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_blocked {4, "filter-blocked"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_local_mac {5, "filter-local-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ccm_size {6, "malformed-ccm-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ccm_mep_id {7, "malformed-ccm-mep-id"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_too_short {8, "malformed-too-short"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_destination_mac_unicast {9, "malformed-destination-mac-unicast"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_destination_mac_multicast {10, "malformed-destination-mac-multicast"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_tlv_offset {11, "malformed-tlv-offset"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_lbm_source_mac {12, "malformed-lbm-source-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ltr_relay_action {13, "malformed-ltr-relay-action"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ltr_reply_tlv {14, "malformed-ltr-reply-tlv"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_lt_origin {15, "malformed-lt-origin"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ltm_target {16, "malformed-ltm-target"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_source_mac {17, "malformed-source-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_header_too_short {18, "malformed-header-too-short"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_tlv_header_overrun {19, "malformed-tlv-header-overrun"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_tlv_overrun {20, "malformed-tlv-overrun"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_sender_id {21, "malformed-duplicate-sender-id"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_port_status {22, "malformed-duplicate-port-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_interface_status {23, "malformed-duplicate-interface-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_wrong_tlv {24, "malformed-wrong-tlv"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_data {25, "malformed-duplicate-data"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_ltr_egress_id {26, "malformed-duplicate-ltr-egress-id"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_reply_ingress {27, "malformed-duplicate-reply-ingress"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_reply_egress {28, "malformed-duplicate-reply-egress"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_ltm_egress_id {29, "malformed-duplicate-ltm-egress-id"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_sender_id_size {30, "malformed-sender-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_chassis_id_size {31, "malformed-chassis-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mgmt_address_domain_size {32, "malformed-mgmt-address-domain-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mgmt_address_size {33, "malformed-mgmt-address-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_port_status_size {34, "malformed-port-status-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_port_status {35, "malformed-port-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_interface_status_size {36, "malformed-interface-status-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_interface_status {37, "malformed-interface-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_organization_specific_tlv_size {38, "malformed-organization-specific-tlv-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_mep_name {39, "malformed-duplicate-mep-name"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_additional_interface_status {40, "malformed-duplicate-additional-interface-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ltr_egress_id_size {41, "malformed-ltr-egress-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_reply_ingress_size {42, "malformed-reply-ingress-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ingress_action {43, "malformed-ingress-action"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_reply_ingress_mac {44, "malformed-reply-ingress-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ingress_port_length_size {45, "malformed-ingress-port-length-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ingress_port_id_length {46, "malformed-ingress-port-id-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ingress_port_id_size {47, "malformed-ingress-port-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_reply_egress_size {48, "malformed-reply-egress-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_egress_action {49, "malformed-egress-action"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_reply_egress_mac {50, "malformed-reply-egress-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_egress_port_length_size {51, "malformed-egress-port-length-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_egress_port_id_length {52, "malformed-egress-port-id-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_egress_port_id_size {53, "malformed-egress-port-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ltm_egress_id_size {54, "malformed-ltm-egress-id-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mep_name_size {55, "malformed-mep-name-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mep_name_name_length {56, "malformed-mep-name-name-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_additional_interface_status_size {57, "malformed-additional-interface-status-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_additional_interface_status {58, "malformed-additional-interface-status"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ccm_interval {59, "malformed-ccm-interval"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mdid_mac_address_length {60, "malformed-mdid-mac-address-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_mdid_length {61, "malformed-mdid-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_sman_length {62, "malformed-sman-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_sman2_byte_length {63, "malformed-sman2-byte-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_sman_vpn_id_length {64, "malformed-sman-vpn-id-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_no_reply_tlv {65, "malformed-elr-no-reply-tlv"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_separate_elr_reply_egress {66, "malformed-separate-elr-reply-egress"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_destination_multicast {67, "malformed-dcm-destination-multicast"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_embed_length {68, "malformed-dcm-embed-length"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_embed_level {69, "malformed-dcm-embed-level"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_embed_version {70, "malformed-dcm-embed-version"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_relay_action {71, "malformed-elr-relay-action"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_tt_ls {73, "malformed-elr-tt-ls"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_ttl_ingress {74, "malformed-elr-ttl-ingress"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_ttl_egress {75, "malformed-elr-ttl-egress"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elm_destination_unicast {76, "malformed-elm-destination-unicast"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elm_egress_id {77, "malformed-elm-egress-id"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_embed_oui {78, "malformed-dcm-embed-oui"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dcm_embed_opcode {79, "malformed-dcm-embed-opcode"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elm_constant_zero {80, "malformed-elm-constant-zero"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_elr_timeout_zero {81, "malformed-elr-timeout-zero"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_duplicate_test {82, "malformed-duplicate-test"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dmm_source_mac {83, "malformed-dmm-source-mac"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_test_size {84, "malformed-test-size"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dmr_time_stamps {85, "malformed-dmr-time-stamps"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_dm_time_stamp_fmt {86, "malformed-dm-time-stamp-fmt"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_ais_interval {87, "malformed-ais-interval"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_interface_down {88, "filter-interface-down"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_forward_standby {89, "filter-forward-standby"};
+const Enum::YLeaf CfmPmPktActionEnum::malformed_sman_icc_based_length {90, "malformed-sman-icc-based-length"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_foward_issu_secondary {120, "filter-foward-issu-secondary"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_response_standby {121, "filter-response-standby"};
+const Enum::YLeaf CfmPmPktActionEnum::filter_response_issu_secondary {122, "filter-response-issu-secondary"};
 
-const Enum::Value CfmBagIssuRoleEnum::unknown {0, "unknown"};
-const Enum::Value CfmBagIssuRoleEnum::primary {1, "primary"};
-const Enum::Value CfmBagIssuRoleEnum::secondary {2, "secondary"};
+const Enum::YLeaf CfmBagIssuRoleEnum::unknown {0, "unknown"};
+const Enum::YLeaf CfmBagIssuRoleEnum::primary {1, "primary"};
+const Enum::YLeaf CfmBagIssuRoleEnum::secondary {2, "secondary"};
 
-const Enum::Value CfmPmEltDelayModelEnum::delay_model_invalid {0, "delay-model-invalid"};
-const Enum::Value CfmPmEltDelayModelEnum::delay_model_logarithmic {1, "delay-model-logarithmic"};
-const Enum::Value CfmPmEltDelayModelEnum::delay_model_constant {2, "delay-model-constant"};
+const Enum::YLeaf CfmPmEltDelayModelEnum::delay_model_invalid {0, "delay-model-invalid"};
+const Enum::YLeaf CfmPmEltDelayModelEnum::delay_model_logarithmic {1, "delay-model-logarithmic"};
+const Enum::YLeaf CfmPmEltDelayModelEnum::delay_model_constant {2, "delay-model-constant"};
 
-const Enum::Value CfmPmAisTransmitEnum::transmit_none {0, "transmit-none"};
-const Enum::Value CfmPmAisTransmitEnum::transmit_ais {1, "transmit-ais"};
-const Enum::Value CfmPmAisTransmitEnum::transmit_ais_direct {2, "transmit-ais-direct"};
+const Enum::YLeaf CfmPmAisTransmitEnum::transmit_none {0, "transmit-none"};
+const Enum::YLeaf CfmPmAisTransmitEnum::transmit_ais {1, "transmit-ais"};
+const Enum::YLeaf CfmPmAisTransmitEnum::transmit_ais_direct {2, "transmit-ais-direct"};
 
-const Enum::Value CfmPmElrRelayActionEnum::elr_relay_hit {1, "elr-relay-hit"};
-const Enum::Value CfmPmElrRelayActionEnum::elr_relay_fdb {2, "elr-relay-fdb"};
-const Enum::Value CfmPmElrRelayActionEnum::elr_relay_flood {3, "elr-relay-flood"};
-const Enum::Value CfmPmElrRelayActionEnum::elr_relay_drop {4, "elr-relay-drop"};
+const Enum::YLeaf CfmPmElrRelayActionEnum::elr_relay_hit {1, "elr-relay-hit"};
+const Enum::YLeaf CfmPmElrRelayActionEnum::elr_relay_fdb {2, "elr-relay-fdb"};
+const Enum::YLeaf CfmPmElrRelayActionEnum::elr_relay_flood {3, "elr-relay-flood"};
+const Enum::YLeaf CfmPmElrRelayActionEnum::elr_relay_drop {4, "elr-relay-drop"};
 
-const Enum::Value CfmPmPortStatusEnum::port_status_blocked {1, "port-status-blocked"};
-const Enum::Value CfmPmPortStatusEnum::port_status_up {2, "port-status-up"};
-const Enum::Value CfmPmPortStatusEnum::port_status_unknown {3, "port-status-unknown"};
+const Enum::YLeaf CfmPmPortStatusEnum::port_status_blocked {1, "port-status-blocked"};
+const Enum::YLeaf CfmPmPortStatusEnum::port_status_up {2, "port-status-up"};
+const Enum::YLeaf CfmPmPortStatusEnum::port_status_unknown {3, "port-status-unknown"};
 
-const Enum::Value CfmBagIwStateEnum::interworking_up {0, "interworking-up"};
-const Enum::Value CfmBagIwStateEnum::interworking_test {1, "interworking-test"};
+const Enum::YLeaf CfmBagIwStateEnum::interworking_up {0, "interworking-up"};
+const Enum::YLeaf CfmBagIwStateEnum::interworking_test {1, "interworking-test"};
 
-const Enum::Value CfmBagMdidFmtEnum::mdid_null {1, "mdid-null"};
-const Enum::Value CfmBagMdidFmtEnum::mdid_dns_like {2, "mdid-dns-like"};
-const Enum::Value CfmBagMdidFmtEnum::mdid_mac_address {3, "mdid-mac-address"};
-const Enum::Value CfmBagMdidFmtEnum::mdid_string {4, "mdid-string"};
-const Enum::Value CfmBagMdidFmtEnum::mdid_unknown {5, "mdid-unknown"};
+const Enum::YLeaf CfmBagMdidFmtEnum::mdid_null {1, "mdid-null"};
+const Enum::YLeaf CfmBagMdidFmtEnum::mdid_dns_like {2, "mdid-dns-like"};
+const Enum::YLeaf CfmBagMdidFmtEnum::mdid_mac_address {3, "mdid-mac-address"};
+const Enum::YLeaf CfmBagMdidFmtEnum::mdid_string {4, "mdid-string"};
+const Enum::YLeaf CfmBagMdidFmtEnum::mdid_unknown {5, "mdid-unknown"};
 
-const Enum::Value CfmBagBdidFmtEnum::invalid {0, "invalid"};
-const Enum::Value CfmBagBdidFmtEnum::bd_id {1, "bd-id"};
-const Enum::Value CfmBagBdidFmtEnum::xc_p2p_id {2, "xc-p2p-id"};
-const Enum::Value CfmBagBdidFmtEnum::xc_mp2mp_id {3, "xc-mp2mp-id"};
-const Enum::Value CfmBagBdidFmtEnum::down_only {4, "down-only"};
+const Enum::YLeaf CfmBagBdidFmtEnum::invalid {0, "invalid"};
+const Enum::YLeaf CfmBagBdidFmtEnum::bd_id {1, "bd-id"};
+const Enum::YLeaf CfmBagBdidFmtEnum::xc_p2p_id {2, "xc-p2p-id"};
+const Enum::YLeaf CfmBagBdidFmtEnum::xc_mp2mp_id {3, "xc-mp2mp-id"};
+const Enum::YLeaf CfmBagBdidFmtEnum::down_only {4, "down-only"};
 
-const Enum::Value SlaBucketSizeEnum::buckets_per_probe {0, "buckets-per-probe"};
-const Enum::Value SlaBucketSizeEnum::probes_per_bucket {1, "probes-per-bucket"};
+const Enum::YLeaf SlaBucketSizeEnum::buckets_per_probe {0, "buckets-per-probe"};
+const Enum::YLeaf SlaBucketSizeEnum::probes_per_bucket {1, "probes-per-bucket"};
 
-const Enum::Value CfmBagStpStateEnum::stp_up {0, "stp-up"};
-const Enum::Value CfmBagStpStateEnum::stp_blocked {1, "stp-blocked"};
-const Enum::Value CfmBagStpStateEnum::stp_unknown {2, "stp-unknown"};
+const Enum::YLeaf CfmBagStpStateEnum::stp_up {0, "stp-up"};
+const Enum::YLeaf CfmBagStpStateEnum::stp_blocked {1, "stp-blocked"};
+const Enum::YLeaf CfmBagStpStateEnum::stp_unknown {2, "stp-unknown"};
 
-const Enum::Value CfmBagMdLevelEnum::level0 {0, "level0"};
-const Enum::Value CfmBagMdLevelEnum::level1 {1, "level1"};
-const Enum::Value CfmBagMdLevelEnum::level2 {2, "level2"};
-const Enum::Value CfmBagMdLevelEnum::level3 {3, "level3"};
-const Enum::Value CfmBagMdLevelEnum::level4 {4, "level4"};
-const Enum::Value CfmBagMdLevelEnum::level5 {5, "level5"};
-const Enum::Value CfmBagMdLevelEnum::level6 {6, "level6"};
-const Enum::Value CfmBagMdLevelEnum::level7 {7, "level7"};
-const Enum::Value CfmBagMdLevelEnum::level_invalid {8, "level-invalid"};
+const Enum::YLeaf CfmBagMdLevelEnum::level0 {0, "level0"};
+const Enum::YLeaf CfmBagMdLevelEnum::level1 {1, "level1"};
+const Enum::YLeaf CfmBagMdLevelEnum::level2 {2, "level2"};
+const Enum::YLeaf CfmBagMdLevelEnum::level3 {3, "level3"};
+const Enum::YLeaf CfmBagMdLevelEnum::level4 {4, "level4"};
+const Enum::YLeaf CfmBagMdLevelEnum::level5 {5, "level5"};
+const Enum::YLeaf CfmBagMdLevelEnum::level6 {6, "level6"};
+const Enum::YLeaf CfmBagMdLevelEnum::level7 {7, "level7"};
+const Enum::YLeaf CfmBagMdLevelEnum::level_invalid {8, "level-invalid"};
 
-const Enum::Value SlaOperPacketPriorityEnum::priority_none {0, "priority-none"};
-const Enum::Value SlaOperPacketPriorityEnum::priority_cos {1, "priority-cos"};
+const Enum::YLeaf SlaOperPacketPriorityEnum::priority_none {0, "priority-none"};
+const Enum::YLeaf SlaOperPacketPriorityEnum::priority_cos {1, "priority-cos"};
 
-const Enum::Value CfmBagAisIntervalEnum::ais_interval_none {0, "ais-interval-none"};
-const Enum::Value CfmBagAisIntervalEnum::ais_interval1s {4, "ais-interval1s"};
-const Enum::Value CfmBagAisIntervalEnum::ais_interval1m {6, "ais-interval1m"};
+const Enum::YLeaf CfmBagAisIntervalEnum::ais_interval_none {0, "ais-interval-none"};
+const Enum::YLeaf CfmBagAisIntervalEnum::ais_interval1s {4, "ais-interval1s"};
+const Enum::YLeaf CfmBagAisIntervalEnum::ais_interval1m {6, "ais-interval1m"};
 
-const Enum::Value CfmPmRmepXcStateEnum::cross_check_ok {0, "cross-check-ok"};
-const Enum::Value CfmPmRmepXcStateEnum::cross_check_missing {1, "cross-check-missing"};
-const Enum::Value CfmPmRmepXcStateEnum::cross_check_extra {2, "cross-check-extra"};
+const Enum::YLeaf CfmPmRmepXcStateEnum::cross_check_ok {0, "cross-check-ok"};
+const Enum::YLeaf CfmPmRmepXcStateEnum::cross_check_missing {1, "cross-check-missing"};
+const Enum::YLeaf CfmPmRmepXcStateEnum::cross_check_extra {2, "cross-check-extra"};
 
-const Enum::Value CfmPmLtModeEnum::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
-const Enum::Value CfmPmLtModeEnum::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
+const Enum::YLeaf CfmPmLtModeEnum::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
+const Enum::YLeaf CfmPmLtModeEnum::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
 
-const Enum::Value CfmPmIntfStatusEnum::interface_status_up {1, "interface-status-up"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_down {2, "interface-status-down"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_testing {3, "interface-status-testing"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_unknown {4, "interface-status-unknown"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_dormant {5, "interface-status-dormant"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_not_present {6, "interface-status-not-present"};
-const Enum::Value CfmPmIntfStatusEnum::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_up {1, "interface-status-up"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_down {2, "interface-status-down"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_testing {3, "interface-status-testing"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_unknown {4, "interface-status-unknown"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_dormant {5, "interface-status-dormant"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_not_present {6, "interface-status-not-present"};
+const Enum::YLeaf CfmPmIntfStatusEnum::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
 
-const Enum::Value CfmPmMepDefectEnum::defect_none {0, "defect-none"};
-const Enum::Value CfmPmMepDefectEnum::defect_rdi_ccm {1, "defect-rdi-ccm"};
-const Enum::Value CfmPmMepDefectEnum::defect_ma_cstatus {2, "defect-ma-cstatus"};
-const Enum::Value CfmPmMepDefectEnum::defect_remote_ccm {3, "defect-remote-ccm"};
-const Enum::Value CfmPmMepDefectEnum::defect_error_ccm {4, "defect-error-ccm"};
-const Enum::Value CfmPmMepDefectEnum::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_none {0, "defect-none"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_rdi_ccm {1, "defect-rdi-ccm"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_ma_cstatus {2, "defect-ma-cstatus"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_remote_ccm {3, "defect-remote-ccm"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_error_ccm {4, "defect-error-ccm"};
+const Enum::YLeaf CfmPmMepDefectEnum::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
 
-const Enum::Value CfmPmEgressActionEnum::egress_ok {1, "egress-ok"};
-const Enum::Value CfmPmEgressActionEnum::egress_down {2, "egress-down"};
-const Enum::Value CfmPmEgressActionEnum::egress_blocked {3, "egress-blocked"};
-const Enum::Value CfmPmEgressActionEnum::egress_vid {4, "egress-vid"};
+const Enum::YLeaf CfmPmEgressActionEnum::egress_ok {1, "egress-ok"};
+const Enum::YLeaf CfmPmEgressActionEnum::egress_down {2, "egress-down"};
+const Enum::YLeaf CfmPmEgressActionEnum::egress_blocked {3, "egress-blocked"};
+const Enum::YLeaf CfmPmEgressActionEnum::egress_vid {4, "egress-vid"};
 
-const Enum::Value CfmPmElmReplyFilterEnum::reply_filter_not_present {0, "reply-filter-not-present"};
-const Enum::Value CfmPmElmReplyFilterEnum::reply_filter_default {1, "reply-filter-default"};
-const Enum::Value CfmPmElmReplyFilterEnum::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
-const Enum::Value CfmPmElmReplyFilterEnum::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
-const Enum::Value CfmPmElmReplyFilterEnum::reply_filter_all_ports {4, "reply-filter-all-ports"};
+const Enum::YLeaf CfmPmElmReplyFilterEnum::reply_filter_not_present {0, "reply-filter-not-present"};
+const Enum::YLeaf CfmPmElmReplyFilterEnum::reply_filter_default {1, "reply-filter-default"};
+const Enum::YLeaf CfmPmElmReplyFilterEnum::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
+const Enum::YLeaf CfmPmElmReplyFilterEnum::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
+const Enum::YLeaf CfmPmElmReplyFilterEnum::reply_filter_all_ports {4, "reply-filter-all-ports"};
 
-const Enum::Value CfmAisDirEnum::up {0, "up"};
-const Enum::Value CfmAisDirEnum::down {1, "down"};
+const Enum::YLeaf CfmAisDirEnum::up {0, "up"};
+const Enum::YLeaf CfmAisDirEnum::down {1, "down"};
 
-const Enum::Value CfmPmAddlIntfStatusEnum::unknown {0, "unknown"};
-const Enum::Value CfmPmAddlIntfStatusEnum::administratively_down {1, "administratively-down"};
-const Enum::Value CfmPmAddlIntfStatusEnum::remote_excessive_errors {2, "remote-excessive-errors"};
-const Enum::Value CfmPmAddlIntfStatusEnum::local_excessive_errors {3, "local-excessive-errors"};
+const Enum::YLeaf CfmPmAddlIntfStatusEnum::unknown {0, "unknown"};
+const Enum::YLeaf CfmPmAddlIntfStatusEnum::administratively_down {1, "administratively-down"};
+const Enum::YLeaf CfmPmAddlIntfStatusEnum::remote_excessive_errors {2, "remote-excessive-errors"};
+const Enum::YLeaf CfmPmAddlIntfStatusEnum::local_excessive_errors {3, "local-excessive-errors"};
 
-const Enum::Value CfmBagOpcodeEnum::reserved {0, "reserved"};
-const Enum::Value CfmBagOpcodeEnum::ccm {1, "ccm"};
-const Enum::Value CfmBagOpcodeEnum::lbr {2, "lbr"};
-const Enum::Value CfmBagOpcodeEnum::lbm {3, "lbm"};
-const Enum::Value CfmBagOpcodeEnum::ltr {4, "ltr"};
-const Enum::Value CfmBagOpcodeEnum::ltm {5, "ltm"};
+const Enum::YLeaf CfmBagOpcodeEnum::reserved {0, "reserved"};
+const Enum::YLeaf CfmBagOpcodeEnum::ccm {1, "ccm"};
+const Enum::YLeaf CfmBagOpcodeEnum::lbr {2, "lbr"};
+const Enum::YLeaf CfmBagOpcodeEnum::lbm {3, "lbm"};
+const Enum::YLeaf CfmBagOpcodeEnum::ltr {4, "ltr"};
+const Enum::YLeaf CfmBagOpcodeEnum::ltm {5, "ltm"};
 
-const Enum::Value SlaOperTestPatternSchemeEnum::hex {0, "hex"};
-const Enum::Value SlaOperTestPatternSchemeEnum::pseudo_random {1, "pseudo-random"};
+const Enum::YLeaf SlaOperTestPatternSchemeEnum::hex {0, "hex"};
+const Enum::YLeaf SlaOperTestPatternSchemeEnum::pseudo_random {1, "pseudo-random"};
 
-const Enum::Value SlaOperOperationEnum::operation_type_configured {0, "operation-type-configured"};
-const Enum::Value SlaOperOperationEnum::operation_type_ondemand {1, "operation-type-ondemand"};
+const Enum::YLeaf SlaOperOperationEnum::operation_type_configured {0, "operation-type-configured"};
+const Enum::YLeaf SlaOperOperationEnum::operation_type_ondemand {1, "operation-type-ondemand"};
 
-const Enum::Value CfmPmPortIdFmtEnum::port_id_interface_alias {1, "port-id-interface-alias"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_port_component {2, "port-id-port-component"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_mac_address {3, "port-id-mac-address"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_network_address {4, "port-id-network-address"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_interface_name {5, "port-id-interface-name"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_local {7, "port-id-local"};
-const Enum::Value CfmPmPortIdFmtEnum::port_id_unknown {8, "port-id-unknown"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_interface_alias {1, "port-id-interface-alias"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_port_component {2, "port-id-port-component"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_mac_address {3, "port-id-mac-address"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_network_address {4, "port-id-network-address"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_interface_name {5, "port-id-interface-name"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_local {7, "port-id-local"};
+const Enum::YLeaf CfmPmPortIdFmtEnum::port_id_unknown {8, "port-id-unknown"};
 
-const Enum::Value SlaOperBucketEnum::bucket_type_bins {0, "bucket-type-bins"};
-const Enum::Value SlaOperBucketEnum::bucket_type_samples {1, "bucket-type-samples"};
+const Enum::YLeaf SlaOperBucketEnum::bucket_type_bins {0, "bucket-type-bins"};
+const Enum::YLeaf SlaOperBucketEnum::bucket_type_samples {1, "bucket-type-samples"};
 
-const Enum::Value SlaRecordableMetricEnum::metric_invalid {0, "metric-invalid"};
-const Enum::Value SlaRecordableMetricEnum::metric_round_trip_delay {1, "metric-round-trip-delay"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_delay_sd {2, "metric-one-way-delay-sd"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_delay_ds {3, "metric-one-way-delay-ds"};
-const Enum::Value SlaRecordableMetricEnum::metric_round_trip_jitter {4, "metric-round-trip-jitter"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_jitter_sd {5, "metric-one-way-jitter-sd"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_jitter_ds {6, "metric-one-way-jitter-ds"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_flr_sd {7, "metric-one-way-flr-sd"};
-const Enum::Value SlaRecordableMetricEnum::metric_one_way_flr_ds {8, "metric-one-way-flr-ds"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_invalid {0, "metric-invalid"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_round_trip_delay {1, "metric-round-trip-delay"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_delay_sd {2, "metric-one-way-delay-sd"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_delay_ds {3, "metric-one-way-delay-ds"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_round_trip_jitter {4, "metric-round-trip-jitter"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_jitter_sd {5, "metric-one-way-jitter-sd"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_jitter_ds {6, "metric-one-way-jitter-ds"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_flr_sd {7, "metric-one-way-flr-sd"};
+const Enum::YLeaf SlaRecordableMetricEnum::metric_one_way_flr_ds {8, "metric-one-way-flr-ds"};
 
 
 }

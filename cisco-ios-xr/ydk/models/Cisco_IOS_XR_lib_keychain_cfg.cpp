@@ -46,7 +46,7 @@ EntityPath Keychains::Keychain::AcceptTolerance::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -170,7 +170,7 @@ EntityPath Keychains::Keychain::Keies::Key::AcceptLifetime::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -354,7 +354,7 @@ EntityPath Keychains::Keychain::Keies::Key::SendLifetime::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -500,8 +500,8 @@ bool Keychains::Keychain::Keies::Key::has_operation() const
 	|| is_set(key_id.operation)
 	|| is_set(cryptographic_algorithm.operation)
 	|| is_set(key_string.operation)
-	|| (accept_lifetime !=  nullptr && is_set(accept_lifetime->operation))
-	|| (send_lifetime !=  nullptr && is_set(send_lifetime->operation));
+	|| (accept_lifetime !=  nullptr && accept_lifetime->has_operation())
+	|| (send_lifetime !=  nullptr && send_lifetime->has_operation());
 }
 
 std::string Keychains::Keychain::Keies::Key::get_segment_path() const
@@ -518,7 +518,7 @@ EntityPath Keychains::Keychain::Keies::Key::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -661,7 +661,7 @@ EntityPath Keychains::Keychain::Keies::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -757,8 +757,8 @@ bool Keychains::Keychain::has_operation() const
 {
     return is_set(operation)
 	|| is_set(chain_name.operation)
-	|| (accept_tolerance !=  nullptr && is_set(accept_tolerance->operation))
-	|| (keies !=  nullptr && is_set(keies->operation));
+	|| (accept_tolerance !=  nullptr && accept_tolerance->has_operation())
+	|| (keies !=  nullptr && keies->has_operation());
 }
 
 std::string Keychains::Keychain::get_segment_path() const
@@ -908,7 +908,7 @@ EntityPath Keychains::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -975,24 +975,24 @@ std::unique_ptr<Entity> Keychains::clone_ptr()
     return std::make_unique<Keychains>();
 }
 
-const Enum::Value KeyChainMonthEnum::jan {0, "jan"};
-const Enum::Value KeyChainMonthEnum::feb {1, "feb"};
-const Enum::Value KeyChainMonthEnum::mar {2, "mar"};
-const Enum::Value KeyChainMonthEnum::apr {3, "apr"};
-const Enum::Value KeyChainMonthEnum::may {4, "may"};
-const Enum::Value KeyChainMonthEnum::jun {5, "jun"};
-const Enum::Value KeyChainMonthEnum::jul {6, "jul"};
-const Enum::Value KeyChainMonthEnum::aug {7, "aug"};
-const Enum::Value KeyChainMonthEnum::sep {8, "sep"};
-const Enum::Value KeyChainMonthEnum::oct {9, "oct"};
-const Enum::Value KeyChainMonthEnum::nov {10, "nov"};
-const Enum::Value KeyChainMonthEnum::dec {11, "dec"};
+const Enum::YLeaf KeyChainMonthEnum::jan {0, "jan"};
+const Enum::YLeaf KeyChainMonthEnum::feb {1, "feb"};
+const Enum::YLeaf KeyChainMonthEnum::mar {2, "mar"};
+const Enum::YLeaf KeyChainMonthEnum::apr {3, "apr"};
+const Enum::YLeaf KeyChainMonthEnum::may {4, "may"};
+const Enum::YLeaf KeyChainMonthEnum::jun {5, "jun"};
+const Enum::YLeaf KeyChainMonthEnum::jul {6, "jul"};
+const Enum::YLeaf KeyChainMonthEnum::aug {7, "aug"};
+const Enum::YLeaf KeyChainMonthEnum::sep {8, "sep"};
+const Enum::YLeaf KeyChainMonthEnum::oct {9, "oct"};
+const Enum::YLeaf KeyChainMonthEnum::nov {10, "nov"};
+const Enum::YLeaf KeyChainMonthEnum::dec {11, "dec"};
 
-const Enum::Value CryptoAlgEnum::alg_hmac_sha1_12 {2, "alg-hmac-sha1-12"};
-const Enum::Value CryptoAlgEnum::alg_md5_16 {3, "alg-md5-16"};
-const Enum::Value CryptoAlgEnum::alg_sha1_20 {4, "alg-sha1-20"};
-const Enum::Value CryptoAlgEnum::alg_hmac_md5_16 {5, "alg-hmac-md5-16"};
-const Enum::Value CryptoAlgEnum::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
+const Enum::YLeaf CryptoAlgEnum::alg_hmac_sha1_12 {2, "alg-hmac-sha1-12"};
+const Enum::YLeaf CryptoAlgEnum::alg_md5_16 {3, "alg-md5-16"};
+const Enum::YLeaf CryptoAlgEnum::alg_sha1_20 {4, "alg-sha1-20"};
+const Enum::YLeaf CryptoAlgEnum::alg_hmac_md5_16 {5, "alg-hmac-md5-16"};
+const Enum::YLeaf CryptoAlgEnum::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
 
 
 }

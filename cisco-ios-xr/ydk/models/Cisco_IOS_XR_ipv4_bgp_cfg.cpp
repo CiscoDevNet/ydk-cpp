@@ -58,7 +58,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::RouteDis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -166,7 +166,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::LabelMod
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -251,7 +251,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -340,7 +340,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -444,7 +444,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -548,7 +548,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -658,7 +658,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -770,7 +770,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -883,7 +883,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -989,7 +989,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1082,7 +1082,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1173,7 +1173,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1269,7 +1269,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1362,7 +1362,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1456,7 +1456,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1558,7 +1558,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1668,7 +1668,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1770,7 +1770,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1877,7 +1877,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1970,7 +1970,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2058,7 +2058,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2152,7 +2152,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2254,7 +2254,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2361,7 +2361,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2457,7 +2457,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2636,25 +2636,25 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::
 	|| is_set(reset_weight_on_import.operation)
 	|| is_set(rt_download.operation)
 	|| is_set(table_policy.operation)
-	|| (additional_paths_selection !=  nullptr && is_set(additional_paths_selection->operation))
-	|| (aggregate_addresses !=  nullptr && is_set(aggregate_addresses->operation))
-	|| (allocate_label !=  nullptr && is_set(allocate_label->operation))
-	|| (connected_routes !=  nullptr && is_set(connected_routes->operation))
-	|| (dampening !=  nullptr && is_set(dampening->operation))
-	|| (distance !=  nullptr && is_set(distance->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (eibgp !=  nullptr && is_set(eibgp->operation))
-	|| (eigrp_routes !=  nullptr && is_set(eigrp_routes->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (label_mode !=  nullptr && is_set(label_mode->operation))
-	|| (lisp_routes !=  nullptr && is_set(lisp_routes->operation))
-	|| (mobile_routes !=  nullptr && is_set(mobile_routes->operation))
-	|| (mvpn !=  nullptr && is_set(mvpn->operation))
-	|| (ospf_routes !=  nullptr && is_set(ospf_routes->operation))
-	|| (rip_routes !=  nullptr && is_set(rip_routes->operation))
-	|| (sourced_networks !=  nullptr && is_set(sourced_networks->operation))
-	|| (static_routes !=  nullptr && is_set(static_routes->operation))
-	|| (subscriber_routes !=  nullptr && is_set(subscriber_routes->operation));
+	|| (additional_paths_selection !=  nullptr && additional_paths_selection->has_operation())
+	|| (aggregate_addresses !=  nullptr && aggregate_addresses->has_operation())
+	|| (allocate_label !=  nullptr && allocate_label->has_operation())
+	|| (connected_routes !=  nullptr && connected_routes->has_operation())
+	|| (dampening !=  nullptr && dampening->has_operation())
+	|| (distance !=  nullptr && distance->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (eibgp !=  nullptr && eibgp->has_operation())
+	|| (eigrp_routes !=  nullptr && eigrp_routes->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (label_mode !=  nullptr && label_mode->has_operation())
+	|| (lisp_routes !=  nullptr && lisp_routes->has_operation())
+	|| (mobile_routes !=  nullptr && mobile_routes->has_operation())
+	|| (mvpn !=  nullptr && mvpn->has_operation())
+	|| (ospf_routes !=  nullptr && ospf_routes->has_operation())
+	|| (rip_routes !=  nullptr && rip_routes->has_operation())
+	|| (sourced_networks !=  nullptr && sourced_networks->has_operation())
+	|| (static_routes !=  nullptr && static_routes->has_operation())
+	|| (subscriber_routes !=  nullptr && subscriber_routes->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGlobalAfs::VrfGlobalAf::get_segment_path() const
@@ -2671,7 +2671,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3260,7 +3260,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::VrfGloba
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3361,7 +3361,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::MplsActi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3448,7 +3448,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::MplsActi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3555,7 +3555,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::GlobalTi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3648,7 +3648,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::Bfd::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3736,7 +3736,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::SendSock
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3824,7 +3824,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::ReceiveS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3991,14 +3991,14 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::has_operation(
 	|| is_set(local_preference.operation)
 	|| is_set(multi_path_as_path_ignore_onwards.operation)
 	|| is_set(router_id.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (global_timers !=  nullptr && is_set(global_timers->operation))
-	|| (label_mode !=  nullptr && is_set(label_mode->operation))
-	|| (mpls_activated_interfaces !=  nullptr && is_set(mpls_activated_interfaces->operation))
-	|| (receive_socket_buffer_sizes !=  nullptr && is_set(receive_socket_buffer_sizes->operation))
-	|| (route_distinguisher !=  nullptr && is_set(route_distinguisher->operation))
-	|| (send_socket_buffer_sizes !=  nullptr && is_set(send_socket_buffer_sizes->operation))
-	|| (vrf_global_afs !=  nullptr && is_set(vrf_global_afs->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (global_timers !=  nullptr && global_timers->has_operation())
+	|| (label_mode !=  nullptr && label_mode->has_operation())
+	|| (mpls_activated_interfaces !=  nullptr && mpls_activated_interfaces->has_operation())
+	|| (receive_socket_buffer_sizes !=  nullptr && receive_socket_buffer_sizes->has_operation())
+	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation())
+	|| (send_socket_buffer_sizes !=  nullptr && send_socket_buffer_sizes->has_operation())
+	|| (vrf_global_afs !=  nullptr && vrf_global_afs->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::get_segment_path() const
@@ -4015,7 +4015,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfGlobal::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4383,7 +4383,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4484,7 +4484,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4580,7 +4580,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4682,7 +4682,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4785,7 +4785,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4876,7 +4876,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4972,7 +4972,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5068,7 +5068,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5161,7 +5161,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5261,7 +5261,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5372,7 +5372,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5468,7 +5468,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5564,7 +5564,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5657,7 +5657,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5745,7 +5745,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5836,7 +5836,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5932,7 +5932,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6025,7 +6025,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6248,24 +6248,24 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor
 	|| is_set(send_community_ebgp.operation)
 	|| is_set(send_community_ebgp_graceful_shutdown.operation)
 	|| is_set(send_ext_community_ebgp.operation)
-	|| (advertise_def_imp_disable_v4 !=  nullptr && is_set(advertise_def_imp_disable_v4->operation))
-	|| (advertise_def_imp_disable_v6 !=  nullptr && is_set(advertise_def_imp_disable_v6->operation))
-	|| (advertise_disable !=  nullptr && is_set(advertise_disable->operation))
-	|| (advertise_l2vpnevpn !=  nullptr && is_set(advertise_l2vpnevpn->operation))
-	|| (advertise_local_l2vpnevpn !=  nullptr && is_set(advertise_local_l2vpnevpn->operation))
-	|| (advertise_local_v4 !=  nullptr && is_set(advertise_local_v4->operation))
-	|| (advertise_local_v6 !=  nullptr && is_set(advertise_local_v6->operation))
-	|| (advertise_v4 !=  nullptr && is_set(advertise_v4->operation))
-	|| (advertise_v6 !=  nullptr && is_set(advertise_v6->operation))
-	|| (aigp_cost_community !=  nullptr && is_set(aigp_cost_community->operation))
-	|| (default_originate !=  nullptr && is_set(default_originate->operation))
-	|| (import !=  nullptr && is_set(import->operation))
-	|| (maximum_prefixes !=  nullptr && is_set(maximum_prefixes->operation))
-	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && is_set(neighbor_af_long_lived_graceful_restart_stale_time->operation))
-	|| (remove_private_as_entire_as_path !=  nullptr && is_set(remove_private_as_entire_as_path->operation))
-	|| (remove_private_as_entire_as_path_inbound !=  nullptr && is_set(remove_private_as_entire_as_path_inbound->operation))
-	|| (site_of_origin !=  nullptr && is_set(site_of_origin->operation))
-	|| (soft_reconfiguration !=  nullptr && is_set(soft_reconfiguration->operation));
+	|| (advertise_def_imp_disable_v4 !=  nullptr && advertise_def_imp_disable_v4->has_operation())
+	|| (advertise_def_imp_disable_v6 !=  nullptr && advertise_def_imp_disable_v6->has_operation())
+	|| (advertise_disable !=  nullptr && advertise_disable->has_operation())
+	|| (advertise_l2vpnevpn !=  nullptr && advertise_l2vpnevpn->has_operation())
+	|| (advertise_local_l2vpnevpn !=  nullptr && advertise_local_l2vpnevpn->has_operation())
+	|| (advertise_local_v4 !=  nullptr && advertise_local_v4->has_operation())
+	|| (advertise_local_v6 !=  nullptr && advertise_local_v6->has_operation())
+	|| (advertise_v4 !=  nullptr && advertise_v4->has_operation())
+	|| (advertise_v6 !=  nullptr && advertise_v6->has_operation())
+	|| (aigp_cost_community !=  nullptr && aigp_cost_community->has_operation())
+	|| (default_originate !=  nullptr && default_originate->has_operation())
+	|| (import !=  nullptr && import->has_operation())
+	|| (maximum_prefixes !=  nullptr && maximum_prefixes->has_operation())
+	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && neighbor_af_long_lived_graceful_restart_stale_time->has_operation())
+	|| (remove_private_as_entire_as_path !=  nullptr && remove_private_as_entire_as_path->has_operation())
+	|| (remove_private_as_entire_as_path_inbound !=  nullptr && remove_private_as_entire_as_path_inbound->has_operation())
+	|| (site_of_origin !=  nullptr && site_of_origin->has_operation())
+	|| (soft_reconfiguration !=  nullptr && soft_reconfiguration->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::VrfNeighborAfs::VrfNeighborAf::get_segment_path() const
@@ -6282,7 +6282,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6908,7 +6908,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7012,7 +7012,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7097,7 +7097,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7184,7 +7184,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7288,7 +7288,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7376,7 +7376,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7476,7 +7476,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7584,7 +7584,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7672,7 +7672,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7760,7 +7760,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7848,7 +7848,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7936,7 +7936,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8024,7 +8024,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8102,7 +8102,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor
 	|| is_set(enable.operation)
 	|| is_set(update_in_filtering_attribute_filter_group.operation)
 	|| is_set(update_in_filtering_syslog_disable.operation)
-	|| (update_in_filtering_message_buffers !=  nullptr && is_set(update_in_filtering_message_buffers->operation));
+	|| (update_in_filtering_message_buffers !=  nullptr && update_in_filtering_message_buffers->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::UpdateInFiltering::get_segment_path() const
@@ -8119,7 +8119,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8238,7 +8238,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8331,7 +8331,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8422,7 +8422,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8515,7 +8515,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8606,7 +8606,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8699,7 +8699,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8787,7 +8787,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8875,7 +8875,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8958,8 +8958,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(graceful_maintenance_activate.operation)
-	|| (graceful_maintenance_as_prepends !=  nullptr && is_set(graceful_maintenance_as_prepends->operation))
-	|| (graceful_maintenance_local_preference !=  nullptr && is_set(graceful_maintenance_local_preference->operation));
+	|| (graceful_maintenance_as_prepends !=  nullptr && graceful_maintenance_as_prepends->has_operation())
+	|| (graceful_maintenance_local_preference !=  nullptr && graceful_maintenance_local_preference->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::GracefulMaintenance::get_segment_path() const
@@ -8976,7 +8976,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9256,25 +9256,25 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor
 	|| is_set(suppress_four_byte_as_capability.operation)
 	|| is_set(ttl_security.operation)
 	|| is_set(update_source_interface.operation)
-	|| (advertisement_interval !=  nullptr && is_set(advertisement_interval->operation))
-	|| (bmp_activates !=  nullptr && is_set(bmp_activates->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (graceful_maintenance !=  nullptr && is_set(graceful_maintenance->operation))
-	|| (keychain !=  nullptr && is_set(keychain->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (local_as !=  nullptr && is_set(local_as->operation))
-	|| (msg_log_in !=  nullptr && is_set(msg_log_in->operation))
-	|| (msg_log_out !=  nullptr && is_set(msg_log_out->operation))
-	|| (neighbor_cluster_id !=  nullptr && is_set(neighbor_cluster_id->operation))
-	|| (password !=  nullptr && is_set(password->operation))
-	|| (receive_buffer_size !=  nullptr && is_set(receive_buffer_size->operation))
-	|| (remote_as !=  nullptr && is_set(remote_as->operation))
-	|| (send_buffer_size !=  nullptr && is_set(send_buffer_size->operation))
-	|| (tcpmss !=  nullptr && is_set(tcpmss->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tos !=  nullptr && is_set(tos->operation))
-	|| (update_in_filtering !=  nullptr && is_set(update_in_filtering->operation))
-	|| (vrf_neighbor_afs !=  nullptr && is_set(vrf_neighbor_afs->operation));
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_operation())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_operation())
+	|| (keychain !=  nullptr && keychain->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (local_as !=  nullptr && local_as->has_operation())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_operation())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_operation())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_operation())
+	|| (password !=  nullptr && password->has_operation())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_operation())
+	|| (remote_as !=  nullptr && remote_as->has_operation())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_operation())
+	|| (tcpmss !=  nullptr && tcpmss->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tos !=  nullptr && tos->has_operation())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_operation())
+	|| (vrf_neighbor_afs !=  nullptr && vrf_neighbor_afs->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNeighbor::get_segment_path() const
@@ -9291,7 +9291,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::VrfNe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9935,7 +9935,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::VrfNeighbors::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10031,8 +10031,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (vrf_global !=  nullptr && is_set(vrf_global->operation))
-	|| (vrf_neighbors !=  nullptr && is_set(vrf_neighbors->operation));
+	|| (vrf_global !=  nullptr && vrf_global->has_operation())
+	|| (vrf_neighbors !=  nullptr && vrf_neighbors->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::get_segment_path() const
@@ -10049,7 +10049,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::Vrf::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10182,7 +10182,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::Vrfs::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10292,7 +10292,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10393,7 +10393,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10489,7 +10489,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10591,7 +10591,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10694,7 +10694,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10785,7 +10785,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10881,7 +10881,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10977,7 +10977,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11070,7 +11070,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11161,7 +11161,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11257,7 +11257,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11353,7 +11353,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11446,7 +11446,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11534,7 +11534,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11625,7 +11625,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11721,7 +11721,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11814,7 +11814,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12044,23 +12044,23 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 	|| is_set(send_community_ebgp_graceful_shutdown.operation)
 	|| is_set(send_ext_community_ebgp.operation)
 	|| is_set(send_multicast_attr.operation)
-	|| (advertise_def_imp_disable_v4 !=  nullptr && is_set(advertise_def_imp_disable_v4->operation))
-	|| (advertise_def_imp_disable_v6 !=  nullptr && is_set(advertise_def_imp_disable_v6->operation))
-	|| (advertise_disable !=  nullptr && is_set(advertise_disable->operation))
-	|| (advertise_l2vpnevpn !=  nullptr && is_set(advertise_l2vpnevpn->operation))
-	|| (advertise_local_l2vpnevpn !=  nullptr && is_set(advertise_local_l2vpnevpn->operation))
-	|| (advertise_local_v4 !=  nullptr && is_set(advertise_local_v4->operation))
-	|| (advertise_local_v6 !=  nullptr && is_set(advertise_local_v6->operation))
-	|| (advertise_v4 !=  nullptr && is_set(advertise_v4->operation))
-	|| (advertise_v6 !=  nullptr && is_set(advertise_v6->operation))
-	|| (aigp_cost_community !=  nullptr && is_set(aigp_cost_community->operation))
-	|| (default_originate !=  nullptr && is_set(default_originate->operation))
-	|| (import !=  nullptr && is_set(import->operation))
-	|| (maximum_prefixes !=  nullptr && is_set(maximum_prefixes->operation))
-	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && is_set(neighbor_af_long_lived_graceful_restart_stale_time->operation))
-	|| (remove_private_as_entire_as_path !=  nullptr && is_set(remove_private_as_entire_as_path->operation))
-	|| (remove_private_as_entire_as_path_inbound !=  nullptr && is_set(remove_private_as_entire_as_path_inbound->operation))
-	|| (soft_reconfiguration !=  nullptr && is_set(soft_reconfiguration->operation));
+	|| (advertise_def_imp_disable_v4 !=  nullptr && advertise_def_imp_disable_v4->has_operation())
+	|| (advertise_def_imp_disable_v6 !=  nullptr && advertise_def_imp_disable_v6->has_operation())
+	|| (advertise_disable !=  nullptr && advertise_disable->has_operation())
+	|| (advertise_l2vpnevpn !=  nullptr && advertise_l2vpnevpn->has_operation())
+	|| (advertise_local_l2vpnevpn !=  nullptr && advertise_local_l2vpnevpn->has_operation())
+	|| (advertise_local_v4 !=  nullptr && advertise_local_v4->has_operation())
+	|| (advertise_local_v6 !=  nullptr && advertise_local_v6->has_operation())
+	|| (advertise_v4 !=  nullptr && advertise_v4->has_operation())
+	|| (advertise_v6 !=  nullptr && advertise_v6->has_operation())
+	|| (aigp_cost_community !=  nullptr && aigp_cost_community->has_operation())
+	|| (default_originate !=  nullptr && default_originate->has_operation())
+	|| (import !=  nullptr && import->has_operation())
+	|| (maximum_prefixes !=  nullptr && maximum_prefixes->has_operation())
+	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && neighbor_af_long_lived_graceful_restart_stale_time->has_operation())
+	|| (remove_private_as_entire_as_path !=  nullptr && remove_private_as_entire_as_path->has_operation())
+	|| (remove_private_as_entire_as_path_inbound !=  nullptr && remove_private_as_entire_as_path_inbound->has_operation())
+	|| (soft_reconfiguration !=  nullptr && soft_reconfiguration->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::NeighborAfs::NeighborAf::get_segment_path() const
@@ -12077,7 +12077,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12700,7 +12700,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12804,7 +12804,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12889,7 +12889,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12976,7 +12976,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13080,7 +13080,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13168,7 +13168,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13268,7 +13268,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13376,7 +13376,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13464,7 +13464,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13552,7 +13552,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13640,7 +13640,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13728,7 +13728,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13816,7 +13816,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13894,7 +13894,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 	|| is_set(enable.operation)
 	|| is_set(update_in_filtering_attribute_filter_group.operation)
 	|| is_set(update_in_filtering_syslog_disable.operation)
-	|| (update_in_filtering_message_buffers !=  nullptr && is_set(update_in_filtering_message_buffers->operation));
+	|| (update_in_filtering_message_buffers !=  nullptr && update_in_filtering_message_buffers->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::UpdateInFiltering::get_segment_path() const
@@ -13911,7 +13911,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14030,7 +14030,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14123,7 +14123,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14214,7 +14214,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14307,7 +14307,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14398,7 +14398,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14491,7 +14491,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14579,7 +14579,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14667,7 +14667,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14750,8 +14750,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(graceful_maintenance_activate.operation)
-	|| (graceful_maintenance_as_prepends !=  nullptr && is_set(graceful_maintenance_as_prepends->operation))
-	|| (graceful_maintenance_local_preference !=  nullptr && is_set(graceful_maintenance_local_preference->operation));
+	|| (graceful_maintenance_as_prepends !=  nullptr && graceful_maintenance_as_prepends->has_operation())
+	|| (graceful_maintenance_local_preference !=  nullptr && graceful_maintenance_local_preference->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::GracefulMaintenance::get_segment_path() const
@@ -14768,7 +14768,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15054,25 +15054,25 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Ne
 	|| is_set(suppress_four_byte_as_capability.operation)
 	|| is_set(ttl_security.operation)
 	|| is_set(update_source_interface.operation)
-	|| (advertisement_interval !=  nullptr && is_set(advertisement_interval->operation))
-	|| (bmp_activates !=  nullptr && is_set(bmp_activates->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (graceful_maintenance !=  nullptr && is_set(graceful_maintenance->operation))
-	|| (keychain !=  nullptr && is_set(keychain->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (local_as !=  nullptr && is_set(local_as->operation))
-	|| (msg_log_in !=  nullptr && is_set(msg_log_in->operation))
-	|| (msg_log_out !=  nullptr && is_set(msg_log_out->operation))
-	|| (neighbor_afs !=  nullptr && is_set(neighbor_afs->operation))
-	|| (neighbor_cluster_id !=  nullptr && is_set(neighbor_cluster_id->operation))
-	|| (password !=  nullptr && is_set(password->operation))
-	|| (receive_buffer_size !=  nullptr && is_set(receive_buffer_size->operation))
-	|| (remote_as !=  nullptr && is_set(remote_as->operation))
-	|| (send_buffer_size !=  nullptr && is_set(send_buffer_size->operation))
-	|| (tcpmss !=  nullptr && is_set(tcpmss->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tos !=  nullptr && is_set(tos->operation))
-	|| (update_in_filtering !=  nullptr && is_set(update_in_filtering->operation));
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_operation())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_operation())
+	|| (keychain !=  nullptr && keychain->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (local_as !=  nullptr && local_as->has_operation())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_operation())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_operation())
+	|| (neighbor_afs !=  nullptr && neighbor_afs->has_operation())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_operation())
+	|| (password !=  nullptr && password->has_operation())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_operation())
+	|| (remote_as !=  nullptr && remote_as->has_operation())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_operation())
+	|| (tcpmss !=  nullptr && tcpmss->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tos !=  nullptr && tos->has_operation())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbors::Neighbor::get_segment_path() const
@@ -15089,7 +15089,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15743,7 +15743,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15853,7 +15853,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15954,7 +15954,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16050,7 +16050,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16152,7 +16152,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16255,7 +16255,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16346,7 +16346,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16442,7 +16442,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16538,7 +16538,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16631,7 +16631,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16731,7 +16731,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16842,7 +16842,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16938,7 +16938,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17034,7 +17034,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17127,7 +17127,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17215,7 +17215,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17306,7 +17306,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17402,7 +17402,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17495,7 +17495,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17730,24 +17730,24 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 	|| is_set(send_community_ebgp_graceful_shutdown.operation)
 	|| is_set(send_ext_community_ebgp.operation)
 	|| is_set(send_multicast_attr.operation)
-	|| (advertise_def_imp_disable_v4 !=  nullptr && is_set(advertise_def_imp_disable_v4->operation))
-	|| (advertise_def_imp_disable_v6 !=  nullptr && is_set(advertise_def_imp_disable_v6->operation))
-	|| (advertise_disable !=  nullptr && is_set(advertise_disable->operation))
-	|| (advertise_l2vpnevpn !=  nullptr && is_set(advertise_l2vpnevpn->operation))
-	|| (advertise_local_l2vpnevpn !=  nullptr && is_set(advertise_local_l2vpnevpn->operation))
-	|| (advertise_local_v4 !=  nullptr && is_set(advertise_local_v4->operation))
-	|| (advertise_local_v6 !=  nullptr && is_set(advertise_local_v6->operation))
-	|| (advertise_v4 !=  nullptr && is_set(advertise_v4->operation))
-	|| (advertise_v6 !=  nullptr && is_set(advertise_v6->operation))
-	|| (aigp_cost_community !=  nullptr && is_set(aigp_cost_community->operation))
-	|| (default_originate !=  nullptr && is_set(default_originate->operation))
-	|| (import !=  nullptr && is_set(import->operation))
-	|| (maximum_prefixes !=  nullptr && is_set(maximum_prefixes->operation))
-	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && is_set(neighbor_af_long_lived_graceful_restart_stale_time->operation))
-	|| (remove_private_as_entire_as_path !=  nullptr && is_set(remove_private_as_entire_as_path->operation))
-	|| (remove_private_as_entire_as_path_inbound !=  nullptr && is_set(remove_private_as_entire_as_path_inbound->operation))
-	|| (site_of_origin !=  nullptr && is_set(site_of_origin->operation))
-	|| (soft_reconfiguration !=  nullptr && is_set(soft_reconfiguration->operation));
+	|| (advertise_def_imp_disable_v4 !=  nullptr && advertise_def_imp_disable_v4->has_operation())
+	|| (advertise_def_imp_disable_v6 !=  nullptr && advertise_def_imp_disable_v6->has_operation())
+	|| (advertise_disable !=  nullptr && advertise_disable->has_operation())
+	|| (advertise_l2vpnevpn !=  nullptr && advertise_l2vpnevpn->has_operation())
+	|| (advertise_local_l2vpnevpn !=  nullptr && advertise_local_l2vpnevpn->has_operation())
+	|| (advertise_local_v4 !=  nullptr && advertise_local_v4->has_operation())
+	|| (advertise_local_v6 !=  nullptr && advertise_local_v6->has_operation())
+	|| (advertise_v4 !=  nullptr && advertise_v4->has_operation())
+	|| (advertise_v6 !=  nullptr && advertise_v6->has_operation())
+	|| (aigp_cost_community !=  nullptr && aigp_cost_community->has_operation())
+	|| (default_originate !=  nullptr && default_originate->has_operation())
+	|| (import !=  nullptr && import->has_operation())
+	|| (maximum_prefixes !=  nullptr && maximum_prefixes->has_operation())
+	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && neighbor_af_long_lived_graceful_restart_stale_time->has_operation())
+	|| (remove_private_as_entire_as_path !=  nullptr && remove_private_as_entire_as_path->has_operation())
+	|| (remove_private_as_entire_as_path_inbound !=  nullptr && remove_private_as_entire_as_path_inbound->has_operation())
+	|| (site_of_origin !=  nullptr && site_of_origin->has_operation())
+	|| (soft_reconfiguration !=  nullptr && soft_reconfiguration->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::NeighborGroupAfs::NeighborGroupAf::get_segment_path() const
@@ -17764,7 +17764,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18410,7 +18410,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18514,7 +18514,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18599,7 +18599,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18686,7 +18686,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18790,7 +18790,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18878,7 +18878,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18978,7 +18978,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19086,7 +19086,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19174,7 +19174,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19262,7 +19262,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19350,7 +19350,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19438,7 +19438,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19526,7 +19526,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19604,7 +19604,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 	|| is_set(enable.operation)
 	|| is_set(update_in_filtering_attribute_filter_group.operation)
 	|| is_set(update_in_filtering_syslog_disable.operation)
-	|| (update_in_filtering_message_buffers !=  nullptr && is_set(update_in_filtering_message_buffers->operation));
+	|| (update_in_filtering_message_buffers !=  nullptr && update_in_filtering_message_buffers->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::UpdateInFiltering::get_segment_path() const
@@ -19621,7 +19621,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19740,7 +19740,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19833,7 +19833,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19924,7 +19924,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20017,7 +20017,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20108,7 +20108,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20201,7 +20201,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20289,7 +20289,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20377,7 +20377,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20460,8 +20460,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(graceful_maintenance_activate.operation)
-	|| (graceful_maintenance_as_prepends !=  nullptr && is_set(graceful_maintenance_as_prepends->operation))
-	|| (graceful_maintenance_local_preference !=  nullptr && is_set(graceful_maintenance_local_preference->operation));
+	|| (graceful_maintenance_as_prepends !=  nullptr && graceful_maintenance_as_prepends->has_operation())
+	|| (graceful_maintenance_local_preference !=  nullptr && graceful_maintenance_local_preference->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::GracefulMaintenance::get_segment_path() const
@@ -20478,7 +20478,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20767,25 +20767,25 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroup
 	|| is_set(suppress_four_byte_as_capability.operation)
 	|| is_set(ttl_security.operation)
 	|| is_set(update_source_interface.operation)
-	|| (advertisement_interval !=  nullptr && is_set(advertisement_interval->operation))
-	|| (bmp_activates !=  nullptr && is_set(bmp_activates->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (graceful_maintenance !=  nullptr && is_set(graceful_maintenance->operation))
-	|| (keychain !=  nullptr && is_set(keychain->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (local_as !=  nullptr && is_set(local_as->operation))
-	|| (msg_log_in !=  nullptr && is_set(msg_log_in->operation))
-	|| (msg_log_out !=  nullptr && is_set(msg_log_out->operation))
-	|| (neighbor_cluster_id !=  nullptr && is_set(neighbor_cluster_id->operation))
-	|| (neighbor_group_afs !=  nullptr && is_set(neighbor_group_afs->operation))
-	|| (password !=  nullptr && is_set(password->operation))
-	|| (receive_buffer_size !=  nullptr && is_set(receive_buffer_size->operation))
-	|| (remote_as !=  nullptr && is_set(remote_as->operation))
-	|| (send_buffer_size !=  nullptr && is_set(send_buffer_size->operation))
-	|| (tcpmss !=  nullptr && is_set(tcpmss->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tos !=  nullptr && is_set(tos->operation))
-	|| (update_in_filtering !=  nullptr && is_set(update_in_filtering->operation));
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_operation())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_operation())
+	|| (keychain !=  nullptr && keychain->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (local_as !=  nullptr && local_as->has_operation())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_operation())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_operation())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_operation())
+	|| (neighbor_group_afs !=  nullptr && neighbor_group_afs->has_operation())
+	|| (password !=  nullptr && password->has_operation())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_operation())
+	|| (remote_as !=  nullptr && remote_as->has_operation())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_operation())
+	|| (tcpmss !=  nullptr && tcpmss->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tos !=  nullptr && tos->has_operation())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::NeighborGroups::NeighborGroup::get_segment_path() const
@@ -20802,7 +20802,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21461,7 +21461,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Neighbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21571,7 +21571,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21672,7 +21672,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21768,7 +21768,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21870,7 +21870,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21973,7 +21973,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22064,7 +22064,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22160,7 +22160,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22256,7 +22256,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22349,7 +22349,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22449,7 +22449,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22560,7 +22560,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22656,7 +22656,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22752,7 +22752,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22845,7 +22845,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22933,7 +22933,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23024,7 +23024,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23120,7 +23120,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23213,7 +23213,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23448,24 +23448,24 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
 	|| is_set(send_community_ebgp_graceful_shutdown.operation)
 	|| is_set(send_ext_community_ebgp.operation)
 	|| is_set(send_multicast_attr.operation)
-	|| (advertise_def_imp_disable_v4 !=  nullptr && is_set(advertise_def_imp_disable_v4->operation))
-	|| (advertise_def_imp_disable_v6 !=  nullptr && is_set(advertise_def_imp_disable_v6->operation))
-	|| (advertise_disable !=  nullptr && is_set(advertise_disable->operation))
-	|| (advertise_l2vpnevpn !=  nullptr && is_set(advertise_l2vpnevpn->operation))
-	|| (advertise_local_l2vpnevpn !=  nullptr && is_set(advertise_local_l2vpnevpn->operation))
-	|| (advertise_local_v4 !=  nullptr && is_set(advertise_local_v4->operation))
-	|| (advertise_local_v6 !=  nullptr && is_set(advertise_local_v6->operation))
-	|| (advertise_v4 !=  nullptr && is_set(advertise_v4->operation))
-	|| (advertise_v6 !=  nullptr && is_set(advertise_v6->operation))
-	|| (aigp_cost_community !=  nullptr && is_set(aigp_cost_community->operation))
-	|| (default_originate !=  nullptr && is_set(default_originate->operation))
-	|| (import !=  nullptr && is_set(import->operation))
-	|| (maximum_prefixes !=  nullptr && is_set(maximum_prefixes->operation))
-	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && is_set(neighbor_af_long_lived_graceful_restart_stale_time->operation))
-	|| (remove_private_as_entire_as_path !=  nullptr && is_set(remove_private_as_entire_as_path->operation))
-	|| (remove_private_as_entire_as_path_inbound !=  nullptr && is_set(remove_private_as_entire_as_path_inbound->operation))
-	|| (site_of_origin !=  nullptr && is_set(site_of_origin->operation))
-	|| (soft_reconfiguration !=  nullptr && is_set(soft_reconfiguration->operation));
+	|| (advertise_def_imp_disable_v4 !=  nullptr && advertise_def_imp_disable_v4->has_operation())
+	|| (advertise_def_imp_disable_v6 !=  nullptr && advertise_def_imp_disable_v6->has_operation())
+	|| (advertise_disable !=  nullptr && advertise_disable->has_operation())
+	|| (advertise_l2vpnevpn !=  nullptr && advertise_l2vpnevpn->has_operation())
+	|| (advertise_local_l2vpnevpn !=  nullptr && advertise_local_l2vpnevpn->has_operation())
+	|| (advertise_local_v4 !=  nullptr && advertise_local_v4->has_operation())
+	|| (advertise_local_v6 !=  nullptr && advertise_local_v6->has_operation())
+	|| (advertise_v4 !=  nullptr && advertise_v4->has_operation())
+	|| (advertise_v6 !=  nullptr && advertise_v6->has_operation())
+	|| (aigp_cost_community !=  nullptr && aigp_cost_community->has_operation())
+	|| (default_originate !=  nullptr && default_originate->has_operation())
+	|| (import !=  nullptr && import->has_operation())
+	|| (maximum_prefixes !=  nullptr && maximum_prefixes->has_operation())
+	|| (neighbor_af_long_lived_graceful_restart_stale_time !=  nullptr && neighbor_af_long_lived_graceful_restart_stale_time->has_operation())
+	|| (remove_private_as_entire_as_path !=  nullptr && remove_private_as_entire_as_path->has_operation())
+	|| (remove_private_as_entire_as_path_inbound !=  nullptr && remove_private_as_entire_as_path_inbound->has_operation())
+	|| (site_of_origin !=  nullptr && site_of_origin->has_operation())
+	|| (soft_reconfiguration !=  nullptr && soft_reconfiguration->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::AfGroupAfs::AfGroupAf::get_segment_path() const
@@ -23482,7 +23482,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24128,7 +24128,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24219,7 +24219,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfG
 {
     return is_set(operation)
 	|| is_set(af_group_name.operation)
-	|| (af_group_afs !=  nullptr && is_set(af_group_afs->operation));
+	|| (af_group_afs !=  nullptr && af_group_afs->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroups::AfGroup::get_segment_path() const
@@ -24236,7 +24236,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24346,7 +24346,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::AfGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24450,7 +24450,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24535,7 +24535,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24622,7 +24622,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24726,7 +24726,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24814,7 +24814,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24914,7 +24914,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25022,7 +25022,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25110,7 +25110,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25198,7 +25198,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25286,7 +25286,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25374,7 +25374,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25462,7 +25462,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25540,7 +25540,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
 	|| is_set(enable.operation)
 	|| is_set(update_in_filtering_attribute_filter_group.operation)
 	|| is_set(update_in_filtering_syslog_disable.operation)
-	|| (update_in_filtering_message_buffers !=  nullptr && is_set(update_in_filtering_message_buffers->operation));
+	|| (update_in_filtering_message_buffers !=  nullptr && update_in_filtering_message_buffers->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering::get_segment_path() const
@@ -25557,7 +25557,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25676,7 +25676,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25769,7 +25769,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25860,7 +25860,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25953,7 +25953,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26044,7 +26044,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26137,7 +26137,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26225,7 +26225,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26313,7 +26313,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26396,8 +26396,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(graceful_maintenance_activate.operation)
-	|| (graceful_maintenance_as_prepends !=  nullptr && is_set(graceful_maintenance_as_prepends->operation))
-	|| (graceful_maintenance_local_preference !=  nullptr && is_set(graceful_maintenance_local_preference->operation));
+	|| (graceful_maintenance_as_prepends !=  nullptr && graceful_maintenance_as_prepends->has_operation())
+	|| (graceful_maintenance_local_preference !=  nullptr && graceful_maintenance_local_preference->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::get_segment_path() const
@@ -26414,7 +26414,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26695,24 +26695,24 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups
 	|| is_set(suppress_four_byte_as_capability.operation)
 	|| is_set(ttl_security.operation)
 	|| is_set(update_source_interface.operation)
-	|| (advertisement_interval !=  nullptr && is_set(advertisement_interval->operation))
-	|| (bmp_activates !=  nullptr && is_set(bmp_activates->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (graceful_maintenance !=  nullptr && is_set(graceful_maintenance->operation))
-	|| (keychain !=  nullptr && is_set(keychain->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (local_as !=  nullptr && is_set(local_as->operation))
-	|| (msg_log_in !=  nullptr && is_set(msg_log_in->operation))
-	|| (msg_log_out !=  nullptr && is_set(msg_log_out->operation))
-	|| (neighbor_cluster_id !=  nullptr && is_set(neighbor_cluster_id->operation))
-	|| (password !=  nullptr && is_set(password->operation))
-	|| (receive_buffer_size !=  nullptr && is_set(receive_buffer_size->operation))
-	|| (remote_as !=  nullptr && is_set(remote_as->operation))
-	|| (send_buffer_size !=  nullptr && is_set(send_buffer_size->operation))
-	|| (tcpmss !=  nullptr && is_set(tcpmss->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (tos !=  nullptr && is_set(tos->operation))
-	|| (update_in_filtering !=  nullptr && is_set(update_in_filtering->operation));
+	|| (advertisement_interval !=  nullptr && advertisement_interval->has_operation())
+	|| (bmp_activates !=  nullptr && bmp_activates->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (graceful_maintenance !=  nullptr && graceful_maintenance->has_operation())
+	|| (keychain !=  nullptr && keychain->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (local_as !=  nullptr && local_as->has_operation())
+	|| (msg_log_in !=  nullptr && msg_log_in->has_operation())
+	|| (msg_log_out !=  nullptr && msg_log_out->has_operation())
+	|| (neighbor_cluster_id !=  nullptr && neighbor_cluster_id->has_operation())
+	|| (password !=  nullptr && password->has_operation())
+	|| (receive_buffer_size !=  nullptr && receive_buffer_size->has_operation())
+	|| (remote_as !=  nullptr && remote_as->has_operation())
+	|| (send_buffer_size !=  nullptr && send_buffer_size->has_operation())
+	|| (tcpmss !=  nullptr && tcpmss->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (tos !=  nullptr && tos->has_operation())
+	|| (update_in_filtering !=  nullptr && update_in_filtering->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::get_segment_path() const
@@ -26729,7 +26729,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27360,7 +27360,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::Session
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27462,10 +27462,10 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::has_data() co
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::has_operation() const
 {
     return is_set(operation)
-	|| (af_groups !=  nullptr && is_set(af_groups->operation))
-	|| (neighbor_groups !=  nullptr && is_set(neighbor_groups->operation))
-	|| (neighbors !=  nullptr && is_set(neighbors->operation))
-	|| (session_groups !=  nullptr && is_set(session_groups->operation));
+	|| (af_groups !=  nullptr && af_groups->has_operation())
+	|| (neighbor_groups !=  nullptr && neighbor_groups->has_operation())
+	|| (neighbors !=  nullptr && neighbors->has_operation())
+	|| (session_groups !=  nullptr && session_groups->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::get_segment_path() const
@@ -27482,7 +27482,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27652,7 +27652,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27743,7 +27743,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27836,7 +27836,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDela
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27924,7 +27924,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28016,7 +28016,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28107,7 +28107,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::has_op
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (peers !=  nullptr && is_set(peers->operation));
+	|| (peers !=  nullptr && peers->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::get_segment_path() const
@@ -28124,7 +28124,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28230,7 +28230,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServer
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28326,7 +28326,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::Rpk
 	|| is_set(response_time.operation)
 	|| is_set(shutdown.operation)
 	|| is_set(username.operation)
-	|| (transport !=  nullptr && is_set(transport->operation));
+	|| (transport !=  nullptr && transport->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::get_segment_path() const
@@ -28343,7 +28343,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServer
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28488,7 +28488,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServer
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28589,7 +28589,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28672,7 +28672,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Confederat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28760,7 +28760,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Confederat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28852,7 +28852,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Confederat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28959,7 +28959,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeF
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29056,7 +29056,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeF
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29150,7 +29150,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
     return is_set(operation)
 	|| is_set(attribute_filter_group_name.operation)
 	|| is_set(enable.operation)
-	|| (attribute_filters !=  nullptr && is_set(attribute_filters->operation));
+	|| (attribute_filters !=  nullptr && attribute_filters->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::get_segment_path() const
@@ -29167,7 +29167,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeF
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29282,7 +29282,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeF
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29386,7 +29386,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGrac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29480,7 +29480,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29582,7 +29582,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29686,7 +29686,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29774,7 +29774,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29855,7 +29855,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| is_set(enable.operation)
 	|| is_set(source_rt_import_policy.operation)
 	|| is_set(table_policy.operation)
-	|| (label_mode !=  nullptr && is_set(label_mode->operation));
+	|| (label_mode !=  nullptr && label_mode->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::get_segment_path() const
@@ -29872,7 +29872,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29994,7 +29994,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30096,7 +30096,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30197,7 +30197,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30277,7 +30277,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30377,7 +30377,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30516,7 +30516,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30620,7 +30620,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30714,7 +30714,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30818,7 +30818,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30916,7 +30916,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31010,7 +31010,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31108,7 +31108,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31208,7 +31208,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31320,7 +31320,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31433,7 +31433,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31539,7 +31539,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31632,7 +31632,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31723,7 +31723,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31819,7 +31819,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31912,7 +31912,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32006,7 +32006,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32108,7 +32108,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32218,7 +32218,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32320,7 +32320,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32427,7 +32427,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32520,7 +32520,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32608,7 +32608,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32702,7 +32702,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32804,7 +32804,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32911,7 +32911,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33007,7 +33007,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33263,32 +33263,32 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| is_set(update_limit_sub_group_ebgp.operation)
 	|| is_set(update_limit_sub_group_ibgp.operation)
 	|| is_set(wait_rib_install.operation)
-	|| (additional_paths_selection !=  nullptr && is_set(additional_paths_selection->operation))
-	|| (aggregate_addresses !=  nullptr && is_set(aggregate_addresses->operation))
-	|| (allocate_label !=  nullptr && is_set(allocate_label->operation))
-	|| (application_routes !=  nullptr && is_set(application_routes->operation))
-	|| (connected_routes !=  nullptr && is_set(connected_routes->operation))
-	|| (dampening !=  nullptr && is_set(dampening->operation))
-	|| (disable_cluster_client_to_client_rrs !=  nullptr && is_set(disable_cluster_client_to_client_rrs->operation))
-	|| (distance !=  nullptr && is_set(distance->operation))
-	|| (domain_distinguisher !=  nullptr && is_set(domain_distinguisher->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (eibgp !=  nullptr && is_set(eibgp->operation))
-	|| (eigrp_routes !=  nullptr && is_set(eigrp_routes->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (import_delay !=  nullptr && is_set(import_delay->operation))
-	|| (isis_routes !=  nullptr && is_set(isis_routes->operation))
-	|| (label_delay !=  nullptr && is_set(label_delay->operation))
-	|| (label_mode !=  nullptr && is_set(label_mode->operation))
-	|| (lisp_routes !=  nullptr && is_set(lisp_routes->operation))
-	|| (mobile_routes !=  nullptr && is_set(mobile_routes->operation))
-	|| (ospf_routes !=  nullptr && is_set(ospf_routes->operation))
-	|| (retain_rt !=  nullptr && is_set(retain_rt->operation))
-	|| (rip_routes !=  nullptr && is_set(rip_routes->operation))
-	|| (sourced_networks !=  nullptr && is_set(sourced_networks->operation))
-	|| (static_routes !=  nullptr && is_set(static_routes->operation))
-	|| (subscriber_routes !=  nullptr && is_set(subscriber_routes->operation))
-	|| (vrf_all !=  nullptr && is_set(vrf_all->operation));
+	|| (additional_paths_selection !=  nullptr && additional_paths_selection->has_operation())
+	|| (aggregate_addresses !=  nullptr && aggregate_addresses->has_operation())
+	|| (allocate_label !=  nullptr && allocate_label->has_operation())
+	|| (application_routes !=  nullptr && application_routes->has_operation())
+	|| (connected_routes !=  nullptr && connected_routes->has_operation())
+	|| (dampening !=  nullptr && dampening->has_operation())
+	|| (disable_cluster_client_to_client_rrs !=  nullptr && disable_cluster_client_to_client_rrs->has_operation())
+	|| (distance !=  nullptr && distance->has_operation())
+	|| (domain_distinguisher !=  nullptr && domain_distinguisher->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (eibgp !=  nullptr && eibgp->has_operation())
+	|| (eigrp_routes !=  nullptr && eigrp_routes->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (import_delay !=  nullptr && import_delay->has_operation())
+	|| (isis_routes !=  nullptr && isis_routes->has_operation())
+	|| (label_delay !=  nullptr && label_delay->has_operation())
+	|| (label_mode !=  nullptr && label_mode->has_operation())
+	|| (lisp_routes !=  nullptr && lisp_routes->has_operation())
+	|| (mobile_routes !=  nullptr && mobile_routes->has_operation())
+	|| (ospf_routes !=  nullptr && ospf_routes->has_operation())
+	|| (retain_rt !=  nullptr && retain_rt->has_operation())
+	|| (rip_routes !=  nullptr && rip_routes->has_operation())
+	|| (sourced_networks !=  nullptr && sourced_networks->has_operation())
+	|| (static_routes !=  nullptr && static_routes->has_operation())
+	|| (subscriber_routes !=  nullptr && subscriber_routes->has_operation())
+	|| (vrf_all !=  nullptr && vrf_all->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::get_segment_path() const
@@ -33305,7 +33305,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34140,7 +34140,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34250,7 +34250,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStatic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34352,7 +34352,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStatic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34453,7 +34453,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActiva
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34540,7 +34540,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActiva
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34647,7 +34647,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTime
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34740,7 +34740,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34828,7 +34828,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocket
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34916,7 +34916,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSoc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35200,23 +35200,23 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_operation() 
 	|| is_set(update_error_handling_extended_ibgp.operation)
 	|| is_set(update_limit_process.operation)
 	|| is_set(update_out_logging.operation)
-	|| (as_league !=  nullptr && is_set(as_league->operation))
-	|| (attribute_filter_groups !=  nullptr && is_set(attribute_filter_groups->operation))
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (cluster_id !=  nullptr && is_set(cluster_id->operation))
-	|| (confederation_domain !=  nullptr && is_set(confederation_domain->operation))
-	|| (confederation_peer_ases !=  nullptr && is_set(confederation_peer_ases->operation))
-	|| (global_afs !=  nullptr && is_set(global_afs->operation))
-	|| (global_graceful_maintenance_activate !=  nullptr && is_set(global_graceful_maintenance_activate->operation))
-	|| (global_timers !=  nullptr && is_set(global_timers->operation))
-	|| (limits !=  nullptr && is_set(limits->operation))
-	|| (mpls_activated_interfaces !=  nullptr && is_set(mpls_activated_interfaces->operation))
-	|| (receive_socket_buffer_sizes !=  nullptr && is_set(receive_socket_buffer_sizes->operation))
-	|| (rpki_servers !=  nullptr && is_set(rpki_servers->operation))
-	|| (rpki_static_routes !=  nullptr && is_set(rpki_static_routes->operation))
-	|| (send_socket_buffer_sizes !=  nullptr && is_set(send_socket_buffer_sizes->operation))
-	|| (update_delay !=  nullptr && is_set(update_delay->operation))
-	|| (write_limit !=  nullptr && is_set(write_limit->operation));
+	|| (as_league !=  nullptr && as_league->has_operation())
+	|| (attribute_filter_groups !=  nullptr && attribute_filter_groups->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (cluster_id !=  nullptr && cluster_id->has_operation())
+	|| (confederation_domain !=  nullptr && confederation_domain->has_operation())
+	|| (confederation_peer_ases !=  nullptr && confederation_peer_ases->has_operation())
+	|| (global_afs !=  nullptr && global_afs->has_operation())
+	|| (global_graceful_maintenance_activate !=  nullptr && global_graceful_maintenance_activate->has_operation())
+	|| (global_timers !=  nullptr && global_timers->has_operation())
+	|| (limits !=  nullptr && limits->has_operation())
+	|| (mpls_activated_interfaces !=  nullptr && mpls_activated_interfaces->has_operation())
+	|| (receive_socket_buffer_sizes !=  nullptr && receive_socket_buffer_sizes->has_operation())
+	|| (rpki_servers !=  nullptr && rpki_servers->has_operation())
+	|| (rpki_static_routes !=  nullptr && rpki_static_routes->has_operation())
+	|| (send_socket_buffer_sizes !=  nullptr && send_socket_buffer_sizes->has_operation())
+	|| (update_delay !=  nullptr && update_delay->has_operation())
+	|| (write_limit !=  nullptr && write_limit->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::get_segment_path() const
@@ -35233,7 +35233,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35910,8 +35910,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::has_data() const
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (bgp_entity !=  nullptr && is_set(bgp_entity->operation))
-	|| (global !=  nullptr && is_set(global->operation));
+	|| (bgp_entity !=  nullptr && bgp_entity->has_operation())
+	|| (global !=  nullptr && global->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::get_segment_path() const
@@ -35928,7 +35928,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36047,8 +36047,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::has_operation() const
     return is_set(operation)
 	|| is_set(as.operation)
 	|| is_set(bgp_running.operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Bgp::Instance::InstanceAs::FourByteAs::get_segment_path() const
@@ -36065,7 +36065,7 @@ EntityPath Bgp::Instance::InstanceAs::FourByteAs::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36206,7 +36206,7 @@ EntityPath Bgp::Instance::InstanceAs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36435,7 +36435,7 @@ EntityPath Bgp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -36540,7 +36540,7 @@ EntityPath BmpServers::BmpServer::InitialRefreshDelay::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36628,7 +36628,7 @@ EntityPath BmpServers::BmpServer::HostPort::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36716,7 +36716,7 @@ EntityPath BmpServers::BmpServer::Tos::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36828,9 +36828,9 @@ bool BmpServers::BmpServer::has_operation() const
 	|| is_set(status_report_interval.operation)
 	|| is_set(update_source_interface.operation)
 	|| is_set(vrf.operation)
-	|| (host_port !=  nullptr && is_set(host_port->operation))
-	|| (initial_refresh_delay !=  nullptr && is_set(initial_refresh_delay->operation))
-	|| (tos !=  nullptr && is_set(tos->operation));
+	|| (host_port !=  nullptr && host_port->has_operation())
+	|| (initial_refresh_delay !=  nullptr && initial_refresh_delay->has_operation())
+	|| (tos !=  nullptr && tos->has_operation());
 }
 
 std::string BmpServers::BmpServer::get_segment_path() const
@@ -37048,7 +37048,7 @@ EntityPath BmpServers::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -37115,71 +37115,71 @@ std::unique_ptr<Entity> BmpServers::clone_ptr()
     return std::make_unique<BmpServers>();
 }
 
-const Enum::Value BgpOrfEnum::none {0, "none"};
-const Enum::Value BgpOrfEnum::receive {1, "receive"};
-const Enum::Value BgpOrfEnum::send {2, "send"};
-const Enum::Value BgpOrfEnum::both {3, "both"};
+const Enum::YLeaf BgpOrfEnum::none {0, "none"};
+const Enum::YLeaf BgpOrfEnum::receive {1, "receive"};
+const Enum::YLeaf BgpOrfEnum::send {2, "send"};
+const Enum::YLeaf BgpOrfEnum::both {3, "both"};
 
-const Enum::Value BgpFlowspecValidationCfgEnum::enable {1, "enable"};
-const Enum::Value BgpFlowspecValidationCfgEnum::disable {2, "disable"};
-const Enum::Value BgpFlowspecValidationCfgEnum::redirect_nexhop_disable {3, "redirect-nexhop-disable"};
+const Enum::YLeaf BgpFlowspecValidationCfgEnum::enable {1, "enable"};
+const Enum::YLeaf BgpFlowspecValidationCfgEnum::disable {2, "disable"};
+const Enum::YLeaf BgpFlowspecValidationCfgEnum::redirect_nexhop_disable {3, "redirect-nexhop-disable"};
 
-const Enum::Value BgpSignalEnum::bgp_disable {1, "bgp-disable"};
-const Enum::Value BgpSignalEnum::ldp_disable {2, "ldp-disable"};
+const Enum::YLeaf BgpSignalEnum::bgp_disable {1, "bgp-disable"};
+const Enum::YLeaf BgpSignalEnum::ldp_disable {2, "ldp-disable"};
 
-const Enum::Value BgpBfdEnableModeEnum::disable {0, "disable"};
-const Enum::Value BgpBfdEnableModeEnum::default_ {1, "default"};
-const Enum::Value BgpBfdEnableModeEnum::strict {2, "strict"};
+const Enum::YLeaf BgpBfdEnableModeEnum::disable {0, "disable"};
+const Enum::YLeaf BgpBfdEnableModeEnum::default_ {1, "default"};
+const Enum::YLeaf BgpBfdEnableModeEnum::strict {2, "strict"};
 
-const Enum::Value BgpVrfRouteTargetEnum::as {0, "as"};
-const Enum::Value BgpVrfRouteTargetEnum::ipv4_address {1, "ipv4-address"};
-const Enum::Value BgpVrfRouteTargetEnum::four_byte_as {2, "four-byte-as"};
+const Enum::YLeaf BgpVrfRouteTargetEnum::as {0, "as"};
+const Enum::YLeaf BgpVrfRouteTargetEnum::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf BgpVrfRouteTargetEnum::four_byte_as {2, "four-byte-as"};
 
-const Enum::Value BgpClusterIdEnum::number {1, "number"};
-const Enum::Value BgpClusterIdEnum::ipv4_address {2, "ipv4-address"};
+const Enum::YLeaf BgpClusterIdEnum::number {1, "number"};
+const Enum::YLeaf BgpClusterIdEnum::ipv4_address {2, "ipv4-address"};
 
-const Enum::Value BgpEbgpSendDmzEnableModeEnum::disable {0, "disable"};
-const Enum::Value BgpEbgpSendDmzEnableModeEnum::default_ {1, "default"};
-const Enum::Value BgpEbgpSendDmzEnableModeEnum::cumulative {2, "cumulative"};
+const Enum::YLeaf BgpEbgpSendDmzEnableModeEnum::disable {0, "disable"};
+const Enum::YLeaf BgpEbgpSendDmzEnableModeEnum::default_ {1, "default"};
+const Enum::YLeaf BgpEbgpSendDmzEnableModeEnum::cumulative {2, "cumulative"};
 
-const Enum::Value BgpRpkiTransportEnum::tcp {0, "tcp"};
-const Enum::Value BgpRpkiTransportEnum::ssh {1, "ssh"};
+const Enum::YLeaf BgpRpkiTransportEnum::tcp {0, "tcp"};
+const Enum::YLeaf BgpRpkiTransportEnum::ssh {1, "ssh"};
 
-const Enum::Value BgpSiteOfOriginEnum::as {0, "as"};
-const Enum::Value BgpSiteOfOriginEnum::ipv4_address {1, "ipv4-address"};
-const Enum::Value BgpSiteOfOriginEnum::four_byte_as {2, "four-byte-as"};
+const Enum::YLeaf BgpSiteOfOriginEnum::as {0, "as"};
+const Enum::YLeaf BgpSiteOfOriginEnum::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf BgpSiteOfOriginEnum::four_byte_as {2, "four-byte-as"};
 
-const Enum::Value BgpAfEncapsulationEnum::vx_lan {1, "vx-lan"};
+const Enum::YLeaf BgpAfEncapsulationEnum::vx_lan {1, "vx-lan"};
 
-const Enum::Value BgpRouteDistinguisherEnum::auto_ {1, "auto"};
-const Enum::Value BgpRouteDistinguisherEnum::as {2, "as"};
-const Enum::Value BgpRouteDistinguisherEnum::four_byte_as {3, "four-byte-as"};
-const Enum::Value BgpRouteDistinguisherEnum::ipv4_address {4, "ipv4-address"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::auto_ {1, "auto"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::as {2, "as"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::four_byte_as {3, "four-byte-as"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::ipv4_address {4, "ipv4-address"};
 
-const Enum::Value BgpMvpnSfsSelectEnum::all_paths {1, "all-paths"};
-const Enum::Value BgpMvpnSfsSelectEnum::highest_ip_address {2, "highest-ip-address"};
+const Enum::YLeaf BgpMvpnSfsSelectEnum::all_paths {1, "all-paths"};
+const Enum::YLeaf BgpMvpnSfsSelectEnum::highest_ip_address {2, "highest-ip-address"};
 
-const Enum::Value BgpAdvRtEnum::bgp_regular_rt {0, "bgp-regular-rt"};
-const Enum::Value BgpAdvRtEnum::bgp_stitching_rt {1, "bgp-stitching-rt"};
+const Enum::YLeaf BgpAdvRtEnum::bgp_regular_rt {0, "bgp-regular-rt"};
+const Enum::YLeaf BgpAdvRtEnum::bgp_stitching_rt {1, "bgp-stitching-rt"};
 
-const Enum::Value BgpSendMcastAttrCfgEnum::enable {1, "enable"};
-const Enum::Value BgpSendMcastAttrCfgEnum::disable {2, "disable"};
+const Enum::YLeaf BgpSendMcastAttrCfgEnum::enable {1, "enable"};
+const Enum::YLeaf BgpSendMcastAttrCfgEnum::disable {2, "disable"};
 
-const Enum::Value BgpTcpModeEnum::either {0, "either"};
-const Enum::Value BgpTcpModeEnum::active_only {1, "active-only"};
-const Enum::Value BgpTcpModeEnum::passive_only {2, "passive-only"};
+const Enum::YLeaf BgpTcpModeEnum::either {0, "either"};
+const Enum::YLeaf BgpTcpModeEnum::active_only {1, "active-only"};
+const Enum::YLeaf BgpTcpModeEnum::passive_only {2, "passive-only"};
 
-const Enum::Value BgpReorgOptEnum::bgp_cfg_adv {1, "bgp-cfg-adv"};
-const Enum::Value BgpReorgOptEnum::bgp_cfg_adv_reorg {2, "bgp-cfg-adv-reorg"};
-const Enum::Value BgpReorgOptEnum::bgp_cfg_adv_disable {3, "bgp-cfg-adv-disable"};
-const Enum::Value BgpReorgOptEnum::bgp_cfg_adv_local {4, "bgp-cfg-adv-local"};
-const Enum::Value BgpReorgOptEnum::bgp_cfg_adv_def_imp_disable {5, "bgp-cfg-adv-def-imp-disable"};
+const Enum::YLeaf BgpReorgOptEnum::bgp_cfg_adv {1, "bgp-cfg-adv"};
+const Enum::YLeaf BgpReorgOptEnum::bgp_cfg_adv_reorg {2, "bgp-cfg-adv-reorg"};
+const Enum::YLeaf BgpReorgOptEnum::bgp_cfg_adv_disable {3, "bgp-cfg-adv-disable"};
+const Enum::YLeaf BgpReorgOptEnum::bgp_cfg_adv_local {4, "bgp-cfg-adv-local"};
+const Enum::YLeaf BgpReorgOptEnum::bgp_cfg_adv_def_imp_disable {5, "bgp-cfg-adv-def-imp-disable"};
 
-const Enum::Value BgpAigpCfgPoiEnum::pre_best_path {1, "pre-best-path"};
-const Enum::Value BgpAigpCfgPoiEnum::igp_cost {2, "igp-cost"};
+const Enum::YLeaf BgpAigpCfgPoiEnum::pre_best_path {1, "pre-best-path"};
+const Enum::YLeaf BgpAigpCfgPoiEnum::igp_cost {2, "igp-cost"};
 
-const Enum::Value BgpAigpCfgEnum::enable {1, "enable"};
-const Enum::Value BgpAigpCfgEnum::disable {2, "disable"};
+const Enum::YLeaf BgpAigpCfgEnum::enable {1, "enable"};
+const Enum::YLeaf BgpAigpCfgEnum::disable {2, "disable"};
 
 
 }

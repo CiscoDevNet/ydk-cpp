@@ -7,9 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ethernet_cfm_cfg.hpp"
-#include "Cisco_IOS_XR_ethernet_cfm_datatypes.hpp"
-#include "Cisco_IOS_XR_ethernet_link_oam_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_l2_eth_infra_cfg {
@@ -30,6 +27,7 @@ class EthernetFeatures : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class EgressFiltering : public Entity
     {
         public:
@@ -43,8 +41,9 @@ class EthernetFeatures : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value egress_filtering_default_on; //type: empty
 
+
+            YLeaf egress_filtering_default_on; //type: empty
 
 
 
@@ -64,8 +63,9 @@ class EthernetFeatures : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value nv_satellite_sla_processing_disable; //type: empty
 
+
+            YLeaf nv_satellite_sla_processing_disable; //type: empty
 
         class TracerouteCache : public Entity
         {
@@ -80,9 +80,10 @@ class EthernetFeatures : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value hold_time; //type: uint32
-                Value cache_size; //type: uint32
 
+
+                YLeaf hold_time; //type: uint32
+                YLeaf cache_size; //type: uint32
 
 
 
@@ -104,6 +105,7 @@ class EthernetFeatures : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Domain : public Entity
             {
                 public:
@@ -117,8 +119,9 @@ class EthernetFeatures : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value domain; //type: string
 
+
+                    YLeaf domain; //type: string
 
                 class Services : public Entity
                 {
@@ -135,6 +138,7 @@ class EthernetFeatures : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Service : public Entity
                     {
                         public:
@@ -148,17 +152,18 @@ class EthernetFeatures : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value service; //type: string
-                            Value maximum_meps; //type: uint32
-                            Value log_cross_check_errors; //type: empty
-                            Value continuity_check_archive_hold_time; //type: uint32
-                            Value tags; //type: uint32
-                            Value log_continuity_check_state_changes; //type: empty
-                            Value log_efd; //type: empty
-                            Value continuity_check_auto_traceroute; //type: empty
-                            Value log_continuity_check_errors; //type: empty
-                            Value log_ais; //type: empty
 
+
+                            YLeaf service; //type: string
+                            YLeaf maximum_meps; //type: uint32
+                            YLeaf log_cross_check_errors; //type: empty
+                            YLeaf continuity_check_archive_hold_time; //type: uint32
+                            YLeaf tags; //type: uint32
+                            YLeaf log_continuity_check_state_changes; //type: empty
+                            YLeaf log_efd; //type: empty
+                            YLeaf continuity_check_auto_traceroute; //type: empty
+                            YLeaf log_continuity_check_errors; //type: empty
+                            YLeaf log_ais; //type: empty
 
                         class Efd2 : public Entity
                         {
@@ -173,9 +178,10 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable; //type: empty
-                                Value protection_switching_enable; //type: empty
 
+
+                                YLeaf enable; //type: empty
+                                YLeaf protection_switching_enable; //type: empty
 
 
 
@@ -195,11 +201,11 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ccm_interval; //type: CfmCcmIntervalEnum
-                                Value loss_threshold; //type: uint32
 
 
-                                class CfmCcmIntervalEnum;
+                                YLeaf ccm_interval; //type: CfmCcmIntervalEnum
+                                YLeaf loss_threshold; //type: uint32
+
 
 
                         }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval
@@ -218,11 +224,11 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mip_policy; //type: CfmMipPolicyEnum
-                                Value ccm_learning_enable; //type: empty
 
 
-                                class CfmMipPolicyEnum;
+                                YLeaf mip_policy; //type: CfmMipPolicyEnum
+                                YLeaf ccm_learning_enable; //type: empty
+
 
 
                         }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation
@@ -243,6 +249,7 @@ class EthernetFeatures : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Transmission : public Entity
                             {
                                 public:
@@ -256,11 +263,11 @@ class EthernetFeatures : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ais_interval; //type: CfmAisIntervalEnum
-                                    Value cos; //type: uint32
 
 
-                                    class CfmAisIntervalEnum;
+                                    YLeaf ais_interval; //type: CfmAisIntervalEnum
+                                    YLeaf cos; //type: uint32
+
 
 
                             }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission
@@ -285,8 +292,9 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value auto_; //type: empty
 
+
+                                YLeaf auto_; //type: empty
 
                             class CrossCheckMeps : public Entity
                             {
@@ -303,6 +311,7 @@ class EthernetFeatures : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class CrossCheckMep : public Entity
                                 {
                                     public:
@@ -316,10 +325,11 @@ class EthernetFeatures : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value mep_id; //type: uint32
-                                        Value enable_mac_address; //type: empty
-                                        Value mac_address; //type: string
 
+
+                                        YLeaf mep_id; //type: uint32
+                                        YLeaf enable_mac_address; //type: empty
+                                        YLeaf mac_address; //type: string
 
 
 
@@ -351,22 +361,21 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value service_type; //type: CfmServiceEnum
-                                Value group_name; //type: string
-                                Value switching_name; //type: string
-                                Value ce_id; //type: uint32
-                                Value remote_ce_id; //type: uint32
-                                Value short_ma_name_format; //type: CfmShortMaNameFormatEnum
-                                Value short_ma_name_string; //type: string
-                                Value short_ma_name_number; //type: uint32
-                                Value short_ma_name_oui; //type: uint32
-                                Value short_ma_name_vpn_index; //type: int32
-                                Value short_ma_name_icc; //type: string
-                                Value short_ma_name_umc; //type: string
 
 
-                                class CfmServiceEnum;
-                                class CfmShortMaNameFormatEnum;
+                                YLeaf service_type; //type: CfmServiceEnum
+                                YLeaf group_name; //type: string
+                                YLeaf switching_name; //type: string
+                                YLeaf ce_id; //type: uint32
+                                YLeaf remote_ce_id; //type: uint32
+                                YLeaf short_ma_name_format; //type: CfmShortMaNameFormatEnum
+                                YLeaf short_ma_name_string; //type: string
+                                YLeaf short_ma_name_number; //type: uint32
+                                YLeaf short_ma_name_oui; //type: uint32
+                                YLeaf short_ma_name_vpn_index; //type: int32
+                                YLeaf short_ma_name_icc; //type: string
+                                YLeaf short_ma_name_umc; //type: string
+
 
 
                         }; // EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties
@@ -402,14 +411,14 @@ class EthernetFeatures : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value level; //type: uint32
-                        Value mdid_format; //type: CfmMdidFormatEnum
-                        Value mdid_mac_address; //type: string
-                        Value mdid_number; //type: uint32
-                        Value mdid_string; //type: string
 
 
-                        class CfmMdidFormatEnum;
+                        YLeaf level; //type: uint32
+                        YLeaf mdid_format; //type: CfmMdidFormatEnum
+                        YLeaf mdid_mac_address; //type: string
+                        YLeaf mdid_number; //type: uint32
+                        YLeaf mdid_string; //type: string
+
 
 
                 }; // EthernetFeatures::Cfm::Domains::Domain::DomainProperties
@@ -450,6 +459,7 @@ class EthernetFeatures : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Profiles : public Entity
         {
             public:
@@ -465,6 +475,7 @@ class EthernetFeatures : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Profile : public Entity
             {
                 public:
@@ -478,14 +489,15 @@ class EthernetFeatures : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value profile; //type: string
-                    Value mib_retrieval; //type: empty
-                    Value udlf; //type: empty
-                    Value hello_interval; //type: EtherLinkOamProfileHelloIntervalEnumEnum
-                    Value mode; //type: EtherLinkOamProfileModeEnumEnum
-                    Value remote_loopback; //type: empty
-                    Value timeout; //type: uint32
 
+
+                    YLeaf profile; //type: string
+                    YLeaf mib_retrieval; //type: empty
+                    YLeaf udlf; //type: empty
+                    YLeaf hello_interval; //type: EtherLinkOamProfileHelloIntervalEnumEnum
+                    YLeaf mode; //type: EtherLinkOamProfileModeEnumEnum
+                    YLeaf remote_loopback; //type: empty
+                    YLeaf timeout; //type: uint32
 
                 class LinkMonitor : public Entity
                 {
@@ -500,8 +512,9 @@ class EthernetFeatures : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value monitoring; //type: empty
 
+
+                        YLeaf monitoring; //type: empty
 
                     class FramePeriod : public Entity
                     {
@@ -516,8 +529,9 @@ class EthernetFeatures : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value window; //type: uint32
 
+
+                            YLeaf window; //type: uint32
 
                         class Threshold : public Entity
                         {
@@ -532,9 +546,10 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value threshold_low; //type: uint32
-                                Value threshold_high; //type: uint32
 
+
+                                YLeaf threshold_low; //type: uint32
+                                YLeaf threshold_high; //type: uint32
 
 
 
@@ -560,8 +575,9 @@ class EthernetFeatures : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value window; //type: uint32
 
+
+                            YLeaf window; //type: uint32
 
                         class Threshold : public Entity
                         {
@@ -576,9 +592,10 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value threshold_low; //type: uint32
-                                Value threshold_high; //type: uint32
 
+
+                                YLeaf threshold_low; //type: uint32
+                                YLeaf threshold_high; //type: uint32
 
 
 
@@ -604,8 +621,9 @@ class EthernetFeatures : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value window; //type: uint32
 
+
+                            YLeaf window; //type: uint32
 
                         class Threshold : public Entity
                         {
@@ -620,9 +638,10 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value threshold_low; //type: uint32
-                                Value threshold_high; //type: uint32
 
+
+                                YLeaf threshold_low; //type: uint32
+                                YLeaf threshold_high; //type: uint32
 
 
 
@@ -648,8 +667,9 @@ class EthernetFeatures : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value window; //type: uint32
 
+
+                            YLeaf window; //type: uint32
 
                         class Threshold : public Entity
                         {
@@ -664,9 +684,10 @@ class EthernetFeatures : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value threshold_low; //type: uint32
-                                Value threshold_high; //type: uint32
 
+
+                                YLeaf threshold_low; //type: uint32
+                                YLeaf threshold_high; //type: uint32
 
 
 
@@ -701,28 +722,19 @@ class EthernetFeatures : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value dying_gasp; //type: EtherLinkOamEventActionEnum2Enum
-                        Value session_up; //type: EtherLinkOamEventActionEnum4Enum
-                        Value critical_event; //type: EtherLinkOamEventActionEnum2Enum
-                        Value session_down; //type: EtherLinkOamEventActionEnum5Enum
-                        Value discovery_timeout; //type: EtherLinkOamEventActionEnum5Enum
-                        Value high_threshold; //type: EtherLinkOamEventActionEnum1Enum
-                        Value capabilities_conflict; //type: EtherLinkOamEventActionEnum5Enum
-                        Value remote_loopback; //type: EtherLinkOamEventActionEnum4Enum
-                        Value link_fault; //type: EtherLinkOamEventActionEnum5Enum
-                        Value wiring_conflict; //type: EtherLinkOamEventActionEnum6Enum
 
 
-                        class EtherLinkOamEventActionEnum5Enum;
-                        class EtherLinkOamEventActionEnum2Enum;
-                        class EtherLinkOamEventActionEnum5Enum;
-                        class EtherLinkOamEventActionEnum2Enum;
-                        class EtherLinkOamEventActionEnum1Enum;
-                        class EtherLinkOamEventActionEnum5Enum;
-                        class EtherLinkOamEventActionEnum4Enum;
-                        class EtherLinkOamEventActionEnum5Enum;
-                        class EtherLinkOamEventActionEnum4Enum;
-                        class EtherLinkOamEventActionEnum6Enum;
+                        YLeaf dying_gasp; //type: EtherLinkOamEventActionEnum2Enum
+                        YLeaf session_up; //type: EtherLinkOamEventActionEnum4Enum
+                        YLeaf critical_event; //type: EtherLinkOamEventActionEnum2Enum
+                        YLeaf session_down; //type: EtherLinkOamEventActionEnum5Enum
+                        YLeaf discovery_timeout; //type: EtherLinkOamEventActionEnum5Enum
+                        YLeaf high_threshold; //type: EtherLinkOamEventActionEnum1Enum
+                        YLeaf capabilities_conflict; //type: EtherLinkOamEventActionEnum5Enum
+                        YLeaf remote_loopback; //type: EtherLinkOamEventActionEnum4Enum
+                        YLeaf link_fault; //type: EtherLinkOamEventActionEnum5Enum
+                        YLeaf wiring_conflict; //type: EtherLinkOamEventActionEnum6Enum
+
 
 
                 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::Action
@@ -741,13 +753,13 @@ class EthernetFeatures : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mib_retrieval; //type: empty
-                        Value mode; //type: EtherLinkOamProfileRequireModeEnumEnum
-                        Value remote_loopback; //type: empty
-                        Value link_monitoring; //type: empty
 
 
-                        class EtherLinkOamProfileRequireModeEnumEnum;
+                        YLeaf mib_retrieval; //type: empty
+                        YLeaf mode; //type: EtherLinkOamProfileRequireModeEnumEnum
+                        YLeaf remote_loopback; //type: empty
+                        YLeaf link_monitoring; //type: empty
+
 
 
                 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote
@@ -756,8 +768,6 @@ class EthernetFeatures : public Entity
                     std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::Action> action;
                     std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor> link_monitor;
                     std::unique_ptr<Cisco_IOS_XR_l2_eth_infra_cfg::EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote> require_remote;
-                    class EtherLinkOamProfileHelloIntervalEnumEnum;
-                    class EtherLinkOamProfileModeEnumEnum;
 
 
             }; // EthernetFeatures::EtherLinkOam::Profiles::Profile
@@ -786,38 +796,38 @@ class EthernetFeatures : public Entity
 class EgressFilteringEnum : public Enum
 {
     public:
-        static const Enum::Value egress_filtering_type_strict;
-        static const Enum::Value egress_filtering_type_disable;
-        static const Enum::Value egress_filtering_type_default;
+        static const Enum::YLeaf egress_filtering_type_strict;
+        static const Enum::YLeaf egress_filtering_type_disable;
+        static const Enum::YLeaf egress_filtering_type_default;
 
 };
 
 class L2ProtocolNameEnum : public Enum
 {
     public:
-        static const Enum::Value cdp;
-        static const Enum::Value stp;
-        static const Enum::Value vtp;
-        static const Enum::Value pvst;
-        static const Enum::Value cpsv;
+        static const Enum::YLeaf cdp;
+        static const Enum::YLeaf stp;
+        static const Enum::YLeaf vtp;
+        static const Enum::YLeaf pvst;
+        static const Enum::YLeaf cpsv;
 
 };
 
 class FilteringEnum : public Enum
 {
     public:
-        static const Enum::Value filtering_type_dot1q;
-        static const Enum::Value filtering_type_dot1ad;
+        static const Enum::YLeaf filtering_type_dot1q;
+        static const Enum::YLeaf filtering_type_dot1ad;
 
 };
 
 class L2ProtocolModeEnum : public Enum
 {
     public:
-        static const Enum::Value forward;
-        static const Enum::Value drop;
-        static const Enum::Value tunnel;
-        static const Enum::Value reverse_tunnel;
+        static const Enum::YLeaf forward;
+        static const Enum::YLeaf drop;
+        static const Enum::YLeaf tunnel;
+        static const Enum::YLeaf reverse_tunnel;
 
 };
 

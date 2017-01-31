@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_common_acl_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_es_acl_oper {
@@ -28,6 +27,7 @@ class EsAcl : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Active : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class EsAcl : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Oor : public Entity
@@ -58,6 +59,7 @@ class EsAcl : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class AclSummary : public Entity
             {
                 public:
@@ -73,6 +75,7 @@ class EsAcl : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Details : public Entity
                 {
                     public:
@@ -86,11 +89,12 @@ class EsAcl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value current_configured_ac_ls; //type: uint32
-                        Value current_configured_ac_es; //type: uint32
-                        Value maximum_configurable_ac_ls; //type: uint32
-                        Value maximum_configurable_ac_es; //type: uint32
 
+
+                        YLeaf current_configured_ac_ls; //type: uint32
+                        YLeaf current_configured_ac_es; //type: uint32
+                        YLeaf maximum_configurable_ac_ls; //type: uint32
+                        YLeaf maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -124,6 +128,7 @@ class EsAcl : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Acls : public Entity
             {
                 public:
@@ -139,6 +144,7 @@ class EsAcl : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Acl : public Entity
                 {
                     public:
@@ -152,8 +158,9 @@ class EsAcl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
                     class AclSequenceNumbers : public Entity
                     {
@@ -170,6 +177,7 @@ class EsAcl : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AclSequenceNumber : public Entity
                         {
                             public:
@@ -183,33 +191,32 @@ class EsAcl : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value sequence_number; //type: uint32
-                                Value ace_type; //type: AclAce1Enum
-                                Value ace_sequence_number; //type: uint32
-                                Value hits; //type: uint64
-                                Value grant; //type: AclActionEnum
-                                Value source_address; //type: string
-                                Value source_wild_card_bits; //type: string
-                                Value destination_address; //type: string
-                                Value destination_wild_card_bits; //type: string
-                                Value ether_type_number; //type: uint16
-                                Value vlan1; //type: uint16
-                                Value vlan2; //type: uint16
-                                Value cos; //type: uint8
-                                Value dei; //type: uint8
-                                Value inner_header_vlan1; //type: uint16
-                                Value inner_header_vlan2; //type: uint16
-                                Value inner_header_cos; //type: uint8
-                                Value inner_header_dei; //type: uint8
-                                Value capture; //type: boolean
-                                Value log_option; //type: uint8
-                                Value remark; //type: string
-                                Value acl_name; //type: string
-                                Value sequence_string; //type: string
 
 
-                                class AclAce1Enum;
-                                class AclActionEnum;
+                                YLeaf sequence_number; //type: uint32
+                                YLeaf ace_type; //type: AclAce1Enum
+                                YLeaf ace_sequence_number; //type: uint32
+                                YLeaf hits; //type: uint64
+                                YLeaf grant; //type: AclActionEnum
+                                YLeaf source_address; //type: string
+                                YLeaf source_wild_card_bits; //type: string
+                                YLeaf destination_address; //type: string
+                                YLeaf destination_wild_card_bits; //type: string
+                                YLeaf ether_type_number; //type: uint16
+                                YLeaf vlan1; //type: uint16
+                                YLeaf vlan2; //type: uint16
+                                YLeaf cos; //type: uint8
+                                YLeaf dei; //type: uint8
+                                YLeaf inner_header_vlan1; //type: uint16
+                                YLeaf inner_header_vlan2; //type: uint16
+                                YLeaf inner_header_cos; //type: uint8
+                                YLeaf inner_header_dei; //type: uint8
+                                YLeaf capture; //type: boolean
+                                YLeaf log_option; //type: uint8
+                                YLeaf remark; //type: string
+                                YLeaf acl_name; //type: string
+                                YLeaf sequence_string; //type: string
+
 
 
                         }; // EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber
@@ -254,6 +261,7 @@ class EsAcl : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class OorAcl : public Entity
             {
                 public:
@@ -267,12 +275,13 @@ class EsAcl : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
-                    Value current_configured_ac_ls; //type: uint32
-                    Value current_configured_ac_es; //type: uint32
-                    Value maximum_configurable_ac_ls; //type: uint32
-                    Value maximum_configurable_ac_es; //type: uint32
 
+
+                    YLeaf name; //type: string
+                    YLeaf current_configured_ac_ls; //type: uint32
+                    YLeaf current_configured_ac_es; //type: uint32
+                    YLeaf maximum_configurable_ac_ls; //type: uint32
+                    YLeaf maximum_configurable_ac_es; //type: uint32
 
 
 
@@ -300,6 +309,7 @@ class EsAcl : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Usage : public Entity
             {
                 public:
@@ -313,13 +323,13 @@ class EsAcl : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value location; //type: string
-                    Value application_id; //type: AclUsageAppIdEnumEnum
-                    Value name; //type: string
-                    Value usage_details; //type: string
 
 
-                    class AclUsageAppIdEnumEnum;
+                    YLeaf location; //type: string
+                    YLeaf application_id; //type: AclUsageAppIdEnumEnum
+                    YLeaf name; //type: string
+                    YLeaf usage_details; //type: string
+
 
 
             }; // EsAcl::Active::Usages::Usage
@@ -349,21 +359,21 @@ class EsAcl : public Entity
 class AclActionEnum : public Enum
 {
     public:
-        static const Enum::Value deny;
-        static const Enum::Value permit;
-        static const Enum::Value encrypt;
-        static const Enum::Value bypass;
-        static const Enum::Value fallthrough;
-        static const Enum::Value invalid;
+        static const Enum::YLeaf deny;
+        static const Enum::YLeaf permit;
+        static const Enum::YLeaf encrypt;
+        static const Enum::YLeaf bypass;
+        static const Enum::YLeaf fallthrough;
+        static const Enum::YLeaf invalid;
 
 };
 
 class AclAce1Enum : public Enum
 {
     public:
-        static const Enum::Value normal;
-        static const Enum::Value remark;
-        static const Enum::Value abf;
+        static const Enum::YLeaf normal;
+        static const Enum::YLeaf remark;
+        static const Enum::YLeaf abf;
 
 };
 

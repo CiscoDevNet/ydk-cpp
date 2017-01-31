@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_Ethernet_SPAN_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_Ethernet_SPAN_oper {
@@ -28,6 +27,7 @@ class SpanMonitorSession : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Global : public Entity
     {
         public:
@@ -41,6 +41,7 @@ class SpanMonitorSession : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Statistics : public Entity
@@ -58,6 +59,7 @@ class SpanMonitorSession : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Statistic : public Entity
             {
                 public:
@@ -71,15 +73,16 @@ class SpanMonitorSession : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value session; //type: string
-                    Value interface; //type: string
-                    Value rx_packets_mirrored; //type: uint64
-                    Value rx_octets_mirrored; //type: uint64
-                    Value tx_packets_mirrored; //type: uint64
-                    Value tx_octets_mirrored; //type: uint64
-                    Value packets_not_mirrored; //type: uint64
-                    Value octets_not_mirrored; //type: uint64
 
+
+                    YLeaf session; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf rx_packets_mirrored; //type: uint64
+                    YLeaf rx_octets_mirrored; //type: uint64
+                    YLeaf tx_packets_mirrored; //type: uint64
+                    YLeaf tx_octets_mirrored; //type: uint64
+                    YLeaf packets_not_mirrored; //type: uint64
+                    YLeaf octets_not_mirrored; //type: uint64
 
 
 
@@ -107,6 +110,7 @@ class SpanMonitorSession : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class GlobalSession : public Entity
             {
                 public:
@@ -120,15 +124,16 @@ class SpanMonitorSession : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value session; //type: string
-                    Value name; //type: string
-                    Value session_class; //type: SessionClassEnum
-                    Value id; //type: uint32
-                    Value destination_error; //type: uint32
-                    Value destination_interface_name; //type: string
-                    Value destination_interface_handle; //type: string
-                    Value interface_error; //type: uint32
 
+
+                    YLeaf session; //type: string
+                    YLeaf name; //type: string
+                    YLeaf session_class; //type: SessionClassEnum
+                    YLeaf id; //type: uint32
+                    YLeaf destination_error; //type: uint32
+                    YLeaf destination_interface_name; //type: string
+                    YLeaf destination_interface_handle; //type: string
+                    YLeaf interface_error; //type: uint32
 
                 class DestinationData : public Entity
                 {
@@ -143,9 +148,10 @@ class SpanMonitorSession : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value destination_class; //type: DestinationClassEnum
-                        Value invalid_value; //type: uint32
 
+
+                        YLeaf destination_class; //type: DestinationClassEnum
+                        YLeaf invalid_value; //type: uint32
 
                     class InterfaceData : public Entity
                     {
@@ -160,11 +166,11 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value interface_state; //type: ImStateEnumEnum
 
 
-                            class ImStateEnumEnum;
+                            YLeaf interface_name; //type: string
+                            YLeaf interface_state; //type: ImStateEnumEnum
+
 
 
                     }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData
@@ -183,9 +189,10 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value pseudowire_name; //type: string
-                            Value pseudowire_is_up; //type: boolean
 
+
+                            YLeaf pseudowire_name; //type: string
+                            YLeaf pseudowire_is_up; //type: boolean
 
 
 
@@ -205,10 +212,11 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv4_address; //type: string
-                            Value vrf_name; //type: string
-                            Value address_is_reachable; //type: boolean
 
+
+                            YLeaf ipv4_address; //type: string
+                            YLeaf vrf_name; //type: string
+                            YLeaf address_is_reachable; //type: boolean
 
 
 
@@ -228,10 +236,11 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
-                            Value vrf_name; //type: string
-                            Value address_is_reachable; //type: boolean
 
+
+                            YLeaf ipv6_address; //type: string
+                            YLeaf vrf_name; //type: string
+                            YLeaf address_is_reachable; //type: boolean
 
 
 
@@ -242,7 +251,6 @@ class SpanMonitorSession : public Entity
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data> next_hop_ipv4_data;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data> next_hop_ipv6_data;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData> pseudowire_data;
-                        class DestinationClassEnum;
 
 
                 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
@@ -261,11 +269,12 @@ class SpanMonitorSession : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value destination_class; //type: DestinationClassEnum
-                        Value interface; //type: string
-                        Value pseudowire_id; //type: uint32
-                        Value invalid_value; //type: uint32
 
+
+                        YLeaf destination_class; //type: DestinationClassEnum
+                        YLeaf interface; //type: string
+                        YLeaf pseudowire_id; //type: uint32
+                        YLeaf invalid_value; //type: uint32
 
                     class Ipv4AddressAndVrf : public Entity
                     {
@@ -280,9 +289,10 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv4_address; //type: string
-                            Value vrf_name; //type: string
 
+
+                            YLeaf ipv4_address; //type: string
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -302,9 +312,10 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ipv6_address; //type: string
-                            Value vrf_name; //type: string
 
+
+                            YLeaf ipv6_address; //type: string
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -313,7 +324,6 @@ class SpanMonitorSession : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-                        class DestinationClassEnum;
 
 
                 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId
@@ -321,7 +331,6 @@ class SpanMonitorSession : public Entity
 
                     std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData> destination_data;
                     std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId> destination_id;
-                    class SessionClassEnum;
 
 
             }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession
@@ -355,6 +364,7 @@ class SpanMonitorSession : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -368,8 +378,9 @@ class SpanMonitorSession : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node; //type: string
 
+
+                YLeaf node; //type: string
 
             class Attachments : public Entity
             {
@@ -386,6 +397,7 @@ class SpanMonitorSession : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Attachment : public Entity
                 {
                     public:
@@ -399,20 +411,21 @@ class SpanMonitorSession : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session; //type: string
-                        Value interface; //type: string
-                        Value name; //type: string
-                        Value local_class; //type: SessionClassEnum
-                        Value id; //type: uint32
-                        Value global_class; //type: SessionClassEnum
-                        Value session_is_configured; //type: boolean
-                        Value source_interface; //type: string
-                        Value source_interface_state; //type: ImStateEnumEnum
-                        Value pfi_error; //type: uint32
-                        Value dest_pw_type_not_supported; //type: boolean
-                        Value destination_interface; //type: string
-                        Value traffic_direction; //type: TrafficDirectionEnum
 
+
+                        YLeaf session; //type: string
+                        YLeaf interface; //type: string
+                        YLeaf name; //type: string
+                        YLeaf local_class; //type: SessionClassEnum
+                        YLeaf id; //type: uint32
+                        YLeaf global_class; //type: SessionClassEnum
+                        YLeaf session_is_configured; //type: boolean
+                        YLeaf source_interface; //type: string
+                        YLeaf source_interface_state; //type: ImStateEnumEnum
+                        YLeaf pfi_error; //type: uint32
+                        YLeaf dest_pw_type_not_supported; //type: boolean
+                        YLeaf destination_interface; //type: string
+                        YLeaf traffic_direction; //type: TrafficDirectionEnum
 
                     class TrafficParameters : public Entity
                     {
@@ -427,15 +440,14 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value traffic_direction; //type: TrafficDirectionEnum
-                            Value port_level; //type: boolean
-                            Value is_acl_enabled; //type: boolean
-                            Value mirror_bytes; //type: uint32
-                            Value mirror_interval; //type: MirrorIntervalEnum
 
 
-                            class MirrorIntervalEnum;
-                            class TrafficDirectionEnum;
+                            YLeaf traffic_direction; //type: TrafficDirectionEnum
+                            YLeaf port_level; //type: boolean
+                            YLeaf is_acl_enabled; //type: boolean
+                            YLeaf mirror_bytes; //type: uint32
+                            YLeaf mirror_interval; //type: MirrorIntervalEnum
+
 
 
                     }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters
@@ -454,11 +466,12 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_class; //type: DestinationClassEnum
-                            Value interface; //type: string
-                            Value pseudowire_id; //type: uint32
-                            Value invalid_value; //type: uint32
 
+
+                            YLeaf destination_class; //type: DestinationClassEnum
+                            YLeaf interface; //type: string
+                            YLeaf pseudowire_id; //type: uint32
+                            YLeaf invalid_value; //type: uint32
 
                         class Ipv4AddressAndVrf : public Entity
                         {
@@ -473,9 +486,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv4_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv4_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -495,9 +509,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv6_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv6_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -506,7 +521,6 @@ class SpanMonitorSession : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-                            class DestinationClassEnum;
 
 
                     }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId
@@ -514,10 +528,6 @@ class SpanMonitorSession : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId> destination_id;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters> traffic_parameters;
-                        class SessionClassEnum;
-                        class SessionClassEnum;
-                        class ImStateEnumEnum;
-                        class TrafficDirectionEnum;
 
 
                 }; // SpanMonitorSession::Nodes::Node::Attachments::Attachment
@@ -544,6 +554,7 @@ class SpanMonitorSession : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class HardwareSession : public Entity
                 {
                     public:
@@ -557,14 +568,15 @@ class SpanMonitorSession : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value session_class; //type: SpanSessionClassEnum
-                        Value session_id; //type: int32
-                        Value id; //type: uint32
-                        Value name; //type: string
-                        Value session_class_xr; //type: SessionClassEnum
-                        Value destination_interface; //type: string
-                        Value platform_error; //type: uint32
 
+
+                        YLeaf session_class; //type: SpanSessionClassEnum
+                        YLeaf session_id; //type: int32
+                        YLeaf id; //type: uint32
+                        YLeaf name; //type: string
+                        YLeaf session_class_xr; //type: SessionClassEnum
+                        YLeaf destination_interface; //type: string
+                        YLeaf platform_error; //type: uint32
 
                     class DestinationId : public Entity
                     {
@@ -579,11 +591,12 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_class; //type: DestinationClassEnum
-                            Value interface; //type: string
-                            Value pseudowire_id; //type: uint32
-                            Value invalid_value; //type: uint32
 
+
+                            YLeaf destination_class; //type: DestinationClassEnum
+                            YLeaf interface; //type: string
+                            YLeaf pseudowire_id; //type: uint32
+                            YLeaf invalid_value; //type: uint32
 
                         class Ipv4AddressAndVrf : public Entity
                         {
@@ -598,9 +611,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv4_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv4_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -620,9 +634,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv6_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv6_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -631,15 +646,12 @@ class SpanMonitorSession : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-                            class DestinationClassEnum;
 
 
                     }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId
 
 
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId> destination_id;
-                        class SpanSessionClassEnum;
-                        class SessionClassEnum;
 
 
                 }; // SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession
@@ -666,6 +678,7 @@ class SpanMonitorSession : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -679,12 +692,13 @@ class SpanMonitorSession : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface; //type: string
-                        Value source_interface; //type: string
-                        Value platform_error; //type: uint32
-                        Value destination_interface; //type: string
-                        Value traffic_direction; //type: TrafficDirectionEnum
 
+
+                        YLeaf interface; //type: string
+                        YLeaf source_interface; //type: string
+                        YLeaf platform_error; //type: uint32
+                        YLeaf destination_interface; //type: string
+                        YLeaf traffic_direction; //type: TrafficDirectionEnum
 
                     class DestinationId : public Entity
                     {
@@ -699,11 +713,12 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_class; //type: DestinationClassEnum
-                            Value interface; //type: string
-                            Value pseudowire_id; //type: uint32
-                            Value invalid_value; //type: uint32
 
+
+                            YLeaf destination_class; //type: DestinationClassEnum
+                            YLeaf interface; //type: string
+                            YLeaf pseudowire_id; //type: uint32
+                            YLeaf invalid_value; //type: uint32
 
                         class Ipv4AddressAndVrf : public Entity
                         {
@@ -718,9 +733,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv4_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv4_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -740,9 +756,10 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv6_address; //type: string
-                                Value vrf_name; //type: string
 
+
+                                YLeaf ipv6_address; //type: string
+                                YLeaf vrf_name; //type: string
 
 
 
@@ -751,7 +768,6 @@ class SpanMonitorSession : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-                            class DestinationClassEnum;
 
 
                     }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId
@@ -770,15 +786,14 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value traffic_direction; //type: TrafficDirectionEnum
-                            Value port_level; //type: boolean
-                            Value is_acl_enabled; //type: boolean
-                            Value mirror_bytes; //type: uint32
-                            Value mirror_interval; //type: MirrorIntervalEnum
 
 
-                            class MirrorIntervalEnum;
-                            class TrafficDirectionEnum;
+                            YLeaf traffic_direction; //type: TrafficDirectionEnum
+                            YLeaf port_level; //type: boolean
+                            YLeaf is_acl_enabled; //type: boolean
+                            YLeaf mirror_bytes; //type: uint32
+                            YLeaf mirror_interval; //type: MirrorIntervalEnum
+
 
 
                     }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters
@@ -797,8 +812,9 @@ class SpanMonitorSession : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value class_; //type: SessionClassEnum
 
+
+                            YLeaf class_; //type: SessionClassEnum
 
                         class DestinationId : public Entity
                         {
@@ -813,11 +829,12 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value destination_class; //type: DestinationClassEnum
-                                Value interface; //type: string
-                                Value pseudowire_id; //type: uint32
-                                Value invalid_value; //type: uint32
 
+
+                                YLeaf destination_class; //type: DestinationClassEnum
+                                YLeaf interface; //type: string
+                                YLeaf pseudowire_id; //type: uint32
+                                YLeaf invalid_value; //type: uint32
 
                             class Ipv4AddressAndVrf : public Entity
                             {
@@ -832,9 +849,10 @@ class SpanMonitorSession : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ipv4_address; //type: string
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf ipv4_address; //type: string
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -854,9 +872,10 @@ class SpanMonitorSession : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value ipv6_address; //type: string
-                                    Value vrf_name; //type: string
 
+
+                                    YLeaf ipv6_address; //type: string
+                                    YLeaf vrf_name; //type: string
 
 
 
@@ -865,7 +884,6 @@ class SpanMonitorSession : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf> ipv4_address_and_vrf;
                                 std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf> ipv6_address_and_vrf;
-                                class DestinationClassEnum;
 
 
                         }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId
@@ -884,15 +902,14 @@ class SpanMonitorSession : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value traffic_direction; //type: TrafficDirectionEnum
-                                Value port_level; //type: boolean
-                                Value is_acl_enabled; //type: boolean
-                                Value mirror_bytes; //type: uint32
-                                Value mirror_interval; //type: MirrorIntervalEnum
 
 
-                                class MirrorIntervalEnum;
-                                class TrafficDirectionEnum;
+                                YLeaf traffic_direction; //type: TrafficDirectionEnum
+                                YLeaf port_level; //type: boolean
+                                YLeaf is_acl_enabled; //type: boolean
+                                YLeaf mirror_bytes; //type: uint32
+                                YLeaf mirror_interval; //type: MirrorIntervalEnum
+
 
 
                         }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
@@ -900,7 +917,6 @@ class SpanMonitorSession : public Entity
 
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId> destination_id;
                             std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters> traffic_mirroring_parameters;
-                            class SessionClassEnum;
 
 
                     }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment
@@ -909,7 +925,6 @@ class SpanMonitorSession : public Entity
                         std::vector<std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment> > attachment;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId> destination_id;
                         std::unique_ptr<Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters> traffic_mirroring_parameters;
-                        class TrafficDirectionEnum;
 
 
                 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface
@@ -945,69 +960,69 @@ class SpanMonitorSession : public Entity
 class ImStateEnumEnum : public Enum
 {
     public:
-        static const Enum::Value im_state_not_ready;
-        static const Enum::Value im_state_admin_down;
-        static const Enum::Value im_state_down;
-        static const Enum::Value im_state_up;
-        static const Enum::Value im_state_shutdown;
-        static const Enum::Value im_state_err_disable;
-        static const Enum::Value im_state_down_immediate;
-        static const Enum::Value im_state_down_immediate_admin;
-        static const Enum::Value im_state_down_graceful;
-        static const Enum::Value im_state_begin_shutdown;
-        static const Enum::Value im_state_end_shutdown;
-        static const Enum::Value im_state_begin_error_disable;
-        static const Enum::Value im_state_end_error_disable;
-        static const Enum::Value im_state_begin_down_graceful;
-        static const Enum::Value im_state_reset;
-        static const Enum::Value im_state_operational;
-        static const Enum::Value im_state_not_operational;
-        static const Enum::Value im_state_unknown;
-        static const Enum::Value im_state_last;
+        static const Enum::YLeaf im_state_not_ready;
+        static const Enum::YLeaf im_state_admin_down;
+        static const Enum::YLeaf im_state_down;
+        static const Enum::YLeaf im_state_up;
+        static const Enum::YLeaf im_state_shutdown;
+        static const Enum::YLeaf im_state_err_disable;
+        static const Enum::YLeaf im_state_down_immediate;
+        static const Enum::YLeaf im_state_down_immediate_admin;
+        static const Enum::YLeaf im_state_down_graceful;
+        static const Enum::YLeaf im_state_begin_shutdown;
+        static const Enum::YLeaf im_state_end_shutdown;
+        static const Enum::YLeaf im_state_begin_error_disable;
+        static const Enum::YLeaf im_state_end_error_disable;
+        static const Enum::YLeaf im_state_begin_down_graceful;
+        static const Enum::YLeaf im_state_reset;
+        static const Enum::YLeaf im_state_operational;
+        static const Enum::YLeaf im_state_not_operational;
+        static const Enum::YLeaf im_state_unknown;
+        static const Enum::YLeaf im_state_last;
 
 };
 
 class DestinationClassEnum : public Enum
 {
     public:
-        static const Enum::Value interface_class;
-        static const Enum::Value pseudowire_class;
-        static const Enum::Value next_hop_ipv4_class;
-        static const Enum::Value next_hop_ipv6_class;
-        static const Enum::Value invalid_class;
+        static const Enum::YLeaf interface_class;
+        static const Enum::YLeaf pseudowire_class;
+        static const Enum::YLeaf next_hop_ipv4_class;
+        static const Enum::YLeaf next_hop_ipv6_class;
+        static const Enum::YLeaf invalid_class;
 
 };
 
 class TrafficDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value invalid;
-        static const Enum::Value rx_only;
-        static const Enum::Value tx_only;
-        static const Enum::Value both;
+        static const Enum::YLeaf invalid;
+        static const Enum::YLeaf rx_only;
+        static const Enum::YLeaf tx_only;
+        static const Enum::YLeaf both;
 
 };
 
 class SessionClassEnum : public Enum
 {
     public:
-        static const Enum::Value ethernet_class;
-        static const Enum::Value ipv4_class;
-        static const Enum::Value ipv6_class;
-        static const Enum::Value invalid_class;
+        static const Enum::YLeaf ethernet_class;
+        static const Enum::YLeaf ipv4_class;
+        static const Enum::YLeaf ipv6_class;
+        static const Enum::YLeaf invalid_class;
 
 };
 
 class MirrorIntervalEnum : public Enum
 {
     public:
-        static const Enum::Value mirror_interval_all;
-        static const Enum::Value mirror_interval512;
-        static const Enum::Value mirror_interval1k;
-        static const Enum::Value mirror_interval2k;
-        static const Enum::Value mirror_interval4k;
-        static const Enum::Value mirror_interval8k;
-        static const Enum::Value mirror_interval16k;
+        static const Enum::YLeaf mirror_interval_all;
+        static const Enum::YLeaf mirror_interval512;
+        static const Enum::YLeaf mirror_interval1k;
+        static const Enum::YLeaf mirror_interval2k;
+        static const Enum::YLeaf mirror_interval4k;
+        static const Enum::YLeaf mirror_interval8k;
+        static const Enum::YLeaf mirror_interval16k;
 
 };
 

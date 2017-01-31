@@ -7,9 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "openconfig_bgp_policy.hpp"
-#include "openconfig_bgp_types.hpp"
-#include "openconfig_policy_types.hpp"
 
 namespace ydk {
 namespace openconfig_routing_policy {
@@ -30,6 +27,7 @@ class RoutingPolicy : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class DefinedSets : public Entity
     {
         public:
@@ -43,6 +41,7 @@ class RoutingPolicy : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class PrefixSets : public Entity
@@ -60,6 +59,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PrefixSet : public Entity
             {
                 public:
@@ -73,8 +73,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value prefix_set_name; //type: string
 
+
+                    YLeaf prefix_set_name; //type: string
 
                 class Prefix : public Entity
                 {
@@ -89,9 +90,10 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ip_prefix; //type: string
-                        Value masklength_range; //type: string
 
+
+                        YLeaf ip_prefix; //type: string
+                        YLeaf masklength_range; //type: string
 
 
 
@@ -125,6 +127,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class NeighborSet : public Entity
             {
                 public:
@@ -138,8 +141,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value neighbor_set_name; //type: string
 
+
+                    YLeaf neighbor_set_name; //type: string
 
                 class Neighbor : public Entity
                 {
@@ -154,8 +158,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
 
+
+                        YLeaf address; //type: string
 
 
 
@@ -189,6 +194,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TagSet : public Entity
             {
                 public:
@@ -202,8 +208,9 @@ class RoutingPolicy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value tag_set_name; //type: string
 
+
+                    YLeaf tag_set_name; //type: string
 
                 class Tag : public Entity
                 {
@@ -218,8 +225,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value value_; //type: one of uint32, string
 
+
+                        YLeaf value_; //type: one of uint32, string
 
 
 
@@ -253,6 +261,7 @@ class RoutingPolicy : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CommunitySets : public Entity
             {
                 public:
@@ -268,6 +277,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CommunitySet : public Entity
                 {
                     public:
@@ -281,9 +291,10 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value community_set_name; //type: string
-                        ValueList community_member; //type: list of  one of union, identityref, string
 
+
+                        YLeaf community_set_name; //type: string
+                        YLeafList community_member; //type: list of  one of union, identityref, string
 
 
 
@@ -311,6 +322,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ExtCommunitySet : public Entity
                 {
                     public:
@@ -324,9 +336,10 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ext_community_set_name; //type: string
-                        ValueList ext_community_member; //type: list of  one of union, string
 
+
+                        YLeaf ext_community_set_name; //type: string
+                        YLeafList ext_community_member; //type: list of  one of union, string
 
 
 
@@ -354,6 +367,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AsPathSet : public Entity
                 {
                     public:
@@ -367,9 +381,10 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value as_path_set_name; //type: string
-                        ValueList as_path_set_member; //type: list of  string
 
+
+                        YLeaf as_path_set_name; //type: string
+                        YLeafList as_path_set_member; //type: list of  string
 
 
 
@@ -414,6 +429,7 @@ class RoutingPolicy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PolicyDefinition : public Entity
         {
             public:
@@ -427,8 +443,9 @@ class RoutingPolicy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class Statements : public Entity
             {
@@ -445,6 +462,7 @@ class RoutingPolicy : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Statement : public Entity
                 {
                     public:
@@ -458,8 +476,9 @@ class RoutingPolicy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
 
+
+                        YLeaf name; //type: string
 
                     class Conditions : public Entity
                     {
@@ -474,10 +493,11 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            //type: string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
-                            Value call_policy;
-                            Value install_protocol_eq; //type: InstallProtocolTypeIdentity
 
+
+                            //type: string (refers to openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::name)
+                            YLeaf call_policy;
+                            YLeaf install_protocol_eq; //type: InstallProtocolTypeIdentity
 
                         class MatchPrefixSet : public Entity
                         {
@@ -492,12 +512,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
+
                                 //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::PrefixSets::PrefixSet::prefix_set_name)
-                                Value prefix_set;
-                                Value match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
+                                YLeaf prefix_set;
+                                YLeaf match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
 
-
-                                class MatchSetOptionsRestrictedTypeEnum;
 
 
                         }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchPrefixSet
@@ -516,12 +536,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
+
                                 //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::NeighborSets::NeighborSet::neighbor_set_name)
-                                Value neighbor_set;
-                                Value match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
+                                YLeaf neighbor_set;
+                                YLeaf match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
 
-
-                                class MatchSetOptionsRestrictedTypeEnum;
 
 
                         }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet
@@ -540,12 +560,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
+
                                 //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::TagSets::TagSet::tag_set_name)
-                                Value tag_set;
-                                Value match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
+                                YLeaf tag_set;
+                                YLeaf match_set_options; //type: MatchSetOptionsRestrictedTypeEnum
 
-
-                                class MatchSetOptionsRestrictedTypeEnum;
 
 
                         }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet
@@ -568,6 +588,7 @@ class RoutingPolicy : public Entity
 
 
 
+
                         }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions
 
 
@@ -584,13 +605,14 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value med_eq; //type: uint32
-                                Value origin_eq; //type: BgpOriginAttrTypeEnum
-                                Value local_pref_eq; //type: uint32
-                                Value route_type; //type: RouteTypeEnum
-                                ValueList next_hop_in; //type: list of  string
-                                ValueList afi_safi_in; //type: list of  AfiSafiTypeIdentity
 
+
+                                YLeaf med_eq; //type: uint32
+                                YLeaf origin_eq; //type: BgpOriginAttrTypeEnum
+                                YLeaf local_pref_eq; //type: uint32
+                                YLeaf route_type; //type: RouteTypeEnum
+                                YLeafList next_hop_in; //type: list of  string
+                                YLeafList afi_safi_in; //type: list of  AfiSafiTypeIdentity
 
                             class MatchCommunitySet : public Entity
                             {
@@ -605,12 +627,12 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
+
                                     //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::community_set_name)
-                                    Value community_set;
-                                    Value match_set_options; //type: MatchSetOptionsTypeEnum
+                                    YLeaf community_set;
+                                    YLeaf match_set_options; //type: MatchSetOptionsTypeEnum
 
-
-                                    class MatchSetOptionsTypeEnum;
 
 
                             }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet
@@ -629,12 +651,12 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
+
                                     //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::ext_community_set_name)
-                                    Value ext_community_set;
-                                    Value match_set_options; //type: MatchSetOptionsTypeEnum
+                                    YLeaf ext_community_set;
+                                    YLeaf match_set_options; //type: MatchSetOptionsTypeEnum
 
-
-                                    class MatchSetOptionsTypeEnum;
 
 
                             }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet
@@ -653,12 +675,12 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
+
                                     //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::BgpDefinedSets::AsPathSets::AsPathSet::as_path_set_name)
-                                    Value as_path_set;
-                                    Value match_set_options; //type: MatchSetOptionsTypeEnum
+                                    YLeaf as_path_set;
+                                    YLeaf match_set_options; //type: MatchSetOptionsTypeEnum
 
-
-                                    class MatchSetOptionsTypeEnum;
 
 
                             }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet
@@ -677,9 +699,10 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value operator_; //type: AttributeComparisonIdentity
-                                    Value value_; //type: uint32
 
+
+                                    YLeaf operator_; //type: AttributeComparisonIdentity
+                                    YLeaf value_; //type: uint32
 
 
 
@@ -699,9 +722,10 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value operator_; //type: AttributeComparisonIdentity
-                                    Value value_; //type: uint32
 
+
+                                    YLeaf operator_; //type: AttributeComparisonIdentity
+                                    YLeaf value_; //type: uint32
 
 
 
@@ -713,7 +737,6 @@ class RoutingPolicy : public Entity
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet> match_as_path_set; // presence node
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchCommunitySet> match_community_set; // presence node
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchExtCommunitySet> match_ext_community_set; // presence node
-                                class BgpOriginAttrTypeEnum;
                                 class RouteTypeEnum;
 
 
@@ -743,9 +766,10 @@ class RoutingPolicy : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value accept_route; //type: empty
-                            Value reject_route; //type: empty
 
+
+                            YLeaf accept_route; //type: empty
+                            YLeaf reject_route; //type: empty
 
                         class IgpActions : public Entity
                         {
@@ -760,8 +784,9 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value set_tag; //type: one of uint32, string
 
+
+                                YLeaf set_tag; //type: one of uint32, string
 
 
 
@@ -781,11 +806,12 @@ class RoutingPolicy : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value set_route_origin; //type: BgpOriginAttrTypeEnum
-                                Value set_local_pref; //type: uint32
-                                Value set_next_hop; //type: one of union, enumeration
-                                Value set_med; //type: one of uint32, enumeration, string
 
+
+                                YLeaf set_route_origin; //type: BgpOriginAttrTypeEnum
+                                YLeaf set_local_pref; //type: uint32
+                                YLeaf set_next_hop; //type: one of union, enumeration
+                                YLeaf set_med; //type: one of uint32, enumeration, string
 
                             class SetAsPathPrepend : public Entity
                             {
@@ -800,8 +826,9 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value repeat_n; //type: uint8
 
+
+                                    YLeaf repeat_n; //type: uint8
 
 
 
@@ -821,13 +848,13 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
+
                                     //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::community_set_name)
-                                    Value community_set_ref;
-                                    Value options; //type: BgpSetCommunityOptionTypeEnum
-                                    ValueList communities; //type: list of  one of union, identityref
+                                    YLeaf community_set_ref;
+                                    YLeaf options; //type: BgpSetCommunityOptionTypeEnum
+                                    YLeafList communities; //type: list of  one of union, identityref
 
-
-                                    class BgpSetCommunityOptionTypeEnum;
 
 
                             }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity
@@ -846,13 +873,13 @@ class RoutingPolicy : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
+
+
                                     //type: string (refers to openconfig_routing_policy::RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::ext_community_set_name)
-                                    Value ext_community_set_ref;
-                                    Value options; //type: BgpSetCommunityOptionTypeEnum
-                                    ValueList communities; //type: list of  one of union, identityref
+                                    YLeaf ext_community_set_ref;
+                                    YLeaf options; //type: BgpSetCommunityOptionTypeEnum
+                                    YLeafList communities; //type: list of  one of union, identityref
 
-
-                                    class BgpSetCommunityOptionTypeEnum;
 
 
                             }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity
@@ -861,9 +888,6 @@ class RoutingPolicy : public Entity
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetAsPathPrepend> set_as_path_prepend; // presence node
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetCommunity> set_community; // presence node
                                 std::unique_ptr<openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity> set_ext_community; // presence node
-                                class BgpSetMedTypeEnum;
-                                class BgpNextHopTypeEnum;
-                                class BgpOriginAttrTypeEnum;
 
 
                         }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions
@@ -911,16 +935,16 @@ class RoutingPolicy : public Entity
 class DefaultPolicyTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ACCEPT_ROUTE;
-        static const Enum::Value REJECT_ROUTE;
+        static const Enum::YLeaf ACCEPT_ROUTE;
+        static const Enum::YLeaf REJECT_ROUTE;
 
 };
 
 class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::RouteTypeEnum : public Enum
 {
     public:
-        static const Enum::Value INTERNAL;
-        static const Enum::Value EXTERNAL;
+        static const Enum::YLeaf INTERNAL;
+        static const Enum::YLeaf EXTERNAL;
 
 };
 

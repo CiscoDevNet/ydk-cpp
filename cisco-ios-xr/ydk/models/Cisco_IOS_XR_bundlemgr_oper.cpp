@@ -43,7 +43,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -129,7 +129,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Desti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -230,7 +230,7 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::has_operati
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_segment_path() const
@@ -247,7 +247,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -496,7 +496,7 @@ bool LacpBundles::Bundles::Bundle::Data::ActorBundleData::has_operation() const
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_segment_path() const
@@ -513,7 +513,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::ActorBundleData::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -827,7 +827,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -897,7 +897,7 @@ bool LacpBundles::Bundles::Bundle::Data::BundleSystemId::has_operation() const
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_segment_path() const
@@ -914,7 +914,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::BundleSystemId::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1021,8 +1021,8 @@ bool LacpBundles::Bundles::Bundle::Data::has_operation() const
 	|| is_set(partner_operational_key.operation)
 	|| is_set(partner_system_mac_address.operation)
 	|| is_set(partner_system_priority.operation)
-	|| (actor_bundle_data !=  nullptr && is_set(actor_bundle_data->operation))
-	|| (bundle_system_id !=  nullptr && is_set(bundle_system_id->operation));
+	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
+	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Data::get_segment_path() const
@@ -1039,7 +1039,7 @@ EntityPath LacpBundles::Bundles::Bundle::Data::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1210,7 +1210,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::Counters::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1382,7 +1382,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::LinkData::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1535,7 +1535,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1622,7 +1622,7 @@ bool LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::has_operation
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_segment_path() const
@@ -1639,7 +1639,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1762,7 +1762,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::MacAddress::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1874,10 +1874,10 @@ bool LacpBundles::Bundles::Bundle::Members::Member::has_operation() const
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::Members::Member::get_segment_path() const
@@ -1894,7 +1894,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::Member::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2118,7 +2118,7 @@ EntityPath LacpBundles::Bundles::Bundle::Members::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2214,8 +2214,8 @@ bool LacpBundles::Bundles::Bundle::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (data !=  nullptr && is_set(data->operation))
-	|| (members !=  nullptr && is_set(members->operation));
+	|| (data !=  nullptr && data->has_operation())
+	|| (members !=  nullptr && members->has_operation());
 }
 
 std::string LacpBundles::Bundles::Bundle::get_segment_path() const
@@ -2452,7 +2452,7 @@ bool LacpBundles::has_data() const
 bool LacpBundles::has_operation() const
 {
     return is_set(operation)
-	|| (bundles !=  nullptr && is_set(bundles->operation));
+	|| (bundles !=  nullptr && bundles->has_operation());
 }
 
 std::string LacpBundles::get_segment_path() const
@@ -2469,7 +2469,7 @@ EntityPath LacpBundles::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2568,7 +2568,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2672,7 +2672,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2788,7 +2788,7 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdC
             return true;
     }
     return is_set(operation)
-	|| (bundle_name !=  nullptr && is_set(bundle_name->operation));
+	|| (bundle_name !=  nullptr && bundle_name->has_operation());
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::get_segment_path() const
@@ -2805,7 +2805,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2956,7 +2956,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3088,7 +3088,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3189,7 +3189,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3269,9 +3269,9 @@ bool BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::has_
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (bfd_counters_bundle_children_members !=  nullptr && is_set(bfd_counters_bundle_children_members->operation))
-	|| (bfd_counters_bundle_descendant !=  nullptr && is_set(bfd_counters_bundle_descendant->operation))
-	|| (bfd_counters_bundle_item !=  nullptr && is_set(bfd_counters_bundle_item->operation));
+	|| (bfd_counters_bundle_children_members !=  nullptr && bfd_counters_bundle_children_members->has_operation())
+	|| (bfd_counters_bundle_descendant !=  nullptr && bfd_counters_bundle_descendant->has_operation())
+	|| (bfd_counters_bundle_item !=  nullptr && bfd_counters_bundle_item->has_operation());
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::get_segment_path() const
@@ -3569,7 +3569,7 @@ EntityPath BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3679,7 +3679,7 @@ bool BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::has_
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (bfd_counters_member_item !=  nullptr && is_set(bfd_counters_member_item->operation));
+	|| (bfd_counters_member_item !=  nullptr && bfd_counters_member_item->has_operation());
 }
 
 std::string BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::get_segment_path() const
@@ -3898,8 +3898,8 @@ bool BundleInformation::BfdCounters::has_data() const
 bool BundleInformation::BfdCounters::has_operation() const
 {
     return is_set(operation)
-	|| (bfd_counters_bundles !=  nullptr && is_set(bfd_counters_bundles->operation))
-	|| (bfd_counters_members !=  nullptr && is_set(bfd_counters_members->operation));
+	|| (bfd_counters_bundles !=  nullptr && bfd_counters_bundles->has_operation())
+	|| (bfd_counters_members !=  nullptr && bfd_counters_members->has_operation());
 }
 
 std::string BundleInformation::BfdCounters::get_segment_path() const
@@ -4043,7 +4043,7 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4143,7 +4143,7 @@ EntityPath BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4239,7 +4239,7 @@ bool BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActi
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (scheduled_actions_bundle_item !=  nullptr && is_set(scheduled_actions_bundle_item->operation));
+	|| (scheduled_actions_bundle_item !=  nullptr && scheduled_actions_bundle_item->has_operation());
 }
 
 std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::get_segment_path() const
@@ -4453,7 +4453,7 @@ bool BundleInformation::ScheduledActions::has_data() const
 bool BundleInformation::ScheduledActions::has_operation() const
 {
     return is_set(operation)
-	|| (scheduled_actions_bundles !=  nullptr && is_set(scheduled_actions_bundles->operation));
+	|| (scheduled_actions_bundles !=  nullptr && scheduled_actions_bundles->has_operation());
 }
 
 std::string BundleInformation::ScheduledActions::get_segment_path() const
@@ -4568,7 +4568,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4654,7 +4654,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4755,7 +4755,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::get_segment_path() const
@@ -4772,7 +4772,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5021,7 +5021,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::get_segment_path() const
@@ -5038,7 +5038,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5382,7 +5382,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5554,7 +5554,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5707,7 +5707,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5794,7 +5794,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::get_segment_path() const
@@ -5811,7 +5811,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5934,7 +5934,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6043,10 +6043,10 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::get_segment_path() const
@@ -6063,7 +6063,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6271,7 +6271,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::get_segment_path() const
@@ -6288,7 +6288,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6442,7 +6442,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6614,7 +6614,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6767,7 +6767,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6854,7 +6854,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::get_segment_path() const
@@ -6871,7 +6871,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6994,7 +6994,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7106,10 +7106,10 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::get_segment_path() const
@@ -7126,7 +7126,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7350,7 +7350,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7451,7 +7451,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7537,7 +7537,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7638,7 +7638,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::B
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::get_segment_path() const
@@ -7655,7 +7655,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7904,7 +7904,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::h
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::get_segment_path() const
@@ -7921,7 +7921,7 @@ EntityPath BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8235,9 +8235,9 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::has_operation() con
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (bundle_bundle_children_members !=  nullptr && is_set(bundle_bundle_children_members->operation))
-	|| (bundle_bundle_descendant !=  nullptr && is_set(bundle_bundle_descendant->operation))
-	|| (bundle_bundle_item !=  nullptr && is_set(bundle_bundle_item->operation));
+	|| (bundle_bundle_children_members !=  nullptr && bundle_bundle_children_members->has_operation())
+	|| (bundle_bundle_descendant !=  nullptr && bundle_bundle_descendant->has_operation())
+	|| (bundle_bundle_item !=  nullptr && bundle_bundle_item->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleBundles::BundleBundle::get_segment_path() const
@@ -8511,7 +8511,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8597,7 +8597,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8698,7 +8698,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::get_segment_path() const
@@ -8715,7 +8715,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8964,7 +8964,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::get_segment_path() const
@@ -8981,7 +8981,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9325,7 +9325,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9497,7 +9497,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9650,7 +9650,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9737,7 +9737,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::get_segment_path() const
@@ -9754,7 +9754,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9877,7 +9877,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9986,10 +9986,10 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::get_segment_path() const
@@ -10006,7 +10006,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10214,7 +10214,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::get_segment_path() const
@@ -10231,7 +10231,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10385,7 +10385,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10557,7 +10557,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10710,7 +10710,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10797,7 +10797,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::M
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::get_segment_path() const
@@ -10814,7 +10814,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10937,7 +10937,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11046,10 +11046,10 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::h
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::get_segment_path() const
@@ -11066,7 +11066,7 @@ EntityPath BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11273,8 +11273,8 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::has_operation() con
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (bundle_member_ancestor !=  nullptr && is_set(bundle_member_ancestor->operation))
-	|| (bundle_member_item !=  nullptr && is_set(bundle_member_item->operation));
+	|| (bundle_member_ancestor !=  nullptr && bundle_member_ancestor->has_operation())
+	|| (bundle_member_item !=  nullptr && bundle_member_item->has_operation());
 }
 
 std::string BundleInformation::Bundle::BundleMembers::BundleMember::get_segment_path() const
@@ -11516,8 +11516,8 @@ bool BundleInformation::Bundle::has_data() const
 bool BundleInformation::Bundle::has_operation() const
 {
     return is_set(operation)
-	|| (bundle_bundles !=  nullptr && is_set(bundle_bundles->operation))
-	|| (bundle_members !=  nullptr && is_set(bundle_members->operation));
+	|| (bundle_bundles !=  nullptr && bundle_bundles->has_operation())
+	|| (bundle_members !=  nullptr && bundle_members->has_operation());
 }
 
 std::string BundleInformation::Bundle::get_segment_path() const
@@ -11664,7 +11664,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11752,7 +11752,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::get_segment_path() const
@@ -11769,7 +11769,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11886,7 +11886,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11974,7 +11974,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::get_segment_path() const
@@ -11991,7 +11991,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12108,7 +12108,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12196,7 +12196,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::get_segment_path() const
@@ -12213,7 +12213,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12321,9 +12321,9 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMembe
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::get_segment_path() const
@@ -12340,7 +12340,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12499,7 +12499,7 @@ EntityPath BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12595,7 +12595,7 @@ bool BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::has_operation
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (events_rg_member_ancestor !=  nullptr && is_set(events_rg_member_ancestor->operation));
+	|| (events_rg_member_ancestor !=  nullptr && events_rg_member_ancestor->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::get_segment_path() const
@@ -12832,7 +12832,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12920,7 +12920,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::get_segment_path() const
@@ -12937,7 +12937,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13054,7 +13054,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13142,7 +13142,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::get_segment_path() const
@@ -13159,7 +13159,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13276,7 +13276,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13364,7 +13364,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::get_segment_path() const
@@ -13381,7 +13381,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13489,9 +13489,9 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsR
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::get_segment_path() const
@@ -13508,7 +13508,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13667,7 +13667,7 @@ EntityPath BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13763,7 +13763,7 @@ bool BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::has_ope
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (events_rg_bundle_item_iccp_group !=  nullptr && is_set(events_rg_bundle_item_iccp_group->operation));
+	|| (events_rg_bundle_item_iccp_group !=  nullptr && events_rg_bundle_item_iccp_group->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::get_segment_path() const
@@ -14000,7 +14000,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14088,7 +14088,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::get_segment_path() const
@@ -14105,7 +14105,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14222,7 +14222,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14310,7 +14310,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::get_segment_path() const
@@ -14327,7 +14327,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14444,7 +14444,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14532,7 +14532,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::get_segment_path() const
@@ -14549,7 +14549,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14657,9 +14657,9 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundl
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::get_segment_path() const
@@ -14676,7 +14676,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14835,7 +14835,7 @@ EntityPath BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14931,7 +14931,7 @@ bool BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::has_operation
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (events_rg_bundle_ancestor !=  nullptr && is_set(events_rg_bundle_ancestor->operation));
+	|| (events_rg_bundle_ancestor !=  nullptr && events_rg_bundle_ancestor->has_operation());
 }
 
 std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::get_segment_path() const
@@ -15155,9 +15155,9 @@ bool BundleInformation::EventsRg::has_data() const
 bool BundleInformation::EventsRg::has_operation() const
 {
     return is_set(operation)
-	|| (events_rg_bundles !=  nullptr && is_set(events_rg_bundles->operation))
-	|| (events_rg_iccp_groups !=  nullptr && is_set(events_rg_iccp_groups->operation))
-	|| (events_rg_members !=  nullptr && is_set(events_rg_members->operation));
+	|| (events_rg_bundles !=  nullptr && events_rg_bundles->has_operation())
+	|| (events_rg_iccp_groups !=  nullptr && events_rg_iccp_groups->has_operation())
+	|| (events_rg_members !=  nullptr && events_rg_members->has_operation());
 }
 
 std::string BundleInformation::EventsRg::get_segment_path() const
@@ -15318,7 +15318,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15404,7 +15404,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15505,7 +15505,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::get_segment_path() const
@@ -15522,7 +15522,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15771,7 +15771,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBund
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::get_segment_path() const
@@ -15788,7 +15788,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16102,7 +16102,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16172,7 +16172,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSys
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::get_segment_path() const
@@ -16189,7 +16189,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Bun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16296,8 +16296,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_opera
 	|| is_set(partner_operational_key.operation)
 	|| is_set(partner_system_mac_address.operation)
 	|| is_set(partner_system_priority.operation)
-	|| (actor_bundle_data !=  nullptr && is_set(actor_bundle_data->operation))
-	|| (bundle_system_id !=  nullptr && is_set(bundle_system_id->operation));
+	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
+	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get_segment_path() const
@@ -16314,7 +16314,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16455,7 +16455,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16541,7 +16541,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16642,7 +16642,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::get_segment_path() const
@@ -16659,7 +16659,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16908,7 +16908,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::get_segment_path() const
@@ -16925,7 +16925,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17239,7 +17239,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17309,7 +17309,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::get_segment_path() const
@@ -17326,7 +17326,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17433,8 +17433,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 	|| is_set(partner_operational_key.operation)
 	|| is_set(partner_system_mac_address.operation)
 	|| is_set(partner_system_priority.operation)
-	|| (actor_bundle_data !=  nullptr && is_set(actor_bundle_data->operation))
-	|| (bundle_system_id !=  nullptr && is_set(bundle_system_id->operation));
+	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
+	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::get_segment_path() const
@@ -17451,7 +17451,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17592,7 +17592,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17662,7 +17662,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::get_segment_path() const
@@ -17679,7 +17679,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17785,7 +17785,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17868,8 +17868,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::get_segment_path() const
@@ -17886,7 +17886,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18007,7 +18007,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::get_segment_path() const
@@ -18024,7 +18024,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18127,7 +18127,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18197,7 +18197,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::get_segment_path() const
@@ -18214,7 +18214,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18320,7 +18320,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18403,8 +18403,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::get_segment_path() const
@@ -18421,7 +18421,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18542,7 +18542,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::get_segment_path() const
@@ -18559,7 +18559,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18662,7 +18662,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18745,7 +18745,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18825,8 +18825,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 {
     return is_set(operation)
 	|| is_set(mbr_type.operation)
-	|| (foreign !=  nullptr && is_set(foreign->operation))
-	|| (local !=  nullptr && is_set(local->operation));
+	|| (foreign !=  nullptr && foreign->has_operation())
+	|| (local !=  nullptr && local->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::get_segment_path() const
@@ -18843,7 +18843,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18993,9 +18993,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Mem
 	|| is_set(receive_machine_state.operation)
 	|| is_set(selected_aggregator_id.operation)
 	|| is_set(selection_state.operation)
-	|| (actor_info !=  nullptr && is_set(actor_info->operation))
-	|| (additional_info !=  nullptr && is_set(additional_info->operation))
-	|| (partner_info !=  nullptr && is_set(partner_info->operation));
+	|| (actor_info !=  nullptr && actor_info->has_operation())
+	|| (additional_info !=  nullptr && additional_info->has_operation())
+	|| (partner_info !=  nullptr && partner_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::get_segment_path() const
@@ -19012,7 +19012,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19197,7 +19197,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::has
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::get_segment_path() const
@@ -19214,7 +19214,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19338,7 +19338,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19408,7 +19408,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::get_segment_path() const
@@ -19425,7 +19425,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19531,7 +19531,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19614,8 +19614,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::get_segment_path() const
@@ -19632,7 +19632,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19753,7 +19753,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::get_segment_path() const
@@ -19770,7 +19770,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19873,7 +19873,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19943,7 +19943,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::System::get_segment_path() const
@@ -19960,7 +19960,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20066,7 +20066,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20149,8 +20149,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo::get_segment_path() const
@@ -20167,7 +20167,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20288,7 +20288,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::get_segment_path() const
@@ -20305,7 +20305,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20408,7 +20408,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20491,7 +20491,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20571,8 +20571,8 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 {
     return is_set(operation)
 	|| is_set(mbr_type.operation)
-	|| (foreign !=  nullptr && is_set(foreign->operation))
-	|| (local !=  nullptr && is_set(local->operation));
+	|| (foreign !=  nullptr && foreign->has_operation())
+	|| (local !=  nullptr && local->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo::get_segment_path() const
@@ -20589,7 +20589,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20742,9 +20742,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 	|| is_set(receive_machine_state.operation)
 	|| is_set(selected_aggregator_id.operation)
 	|| is_set(selection_state.operation)
-	|| (actor_info !=  nullptr && is_set(actor_info->operation))
-	|| (additional_info !=  nullptr && is_set(additional_info->operation))
-	|| (partner_info !=  nullptr && is_set(partner_info->operation));
+	|| (actor_info !=  nullptr && actor_info->has_operation())
+	|| (additional_info !=  nullptr && additional_info->has_operation())
+	|| (partner_info !=  nullptr && partner_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::get_segment_path() const
@@ -20761,7 +20761,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20962,7 +20962,7 @@ EntityPath BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21063,9 +21063,9 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (lacp_bundle_children_members !=  nullptr && is_set(lacp_bundle_children_members->operation))
-	|| (lacp_bundle_descendant !=  nullptr && is_set(lacp_bundle_descendant->operation))
-	|| (lacp_bundle_item !=  nullptr && is_set(lacp_bundle_item->operation));
+	|| (lacp_bundle_children_members !=  nullptr && lacp_bundle_children_members->has_operation())
+	|| (lacp_bundle_descendant !=  nullptr && lacp_bundle_descendant->has_operation())
+	|| (lacp_bundle_item !=  nullptr && lacp_bundle_item->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpBundles::LacpBundle::get_segment_path() const
@@ -21339,7 +21339,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21425,7 +21425,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21526,7 +21526,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::BfdConfig::get_segment_path() const
@@ -21543,7 +21543,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21792,7 +21792,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData::get_segment_path() const
@@ -21809,7 +21809,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22123,7 +22123,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22193,7 +22193,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId::get_segment_path() const
@@ -22210,7 +22210,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22317,8 +22317,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 	|| is_set(partner_operational_key.operation)
 	|| is_set(partner_system_mac_address.operation)
 	|| is_set(partner_system_priority.operation)
-	|| (actor_bundle_data !=  nullptr && is_set(actor_bundle_data->operation))
-	|| (bundle_system_id !=  nullptr && is_set(bundle_system_id->operation));
+	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
+	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::get_segment_path() const
@@ -22335,7 +22335,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22476,7 +22476,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22546,7 +22546,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::System::get_segment_path() const
@@ -22563,7 +22563,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22669,7 +22669,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22752,8 +22752,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::PortInfo::get_segment_path() const
@@ -22770,7 +22770,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22891,7 +22891,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::ActorInfo::get_segment_path() const
@@ -22908,7 +22908,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23011,7 +23011,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23081,7 +23081,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::System::get_segment_path() const
@@ -23098,7 +23098,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23204,7 +23204,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23287,8 +23287,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::PortInfo::get_segment_path() const
@@ -23305,7 +23305,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23426,7 +23426,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::PartnerInfo::get_segment_path() const
@@ -23443,7 +23443,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23546,7 +23546,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23629,7 +23629,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23709,8 +23709,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 {
     return is_set(operation)
 	|| is_set(mbr_type.operation)
-	|| (foreign !=  nullptr && is_set(foreign->operation))
-	|| (local !=  nullptr && is_set(local->operation));
+	|| (foreign !=  nullptr && foreign->has_operation())
+	|| (local !=  nullptr && local->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::AdditionalInfo::get_segment_path() const
@@ -23727,7 +23727,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23877,9 +23877,9 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Membe
 	|| is_set(receive_machine_state.operation)
 	|| is_set(selected_aggregator_id.operation)
 	|| is_set(selection_state.operation)
-	|| (actor_info !=  nullptr && is_set(actor_info->operation))
-	|| (additional_info !=  nullptr && is_set(additional_info->operation))
-	|| (partner_info !=  nullptr && is_set(partner_info->operation));
+	|| (actor_info !=  nullptr && actor_info->has_operation())
+	|| (additional_info !=  nullptr && additional_info->has_operation())
+	|| (partner_info !=  nullptr && partner_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::MemberData::get_segment_path() const
@@ -23896,7 +23896,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24081,7 +24081,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::has_o
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::get_segment_path() const
@@ -24098,7 +24098,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24222,7 +24222,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24292,7 +24292,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::System::get_segment_path() const
@@ -24309,7 +24309,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24415,7 +24415,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24498,8 +24498,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::PortInfo::get_segment_path() const
@@ -24516,7 +24516,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24637,7 +24637,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::ActorInfo::get_segment_path() const
@@ -24654,7 +24654,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Act
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24757,7 +24757,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Par
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24827,7 +24827,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerIn
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::System::get_segment_path() const
@@ -24844,7 +24844,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Par
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24950,7 +24950,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Par
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25033,8 +25033,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerIn
     return is_set(operation)
 	|| is_set(key.operation)
 	|| is_set(state.operation)
-	|| (port !=  nullptr && is_set(port->operation))
-	|| (system !=  nullptr && is_set(system->operation));
+	|| (port !=  nullptr && port->has_operation())
+	|| (system !=  nullptr && system->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::PortInfo::get_segment_path() const
@@ -25051,7 +25051,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Par
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25172,7 +25172,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerIn
 {
     return is_set(operation)
 	|| is_set(tx_period.operation)
-	|| (port_info !=  nullptr && is_set(port_info->operation));
+	|| (port_info !=  nullptr && port_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::PartnerInfo::get_segment_path() const
@@ -25189,7 +25189,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Par
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25292,7 +25292,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25375,7 +25375,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25455,8 +25455,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Additiona
 {
     return is_set(operation)
 	|| is_set(mbr_type.operation)
-	|| (foreign !=  nullptr && is_set(foreign->operation))
-	|| (local !=  nullptr && is_set(local->operation));
+	|| (foreign !=  nullptr && foreign->has_operation())
+	|| (local !=  nullptr && local->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::AdditionalInfo::get_segment_path() const
@@ -25473,7 +25473,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::Add
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25623,9 +25623,9 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::has_opera
 	|| is_set(receive_machine_state.operation)
 	|| is_set(selected_aggregator_id.operation)
 	|| is_set(selection_state.operation)
-	|| (actor_info !=  nullptr && is_set(actor_info->operation))
-	|| (additional_info !=  nullptr && is_set(additional_info->operation))
-	|| (partner_info !=  nullptr && is_set(partner_info->operation));
+	|| (actor_info !=  nullptr && actor_info->has_operation())
+	|| (additional_info !=  nullptr && additional_info->has_operation())
+	|| (partner_info !=  nullptr && partner_info->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::get_segment_path() const
@@ -25642,7 +25642,7 @@ EntityPath BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberItem::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25826,8 +25826,8 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::has_operation() const
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (lacp_member_ancestor !=  nullptr && is_set(lacp_member_ancestor->operation))
-	|| (lacp_member_item !=  nullptr && is_set(lacp_member_item->operation));
+	|| (lacp_member_ancestor !=  nullptr && lacp_member_ancestor->has_operation())
+	|| (lacp_member_item !=  nullptr && lacp_member_item->has_operation());
 }
 
 std::string BundleInformation::Lacp::LacpMembers::LacpMember::get_segment_path() const
@@ -26069,8 +26069,8 @@ bool BundleInformation::Lacp::has_data() const
 bool BundleInformation::Lacp::has_operation() const
 {
     return is_set(operation)
-	|| (lacp_bundles !=  nullptr && is_set(lacp_bundles->operation))
-	|| (lacp_members !=  nullptr && is_set(lacp_members->operation));
+	|| (lacp_bundles !=  nullptr && lacp_bundles->has_operation())
+	|| (lacp_members !=  nullptr && lacp_members->has_operation());
 }
 
 std::string BundleInformation::Lacp::get_segment_path() const
@@ -26214,7 +26214,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26297,7 +26297,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -26314,7 +26314,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26428,7 +26428,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26511,7 +26511,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::get_segment_path() const
@@ -26528,7 +26528,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26642,7 +26642,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26743,7 +26743,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -26760,7 +26760,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26888,7 +26888,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::BundleData::get_segment_path() const
@@ -26905,7 +26905,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27013,8 +27013,8 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
     }
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_local_bundles->operation))
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && mlacp_sync_requests_on_all_local_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupData::get_segment_path() const
@@ -27031,7 +27031,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27189,7 +27189,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27272,7 +27272,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -27289,7 +27289,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27403,7 +27403,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27486,7 +27486,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::get_segment_path() const
@@ -27503,7 +27503,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27606,8 +27606,8 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_bundles->operation))
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation));
+	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::NodeData_::get_segment_path() const
@@ -27624,7 +27624,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27756,7 +27756,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27857,7 +27857,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -27874,7 +27874,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28002,7 +28002,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::BundleData::get_segment_path() const
@@ -28019,7 +28019,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28118,7 +28118,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
             return true;
     }
     return is_set(operation)
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::NodeData::get_segment_path() const
@@ -28135,7 +28135,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28255,7 +28255,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupIte
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGroupItem::get_segment_path() const
@@ -28272,7 +28272,7 @@ EntityPath BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28386,7 +28386,7 @@ bool BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::has_operatio
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (iccp_group_item !=  nullptr && is_set(iccp_group_item->operation));
+	|| (iccp_group_item !=  nullptr && iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::get_segment_path() const
@@ -28620,7 +28620,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28703,7 +28703,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -28720,7 +28720,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28834,7 +28834,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28917,7 +28917,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::get_segment_path() const
@@ -28934,7 +28934,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29048,7 +29048,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29149,7 +29149,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -29166,7 +29166,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29294,7 +29294,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::BundleData::get_segment_path() const
@@ -29311,7 +29311,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29419,8 +29419,8 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
     }
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_local_bundles->operation))
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && mlacp_sync_requests_on_all_local_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::IccpGroupData::get_segment_path() const
@@ -29437,7 +29437,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29595,7 +29595,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29678,7 +29678,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -29695,7 +29695,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29809,7 +29809,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29892,7 +29892,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::get_segment_path() const
@@ -29909,7 +29909,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30012,8 +30012,8 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_bundles->operation))
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation));
+	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::NodeData_::get_segment_path() const
@@ -30030,7 +30030,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30162,7 +30162,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30263,7 +30263,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -30280,7 +30280,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30408,7 +30408,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::BundleData::get_segment_path() const
@@ -30425,7 +30425,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30524,7 +30524,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
             return true;
     }
     return is_set(operation)
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::NodeData::get_segment_path() const
@@ -30541,7 +30541,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30661,7 +30661,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGr
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::IccpGroup::get_segment_path() const
@@ -30678,7 +30678,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30809,7 +30809,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30900,7 +30900,7 @@ bool BundleInformation::MlacpBundleCounters::Bundles::Bundle::has_operation() co
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (bundle_item !=  nullptr && is_set(bundle_item->operation));
+	|| (bundle_item !=  nullptr && bundle_item->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::get_segment_path() const
@@ -31134,7 +31134,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31217,7 +31217,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -31234,7 +31234,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31348,7 +31348,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31431,7 +31431,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::MlacpSyncRequestsOnAllLocalBundles::get_segment_path() const
@@ -31448,7 +31448,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31562,7 +31562,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31663,7 +31663,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -31680,7 +31680,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31808,7 +31808,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::BundleData::get_segment_path() const
@@ -31825,7 +31825,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31933,8 +31933,8 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupDat
     }
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_local_bundles->operation))
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_bundles !=  nullptr && mlacp_sync_requests_on_all_local_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGroupData::get_segment_path() const
@@ -31951,7 +31951,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32109,7 +32109,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32192,7 +32192,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::No
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -32209,7 +32209,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32323,7 +32323,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32406,7 +32406,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::No
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::MlacpSyncRequestsOnAllForeignBundles::get_segment_path() const
@@ -32423,7 +32423,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32526,8 +32526,8 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::No
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_bundles->operation))
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation));
+	|| (mlacp_sync_requests_on_all_foreign_bundles !=  nullptr && mlacp_sync_requests_on_all_foreign_bundles->has_operation())
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::NodeData_::get_segment_path() const
@@ -32544,7 +32544,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32676,7 +32676,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32777,7 +32777,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::Bu
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::MlacpTlvCounters::get_segment_path() const
@@ -32794,7 +32794,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32922,7 +32922,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::Bu
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::BundleData::get_segment_path() const
@@ -32939,7 +32939,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33038,7 +33038,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::ha
             return true;
     }
     return is_set(operation)
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeData::get_segment_path() const
@@ -33055,7 +33055,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeDa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33175,7 +33175,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::has_operatio
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::get_segment_path() const
@@ -33192,7 +33192,7 @@ EntityPath BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33306,7 +33306,7 @@ bool BundleInformation::MlacpBundleCounters::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (node_item !=  nullptr && is_set(node_item->operation));
+	|| (node_item !=  nullptr && node_item->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::Nodes::Node::get_segment_path() const
@@ -33530,9 +33530,9 @@ bool BundleInformation::MlacpBundleCounters::has_data() const
 bool BundleInformation::MlacpBundleCounters::has_operation() const
 {
     return is_set(operation)
-	|| (bundles !=  nullptr && is_set(bundles->operation))
-	|| (iccp_groups !=  nullptr && is_set(iccp_groups->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (bundles !=  nullptr && bundles->has_operation())
+	|| (iccp_groups !=  nullptr && iccp_groups->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string BundleInformation::MlacpBundleCounters::get_segment_path() const
@@ -33717,7 +33717,7 @@ EntityPath BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33871,7 +33871,7 @@ EntityPath BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBun
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34007,7 +34007,7 @@ bool BundleInformation::Protect::ProtectBundles::ProtectBundle::has_operation() 
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (protect_bundle_item !=  nullptr && is_set(protect_bundle_item->operation));
+	|| (protect_bundle_item !=  nullptr && protect_bundle_item->has_operation());
 }
 
 std::string BundleInformation::Protect::ProtectBundles::ProtectBundle::get_segment_path() const
@@ -34221,7 +34221,7 @@ bool BundleInformation::Protect::has_data() const
 bool BundleInformation::Protect::has_operation() const
 {
     return is_set(operation)
-	|| (protect_bundles !=  nullptr && is_set(protect_bundles->operation));
+	|| (protect_bundles !=  nullptr && protect_bundles->has_operation());
 }
 
 std::string BundleInformation::Protect::get_segment_path() const
@@ -34336,7 +34336,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34406,7 +34406,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::SystemId::get_segment_path() const
@@ -34423,7 +34423,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34528,7 +34528,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(node_state.operation)
 	|| is_set(version_number.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::IccpGroupData::NodeData::get_segment_path() const
@@ -34545,7 +34545,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34684,7 +34684,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34800,7 +34800,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34882,7 +34882,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
 	|| is_set(bundle_state.operation)
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(port_priority.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::BundleData::MlacpBundleData::get_segment_path() const
@@ -34899,7 +34899,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35040,7 +35040,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35176,7 +35176,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35314,7 +35314,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBu
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::MlacpBundleItemBrief::MlacpData::get_segment_path() const
@@ -35331,7 +35331,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35462,7 +35462,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::M
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35553,7 +35553,7 @@ bool BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::has_ope
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (mlacp_bundle_item_brief !=  nullptr && is_set(mlacp_bundle_item_brief->operation));
+	|| (mlacp_bundle_item_brief !=  nullptr && mlacp_bundle_item_brief->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::get_segment_path() const
@@ -35781,7 +35781,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35851,7 +35851,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::SystemId::get_segment_path() const
@@ -35868,7 +35868,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -35973,7 +35973,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(node_state.operation)
 	|| is_set(version_number.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::IccpGroupData::NodeData::get_segment_path() const
@@ -35990,7 +35990,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36129,7 +36129,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36245,7 +36245,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36327,7 +36327,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
 	|| is_set(bundle_state.operation)
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(port_priority.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::BundleData::MlacpBundleData::get_segment_path() const
@@ -36344,7 +36344,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36485,7 +36485,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36621,7 +36621,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36759,7 +36759,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::M
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::MlacpBriefIccpGroupItem::get_segment_path() const
@@ -36776,7 +36776,7 @@ EntityPath BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -36890,7 +36890,7 @@ bool BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::h
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (mlacp_brief_iccp_group_item !=  nullptr && is_set(mlacp_brief_iccp_group_item->operation));
+	|| (mlacp_brief_iccp_group_item !=  nullptr && mlacp_brief_iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpGroup::get_segment_path() const
@@ -37109,8 +37109,8 @@ bool BundleInformation::MlacpBrief::has_data() const
 bool BundleInformation::MlacpBrief::has_operation() const
 {
     return is_set(operation)
-	|| (mlacp_brief_iccp_groups !=  nullptr && is_set(mlacp_brief_iccp_groups->operation))
-	|| (mlacp_bundle_briefs !=  nullptr && is_set(mlacp_bundle_briefs->operation));
+	|| (mlacp_brief_iccp_groups !=  nullptr && mlacp_brief_iccp_groups->has_operation())
+	|| (mlacp_bundle_briefs !=  nullptr && mlacp_bundle_briefs->has_operation());
 }
 
 std::string BundleInformation::MlacpBrief::get_segment_path() const
@@ -37248,7 +37248,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37318,7 +37318,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::SystemId::get_segment_path() const
@@ -37335,7 +37335,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37440,7 +37440,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(node_state.operation)
 	|| is_set(version_number.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::IccpGroupData::NodeData::get_segment_path() const
@@ -37457,7 +37457,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37596,7 +37596,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37712,7 +37712,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37794,7 +37794,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
 	|| is_set(bundle_state.operation)
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(port_priority.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::BundleData::MlacpBundleData::get_segment_path() const
@@ -37811,7 +37811,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -37952,7 +37952,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38088,7 +38088,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38226,7 +38226,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::Mlacp
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem::MlacpData::get_segment_path() const
@@ -38243,7 +38243,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38374,7 +38374,7 @@ EntityPath BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38465,7 +38465,7 @@ bool BundleInformation::Mlacp::MlacpBundles::MlacpBundle::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (mlacp_bundle_item !=  nullptr && is_set(mlacp_bundle_item->operation));
+	|| (mlacp_bundle_item !=  nullptr && mlacp_bundle_item->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::get_segment_path() const
@@ -38693,7 +38693,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38763,7 +38763,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::get_segment_path() const
@@ -38780,7 +38780,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -38885,7 +38885,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(node_state.operation)
 	|| is_set(version_number.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::get_segment_path() const
@@ -38902,7 +38902,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39041,7 +39041,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39157,7 +39157,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39239,7 +39239,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
 	|| is_set(bundle_state.operation)
 	|| is_set(mlacp_node_id.operation)
 	|| is_set(port_priority.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::get_segment_path() const
@@ -39256,7 +39256,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39397,7 +39397,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39533,7 +39533,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39671,7 +39671,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupIt
             return true;
     }
     return is_set(operation)
-	|| (iccp_group_data !=  nullptr && is_set(iccp_group_data->operation));
+	|| (iccp_group_data !=  nullptr && iccp_group_data->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::get_segment_path() const
@@ -39688,7 +39688,7 @@ EntityPath BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpG
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -39802,7 +39802,7 @@ bool BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::has_operation() 
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (mlacp_iccp_group_item !=  nullptr && is_set(mlacp_iccp_group_item->operation));
+	|| (mlacp_iccp_group_item !=  nullptr && mlacp_iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::get_segment_path() const
@@ -40021,8 +40021,8 @@ bool BundleInformation::Mlacp::has_data() const
 bool BundleInformation::Mlacp::has_operation() const
 {
     return is_set(operation)
-	|| (mlacp_bundles !=  nullptr && is_set(mlacp_bundles->operation))
-	|| (mlacp_iccp_groups !=  nullptr && is_set(mlacp_iccp_groups->operation));
+	|| (mlacp_bundles !=  nullptr && mlacp_bundles->has_operation())
+	|| (mlacp_iccp_groups !=  nullptr && mlacp_iccp_groups->has_operation());
 }
 
 std::string BundleInformation::Mlacp::get_segment_path() const
@@ -40334,7 +40334,7 @@ bool BundleInformation::MacAllocation::MacAllocationGlobal::has_data() const
 bool BundleInformation::MacAllocation::MacAllocationGlobal::has_operation() const
 {
     return is_set(operation)
-	|| (mac_allocation_global_item !=  nullptr && is_set(mac_allocation_global_item->operation));
+	|| (mac_allocation_global_item !=  nullptr && mac_allocation_global_item->has_operation());
 }
 
 std::string BundleInformation::MacAllocation::MacAllocationGlobal::get_segment_path() const
@@ -40435,7 +40435,7 @@ bool BundleInformation::MacAllocation::has_data() const
 bool BundleInformation::MacAllocation::has_operation() const
 {
     return is_set(operation)
-	|| (mac_allocation_global !=  nullptr && is_set(mac_allocation_global->operation));
+	|| (mac_allocation_global !=  nullptr && mac_allocation_global->has_operation());
 }
 
 std::string BundleInformation::MacAllocation::get_segment_path() const
@@ -40559,7 +40559,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40647,7 +40647,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::I
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::get_segment_path() const
@@ -40664,7 +40664,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40781,7 +40781,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -40869,7 +40869,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::I
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::get_segment_path() const
@@ -40886,7 +40886,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41003,7 +41003,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41091,7 +41091,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::I
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::get_segment_path() const
@@ -41108,7 +41108,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41216,9 +41216,9 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::I
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::get_segment_path() const
@@ -41235,7 +41235,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41394,7 +41394,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41509,7 +41509,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41597,7 +41597,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::get_segment_path() const
@@ -41614,7 +41614,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41731,7 +41731,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41819,7 +41819,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::get_segment_path() const
@@ -41836,7 +41836,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -41953,7 +41953,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42041,7 +42041,7 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::get_segment_path() const
@@ -42058,7 +42058,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42166,9 +42166,9 @@ bool BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncesto
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::get_segment_path() const
@@ -42185,7 +42185,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42344,7 +42344,7 @@ EntityPath BundleInformation::Events::EventsMembers::EventsMember::EventsMemberA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42445,8 +42445,8 @@ bool BundleInformation::Events::EventsMembers::EventsMember::has_operation() con
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (events_member_ancestor !=  nullptr && is_set(events_member_ancestor->operation))
-	|| (events_member_item !=  nullptr && is_set(events_member_item->operation));
+	|| (events_member_ancestor !=  nullptr && events_member_ancestor->has_operation())
+	|| (events_member_item !=  nullptr && events_member_item->has_operation());
 }
 
 std::string BundleInformation::Events::EventsMembers::EventsMember::get_segment_path() const
@@ -42706,7 +42706,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42794,7 +42794,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::get_segment_path() const
@@ -42811,7 +42811,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -42928,7 +42928,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43016,7 +43016,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::get_segment_path() const
@@ -43033,7 +43033,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43150,7 +43150,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43238,7 +43238,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::get_segment_path() const
@@ -43255,7 +43255,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43363,9 +43363,9 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncesto
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::get_segment_path() const
@@ -43382,7 +43382,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43541,7 +43541,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43656,7 +43656,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43744,7 +43744,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::I
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::get_segment_path() const
@@ -43761,7 +43761,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43878,7 +43878,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -43966,7 +43966,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::I
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::get_segment_path() const
@@ -43983,7 +43983,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44100,7 +44100,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44188,7 +44188,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::I
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::get_segment_path() const
@@ -44205,7 +44205,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44313,9 +44313,9 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::I
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::get_segment_path() const
@@ -44332,7 +44332,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44491,7 +44491,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44606,7 +44606,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44694,7 +44694,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::get_segment_path() const
@@ -44711,7 +44711,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44828,7 +44828,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -44916,7 +44916,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::get_segment_path() const
@@ -44933,7 +44933,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45050,7 +45050,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45138,7 +45138,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::get_segment_path() const
@@ -45155,7 +45155,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45263,9 +45263,9 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescend
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::get_segment_path() const
@@ -45282,7 +45282,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45441,7 +45441,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45554,7 +45554,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45664,7 +45664,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45752,7 +45752,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::get_segment_path() const
@@ -45769,7 +45769,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45886,7 +45886,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -45974,7 +45974,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::get_segment_path() const
@@ -45991,7 +45991,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46108,7 +46108,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46196,7 +46196,7 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::get_segment_path() const
@@ -46213,7 +46213,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46321,9 +46321,9 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildre
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::get_segment_path() const
@@ -46340,7 +46340,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46502,7 +46502,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46620,7 +46620,7 @@ EntityPath BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleC
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -46726,10 +46726,10 @@ bool BundleInformation::Events::EventsBundles::EventsBundle::has_operation() con
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (events_bundle_ancestor !=  nullptr && is_set(events_bundle_ancestor->operation))
-	|| (events_bundle_children_members !=  nullptr && is_set(events_bundle_children_members->operation))
-	|| (events_bundle_descendant !=  nullptr && is_set(events_bundle_descendant->operation))
-	|| (events_bundle_item !=  nullptr && is_set(events_bundle_item->operation));
+	|| (events_bundle_ancestor !=  nullptr && events_bundle_ancestor->has_operation())
+	|| (events_bundle_children_members !=  nullptr && events_bundle_children_members->has_operation())
+	|| (events_bundle_descendant !=  nullptr && events_bundle_descendant->has_operation())
+	|| (events_bundle_item !=  nullptr && events_bundle_item->has_operation());
 }
 
 std::string BundleInformation::Events::EventsBundles::EventsBundle::get_segment_path() const
@@ -47017,8 +47017,8 @@ bool BundleInformation::Events::has_data() const
 bool BundleInformation::Events::has_operation() const
 {
     return is_set(operation)
-	|| (events_bundles !=  nullptr && is_set(events_bundles->operation))
-	|| (events_members !=  nullptr && is_set(events_members->operation));
+	|| (events_bundles !=  nullptr && events_bundles->has_operation())
+	|| (events_members !=  nullptr && events_members->has_operation());
 }
 
 std::string BundleInformation::Events::get_segment_path() const
@@ -47165,7 +47165,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47253,7 +47253,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::get_segment_path() const
@@ -47270,7 +47270,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47387,7 +47387,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47475,7 +47475,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::get_segment_path() const
@@ -47492,7 +47492,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47609,7 +47609,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47697,7 +47697,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::get_segment_path() const
@@ -47714,7 +47714,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -47822,9 +47822,9 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlM
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::get_segment_path() const
@@ -47841,7 +47841,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48000,7 +48000,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48096,7 +48096,7 @@ bool BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::has_operat
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (events_bdl_member_ancestor !=  nullptr && is_set(events_bdl_member_ancestor->operation));
+	|| (events_bdl_member_ancestor !=  nullptr && events_bdl_member_ancestor->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::get_segment_path() const
@@ -48333,7 +48333,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48421,7 +48421,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::get_segment_path() const
@@ -48438,7 +48438,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48555,7 +48555,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48643,7 +48643,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::get_segment_path() const
@@ -48660,7 +48660,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48777,7 +48777,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48865,7 +48865,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::get_segment_path() const
@@ -48882,7 +48882,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -48990,9 +48990,9 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlB
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::get_segment_path() const
@@ -49009,7 +49009,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49168,7 +49168,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49264,7 +49264,7 @@ bool BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::has_operat
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (events_bdl_bundle_item !=  nullptr && is_set(events_bdl_bundle_item->operation));
+	|| (events_bdl_bundle_item !=  nullptr && events_bdl_bundle_item->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::get_segment_path() const
@@ -49501,7 +49501,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49589,7 +49589,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::get_segment_path() const
@@ -49606,7 +49606,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49723,7 +49723,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49811,7 +49811,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::get_segment_path() const
@@ -49828,7 +49828,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -49945,7 +49945,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50033,7 +50033,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::get_segment_path() const
@@ -50050,7 +50050,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50158,9 +50158,9 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::Even
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::get_segment_path() const
@@ -50177,7 +50177,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50336,7 +50336,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50449,7 +50449,7 @@ EntityPath BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -50540,7 +50540,7 @@ bool BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::has_
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (events_bdl_bundle_descendant_iccp_group !=  nullptr && is_set(events_bdl_bundle_descendant_iccp_group->operation));
+	|| (events_bdl_bundle_descendant_iccp_group !=  nullptr && events_bdl_bundle_descendant_iccp_group->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::get_segment_path() const
@@ -50764,9 +50764,9 @@ bool BundleInformation::EventsBdl::has_data() const
 bool BundleInformation::EventsBdl::has_operation() const
 {
     return is_set(operation)
-	|| (events_bdl_bundles !=  nullptr && is_set(events_bdl_bundles->operation))
-	|| (events_bdl_iccp_groups !=  nullptr && is_set(events_bdl_iccp_groups->operation))
-	|| (events_bdl_members !=  nullptr && is_set(events_bdl_members->operation));
+	|| (events_bdl_bundles !=  nullptr && events_bdl_bundles->has_operation())
+	|| (events_bdl_iccp_groups !=  nullptr && events_bdl_iccp_groups->has_operation())
+	|| (events_bdl_members !=  nullptr && events_bdl_members->has_operation());
 }
 
 std::string BundleInformation::EventsBdl::get_segment_path() const
@@ -50927,7 +50927,7 @@ EntityPath BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAdd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51013,7 +51013,7 @@ EntityPath BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdCon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51114,7 +51114,7 @@ bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::h
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::get_segment_path() const
@@ -51131,7 +51131,7 @@ EntityPath BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdCon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51380,7 +51380,7 @@ bool BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::has_operatio
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::get_segment_path() const
@@ -51397,7 +51397,7 @@ EntityPath BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -51701,7 +51701,7 @@ bool BundleInformation::BundleBriefs::BundleBrief::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (bundle_brief_item !=  nullptr && is_set(bundle_brief_item->operation));
+	|| (bundle_brief_item !=  nullptr && bundle_brief_item->has_operation());
 }
 
 std::string BundleInformation::BundleBriefs::BundleBrief::get_segment_path() const
@@ -51938,7 +51938,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52026,7 +52026,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::get_segment_path() const
@@ -52043,7 +52043,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52160,7 +52160,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52248,7 +52248,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::get_segment_path() const
@@ -52265,7 +52265,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52382,7 +52382,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52470,7 +52470,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::get_segment_path() const
@@ -52487,7 +52487,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52595,9 +52595,9 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::get_segment_path() const
@@ -52614,7 +52614,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52776,7 +52776,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -52894,7 +52894,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53004,7 +53004,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53092,7 +53092,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::get_segment_path() const
@@ -53109,7 +53109,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53226,7 +53226,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53314,7 +53314,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::get_segment_path() const
@@ -53331,7 +53331,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53448,7 +53448,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53536,7 +53536,7 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::get_segment_path() const
@@ -53553,7 +53553,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53661,9 +53661,9 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrB
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::get_segment_path() const
@@ -53680,7 +53680,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53839,7 +53839,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -53952,7 +53952,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54048,8 +54048,8 @@ bool BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::has_operat
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (events_mbr_bundle_children_members !=  nullptr && is_set(events_mbr_bundle_children_members->operation))
-	|| (events_mbr_bundle_descendant !=  nullptr && is_set(events_mbr_bundle_descendant->operation));
+	|| (events_mbr_bundle_children_members !=  nullptr && events_mbr_bundle_children_members->has_operation())
+	|| (events_mbr_bundle_descendant !=  nullptr && events_mbr_bundle_descendant->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::get_segment_path() const
@@ -54309,7 +54309,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54397,7 +54397,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::get_segment_path() const
@@ -54414,7 +54414,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54531,7 +54531,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54619,7 +54619,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::get_segment_path() const
@@ -54636,7 +54636,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54753,7 +54753,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54841,7 +54841,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::get_segment_path() const
@@ -54858,7 +54858,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -54966,9 +54966,9 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrM
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::get_segment_path() const
@@ -54985,7 +54985,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55144,7 +55144,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::Even
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55240,7 +55240,7 @@ bool BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::has_operat
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (events_mbr_member_item !=  nullptr && is_set(events_mbr_member_item->operation));
+	|| (events_mbr_member_item !=  nullptr && events_mbr_member_item->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::get_segment_path() const
@@ -55477,7 +55477,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55565,7 +55565,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::get_segment_path() const
@@ -55582,7 +55582,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55699,7 +55699,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55787,7 +55787,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::get_segment_path() const
@@ -55804,7 +55804,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -55921,7 +55921,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56009,7 +56009,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::get_segment_path() const
@@ -56026,7 +56026,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56134,9 +56134,9 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::get_segment_path() const
@@ -56153,7 +56153,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56315,7 +56315,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56433,7 +56433,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56543,7 +56543,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56631,7 +56631,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(member_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::get_segment_path() const
@@ -56648,7 +56648,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56765,7 +56765,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56853,7 +56853,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(bundle_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::get_segment_path() const
@@ -56870,7 +56870,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -56987,7 +56987,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57075,7 +57075,7 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
     return is_set(operation)
 	|| is_set(rg_event_type.operation)
 	|| is_set(time_stamp.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::get_segment_path() const
@@ -57092,7 +57092,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57200,9 +57200,9 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Even
 {
     return is_set(operation)
 	|| is_set(event_type.operation)
-	|| (bundle_evt_info !=  nullptr && is_set(bundle_evt_info->operation))
-	|| (member_evt_info !=  nullptr && is_set(member_evt_info->operation))
-	|| (rg_evt_info !=  nullptr && is_set(rg_evt_info->operation));
+	|| (bundle_evt_info !=  nullptr && bundle_evt_info->has_operation())
+	|| (member_evt_info !=  nullptr && member_evt_info->has_operation())
+	|| (rg_evt_info !=  nullptr && rg_evt_info->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::get_segment_path() const
@@ -57219,7 +57219,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57378,7 +57378,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57491,7 +57491,7 @@ EntityPath BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -57587,8 +57587,8 @@ bool BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::has_
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (events_mbr_bundle_children_member_iccp_groups !=  nullptr && is_set(events_mbr_bundle_children_member_iccp_groups->operation))
-	|| (events_mbr_bundle_descendant_iccp_group !=  nullptr && is_set(events_mbr_bundle_descendant_iccp_group->operation));
+	|| (events_mbr_bundle_children_member_iccp_groups !=  nullptr && events_mbr_bundle_children_member_iccp_groups->has_operation())
+	|| (events_mbr_bundle_descendant_iccp_group !=  nullptr && events_mbr_bundle_descendant_iccp_group->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::get_segment_path() const
@@ -57835,9 +57835,9 @@ bool BundleInformation::EventsMbr::has_data() const
 bool BundleInformation::EventsMbr::has_operation() const
 {
     return is_set(operation)
-	|| (events_mbr_bundles !=  nullptr && is_set(events_mbr_bundles->operation))
-	|| (events_mbr_iccp_groups !=  nullptr && is_set(events_mbr_iccp_groups->operation))
-	|| (events_mbr_members !=  nullptr && is_set(events_mbr_members->operation));
+	|| (events_mbr_bundles !=  nullptr && events_mbr_bundles->has_operation())
+	|| (events_mbr_iccp_groups !=  nullptr && events_mbr_iccp_groups->has_operation())
+	|| (events_mbr_members !=  nullptr && events_mbr_members->has_operation());
 }
 
 std::string BundleInformation::EventsMbr::get_segment_path() const
@@ -58025,7 +58025,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58195,7 +58195,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58362,7 +58362,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58471,7 +58471,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58596,7 +58596,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58742,11 +58742,11 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 	|| is_set(last_time_cleared.operation)
 	|| is_set(last_unexpected_event.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (connection !=  nullptr && is_set(connection->operation))
-	|| (iccp_events !=  nullptr && is_set(iccp_events->operation))
-	|| (iccp_messages !=  nullptr && is_set(iccp_messages->operation))
-	|| (invalid_tl_vs !=  nullptr && is_set(invalid_tl_vs->operation))
-	|| (tl_vs !=  nullptr && is_set(tl_vs->operation));
+	|| (connection !=  nullptr && connection->has_operation())
+	|| (iccp_events !=  nullptr && iccp_events->has_operation())
+	|| (iccp_messages !=  nullptr && iccp_messages->has_operation())
+	|| (invalid_tl_vs !=  nullptr && invalid_tl_vs->has_operation())
+	|| (tl_vs !=  nullptr && tl_vs->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::get_segment_path() const
@@ -58763,7 +58763,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -58958,7 +58958,7 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 {
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (iccp_group_counters !=  nullptr && is_set(iccp_group_counters->operation));
+	|| (iccp_group_counters !=  nullptr && iccp_group_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::get_segment_path() const
@@ -58975,7 +58975,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59105,7 +59105,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59275,7 +59275,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59442,7 +59442,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59551,7 +59551,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59676,7 +59676,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -59822,11 +59822,11 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 	|| is_set(last_time_cleared.operation)
 	|| is_set(last_unexpected_event.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (connection !=  nullptr && is_set(connection->operation))
-	|| (iccp_events !=  nullptr && is_set(iccp_events->operation))
-	|| (iccp_messages !=  nullptr && is_set(iccp_messages->operation))
-	|| (invalid_tl_vs !=  nullptr && is_set(invalid_tl_vs->operation))
-	|| (tl_vs !=  nullptr && is_set(tl_vs->operation));
+	|| (connection !=  nullptr && connection->has_operation())
+	|| (iccp_events !=  nullptr && iccp_events->has_operation())
+	|| (iccp_messages !=  nullptr && iccp_messages->has_operation())
+	|| (invalid_tl_vs !=  nullptr && invalid_tl_vs->has_operation())
+	|| (tl_vs !=  nullptr && tl_vs->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::get_segment_path() const
@@ -59843,7 +59843,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60038,7 +60038,7 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 {
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (iccp_group_counters !=  nullptr && is_set(iccp_group_counters->operation));
+	|| (iccp_group_counters !=  nullptr && iccp_group_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::get_segment_path() const
@@ -60055,7 +60055,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60185,7 +60185,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60355,7 +60355,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60522,7 +60522,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60631,7 +60631,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60756,7 +60756,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -60902,11 +60902,11 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 	|| is_set(last_time_cleared.operation)
 	|| is_set(last_unexpected_event.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (connection !=  nullptr && is_set(connection->operation))
-	|| (iccp_events !=  nullptr && is_set(iccp_events->operation))
-	|| (iccp_messages !=  nullptr && is_set(iccp_messages->operation))
-	|| (invalid_tl_vs !=  nullptr && is_set(invalid_tl_vs->operation))
-	|| (tl_vs !=  nullptr && is_set(tl_vs->operation));
+	|| (connection !=  nullptr && connection->has_operation())
+	|| (iccp_events !=  nullptr && iccp_events->has_operation())
+	|| (iccp_messages !=  nullptr && iccp_messages->has_operation())
+	|| (invalid_tl_vs !=  nullptr && invalid_tl_vs->has_operation())
+	|| (tl_vs !=  nullptr && tl_vs->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::get_segment_path() const
@@ -60923,7 +60923,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61118,7 +61118,7 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 {
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (iccp_group_counters !=  nullptr && is_set(iccp_group_counters->operation));
+	|| (iccp_group_counters !=  nullptr && iccp_group_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::get_segment_path() const
@@ -61135,7 +61135,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61265,7 +61265,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61435,7 +61435,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61602,7 +61602,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61711,7 +61711,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61836,7 +61836,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -61982,11 +61982,11 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 	|| is_set(last_time_cleared.operation)
 	|| is_set(last_unexpected_event.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (connection !=  nullptr && is_set(connection->operation))
-	|| (iccp_events !=  nullptr && is_set(iccp_events->operation))
-	|| (iccp_messages !=  nullptr && is_set(iccp_messages->operation))
-	|| (invalid_tl_vs !=  nullptr && is_set(invalid_tl_vs->operation))
-	|| (tl_vs !=  nullptr && is_set(tl_vs->operation));
+	|| (connection !=  nullptr && connection->has_operation())
+	|| (iccp_events !=  nullptr && iccp_events->has_operation())
+	|| (iccp_messages !=  nullptr && iccp_messages->has_operation())
+	|| (invalid_tl_vs !=  nullptr && invalid_tl_vs->has_operation())
+	|| (tl_vs !=  nullptr && tl_vs->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::get_segment_path() const
@@ -62003,7 +62003,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62198,7 +62198,7 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroup
 {
     return is_set(operation)
 	|| is_set(iccp_group_id.operation)
-	|| (iccp_group_counters !=  nullptr && is_set(iccp_group_counters->operation));
+	|| (iccp_group_counters !=  nullptr && iccp_group_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::get_segment_path() const
@@ -62215,7 +62215,7 @@ EntityPath BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::Icc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -62323,10 +62323,10 @@ bool BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::has_opera
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (iccp_group_ancestor_bundle !=  nullptr && is_set(iccp_group_ancestor_bundle->operation))
-	|| (iccp_group_ancestor_member !=  nullptr && is_set(iccp_group_ancestor_member->operation))
-	|| (iccp_group_ancestor_node !=  nullptr && is_set(iccp_group_ancestor_node->operation))
-	|| (iccp_group_item !=  nullptr && is_set(iccp_group_item->operation));
+	|| (iccp_group_ancestor_bundle !=  nullptr && iccp_group_ancestor_bundle->has_operation())
+	|| (iccp_group_ancestor_member !=  nullptr && iccp_group_ancestor_member->has_operation())
+	|| (iccp_group_ancestor_node !=  nullptr && iccp_group_ancestor_node->has_operation())
+	|| (iccp_group_item !=  nullptr && iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::get_segment_path() const
@@ -62609,7 +62609,7 @@ bool BundleInformation::MlacpIccpGroupCounters::has_data() const
 bool BundleInformation::MlacpIccpGroupCounters::has_operation() const
 {
     return is_set(operation)
-	|| (iccp_groups !=  nullptr && is_set(iccp_groups->operation));
+	|| (iccp_groups !=  nullptr && iccp_groups->has_operation());
 }
 
 std::string BundleInformation::MlacpIccpGroupCounters::get_segment_path() const
@@ -62794,7 +62794,7 @@ bool BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::SystemId_:
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::SystemId_::get_segment_path() const
@@ -62910,7 +62910,7 @@ bool BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::has_operat
 	|| is_set(iccp_group_id.operation)
 	|| is_set(system_mac_address.operation)
 	|| is_set(system_priority.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::get_segment_path() const
@@ -63026,7 +63026,7 @@ bool BundleInformation::SystemId::SystemIdGlobal::has_data() const
 bool BundleInformation::SystemId::SystemIdGlobal::has_operation() const
 {
     return is_set(operation)
-	|| (system_id_global_item !=  nullptr && is_set(system_id_global_item->operation));
+	|| (system_id_global_item !=  nullptr && system_id_global_item->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdGlobal::get_segment_path() const
@@ -63141,7 +63141,7 @@ EntityPath BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63211,7 +63211,7 @@ bool BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemI
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemIdIccpGroupItem::SystemId_::get_segment_path() const
@@ -63228,7 +63228,7 @@ EntityPath BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63327,7 +63327,7 @@ bool BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemI
 	|| is_set(iccp_group_id.operation)
 	|| is_set(system_mac_address.operation)
 	|| is_set(system_priority.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemIdIccpGroupItem::get_segment_path() const
@@ -63344,7 +63344,7 @@ EntityPath BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63447,7 +63447,7 @@ bool BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::has_ope
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (system_id_iccp_group_item !=  nullptr && is_set(system_id_iccp_group_item->operation));
+	|| (system_id_iccp_group_item !=  nullptr && system_id_iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::get_segment_path() const
@@ -63666,8 +63666,8 @@ bool BundleInformation::SystemId::has_data() const
 bool BundleInformation::SystemId::has_operation() const
 {
     return is_set(operation)
-	|| (system_id_global !=  nullptr && is_set(system_id_global->operation))
-	|| (system_id_iccp_groups !=  nullptr && is_set(system_id_iccp_groups->operation));
+	|| (system_id_global !=  nullptr && system_id_global->has_operation())
+	|| (system_id_iccp_groups !=  nullptr && system_id_iccp_groups->has_operation());
 }
 
 std::string BundleInformation::SystemId::get_segment_path() const
@@ -63811,7 +63811,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -63894,7 +63894,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -63911,7 +63911,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64012,7 +64012,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(bundle_name.operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData::get_segment_path() const
@@ -64029,7 +64029,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64140,7 +64140,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64231,7 +64231,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64314,7 +64314,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -64331,7 +64331,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64445,7 +64445,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64546,7 +64546,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -64563,7 +64563,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64691,7 +64691,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData::get_segment_path() const
@@ -64708,7 +64708,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64812,8 +64812,8 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
             return true;
     }
     return is_set(operation)
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation))
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation())
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::get_segment_path() const
@@ -64830,7 +64830,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -64983,7 +64983,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65084,7 +65084,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -65101,7 +65101,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65229,7 +65229,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData::get_segment_path() const
@@ -65246,7 +65246,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65355,7 +65355,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIte
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::get_segment_path() const
@@ -65372,7 +65372,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65529,7 +65529,7 @@ EntityPath BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65620,7 +65620,7 @@ bool BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::has_operatio
 {
     return is_set(operation)
 	|| is_set(iccp_group.operation)
-	|| (iccp_group_item !=  nullptr && is_set(iccp_group_item->operation));
+	|| (iccp_group_item !=  nullptr && iccp_group_item->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::get_segment_path() const
@@ -65854,7 +65854,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -65937,7 +65937,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -65954,7 +65954,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66055,7 +66055,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
     return is_set(operation)
 	|| is_set(bundle_name.operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData::get_segment_path() const
@@ -66072,7 +66072,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66183,7 +66183,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66274,7 +66274,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66357,7 +66357,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -66374,7 +66374,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66488,7 +66488,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66589,7 +66589,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -66606,7 +66606,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66734,7 +66734,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData::get_segment_path() const
@@ -66751,7 +66751,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -66855,8 +66855,8 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
             return true;
     }
     return is_set(operation)
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation))
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation())
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::get_segment_path() const
@@ -66873,7 +66873,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67026,7 +67026,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67127,7 +67127,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -67144,7 +67144,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67272,7 +67272,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData::get_segment_path() const
@@ -67289,7 +67289,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67398,7 +67398,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items:
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::get_segment_path() const
@@ -67415,7 +67415,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67572,7 +67572,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67663,7 +67663,7 @@ bool BundleInformation::MlacpMemberCounters::Members::Member::has_operation() co
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (member_item !=  nullptr && is_set(member_item->operation));
+	|| (member_item !=  nullptr && member_item->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Members::Member::get_segment_path() const
@@ -67897,7 +67897,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -67980,7 +67980,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::Bundle
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -67997,7 +67997,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68098,7 +68098,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::Bundle
     return is_set(operation)
 	|| is_set(bundle_name.operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData::get_segment_path() const
@@ -68115,7 +68115,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68226,7 +68226,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68317,7 +68317,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68400,7 +68400,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeDa
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -68417,7 +68417,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68531,7 +68531,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68632,7 +68632,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeDa
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -68649,7 +68649,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68777,7 +68777,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeDa
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData::get_segment_path() const
@@ -68794,7 +68794,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -68898,8 +68898,8 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeDa
             return true;
     }
     return is_set(operation)
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation))
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation())
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::get_segment_path() const
@@ -68916,7 +68916,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69069,7 +69069,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69170,7 +69170,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::Member
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -69187,7 +69187,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69315,7 +69315,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::Member
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData::get_segment_path() const
@@ -69332,7 +69332,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69441,7 +69441,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::has_op
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::get_segment_path() const
@@ -69458,7 +69458,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69598,7 +69598,7 @@ bool BundleInformation::MlacpMemberCounters::Bundles::Bundle::has_operation() co
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (bundle_item !=  nullptr && is_set(bundle_item->operation));
+	|| (bundle_item !=  nullptr && bundle_item->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::get_segment_path() const
@@ -69832,7 +69832,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -69915,7 +69915,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::Bundl
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_segment_path() const
@@ -69932,7 +69932,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70033,7 +70033,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::Bundl
     return is_set(operation)
 	|| is_set(bundle_name.operation)
 	|| is_set(iccp_group_id.operation)
-	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_local_ports->operation));
+	|| (mlacp_sync_requests_on_all_local_ports !=  nullptr && mlacp_sync_requests_on_all_local_ports->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData::get_segment_path() const
@@ -70050,7 +70050,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70161,7 +70161,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70252,7 +70252,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70335,7 +70335,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeD
     return is_set(operation)
 	|| is_set(last_time_cleared.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_segment_path() const
@@ -70352,7 +70352,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70466,7 +70466,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70567,7 +70567,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeD
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -70584,7 +70584,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70712,7 +70712,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeD
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData::get_segment_path() const
@@ -70729,7 +70729,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -70833,8 +70833,8 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeD
             return true;
     }
     return is_set(operation)
-	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && is_set(mlacp_sync_requests_on_all_foreign_ports->operation))
-	|| (node_data !=  nullptr && is_set(node_data->operation));
+	|| (mlacp_sync_requests_on_all_foreign_ports !=  nullptr && mlacp_sync_requests_on_all_foreign_ports->has_operation())
+	|| (node_data !=  nullptr && node_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::get_segment_path() const
@@ -70851,7 +70851,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71004,7 +71004,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71105,7 +71105,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::Membe
 	|| is_set(sent_priority_tl_vs.operation)
 	|| is_set(sent_state_tl_vs.operation)
 	|| is_set(time_since_cleared.operation)
-	|| (received_sync_requests !=  nullptr && is_set(received_sync_requests->operation));
+	|| (received_sync_requests !=  nullptr && received_sync_requests->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData::MlacpTlvCounters::get_segment_path() const
@@ -71122,7 +71122,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71250,7 +71250,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::Membe
 {
     return is_set(operation)
 	|| is_set(port_name.operation)
-	|| (mlacp_tlv_counters !=  nullptr && is_set(mlacp_tlv_counters->operation));
+	|| (mlacp_tlv_counters !=  nullptr && mlacp_tlv_counters->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData::get_segment_path() const
@@ -71267,7 +71267,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71376,7 +71376,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::has_o
             return true;
     }
     return is_set(operation)
-	|| (bundle_data !=  nullptr && is_set(bundle_data->operation));
+	|| (bundle_data !=  nullptr && bundle_data->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::get_segment_path() const
@@ -71393,7 +71393,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71550,7 +71550,7 @@ EntityPath BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -71641,7 +71641,7 @@ bool BundleInformation::MlacpMemberCounters::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (node_item !=  nullptr && is_set(node_item->operation));
+	|| (node_item !=  nullptr && node_item->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::Nodes::Node::get_segment_path() const
@@ -71870,10 +71870,10 @@ bool BundleInformation::MlacpMemberCounters::has_data() const
 bool BundleInformation::MlacpMemberCounters::has_operation() const
 {
     return is_set(operation)
-	|| (bundles !=  nullptr && is_set(bundles->operation))
-	|| (iccp_groups !=  nullptr && is_set(iccp_groups->operation))
-	|| (members !=  nullptr && is_set(members->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (bundles !=  nullptr && bundles->has_operation())
+	|| (iccp_groups !=  nullptr && iccp_groups->has_operation())
+	|| (members !=  nullptr && members->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string BundleInformation::MlacpMemberCounters::get_segment_path() const
@@ -72123,23 +72123,23 @@ bool BundleInformation::has_data() const
 bool BundleInformation::has_operation() const
 {
     return is_set(operation)
-	|| (bfd_counters !=  nullptr && is_set(bfd_counters->operation))
-	|| (bundle !=  nullptr && is_set(bundle->operation))
-	|| (bundle_briefs !=  nullptr && is_set(bundle_briefs->operation))
-	|| (events !=  nullptr && is_set(events->operation))
-	|| (events_bdl !=  nullptr && is_set(events_bdl->operation))
-	|| (events_mbr !=  nullptr && is_set(events_mbr->operation))
-	|| (events_rg !=  nullptr && is_set(events_rg->operation))
-	|| (lacp !=  nullptr && is_set(lacp->operation))
-	|| (mac_allocation !=  nullptr && is_set(mac_allocation->operation))
-	|| (mlacp !=  nullptr && is_set(mlacp->operation))
-	|| (mlacp_brief !=  nullptr && is_set(mlacp_brief->operation))
-	|| (mlacp_bundle_counters !=  nullptr && is_set(mlacp_bundle_counters->operation))
-	|| (mlacp_iccp_group_counters !=  nullptr && is_set(mlacp_iccp_group_counters->operation))
-	|| (mlacp_member_counters !=  nullptr && is_set(mlacp_member_counters->operation))
-	|| (protect !=  nullptr && is_set(protect->operation))
-	|| (scheduled_actions !=  nullptr && is_set(scheduled_actions->operation))
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (bfd_counters !=  nullptr && bfd_counters->has_operation())
+	|| (bundle !=  nullptr && bundle->has_operation())
+	|| (bundle_briefs !=  nullptr && bundle_briefs->has_operation())
+	|| (events !=  nullptr && events->has_operation())
+	|| (events_bdl !=  nullptr && events_bdl->has_operation())
+	|| (events_mbr !=  nullptr && events_mbr->has_operation())
+	|| (events_rg !=  nullptr && events_rg->has_operation())
+	|| (lacp !=  nullptr && lacp->has_operation())
+	|| (mac_allocation !=  nullptr && mac_allocation->has_operation())
+	|| (mlacp !=  nullptr && mlacp->has_operation())
+	|| (mlacp_brief !=  nullptr && mlacp_brief->has_operation())
+	|| (mlacp_bundle_counters !=  nullptr && mlacp_bundle_counters->has_operation())
+	|| (mlacp_iccp_group_counters !=  nullptr && mlacp_iccp_group_counters->has_operation())
+	|| (mlacp_member_counters !=  nullptr && mlacp_member_counters->has_operation())
+	|| (protect !=  nullptr && protect->has_operation())
+	|| (scheduled_actions !=  nullptr && scheduled_actions->has_operation())
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string BundleInformation::get_segment_path() const
@@ -72156,7 +72156,7 @@ EntityPath BundleInformation::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -72693,7 +72693,7 @@ bool LacpData::Global::SystemId::SystemId_::has_operation() const
 {
     return is_set(operation)
 	|| is_set(system_prio.operation)
-	|| (system_mac_addr !=  nullptr && is_set(system_mac_addr->operation));
+	|| (system_mac_addr !=  nullptr && system_mac_addr->has_operation());
 }
 
 std::string LacpData::Global::SystemId::SystemId_::get_segment_path() const
@@ -72809,7 +72809,7 @@ bool LacpData::Global::SystemId::has_operation() const
 	|| is_set(iccp_group_id.operation)
 	|| is_set(system_mac_address.operation)
 	|| is_set(system_priority.operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string LacpData::Global::SystemId::get_segment_path() const
@@ -72925,7 +72925,7 @@ bool LacpData::Global::has_data() const
 bool LacpData::Global::has_operation() const
 {
     return is_set(operation)
-	|| (system_id !=  nullptr && is_set(system_id->operation));
+	|| (system_id !=  nullptr && system_id->has_operation());
 }
 
 std::string LacpData::Global::get_segment_path() const
@@ -73026,7 +73026,7 @@ bool LacpData::has_data() const
 bool LacpData::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation));
+	|| (global !=  nullptr && global->has_operation());
 }
 
 std::string LacpData::get_segment_path() const
@@ -73043,7 +73043,7 @@ EntityPath LacpData::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -73142,7 +73142,7 @@ EntityPath Bundles::Bundles_::Bundle::Data::MacAddress::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73228,7 +73228,7 @@ EntityPath Bundles::Bundles_::Bundle::Data::BfdConfig::DestinationAddress::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73329,7 +73329,7 @@ bool Bundles::Bundles_::Bundle::Data::BfdConfig::has_operation() const
 	|| is_set(pref_min_interval.operation)
 	|| is_set(pref_multiplier.operation)
 	|| is_set(start_timer.operation)
-	|| (destination_address !=  nullptr && is_set(destination_address->operation));
+	|| (destination_address !=  nullptr && destination_address->has_operation());
 }
 
 std::string Bundles::Bundles_::Bundle::Data::BfdConfig::get_segment_path() const
@@ -73346,7 +73346,7 @@ EntityPath Bundles::Bundles_::Bundle::Data::BfdConfig::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73595,7 +73595,7 @@ bool Bundles::Bundles_::Bundle::Data::has_operation() const
 	|| is_set(suppression_timer.operation)
 	|| is_set(switchover_type.operation)
 	|| is_set(wait_while_timer.operation)
-	|| (mac_address !=  nullptr && is_set(mac_address->operation));
+	|| (mac_address !=  nullptr && mac_address->has_operation());
 }
 
 std::string Bundles::Bundles_::Bundle::Data::get_segment_path() const
@@ -73612,7 +73612,7 @@ EntityPath Bundles::Bundles_::Bundle::Data::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -73956,7 +73956,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::Counters::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74128,7 +74128,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::LinkData::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74281,7 +74281,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::MemberMuxS
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74368,7 +74368,7 @@ bool Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::has_operation() 
 	|| is_set(member_state.operation)
 	|| is_set(mux_state.operation)
 	|| is_set(mux_state_reason.operation)
-	|| (member_mux_state_reason_data !=  nullptr && is_set(member_mux_state_reason_data->operation));
+	|| (member_mux_state_reason_data !=  nullptr && member_mux_state_reason_data->has_operation());
 }
 
 std::string Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::get_segment_path() const
@@ -74385,7 +74385,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74508,7 +74508,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::MacAddress::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74620,10 +74620,10 @@ bool Bundles::Bundles_::Bundle::Members::Member::has_operation() const
 	|| is_set(port_number.operation)
 	|| is_set(port_priority.operation)
 	|| is_set(underlying_link_id.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (link_data !=  nullptr && is_set(link_data->operation))
-	|| (mac_address !=  nullptr && is_set(mac_address->operation))
-	|| (member_mux_data !=  nullptr && is_set(member_mux_data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (link_data !=  nullptr && link_data->has_operation())
+	|| (mac_address !=  nullptr && mac_address->has_operation())
+	|| (member_mux_data !=  nullptr && member_mux_data->has_operation());
 }
 
 std::string Bundles::Bundles_::Bundle::Members::Member::get_segment_path() const
@@ -74640,7 +74640,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::Member::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74864,7 +74864,7 @@ EntityPath Bundles::Bundles_::Bundle::Members::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -74960,8 +74960,8 @@ bool Bundles::Bundles_::Bundle::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_interface.operation)
-	|| (data !=  nullptr && is_set(data->operation))
-	|| (members !=  nullptr && is_set(members->operation));
+	|| (data !=  nullptr && data->has_operation())
+	|| (members !=  nullptr && members->has_operation());
 }
 
 std::string Bundles::Bundles_::Bundle::get_segment_path() const
@@ -75198,7 +75198,7 @@ bool Bundles::has_data() const
 bool Bundles::has_operation() const
 {
     return is_set(operation)
-	|| (bundles !=  nullptr && is_set(bundles->operation));
+	|| (bundles !=  nullptr && bundles->has_operation());
 }
 
 std::string Bundles::get_segment_path() const
@@ -75215,7 +75215,7 @@ EntityPath Bundles::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -75332,7 +75332,7 @@ EntityPath LacpBundleMembers::Nodes::Node::Counters::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75432,7 +75432,7 @@ bool LacpBundleMembers::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node.operation)
-	|| (counters !=  nullptr && is_set(counters->operation));
+	|| (counters !=  nullptr && counters->has_operation());
 }
 
 std::string LacpBundleMembers::Nodes::Node::get_segment_path() const
@@ -75702,7 +75702,7 @@ EntityPath LacpBundleMembers::Members::Member::Data::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -75891,7 +75891,7 @@ EntityPath LacpBundleMembers::Members::Member::Counters::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76031,8 +76031,8 @@ bool LacpBundleMembers::Members::Member::has_operation() const
 {
     return is_set(operation)
 	|| is_set(member_interface.operation)
-	|| (counters !=  nullptr && is_set(counters->operation))
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (counters !=  nullptr && counters->has_operation())
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string LacpBundleMembers::Members::Member::get_segment_path() const
@@ -76274,8 +76274,8 @@ bool LacpBundleMembers::has_data() const
 bool LacpBundleMembers::has_operation() const
 {
     return is_set(operation)
-	|| (members !=  nullptr && is_set(members->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (members !=  nullptr && members->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string LacpBundleMembers::get_segment_path() const
@@ -76292,7 +76292,7 @@ EntityPath LacpBundleMembers::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -76420,7 +76420,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadB
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76500,7 +76500,7 @@ bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::has_operati
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (load_balance_data !=  nullptr && is_set(load_balance_data->operation));
+	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_segment_path() const
@@ -76517,7 +76517,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76639,7 +76639,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76767,7 +76767,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Brief::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76874,7 +76874,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Su
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -76954,7 +76954,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInter
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (load_balance_data !=  nullptr && is_set(load_balance_data->operation));
+	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::get_segment_path() const
@@ -76971,7 +76971,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Su
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77093,7 +77093,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77220,7 +77220,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalan
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77319,7 +77319,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77420,7 +77420,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77500,7 +77500,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::h
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (load_balance_data !=  nullptr && is_set(load_balance_data->operation));
+	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::get_segment_path() const
@@ -77517,7 +77517,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77641,8 +77641,8 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_operation()
 	|| is_set(avoid_rebalance.operation)
 	|| is_set(max_member_count.operation)
 	|| is_set(media.operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (load_balance_data !=  nullptr && is_set(load_balance_data->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_segment_path() const
@@ -77659,7 +77659,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77837,7 +77837,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_operation() const
 {
     return is_set(operation)
 	|| is_set(bundle_name.operation)
-	|| (bundle_info !=  nullptr && is_set(bundle_info->operation));
+	|| (bundle_info !=  nullptr && bundle_info->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_segment_path() const
@@ -77854,7 +77854,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -77964,7 +77964,7 @@ EntityPath BundlesAdjacency::Nodes::Node::Bundles::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -78060,8 +78060,8 @@ bool BundlesAdjacency::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (bundles !=  nullptr && is_set(bundles->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (bundles !=  nullptr && bundles->has_operation());
 }
 
 std::string BundlesAdjacency::Nodes::Node::get_segment_path() const
@@ -78298,7 +78298,7 @@ bool BundlesAdjacency::has_data() const
 bool BundlesAdjacency::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string BundlesAdjacency::get_segment_path() const
@@ -78315,7 +78315,7 @@ EntityPath BundlesAdjacency::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -78379,309 +78379,309 @@ std::unique_ptr<Entity> BundlesAdjacency::clone_ptr()
     return std::make_unique<BundlesAdjacency>();
 }
 
-const Enum::Value BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
-const Enum::Value BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
-const Enum::Value BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
-const Enum::Value BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
+const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
+const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
+const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
+const Enum::YLeaf BmdMlacpSwitchoverEnum::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
 
-const Enum::Value LoadBalanceEnum::default_ {0, "default"};
-const Enum::Value LoadBalanceEnum::auto_ {1, "auto"};
-const Enum::Value LoadBalanceEnum::value_ {2, "value"};
-const Enum::Value LoadBalanceEnum::source_ip {3, "source-ip"};
-const Enum::Value LoadBalanceEnum::destination_ip {4, "destination-ip"};
-const Enum::Value LoadBalanceEnum::unknown {5, "unknown"};
+const Enum::YLeaf LoadBalanceEnum::default_ {0, "default"};
+const Enum::YLeaf LoadBalanceEnum::auto_ {1, "auto"};
+const Enum::YLeaf LoadBalanceEnum::value_ {2, "value"};
+const Enum::YLeaf LoadBalanceEnum::source_ip {3, "source-ip"};
+const Enum::YLeaf LoadBalanceEnum::destination_ip {4, "destination-ip"};
+const Enum::YLeaf LoadBalanceEnum::unknown {5, "unknown"};
 
-const Enum::Value BmBdlStateEnum::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_down {1, "bm-bdl-state-down"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_ptnr_down {2, "bm-bdl-state-ptnr-down"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_bundle_shutdown {3, "bm-bdl-state-bundle-shutdown"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_pe_isolated {4, "bm-bdl-state-pe-isolated"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_nak {5, "bm-bdl-state-nak"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_up_active {6, "bm-bdl-state-up-active"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_mlacp_hot_standby {7, "bm-bdl-state-mlacp-hot-standby"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_mlacp_cold_standby {8, "bm-bdl-state-mlacp-cold-standby"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_unknown {9, "bm-bdl-state-unknown"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_cold_standby {10, "bm-bdl-state-cold-standby"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_error_disabled {11, "bm-bdl-state-error-disabled"};
-const Enum::Value BmBdlStateEnum::bm_bdl_state_efd_disabled {12, "bm-bdl-state-efd-disabled"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_down {1, "bm-bdl-state-down"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_ptnr_down {2, "bm-bdl-state-ptnr-down"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_bundle_shutdown {3, "bm-bdl-state-bundle-shutdown"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_pe_isolated {4, "bm-bdl-state-pe-isolated"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_nak {5, "bm-bdl-state-nak"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_up_active {6, "bm-bdl-state-up-active"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_mlacp_hot_standby {7, "bm-bdl-state-mlacp-hot-standby"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_mlacp_cold_standby {8, "bm-bdl-state-mlacp-cold-standby"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_unknown {9, "bm-bdl-state-unknown"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_cold_standby {10, "bm-bdl-state-cold-standby"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_error_disabled {11, "bm-bdl-state-error-disabled"};
+const Enum::YLeaf BmBdlStateEnum::bm_bdl_state_efd_disabled {12, "bm-bdl-state-efd-disabled"};
 
-const Enum::Value LacpPeriodStateEnum::period_s_low {0, "period-s-low"};
-const Enum::Value LacpPeriodStateEnum::period_fast {1, "period-fast"};
-const Enum::Value LacpPeriodStateEnum::period_none {2, "period-none"};
+const Enum::YLeaf LacpPeriodStateEnum::period_s_low {0, "period-s-low"};
+const Enum::YLeaf LacpPeriodStateEnum::period_fast {1, "period-fast"};
+const Enum::YLeaf LacpPeriodStateEnum::period_none {2, "period-none"};
 
-const Enum::Value BundleMediaEnum::bundle_media_ethernet {0, "bundle-media-ethernet"};
-const Enum::Value BundleMediaEnum::bundle_media_pos {1, "bundle-media-pos"};
-const Enum::Value BundleMediaEnum::bundle_media_count {2, "bundle-media-count"};
+const Enum::YLeaf BundleMediaEnum::bundle_media_ethernet {0, "bundle-media-ethernet"};
+const Enum::YLeaf BundleMediaEnum::bundle_media_pos {1, "bundle-media-pos"};
+const Enum::YLeaf BundleMediaEnum::bundle_media_count {2, "bundle-media-count"};
 
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_nak {0, "bdl-state-nak"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_unknown {1, "bdl-state-unknown"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_no_sync {2, "bdl-state-no-sync"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_rec_delay {3, "bdl-state-rec-delay"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_up {4, "bdl-state-up"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_down {5, "bdl-state-down"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_admin_down {6, "bdl-state-admin-down"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_test {7, "bdl-state-test"};
-const Enum::Value BmdMlacpBdlStateEnumEnum::bdl_state_error {8, "bdl-state-error"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_nak {0, "bdl-state-nak"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_unknown {1, "bdl-state-unknown"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_no_sync {2, "bdl-state-no-sync"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_rec_delay {3, "bdl-state-rec-delay"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_up {4, "bdl-state-up"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_down {5, "bdl-state-down"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_admin_down {6, "bdl-state-admin-down"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_test {7, "bdl-state-test"};
+const Enum::YLeaf BmdMlacpBdlStateEnumEnum::bdl_state_error {8, "bdl-state-error"};
 
-const Enum::Value BundleMedia1Enum::ethernet {0, "ethernet"};
-const Enum::Value BundleMedia1Enum::pos {1, "pos"};
+const Enum::YLeaf BundleMedia1Enum::ethernet {0, "ethernet"};
+const Enum::YLeaf BundleMedia1Enum::pos {1, "pos"};
 
-const Enum::Value RxstatesEnum::current_rx {1, "current-rx"};
-const Enum::Value RxstatesEnum::expired {2, "expired"};
-const Enum::Value RxstatesEnum::defaulted {3, "defaulted"};
-const Enum::Value RxstatesEnum::initialize {4, "initialize"};
-const Enum::Value RxstatesEnum::lacp_disabled {5, "lacp-disabled"};
-const Enum::Value RxstatesEnum::port_disabled {6, "port-disabled"};
+const Enum::YLeaf RxstatesEnum::current_rx {1, "current-rx"};
+const Enum::YLeaf RxstatesEnum::expired {2, "expired"};
+const Enum::YLeaf RxstatesEnum::defaulted {3, "defaulted"};
+const Enum::YLeaf RxstatesEnum::initialize {4, "initialize"};
+const Enum::YLeaf RxstatesEnum::lacp_disabled {5, "lacp-disabled"};
+const Enum::YLeaf RxstatesEnum::port_disabled {6, "port-disabled"};
 
-const Enum::Value LacpChurnstatesEnum::no_churn {1, "no-churn"};
-const Enum::Value LacpChurnstatesEnum::churn {2, "churn"};
-const Enum::Value LacpChurnstatesEnum::churn_monitor {3, "churn-monitor"};
+const Enum::YLeaf LacpChurnstatesEnum::no_churn {1, "no-churn"};
+const Enum::YLeaf LacpChurnstatesEnum::churn {2, "churn"};
+const Enum::YLeaf LacpChurnstatesEnum::churn_monitor {3, "churn-monitor"};
 
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_im_state {2, "bmd-event-mbr-im-state"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_sel_logic {3, "bmd-event-mbr-sel-logic"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_mux {4, "bmd-event-mbr-mux"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_bfd {5, "bmd-event-mbr-bfd"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_expired {6, "bmd-event-mbr-expired"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_defaulted {7, "bmd-event-mbr-defaulted"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_first_retry {8, "bmd-event-mbr-first-retry"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_msg {9, "bmd-event-mbr-msg"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_error {10, "bmd-event-mbr-error"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mbr-mlacp-tlv"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
-const Enum::Value BmdBagEventMbrItemEnum::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_im_state {2, "bmd-event-mbr-im-state"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_sel_logic {3, "bmd-event-mbr-sel-logic"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_mux {4, "bmd-event-mbr-mux"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_bfd {5, "bmd-event-mbr-bfd"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_expired {6, "bmd-event-mbr-expired"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_defaulted {7, "bmd-event-mbr-defaulted"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_first_retry {8, "bmd-event-mbr-first-retry"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_msg {9, "bmd-event-mbr-msg"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_error {10, "bmd-event-mbr-error"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mbr-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
+const Enum::YLeaf BmdBagEventMbrItemEnum::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
 
-const Enum::Value BmdBagEventDataEnum::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
-const Enum::Value BmdBagEventDataEnum::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
-const Enum::Value BmdBagEventDataEnum::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
+const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
+const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
+const Enum::YLeaf BmdBagEventDataEnum::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
 
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_none {0, "bm-switch-reason-none"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_not_mlacp {2, "bm-switch-reason-not-mlacp"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_revertive {3, "bm-switch-reason-revertive"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_bdl_down {4, "bm-switch-reason-bdl-down"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_recovery {5, "bm-switch-reason-recovery"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_preceding_error {6, "bm-switch-reason-preceding-error"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
-const Enum::Value BmdSwitchReasonEnum::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_none {0, "bm-switch-reason-none"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_not_mlacp {2, "bm-switch-reason-not-mlacp"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_revertive {3, "bm-switch-reason-revertive"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_bdl_down {4, "bm-switch-reason-bdl-down"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_recovery {5, "bm-switch-reason-recovery"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_preceding_error {6, "bm-switch-reason-preceding-error"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
+const Enum::YLeaf BmdSwitchReasonEnum::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
 
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_local {0, "bmd-mbr-local"};
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
-const Enum::Value BmdMemberTypeEnumEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_local {0, "bmd-mbr-local"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
+const Enum::YLeaf BmdMemberTypeEnumEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::Value BmAfIdEnum::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
-const Enum::Value BmAfIdEnum::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
+const Enum::YLeaf BmAfIdEnum::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
+const Enum::YLeaf BmAfIdEnum::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
 
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
-const Enum::Value BmMbrStateReasonEnum::bm_mbr_state_reason_count {74, "bm-mbr-state-reason-count"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_down {2, "bm-mbr-state-reason-link-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_deleting {3, "bm-mbr-state-reason-link-deleting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_creating {4, "bm-mbr-state-reason-creating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_creating {5, "bm-mbr-state-reason-bundle-creating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_deleting {6, "bm-mbr-state-reason-bundle-deleting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_admin_down {7, "bm-mbr-state-reason-bundle-admin-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_replicating {8, "bm-mbr-state-reason-replicating"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bandwidth {9, "bm-mbr-state-reason-bandwidth"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_loop_back {10, "bm-mbr-state-reason-loop-back"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_type {11, "bm-mbr-state-reason-activity-type"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_shutdown {12, "bm-mbr-state-reason-bundle-shutdown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_min_selected {13, "bm-mbr-state-reason-min-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_max_selected {14, "bm-mbr-state-reason-max-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_limit {15, "bm-mbr-state-reason-link-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active_limit {16, "bm-mbr-state-reason-active-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_unknown {17, "bm-mbr-state-reason-standby-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_expired {18, "bm-mbr-state-reason-expired"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_defaulted {19, "bm-mbr-state-reason-defaulted"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_act_or_not_agg {20, "bm-mbr-state-reason-act-or-not-agg"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_agg {21, "bm-mbr-state-reason-partner-not-agg"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_lagid {22, "bm-mbr-state-reason-lagid"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_cfgd {23, "bm-mbr-state-reason-bundle-not-cfgd"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_ready {24, "bm-mbr-state-reason-bundle-not-ready"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_ood {25, "bm-mbr-state-reason-partner-ood"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_in_sync {26, "bm-mbr-state-reason-partner-not-in-sync"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_foreign_partner_oos {27, "bm-mbr-state-reason-foreign-partner-oos"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_attach_unknown {28, "bm-mbr-state-reason-attach-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_partner_not_collecting {29, "bm-mbr-state-reason-partner-not-collecting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_collect_unknown {30, "bm-mbr-state-reason-collect-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_foreign {31, "bm-mbr-state-reason-standby-foreign"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_starting {32, "bm-mbr-state-reason-bfd-starting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_down {33, "bm-mbr-state-reason-bfd-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_nbr_unconfig {34, "bm-mbr-state-reason-bfd-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp {35, "bm-mbr-state-reason-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_pe_isolated {36, "bm-mbr-state-reason-pe-isolated"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_forced_switchover {37, "bm-mbr-state-reason-forced-switchover"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_errdis_unknown {38, "bm-mbr-state-reason-errdis-unknown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_mbr_state_info {39, "bm-mbr-state-reason-mlacp-no-mbr-state-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_active {40, "bm-mbr-state-reason-active"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_state_info {41, "bm-mbr-state-reason-mlacp-no-bdl-state-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_config_info {42, "bm-mbr-state-reason-mlacp-no-bdl-config-info"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_no_bdl_sync {43, "bm-mbr-state-reason-mlacp-no-bdl-sync"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_bdl_has_no_peer {44, "bm-mbr-state-reason-mlacp-bdl-has-no-peer"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_nak {45, "bm-mbr-state-reason-mlacp-nak"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_transport_unavailable {46, "bm-mbr-state-reason-mlacp-transport-unavailable"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_not_configured {47, "bm-mbr-state-reason-mlacp-not-configured"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_recovery_timer {48, "bm-mbr-state-reason-recovery-timer"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_standby {49, "bm-mbr-state-reason-mlacp-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_maximized_out {50, "bm-mbr-state-reason-maximized-out"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_peer_selected {51, "bm-mbr-state-reason-mlacp-peer-selected"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_mlacp_connect_timer_running {52, "bm-mbr-state-reason-mlacp-connect-timer-running"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_not_mlacp {53, "bm-mbr-state-reason-bundle-not-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_lon {54, "bm-mbr-state-reason-no-lon"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_cumul_rel_bw_limit {55, "bm-mbr-state-reason-cumul-rel-bw-limit"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_mac {56, "bm-mbr-state-reason-no-mac"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_system_id {57, "bm-mbr-state-reason-no-system-id"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_link_shutdown {58, "bm-mbr-state-reason-link-shutdown"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_mlacp {59, "bm-mbr-state-reason-activity-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_activity_iccp {60, "bm-mbr-state-reason-activity-iccp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_icpe_mlacp {61, "bm-mbr-state-reason-bundle-icpe-mlacp"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_no_link_num {62, "bm-mbr-state-reason-no-link-num"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_standby_peer_higher_prio {63, "bm-mbr-state-reason-standby-peer-higher-prio"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_red_state_standby {64, "bm-mbr-state-reason-red-state-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_other_red_state_standby {65, "bm-mbr-state-reason-other-red-state-standby"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_hold_ing {66, "bm-mbr-state-reason-hold-ing"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_error_disabled {67, "bm-mbr-state-reason-bundle-error-disabled"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bundle_efd_disabled {68, "bm-mbr-state-reason-bundle-efd-disabled"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_singleton_pe_isolated {69, "bm-mbr-state-reason-singleton-pe-isolated"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_starting {70, "bm-mbr-state-reason-bfd-ipv6-starting"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-mbr-state-reason-bfd-ipv6-down"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
+const Enum::YLeaf BmMbrStateReasonEnum::bm_mbr_state_reason_count {74, "bm-mbr-state-reason-count"};
 
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
-const Enum::Value BmdBagEventBdlItemEnum::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
-const Enum::Value BmdBagEventBdlItemEnum::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
+const Enum::YLeaf BmdBagEventBdlItemEnum::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
 
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_incomplete {0, "node-state-incomplete"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_connect_sent {2, "node-state-connect-sent"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_unconfigured {3, "node-state-unconfigured"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_unreachable {4, "node-state-unreachable"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_iccp_down {5, "node-state-iccp-down"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_nak {6, "node-state-nak"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_unknown {7, "node-state-unknown"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_admin_down {9, "node-state-admin-down"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_error {11, "node-state-error"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_test {12, "node-state-test"};
-const Enum::Value BmdMlacpNodeStateEnumEnum::node_state_up {13, "node-state-up"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_incomplete {0, "node-state-incomplete"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_connect_sent {2, "node-state-connect-sent"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unconfigured {3, "node-state-unconfigured"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unreachable {4, "node-state-unreachable"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_iccp_down {5, "node-state-iccp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_nak {6, "node-state-nak"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_unknown {7, "node-state-unknown"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_admin_down {9, "node-state-admin-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_error {11, "node-state-error"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_test {12, "node-state-test"};
+const Enum::YLeaf BmdMlacpNodeStateEnumEnum::node_state_up {13, "node-state-up"};
 
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_data {4, "bmd-event-rg-data"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_error {7, "bmd-event-rg-error"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
-const Enum::Value BmdBagEventRgItemEnum::bmd_event_rg_count {10, "bmd-event-rg-count"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_data {4, "bmd-event-rg-data"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_error {7, "bmd-event-rg-error"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
+const Enum::YLeaf BmdBagEventRgItemEnum::bmd_event_rg_count {10, "bmd-event-rg-count"};
 
-const Enum::Value BmWhichSystemEnum::bm_which_system_actr {0, "bm-which-system-actr"};
-const Enum::Value BmWhichSystemEnum::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
+const Enum::YLeaf BmWhichSystemEnum::bm_which_system_actr {0, "bm-which-system-actr"};
+const Enum::YLeaf BmWhichSystemEnum::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
 
-const Enum::Value BmdBfdBdlStateEnum::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
-const Enum::Value BmdBfdBdlStateEnum::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
-const Enum::Value BmdBfdBdlStateEnum::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
-const Enum::Value BmdBfdBdlStateEnum::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
+const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
+const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
+const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
+const Enum::YLeaf BmdBfdBdlStateEnum::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
 
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_nak {0, "mbr-state-nak"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_unknown {1, "mbr-state-unknown"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_up {2, "mbr-state-up"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_down {3, "mbr-state-down"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_test {5, "mbr-state-test"};
-const Enum::Value BmdMlacpMbrStateEnumEnum::mbr_state_error {6, "mbr-state-error"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_nak {0, "mbr-state-nak"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_unknown {1, "mbr-state-unknown"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_up {2, "mbr-state-up"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_down {3, "mbr-state-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_test {5, "mbr-state-test"};
+const Enum::YLeaf BmdMlacpMbrStateEnumEnum::mbr_state_error {6, "mbr-state-error"};
 
-const Enum::Value BmdBagTargetEnum::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
-const Enum::Value BmdBagTargetEnum::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
-const Enum::Value BmdBagTargetEnum::bm_bag_target_node {2, "bm-bag-target-node"};
-const Enum::Value BmdBagTargetEnum::bm_bag_target_rg {3, "bm-bag-target-rg"};
+const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
+const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
+const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_node {2, "bm-bag-target-node"};
+const Enum::YLeaf BmdBagTargetEnum::bm_bag_target_rg {3, "bm-bag-target-rg"};
 
-const Enum::Value BmMuxstateEnum::detached {1, "detached"};
-const Enum::Value BmMuxstateEnum::waiting {2, "waiting"};
-const Enum::Value BmMuxstateEnum::attached {3, "attached"};
-const Enum::Value BmMuxstateEnum::collecting {4, "collecting"};
-const Enum::Value BmMuxstateEnum::distributing {5, "distributing"};
-const Enum::Value BmMuxstateEnum::collecting_distributing {6, "collecting-distributing"};
+const Enum::YLeaf BmMuxstateEnum::detached {1, "detached"};
+const Enum::YLeaf BmMuxstateEnum::waiting {2, "waiting"};
+const Enum::YLeaf BmMuxstateEnum::attached {3, "attached"};
+const Enum::YLeaf BmMuxstateEnum::collecting {4, "collecting"};
+const Enum::YLeaf BmMuxstateEnum::distributing {5, "distributing"};
+const Enum::YLeaf BmMuxstateEnum::collecting_distributing {6, "collecting-distributing"};
 
-const Enum::Value LacpSelStateEnum::unselected {0, "unselected"};
-const Enum::Value LacpSelStateEnum::standby {1, "standby"};
-const Enum::Value LacpSelStateEnum::selected {2, "selected"};
+const Enum::YLeaf LacpSelStateEnum::unselected {0, "unselected"};
+const Enum::YLeaf LacpSelStateEnum::standby {1, "standby"};
+const Enum::YLeaf LacpSelStateEnum::selected {2, "selected"};
 
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::Value BmdMemberStateEnum::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberStateEnum::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
 
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::Value BmMuxreasonEnum::bm_mux_reason_count {19, "bm-mux-reason-count"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreasonEnum::bm_mux_reason_count {19, "bm-mux-reason-count"};
 
-const Enum::Value BmFeatureStatusEnum::bm_feature_not_configured {0, "bm-feature-not-configured"};
-const Enum::Value BmFeatureStatusEnum::bm_feature_not_operational {1, "bm-feature-not-operational"};
-const Enum::Value BmFeatureStatusEnum::bm_feature_operational {2, "bm-feature-operational"};
+const Enum::YLeaf BmFeatureStatusEnum::bm_feature_not_configured {0, "bm-feature-not-configured"};
+const Enum::YLeaf BmFeatureStatusEnum::bm_feature_not_operational {1, "bm-feature-not-operational"};
+const Enum::YLeaf BmFeatureStatusEnum::bm_feature_operational {2, "bm-feature-operational"};
 
-const Enum::Value BmSeverityEnum::ok {0, "ok"};
-const Enum::Value BmSeverityEnum::information {1, "information"};
-const Enum::Value BmSeverityEnum::misconfiguration {2, "misconfiguration"};
-const Enum::Value BmSeverityEnum::warning {3, "warning"};
-const Enum::Value BmSeverityEnum::error {5, "error"};
+const Enum::YLeaf BmSeverityEnum::ok {0, "ok"};
+const Enum::YLeaf BmSeverityEnum::information {1, "information"};
+const Enum::YLeaf BmSeverityEnum::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverityEnum::warning {3, "warning"};
+const Enum::YLeaf BmSeverityEnum::error {5, "error"};
 
-const Enum::Value BundleMlacpModeEnum::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
-const Enum::Value BundleMlacpModeEnum::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
-const Enum::Value BundleMlacpModeEnum::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
+const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
+const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
+const Enum::YLeaf BundleMlacpModeEnum::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
 
-const Enum::Value BmdBagMlacpSchActionItemEnum::switchover {0, "switchover"};
-const Enum::Value BmdBagMlacpSchActionItemEnum::switchback {1, "switchback"};
+const Enum::YLeaf BmdBagMlacpSchActionItemEnum::switchover {0, "switchover"};
+const Enum::YLeaf BmdBagMlacpSchActionItemEnum::switchback {1, "switchback"};
 
-const Enum::Value BmStateReasonTargetEnum::member_reason {0, "member-reason"};
-const Enum::Value BmStateReasonTargetEnum::bundle_reason {1, "bundle-reason"};
+const Enum::YLeaf BmStateReasonTargetEnum::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTargetEnum::bundle_reason {1, "bundle-reason"};
 
-const Enum::Value BmdMlacpNodeSyncEnumEnum::node_sync_req {0, "node-sync-req"};
-const Enum::Value BmdMlacpNodeSyncEnumEnum::node_sync_done {1, "node-sync-done"};
-const Enum::Value BmdMlacpNodeSyncEnumEnum::node_sync_start {2, "node-sync-start"};
-const Enum::Value BmdMlacpNodeSyncEnumEnum::node_sync_init {3, "node-sync-init"};
-const Enum::Value BmdMlacpNodeSyncEnumEnum::node_sync_singleton {4, "node-sync-singleton"};
+const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_req {0, "node-sync-req"};
+const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_done {1, "node-sync-done"};
+const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_start {2, "node-sync-start"};
+const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_init {3, "node-sync-init"};
+const Enum::YLeaf BmdMlacpNodeSyncEnumEnum::node_sync_singleton {4, "node-sync-singleton"};
 
-const Enum::Value BmBdlMacSourceEnum::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
-const Enum::Value BmBdlMacSourceEnum::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
-const Enum::Value BmBdlMacSourceEnum::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
-const Enum::Value BmBdlMacSourceEnum::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
-const Enum::Value BmBdlMacSourceEnum::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
+const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
+const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
+const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
+const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
+const Enum::YLeaf BmBdlMacSourceEnum::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
 
 
 }

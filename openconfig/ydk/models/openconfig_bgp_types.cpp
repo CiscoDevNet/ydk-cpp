@@ -206,23 +206,23 @@ NopeerIdentity::~NopeerIdentity()
 }
 
 
-const Enum::Value RemovePrivateAsOptionEnum::ALL {0, "ALL"};
-const Enum::Value RemovePrivateAsOptionEnum::REPLACE {1, "REPLACE"};
+const Enum::YLeaf RemovePrivateAsOptionEnum::ALL {0, "ALL"};
+const Enum::YLeaf RemovePrivateAsOptionEnum::REPLACE {1, "REPLACE"};
 
-const Enum::Value CommunityTypeEnum::STANDARD {0, "STANDARD"};
-const Enum::Value CommunityTypeEnum::EXTENDED {1, "EXTENDED"};
-const Enum::Value CommunityTypeEnum::BOTH {2, "BOTH"};
-const Enum::Value CommunityTypeEnum::NONE {3, "NONE"};
+const Enum::YLeaf CommunityTypeEnum::STANDARD {0, "STANDARD"};
+const Enum::YLeaf CommunityTypeEnum::EXTENDED {1, "EXTENDED"};
+const Enum::YLeaf CommunityTypeEnum::BOTH {2, "BOTH"};
+const Enum::YLeaf CommunityTypeEnum::NONE {3, "NONE"};
 
-const Enum::Value PeerTypeEnum::INTERNAL {0, "INTERNAL"};
-const Enum::Value PeerTypeEnum::EXTERNAL {1, "EXTERNAL"};
+const Enum::YLeaf PeerTypeEnum::INTERNAL {0, "INTERNAL"};
+const Enum::YLeaf PeerTypeEnum::EXTERNAL {1, "EXTERNAL"};
 
-const Enum::Value BgpSessionDirectionEnum::INBOUND {0, "INBOUND"};
-const Enum::Value BgpSessionDirectionEnum::OUTBOUND {1, "OUTBOUND"};
+const Enum::YLeaf BgpSessionDirectionEnum::INBOUND {0, "INBOUND"};
+const Enum::YLeaf BgpSessionDirectionEnum::OUTBOUND {1, "OUTBOUND"};
 
-const Enum::Value BgpOriginAttrTypeEnum::IGP {0, "IGP"};
-const Enum::Value BgpOriginAttrTypeEnum::EGP {1, "EGP"};
-const Enum::Value BgpOriginAttrTypeEnum::INCOMPLETE {2, "INCOMPLETE"};
+const Enum::YLeaf BgpOriginAttrTypeEnum::IGP {0, "IGP"};
+const Enum::YLeaf BgpOriginAttrTypeEnum::EGP {1, "EGP"};
+const Enum::YLeaf BgpOriginAttrTypeEnum::INCOMPLETE {2, "INCOMPLETE"};
 
 
 }

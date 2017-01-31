@@ -26,6 +26,7 @@ class AlarmLogger : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class BufferStatus : public Entity
     {
         public:
@@ -39,14 +40,14 @@ class AlarmLogger : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log_buffer_size; //type: uint32
-            Value max_log_buffer_size; //type: uint32
-            Value record_count; //type: uint32
-            Value capacity_threshold; //type: uint32
-            Value severity_filter; //type: AlAlarmSeverityEnum
 
 
-            class AlAlarmSeverityEnum;
+            YLeaf log_buffer_size; //type: uint32
+            YLeaf max_log_buffer_size; //type: uint32
+            YLeaf record_count; //type: uint32
+            YLeaf capacity_threshold; //type: uint32
+            YLeaf severity_filter; //type: AlAlarmSeverityEnum
+
 
 
     }; // AlarmLogger::BufferStatus
@@ -67,6 +68,7 @@ class AlarmLogger : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Alarm : public Entity
         {
             public:
@@ -80,21 +82,20 @@ class AlarmLogger : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value event_id; //type: int32
-                Value source_id; //type: string
-                Value timestamp; //type: uint64
-                Value category; //type: string
-                Value group; //type: string
-                Value code; //type: string
-                Value severity; //type: AlAlarmSeverityEnum
-                Value state; //type: AlAlarmBistateEnum
-                Value correlation_id; //type: uint32
-                Value is_admin; //type: boolean
-                Value additional_text; //type: string
 
 
-                class AlAlarmSeverityEnum;
-                class AlAlarmBistateEnum;
+                YLeaf event_id; //type: int32
+                YLeaf source_id; //type: string
+                YLeaf timestamp; //type: uint64
+                YLeaf category; //type: string
+                YLeaf group; //type: string
+                YLeaf code; //type: string
+                YLeaf severity; //type: AlAlarmSeverityEnum
+                YLeaf state; //type: AlAlarmBistateEnum
+                YLeaf correlation_id; //type: uint32
+                YLeaf is_admin; //type: boolean
+                YLeaf additional_text; //type: string
+
 
 
         }; // AlarmLogger::Alarms::Alarm
@@ -116,24 +117,24 @@ class AlarmLogger : public Entity
 class AlAlarmBistateEnum : public Enum
 {
     public:
-        static const Enum::Value not_available;
-        static const Enum::Value active;
-        static const Enum::Value clear;
+        static const Enum::YLeaf not_available;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf clear;
 
 };
 
 class AlAlarmSeverityEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value emergency;
-        static const Enum::Value alert;
-        static const Enum::Value critical;
-        static const Enum::Value error;
-        static const Enum::Value warning;
-        static const Enum::Value notice;
-        static const Enum::Value informational;
-        static const Enum::Value debugging;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf emergency;
+        static const Enum::YLeaf alert;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf error;
+        static const Enum::YLeaf warning;
+        static const Enum::YLeaf notice;
+        static const Enum::YLeaf informational;
+        static const Enum::YLeaf debugging;
 
 };
 

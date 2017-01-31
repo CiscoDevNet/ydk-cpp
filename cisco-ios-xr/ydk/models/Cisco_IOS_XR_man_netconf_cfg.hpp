@@ -26,6 +26,7 @@ class NetconfYang : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Agent : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class NetconfYang : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value rate_limit; //type: uint32
 
+
+            YLeaf rate_limit; //type: uint32
 
         class Ssh : public Entity
         {
@@ -55,8 +57,9 @@ class NetconfYang : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -76,10 +79,11 @@ class NetconfYang : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value limit; //type: uint32
-                Value absolute_timeout; //type: uint32
-                Value idle_timeout; //type: uint32
 
+
+                YLeaf limit; //type: uint32
+                YLeaf absolute_timeout; //type: uint32
+                YLeaf idle_timeout; //type: uint32
 
 
 

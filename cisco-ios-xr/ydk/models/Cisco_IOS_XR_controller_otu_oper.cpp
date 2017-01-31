@@ -46,7 +46,7 @@ EntityPath Otu::Controllers::Controller::Info::Local::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath Otu::Controllers::Controller::Info::Remote::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -198,17 +198,17 @@ Otu::Controllers::Controller::Info::TtiMode::Tx::~Tx()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_data() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -218,22 +218,25 @@ bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_operation() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(dapi.operation)
+	|| is_set(operator_specific.operation)
+	|| is_set(sapi.operation);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Tx::get_segment_path() const
@@ -250,7 +253,7 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Tx::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -322,17 +325,17 @@ Otu::Controllers::Controller::Info::TtiMode::Exp::~Exp()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_data() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -342,22 +345,25 @@ bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_operation() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(dapi.operation)
+	|| is_set(operator_specific.operation)
+	|| is_set(sapi.operation);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Exp::get_segment_path() const
@@ -374,7 +380,7 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Exp::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -446,17 +452,17 @@ Otu::Controllers::Controller::Info::TtiMode::Rec::~Rec()
 
 bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_data() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -466,22 +472,25 @@ bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_operation() const
 {
-    for (auto const & leaf : dapi.getValues())
+    for (auto const & leaf : dapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : operator_specific.getValues())
+    for (auto const & leaf : operator_specific.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sapi.getValues())
+    for (auto const & leaf : sapi.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(dapi.operation)
+	|| is_set(operator_specific.operation)
+	|| is_set(sapi.operation);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Rec::get_segment_path() const
@@ -498,7 +507,7 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::Rec::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -597,9 +606,9 @@ bool Otu::Controllers::Controller::Info::TtiMode::has_operation() const
 	|| is_set(g709tti_exp_mode.operation)
 	|| is_set(g709tti_rec_mode.operation)
 	|| is_set(g709tti_sent_mode.operation)
-	|| (exp !=  nullptr && is_set(exp->operation))
-	|| (rec !=  nullptr && is_set(rec->operation))
-	|| (tx !=  nullptr && is_set(tx->operation));
+	|| (exp !=  nullptr && exp->has_operation())
+	|| (rec !=  nullptr && rec->has_operation())
+	|| (tx !=  nullptr && tx->has_operation());
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::get_segment_path() const
@@ -616,7 +625,7 @@ EntityPath Otu::Controllers::Controller::Info::TtiMode::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -775,7 +784,7 @@ EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -862,7 +871,7 @@ EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -972,7 +981,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1076,7 +1085,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1180,7 +1189,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1284,7 +1293,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1388,7 +1397,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1492,7 +1501,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1596,7 +1605,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1700,7 +1709,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1804,7 +1813,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1908,7 +1917,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2012,7 +2021,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2116,7 +2125,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2220,7 +2229,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2324,7 +2333,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2428,7 +2437,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2532,7 +2541,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2636,7 +2645,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2797,23 +2806,23 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_data() const
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_operation() const
 {
     return is_set(operation)
-	|| (ais !=  nullptr && is_set(ais->operation))
-	|| (bdi !=  nullptr && is_set(bdi->operation))
-	|| (biae !=  nullptr && is_set(biae->operation))
-	|| (ec !=  nullptr && is_set(ec->operation))
-	|| (eoc !=  nullptr && is_set(eoc->operation))
-	|| (fec_mismatch !=  nullptr && is_set(fec_mismatch->operation))
-	|| (fecunc !=  nullptr && is_set(fecunc->operation))
-	|| (iae !=  nullptr && is_set(iae->operation))
-	|| (lof !=  nullptr && is_set(lof->operation))
-	|| (lom !=  nullptr && is_set(lom->operation))
-	|| (los !=  nullptr && is_set(los->operation))
-	|| (oof !=  nullptr && is_set(oof->operation))
-	|| (oom !=  nullptr && is_set(oom->operation))
-	|| (sd_ber !=  nullptr && is_set(sd_ber->operation))
-	|| (sf_ber !=  nullptr && is_set(sf_ber->operation))
-	|| (tim !=  nullptr && is_set(tim->operation))
-	|| (uc !=  nullptr && is_set(uc->operation));
+	|| (ais !=  nullptr && ais->has_operation())
+	|| (bdi !=  nullptr && bdi->has_operation())
+	|| (biae !=  nullptr && biae->has_operation())
+	|| (ec !=  nullptr && ec->has_operation())
+	|| (eoc !=  nullptr && eoc->has_operation())
+	|| (fec_mismatch !=  nullptr && fec_mismatch->has_operation())
+	|| (fecunc !=  nullptr && fecunc->has_operation())
+	|| (iae !=  nullptr && iae->has_operation())
+	|| (lof !=  nullptr && lof->has_operation())
+	|| (lom !=  nullptr && lom->has_operation())
+	|| (los !=  nullptr && los->has_operation())
+	|| (oof !=  nullptr && oof->has_operation())
+	|| (oom !=  nullptr && oom->has_operation())
+	|| (sd_ber !=  nullptr && sd_ber->has_operation())
+	|| (sf_ber !=  nullptr && sf_ber->has_operation())
+	|| (tim !=  nullptr && tim->has_operation())
+	|| (uc !=  nullptr && uc->has_operation());
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::get_segment_path() const
@@ -2830,7 +2839,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3323,7 +3332,7 @@ EntityPath Otu::Controllers::Controller::Info::Proactive::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3451,7 +3460,7 @@ EntityPath Otu::Controllers::Controller::Info::OtuFecSatistics::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3631,13 +3640,13 @@ bool Otu::Controllers::Controller::Info::has_operation() const
 	|| is_set(state.operation)
 	|| is_set(uc.operation)
 	|| is_set(uc_value.operation)
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (network_srlg !=  nullptr && is_set(network_srlg->operation))
-	|| (otu_alarm_info !=  nullptr && is_set(otu_alarm_info->operation))
-	|| (otu_fec_satistics !=  nullptr && is_set(otu_fec_satistics->operation))
-	|| (proactive !=  nullptr && is_set(proactive->operation))
-	|| (remote !=  nullptr && is_set(remote->operation))
-	|| (tti_mode !=  nullptr && is_set(tti_mode->operation));
+	|| (local !=  nullptr && local->has_operation())
+	|| (network_srlg !=  nullptr && network_srlg->has_operation())
+	|| (otu_alarm_info !=  nullptr && otu_alarm_info->has_operation())
+	|| (otu_fec_satistics !=  nullptr && otu_fec_satistics->has_operation())
+	|| (proactive !=  nullptr && proactive->has_operation())
+	|| (remote !=  nullptr && remote->has_operation())
+	|| (tti_mode !=  nullptr && tti_mode->has_operation());
 }
 
 std::string Otu::Controllers::Controller::Info::get_segment_path() const
@@ -3654,7 +3663,7 @@ EntityPath Otu::Controllers::Controller::Info::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4010,7 +4019,7 @@ bool Otu::Controllers::Controller::has_operation() const
 {
     return is_set(operation)
 	|| is_set(controller_name.operation)
-	|| (info !=  nullptr && is_set(info->operation));
+	|| (info !=  nullptr && info->has_operation());
 }
 
 std::string Otu::Controllers::Controller::get_segment_path() const
@@ -4224,7 +4233,7 @@ bool Otu::has_data() const
 bool Otu::has_operation() const
 {
     return is_set(operation)
-	|| (controllers !=  nullptr && is_set(controllers->operation));
+	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
 std::string Otu::get_segment_path() const
@@ -4241,7 +4250,7 @@ EntityPath Otu::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4305,78 +4314,78 @@ std::unique_ptr<Entity> Otu::clone_ptr()
     return std::make_unique<Otu>();
 }
 
-const Enum::Value OtuStateEtEnum::not_ready {0, "not-ready"};
-const Enum::Value OtuStateEtEnum::admin_down {1, "admin-down"};
-const Enum::Value OtuStateEtEnum::down {2, "down"};
-const Enum::Value OtuStateEtEnum::up {3, "up"};
-const Enum::Value OtuStateEtEnum::shutdown {4, "shutdown"};
-const Enum::Value OtuStateEtEnum::error_disable {5, "error-disable"};
-const Enum::Value OtuStateEtEnum::down_immediate {6, "down-immediate"};
-const Enum::Value OtuStateEtEnum::down_immediate_admin {7, "down-immediate-admin"};
-const Enum::Value OtuStateEtEnum::down_graceful {8, "down-graceful"};
-const Enum::Value OtuStateEtEnum::begin_shutdown {9, "begin-shutdown"};
-const Enum::Value OtuStateEtEnum::end_shutdown {10, "end-shutdown"};
-const Enum::Value OtuStateEtEnum::begin_error_disable {11, "begin-error-disable"};
-const Enum::Value OtuStateEtEnum::end_error_disable {12, "end-error-disable"};
-const Enum::Value OtuStateEtEnum::begin_down_graceful {13, "begin-down-graceful"};
-const Enum::Value OtuStateEtEnum::reset {14, "reset"};
-const Enum::Value OtuStateEtEnum::operational {15, "operational"};
-const Enum::Value OtuStateEtEnum::not_operational {16, "not-operational"};
-const Enum::Value OtuStateEtEnum::unknown {17, "unknown"};
-const Enum::Value OtuStateEtEnum::last {18, "last"};
+const Enum::YLeaf OtuStateEtEnum::not_ready {0, "not-ready"};
+const Enum::YLeaf OtuStateEtEnum::admin_down {1, "admin-down"};
+const Enum::YLeaf OtuStateEtEnum::down {2, "down"};
+const Enum::YLeaf OtuStateEtEnum::up {3, "up"};
+const Enum::YLeaf OtuStateEtEnum::shutdown {4, "shutdown"};
+const Enum::YLeaf OtuStateEtEnum::error_disable {5, "error-disable"};
+const Enum::YLeaf OtuStateEtEnum::down_immediate {6, "down-immediate"};
+const Enum::YLeaf OtuStateEtEnum::down_immediate_admin {7, "down-immediate-admin"};
+const Enum::YLeaf OtuStateEtEnum::down_graceful {8, "down-graceful"};
+const Enum::YLeaf OtuStateEtEnum::begin_shutdown {9, "begin-shutdown"};
+const Enum::YLeaf OtuStateEtEnum::end_shutdown {10, "end-shutdown"};
+const Enum::YLeaf OtuStateEtEnum::begin_error_disable {11, "begin-error-disable"};
+const Enum::YLeaf OtuStateEtEnum::end_error_disable {12, "end-error-disable"};
+const Enum::YLeaf OtuStateEtEnum::begin_down_graceful {13, "begin-down-graceful"};
+const Enum::YLeaf OtuStateEtEnum::reset {14, "reset"};
+const Enum::YLeaf OtuStateEtEnum::operational {15, "operational"};
+const Enum::YLeaf OtuStateEtEnum::not_operational {16, "not-operational"};
+const Enum::YLeaf OtuStateEtEnum::unknown {17, "unknown"};
+const Enum::YLeaf OtuStateEtEnum::last {18, "last"};
 
-const Enum::Value OtuPerMonEnum::disable {0, "disable"};
-const Enum::Value OtuPerMonEnum::enable {1, "enable"};
+const Enum::YLeaf OtuPerMonEnum::disable {0, "disable"};
+const Enum::YLeaf OtuPerMonEnum::enable {1, "enable"};
 
-const Enum::Value OtuPpIntfStateEnum::otu_pp_intf_up {0, "otu-pp-intf-up"};
-const Enum::Value OtuPpIntfStateEnum::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
-const Enum::Value OtuPpIntfStateEnum::otu_pp_intf_down {2, "otu-pp-intf-down"};
+const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_up {0, "otu-pp-intf-up"};
+const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
+const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_down {2, "otu-pp-intf-down"};
 
-const Enum::Value OtuPpFsmStateEnum::otu_in_active {0, "otu-in-active"};
-const Enum::Value OtuPpFsmStateEnum::otu_disabled {1, "otu-disabled"};
-const Enum::Value OtuPpFsmStateEnum::otu_normal_state {2, "otu-normal-state"};
-const Enum::Value OtuPpFsmStateEnum::otu_local_failing {3, "otu-local-failing"};
-const Enum::Value OtuPpFsmStateEnum::otu_remote_failing {4, "otu-remote-failing"};
-const Enum::Value OtuPpFsmStateEnum::otu_main_t_failing {5, "otu-main-t-failing"};
-const Enum::Value OtuPpFsmStateEnum::otu_regen_failing {6, "otu-regen-failing"};
-const Enum::Value OtuPpFsmStateEnum::otu_local_failed {7, "otu-local-failed"};
-const Enum::Value OtuPpFsmStateEnum::otu_remote_failed {8, "otu-remote-failed"};
-const Enum::Value OtuPpFsmStateEnum::otu_main_t_failed {9, "otu-main-t-failed"};
-const Enum::Value OtuPpFsmStateEnum::otu_regen_failed {10, "otu-regen-failed"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_in_active {0, "otu-in-active"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_disabled {1, "otu-disabled"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_normal_state {2, "otu-normal-state"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_local_failing {3, "otu-local-failing"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_remote_failing {4, "otu-remote-failing"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_main_t_failing {5, "otu-main-t-failing"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_regen_failing {6, "otu-regen-failing"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_local_failed {7, "otu-local-failed"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_remote_failed {8, "otu-remote-failed"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_main_t_failed {9, "otu-main-t-failed"};
+const Enum::YLeaf OtuPpFsmStateEnum::otu_regen_failed {10, "otu-regen-failed"};
 
-const Enum::Value OtuTtiEtEnum::ascii {0, "ascii"};
-const Enum::Value OtuTtiEtEnum::hex {1, "hex"};
-const Enum::Value OtuTtiEtEnum::full_ascii {2, "full-ascii"};
-const Enum::Value OtuTtiEtEnum::full_hex {3, "full-hex"};
+const Enum::YLeaf OtuTtiEtEnum::ascii {0, "ascii"};
+const Enum::YLeaf OtuTtiEtEnum::hex {1, "hex"};
+const Enum::YLeaf OtuTtiEtEnum::full_ascii {2, "full-ascii"};
+const Enum::YLeaf OtuTtiEtEnum::full_hex {3, "full-hex"};
 
-const Enum::Value OtuG709FecModeEnum::otu_bag_none_fec {1, "otu-bag-none-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
-const Enum::Value OtuG709FecModeEnum::otu_bag_all_fec {512, "otu-bag-all-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_none_fec {1, "otu-bag-none-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
+const Enum::YLeaf OtuG709FecModeEnum::otu_bag_all_fec {512, "otu-bag-all-fec"};
 
-const Enum::Value OtuSecStateEnum::normal {0, "normal"};
-const Enum::Value OtuSecStateEnum::maintenance {1, "maintenance"};
-const Enum::Value OtuSecStateEnum::ais {2, "ais"};
+const Enum::YLeaf OtuSecStateEnum::normal {0, "normal"};
+const Enum::YLeaf OtuSecStateEnum::maintenance {1, "maintenance"};
+const Enum::YLeaf OtuSecStateEnum::ais {2, "ais"};
 
-const Enum::Value OtuLoopBackModeEnum::none {1, "none"};
-const Enum::Value OtuLoopBackModeEnum::line {2, "line"};
-const Enum::Value OtuLoopBackModeEnum::internal {4, "internal"};
+const Enum::YLeaf OtuLoopBackModeEnum::none {1, "none"};
+const Enum::YLeaf OtuLoopBackModeEnum::line {2, "line"};
+const Enum::YLeaf OtuLoopBackModeEnum::internal {4, "internal"};
 
-const Enum::Value GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
-const Enum::Value GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
-const Enum::Value GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
-const Enum::Value GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
+const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
+const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
+const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
+const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
 
-const Enum::Value OtuDerStateEnum::out_of_service {0, "out-of-service"};
-const Enum::Value OtuDerStateEnum::in_service {1, "in-service"};
-const Enum::Value OtuDerStateEnum::maintenance {2, "maintenance"};
-const Enum::Value OtuDerStateEnum::ais {3, "ais"};
+const Enum::YLeaf OtuDerStateEnum::out_of_service {0, "out-of-service"};
+const Enum::YLeaf OtuDerStateEnum::in_service {1, "in-service"};
+const Enum::YLeaf OtuDerStateEnum::maintenance {2, "maintenance"};
+const Enum::YLeaf OtuDerStateEnum::ais {3, "ais"};
 
 
 }

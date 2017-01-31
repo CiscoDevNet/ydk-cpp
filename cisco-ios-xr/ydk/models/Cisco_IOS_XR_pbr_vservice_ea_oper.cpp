@@ -46,7 +46,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -210,8 +210,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::Sfp::get_segment_path() const
@@ -228,7 +228,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -352,7 +352,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -440,7 +440,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -528,7 +528,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -616,7 +616,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -710,7 +710,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -820,12 +820,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::Data::get_segment_path() const
@@ -842,7 +842,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1063,7 +1063,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1151,7 +1151,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1231,8 +1231,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::Data::get_segment_path() const
@@ -1249,7 +1249,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1365,7 +1365,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::SiArr::get_segment_path() const
@@ -1382,7 +1382,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1485,7 +1485,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
     }
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::ServiceIndexes::ServiceIndex::get_segment_path() const
@@ -1502,7 +1502,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1638,7 +1638,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1742,7 +1742,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1830,7 +1830,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1906,8 +1906,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::Sfp::get_segment_path() const
@@ -1924,7 +1924,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2048,7 +2048,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2136,7 +2136,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2224,7 +2224,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2312,7 +2312,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2406,7 +2406,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2516,12 +2516,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::Data::get_segment_path() const
@@ -2538,7 +2538,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2759,7 +2759,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2847,7 +2847,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2927,8 +2927,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::Data::get_segment_path() const
@@ -2945,7 +2945,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3061,7 +3061,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::SiArr::get_segment_path() const
@@ -3078,7 +3078,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3177,7 +3177,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
             return true;
     }
     return is_set(operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Detail::get_segment_path() const
@@ -3194,7 +3194,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3321,7 +3321,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3409,7 +3409,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3485,8 +3485,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::Sfp::get_segment_path() const
@@ -3503,7 +3503,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3627,7 +3627,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3715,7 +3715,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3803,7 +3803,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3891,7 +3891,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3985,7 +3985,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4095,12 +4095,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::Data::get_segment_path() const
@@ -4117,7 +4117,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4338,7 +4338,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4426,7 +4426,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4506,8 +4506,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::Data::get_segment_path() const
@@ -4524,7 +4524,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4640,7 +4640,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::SiArr::get_segment_path() const
@@ -4657,7 +4657,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4756,7 +4756,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
             return true;
     }
     return is_set(operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::Summarized::get_segment_path() const
@@ -4773,7 +4773,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4888,8 +4888,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::has_operation() const
 {
     return is_set(operation)
-	|| (detail !=  nullptr && is_set(detail->operation))
-	|| (summarized !=  nullptr && is_set(summarized->operation));
+	|| (detail !=  nullptr && detail->has_operation())
+	|| (summarized !=  nullptr && summarized->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::Stats::get_segment_path() const
@@ -4906,7 +4906,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5022,8 +5022,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds
 {
     return is_set(operation)
 	|| is_set(id.operation)
-	|| (service_indexes !=  nullptr && is_set(service_indexes->operation))
-	|| (stats !=  nullptr && is_set(stats->operation));
+	|| (service_indexes !=  nullptr && service_indexes->has_operation())
+	|| (stats !=  nullptr && stats->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::PathIds::PathId::get_segment_path() const
@@ -5040,7 +5040,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5173,7 +5173,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5260,7 +5260,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_dat
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::has_operation() const
 {
     return is_set(operation)
-	|| (path_ids !=  nullptr && is_set(path_ids->operation));
+	|| (path_ids !=  nullptr && path_ids->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::get_segment_path() const
@@ -5277,7 +5277,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5378,7 +5378,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5466,7 +5466,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5542,8 +5542,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::Sfp::get_segment_path() const
@@ -5560,7 +5560,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5684,7 +5684,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5772,7 +5772,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5860,7 +5860,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5948,7 +5948,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6042,7 +6042,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6152,12 +6152,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::Data::get_segment_path() const
@@ -6174,7 +6174,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6395,7 +6395,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6483,7 +6483,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6563,8 +6563,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::Data::get_segment_path() const
@@ -6581,7 +6581,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6697,7 +6697,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::SiArr::get_segment_path() const
@@ -6714,7 +6714,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6817,7 +6817,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::Sf
     }
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNames::SfName::get_segment_path() const
@@ -6834,7 +6834,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6970,7 +6970,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNam
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7057,7 +7057,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_data() 
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::has_operation() const
 {
     return is_set(operation)
-	|| (sf_names !=  nullptr && is_set(sf_names->operation));
+	|| (sf_names !=  nullptr && sf_names->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_segment_path() const
@@ -7074,7 +7074,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7175,7 +7175,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7263,7 +7263,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7339,8 +7339,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::Sfp::get_segment_path() const
@@ -7357,7 +7357,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7481,7 +7481,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7569,7 +7569,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7657,7 +7657,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7745,7 +7745,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7839,7 +7839,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7949,12 +7949,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::Data::get_segment_path() const
@@ -7971,7 +7971,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8192,7 +8192,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8280,7 +8280,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8360,8 +8360,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::Data::get_segment_path() const
@@ -8378,7 +8378,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8494,7 +8494,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::SiArr::get_segment_path() const
@@ -8511,7 +8511,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8610,7 +8610,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
             return true;
     }
     return is_set(operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::Error::get_segment_path() const
@@ -8627,7 +8627,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8737,7 +8737,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Lo
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::has_operation() const
 {
     return is_set(operation)
-	|| (error !=  nullptr && is_set(error->operation));
+	|| (error !=  nullptr && error->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Local::get_segment_path() const
@@ -8754,7 +8754,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8855,7 +8855,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8943,7 +8943,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9019,8 +9019,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::has_operation() const
 {
     return is_set(operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::Sfp::get_segment_path() const
@@ -9037,7 +9037,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9161,7 +9161,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9249,7 +9249,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9337,7 +9337,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9425,7 +9425,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9519,7 +9519,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9629,12 +9629,12 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (sf !=  nullptr && is_set(sf->operation))
-	|| (sff !=  nullptr && is_set(sff->operation))
-	|| (sff_local !=  nullptr && is_set(sff_local->operation))
-	|| (sfp !=  nullptr && is_set(sfp->operation))
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (sf !=  nullptr && sf->has_operation())
+	|| (sff !=  nullptr && sff->has_operation())
+	|| (sff_local !=  nullptr && sff_local->has_operation())
+	|| (sfp !=  nullptr && sfp->has_operation())
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::Data::get_segment_path() const
@@ -9651,7 +9651,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9872,7 +9872,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9960,7 +9960,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10040,8 +10040,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (spi_si !=  nullptr && is_set(spi_si->operation))
-	|| (term !=  nullptr && is_set(term->operation));
+	|| (spi_si !=  nullptr && spi_si->has_operation())
+	|| (term !=  nullptr && term->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::Data::get_segment_path() const
@@ -10058,7 +10058,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10174,7 +10174,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
 {
     return is_set(operation)
 	|| is_set(si.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::SiArr::get_segment_path() const
@@ -10191,7 +10191,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10294,7 +10294,7 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::Sf
     }
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (data !=  nullptr && is_set(data->operation));
+	|| (data !=  nullptr && data->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::SffNames::SffName::get_segment_path() const
@@ -10311,7 +10311,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10447,7 +10447,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10539,8 +10539,8 @@ bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::ha
 bool ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::has_operation() const
 {
     return is_set(operation)
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (sff_names !=  nullptr && is_set(sff_names->operation));
+	|| (local !=  nullptr && local->has_operation())
+	|| (sff_names !=  nullptr && sff_names->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwarder::get_segment_path() const
@@ -10557,7 +10557,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForward
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10674,9 +10674,9 @@ bool ServiceFunctionChaining::Nodes::Node::Process::has_data() const
 bool ServiceFunctionChaining::Nodes::Node::Process::has_operation() const
 {
     return is_set(operation)
-	|| (service_function !=  nullptr && is_set(service_function->operation))
-	|| (service_function_forwarder !=  nullptr && is_set(service_function_forwarder->operation))
-	|| (service_function_path !=  nullptr && is_set(service_function_path->operation));
+	|| (service_function !=  nullptr && service_function->has_operation())
+	|| (service_function_forwarder !=  nullptr && service_function_forwarder->has_operation())
+	|| (service_function_path !=  nullptr && service_function_path->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::Process::get_segment_path() const
@@ -10693,7 +10693,7 @@ EntityPath ServiceFunctionChaining::Nodes::Node::Process::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10827,7 +10827,7 @@ bool ServiceFunctionChaining::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (process !=  nullptr && is_set(process->operation));
+	|| (process !=  nullptr && process->has_operation());
 }
 
 std::string ServiceFunctionChaining::Nodes::Node::get_segment_path() const
@@ -11041,7 +11041,7 @@ bool ServiceFunctionChaining::has_data() const
 bool ServiceFunctionChaining::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string ServiceFunctionChaining::get_segment_path() const
@@ -11058,7 +11058,7 @@ EntityPath ServiceFunctionChaining::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -11122,14 +11122,14 @@ std::unique_ptr<Entity> ServiceFunctionChaining::clone_ptr()
     return std::make_unique<ServiceFunctionChaining>();
 }
 
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_spi_si {0, "vs-nsh-stats-spi-si"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_ter_min_ate {1, "vs-nsh-stats-ter-min-ate"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_sf {2, "vs-nsh-stats-sf"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_sff {3, "vs-nsh-stats-sff"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_sff_local {4, "vs-nsh-stats-sff-local"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_sfp {5, "vs-nsh-stats-sfp"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_sfp_detail {6, "vs-nsh-stats-sfp-detail"};
-const Enum::Value VsNshStatsEnum::vs_nsh_stats_max {7, "vs-nsh-stats-max"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_spi_si {0, "vs-nsh-stats-spi-si"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_ter_min_ate {1, "vs-nsh-stats-ter-min-ate"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sf {2, "vs-nsh-stats-sf"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sff {3, "vs-nsh-stats-sff"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sff_local {4, "vs-nsh-stats-sff-local"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sfp {5, "vs-nsh-stats-sfp"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_sfp_detail {6, "vs-nsh-stats-sfp-detail"};
+const Enum::YLeaf VsNshStatsEnum::vs_nsh_stats_max {7, "vs-nsh-stats-max"};
 
 
 }

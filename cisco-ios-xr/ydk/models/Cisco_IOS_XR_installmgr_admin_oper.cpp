@@ -254,7 +254,7 @@ EntityPath Install::RequestStatuses::RequestStatus::RequestInformation::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -362,7 +362,7 @@ EntityPath Install::RequestStatuses::RequestStatus::AbortStatus::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -450,7 +450,7 @@ EntityPath Install::RequestStatuses::RequestStatus::IncrementalInstallInformatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -548,7 +548,7 @@ EntityPath Install::RequestStatuses::RequestStatus::IncrementalInstallInformatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -662,7 +662,7 @@ EntityPath Install::RequestStatuses::RequestStatus::IssuMessage::Scope::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -740,7 +740,7 @@ bool Install::RequestStatuses::RequestStatus::IssuMessage::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::RequestStatuses::RequestStatus::IssuMessage::get_segment_path() const
@@ -757,7 +757,7 @@ EntityPath Install::RequestStatuses::RequestStatus::IssuMessage::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -868,7 +868,7 @@ EntityPath Install::RequestStatuses::RequestStatus::Message::Scope::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -946,7 +946,7 @@ bool Install::RequestStatuses::RequestStatus::Message::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::RequestStatuses::RequestStatus::Message::get_segment_path() const
@@ -963,7 +963,7 @@ EntityPath Install::RequestStatuses::RequestStatus::Message::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1106,9 +1106,9 @@ bool Install::RequestStatuses::RequestStatus::has_operation() const
 	|| is_set(operation_phase.operation)
 	|| is_set(percentage.operation)
 	|| is_set(unanswered_query.operation)
-	|| (abort_status !=  nullptr && is_set(abort_status->operation))
-	|| (incremental_install_information !=  nullptr && is_set(incremental_install_information->operation))
-	|| (request_information !=  nullptr && is_set(request_information->operation));
+	|| (abort_status !=  nullptr && abort_status->has_operation())
+	|| (incremental_install_information !=  nullptr && incremental_install_information->has_operation())
+	|| (request_information !=  nullptr && request_information->has_operation());
 }
 
 std::string Install::RequestStatuses::RequestStatus::get_segment_path() const
@@ -1658,7 +1658,7 @@ EntityPath Install::Software::AliasDevices::AliasDevice::Aliases::Alias::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1750,7 +1750,7 @@ EntityPath Install::Software::AliasDevices::AliasDevice::Aliases::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1841,7 +1841,7 @@ bool Install::Software::AliasDevices::AliasDevice::has_operation() const
 {
     return is_set(operation)
 	|| is_set(device_name.operation)
-	|| (aliases !=  nullptr && is_set(aliases->operation));
+	|| (aliases !=  nullptr && aliases->has_operation());
 }
 
 std::string Install::Software::AliasDevices::AliasDevice::get_segment_path() const
@@ -2072,7 +2072,7 @@ EntityPath Install::Software::PackageDevices::PackageDevice::Packages::Package::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2156,7 +2156,7 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_da
         if(sub_pkg[index]->has_data())
             return true;
     }
-    for (auto const & leaf : cards.getValues())
+    for (auto const & leaf : cards.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2187,7 +2187,7 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_op
         if(sub_pkg[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : cards.getValues())
+    for (auto const & leaf : cards.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2196,6 +2196,7 @@ bool Install::Software::PackageDevices::PackageDevice::Packages::Package::has_op
 	|| is_set(package_name.operation)
 	|| is_set(base.operation)
 	|| is_set(bootable.operation)
+	|| is_set(cards.operation)
 	|| is_set(composite.operation)
 	|| is_set(compressed_size.operation)
 	|| is_set(date.operation)
@@ -2226,7 +2227,7 @@ EntityPath Install::Software::PackageDevices::PackageDevice::Packages::Package::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2425,7 +2426,7 @@ EntityPath Install::Software::PackageDevices::PackageDevice::Packages::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2516,7 +2517,7 @@ bool Install::Software::PackageDevices::PackageDevice::has_operation() const
 {
     return is_set(operation)
 	|| is_set(device_name.operation)
-	|| (packages !=  nullptr && is_set(packages->operation));
+	|| (packages !=  nullptr && packages->has_operation());
 }
 
 std::string Install::Software::PackageDevices::PackageDevice::get_segment_path() const
@@ -2726,7 +2727,7 @@ Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Compone
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::has_data() const
 {
-    for (auto const & leaf : files.getValues())
+    for (auto const & leaf : files.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2740,7 +2741,7 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
 
 bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component::has_operation() const
 {
-    for (auto const & leaf : files.getValues())
+    for (auto const & leaf : files.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2748,6 +2749,7 @@ bool Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::Co
     return is_set(operation)
 	|| is_set(component_name.operation)
 	|| is_set(description.operation)
+	|| is_set(files.operation)
 	|| is_set(name.operation)
 	|| is_set(release.operation)
 	|| is_set(version.operation);
@@ -2767,7 +2769,7 @@ EntityPath Install::Software::ComponentDevices::ComponentDevice::ComponentPackag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2883,7 +2885,7 @@ EntityPath Install::Software::ComponentDevices::ComponentDevice::ComponentPackag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2996,7 +2998,7 @@ EntityPath Install::Software::ComponentDevices::ComponentDevice::ComponentPackag
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3087,7 +3089,7 @@ bool Install::Software::ComponentDevices::ComponentDevice::has_operation() const
 {
     return is_set(operation)
 	|| is_set(device_name.operation)
-	|| (component_packages !=  nullptr && is_set(component_packages->operation));
+	|| (component_packages !=  nullptr && component_packages->has_operation());
 }
 
 std::string Install::Software::ComponentDevices::ComponentDevice::get_segment_path() const
@@ -3311,9 +3313,9 @@ bool Install::Software::has_data() const
 bool Install::Software::has_operation() const
 {
     return is_set(operation)
-	|| (alias_devices !=  nullptr && is_set(alias_devices->operation))
-	|| (component_devices !=  nullptr && is_set(component_devices->operation))
-	|| (package_devices !=  nullptr && is_set(package_devices->operation));
+	|| (alias_devices !=  nullptr && alias_devices->has_operation())
+	|| (component_devices !=  nullptr && component_devices->has_operation())
+	|| (package_devices !=  nullptr && package_devices->has_operation());
 }
 
 std::string Install::Software::get_segment_path() const
@@ -3555,7 +3557,7 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath::get_segment_path() const
@@ -3761,7 +3763,7 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoa
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath::get_segment_path() const
@@ -3875,7 +3877,7 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::has_data()
         if(standby_load_path[index]->has_data())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3896,14 +3898,15 @@ bool Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::has_operat
         if(standby_load_path[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(admin_match.operation)
-	|| is_set(request_id.operation);
+	|| is_set(request_id.operation)
+	|| is_set(secure_domain_router_name.operation);
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::get_segment_path() const
@@ -4144,7 +4147,7 @@ bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::ha
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath::get_segment_path() const
@@ -4350,7 +4353,7 @@ bool Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadP
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath::get_segment_path() const
@@ -4708,7 +4711,7 @@ bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::has_
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath::get_segment_path() const
@@ -4914,7 +4917,7 @@ bool Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPat
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath::get_segment_path() const
@@ -5280,7 +5283,7 @@ bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath:
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath::get_segment_path() const
@@ -5486,7 +5489,7 @@ bool Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLo
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath::get_segment_path() const
@@ -5790,8 +5793,8 @@ bool Install::SoftwareInventory::Committed::Summary::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (admin_load_path !=  nullptr && is_set(admin_load_path->operation))
-	|| (default_load_path !=  nullptr && is_set(default_load_path->operation));
+	|| (admin_load_path !=  nullptr && admin_load_path->has_operation())
+	|| (default_load_path !=  nullptr && default_load_path->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Summary::get_segment_path() const
@@ -5984,7 +5987,7 @@ EntityPath Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6062,7 +6065,7 @@ bool Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::ha
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath::get_segment_path() const
@@ -6079,7 +6082,7 @@ EntityPath Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6442,8 +6445,8 @@ bool Install::SoftwareInventory::Committed::has_data() const
 bool Install::SoftwareInventory::Committed::has_operation() const
 {
     return is_set(operation)
-	|| (inventories !=  nullptr && is_set(inventories->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (inventories !=  nullptr && inventories->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Install::SoftwareInventory::Committed::get_segment_path() const
@@ -6662,7 +6665,7 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::h
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath::get_segment_path() const
@@ -6868,7 +6871,7 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoad
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath::get_segment_path() const
@@ -6982,7 +6985,7 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::has_data() 
         if(standby_load_path[index]->has_data())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7003,14 +7006,15 @@ bool Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::has_operati
         if(standby_load_path[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(admin_match.operation)
-	|| is_set(request_id.operation);
+	|| is_set(request_id.operation)
+	|| is_set(secure_domain_router_name.operation);
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::get_segment_path() const
@@ -7251,7 +7255,7 @@ bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::has
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath::get_segment_path() const
@@ -7457,7 +7461,7 @@ bool Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPa
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath::get_segment_path() const
@@ -7815,7 +7819,7 @@ bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::has_o
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath::get_segment_path() const
@@ -8021,7 +8025,7 @@ bool Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath::get_segment_path() const
@@ -8387,7 +8391,7 @@ bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath::get_segment_path() const
@@ -8593,7 +8597,7 @@ bool Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoa
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath::get_segment_path() const
@@ -8897,8 +8901,8 @@ bool Install::SoftwareInventory::Inactive::Summary::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (admin_load_path !=  nullptr && is_set(admin_load_path->operation))
-	|| (default_load_path !=  nullptr && is_set(default_load_path->operation));
+	|| (admin_load_path !=  nullptr && admin_load_path->has_operation())
+	|| (default_load_path !=  nullptr && default_load_path->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Summary::get_segment_path() const
@@ -9091,7 +9095,7 @@ EntityPath Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9169,7 +9173,7 @@ bool Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::has
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath::get_segment_path() const
@@ -9186,7 +9190,7 @@ EntityPath Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9549,8 +9553,8 @@ bool Install::SoftwareInventory::Inactive::has_data() const
 bool Install::SoftwareInventory::Inactive::has_operation() const
 {
     return is_set(operation)
-	|| (inventories !=  nullptr && is_set(inventories->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (inventories !=  nullptr && inventories->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Install::SoftwareInventory::Inactive::get_segment_path() const
@@ -9691,7 +9695,7 @@ EntityPath Install::SoftwareInventory::Requests::Requests_::Request::Inventories
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9769,7 +9773,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inve
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath::get_segment_path() const
@@ -9786,7 +9790,7 @@ EntityPath Install::SoftwareInventory::Requests::Requests_::Request::Inventories
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9919,7 +9923,7 @@ EntityPath Install::SoftwareInventory::Requests::Requests_::Request::Inventories
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10057,7 +10061,7 @@ EntityPath Install::SoftwareInventory::Requests::Requests_::Request::Inventories
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10148,7 +10152,7 @@ bool Install::SoftwareInventory::Requests::Requests_::Request::has_operation() c
 {
     return is_set(operation)
 	|| is_set(request_id.operation)
-	|| (inventories !=  nullptr && is_set(inventories->operation));
+	|| (inventories !=  nullptr && inventories->has_operation());
 }
 
 std::string Install::SoftwareInventory::Requests::Requests_::Request::get_segment_path() const
@@ -10362,7 +10366,7 @@ bool Install::SoftwareInventory::Requests::has_data() const
 bool Install::SoftwareInventory::Requests::has_operation() const
 {
     return is_set(operation)
-	|| (requests !=  nullptr && is_set(requests->operation));
+	|| (requests !=  nullptr && requests->has_operation());
 }
 
 std::string Install::SoftwareInventory::Requests::get_segment_path() const
@@ -10558,7 +10562,7 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::has
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath::get_segment_path() const
@@ -10764,7 +10768,7 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPa
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath::get_segment_path() const
@@ -10878,7 +10882,7 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::has_data() co
         if(standby_load_path[index]->has_data())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10899,14 +10903,15 @@ bool Install::SoftwareInventory::Active::Summary::DefaultLoadPath::has_operation
         if(standby_load_path[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : secure_domain_router_name.getValues())
+    for (auto const & leaf : secure_domain_router_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(admin_match.operation)
-	|| is_set(request_id.operation);
+	|| is_set(request_id.operation)
+	|| is_set(secure_domain_router_name.operation);
 }
 
 std::string Install::SoftwareInventory::Active::Summary::DefaultLoadPath::get_segment_path() const
@@ -11147,7 +11152,7 @@ bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::has_o
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath::get_segment_path() const
@@ -11353,7 +11358,7 @@ bool Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath::get_segment_path() const
@@ -11711,7 +11716,7 @@ bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::has_ope
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath::get_segment_path() const
@@ -11917,7 +11922,7 @@ bool Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath::get_segment_path() const
@@ -12283,7 +12288,7 @@ bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::ha
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath::get_segment_path() const
@@ -12489,7 +12494,7 @@ bool Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadP
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath::get_segment_path() const
@@ -12793,8 +12798,8 @@ bool Install::SoftwareInventory::Active::Summary::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (admin_load_path !=  nullptr && is_set(admin_load_path->operation))
-	|| (default_load_path !=  nullptr && is_set(default_load_path->operation));
+	|| (admin_load_path !=  nullptr && admin_load_path->has_operation())
+	|| (default_load_path !=  nullptr && default_load_path->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Summary::get_segment_path() const
@@ -12987,7 +12992,7 @@ EntityPath Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13065,7 +13070,7 @@ bool Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::has_o
     return is_set(operation)
 	|| is_set(build_information.operation)
 	|| is_set(version.operation)
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath::get_segment_path() const
@@ -13082,7 +13087,7 @@ EntityPath Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13445,8 +13450,8 @@ bool Install::SoftwareInventory::Active::has_data() const
 bool Install::SoftwareInventory::Active::has_operation() const
 {
     return is_set(operation)
-	|| (inventories !=  nullptr && is_set(inventories->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (inventories !=  nullptr && inventories->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Install::SoftwareInventory::Active::get_segment_path() const
@@ -13585,10 +13590,10 @@ bool Install::SoftwareInventory::has_data() const
 bool Install::SoftwareInventory::has_operation() const
 {
     return is_set(operation)
-	|| (active !=  nullptr && is_set(active->operation))
-	|| (committed !=  nullptr && is_set(committed->operation))
-	|| (inactive !=  nullptr && is_set(inactive->operation))
-	|| (requests !=  nullptr && is_set(requests->operation));
+	|| (active !=  nullptr && active->has_operation())
+	|| (committed !=  nullptr && committed->has_operation())
+	|| (inactive !=  nullptr && inactive->has_operation())
+	|| (requests !=  nullptr && requests->has_operation());
 }
 
 std::string Install::SoftwareInventory::get_segment_path() const
@@ -13805,7 +13810,7 @@ EntityPath Install::Issu::CardInventories::CardInventory::Summary::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14141,7 +14146,7 @@ Install::Issu::Stage::NodeInProgress::~NodeInProgress()
 
 bool Install::Issu::Stage::NodeInProgress::has_data() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14151,12 +14156,13 @@ bool Install::Issu::Stage::NodeInProgress::has_data() const
 
 bool Install::Issu::Stage::NodeInProgress::has_operation() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(node.operation);
 }
 
 std::string Install::Issu::Stage::NodeInProgress::get_segment_path() const
@@ -14231,7 +14237,7 @@ Install::Issu::Stage::NodesInLoad::~NodesInLoad()
 
 bool Install::Issu::Stage::NodesInLoad::has_data() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14241,12 +14247,13 @@ bool Install::Issu::Stage::NodesInLoad::has_data() const
 
 bool Install::Issu::Stage::NodesInLoad::has_operation() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(node.operation);
 }
 
 std::string Install::Issu::Stage::NodesInLoad::get_segment_path() const
@@ -14321,7 +14328,7 @@ Install::Issu::Stage::NodesInRun::~NodesInRun()
 
 bool Install::Issu::Stage::NodesInRun::has_data() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14331,12 +14338,13 @@ bool Install::Issu::Stage::NodesInRun::has_data() const
 
 bool Install::Issu::Stage::NodesInRun::has_operation() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(node.operation);
 }
 
 std::string Install::Issu::Stage::NodesInRun::get_segment_path() const
@@ -14411,7 +14419,7 @@ Install::Issu::Stage::NcNodes::~NcNodes()
 
 bool Install::Issu::Stage::NcNodes::has_data() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14421,12 +14429,13 @@ bool Install::Issu::Stage::NcNodes::has_data() const
 
 bool Install::Issu::Stage::NcNodes::has_operation() const
 {
-    for (auto const & leaf : node.getValues())
+    for (auto const & leaf : node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(node.operation);
 }
 
 std::string Install::Issu::Stage::NcNodes::get_segment_path() const
@@ -14559,10 +14568,10 @@ bool Install::Issu::Stage::has_operation() const
 	|| is_set(numof_nc_nodes.operation)
 	|| is_set(participating_node_all.operation)
 	|| is_set(percentage.operation)
-	|| (nc_nodes !=  nullptr && is_set(nc_nodes->operation))
-	|| (node_in_progress !=  nullptr && is_set(node_in_progress->operation))
-	|| (nodes_in_load !=  nullptr && is_set(nodes_in_load->operation))
-	|| (nodes_in_run !=  nullptr && is_set(nodes_in_run->operation));
+	|| (nc_nodes !=  nullptr && nc_nodes->has_operation())
+	|| (node_in_progress !=  nullptr && node_in_progress->has_operation())
+	|| (nodes_in_load !=  nullptr && nodes_in_load->has_operation())
+	|| (nodes_in_run !=  nullptr && nodes_in_run->has_operation());
 }
 
 std::string Install::Issu::Stage::get_segment_path() const
@@ -14792,8 +14801,8 @@ bool Install::Issu::has_data() const
 bool Install::Issu::has_operation() const
 {
     return is_set(operation)
-	|| (card_inventories !=  nullptr && is_set(card_inventories->operation))
-	|| (stage !=  nullptr && is_set(stage->operation));
+	|| (card_inventories !=  nullptr && card_inventories->has_operation())
+	|| (stage !=  nullptr && stage->has_operation());
 }
 
 std::string Install::Issu::get_segment_path() const
@@ -15014,7 +15023,7 @@ EntityPath Install::Logs::Log::Header::LogContents::V3::Scope::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15092,7 +15101,7 @@ bool Install::Logs::Log::Header::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Header::LogContents::V3::get_segment_path() const
@@ -15109,7 +15118,7 @@ EntityPath Install::Logs::Log::Header::LogContents::V3::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15207,7 +15216,7 @@ bool Install::Logs::Log::Header::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Header::LogContents::get_segment_path() const
@@ -15224,7 +15233,7 @@ EntityPath Install::Logs::Log::Header::LogContents::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15313,7 +15322,7 @@ bool Install::Logs::Log::Header::has_data() const
 bool Install::Logs::Log::Header::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Header::get_segment_path() const
@@ -15330,7 +15339,7 @@ EntityPath Install::Logs::Log::Header::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15431,7 +15440,7 @@ EntityPath Install::Logs::Log::Summary::LogContents::V3::Scope::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15509,7 +15518,7 @@ bool Install::Logs::Log::Summary::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Summary::LogContents::V3::get_segment_path() const
@@ -15526,7 +15535,7 @@ EntityPath Install::Logs::Log::Summary::LogContents::V3::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15624,7 +15633,7 @@ bool Install::Logs::Log::Summary::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Summary::LogContents::get_segment_path() const
@@ -15641,7 +15650,7 @@ EntityPath Install::Logs::Log::Summary::LogContents::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15730,7 +15739,7 @@ bool Install::Logs::Log::Summary::has_data() const
 bool Install::Logs::Log::Summary::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Summary::get_segment_path() const
@@ -15747,7 +15756,7 @@ EntityPath Install::Logs::Log::Summary::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15848,7 +15857,7 @@ EntityPath Install::Logs::Log::Message::LogContents::V3::Scope::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15926,7 +15935,7 @@ bool Install::Logs::Log::Message::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Message::LogContents::V3::get_segment_path() const
@@ -15943,7 +15952,7 @@ EntityPath Install::Logs::Log::Message::LogContents::V3::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16041,7 +16050,7 @@ bool Install::Logs::Log::Message::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Message::LogContents::get_segment_path() const
@@ -16058,7 +16067,7 @@ EntityPath Install::Logs::Log::Message::LogContents::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16147,7 +16156,7 @@ bool Install::Logs::Log::Message::has_data() const
 bool Install::Logs::Log::Message::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Message::get_segment_path() const
@@ -16164,7 +16173,7 @@ EntityPath Install::Logs::Log::Message::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16265,7 +16274,7 @@ EntityPath Install::Logs::Log::Change::LogContents::V3::Scope::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16343,7 +16352,7 @@ bool Install::Logs::Log::Change::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Change::LogContents::V3::get_segment_path() const
@@ -16360,7 +16369,7 @@ EntityPath Install::Logs::Log::Change::LogContents::V3::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16458,7 +16467,7 @@ bool Install::Logs::Log::Change::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Change::LogContents::get_segment_path() const
@@ -16475,7 +16484,7 @@ EntityPath Install::Logs::Log::Change::LogContents::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16564,7 +16573,7 @@ bool Install::Logs::Log::Change::has_data() const
 bool Install::Logs::Log::Change::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Change::get_segment_path() const
@@ -16581,7 +16590,7 @@ EntityPath Install::Logs::Log::Change::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16682,7 +16691,7 @@ EntityPath Install::Logs::Log::Detail::LogContents::V3::Scope::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16760,7 +16769,7 @@ bool Install::Logs::Log::Detail::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Detail::LogContents::V3::get_segment_path() const
@@ -16777,7 +16786,7 @@ EntityPath Install::Logs::Log::Detail::LogContents::V3::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16875,7 +16884,7 @@ bool Install::Logs::Log::Detail::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Detail::LogContents::get_segment_path() const
@@ -16892,7 +16901,7 @@ EntityPath Install::Logs::Log::Detail::LogContents::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16981,7 +16990,7 @@ bool Install::Logs::Log::Detail::has_data() const
 bool Install::Logs::Log::Detail::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Detail::get_segment_path() const
@@ -16998,7 +17007,7 @@ EntityPath Install::Logs::Log::Detail::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17099,7 +17108,7 @@ EntityPath Install::Logs::Log::Communication::LogContents::V3::Scope::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17177,7 +17186,7 @@ bool Install::Logs::Log::Communication::LogContents::V3::has_operation() const
     return is_set(operation)
 	|| is_set(category.operation)
 	|| is_set(message.operation)
-	|| (scope !=  nullptr && is_set(scope->operation));
+	|| (scope !=  nullptr && scope->has_operation());
 }
 
 std::string Install::Logs::Log::Communication::LogContents::V3::get_segment_path() const
@@ -17194,7 +17203,7 @@ EntityPath Install::Logs::Log::Communication::LogContents::V3::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17292,7 +17301,7 @@ bool Install::Logs::Log::Communication::LogContents::has_operation() const
 {
     return is_set(operation)
 	|| is_set(version.operation)
-	|| (v3 !=  nullptr && is_set(v3->operation));
+	|| (v3 !=  nullptr && v3->has_operation());
 }
 
 std::string Install::Logs::Log::Communication::LogContents::get_segment_path() const
@@ -17309,7 +17318,7 @@ EntityPath Install::Logs::Log::Communication::LogContents::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17398,7 +17407,7 @@ bool Install::Logs::Log::Communication::has_data() const
 bool Install::Logs::Log::Communication::has_operation() const
 {
     return is_set(operation)
-	|| (log_contents !=  nullptr && is_set(log_contents->operation));
+	|| (log_contents !=  nullptr && log_contents->has_operation());
 }
 
 std::string Install::Logs::Log::Communication::get_segment_path() const
@@ -17415,7 +17424,7 @@ EntityPath Install::Logs::Log::Communication::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17942,14 +17951,14 @@ bool Install::has_operation() const
 {
     return is_set(operation)
 	|| is_set(log_size.operation)
-	|| (boot_image !=  nullptr && is_set(boot_image->operation))
-	|| (boot_variables !=  nullptr && is_set(boot_variables->operation))
-	|| (configuration_registers !=  nullptr && is_set(configuration_registers->operation))
-	|| (issu !=  nullptr && is_set(issu->operation))
-	|| (logs !=  nullptr && is_set(logs->operation))
-	|| (request_statuses !=  nullptr && is_set(request_statuses->operation))
-	|| (software !=  nullptr && is_set(software->operation))
-	|| (software_inventory !=  nullptr && is_set(software_inventory->operation));
+	|| (boot_image !=  nullptr && boot_image->has_operation())
+	|| (boot_variables !=  nullptr && boot_variables->has_operation())
+	|| (configuration_registers !=  nullptr && configuration_registers->has_operation())
+	|| (issu !=  nullptr && issu->has_operation())
+	|| (logs !=  nullptr && logs->has_operation())
+	|| (request_statuses !=  nullptr && request_statuses->has_operation())
+	|| (software !=  nullptr && software->has_operation())
+	|| (software_inventory !=  nullptr && software_inventory->has_operation());
 }
 
 std::string Install::get_segment_path() const
@@ -17966,7 +17975,7 @@ EntityPath Install::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -18196,223 +18205,223 @@ std::unique_ptr<Entity> Install::clone_ptr()
     return std::make_unique<Install>();
 }
 
-const Enum::Value InstmgrIssuAbortMethodEnum::method_undefined {0, "method-undefined"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_no_operation {1, "method-no-operation"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_standby_reload {2, "method-standby-reload"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_system_reload {3, "method-system-reload"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_rollback {4, "method-rollback"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_not_possible {5, "method-not-possible"};
-const Enum::Value InstmgrIssuAbortMethodEnum::method_admin_only {6, "method-admin-only"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_undefined {0, "method-undefined"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_no_operation {1, "method-no-operation"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_standby_reload {2, "method-standby-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_system_reload {3, "method-system-reload"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_rollback {4, "method-rollback"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_not_possible {5, "method-not-possible"};
+const Enum::YLeaf InstmgrIssuAbortMethodEnum::method_admin_only {6, "method-admin-only"};
 
-const Enum::Value InstmgrBagRequestTriggerEnum::cli {1, "cli"};
-const Enum::Value InstmgrBagRequestTriggerEnum::xr_xml {2, "xr-xml"};
+const Enum::YLeaf InstmgrBagRequestTriggerEnum::cli {1, "cli"};
+const Enum::YLeaf InstmgrBagRequestTriggerEnum::xr_xml {2, "xr-xml"};
 
-const Enum::Value InstmgrGroupEnum::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
-const Enum::Value InstmgrGroupEnum::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
-const Enum::Value InstmgrGroupEnum::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
+const Enum::YLeaf InstmgrGroupEnum::inst_pkg_group_undefined {0, "inst-pkg-group-undefined"};
+const Enum::YLeaf InstmgrGroupEnum::inst_pkg_group_grouped {1, "inst-pkg-group-grouped"};
+const Enum::YLeaf InstmgrGroupEnum::inst_pkg_group_individual {2, "inst-pkg-group-individual"};
 
-const Enum::Value IsmCardTypeFamilyEnum::ndsc_active_rp {1, "ndsc-active-rp"};
-const Enum::Value IsmCardTypeFamilyEnum::ndsc_standby_rp {2, "ndsc-standby-rp"};
-const Enum::Value IsmCardTypeFamilyEnum::active_drp {3, "active-drp"};
-const Enum::Value IsmCardTypeFamilyEnum::standby_drp {4, "standby-drp"};
-const Enum::Value IsmCardTypeFamilyEnum::dsc_active_rp {5, "dsc-active-rp"};
-const Enum::Value IsmCardTypeFamilyEnum::dsc_standby_rp {6, "dsc-standby-rp"};
-const Enum::Value IsmCardTypeFamilyEnum::active_sc {7, "active-sc"};
-const Enum::Value IsmCardTypeFamilyEnum::standby_sc {8, "standby-sc"};
-const Enum::Value IsmCardTypeFamilyEnum::root_active_sc {9, "root-active-sc"};
-const Enum::Value IsmCardTypeFamilyEnum::root_standby_sc {10, "root-standby-sc"};
-const Enum::Value IsmCardTypeFamilyEnum::lc {11, "lc"};
-const Enum::Value IsmCardTypeFamilyEnum::sp {12, "sp"};
-const Enum::Value IsmCardTypeFamilyEnum::fabric_sp {13, "fabric-sp"};
-const Enum::Value IsmCardTypeFamilyEnum::spa {14, "spa"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::ndsc_active_rp {1, "ndsc-active-rp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::ndsc_standby_rp {2, "ndsc-standby-rp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::active_drp {3, "active-drp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::standby_drp {4, "standby-drp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::dsc_active_rp {5, "dsc-active-rp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::dsc_standby_rp {6, "dsc-standby-rp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::active_sc {7, "active-sc"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::standby_sc {8, "standby-sc"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::root_active_sc {9, "root-active-sc"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::root_standby_sc {10, "root-standby-sc"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::lc {11, "lc"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::sp {12, "sp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::fabric_sp {13, "fabric-sp"};
+const Enum::YLeaf IsmCardTypeFamilyEnum::spa {14, "spa"};
 
-const Enum::Value InstmgrBagUserMsgCategoryEnum::user_error {1, "user-error"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::non_specific {2, "non-specific"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::warning {3, "warning"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::information {4, "information"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::user_prompt {5, "user-prompt"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::log {6, "log"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::system_error {7, "system-error"};
-const Enum::Value InstmgrBagUserMsgCategoryEnum::user_response {8, "user-response"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::user_error {1, "user-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::non_specific {2, "non-specific"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::warning {3, "warning"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::information {4, "information"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::user_prompt {5, "user-prompt"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::log {6, "log"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::system_error {7, "system-error"};
+const Enum::YLeaf InstmgrBagUserMsgCategoryEnum::user_response {8, "user-response"};
 
-const Enum::Value InstallmgrIsmNodeConformingEnum::conforming {0, "conforming"};
-const Enum::Value InstallmgrIsmNodeConformingEnum::none_conforming {1, "none-conforming"};
-const Enum::Value InstallmgrIsmNodeConformingEnum::upgrade_fail {2, "upgrade-fail"};
-const Enum::Value InstallmgrIsmNodeConformingEnum::none_conforming_spa {3, "none-conforming-spa"};
-const Enum::Value InstallmgrIsmNodeConformingEnum::spa_upgrade_fail {4, "spa-upgrade-fail"};
+const Enum::YLeaf InstallmgrIsmNodeConformingEnum::conforming {0, "conforming"};
+const Enum::YLeaf InstallmgrIsmNodeConformingEnum::none_conforming {1, "none-conforming"};
+const Enum::YLeaf InstallmgrIsmNodeConformingEnum::upgrade_fail {2, "upgrade-fail"};
+const Enum::YLeaf InstallmgrIsmNodeConformingEnum::none_conforming_spa {3, "none-conforming-spa"};
+const Enum::YLeaf InstallmgrIsmNodeConformingEnum::spa_upgrade_fail {4, "spa-upgrade-fail"};
 
-const Enum::Value InstmgrInstallPhaseEnum::inst_phase_unknown {0, "inst-phase-unknown"};
-const Enum::Value InstmgrInstallPhaseEnum::inst_phase_download {10, "inst-phase-download"};
-const Enum::Value InstmgrInstallPhaseEnum::inst_phase_sw_change {50, "inst-phase-sw-change"};
-const Enum::Value InstmgrInstallPhaseEnum::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
+const Enum::YLeaf InstmgrInstallPhaseEnum::inst_phase_unknown {0, "inst-phase-unknown"};
+const Enum::YLeaf InstmgrInstallPhaseEnum::inst_phase_download {10, "inst-phase-download"};
+const Enum::YLeaf InstmgrInstallPhaseEnum::inst_phase_sw_change {50, "inst-phase-sw-change"};
+const Enum::YLeaf InstmgrInstallPhaseEnum::inst_phase_cleaning_up {1000, "inst-phase-cleaning-up"};
 
-const Enum::Value InstmgrIssuAbortImpactEnum::undefined {0, "undefined"};
-const Enum::Value InstmgrIssuAbortImpactEnum::hitless {1, "hitless"};
-const Enum::Value InstmgrIssuAbortImpactEnum::traffic_outage {2, "traffic-outage"};
-const Enum::Value InstmgrIssuAbortImpactEnum::not_applicable {3, "not-applicable"};
+const Enum::YLeaf InstmgrIssuAbortImpactEnum::undefined {0, "undefined"};
+const Enum::YLeaf InstmgrIssuAbortImpactEnum::hitless {1, "hitless"};
+const Enum::YLeaf InstmgrIssuAbortImpactEnum::traffic_outage {2, "traffic-outage"};
+const Enum::YLeaf InstmgrIssuAbortImpactEnum::not_applicable {3, "not-applicable"};
 
-const Enum::Value InstmgrIsmNodeStateEnum::none {0, "none"};
-const Enum::Value InstmgrIsmNodeStateEnum::issu_node_gsp_ready {1, "issu-node-gsp-ready"};
-const Enum::Value InstmgrIsmNodeStateEnum::load_shut_done {2, "load-shut-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::standby_management_upgrade_done {3, "standby-management-upgrade-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::fabric_upgrade_done {4, "fabric-upgrade-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_preparation_ack_received {5, "imdr-preparation-ack-received"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_preparation_failed {6, "imdr-preparation-failed"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_start_ack_received {7, "imdr-start-ack-received"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_start_failed {8, "imdr-start-failed"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_complete_ack_received {9, "imdr-complete-ack-received"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_complete_failed {10, "imdr-complete-failed"};
-const Enum::Value InstmgrIsmNodeStateEnum::standby_management_ready {11, "standby-management-ready"};
-const Enum::Value InstmgrIsmNodeStateEnum::fo_acknowledged {12, "fo-acknowledged"};
-const Enum::Value InstmgrIsmNodeStateEnum::fo_complete {13, "fo-complete"};
-const Enum::Value InstmgrIsmNodeStateEnum::standby_ready_after_fo {14, "standby-ready-after-fo"};
-const Enum::Value InstmgrIsmNodeStateEnum::iam_ready_afteri_mdr {15, "iam-ready-afteri-mdr"};
-const Enum::Value InstmgrIsmNodeStateEnum::nsf_ready {16, "nsf-ready"};
-const Enum::Value InstmgrIsmNodeStateEnum::nsf_begin_ack_received {17, "nsf-begin-ack-received"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_done {18, "imdr-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::unshut_done {19, "unshut-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::run_done {20, "run-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_abort_sent {21, "imdr-abort-sent"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_abort_ack_received {22, "imdr-abort-ack-received"};
-const Enum::Value InstmgrIsmNodeStateEnum::imdr_abort_failed {23, "imdr-abort-failed"};
-const Enum::Value InstmgrIsmNodeStateEnum::standby_management_downgrade_done {24, "standby-management-downgrade-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::fabric_downgrade_done {25, "fabric-downgrade-done"};
-const Enum::Value InstmgrIsmNodeStateEnum::reload_during_issu {26, "reload-during-issu"};
-const Enum::Value InstmgrIsmNodeStateEnum::timneout {27, "timneout"};
-const Enum::Value InstmgrIsmNodeStateEnum::fabric_upgrade_failed {28, "fabric-upgrade-failed"};
-const Enum::Value InstmgrIsmNodeStateEnum::unsupported_hw {29, "unsupported-hw"};
-const Enum::Value InstmgrIsmNodeStateEnum::not_reachable {30, "not-reachable"};
-const Enum::Value InstmgrIsmNodeStateEnum::max {32, "max"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::none {0, "none"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::issu_node_gsp_ready {1, "issu-node-gsp-ready"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::load_shut_done {2, "load-shut-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::standby_management_upgrade_done {3, "standby-management-upgrade-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::fabric_upgrade_done {4, "fabric-upgrade-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_preparation_ack_received {5, "imdr-preparation-ack-received"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_preparation_failed {6, "imdr-preparation-failed"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_start_ack_received {7, "imdr-start-ack-received"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_start_failed {8, "imdr-start-failed"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_complete_ack_received {9, "imdr-complete-ack-received"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_complete_failed {10, "imdr-complete-failed"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::standby_management_ready {11, "standby-management-ready"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::fo_acknowledged {12, "fo-acknowledged"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::fo_complete {13, "fo-complete"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::standby_ready_after_fo {14, "standby-ready-after-fo"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::iam_ready_afteri_mdr {15, "iam-ready-afteri-mdr"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::nsf_ready {16, "nsf-ready"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::nsf_begin_ack_received {17, "nsf-begin-ack-received"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_done {18, "imdr-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::unshut_done {19, "unshut-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::run_done {20, "run-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_abort_sent {21, "imdr-abort-sent"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_abort_ack_received {22, "imdr-abort-ack-received"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::imdr_abort_failed {23, "imdr-abort-failed"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::standby_management_downgrade_done {24, "standby-management-downgrade-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::fabric_downgrade_done {25, "fabric-downgrade-done"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::reload_during_issu {26, "reload-during-issu"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::timneout {27, "timneout"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::fabric_upgrade_failed {28, "fabric-upgrade-failed"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::unsupported_hw {29, "unsupported-hw"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::not_reachable {30, "not-reachable"};
+const Enum::YLeaf InstmgrIsmNodeStateEnum::max {32, "max"};
 
-const Enum::Value InstmgrPkgEnum::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
-const Enum::Value InstmgrPkgEnum::inst_pkg_type_root {1, "inst-pkg-type-root"};
-const Enum::Value InstmgrPkgEnum::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
-const Enum::Value InstmgrPkgEnum::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
+const Enum::YLeaf InstmgrPkgEnum::inst_pkg_type_undefined {0, "inst-pkg-type-undefined"};
+const Enum::YLeaf InstmgrPkgEnum::inst_pkg_type_root {1, "inst-pkg-type-root"};
+const Enum::YLeaf InstmgrPkgEnum::inst_pkg_type_standard {2, "inst-pkg-type-standard"};
+const Enum::YLeaf InstmgrPkgEnum::inst_pkg_type_internal {3, "inst-pkg-type-internal"};
 
-const Enum::Value InstmgrCardStateEnum::instmgr_card_not_present {0, "instmgr-card-not-present"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_present {1, "instmgr-card-present"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_reset {2, "instmgr-card-reset"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_booting {3, "instmgr-card-booting"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_mbi_booting {4, "instmgr-card-mbi-booting"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_running_mbi {5, "instmgr-card-running-mbi"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_running_ena {6, "instmgr-card-running-ena"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_bring_down {7, "instmgr-card-bring-down"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_ena_failure {8, "instmgr-card-ena-failure"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_f_diag_run {9, "instmgr-card-f-diag-run"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_f_diag_failure {10, "instmgr-card-f-diag-failure"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_powered {11, "instmgr-card-powered"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_unpowered {12, "instmgr-card-unpowered"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_mdr {13, "instmgr-card-mdr"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_mdr_running_mbi {14, "instmgr-card-mdr-running-mbi"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_main_t_mode {15, "instmgr-card-main-t-mode"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_admin_down {16, "instmgr-card-admin-down"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_no_mon {17, "instmgr-card-no-mon"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_unknown {18, "instmgr-card-unknown"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_failed {19, "instmgr-card-failed"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_ok {20, "instmgr-card-ok"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_missing {21, "instmgr-card-missing"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_downloading {22, "instmgr-card-field-diag-downloading"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_unmonitor {23, "instmgr-card-field-diag-unmonitor"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_fabric_field_diag_unmonitor {24, "instmgr-card-fabric-field-diag-unmonitor"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_rp_launching {25, "instmgr-card-field-diag-rp-launching"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_running {26, "instmgr-card-field-diag-running"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_pass {27, "instmgr-card-field-diag-pass"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_fail {28, "instmgr-card-field-diag-fail"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_field_diag_timeout {29, "instmgr-card-field-diag-timeout"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_disabled {30, "instmgr-card-disabled"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_spa_booting {31, "instmgr-card-spa-booting"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_not_allowed_online {32, "instmgr-card-not-allowed-online"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_stopped {33, "instmgr-card-stopped"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_incompatible_fw_ver {34, "instmgr-card-incompatible-fw-ver"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_fpd_hold {35, "instmgr-card-fpd-hold"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_updating_fpd {37, "instmgr-card-updating-fpd"};
-const Enum::Value InstmgrCardStateEnum::instmgr_card_num_states {38, "instmgr-card-num-states"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_not_present {0, "instmgr-card-not-present"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_present {1, "instmgr-card-present"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_reset {2, "instmgr-card-reset"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_booting {3, "instmgr-card-booting"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_mbi_booting {4, "instmgr-card-mbi-booting"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_running_mbi {5, "instmgr-card-running-mbi"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_running_ena {6, "instmgr-card-running-ena"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_bring_down {7, "instmgr-card-bring-down"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_ena_failure {8, "instmgr-card-ena-failure"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_f_diag_run {9, "instmgr-card-f-diag-run"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_f_diag_failure {10, "instmgr-card-f-diag-failure"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_powered {11, "instmgr-card-powered"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_unpowered {12, "instmgr-card-unpowered"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_mdr {13, "instmgr-card-mdr"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_mdr_running_mbi {14, "instmgr-card-mdr-running-mbi"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_main_t_mode {15, "instmgr-card-main-t-mode"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_admin_down {16, "instmgr-card-admin-down"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_no_mon {17, "instmgr-card-no-mon"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_unknown {18, "instmgr-card-unknown"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_failed {19, "instmgr-card-failed"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_ok {20, "instmgr-card-ok"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_missing {21, "instmgr-card-missing"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_downloading {22, "instmgr-card-field-diag-downloading"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_unmonitor {23, "instmgr-card-field-diag-unmonitor"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_fabric_field_diag_unmonitor {24, "instmgr-card-fabric-field-diag-unmonitor"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_rp_launching {25, "instmgr-card-field-diag-rp-launching"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_running {26, "instmgr-card-field-diag-running"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_pass {27, "instmgr-card-field-diag-pass"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_fail {28, "instmgr-card-field-diag-fail"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_field_diag_timeout {29, "instmgr-card-field-diag-timeout"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_disabled {30, "instmgr-card-disabled"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_spa_booting {31, "instmgr-card-spa-booting"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_not_allowed_online {32, "instmgr-card-not-allowed-online"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_stopped {33, "instmgr-card-stopped"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_incompatible_fw_ver {34, "instmgr-card-incompatible-fw-ver"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_fpd_hold {35, "instmgr-card-fpd-hold"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_updating_fpd {37, "instmgr-card-updating-fpd"};
+const Enum::YLeaf InstmgrCardStateEnum::instmgr_card_num_states {38, "instmgr-card-num-states"};
 
-const Enum::Value InstmgrNodeRoleEnum::redundency_unknown {0, "redundency-unknown"};
-const Enum::Value InstmgrNodeRoleEnum::redundency_active {1, "redundency-active"};
-const Enum::Value InstmgrNodeRoleEnum::redundency_standby {2, "redundency-standby"};
-const Enum::Value InstmgrNodeRoleEnum::redundency_unusable {3, "redundency-unusable"};
+const Enum::YLeaf InstmgrNodeRoleEnum::redundency_unknown {0, "redundency-unknown"};
+const Enum::YLeaf InstmgrNodeRoleEnum::redundency_active {1, "redundency-active"};
+const Enum::YLeaf InstmgrNodeRoleEnum::redundency_standby {2, "redundency-standby"};
+const Enum::YLeaf InstmgrNodeRoleEnum::redundency_unusable {3, "redundency-unusable"};
 
-const Enum::Value InstmgrRequestEnum::add {1, "add"};
-const Enum::Value InstmgrRequestEnum::accept {2, "accept"};
-const Enum::Value InstmgrRequestEnum::clean {3, "clean"};
-const Enum::Value InstmgrRequestEnum::activate {4, "activate"};
-const Enum::Value InstmgrRequestEnum::deactivate {5, "deactivate"};
-const Enum::Value InstmgrRequestEnum::commit {6, "commit"};
-const Enum::Value InstmgrRequestEnum::verify {7, "verify"};
-const Enum::Value InstmgrRequestEnum::rollback {8, "rollback"};
-const Enum::Value InstmgrRequestEnum::clear_rollback {9, "clear-rollback"};
-const Enum::Value InstmgrRequestEnum::clear_log {10, "clear-log"};
-const Enum::Value InstmgrRequestEnum::health_check {11, "health-check"};
-const Enum::Value InstmgrRequestEnum::operation_ {12, "operation"};
-const Enum::Value InstmgrRequestEnum::stop_timer {13, "stop-timer"};
-const Enum::Value InstmgrRequestEnum::label {14, "label"};
-const Enum::Value InstmgrRequestEnum::clear_label {15, "clear-label"};
-const Enum::Value InstmgrRequestEnum::extend {16, "extend"};
+const Enum::YLeaf InstmgrRequestEnum::add {1, "add"};
+const Enum::YLeaf InstmgrRequestEnum::accept {2, "accept"};
+const Enum::YLeaf InstmgrRequestEnum::clean {3, "clean"};
+const Enum::YLeaf InstmgrRequestEnum::activate {4, "activate"};
+const Enum::YLeaf InstmgrRequestEnum::deactivate {5, "deactivate"};
+const Enum::YLeaf InstmgrRequestEnum::commit {6, "commit"};
+const Enum::YLeaf InstmgrRequestEnum::verify {7, "verify"};
+const Enum::YLeaf InstmgrRequestEnum::rollback {8, "rollback"};
+const Enum::YLeaf InstmgrRequestEnum::clear_rollback {9, "clear-rollback"};
+const Enum::YLeaf InstmgrRequestEnum::clear_log {10, "clear-log"};
+const Enum::YLeaf InstmgrRequestEnum::health_check {11, "health-check"};
+const Enum::YLeaf InstmgrRequestEnum::operation_ {12, "operation"};
+const Enum::YLeaf InstmgrRequestEnum::stop_timer {13, "stop-timer"};
+const Enum::YLeaf InstmgrRequestEnum::label {14, "label"};
+const Enum::YLeaf InstmgrRequestEnum::clear_label {15, "clear-label"};
+const Enum::YLeaf InstmgrRequestEnum::extend {16, "extend"};
 
-const Enum::Value InstmgrIsmFsmStateEnum::idle {0, "idle"};
-const Enum::Value InstmgrIsmFsmStateEnum::init_done {1, "init-done"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_shut {2, "load-shut"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_wait {3, "load-wait"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_stp_root_before {4, "load-stp-root-before"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_stp_root_after {7, "load-stp-root-after"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_fabric_upgrade {8, "load-fabric-upgrade"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_management_issu_ready {9, "load-management-issu-ready"};
-const Enum::Value InstmgrIsmFsmStateEnum::load_done {10, "load-done"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_prep {11, "run-prep"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_wait {12, "run-wait"};
-const Enum::Value InstmgrIsmFsmStateEnum::runi_mdr_prep {13, "runi-mdr-prep"};
-const Enum::Value InstmgrIsmFsmStateEnum::runi_mdr_start {14, "runi-mdr-start"};
-const Enum::Value InstmgrIsmFsmStateEnum::runi_mdr_complete {15, "runi-mdr-complete"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_make_standby_ready {16, "run-make-standby-ready"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_root_scfo {17, "run-root-scfo"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_ndscfo {18, "run-ndscfo"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_transient1 {19, "run-transient1"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_dscfo {20, "run-dscfo"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_fo_complete {21, "run-fo-complete"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_stp_root_return {22, "run-stp-root-return"};
-const Enum::Value InstmgrIsmFsmStateEnum::runi_mdr_continue {23, "runi-mdr-continue"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_nsf_ready {25, "run-nsf-ready"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_nsf_begin {26, "run-nsf-begin"};
-const Enum::Value InstmgrIsmFsmStateEnum::runi_mdr_done {27, "runi-mdr-done"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_management_issu_ready {28, "run-management-issu-ready"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_un_shut {29, "run-un-shut"};
-const Enum::Value InstmgrIsmFsmStateEnum::run_is_done {30, "run-is-done"};
-const Enum::Value InstmgrIsmFsmStateEnum::state_max {31, "state-max"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::idle {0, "idle"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::init_done {1, "init-done"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_shut {2, "load-shut"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_wait {3, "load-wait"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_stp_root_before {4, "load-stp-root-before"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_standby_root_sc_upgrade {5, "load-standby-root-sc-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_standby_management_upgrade {6, "load-standby-management-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_stp_root_after {7, "load-stp-root-after"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_fabric_upgrade {8, "load-fabric-upgrade"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_management_issu_ready {9, "load-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::load_done {10, "load-done"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_prep {11, "run-prep"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_wait {12, "run-wait"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::runi_mdr_prep {13, "runi-mdr-prep"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::runi_mdr_start {14, "runi-mdr-start"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::runi_mdr_complete {15, "runi-mdr-complete"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_make_standby_ready {16, "run-make-standby-ready"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_root_scfo {17, "run-root-scfo"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_ndscfo {18, "run-ndscfo"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_transient1 {19, "run-transient1"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_dscfo {20, "run-dscfo"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_fo_complete {21, "run-fo-complete"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_stp_root_return {22, "run-stp-root-return"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::runi_mdr_continue {23, "runi-mdr-continue"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_am_i_ready_afteri_mdr {24, "run-am-i-ready-afteri-mdr"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_nsf_ready {25, "run-nsf-ready"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_nsf_begin {26, "run-nsf-begin"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::runi_mdr_done {27, "runi-mdr-done"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_management_issu_ready {28, "run-management-issu-ready"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_un_shut {29, "run-un-shut"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::run_is_done {30, "run-is-done"};
+const Enum::YLeaf InstmgrIsmFsmStateEnum::state_max {31, "state-max"};
 
-const Enum::Value InstmgrBagIiDirectionEnum::not_incremental {0, "not-incremental"};
-const Enum::Value InstmgrBagIiDirectionEnum::installing {1, "installing"};
-const Enum::Value InstmgrBagIiDirectionEnum::unwinding {2, "unwinding"};
+const Enum::YLeaf InstmgrBagIiDirectionEnum::not_incremental {0, "not-incremental"};
+const Enum::YLeaf InstmgrBagIiDirectionEnum::installing {1, "installing"};
+const Enum::YLeaf InstmgrBagIiDirectionEnum::unwinding {2, "unwinding"};
 
-const Enum::Value InstmgrPiCardEnum::type_rp {0, "type-rp"};
-const Enum::Value InstmgrPiCardEnum::type_drp {1, "type-drp"};
-const Enum::Value InstmgrPiCardEnum::type_lc {2, "type-lc"};
-const Enum::Value InstmgrPiCardEnum::type_sc {3, "type-sc"};
-const Enum::Value InstmgrPiCardEnum::type_sp {4, "type-sp"};
-const Enum::Value InstmgrPiCardEnum::type_other {5, "type-other"};
+const Enum::YLeaf InstmgrPiCardEnum::type_rp {0, "type-rp"};
+const Enum::YLeaf InstmgrPiCardEnum::type_drp {1, "type-drp"};
+const Enum::YLeaf InstmgrPiCardEnum::type_lc {2, "type-lc"};
+const Enum::YLeaf InstmgrPiCardEnum::type_sc {3, "type-sc"};
+const Enum::YLeaf InstmgrPiCardEnum::type_sp {4, "type-sp"};
+const Enum::YLeaf InstmgrPiCardEnum::type_other {5, "type-other"};
 
-const Enum::Value InstmgrBagIiStateEnum::idle {1, "idle"};
-const Enum::Value InstmgrBagIiStateEnum::in_progress {2, "in-progress"};
-const Enum::Value InstmgrBagIiStateEnum::completed {3, "completed"};
-const Enum::Value InstmgrBagIiStateEnum::aborted {4, "aborted"};
-const Enum::Value InstmgrBagIiStateEnum::rebooted {5, "rebooted"};
+const Enum::YLeaf InstmgrBagIiStateEnum::idle {1, "idle"};
+const Enum::YLeaf InstmgrBagIiStateEnum::in_progress {2, "in-progress"};
+const Enum::YLeaf InstmgrBagIiStateEnum::completed {3, "completed"};
+const Enum::YLeaf InstmgrBagIiStateEnum::aborted {4, "aborted"};
+const Enum::YLeaf InstmgrBagIiStateEnum::rebooted {5, "rebooted"};
 
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::user_error {1, "user-error"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::non_specific {2, "non-specific"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::warning {3, "warning"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::information {4, "information"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::user_prompt {5, "user-prompt"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::log {6, "log"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::system_error {7, "system-error"};
-const Enum::Value InstmgrBagLogEntryUserMsgCategoryEnum::user_response {8, "user-response"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::user_error {1, "user-error"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::non_specific {2, "non-specific"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::warning {3, "warning"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::information {4, "information"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::user_prompt {5, "user-prompt"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::log {6, "log"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::system_error {7, "system-error"};
+const Enum::YLeaf InstmgrBagLogEntryUserMsgCategoryEnum::user_response {8, "user-response"};
 
-const Enum::Value InstmgrBagAbortStateEnum::abortable {1, "abortable"};
-const Enum::Value InstmgrBagAbortStateEnum::no_longer_abortable {2, "no-longer-abortable"};
-const Enum::Value InstmgrBagAbortStateEnum::never_abortable {3, "never-abortable"};
-const Enum::Value InstmgrBagAbortStateEnum::already_aborted {4, "already-aborted"};
+const Enum::YLeaf InstmgrBagAbortStateEnum::abortable {1, "abortable"};
+const Enum::YLeaf InstmgrBagAbortStateEnum::no_longer_abortable {2, "no-longer-abortable"};
+const Enum::YLeaf InstmgrBagAbortStateEnum::never_abortable {3, "never-abortable"};
+const Enum::YLeaf InstmgrBagAbortStateEnum::already_aborted {4, "already-aborted"};
 
 
 }

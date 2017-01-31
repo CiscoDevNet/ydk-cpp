@@ -26,6 +26,7 @@ class ShowUsers : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Sessions : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ShowUsers : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Session : public Entity
         {
             public:
@@ -54,14 +56,15 @@ class ShowUsers : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_id; //type: int32
-                Value line; //type: string
-                Value user; //type: string
-                Value service; //type: string
-                Value conns; //type: string
-                Value idle_string; //type: string
-                Value location; //type: string
 
+
+                YLeaf session_id; //type: int32
+                YLeaf line; //type: string
+                YLeaf user; //type: string
+                YLeaf service; //type: string
+                YLeaf conns; //type: string
+                YLeaf idle_string; //type: string
+                YLeaf location; //type: string
 
 
 

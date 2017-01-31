@@ -24,12 +24,13 @@ class Lldp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value holdtime; //type: uint32
-        Value enable_subintf; //type: boolean
-        Value timer; //type: uint32
-        Value reinit; //type: uint32
-        Value enable; //type: boolean
 
+
+        YLeaf holdtime; //type: uint32
+        YLeaf enable_subintf; //type: boolean
+        YLeaf timer; //type: uint32
+        YLeaf reinit; //type: uint32
+        YLeaf enable; //type: boolean
 
     class TlvSelect : public Entity
     {
@@ -44,8 +45,9 @@ class Lldp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value tlv_select_enter; //type: boolean
 
+
+            YLeaf tlv_select_enter; //type: boolean
 
         class SystemName : public Entity
         {
@@ -60,8 +62,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: boolean
 
+
+                YLeaf disable; //type: boolean
 
 
 
@@ -81,8 +84,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: boolean
 
+
+                YLeaf disable; //type: boolean
 
 
 
@@ -102,8 +106,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: boolean
 
+
+                YLeaf disable; //type: boolean
 
 
 
@@ -123,8 +128,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: boolean
 
+
+                YLeaf disable; //type: boolean
 
 
 
@@ -144,8 +150,9 @@ class Lldp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: boolean
 
+
+                YLeaf disable; //type: boolean
 
 
 

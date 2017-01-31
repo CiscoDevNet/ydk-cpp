@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ipv4_autorp_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_ipv4_pim_cfg {
@@ -28,6 +27,7 @@ class Pim : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vrfs : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class Pim : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -56,8 +57,9 @@ class Pim : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Ipv6 : public Entity
             {
@@ -72,22 +74,23 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value embedded_rp_disable; //type: empty
-                    Value neighbor_check_on_receive; //type: empty
-                    Value old_register_checksum; //type: empty
-                    Value neighbor_filter; //type: string
-                    Value spt_threshold_infinity; //type: string
-                    Value log_neighbor_changes; //type: empty
-                    Value register_source; //type: string
-                    Value accept_register; //type: string
-                    Value suppress_rpf_prunes; //type: empty
-                    Value assert_disable; //type: empty
-                    Value ssm_allow_override; //type: empty
-                    Value multipath; //type: PimMultipathEnum
-                    Value rp_static_deny; //type: string
-                    Value suppress_data_registers; //type: empty
-                    Value neighbor_check_on_send; //type: empty
 
+
+                    YLeaf embedded_rp_disable; //type: empty
+                    YLeaf neighbor_check_on_receive; //type: empty
+                    YLeaf old_register_checksum; //type: empty
+                    YLeaf neighbor_filter; //type: string
+                    YLeaf spt_threshold_infinity; //type: string
+                    YLeaf log_neighbor_changes; //type: empty
+                    YLeaf register_source; //type: string
+                    YLeaf accept_register; //type: string
+                    YLeaf suppress_rpf_prunes; //type: empty
+                    YLeaf assert_disable; //type: empty
+                    YLeaf ssm_allow_override; //type: empty
+                    YLeaf multipath; //type: PimMultipathEnum
+                    YLeaf rp_static_deny; //type: string
+                    YLeaf suppress_data_registers; //type: empty
+                    YLeaf neighbor_check_on_send; //type: empty
 
                 class EmbeddedRpAddresses : public Entity
                 {
@@ -104,6 +107,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class EmbeddedRpAddress : public Entity
                     {
                         public:
@@ -117,9 +121,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rp_address; //type: string
-                            Value access_list_name; //type: string
 
+
+                            YLeaf rp_address; //type: string
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -147,6 +152,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SparseModeRpAddress : public Entity
                     {
                         public:
@@ -160,10 +166,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rp_address; //type: string
-                            Value access_list_name; //type: string
-                            Value auto_rp_override; //type: boolean
 
+
+                            YLeaf rp_address; //type: string
+                            YLeaf access_list_name; //type: string
+                            YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -189,14 +196,15 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value convergency; //type: uint32
-                        Value hello_interval; //type: uint32
-                        Value propagation_delay; //type: uint32
-                        Value dr_priority; //type: uint32
-                        Value join_prune_mtu; //type: uint32
-                        Value jp_interval; //type: uint32
-                        Value override_interval; //type: uint32
 
+
+                        YLeaf convergency; //type: uint32
+                        YLeaf hello_interval; //type: uint32
+                        YLeaf propagation_delay; //type: uint32
+                        YLeaf dr_priority; //type: uint32
+                        YLeaf join_prune_mtu; //type: uint32
+                        YLeaf jp_interval; //type: uint32
+                        YLeaf override_interval; //type: uint32
 
 
 
@@ -216,8 +224,9 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_policy; //type: string
 
+
+                        YLeaf route_policy; //type: string
 
 
 
@@ -237,9 +246,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -259,10 +269,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: empty
-                        Value allow_ebgp; //type: boolean
-                        Value disable_ibgp; //type: boolean
 
+
+                        YLeaf enable; //type: empty
+                        YLeaf allow_ebgp; //type: boolean
+                        YLeaf disable_ibgp; //type: boolean
 
 
 
@@ -282,8 +293,9 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lifetime; //type: uint32
 
+
+                        YLeaf lifetime; //type: uint32
 
 
 
@@ -303,9 +315,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value gloabal_high_priority_packet_queue; //type: uint32
-                        Value gloabal_low_priority_packet_queue; //type: uint32
 
+
+                        YLeaf gloabal_high_priority_packet_queue; //type: uint32
+                        YLeaf gloabal_low_priority_packet_queue; //type: uint32
 
                     class GroupMappingsAutoRp : public Entity
                     {
@@ -320,9 +333,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_group_ranges_auto_rp; //type: uint32
-                            Value threshold_group_ranges_auto_rp; //type: uint32
 
+
+                            YLeaf maximum_group_ranges_auto_rp; //type: uint32
+                            YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -342,9 +356,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_global_group_mappings; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_global_group_mappings; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -364,9 +379,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_routes; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_routes; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -386,9 +402,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_group_ranges; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_group_ranges; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -408,9 +425,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_global_group_ranges_auto_rp; //type: uint32
-                            Value threshold_global_group_ranges_auto_rp; //type: uint32
 
+
+                            YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+                            YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -430,9 +448,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_register_states; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_register_states; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -452,9 +471,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_route_interfaces; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_route_interfaces; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -474,9 +494,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_global_candidate_rp_cache; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -496,9 +517,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_candidate_rp_cache; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -518,9 +540,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_register_states; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_register_states; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -540,9 +563,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_route_interfaces; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_route_interfaces; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -562,9 +586,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_routes; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_routes; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -601,9 +626,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: boolean
-                        Value range; //type: string
 
+
+                        YLeaf disable; //type: boolean
+                        YLeaf range; //type: string
 
 
 
@@ -625,6 +651,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BidirRpAddress : public Entity
                     {
                         public:
@@ -638,10 +665,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rp_address; //type: string
-                            Value access_list_name; //type: string
-                            Value auto_rp_override; //type: boolean
 
+
+                            YLeaf rp_address; //type: string
+                            YLeaf access_list_name; //type: string
+                            YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -669,6 +697,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CandidateRps : public Entity
                     {
                         public:
@@ -684,6 +713,7 @@ class Pim : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class CandidateRp : public Entity
                         {
                             public:
@@ -697,8 +727,9 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
                             class Sm : public Entity
                             {
@@ -713,11 +744,12 @@ class Pim : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value priority; //type: uint32
-                                    Value protocol_mode; //type: uint32
-                                    Value interval; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf priority; //type: uint32
+                                    YLeaf protocol_mode; //type: uint32
+                                    YLeaf interval; //type: uint32
 
 
 
@@ -737,11 +769,12 @@ class Pim : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value priority; //type: uint32
-                                    Value protocol_mode; //type: uint32
-                                    Value interval; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf priority; //type: uint32
+                                    YLeaf protocol_mode; //type: uint32
+                                    YLeaf interval; //type: uint32
 
 
 
@@ -774,10 +807,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value prefix_length; //type: int32
-                            Value priority; //type: uint32
 
+
+                            YLeaf address; //type: string
+                            YLeaf prefix_length; //type: int32
+                            YLeaf priority; //type: uint32
 
 
 
@@ -806,6 +840,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -819,18 +854,19 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value neighbor_filter; //type: string
-                            Value bsr_border; //type: boolean
-                            Value enable; //type: empty
-                            Value interface_enable; //type: boolean
-                            Value hello_interval; //type: uint32
-                            Value propagation_delay; //type: uint32
-                            Value dr_priority; //type: uint32
-                            Value join_prune_mtu; //type: uint32
-                            Value jp_interval; //type: uint32
-                            Value override_interval; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf neighbor_filter; //type: string
+                            YLeaf bsr_border; //type: boolean
+                            YLeaf enable; //type: empty
+                            YLeaf interface_enable; //type: boolean
+                            YLeaf hello_interval; //type: uint32
+                            YLeaf propagation_delay; //type: uint32
+                            YLeaf dr_priority; //type: uint32
+                            YLeaf join_prune_mtu; //type: uint32
+                            YLeaf jp_interval; //type: uint32
+                            YLeaf override_interval; //type: uint32
 
                         class RedirectBundle : public Entity
                         {
@@ -845,10 +881,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value interface_bandwidth; //type: uint32
-                                Value threshold_bandwidth; //type: uint32
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf interface_bandwidth; //type: uint32
+                                YLeaf threshold_bandwidth; //type: uint32
 
 
 
@@ -868,10 +905,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value detection_multiplier; //type: uint32
-                                Value interval; //type: uint32
-                                Value enable; //type: boolean
 
+
+                                YLeaf detection_multiplier; //type: uint32
+                                YLeaf interval; //type: uint32
+                                YLeaf enable; //type: boolean
 
 
 
@@ -891,10 +929,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value maximum; //type: uint32
-                                Value warning_threshold; //type: uint32
-                                Value access_list_name; //type: string
 
+
+                                YLeaf maximum; //type: uint32
+                                YLeaf warning_threshold; //type: uint32
+                                YLeaf access_list_name; //type: string
 
 
 
@@ -928,9 +967,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_list_name; //type: string
-                        Value group_list_name; //type: string
 
+
+                        YLeaf rp_list_name; //type: string
+                        YLeaf group_list_name; //type: string
 
 
 
@@ -950,9 +990,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rpf_conflict_join_delay; //type: uint32
-                        Value link_down_prune_delay; //type: uint32
 
+
+                        YLeaf rpf_conflict_join_delay; //type: uint32
+                        YLeaf link_down_prune_delay; //type: uint32
 
 
 
@@ -973,7 +1014,6 @@ class Pim : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer> sg_expiry_timer;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses> sparse_mode_rp_addresses;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv6::Ssm> ssm;
-                    class PimMultipathEnum;
 
 
             }; // Pim::Vrfs::Vrf::Ipv6
@@ -992,22 +1032,23 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value auto_rp_disable; //type: empty
-                    Value neighbor_check_on_receive; //type: empty
-                    Value old_register_checksum; //type: empty
-                    Value neighbor_filter; //type: string
-                    Value spt_threshold_infinity; //type: string
-                    Value log_neighbor_changes; //type: empty
-                    Value register_source; //type: string
-                    Value accept_register; //type: string
-                    Value suppress_rpf_prunes; //type: empty
-                    Value assert_disable; //type: empty
-                    Value ssm_allow_override; //type: empty
-                    Value multipath; //type: PimMultipathEnum
-                    Value rp_static_deny; //type: string
-                    Value suppress_data_registers; //type: empty
-                    Value neighbor_check_on_send; //type: empty
 
+
+                    YLeaf auto_rp_disable; //type: empty
+                    YLeaf neighbor_check_on_receive; //type: empty
+                    YLeaf old_register_checksum; //type: empty
+                    YLeaf neighbor_filter; //type: string
+                    YLeaf spt_threshold_infinity; //type: string
+                    YLeaf log_neighbor_changes; //type: empty
+                    YLeaf register_source; //type: string
+                    YLeaf accept_register; //type: string
+                    YLeaf suppress_rpf_prunes; //type: empty
+                    YLeaf assert_disable; //type: empty
+                    YLeaf ssm_allow_override; //type: empty
+                    YLeaf multipath; //type: PimMultipathEnum
+                    YLeaf rp_static_deny; //type: string
+                    YLeaf suppress_data_registers; //type: empty
+                    YLeaf neighbor_check_on_send; //type: empty
 
                 class CsMulticastOnlyFrrs : public Entity
                 {
@@ -1024,6 +1065,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CsMulticastOnlyFrr : public Entity
                     {
                         public:
@@ -1037,11 +1079,12 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source; //type: string
-                            Value primary; //type: string
-                            Value backup; //type: string
-                            Value prefix_length; //type: int32
 
+
+                            YLeaf source; //type: string
+                            YLeaf primary; //type: string
+                            YLeaf backup; //type: string
+                            YLeaf prefix_length; //type: int32
 
 
 
@@ -1067,11 +1110,12 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value non_revertive_multicast_only_frr; //type: empty
-                        Value flow_multicast_only_frr; //type: string
-                        Value enable; //type: empty
-                        Value rib_multicast_only_frr; //type: string
 
+
+                        YLeaf non_revertive_multicast_only_frr; //type: empty
+                        YLeaf flow_multicast_only_frr; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf rib_multicast_only_frr; //type: string
 
 
 
@@ -1091,8 +1135,9 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_policy; //type: string
 
+
+                        YLeaf route_policy; //type: string
 
 
 
@@ -1114,6 +1159,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Path : public Entity
                     {
                         public:
@@ -1127,10 +1173,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value prefix_length; //type: int32
-                            ValueList rpf_proxy_address; //type: list of  string
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf prefix_length; //type: int32
+                            YLeafList rpf_proxy_address; //type: list of  string
 
 
 
@@ -1158,6 +1205,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CjMulticastOnlyFrr : public Entity
                     {
                         public:
@@ -1171,11 +1219,12 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source; //type: string
-                            Value primary; //type: string
-                            Value backup; //type: string
-                            Value prefix_length; //type: int32
 
+
+                            YLeaf source; //type: string
+                            YLeaf primary; //type: string
+                            YLeaf backup; //type: string
+                            YLeaf prefix_length; //type: int32
 
 
 
@@ -1205,6 +1254,7 @@ class Pim : public Entity
 
 
 
+
                 }; // Pim::Vrfs::Vrf::Ipv4::AutoRp
 
 
@@ -1223,6 +1273,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Parameters : public Entity
                     {
                         public:
@@ -1236,10 +1287,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value ttl; //type: uint32
-                            Value announce_period; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf ttl; //type: uint32
+                            YLeaf announce_period; //type: uint32
 
 
 
@@ -1259,9 +1311,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_cache_entry; //type: uint32
-                            Value threshold_cache_entry; //type: uint32
 
+
+                            YLeaf maximum_cache_entry; //type: uint32
+                            YLeaf threshold_cache_entry; //type: uint32
 
 
 
@@ -1290,6 +1343,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CandidateRp : public Entity
                     {
                         public:
@@ -1303,9 +1357,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value protocol_mode; //type: AutoRpProtocolModeEnum
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf protocol_mode; //type: AutoRpProtocolModeEnum
 
                         class CandidateRpRange : public Entity
                         {
@@ -1320,10 +1375,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ttl; //type: uint32
-                                Value access_list_name; //type: string
-                                Value announce_period; //type: uint32
 
+
+                                YLeaf ttl; //type: uint32
+                                YLeaf access_list_name; //type: string
+                                YLeaf announce_period; //type: uint32
 
 
 
@@ -1331,7 +1387,6 @@ class Pim : public Entity
 
 
                             std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp::CandidateRpRange> candidate_rp_range; // presence node
-                            class AutoRpProtocolModeEnum;
 
 
                     }; // Pim::Vrfs::Vrf::Ipv4::CandidateRps::CandidateRp
@@ -1358,6 +1413,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Inject : public Entity
                     {
                         public:
@@ -1371,10 +1427,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value prefix_length; //type: int32
-                            ValueList rpf_proxy_address; //type: list of  string
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf prefix_length; //type: int32
+                            YLeafList rpf_proxy_address; //type: list of  string
 
 
 
@@ -1402,6 +1459,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SparseModeRpAddress : public Entity
                     {
                         public:
@@ -1415,10 +1473,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rp_address; //type: string
-                            Value access_list_name; //type: string
-                            Value auto_rp_override; //type: boolean
 
+
+                            YLeaf rp_address; //type: string
+                            YLeaf access_list_name; //type: string
+                            YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -1444,14 +1503,15 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value convergency; //type: uint32
-                        Value hello_interval; //type: uint32
-                        Value propagation_delay; //type: uint32
-                        Value dr_priority; //type: uint32
-                        Value join_prune_mtu; //type: uint32
-                        Value jp_interval; //type: uint32
-                        Value override_interval; //type: uint32
 
+
+                        YLeaf convergency; //type: uint32
+                        YLeaf hello_interval; //type: uint32
+                        YLeaf propagation_delay; //type: uint32
+                        YLeaf dr_priority; //type: uint32
+                        YLeaf join_prune_mtu; //type: uint32
+                        YLeaf jp_interval; //type: uint32
+                        YLeaf override_interval; //type: uint32
 
 
 
@@ -1471,8 +1531,9 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value route_policy; //type: string
 
+
+                        YLeaf route_policy; //type: string
 
 
 
@@ -1492,9 +1553,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interval; //type: uint32
-                        Value access_list_name; //type: string
 
+
+                        YLeaf interval; //type: uint32
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -1514,10 +1576,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value enable; //type: empty
-                        Value allow_ebgp; //type: boolean
-                        Value disable_ibgp; //type: boolean
 
+
+                        YLeaf enable; //type: empty
+                        YLeaf allow_ebgp; //type: boolean
+                        YLeaf disable_ibgp; //type: boolean
 
 
 
@@ -1537,8 +1600,9 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value lifetime; //type: uint32
 
+
+                        YLeaf lifetime; //type: uint32
 
 
 
@@ -1558,9 +1622,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value gloabal_high_priority_packet_queue; //type: uint32
-                        Value gloabal_low_priority_packet_queue; //type: uint32
 
+
+                        YLeaf gloabal_high_priority_packet_queue; //type: uint32
+                        YLeaf gloabal_low_priority_packet_queue; //type: uint32
 
                     class GroupMappingsAutoRp : public Entity
                     {
@@ -1575,9 +1640,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_group_ranges_auto_rp; //type: uint32
-                            Value threshold_group_ranges_auto_rp; //type: uint32
 
+
+                            YLeaf maximum_group_ranges_auto_rp; //type: uint32
+                            YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -1597,9 +1663,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_global_group_mappings; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_global_group_mappings; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1619,9 +1686,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_routes; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_routes; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1641,9 +1709,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_group_ranges; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_group_ranges; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1663,9 +1732,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_global_group_ranges_auto_rp; //type: uint32
-                            Value threshold_global_group_ranges_auto_rp; //type: uint32
 
+
+                            YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+                            YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -1685,9 +1755,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_register_states; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_register_states; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1707,9 +1778,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_route_interfaces; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_route_interfaces; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1729,9 +1801,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_global_candidate_rp_cache; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1751,9 +1824,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bsr_maximum_candidate_rp_cache; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1773,9 +1847,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_register_states; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_register_states; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1795,9 +1870,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_route_interfaces; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_route_interfaces; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1817,9 +1893,10 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum_routes; //type: uint32
-                            Value warning_threshold; //type: uint32
 
+
+                            YLeaf maximum_routes; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
 
 
 
@@ -1856,9 +1933,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: boolean
-                        Value range; //type: string
 
+
+                        YLeaf disable; //type: boolean
+                        YLeaf range; //type: string
 
 
 
@@ -1880,6 +1958,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class BidirRpAddress : public Entity
                     {
                         public:
@@ -1893,10 +1972,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value rp_address; //type: string
-                            Value access_list_name; //type: string
-                            Value auto_rp_override; //type: boolean
 
+
+                            YLeaf rp_address; //type: string
+                            YLeaf access_list_name; //type: string
+                            YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -1924,6 +2004,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CandidateRps : public Entity
                     {
                         public:
@@ -1939,6 +2020,7 @@ class Pim : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class CandidateRp : public Entity
                         {
                             public:
@@ -1952,8 +2034,9 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value address; //type: string
 
+
+                                YLeaf address; //type: string
 
                             class Sm : public Entity
                             {
@@ -1968,11 +2051,12 @@ class Pim : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value priority; //type: uint32
-                                    Value protocol_mode; //type: uint32
-                                    Value interval; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf priority; //type: uint32
+                                    YLeaf protocol_mode; //type: uint32
+                                    YLeaf interval; //type: uint32
 
 
 
@@ -1992,11 +2076,12 @@ class Pim : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value access_list_name; //type: string
-                                    Value priority; //type: uint32
-                                    Value protocol_mode; //type: uint32
-                                    Value interval; //type: uint32
 
+
+                                    YLeaf access_list_name; //type: string
+                                    YLeaf priority; //type: uint32
+                                    YLeaf protocol_mode; //type: uint32
+                                    YLeaf interval; //type: uint32
 
 
 
@@ -2029,10 +2114,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value prefix_length; //type: int32
-                            Value priority; //type: uint32
 
+
+                            YLeaf address; //type: string
+                            YLeaf prefix_length; //type: int32
+                            YLeaf priority; //type: uint32
 
 
 
@@ -2061,6 +2147,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -2074,18 +2161,19 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value neighbor_filter; //type: string
-                            Value bsr_border; //type: boolean
-                            Value enable; //type: empty
-                            Value interface_enable; //type: boolean
-                            Value hello_interval; //type: uint32
-                            Value propagation_delay; //type: uint32
-                            Value dr_priority; //type: uint32
-                            Value join_prune_mtu; //type: uint32
-                            Value jp_interval; //type: uint32
-                            Value override_interval; //type: uint32
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf neighbor_filter; //type: string
+                            YLeaf bsr_border; //type: boolean
+                            YLeaf enable; //type: empty
+                            YLeaf interface_enable; //type: boolean
+                            YLeaf hello_interval; //type: uint32
+                            YLeaf propagation_delay; //type: uint32
+                            YLeaf dr_priority; //type: uint32
+                            YLeaf join_prune_mtu; //type: uint32
+                            YLeaf jp_interval; //type: uint32
+                            YLeaf override_interval; //type: uint32
 
                         class RedirectBundle : public Entity
                         {
@@ -2100,10 +2188,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bundle_name; //type: string
-                                Value interface_bandwidth; //type: uint32
-                                Value threshold_bandwidth; //type: uint32
 
+
+                                YLeaf bundle_name; //type: string
+                                YLeaf interface_bandwidth; //type: uint32
+                                YLeaf threshold_bandwidth; //type: uint32
 
 
 
@@ -2123,10 +2212,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value detection_multiplier; //type: uint32
-                                Value interval; //type: uint32
-                                Value enable; //type: boolean
 
+
+                                YLeaf detection_multiplier; //type: uint32
+                                YLeaf interval; //type: uint32
+                                YLeaf enable; //type: boolean
 
 
 
@@ -2146,10 +2236,11 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value maximum; //type: uint32
-                                Value warning_threshold; //type: uint32
-                                Value access_list_name; //type: string
 
+
+                                YLeaf maximum; //type: uint32
+                                YLeaf warning_threshold; //type: uint32
+                                YLeaf access_list_name; //type: string
 
 
 
@@ -2183,9 +2274,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_list_name; //type: string
-                        Value group_list_name; //type: string
 
+
+                        YLeaf rp_list_name; //type: string
+                        YLeaf group_list_name; //type: string
 
 
 
@@ -2205,9 +2297,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rpf_conflict_join_delay; //type: uint32
-                        Value link_down_prune_delay; //type: uint32
 
+
+                        YLeaf rpf_conflict_join_delay; //type: uint32
+                        YLeaf link_down_prune_delay; //type: uint32
 
 
 
@@ -2236,7 +2329,6 @@ class Pim : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer> sg_expiry_timer;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses> sparse_mode_rp_addresses;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::Vrfs::Vrf::Ipv4::Ssm> ssm;
-                    class PimMultipathEnum;
 
 
             }; // Pim::Vrfs::Vrf::Ipv4
@@ -2270,6 +2362,7 @@ class Pim : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Ipv6 : public Entity
         {
             public:
@@ -2283,22 +2376,23 @@ class Pim : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value embedded_rp_disable; //type: empty
-                Value neighbor_check_on_receive; //type: empty
-                Value old_register_checksum; //type: empty
-                Value neighbor_filter; //type: string
-                Value spt_threshold_infinity; //type: string
-                Value log_neighbor_changes; //type: empty
-                Value register_source; //type: string
-                Value accept_register; //type: string
-                Value suppress_rpf_prunes; //type: empty
-                Value assert_disable; //type: empty
-                Value ssm_allow_override; //type: empty
-                Value multipath; //type: PimMultipathEnum
-                Value rp_static_deny; //type: string
-                Value suppress_data_registers; //type: empty
-                Value neighbor_check_on_send; //type: empty
 
+
+                YLeaf embedded_rp_disable; //type: empty
+                YLeaf neighbor_check_on_receive; //type: empty
+                YLeaf old_register_checksum; //type: empty
+                YLeaf neighbor_filter; //type: string
+                YLeaf spt_threshold_infinity; //type: string
+                YLeaf log_neighbor_changes; //type: empty
+                YLeaf register_source; //type: string
+                YLeaf accept_register; //type: string
+                YLeaf suppress_rpf_prunes; //type: empty
+                YLeaf assert_disable; //type: empty
+                YLeaf ssm_allow_override; //type: empty
+                YLeaf multipath; //type: PimMultipathEnum
+                YLeaf rp_static_deny; //type: string
+                YLeaf suppress_data_registers; //type: empty
+                YLeaf neighbor_check_on_send; //type: empty
 
             class EmbeddedRpAddresses : public Entity
             {
@@ -2315,6 +2409,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class EmbeddedRpAddress : public Entity
                 {
                     public:
@@ -2328,9 +2423,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value access_list_name; //type: string
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf access_list_name; //type: string
 
 
 
@@ -2358,6 +2454,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SparseModeRpAddress : public Entity
                 {
                     public:
@@ -2371,10 +2468,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value access_list_name; //type: string
-                        Value auto_rp_override; //type: boolean
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf access_list_name; //type: string
+                        YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -2400,14 +2498,15 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value convergency; //type: uint32
-                    Value hello_interval; //type: uint32
-                    Value propagation_delay; //type: uint32
-                    Value dr_priority; //type: uint32
-                    Value join_prune_mtu; //type: uint32
-                    Value jp_interval; //type: uint32
-                    Value override_interval; //type: uint32
 
+
+                    YLeaf convergency; //type: uint32
+                    YLeaf hello_interval; //type: uint32
+                    YLeaf propagation_delay; //type: uint32
+                    YLeaf dr_priority; //type: uint32
+                    YLeaf join_prune_mtu; //type: uint32
+                    YLeaf jp_interval; //type: uint32
+                    YLeaf override_interval; //type: uint32
 
 
 
@@ -2427,8 +2526,9 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value route_policy; //type: string
 
+
+                    YLeaf route_policy; //type: string
 
 
 
@@ -2448,9 +2548,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value access_list_name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -2470,10 +2571,11 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
-                    Value allow_ebgp; //type: boolean
-                    Value disable_ibgp; //type: boolean
 
+
+                    YLeaf enable; //type: empty
+                    YLeaf allow_ebgp; //type: boolean
+                    YLeaf disable_ibgp; //type: boolean
 
 
 
@@ -2493,8 +2595,9 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lifetime; //type: uint32
 
+
+                    YLeaf lifetime; //type: uint32
 
 
 
@@ -2514,9 +2617,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value gloabal_high_priority_packet_queue; //type: uint32
-                    Value gloabal_low_priority_packet_queue; //type: uint32
 
+
+                    YLeaf gloabal_high_priority_packet_queue; //type: uint32
+                    YLeaf gloabal_low_priority_packet_queue; //type: uint32
 
                 class GroupMappingsAutoRp : public Entity
                 {
@@ -2531,9 +2635,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_group_ranges_auto_rp; //type: uint32
-                        Value threshold_group_ranges_auto_rp; //type: uint32
 
+
+                        YLeaf maximum_group_ranges_auto_rp; //type: uint32
+                        YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -2553,9 +2658,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_global_group_mappings; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_global_group_mappings; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2575,9 +2681,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_routes; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_routes; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2597,9 +2704,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_group_ranges; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_group_ranges; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2619,9 +2727,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_global_group_ranges_auto_rp; //type: uint32
-                        Value threshold_global_group_ranges_auto_rp; //type: uint32
 
+
+                        YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+                        YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -2641,9 +2750,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_register_states; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_register_states; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2663,9 +2773,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_route_interfaces; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_route_interfaces; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2685,9 +2796,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_global_candidate_rp_cache; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2707,9 +2819,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_candidate_rp_cache; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2729,9 +2842,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_register_states; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_register_states; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2751,9 +2865,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_route_interfaces; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_route_interfaces; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2773,9 +2888,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_routes; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_routes; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -2812,9 +2928,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value disable; //type: boolean
-                    Value range; //type: string
 
+
+                    YLeaf disable; //type: boolean
+                    YLeaf range; //type: string
 
 
 
@@ -2836,6 +2953,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BidirRpAddress : public Entity
                 {
                     public:
@@ -2849,10 +2967,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value access_list_name; //type: string
-                        Value auto_rp_override; //type: boolean
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf access_list_name; //type: string
+                        YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -2880,6 +2999,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CandidateRps : public Entity
                 {
                     public:
@@ -2895,6 +3015,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CandidateRp : public Entity
                     {
                         public:
@@ -2908,8 +3029,9 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
                         class Sm : public Entity
                         {
@@ -2924,11 +3046,12 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_list_name; //type: string
-                                Value priority; //type: uint32
-                                Value protocol_mode; //type: uint32
-                                Value interval; //type: uint32
 
+
+                                YLeaf access_list_name; //type: string
+                                YLeaf priority; //type: uint32
+                                YLeaf protocol_mode; //type: uint32
+                                YLeaf interval; //type: uint32
 
 
 
@@ -2948,11 +3071,12 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_list_name; //type: string
-                                Value priority; //type: uint32
-                                Value protocol_mode; //type: uint32
-                                Value interval; //type: uint32
 
+
+                                YLeaf access_list_name; //type: string
+                                YLeaf priority; //type: uint32
+                                YLeaf protocol_mode; //type: uint32
+                                YLeaf interval; //type: uint32
 
 
 
@@ -2985,10 +3109,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: int32
-                        Value priority; //type: uint32
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: int32
+                        YLeaf priority; //type: uint32
 
 
 
@@ -3017,6 +3142,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -3030,18 +3156,19 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value neighbor_filter; //type: string
-                        Value bsr_border; //type: boolean
-                        Value enable; //type: empty
-                        Value interface_enable; //type: boolean
-                        Value hello_interval; //type: uint32
-                        Value propagation_delay; //type: uint32
-                        Value dr_priority; //type: uint32
-                        Value join_prune_mtu; //type: uint32
-                        Value jp_interval; //type: uint32
-                        Value override_interval; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf neighbor_filter; //type: string
+                        YLeaf bsr_border; //type: boolean
+                        YLeaf enable; //type: empty
+                        YLeaf interface_enable; //type: boolean
+                        YLeaf hello_interval; //type: uint32
+                        YLeaf propagation_delay; //type: uint32
+                        YLeaf dr_priority; //type: uint32
+                        YLeaf join_prune_mtu; //type: uint32
+                        YLeaf jp_interval; //type: uint32
+                        YLeaf override_interval; //type: uint32
 
                     class RedirectBundle : public Entity
                     {
@@ -3056,10 +3183,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_name; //type: string
-                            Value interface_bandwidth; //type: uint32
-                            Value threshold_bandwidth; //type: uint32
 
+
+                            YLeaf bundle_name; //type: string
+                            YLeaf interface_bandwidth; //type: uint32
+                            YLeaf threshold_bandwidth; //type: uint32
 
 
 
@@ -3079,10 +3207,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value detection_multiplier; //type: uint32
-                            Value interval; //type: uint32
-                            Value enable; //type: boolean
 
+
+                            YLeaf detection_multiplier; //type: uint32
+                            YLeaf interval; //type: uint32
+                            YLeaf enable; //type: boolean
 
 
 
@@ -3102,10 +3231,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum; //type: uint32
-                            Value warning_threshold; //type: uint32
-                            Value access_list_name; //type: string
 
+
+                            YLeaf maximum; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -3139,9 +3269,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rp_list_name; //type: string
-                    Value group_list_name; //type: string
 
+
+                    YLeaf rp_list_name; //type: string
+                    YLeaf group_list_name; //type: string
 
 
 
@@ -3161,9 +3292,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rpf_conflict_join_delay; //type: uint32
-                    Value link_down_prune_delay; //type: uint32
 
+
+                    YLeaf rpf_conflict_join_delay; //type: uint32
+                    YLeaf link_down_prune_delay; //type: uint32
 
 
 
@@ -3184,7 +3316,6 @@ class Pim : public Entity
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::SgExpiryTimer> sg_expiry_timer;
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::SparseModeRpAddresses> sparse_mode_rp_addresses;
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv6::Ssm> ssm;
-                class PimMultipathEnum;
 
 
         }; // Pim::DefaultContext::Ipv6
@@ -3203,22 +3334,23 @@ class Pim : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value auto_rp_disable; //type: empty
-                Value neighbor_check_on_receive; //type: empty
-                Value old_register_checksum; //type: empty
-                Value neighbor_filter; //type: string
-                Value spt_threshold_infinity; //type: string
-                Value log_neighbor_changes; //type: empty
-                Value register_source; //type: string
-                Value accept_register; //type: string
-                Value suppress_rpf_prunes; //type: empty
-                Value assert_disable; //type: empty
-                Value ssm_allow_override; //type: empty
-                Value multipath; //type: PimMultipathEnum
-                Value rp_static_deny; //type: string
-                Value suppress_data_registers; //type: empty
-                Value neighbor_check_on_send; //type: empty
 
+
+                YLeaf auto_rp_disable; //type: empty
+                YLeaf neighbor_check_on_receive; //type: empty
+                YLeaf old_register_checksum; //type: empty
+                YLeaf neighbor_filter; //type: string
+                YLeaf spt_threshold_infinity; //type: string
+                YLeaf log_neighbor_changes; //type: empty
+                YLeaf register_source; //type: string
+                YLeaf accept_register; //type: string
+                YLeaf suppress_rpf_prunes; //type: empty
+                YLeaf assert_disable; //type: empty
+                YLeaf ssm_allow_override; //type: empty
+                YLeaf multipath; //type: PimMultipathEnum
+                YLeaf rp_static_deny; //type: string
+                YLeaf suppress_data_registers; //type: empty
+                YLeaf neighbor_check_on_send; //type: empty
 
             class CsMulticastOnlyFrrs : public Entity
             {
@@ -3235,6 +3367,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CsMulticastOnlyFrr : public Entity
                 {
                     public:
@@ -3248,11 +3381,12 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source; //type: string
-                        Value primary; //type: string
-                        Value backup; //type: string
-                        Value prefix_length; //type: int32
 
+
+                        YLeaf source; //type: string
+                        YLeaf primary; //type: string
+                        YLeaf backup; //type: string
+                        YLeaf prefix_length; //type: int32
 
 
 
@@ -3278,11 +3412,12 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value non_revertive_multicast_only_frr; //type: empty
-                    Value flow_multicast_only_frr; //type: string
-                    Value enable; //type: empty
-                    Value rib_multicast_only_frr; //type: string
 
+
+                    YLeaf non_revertive_multicast_only_frr; //type: empty
+                    YLeaf flow_multicast_only_frr; //type: string
+                    YLeaf enable; //type: empty
+                    YLeaf rib_multicast_only_frr; //type: string
 
 
 
@@ -3302,8 +3437,9 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value route_policy; //type: string
 
+
+                    YLeaf route_policy; //type: string
 
 
 
@@ -3325,6 +3461,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Path : public Entity
                 {
                     public:
@@ -3338,10 +3475,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source_address; //type: string
-                        Value prefix_length; //type: int32
-                        ValueList rpf_proxy_address; //type: list of  string
 
+
+                        YLeaf source_address; //type: string
+                        YLeaf prefix_length; //type: int32
+                        YLeafList rpf_proxy_address; //type: list of  string
 
 
 
@@ -3369,6 +3507,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CjMulticastOnlyFrr : public Entity
                 {
                     public:
@@ -3382,11 +3521,12 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source; //type: string
-                        Value primary; //type: string
-                        Value backup; //type: string
-                        Value prefix_length; //type: int32
 
+
+                        YLeaf source; //type: string
+                        YLeaf primary; //type: string
+                        YLeaf backup; //type: string
+                        YLeaf prefix_length; //type: int32
 
 
 
@@ -3416,6 +3556,7 @@ class Pim : public Entity
 
 
 
+
             }; // Pim::DefaultContext::Ipv4::AutoRp
 
 
@@ -3434,6 +3575,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Parameters : public Entity
                 {
                     public:
@@ -3447,10 +3589,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value ttl; //type: uint32
-                        Value announce_period; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf ttl; //type: uint32
+                        YLeaf announce_period; //type: uint32
 
 
 
@@ -3470,9 +3613,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_cache_entry; //type: uint32
-                        Value threshold_cache_entry; //type: uint32
 
+
+                        YLeaf maximum_cache_entry; //type: uint32
+                        YLeaf threshold_cache_entry; //type: uint32
 
 
 
@@ -3501,6 +3645,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CandidateRp : public Entity
                 {
                     public:
@@ -3514,9 +3659,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value protocol_mode; //type: AutoRpProtocolModeEnum
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf protocol_mode; //type: AutoRpProtocolModeEnum
 
                     class CandidateRpRange : public Entity
                     {
@@ -3531,10 +3677,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ttl; //type: uint32
-                            Value access_list_name; //type: string
-                            Value announce_period; //type: uint32
 
+
+                            YLeaf ttl; //type: uint32
+                            YLeaf access_list_name; //type: string
+                            YLeaf announce_period; //type: uint32
 
 
 
@@ -3542,7 +3689,6 @@ class Pim : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::CandidateRps::CandidateRp::CandidateRpRange> candidate_rp_range; // presence node
-                        class AutoRpProtocolModeEnum;
 
 
                 }; // Pim::DefaultContext::Ipv4::CandidateRps::CandidateRp
@@ -3569,6 +3715,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Inject : public Entity
                 {
                     public:
@@ -3582,10 +3729,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value source_address; //type: string
-                        Value prefix_length; //type: int32
-                        ValueList rpf_proxy_address; //type: list of  string
 
+
+                        YLeaf source_address; //type: string
+                        YLeaf prefix_length; //type: int32
+                        YLeafList rpf_proxy_address; //type: list of  string
 
 
 
@@ -3613,6 +3761,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SparseModeRpAddress : public Entity
                 {
                     public:
@@ -3626,10 +3775,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value access_list_name; //type: string
-                        Value auto_rp_override; //type: boolean
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf access_list_name; //type: string
+                        YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -3655,14 +3805,15 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value convergency; //type: uint32
-                    Value hello_interval; //type: uint32
-                    Value propagation_delay; //type: uint32
-                    Value dr_priority; //type: uint32
-                    Value join_prune_mtu; //type: uint32
-                    Value jp_interval; //type: uint32
-                    Value override_interval; //type: uint32
 
+
+                    YLeaf convergency; //type: uint32
+                    YLeaf hello_interval; //type: uint32
+                    YLeaf propagation_delay; //type: uint32
+                    YLeaf dr_priority; //type: uint32
+                    YLeaf join_prune_mtu; //type: uint32
+                    YLeaf jp_interval; //type: uint32
+                    YLeaf override_interval; //type: uint32
 
 
 
@@ -3682,8 +3833,9 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value route_policy; //type: string
 
+
+                    YLeaf route_policy; //type: string
 
 
 
@@ -3703,9 +3855,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value access_list_name; //type: string
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf access_list_name; //type: string
 
 
 
@@ -3725,10 +3878,11 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value enable; //type: empty
-                    Value allow_ebgp; //type: boolean
-                    Value disable_ibgp; //type: boolean
 
+
+                    YLeaf enable; //type: empty
+                    YLeaf allow_ebgp; //type: boolean
+                    YLeaf disable_ibgp; //type: boolean
 
 
 
@@ -3748,8 +3902,9 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value lifetime; //type: uint32
 
+
+                    YLeaf lifetime; //type: uint32
 
 
 
@@ -3769,9 +3924,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value gloabal_high_priority_packet_queue; //type: uint32
-                    Value gloabal_low_priority_packet_queue; //type: uint32
 
+
+                    YLeaf gloabal_high_priority_packet_queue; //type: uint32
+                    YLeaf gloabal_low_priority_packet_queue; //type: uint32
 
                 class GroupMappingsAutoRp : public Entity
                 {
@@ -3786,9 +3942,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_group_ranges_auto_rp; //type: uint32
-                        Value threshold_group_ranges_auto_rp; //type: uint32
 
+
+                        YLeaf maximum_group_ranges_auto_rp; //type: uint32
+                        YLeaf threshold_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -3808,9 +3965,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_global_group_mappings; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_global_group_mappings; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3830,9 +3988,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_routes; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_routes; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3852,9 +4011,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_group_ranges; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_group_ranges; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3874,9 +4034,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_global_group_ranges_auto_rp; //type: uint32
-                        Value threshold_global_group_ranges_auto_rp; //type: uint32
 
+
+                        YLeaf maximum_global_group_ranges_auto_rp; //type: uint32
+                        YLeaf threshold_global_group_ranges_auto_rp; //type: uint32
 
 
 
@@ -3896,9 +4057,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_register_states; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_register_states; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3918,9 +4080,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_route_interfaces; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_route_interfaces; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3940,9 +4103,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_global_candidate_rp_cache; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_global_candidate_rp_cache; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3962,9 +4126,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value bsr_maximum_candidate_rp_cache; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf bsr_maximum_candidate_rp_cache; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -3984,9 +4149,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_register_states; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_register_states; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -4006,9 +4172,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_route_interfaces; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_route_interfaces; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -4028,9 +4195,10 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maximum_routes; //type: uint32
-                        Value warning_threshold; //type: uint32
 
+
+                        YLeaf maximum_routes; //type: uint32
+                        YLeaf warning_threshold; //type: uint32
 
 
 
@@ -4067,9 +4235,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value disable; //type: boolean
-                    Value range; //type: string
 
+
+                    YLeaf disable; //type: boolean
+                    YLeaf range; //type: string
 
 
 
@@ -4091,6 +4260,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BidirRpAddress : public Entity
                 {
                     public:
@@ -4104,10 +4274,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rp_address; //type: string
-                        Value access_list_name; //type: string
-                        Value auto_rp_override; //type: boolean
 
+
+                        YLeaf rp_address; //type: string
+                        YLeaf access_list_name; //type: string
+                        YLeaf auto_rp_override; //type: boolean
 
 
 
@@ -4135,6 +4306,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CandidateRps : public Entity
                 {
                     public:
@@ -4150,6 +4322,7 @@ class Pim : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class CandidateRp : public Entity
                     {
                         public:
@@ -4163,8 +4336,9 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
 
+
+                            YLeaf address; //type: string
 
                         class Sm : public Entity
                         {
@@ -4179,11 +4353,12 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_list_name; //type: string
-                                Value priority; //type: uint32
-                                Value protocol_mode; //type: uint32
-                                Value interval; //type: uint32
 
+
+                                YLeaf access_list_name; //type: string
+                                YLeaf priority; //type: uint32
+                                YLeaf protocol_mode; //type: uint32
+                                YLeaf interval; //type: uint32
 
 
 
@@ -4203,11 +4378,12 @@ class Pim : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value access_list_name; //type: string
-                                Value priority; //type: uint32
-                                Value protocol_mode; //type: uint32
-                                Value interval; //type: uint32
 
+
+                                YLeaf access_list_name; //type: string
+                                YLeaf priority; //type: uint32
+                                YLeaf protocol_mode; //type: uint32
+                                YLeaf interval; //type: uint32
 
 
 
@@ -4240,10 +4416,11 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: int32
-                        Value priority; //type: uint32
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: int32
+                        YLeaf priority; //type: uint32
 
 
 
@@ -4272,6 +4449,7 @@ class Pim : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -4285,18 +4463,19 @@ class Pim : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value neighbor_filter; //type: string
-                        Value bsr_border; //type: boolean
-                        Value enable; //type: empty
-                        Value interface_enable; //type: boolean
-                        Value hello_interval; //type: uint32
-                        Value propagation_delay; //type: uint32
-                        Value dr_priority; //type: uint32
-                        Value join_prune_mtu; //type: uint32
-                        Value jp_interval; //type: uint32
-                        Value override_interval; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf neighbor_filter; //type: string
+                        YLeaf bsr_border; //type: boolean
+                        YLeaf enable; //type: empty
+                        YLeaf interface_enable; //type: boolean
+                        YLeaf hello_interval; //type: uint32
+                        YLeaf propagation_delay; //type: uint32
+                        YLeaf dr_priority; //type: uint32
+                        YLeaf join_prune_mtu; //type: uint32
+                        YLeaf jp_interval; //type: uint32
+                        YLeaf override_interval; //type: uint32
 
                     class RedirectBundle : public Entity
                     {
@@ -4311,10 +4490,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value bundle_name; //type: string
-                            Value interface_bandwidth; //type: uint32
-                            Value threshold_bandwidth; //type: uint32
 
+
+                            YLeaf bundle_name; //type: string
+                            YLeaf interface_bandwidth; //type: uint32
+                            YLeaf threshold_bandwidth; //type: uint32
 
 
 
@@ -4334,10 +4514,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value detection_multiplier; //type: uint32
-                            Value interval; //type: uint32
-                            Value enable; //type: boolean
 
+
+                            YLeaf detection_multiplier; //type: uint32
+                            YLeaf interval; //type: uint32
+                            YLeaf enable; //type: boolean
 
 
 
@@ -4357,10 +4538,11 @@ class Pim : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maximum; //type: uint32
-                            Value warning_threshold; //type: uint32
-                            Value access_list_name; //type: string
 
+
+                            YLeaf maximum; //type: uint32
+                            YLeaf warning_threshold; //type: uint32
+                            YLeaf access_list_name; //type: string
 
 
 
@@ -4394,9 +4576,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rp_list_name; //type: string
-                    Value group_list_name; //type: string
 
+
+                    YLeaf rp_list_name; //type: string
+                    YLeaf group_list_name; //type: string
 
 
 
@@ -4416,9 +4599,10 @@ class Pim : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value rpf_conflict_join_delay; //type: uint32
-                    Value link_down_prune_delay; //type: uint32
 
+
+                    YLeaf rpf_conflict_join_delay; //type: uint32
+                    YLeaf link_down_prune_delay; //type: uint32
 
 
 
@@ -4447,7 +4631,6 @@ class Pim : public Entity
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::SgExpiryTimer> sg_expiry_timer;
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::SparseModeRpAddresses> sparse_mode_rp_addresses;
                 std::unique_ptr<Cisco_IOS_XR_ipv4_pim_cfg::Pim::DefaultContext::Ipv4::Ssm> ssm;
-                class PimMultipathEnum;
 
 
         }; // Pim::DefaultContext::Ipv4
@@ -4470,11 +4653,11 @@ class Pim : public Entity
 class PimMultipathEnum : public Enum
 {
     public:
-        static const Enum::Value enable;
-        static const Enum::Value interface_hash;
-        static const Enum::Value source_hash;
-        static const Enum::Value source_next_hop_hash;
-        static const Enum::Value source_group_hash;
+        static const Enum::YLeaf enable;
+        static const Enum::YLeaf interface_hash;
+        static const Enum::YLeaf source_hash;
+        static const Enum::YLeaf source_next_hop_hash;
+        static const Enum::YLeaf source_group_hash;
 
 };
 

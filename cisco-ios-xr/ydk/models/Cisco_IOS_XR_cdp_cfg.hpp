@@ -24,12 +24,13 @@ class Cdp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value timer; //type: uint32
-        Value advertise_v1_only; //type: empty
-        Value enable; //type: boolean
-        Value hold_time; //type: uint32
-        Value log_adjacency; //type: empty
 
+
+        YLeaf timer; //type: uint32
+        YLeaf advertise_v1_only; //type: empty
+        YLeaf enable; //type: boolean
+        YLeaf hold_time; //type: uint32
+        YLeaf log_adjacency; //type: empty
 
 
 

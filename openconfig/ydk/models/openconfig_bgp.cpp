@@ -466,8 +466,8 @@ bool Bgp::Global::RouteSelectionOptions::has_data() const
 bool Bgp::Global::RouteSelectionOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::RouteSelectionOptions::get_segment_path() const
@@ -772,8 +772,8 @@ bool Bgp::Global::DefaultRouteDistance::has_data() const
 bool Bgp::Global::DefaultRouteDistance::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::DefaultRouteDistance::get_segment_path() const
@@ -890,7 +890,7 @@ Bgp::Global::Confederation::Config::~Config()
 
 bool Bgp::Global::Confederation::Config::has_data() const
 {
-    for (auto const & leaf : member_as.getValues())
+    for (auto const & leaf : member_as.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -901,14 +901,15 @@ bool Bgp::Global::Confederation::Config::has_data() const
 
 bool Bgp::Global::Confederation::Config::has_operation() const
 {
-    for (auto const & leaf : member_as.getValues())
+    for (auto const & leaf : member_as.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(enabled.operation)
-	|| is_set(identifier.operation);
+	|| is_set(identifier.operation)
+	|| is_set(member_as.operation);
 }
 
 std::string Bgp::Global::Confederation::Config::get_segment_path() const
@@ -995,7 +996,7 @@ Bgp::Global::Confederation::State::~State()
 
 bool Bgp::Global::Confederation::State::has_data() const
 {
-    for (auto const & leaf : member_as.getValues())
+    for (auto const & leaf : member_as.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1006,14 +1007,15 @@ bool Bgp::Global::Confederation::State::has_data() const
 
 bool Bgp::Global::Confederation::State::has_operation() const
 {
-    for (auto const & leaf : member_as.getValues())
+    for (auto const & leaf : member_as.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(enabled.operation)
-	|| is_set(identifier.operation);
+	|| is_set(identifier.operation)
+	|| is_set(member_as.operation);
 }
 
 std::string Bgp::Global::Confederation::State::get_segment_path() const
@@ -1112,8 +1114,8 @@ bool Bgp::Global::Confederation::has_data() const
 bool Bgp::Global::Confederation::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::Confederation::get_segment_path() const
@@ -1578,8 +1580,8 @@ bool Bgp::Global::UseMultiplePaths::Ebgp::has_data() const
 bool Bgp::Global::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -1868,8 +1870,8 @@ bool Bgp::Global::UseMultiplePaths::Ibgp::has_data() const
 bool Bgp::Global::UseMultiplePaths::Ibgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ibgp::get_segment_path() const
@@ -2008,10 +2010,10 @@ bool Bgp::Global::UseMultiplePaths::has_data() const
 bool Bgp::Global::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::UseMultiplePaths::get_segment_path() const
@@ -2394,8 +2396,8 @@ bool Bgp::Global::GracefulRestart::has_data() const
 bool Bgp::Global::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::GracefulRestart::get_segment_path() const
@@ -2533,7 +2535,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2613,7 +2615,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2684,8 +2686,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_segment_path() const
@@ -2702,7 +2704,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2826,7 +2828,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2920,7 +2922,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2995,12 +2997,12 @@ Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::~Config()
 
 bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3011,19 +3013,21 @@ bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
@@ -3040,7 +3044,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3117,12 +3121,12 @@ Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::~State()
 
 bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3133,19 +3137,21 @@ bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
@@ -3162,7 +3168,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3250,8 +3256,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() const
@@ -3268,7 +3274,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3395,7 +3401,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3491,7 +3497,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3572,8 +3578,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
@@ -3590,7 +3596,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3711,7 +3717,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3791,7 +3797,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3867,9 +3873,9 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
@@ -3886,7 +3892,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4036,7 +4042,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4132,7 +4138,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4213,8 +4219,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
@@ -4231,7 +4237,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4352,7 +4358,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4432,7 +4438,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4508,9 +4514,9 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
@@ -4527,7 +4533,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4677,7 +4683,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4773,7 +4779,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4854,8 +4860,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_data(
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -4872,7 +4878,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4979,7 +4985,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_path() const
@@ -4996,7 +5002,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5100,7 +5106,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5196,7 +5202,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5277,8 +5283,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_data(
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -5295,7 +5301,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5402,7 +5408,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_segment_path() const
@@ -5419,7 +5425,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5523,7 +5529,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5619,7 +5625,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5700,8 +5706,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_data() c
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_segment_path() const
@@ -5718,7 +5724,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5825,7 +5831,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path() const
@@ -5842,7 +5848,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5946,7 +5952,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6042,7 +6048,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6123,8 +6129,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_data() c
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_segment_path() const
@@ -6141,7 +6147,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6248,7 +6254,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path() const
@@ -6265,7 +6271,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6369,7 +6375,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Conf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6465,7 +6471,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Stat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6546,8 +6552,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_data()
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_segment_path() const
@@ -6564,7 +6570,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6671,7 +6677,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path() const
@@ -6688,7 +6694,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6792,7 +6798,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Conf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6888,7 +6894,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Stat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6969,8 +6975,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_data()
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_segment_path() const
@@ -6987,7 +6993,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7094,7 +7100,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path() const
@@ -7111,7 +7117,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7215,7 +7221,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7311,7 +7317,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7392,8 +7398,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_path() const
@@ -7410,7 +7416,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7517,7 +7523,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
@@ -7534,7 +7540,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7638,7 +7644,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7734,7 +7740,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7815,8 +7821,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_path() const
@@ -7833,7 +7839,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7940,7 +7946,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
@@ -7957,7 +7963,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8070,7 +8076,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8190,7 +8196,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8286,8 +8292,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_segment_path() const
@@ -8304,7 +8310,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8425,7 +8431,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8505,7 +8511,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8588,7 +8594,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8676,7 +8682,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8752,8 +8758,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -8770,7 +8776,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8891,7 +8897,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8971,7 +8977,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9042,8 +9048,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_segment_path() const
@@ -9060,7 +9066,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9182,10 +9188,10 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::has_data() const
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_segment_path() const
@@ -9202,7 +9208,7 @@ EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9434,22 +9440,22 @@ bool Bgp::Global::AfiSafis::AfiSafi::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (ipv4_labelled_unicast !=  nullptr && is_set(ipv4_labelled_unicast->operation))
-	|| (ipv4_unicast !=  nullptr && is_set(ipv4_unicast->operation))
-	|| (ipv6_labelled_unicast !=  nullptr && is_set(ipv6_labelled_unicast->operation))
-	|| (ipv6_unicast !=  nullptr && is_set(ipv6_unicast->operation))
-	|| (l2vpn_evpn !=  nullptr && is_set(l2vpn_evpn->operation))
-	|| (l2vpn_vpls !=  nullptr && is_set(l2vpn_vpls->operation))
-	|| (l3vpn_ipv4_multicast !=  nullptr && is_set(l3vpn_ipv4_multicast->operation))
-	|| (l3vpn_ipv4_unicast !=  nullptr && is_set(l3vpn_ipv4_unicast->operation))
-	|| (l3vpn_ipv6_multicast !=  nullptr && is_set(l3vpn_ipv6_multicast->operation))
-	|| (l3vpn_ipv6_unicast !=  nullptr && is_set(l3vpn_ipv6_unicast->operation))
-	|| (route_selection_options !=  nullptr && is_set(route_selection_options->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_operation())
+	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
+	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_operation())
+	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation())
+	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_operation())
+	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_operation())
+	|| (l3vpn_ipv4_multicast !=  nullptr && l3vpn_ipv4_multicast->has_operation())
+	|| (l3vpn_ipv4_unicast !=  nullptr && l3vpn_ipv4_unicast->has_operation())
+	|| (l3vpn_ipv6_multicast !=  nullptr && l3vpn_ipv6_multicast->has_operation())
+	|| (l3vpn_ipv6_unicast !=  nullptr && l3vpn_ipv6_unicast->has_operation())
+	|| (route_selection_options !=  nullptr && route_selection_options->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::get_segment_path() const
@@ -10002,12 +10008,12 @@ Bgp::Global::ApplyPolicy::Config::~Config()
 
 bool Bgp::Global::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10018,19 +10024,21 @@ bool Bgp::Global::ApplyPolicy::Config::has_data() const
 
 bool Bgp::Global::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Global::ApplyPolicy::Config::get_segment_path() const
@@ -10124,12 +10132,12 @@ Bgp::Global::ApplyPolicy::State::~State()
 
 bool Bgp::Global::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10140,19 +10148,21 @@ bool Bgp::Global::ApplyPolicy::State::has_data() const
 
 bool Bgp::Global::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Global::ApplyPolicy::State::get_segment_path() const
@@ -10257,8 +10267,8 @@ bool Bgp::Global::ApplyPolicy::has_data() const
 bool Bgp::Global::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Global::ApplyPolicy::get_segment_path() const
@@ -10422,15 +10432,15 @@ bool Bgp::Global::has_data() const
 bool Bgp::Global::has_operation() const
 {
     return is_set(operation)
-	|| (afi_safis !=  nullptr && is_set(afi_safis->operation))
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (confederation !=  nullptr && is_set(confederation->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (default_route_distance !=  nullptr && is_set(default_route_distance->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (route_selection_options !=  nullptr && is_set(route_selection_options->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (afi_safis !=  nullptr && afi_safis->has_operation())
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (confederation !=  nullptr && confederation->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (default_route_distance !=  nullptr && default_route_distance->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (route_selection_options !=  nullptr && route_selection_options->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::Global::get_segment_path() const
@@ -10756,7 +10766,7 @@ EntityPath Bgp::Neighbors::Neighbor::Config::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10884,7 +10894,7 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::Sent::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10972,7 +10982,7 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::Received::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11048,8 +11058,8 @@ bool Bgp::Neighbors::Neighbor::State::Messages::has_data() const
 bool Bgp::Neighbors::Neighbor::State::Messages::has_operation() const
 {
     return is_set(operation)
-	|| (received !=  nullptr && is_set(received->operation))
-	|| (sent !=  nullptr && is_set(sent->operation));
+	|| (received !=  nullptr && received->has_operation())
+	|| (sent !=  nullptr && sent->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::State::Messages::get_segment_path() const
@@ -11066,7 +11076,7 @@ EntityPath Bgp::Neighbors::Neighbor::State::Messages::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11190,7 +11200,7 @@ EntityPath Bgp::Neighbors::Neighbor::State::Queues::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11272,7 +11282,7 @@ Bgp::Neighbors::Neighbor::State::~State()
 
 bool Bgp::Neighbors::Neighbor::State::has_data() const
 {
-    for (auto const & leaf : supported_capabilities.getValues())
+    for (auto const & leaf : supported_capabilities.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11294,7 +11304,7 @@ bool Bgp::Neighbors::Neighbor::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::State::has_operation() const
 {
-    for (auto const & leaf : supported_capabilities.getValues())
+    for (auto const & leaf : supported_capabilities.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -11311,8 +11321,9 @@ bool Bgp::Neighbors::Neighbor::State::has_operation() const
 	|| is_set(route_flap_damping.operation)
 	|| is_set(send_community.operation)
 	|| is_set(session_state.operation)
-	|| (messages !=  nullptr && is_set(messages->operation))
-	|| (queues !=  nullptr && is_set(queues->operation));
+	|| is_set(supported_capabilities.operation)
+	|| (messages !=  nullptr && messages->has_operation())
+	|| (queues !=  nullptr && queues->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::State::get_segment_path() const
@@ -11329,7 +11340,7 @@ EntityPath Bgp::Neighbors::Neighbor::State::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11520,7 +11531,7 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::Config::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11630,7 +11641,7 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::State::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11726,8 +11737,8 @@ bool Bgp::Neighbors::Neighbor::Timers::has_data() const
 bool Bgp::Neighbors::Neighbor::Timers::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::Timers::get_segment_path() const
@@ -11744,7 +11755,7 @@ EntityPath Bgp::Neighbors::Neighbor::Timers::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11874,7 +11885,7 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::Config::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11987,7 +11998,7 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::State::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12088,8 +12099,8 @@ bool Bgp::Neighbors::Neighbor::Transport::has_data() const
 bool Bgp::Neighbors::Neighbor::Transport::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::Transport::get_segment_path() const
@@ -12106,7 +12117,7 @@ EntityPath Bgp::Neighbors::Neighbor::Transport::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12227,7 +12238,7 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12310,7 +12321,7 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::State::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12386,8 +12397,8 @@ bool Bgp::Neighbors::Neighbor::ErrorHandling::has_data() const
 bool Bgp::Neighbors::Neighbor::ErrorHandling::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::ErrorHandling::get_segment_path() const
@@ -12404,7 +12415,7 @@ EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12525,7 +12536,7 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12605,7 +12616,7 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::State::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12676,8 +12687,8 @@ bool Bgp::Neighbors::Neighbor::LoggingOptions::has_data() const
 bool Bgp::Neighbors::Neighbor::LoggingOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::LoggingOptions::get_segment_path() const
@@ -12694,7 +12705,7 @@ EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12818,7 +12829,7 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12906,7 +12917,7 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12982,8 +12993,8 @@ bool Bgp::Neighbors::Neighbor::EbgpMultihop::has_data() const
 bool Bgp::Neighbors::Neighbor::EbgpMultihop::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::EbgpMultihop::get_segment_path() const
@@ -13000,7 +13011,7 @@ EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13124,7 +13135,7 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::Config::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13212,7 +13223,7 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::State::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13288,8 +13299,8 @@ bool Bgp::Neighbors::Neighbor::RouteReflector::has_data() const
 bool Bgp::Neighbors::Neighbor::RouteReflector::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::RouteReflector::get_segment_path() const
@@ -13306,7 +13317,7 @@ EntityPath Bgp::Neighbors::Neighbor::RouteReflector::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13430,7 +13441,7 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13518,7 +13529,7 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::State::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13594,8 +13605,8 @@ bool Bgp::Neighbors::Neighbor::AsPathOptions::has_data() const
 bool Bgp::Neighbors::Neighbor::AsPathOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AsPathOptions::get_segment_path() const
@@ -13612,7 +13623,7 @@ EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13736,7 +13747,7 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::Config::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13824,7 +13835,7 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::State::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13900,8 +13911,8 @@ bool Bgp::Neighbors::Neighbor::AddPaths::has_data() const
 bool Bgp::Neighbors::Neighbor::AddPaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AddPaths::get_segment_path() const
@@ -13918,7 +13929,7 @@ EntityPath Bgp::Neighbors::Neighbor::AddPaths::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14039,7 +14050,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14125,7 +14136,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14206,8 +14217,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::has_data() co
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_segment_path() const
@@ -14224,7 +14235,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14348,7 +14359,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14439,7 +14450,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14525,7 +14536,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_operation() const
 	|| is_set(active.operation)
 	|| is_set(afi_safi_name.operation)
 	|| is_set(enabled.operation)
-	|| (prefixes !=  nullptr && is_set(prefixes->operation));
+	|| (prefixes !=  nullptr && prefixes->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_segment_path() const
@@ -14542,7 +14553,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14635,12 +14646,12 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::~Config()
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14651,19 +14662,21 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data(
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
@@ -14680,7 +14693,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14757,12 +14770,12 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::~State()
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14773,19 +14786,21 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::has_data()
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
@@ -14802,7 +14817,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14890,8 +14905,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::has_data() const
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() const
@@ -14908,7 +14923,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15035,7 +15050,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15131,7 +15146,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15212,8 +15227,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
@@ -15230,7 +15245,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15351,7 +15366,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15431,7 +15446,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15507,9 +15522,9 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
@@ -15526,7 +15541,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15676,7 +15691,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15772,7 +15787,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15853,8 +15868,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
@@ -15871,7 +15886,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15992,7 +16007,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16072,7 +16087,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16148,9 +16163,9 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
@@ -16167,7 +16182,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16317,7 +16332,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16413,7 +16428,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16494,8 +16509,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLim
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -16512,7 +16527,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16619,7 +16634,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_data(
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_path() const
@@ -16636,7 +16651,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16740,7 +16755,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16836,7 +16851,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16917,8 +16932,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLim
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -16935,7 +16950,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::Pre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17042,7 +17057,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_data(
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_segment_path() const
@@ -17059,7 +17074,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17163,7 +17178,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17259,7 +17274,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17340,8 +17355,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit:
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_segment_path() const
@@ -17358,7 +17373,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17465,7 +17480,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_data() c
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path() const
@@ -17482,7 +17497,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17586,7 +17601,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17682,7 +17697,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17763,8 +17778,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit:
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_segment_path() const
@@ -17781,7 +17796,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17888,7 +17903,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_data() c
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path() const
@@ -17905,7 +17920,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18009,7 +18024,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18105,7 +18120,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18186,8 +18201,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimi
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_segment_path() const
@@ -18204,7 +18219,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18311,7 +18326,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_data()
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path() const
@@ -18328,7 +18343,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18432,7 +18447,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18528,7 +18543,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18609,8 +18624,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimi
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_segment_path() const
@@ -18627,7 +18642,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18734,7 +18749,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_data()
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path() const
@@ -18751,7 +18766,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18855,7 +18870,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18951,7 +18966,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19032,8 +19047,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_da
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_path() const
@@ -19050,7 +19065,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19157,7 +19172,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::has_data() const
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
@@ -19174,7 +19189,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19278,7 +19293,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19374,7 +19389,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19455,8 +19470,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_da
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_path() const
@@ -19473,7 +19488,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19580,7 +19595,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::has_data() const
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
@@ -19597,7 +19612,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19695,7 +19710,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Config
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19775,7 +19790,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::State:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19855,7 +19870,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19935,7 +19950,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20006,8 +20021,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_da
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -20024,7 +20039,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20141,9 +20156,9 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::has_data() c
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::get_segment_path() const
@@ -20160,7 +20175,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::UseMultiplePaths::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20364,21 +20379,21 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (ipv4_labelled_unicast !=  nullptr && is_set(ipv4_labelled_unicast->operation))
-	|| (ipv4_unicast !=  nullptr && is_set(ipv4_unicast->operation))
-	|| (ipv6_labelled_unicast !=  nullptr && is_set(ipv6_labelled_unicast->operation))
-	|| (ipv6_unicast !=  nullptr && is_set(ipv6_unicast->operation))
-	|| (l2vpn_evpn !=  nullptr && is_set(l2vpn_evpn->operation))
-	|| (l2vpn_vpls !=  nullptr && is_set(l2vpn_vpls->operation))
-	|| (l3vpn_ipv4_multicast !=  nullptr && is_set(l3vpn_ipv4_multicast->operation))
-	|| (l3vpn_ipv4_unicast !=  nullptr && is_set(l3vpn_ipv4_unicast->operation))
-	|| (l3vpn_ipv6_multicast !=  nullptr && is_set(l3vpn_ipv6_multicast->operation))
-	|| (l3vpn_ipv6_unicast !=  nullptr && is_set(l3vpn_ipv6_unicast->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_operation())
+	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
+	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_operation())
+	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation())
+	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_operation())
+	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_operation())
+	|| (l3vpn_ipv4_multicast !=  nullptr && l3vpn_ipv4_multicast->has_operation())
+	|| (l3vpn_ipv4_unicast !=  nullptr && l3vpn_ipv4_unicast->has_operation())
+	|| (l3vpn_ipv6_multicast !=  nullptr && l3vpn_ipv6_multicast->has_operation())
+	|| (l3vpn_ipv6_unicast !=  nullptr && l3vpn_ipv6_unicast->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_segment_path() const
@@ -20395,7 +20410,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20827,7 +20842,7 @@ EntityPath Bgp::Neighbors::Neighbor::AfiSafis::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20937,7 +20952,7 @@ EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21053,7 +21068,7 @@ EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::State::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21159,8 +21174,8 @@ bool Bgp::Neighbors::Neighbor::GracefulRestart::has_data() const
 bool Bgp::Neighbors::Neighbor::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::GracefulRestart::get_segment_path() const
@@ -21177,7 +21192,7 @@ EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21278,12 +21293,12 @@ Bgp::Neighbors::Neighbor::ApplyPolicy::Config::~Config()
 
 bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21294,19 +21309,21 @@ bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_segment_path() const
@@ -21323,7 +21340,7 @@ EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21400,12 +21417,12 @@ Bgp::Neighbors::Neighbor::ApplyPolicy::State::~State()
 
 bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21416,19 +21433,21 @@ bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_segment_path() const
@@ -21445,7 +21464,7 @@ EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21533,8 +21552,8 @@ bool Bgp::Neighbors::Neighbor::ApplyPolicy::has_data() const
 bool Bgp::Neighbors::Neighbor::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::ApplyPolicy::get_segment_path() const
@@ -21551,7 +21570,7 @@ EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21672,7 +21691,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21752,7 +21771,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21832,7 +21851,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21912,7 +21931,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21983,8 +22002,8 @@ bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::has_data() const
 bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -22001,7 +22020,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22118,9 +22137,9 @@ bool Bgp::Neighbors::Neighbor::UseMultiplePaths::has_data() const
 bool Bgp::Neighbors::Neighbor::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::get_segment_path() const
@@ -22137,7 +22156,7 @@ EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22336,20 +22355,20 @@ bool Bgp::Neighbors::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(neighbor_address.operation)
-	|| (add_paths !=  nullptr && is_set(add_paths->operation))
-	|| (afi_safis !=  nullptr && is_set(afi_safis->operation))
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (as_path_options !=  nullptr && is_set(as_path_options->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (error_handling !=  nullptr && is_set(error_handling->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (logging_options !=  nullptr && is_set(logging_options->operation))
-	|| (route_reflector !=  nullptr && is_set(route_reflector->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (transport !=  nullptr && is_set(transport->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (add_paths !=  nullptr && add_paths->has_operation())
+	|| (afi_safis !=  nullptr && afi_safis->has_operation())
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (as_path_options !=  nullptr && as_path_options->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (error_handling !=  nullptr && error_handling->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (logging_options !=  nullptr && logging_options->has_operation())
+	|| (route_reflector !=  nullptr && route_reflector->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (transport !=  nullptr && transport->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::Neighbors::Neighbor::get_segment_path() const
@@ -22900,7 +22919,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Config::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23050,7 +23069,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::State::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23189,7 +23208,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Timers::Config::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23293,7 +23312,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Timers::State::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23379,8 +23398,8 @@ bool Bgp::PeerGroups::PeerGroup::Timers::has_data() const
 bool Bgp::PeerGroups::PeerGroup::Timers::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::Timers::get_segment_path() const
@@ -23397,7 +23416,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Timers::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23527,7 +23546,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Transport::Config::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23631,7 +23650,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Transport::State::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23717,8 +23736,8 @@ bool Bgp::PeerGroups::PeerGroup::Transport::has_data() const
 bool Bgp::PeerGroups::PeerGroup::Transport::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::Transport::get_segment_path() const
@@ -23735,7 +23754,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::Transport::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23856,7 +23875,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ErrorHandling::Config::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23936,7 +23955,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ErrorHandling::State::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24007,8 +24026,8 @@ bool Bgp::PeerGroups::PeerGroup::ErrorHandling::has_data() const
 bool Bgp::PeerGroups::PeerGroup::ErrorHandling::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::ErrorHandling::get_segment_path() const
@@ -24025,7 +24044,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ErrorHandling::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24146,7 +24165,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::LoggingOptions::Config::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24226,7 +24245,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::LoggingOptions::State::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24297,8 +24316,8 @@ bool Bgp::PeerGroups::PeerGroup::LoggingOptions::has_data() const
 bool Bgp::PeerGroups::PeerGroup::LoggingOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::LoggingOptions::get_segment_path() const
@@ -24315,7 +24334,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::LoggingOptions::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24439,7 +24458,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::EbgpMultihop::Config::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24527,7 +24546,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::EbgpMultihop::State::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24603,8 +24622,8 @@ bool Bgp::PeerGroups::PeerGroup::EbgpMultihop::has_data() const
 bool Bgp::PeerGroups::PeerGroup::EbgpMultihop::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::EbgpMultihop::get_segment_path() const
@@ -24621,7 +24640,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::EbgpMultihop::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24745,7 +24764,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::RouteReflector::Config::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24833,7 +24852,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::RouteReflector::State::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24909,8 +24928,8 @@ bool Bgp::PeerGroups::PeerGroup::RouteReflector::has_data() const
 bool Bgp::PeerGroups::PeerGroup::RouteReflector::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::RouteReflector::get_segment_path() const
@@ -24927,7 +24946,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::RouteReflector::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25051,7 +25070,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AsPathOptions::Config::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25139,7 +25158,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AsPathOptions::State::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25215,8 +25234,8 @@ bool Bgp::PeerGroups::PeerGroup::AsPathOptions::has_data() const
 bool Bgp::PeerGroups::PeerGroup::AsPathOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AsPathOptions::get_segment_path() const
@@ -25233,7 +25252,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AsPathOptions::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25357,7 +25376,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AddPaths::Config::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25445,7 +25464,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AddPaths::State::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25521,8 +25540,8 @@ bool Bgp::PeerGroups::PeerGroup::AddPaths::has_data() const
 bool Bgp::PeerGroups::PeerGroup::AddPaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AddPaths::get_segment_path() const
@@ -25539,7 +25558,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AddPaths::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25660,7 +25679,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::Confi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25740,7 +25759,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::State
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25811,8 +25830,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::has_data() 
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::get_segment_path() const
@@ -25829,7 +25848,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::GracefulRestart::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25953,7 +25972,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Config::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26041,7 +26060,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::State::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26106,12 +26125,12 @@ Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::~Config()
 
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -26122,19 +26141,21 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::has_dat
 
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
@@ -26151,7 +26172,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::Config::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26228,12 +26249,12 @@ Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::~State()
 
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -26244,19 +26265,21 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::has_data
 
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
@@ -26273,7 +26296,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::State::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26361,8 +26384,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::has_data() cons
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() const
@@ -26379,7 +26402,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::ApplyPolicy::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26506,7 +26529,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26602,7 +26625,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26683,8 +26706,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::ha
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
@@ -26701,7 +26724,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26822,7 +26845,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::Config::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26902,7 +26925,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::State::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26978,9 +27001,9 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::has_data() cons
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
@@ -26997,7 +27020,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4Unicast::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27147,7 +27170,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27243,7 +27266,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27324,8 +27347,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::ha
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
@@ -27342,7 +27365,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLim
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27463,7 +27486,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::Config::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27543,7 +27566,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::State::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27619,9 +27642,9 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::has_data() cons
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
@@ -27638,7 +27661,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6Unicast::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27788,7 +27811,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27884,7 +27907,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27965,8 +27988,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixL
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -27983,7 +28006,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28090,7 +28113,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_dat
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_path() const
@@ -28107,7 +28130,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv4LabelledUnicast::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28211,7 +28234,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28307,7 +28330,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28388,8 +28411,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixL
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_segment_path() const
@@ -28406,7 +28429,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28513,7 +28536,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_dat
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_segment_path() const
@@ -28530,7 +28553,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::Ipv6LabelledUnicast::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28634,7 +28657,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28730,7 +28753,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28811,8 +28834,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimi
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_segment_path() const
@@ -28829,7 +28852,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28936,7 +28959,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_data()
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path() const
@@ -28953,7 +28976,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29057,7 +29080,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29153,7 +29176,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29234,8 +29257,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimi
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_segment_path() const
@@ -29252,7 +29275,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Pref
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29359,7 +29382,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_data()
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path() const
@@ -29376,7 +29399,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29480,7 +29503,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29576,7 +29599,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29657,8 +29680,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLi
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_segment_path() const
@@ -29675,7 +29698,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29782,7 +29805,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_data
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path() const
@@ -29799,7 +29822,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv4Multicast::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29903,7 +29926,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29999,7 +30022,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30080,8 +30103,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLi
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_segment_path() const
@@ -30098,7 +30121,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30205,7 +30228,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_data
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path() const
@@ -30222,7 +30245,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L3VpnIpv6Multicast::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30326,7 +30349,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30422,7 +30445,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30503,8 +30526,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_path() const
@@ -30521,7 +30544,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30628,7 +30651,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::has_data() const
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
@@ -30645,7 +30668,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnVpls::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30749,7 +30772,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30845,7 +30868,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30926,8 +30949,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_path() const
@@ -30944,7 +30967,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31051,7 +31074,7 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::has_data() const
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::has_operation() const
 {
     return is_set(operation)
-	|| (prefix_limit !=  nullptr && is_set(prefix_limit->operation));
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
@@ -31068,7 +31091,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31166,7 +31189,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Conf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31246,7 +31269,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Stat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31329,7 +31352,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31417,7 +31440,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31493,8 +31516,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -31511,7 +31534,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31632,7 +31655,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31712,7 +31735,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31783,8 +31806,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_segment_path() const
@@ -31801,7 +31824,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31923,10 +31946,10 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::has_data()
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::get_segment_path() const
@@ -31943,7 +31966,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::UseMultiplePaths::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32125,7 +32148,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32245,7 +32268,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32341,8 +32364,8 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions::has_d
 bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions::get_segment_path() const
@@ -32359,7 +32382,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::RouteSelectionOptions:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32545,22 +32568,22 @@ bool Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::has_operation() const
 {
     return is_set(operation)
 	|| is_set(afi_safi_name.operation)
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (ipv4_labelled_unicast !=  nullptr && is_set(ipv4_labelled_unicast->operation))
-	|| (ipv4_unicast !=  nullptr && is_set(ipv4_unicast->operation))
-	|| (ipv6_labelled_unicast !=  nullptr && is_set(ipv6_labelled_unicast->operation))
-	|| (ipv6_unicast !=  nullptr && is_set(ipv6_unicast->operation))
-	|| (l2vpn_evpn !=  nullptr && is_set(l2vpn_evpn->operation))
-	|| (l2vpn_vpls !=  nullptr && is_set(l2vpn_vpls->operation))
-	|| (l3vpn_ipv4_multicast !=  nullptr && is_set(l3vpn_ipv4_multicast->operation))
-	|| (l3vpn_ipv4_unicast !=  nullptr && is_set(l3vpn_ipv4_unicast->operation))
-	|| (l3vpn_ipv6_multicast !=  nullptr && is_set(l3vpn_ipv6_multicast->operation))
-	|| (l3vpn_ipv6_unicast !=  nullptr && is_set(l3vpn_ipv6_unicast->operation))
-	|| (route_selection_options !=  nullptr && is_set(route_selection_options->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_operation())
+	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
+	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_operation())
+	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation())
+	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_operation())
+	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_operation())
+	|| (l3vpn_ipv4_multicast !=  nullptr && l3vpn_ipv4_multicast->has_operation())
+	|| (l3vpn_ipv4_unicast !=  nullptr && l3vpn_ipv4_unicast->has_operation())
+	|| (l3vpn_ipv6_multicast !=  nullptr && l3vpn_ipv6_multicast->has_operation())
+	|| (l3vpn_ipv6_unicast !=  nullptr && l3vpn_ipv6_unicast->has_operation())
+	|| (route_selection_options !=  nullptr && route_selection_options->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::get_segment_path() const
@@ -32577,7 +32600,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::AfiSafi::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33032,7 +33055,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::AfiSafis::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33142,7 +33165,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::GracefulRestart::Config::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33246,7 +33269,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::GracefulRestart::State::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33332,8 +33355,8 @@ bool Bgp::PeerGroups::PeerGroup::GracefulRestart::has_data() const
 bool Bgp::PeerGroups::PeerGroup::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::GracefulRestart::get_segment_path() const
@@ -33350,7 +33373,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::GracefulRestart::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33451,12 +33474,12 @@ Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::~Config()
 
 bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33467,19 +33490,21 @@ bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::has_data() const
 
 bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::get_segment_path() const
@@ -33496,7 +33521,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ApplyPolicy::Config::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33573,12 +33598,12 @@ Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::~State()
 
 bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::has_data() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -33589,19 +33614,21 @@ bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::has_data() const
 
 bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::has_operation() const
 {
-    for (auto const & leaf : export_policy.getValues())
+    for (auto const & leaf : export_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : import_policy.getValues())
+    for (auto const & leaf : import_policy.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation);
+	|| is_set(default_import_policy.operation)
+	|| is_set(export_policy.operation)
+	|| is_set(import_policy.operation);
 }
 
 std::string Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::get_segment_path() const
@@ -33618,7 +33645,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ApplyPolicy::State::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33706,8 +33733,8 @@ bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::has_data() const
 bool Bgp::PeerGroups::PeerGroup::ApplyPolicy::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::ApplyPolicy::get_segment_path() const
@@ -33724,7 +33751,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::ApplyPolicy::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33845,7 +33872,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Config::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -33925,7 +33952,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::State::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34008,7 +34035,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::Config::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34096,7 +34123,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::State::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34172,8 +34199,8 @@ bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::has_data() const
 bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_segment_path() const
@@ -34190,7 +34217,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ebgp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34311,7 +34338,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::Config::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34391,7 +34418,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::State::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34462,8 +34489,8 @@ bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::has_data() const
 bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_segment_path() const
@@ -34480,7 +34507,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::Ibgp::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34602,10 +34629,10 @@ bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::has_data() const
 bool Bgp::PeerGroups::PeerGroup::UseMultiplePaths::has_operation() const
 {
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp !=  nullptr && is_set(ebgp->operation))
-	|| (ibgp !=  nullptr && is_set(ibgp->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (ibgp !=  nullptr && ibgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::UseMultiplePaths::get_segment_path() const
@@ -34622,7 +34649,7 @@ EntityPath Bgp::PeerGroups::PeerGroup::UseMultiplePaths::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -34844,20 +34871,20 @@ bool Bgp::PeerGroups::PeerGroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(peer_group_name.operation)
-	|| (add_paths !=  nullptr && is_set(add_paths->operation))
-	|| (afi_safis !=  nullptr && is_set(afi_safis->operation))
-	|| (apply_policy !=  nullptr && is_set(apply_policy->operation))
-	|| (as_path_options !=  nullptr && is_set(as_path_options->operation))
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (ebgp_multihop !=  nullptr && is_set(ebgp_multihop->operation))
-	|| (error_handling !=  nullptr && is_set(error_handling->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (logging_options !=  nullptr && is_set(logging_options->operation))
-	|| (route_reflector !=  nullptr && is_set(route_reflector->operation))
-	|| (state !=  nullptr && is_set(state->operation))
-	|| (timers !=  nullptr && is_set(timers->operation))
-	|| (transport !=  nullptr && is_set(transport->operation))
-	|| (use_multiple_paths !=  nullptr && is_set(use_multiple_paths->operation));
+	|| (add_paths !=  nullptr && add_paths->has_operation())
+	|| (afi_safis !=  nullptr && afi_safis->has_operation())
+	|| (apply_policy !=  nullptr && apply_policy->has_operation())
+	|| (as_path_options !=  nullptr && as_path_options->has_operation())
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp_multihop !=  nullptr && ebgp_multihop->has_operation())
+	|| (error_handling !=  nullptr && error_handling->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (logging_options !=  nullptr && logging_options->has_operation())
+	|| (route_reflector !=  nullptr && route_reflector->has_operation())
+	|| (state !=  nullptr && state->has_operation())
+	|| (timers !=  nullptr && timers->has_operation())
+	|| (transport !=  nullptr && transport->has_operation())
+	|| (use_multiple_paths !=  nullptr && use_multiple_paths->has_operation());
 }
 
 std::string Bgp::PeerGroups::PeerGroup::get_segment_path() const
@@ -35380,9 +35407,9 @@ bool Bgp::has_data() const
 bool Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (neighbors !=  nullptr && is_set(neighbors->operation))
-	|| (peer_groups !=  nullptr && is_set(peer_groups->operation));
+	|| (global !=  nullptr && global->has_operation())
+	|| (neighbors !=  nullptr && neighbors->has_operation())
+	|| (peer_groups !=  nullptr && peer_groups->has_operation());
 }
 
 std::string Bgp::get_segment_path() const
@@ -35399,7 +35426,7 @@ EntityPath Bgp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -35509,16 +35536,16 @@ std::unique_ptr<Entity> Bgp::clone_ptr()
     return std::make_unique<Bgp>();
 }
 
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::IDLE {0, "IDLE"};
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::CONNECT {1, "CONNECT"};
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::ACTIVE {2, "ACTIVE"};
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENSENT {3, "OPENSENT"};
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENCONFIRM {4, "OPENCONFIRM"};
-const Enum::Value Bgp::Neighbors::Neighbor::State::SessionStateEnum::ESTABLISHED {5, "ESTABLISHED"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::IDLE {0, "IDLE"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::CONNECT {1, "CONNECT"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::ACTIVE {2, "ACTIVE"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENSENT {3, "OPENSENT"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENCONFIRM {4, "OPENCONFIRM"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::ESTABLISHED {5, "ESTABLISHED"};
 
-const Enum::Value Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::HELPER_ONLY {0, "HELPER-ONLY"};
-const Enum::Value Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::BILATERAL {1, "BILATERAL"};
-const Enum::Value Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::REMOTE_HELPER {2, "REMOTE-HELPER"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::HELPER_ONLY {0, "HELPER-ONLY"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::BILATERAL {1, "BILATERAL"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::ModeEnum::REMOTE_HELPER {2, "REMOTE-HELPER"};
 
 
 }

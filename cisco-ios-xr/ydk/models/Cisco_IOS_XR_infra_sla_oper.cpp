@@ -206,8 +206,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::get_segment_path() const
@@ -1049,8 +1049,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 {
     return is_set(operation)
 	|| is_set(bucket_type.operation)
-	|| (aggregated !=  nullptr && is_set(aggregated->operation))
-	|| (unaggregated !=  nullptr && is_set(unaggregated->operation));
+	|| (aggregated !=  nullptr && aggregated->has_operation())
+	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::get_segment_path() const
@@ -1273,7 +1273,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 	|| is_set(suspect_start_mid_bucket.operation)
 	|| is_set(time_of_maximum.operation)
 	|| is_set(time_of_minimum.operation)
-	|| (contents !=  nullptr && is_set(contents->operation));
+	|| (contents !=  nullptr && contents->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::get_segment_path() const
@@ -1539,7 +1539,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation));
+	|| (config !=  nullptr && config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::get_segment_path() const
@@ -1709,8 +1709,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 	|| is_set(mep_id.operation)
 	|| is_set(operation_id.operation)
 	|| is_set(probe_type.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::get_segment_path() const
@@ -2425,7 +2425,7 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operation
 {
     return is_set(operation)
 	|| is_set(current_buckets_archive.operation)
-	|| (metric_config !=  nullptr && is_set(metric_config->operation));
+	|| (metric_config !=  nullptr && metric_config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::get_segment_path() const
@@ -2570,9 +2570,9 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::has_opera
 	|| is_set(inter_packet_interval.operation)
 	|| is_set(packets_per_burst.operation)
 	|| is_set(probe_type.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (packet_padding !=  nullptr && is_set(packet_padding->operation))
-	|| (priority !=  nullptr && is_set(priority->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (packet_padding !=  nullptr && packet_padding->has_operation())
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::get_segment_path() const
@@ -2952,8 +2952,8 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::has_oper
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::get_segment_path() const
@@ -3112,8 +3112,8 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::has_operation() const
 	|| is_set(mac_address.operation)
 	|| is_set(mep_id.operation)
 	|| is_set(profile_name.operation)
-	|| (profile_options !=  nullptr && is_set(profile_options->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (profile_options !=  nullptr && profile_options->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::get_segment_path() const
@@ -3562,8 +3562,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spec
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::get_segment_path() const
@@ -4405,8 +4405,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 {
     return is_set(operation)
 	|| is_set(bucket_type.operation)
-	|| (aggregated !=  nullptr && is_set(aggregated->operation))
-	|| (unaggregated !=  nullptr && is_set(unaggregated->operation));
+	|| (aggregated !=  nullptr && aggregated->has_operation())
+	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::get_segment_path() const
@@ -4629,7 +4629,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 	|| is_set(suspect_start_mid_bucket.operation)
 	|| is_set(time_of_maximum.operation)
 	|| is_set(time_of_minimum.operation)
-	|| (contents !=  nullptr && is_set(contents->operation));
+	|| (contents !=  nullptr && contents->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::get_segment_path() const
@@ -4895,7 +4895,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation));
+	|| (config !=  nullptr && config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::get_segment_path() const
@@ -5065,8 +5065,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_
 	|| is_set(mep_id.operation)
 	|| is_set(probe_type.operation)
 	|| is_set(profile_name.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::get_segment_path() const
@@ -5546,8 +5546,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::get_segment_path() const
@@ -6389,8 +6389,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 {
     return is_set(operation)
 	|| is_set(bucket_type.operation)
-	|| (aggregated !=  nullptr && is_set(aggregated->operation))
-	|| (unaggregated !=  nullptr && is_set(unaggregated->operation));
+	|| (aggregated !=  nullptr && aggregated->has_operation())
+	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::get_segment_path() const
@@ -6613,7 +6613,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 	|| is_set(suspect_start_mid_bucket.operation)
 	|| is_set(time_of_maximum.operation)
 	|| is_set(time_of_minimum.operation)
-	|| (contents !=  nullptr && is_set(contents->operation));
+	|| (contents !=  nullptr && contents->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::get_segment_path() const
@@ -6879,7 +6879,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation));
+	|| (config !=  nullptr && config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::get_segment_path() const
@@ -7049,8 +7049,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 	|| is_set(mep_id.operation)
 	|| is_set(operation_id.operation)
 	|| is_set(probe_type.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::get_segment_path() const
@@ -7367,7 +7367,7 @@ Sla::Protocols::Ethernet::ConfigErrors::ConfigError::~ConfigError()
 
 bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_data() const
 {
-    for (auto const & leaf : error_string.getValues())
+    for (auto const & leaf : error_string.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7399,7 +7399,7 @@ bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_data() const
 
 bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_operation() const
 {
-    for (auto const & leaf : error_string.getValues())
+    for (auto const & leaf : error_string.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -7407,6 +7407,7 @@ bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_operation() const
     return is_set(operation)
 	|| is_set(display_short.operation)
 	|| is_set(domain_name.operation)
+	|| is_set(error_string.operation)
 	|| is_set(interface_name.operation)
 	|| is_set(mac_address.operation)
 	|| is_set(mep_id.operation)
@@ -8146,7 +8147,7 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 {
     return is_set(operation)
 	|| is_set(current_buckets_archive.operation)
-	|| (metric_config !=  nullptr && is_set(metric_config->operation));
+	|| (metric_config !=  nullptr && metric_config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::get_segment_path() const
@@ -8291,9 +8292,9 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 	|| is_set(inter_packet_interval.operation)
 	|| is_set(packets_per_burst.operation)
 	|| is_set(probe_type.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (packet_padding !=  nullptr && is_set(packet_padding->operation))
-	|| (priority !=  nullptr && is_set(priority->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (packet_padding !=  nullptr && packet_padding->has_operation())
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::get_segment_path() const
@@ -8673,8 +8674,8 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOp
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::get_segment_path() const
@@ -8833,8 +8834,8 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::has_operat
 	|| is_set(mac_address.operation)
 	|| is_set(mep_id.operation)
 	|| is_set(operation_id.operation)
-	|| (profile_options !=  nullptr && is_set(profile_options->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (profile_options !=  nullptr && profile_options->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::get_segment_path() const
@@ -9283,8 +9284,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOp
 {
     return is_set(operation)
 	|| is_set(oper_type.operation)
-	|| (configured_operation_options !=  nullptr && is_set(configured_operation_options->operation))
-	|| (ondemand_operation_options !=  nullptr && is_set(ondemand_operation_options->operation));
+	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
+	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::get_segment_path() const
@@ -10126,8 +10127,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 {
     return is_set(operation)
 	|| is_set(bucket_type.operation)
-	|| (aggregated !=  nullptr && is_set(aggregated->operation))
-	|| (unaggregated !=  nullptr && is_set(unaggregated->operation));
+	|| (aggregated !=  nullptr && aggregated->has_operation())
+	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::get_segment_path() const
@@ -10350,7 +10351,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 	|| is_set(suspect_start_mid_bucket.operation)
 	|| is_set(time_of_maximum.operation)
 	|| is_set(time_of_minimum.operation)
-	|| (contents !=  nullptr && is_set(contents->operation));
+	|| (contents !=  nullptr && contents->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::get_segment_path() const
@@ -10616,7 +10617,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
             return true;
     }
     return is_set(operation)
-	|| (config !=  nullptr && is_set(config->operation));
+	|| (config !=  nullptr && config->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::get_segment_path() const
@@ -10786,8 +10787,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_operat
 	|| is_set(mep_id.operation)
 	|| is_set(probe_type.operation)
 	|| is_set(profile_name.operation)
-	|| (operation_schedule !=  nullptr && is_set(operation_schedule->operation))
-	|| (specific_options !=  nullptr && is_set(specific_options->operation));
+	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
+	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::get_segment_path() const
@@ -11120,13 +11121,13 @@ bool Sla::Protocols::Ethernet::has_data() const
 bool Sla::Protocols::Ethernet::has_operation() const
 {
     return is_set(operation)
-	|| (config_errors !=  nullptr && is_set(config_errors->operation))
-	|| (on_demand_operations !=  nullptr && is_set(on_demand_operations->operation))
-	|| (operations !=  nullptr && is_set(operations->operation))
-	|| (statistics_currents !=  nullptr && is_set(statistics_currents->operation))
-	|| (statistics_historicals !=  nullptr && is_set(statistics_historicals->operation))
-	|| (statistics_on_demand_currents !=  nullptr && is_set(statistics_on_demand_currents->operation))
-	|| (statistics_on_demand_historicals !=  nullptr && is_set(statistics_on_demand_historicals->operation));
+	|| (config_errors !=  nullptr && config_errors->has_operation())
+	|| (on_demand_operations !=  nullptr && on_demand_operations->has_operation())
+	|| (operations !=  nullptr && operations->has_operation())
+	|| (statistics_currents !=  nullptr && statistics_currents->has_operation())
+	|| (statistics_historicals !=  nullptr && statistics_historicals->has_operation())
+	|| (statistics_on_demand_currents !=  nullptr && statistics_on_demand_currents->has_operation())
+	|| (statistics_on_demand_historicals !=  nullptr && statistics_on_demand_historicals->has_operation());
 }
 
 std::string Sla::Protocols::Ethernet::get_segment_path() const
@@ -11365,7 +11366,7 @@ bool Sla::Protocols::has_data() const
 bool Sla::Protocols::has_operation() const
 {
     return is_set(operation)
-	|| (ethernet !=  nullptr && is_set(ethernet->operation));
+	|| (ethernet !=  nullptr && ethernet->has_operation());
 }
 
 std::string Sla::Protocols::get_segment_path() const
@@ -11466,7 +11467,7 @@ bool Sla::has_data() const
 bool Sla::has_operation() const
 {
     return is_set(operation)
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string Sla::get_segment_path() const
@@ -11483,7 +11484,7 @@ EntityPath Sla::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -11579,7 +11580,7 @@ EntityPath SlaNodes::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

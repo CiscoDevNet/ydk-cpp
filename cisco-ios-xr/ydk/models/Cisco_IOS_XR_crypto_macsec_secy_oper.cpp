@@ -76,7 +76,7 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -226,7 +226,7 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -364,7 +364,7 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -500,8 +500,8 @@ bool Macsec::Secy::Interfaces::Interface::Stats::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (intf_stats !=  nullptr && is_set(intf_stats->operation))
-	|| (tx_sc_stats !=  nullptr && is_set(tx_sc_stats->operation));
+	|| (intf_stats !=  nullptr && intf_stats->has_operation())
+	|| (tx_sc_stats !=  nullptr && tx_sc_stats->has_operation());
 }
 
 std::string Macsec::Secy::Interfaces::Interface::Stats::get_segment_path() const
@@ -518,7 +518,7 @@ EntityPath Macsec::Secy::Interfaces::Interface::Stats::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -655,7 +655,7 @@ bool Macsec::Secy::Interfaces::Interface::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (stats !=  nullptr && is_set(stats->operation));
+	|| (stats !=  nullptr && stats->has_operation());
 }
 
 std::string Macsec::Secy::Interfaces::Interface::get_segment_path() const
@@ -869,7 +869,7 @@ bool Macsec::Secy::has_data() const
 bool Macsec::Secy::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Macsec::Secy::get_segment_path() const
@@ -970,7 +970,7 @@ bool Macsec::has_data() const
 bool Macsec::has_operation() const
 {
     return is_set(operation)
-	|| (secy !=  nullptr && is_set(secy->operation));
+	|| (secy !=  nullptr && secy->has_operation());
 }
 
 std::string Macsec::get_segment_path() const
@@ -987,7 +987,7 @@ EntityPath Macsec::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

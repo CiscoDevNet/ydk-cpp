@@ -26,6 +26,7 @@ class PolicyManager : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class ClassMaps : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class PolicyManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ClassMap : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class PolicyManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: ClassMapTypeEnum
-                Value name; //type: string
-                Value class_map_mode_match_any; //type: empty
-                Value class_map_mode_match_all; //type: empty
-                Value description; //type: string
 
+
+                YLeaf type; //type: ClassMapTypeEnum
+                YLeaf name; //type: string
+                YLeaf class_map_mode_match_any; //type: empty
+                YLeaf class_map_mode_match_all; //type: empty
+                YLeaf description; //type: string
 
             class Match : public Entity
             {
@@ -74,69 +77,70 @@ class PolicyManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dei; //type: uint8
-                    Value dei_inner; //type: uint8
-                    Value ipv4_acl; //type: string
-                    Value ipv6_acl; //type: string
-                    Value ethernet_services_acl; //type: string
-                    Value mpls_disposition_ipv4_access_list; //type: string
-                    Value mpls_disposition_ipv6_access_list; //type: string
-                    Value fr_de; //type: uint8
-                    Value tcp_flag; //type: uint16
-                    Value authen_status; //type: string
-                    Value source_mac; //type: string
-                    Value destination_mac; //type: string
-                    Value vpls_control; //type: empty
-                    Value vpls_broadcast; //type: empty
-                    Value vpls_multicast; //type: empty
-                    Value vpls_known; //type: empty
-                    Value vpls_unknown; //type: empty
-                    Value atm_clp; //type: uint8
-                    Value atm_oam; //type: empty
-                    Value cac_admit; //type: empty
-                    Value cac_unadmit; //type: empty
-                    ValueList ipv4_dscp; //type: list of  string
-                    ValueList ipv6_dscp; //type: list of  string
-                    ValueList dscp; //type: list of  string
-                    ValueList ipv4_precedence; //type: list of  one of uint8, string
-                    ValueList ipv6_precedence; //type: list of  one of uint8, string
-                    ValueList precedence; //type: list of  one of uint8, string
-                    ValueList qos_group; //type: list of  string
-                    ValueList traffic_class; //type: list of  string
-                    ValueList cos; //type: list of  uint8
-                    ValueList inner_cos; //type: list of  uint8
-                    ValueList protocol; //type: list of  string
-                    ValueList mpls_experimental_topmost; //type: list of  uint8
-                    ValueList mpls_experimental_imposition; //type: list of  uint8
-                    ValueList discard_class; //type: list of  uint8
-                    ValueList ipv4_packet_length; //type: list of  string
-                    ValueList ipv6_packet_length; //type: list of  string
-                    ValueList packet_length; //type: list of  string
-                    ValueList vlan; //type: list of  string
-                    ValueList inner_vlan; //type: list of  string
-                    ValueList flow_tag; //type: list of  string
-                    ValueList ethertype; //type: list of  string
-                    ValueList destination_port; //type: list of  string
-                    ValueList fragment_type; //type: list of  string
-                    ValueList frame_relay_dlci; //type: list of  string
-                    ValueList icmpv4_code; //type: list of  string
-                    ValueList icmpv4_type; //type: list of  string
-                    ValueList icmpv6_code; //type: list of  string
-                    ValueList icmpv6_type; //type: list of  string
-                    ValueList source_port; //type: list of  string
-                    ValueList circuit_id; //type: list of  string
-                    ValueList circuit_id_regex; //type: list of  string
-                    ValueList dhcp_client_id; //type: list of  string
-                    ValueList dhcp_client_id_regex; //type: list of  string
-                    ValueList remote_id; //type: list of  string
-                    ValueList remote_id_regex; //type: list of  string
-                    ValueList service_name; //type: list of  string
-                    ValueList service_name_regex; //type: list of  string
-                    ValueList timer; //type: list of  string
-                    ValueList timer_regex; //type: list of  string
-                    ValueList user_name; //type: list of  string
-                    ValueList user_name_regex; //type: list of  string
 
+
+                    YLeaf dei; //type: uint8
+                    YLeaf dei_inner; //type: uint8
+                    YLeaf ipv4_acl; //type: string
+                    YLeaf ipv6_acl; //type: string
+                    YLeaf ethernet_services_acl; //type: string
+                    YLeaf mpls_disposition_ipv4_access_list; //type: string
+                    YLeaf mpls_disposition_ipv6_access_list; //type: string
+                    YLeaf fr_de; //type: uint8
+                    YLeaf tcp_flag; //type: uint16
+                    YLeaf authen_status; //type: string
+                    YLeaf source_mac; //type: string
+                    YLeaf destination_mac; //type: string
+                    YLeaf vpls_control; //type: empty
+                    YLeaf vpls_broadcast; //type: empty
+                    YLeaf vpls_multicast; //type: empty
+                    YLeaf vpls_known; //type: empty
+                    YLeaf vpls_unknown; //type: empty
+                    YLeaf atm_clp; //type: uint8
+                    YLeaf atm_oam; //type: empty
+                    YLeaf cac_admit; //type: empty
+                    YLeaf cac_unadmit; //type: empty
+                    YLeafList ipv4_dscp; //type: list of  string
+                    YLeafList ipv6_dscp; //type: list of  string
+                    YLeafList dscp; //type: list of  string
+                    YLeafList ipv4_precedence; //type: list of  one of uint8, string
+                    YLeafList ipv6_precedence; //type: list of  one of uint8, string
+                    YLeafList precedence; //type: list of  one of uint8, string
+                    YLeafList qos_group; //type: list of  string
+                    YLeafList traffic_class; //type: list of  string
+                    YLeafList cos; //type: list of  uint8
+                    YLeafList inner_cos; //type: list of  uint8
+                    YLeafList protocol; //type: list of  string
+                    YLeafList mpls_experimental_topmost; //type: list of  uint8
+                    YLeafList mpls_experimental_imposition; //type: list of  uint8
+                    YLeafList discard_class; //type: list of  uint8
+                    YLeafList ipv4_packet_length; //type: list of  string
+                    YLeafList ipv6_packet_length; //type: list of  string
+                    YLeafList packet_length; //type: list of  string
+                    YLeafList vlan; //type: list of  string
+                    YLeafList inner_vlan; //type: list of  string
+                    YLeafList flow_tag; //type: list of  string
+                    YLeafList ethertype; //type: list of  string
+                    YLeafList destination_port; //type: list of  string
+                    YLeafList fragment_type; //type: list of  string
+                    YLeafList frame_relay_dlci; //type: list of  string
+                    YLeafList icmpv4_code; //type: list of  string
+                    YLeafList icmpv4_type; //type: list of  string
+                    YLeafList icmpv6_code; //type: list of  string
+                    YLeafList icmpv6_type; //type: list of  string
+                    YLeafList source_port; //type: list of  string
+                    YLeafList circuit_id; //type: list of  string
+                    YLeafList circuit_id_regex; //type: list of  string
+                    YLeafList dhcp_client_id; //type: list of  string
+                    YLeafList dhcp_client_id_regex; //type: list of  string
+                    YLeafList remote_id; //type: list of  string
+                    YLeafList remote_id_regex; //type: list of  string
+                    YLeafList service_name; //type: list of  string
+                    YLeafList service_name_regex; //type: list of  string
+                    YLeafList timer; //type: list of  string
+                    YLeafList timer_regex; //type: list of  string
+                    YLeafList user_name; //type: list of  string
+                    YLeafList user_name_regex; //type: list of  string
 
                 class DestinationAddressIpv4 : public Entity
                 {
@@ -151,9 +155,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value netmask; //type: string
 
+
+                        YLeaf address; //type: string
+                        YLeaf netmask; //type: string
 
 
 
@@ -173,9 +178,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -195,9 +201,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value netmask; //type: string
 
+
+                        YLeaf address; //type: string
+                        YLeaf netmask; //type: string
 
 
 
@@ -217,9 +224,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -239,9 +247,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value format; //type: string
 
+
+                        YLeaf name; //type: string
+                        YLeaf format; //type: string
 
 
 
@@ -261,9 +270,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value regex; //type: string
-                        Value format; //type: string
 
+
+                        YLeaf regex; //type: string
+                        YLeaf format; //type: string
 
 
 
@@ -283,8 +293,9 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList flow_key; //type: list of  string
 
+
+                        YLeafList flow_key; //type: list of  string
 
                     class FlowCache : public Entity
                     {
@@ -299,8 +310,9 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value idle_timeout; //type: one of uint16, string
 
+
+                            YLeaf idle_timeout; //type: one of uint16, string
 
 
 
@@ -338,65 +350,66 @@ class PolicyManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dei; //type: uint8
-                    Value dei_inner; //type: uint8
-                    Value ipv4_acl; //type: string
-                    Value ipv6_acl; //type: string
-                    Value ethernet_services_acl; //type: string
-                    Value mpls_disposition_ipv4_access_list; //type: string
-                    Value mpls_disposition_ipv6_access_list; //type: string
-                    Value fr_de; //type: uint8
-                    Value tcp_flag; //type: uint16
-                    Value authen_status; //type: string
-                    Value source_mac; //type: string
-                    Value destination_mac; //type: string
-                    Value vpls_control; //type: empty
-                    Value vpls_broadcast; //type: empty
-                    Value vpls_multicast; //type: empty
-                    Value vpls_known; //type: empty
-                    Value vpls_unknown; //type: empty
-                    ValueList ipv4_dscp; //type: list of  string
-                    ValueList ipv6_dscp; //type: list of  string
-                    ValueList dscp; //type: list of  string
-                    ValueList ipv4_precedence; //type: list of  one of uint8, string
-                    ValueList ipv6_precedence; //type: list of  one of uint8, string
-                    ValueList precedence; //type: list of  one of uint8, string
-                    ValueList qos_group; //type: list of  string
-                    ValueList traffic_class; //type: list of  string
-                    ValueList cos; //type: list of  uint8
-                    ValueList inner_cos; //type: list of  uint8
-                    ValueList protocol; //type: list of  string
-                    ValueList mpls_experimental_topmost; //type: list of  uint8
-                    ValueList mpls_experimental_imposition; //type: list of  uint8
-                    ValueList discard_class; //type: list of  uint8
-                    ValueList ipv4_packet_length; //type: list of  string
-                    ValueList ipv6_packet_length; //type: list of  string
-                    ValueList packet_length; //type: list of  string
-                    ValueList vlan; //type: list of  string
-                    ValueList inner_vlan; //type: list of  string
-                    ValueList flow_tag; //type: list of  string
-                    ValueList ethertype; //type: list of  string
-                    ValueList destination_port; //type: list of  string
-                    ValueList fragment_type; //type: list of  string
-                    ValueList frame_relay_dlci; //type: list of  string
-                    ValueList icmpv4_code; //type: list of  string
-                    ValueList icmpv4_type; //type: list of  string
-                    ValueList icmpv6_code; //type: list of  string
-                    ValueList icmpv6_type; //type: list of  string
-                    ValueList source_port; //type: list of  string
-                    ValueList circuit_id; //type: list of  string
-                    ValueList circuit_id_regex; //type: list of  string
-                    ValueList dhcp_client_id; //type: list of  string
-                    ValueList dhcp_client_id_regex; //type: list of  string
-                    ValueList remote_id; //type: list of  string
-                    ValueList remote_id_regex; //type: list of  string
-                    ValueList service_name; //type: list of  string
-                    ValueList service_name_regex; //type: list of  string
-                    ValueList timer; //type: list of  string
-                    ValueList timer_regex; //type: list of  string
-                    ValueList user_name; //type: list of  string
-                    ValueList user_name_regex; //type: list of  string
 
+
+                    YLeaf dei; //type: uint8
+                    YLeaf dei_inner; //type: uint8
+                    YLeaf ipv4_acl; //type: string
+                    YLeaf ipv6_acl; //type: string
+                    YLeaf ethernet_services_acl; //type: string
+                    YLeaf mpls_disposition_ipv4_access_list; //type: string
+                    YLeaf mpls_disposition_ipv6_access_list; //type: string
+                    YLeaf fr_de; //type: uint8
+                    YLeaf tcp_flag; //type: uint16
+                    YLeaf authen_status; //type: string
+                    YLeaf source_mac; //type: string
+                    YLeaf destination_mac; //type: string
+                    YLeaf vpls_control; //type: empty
+                    YLeaf vpls_broadcast; //type: empty
+                    YLeaf vpls_multicast; //type: empty
+                    YLeaf vpls_known; //type: empty
+                    YLeaf vpls_unknown; //type: empty
+                    YLeafList ipv4_dscp; //type: list of  string
+                    YLeafList ipv6_dscp; //type: list of  string
+                    YLeafList dscp; //type: list of  string
+                    YLeafList ipv4_precedence; //type: list of  one of uint8, string
+                    YLeafList ipv6_precedence; //type: list of  one of uint8, string
+                    YLeafList precedence; //type: list of  one of uint8, string
+                    YLeafList qos_group; //type: list of  string
+                    YLeafList traffic_class; //type: list of  string
+                    YLeafList cos; //type: list of  uint8
+                    YLeafList inner_cos; //type: list of  uint8
+                    YLeafList protocol; //type: list of  string
+                    YLeafList mpls_experimental_topmost; //type: list of  uint8
+                    YLeafList mpls_experimental_imposition; //type: list of  uint8
+                    YLeafList discard_class; //type: list of  uint8
+                    YLeafList ipv4_packet_length; //type: list of  string
+                    YLeafList ipv6_packet_length; //type: list of  string
+                    YLeafList packet_length; //type: list of  string
+                    YLeafList vlan; //type: list of  string
+                    YLeafList inner_vlan; //type: list of  string
+                    YLeafList flow_tag; //type: list of  string
+                    YLeafList ethertype; //type: list of  string
+                    YLeafList destination_port; //type: list of  string
+                    YLeafList fragment_type; //type: list of  string
+                    YLeafList frame_relay_dlci; //type: list of  string
+                    YLeafList icmpv4_code; //type: list of  string
+                    YLeafList icmpv4_type; //type: list of  string
+                    YLeafList icmpv6_code; //type: list of  string
+                    YLeafList icmpv6_type; //type: list of  string
+                    YLeafList source_port; //type: list of  string
+                    YLeafList circuit_id; //type: list of  string
+                    YLeafList circuit_id_regex; //type: list of  string
+                    YLeafList dhcp_client_id; //type: list of  string
+                    YLeafList dhcp_client_id_regex; //type: list of  string
+                    YLeafList remote_id; //type: list of  string
+                    YLeafList remote_id_regex; //type: list of  string
+                    YLeafList service_name; //type: list of  string
+                    YLeafList service_name_regex; //type: list of  string
+                    YLeafList timer; //type: list of  string
+                    YLeafList timer_regex; //type: list of  string
+                    YLeafList user_name; //type: list of  string
+                    YLeafList user_name_regex; //type: list of  string
 
                 class DestinationAddressIpv4 : public Entity
                 {
@@ -411,9 +424,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value netmask; //type: string
 
+
+                        YLeaf address; //type: string
+                        YLeaf netmask; //type: string
 
 
 
@@ -433,9 +447,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -455,9 +470,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value netmask; //type: string
 
+
+                        YLeaf address; //type: string
+                        YLeaf netmask; //type: string
 
 
 
@@ -477,9 +493,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address; //type: string
-                        Value prefix_length; //type: uint8
 
+
+                        YLeaf address; //type: string
+                        YLeaf prefix_length; //type: uint8
 
 
 
@@ -499,9 +516,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value format; //type: string
 
+
+                        YLeaf name; //type: string
+                        YLeaf format; //type: string
 
 
 
@@ -521,9 +539,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value regex; //type: string
-                        Value format; //type: string
 
+
+                        YLeaf regex; //type: string
+                        YLeaf format; //type: string
 
 
 
@@ -543,8 +562,9 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList flow_tag; //type: list of  uint16
 
+
+                        YLeafList flow_tag; //type: list of  uint16
 
 
 
@@ -565,7 +585,6 @@ class PolicyManager : public Entity
 
                 std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match> match;
                 std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::MatchNot> match_not;
-                class ClassMapTypeEnum;
 
 
         }; // PolicyManager::ClassMaps::ClassMap
@@ -592,6 +611,7 @@ class PolicyManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PolicyMap : public Entity
         {
             public:
@@ -605,10 +625,11 @@ class PolicyManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value type; //type: PolicyMapTypeEnum
-                Value name; //type: string
-                Value description; //type: string
 
+
+                YLeaf type; //type: PolicyMapTypeEnum
+                YLeaf name; //type: string
+                YLeaf description; //type: string
 
             class Event : public Entity
             {
@@ -623,10 +644,11 @@ class PolicyManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value event_type; //type: EventTypeEnum
-                    Value event_mode_match_all; //type: empty
-                    Value event_mode_match_first; //type: empty
 
+
+                    YLeaf event_type; //type: EventTypeEnum
+                    YLeaf event_mode_match_all; //type: empty
+                    YLeaf event_mode_match_first; //type: empty
 
                 class Class_ : public Entity
                 {
@@ -641,10 +663,11 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value class_name; //type: string
-                        Value class_type; //type: PmapClassMapTypeEnum
-                        Value class_execution_strategy; //type: ExecutionStrategyEnum
 
+
+                        YLeaf class_name; //type: string
+                        YLeaf class_type; //type: PmapClassMapTypeEnum
+                        YLeaf class_execution_strategy; //type: ExecutionStrategyEnum
 
                     class ActionRule : public Entity
                     {
@@ -659,10 +682,11 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value action_sequence_number; //type: uint16
-                            Value disconnect; //type: empty
-                            Value monitor; //type: empty
 
+
+                            YLeaf action_sequence_number; //type: uint16
+                            YLeaf disconnect; //type: empty
+                            YLeaf monitor; //type: empty
 
                         class ActivateDynamicTemplate : public Entity
                         {
@@ -677,9 +701,10 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value aaa_list; //type: string
 
+
+                                YLeaf name; //type: string
+                                YLeaf aaa_list; //type: string
 
 
 
@@ -699,8 +724,9 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value aaa_list; //type: string
 
+
+                                YLeaf aaa_list; //type: string
 
 
 
@@ -720,13 +746,13 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value aaa_list; //type: string
-                                Value format; //type: string
-                                Value identifier; //type: AuthorizeIdentifierEnum
-                                Value password; //type: string
 
 
-                                class AuthorizeIdentifierEnum;
+                                YLeaf aaa_list; //type: string
+                                YLeaf format; //type: string
+                                YLeaf identifier; //type: AuthorizeIdentifierEnum
+                                YLeaf password; //type: string
+
 
 
                         }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
@@ -745,9 +771,10 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value aaa_list; //type: string
 
+
+                                YLeaf name; //type: string
+                                YLeaf aaa_list; //type: string
 
 
 
@@ -767,9 +794,10 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value timer_name; //type: string
-                                Value timer_value; //type: uint32
 
+
+                                YLeaf timer_name; //type: string
+                                YLeaf timer_value; //type: uint32
 
 
 
@@ -789,8 +817,9 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value timer_name; //type: string
 
+
+                                YLeaf timer_name; //type: string
 
 
 
@@ -809,15 +838,12 @@ class PolicyManager : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule> > action_rule;
-                        class PmapClassMapTypeEnum;
-                        class ExecutionStrategyEnum;
 
 
                 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_> > class_;
-                    class EventTypeEnum;
 
 
             }; // PolicyManager::PolicyMaps::PolicyMap::Event
@@ -836,18 +862,19 @@ class PolicyManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value class_name; //type: string
-                    Value class_type; //type: PmapClassMapTypeEnum
-                    Value priority_level; //type: uint8
-                    Value default_red; //type: empty
-                    Value ecn_red; //type: empty
-                    Value http_redirect; //type: string
-                    Value pbr_transmit; //type: empty
-                    Value pbr_drop; //type: empty
-                    Value decap_gre; //type: empty
-                    Value service_fragment; //type: string
-                    Value fragment; //type: string
 
+
+                    YLeaf class_name; //type: string
+                    YLeaf class_type; //type: PmapClassMapTypeEnum
+                    YLeaf priority_level; //type: uint8
+                    YLeaf default_red; //type: empty
+                    YLeaf ecn_red; //type: empty
+                    YLeaf http_redirect; //type: string
+                    YLeaf pbr_transmit; //type: empty
+                    YLeaf pbr_drop; //type: empty
+                    YLeaf decap_gre; //type: empty
+                    YLeaf service_fragment; //type: string
+                    YLeaf fragment; //type: string
 
                 class Shape : public Entity
                 {
@@ -864,6 +891,7 @@ class PolicyManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Rate : public Entity
                     {
                         public:
@@ -877,9 +905,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value unit; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf unit; //type: string
 
 
 
@@ -899,9 +928,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -928,9 +958,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value value_; //type: uint32
-                        Value unit; //type: string
 
+
+                        YLeaf value_; //type: uint32
+                        YLeaf unit; //type: string
 
 
 
@@ -950,9 +981,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value value_; //type: uint32
-                        Value unit; //type: string
 
+
+                        YLeaf value_; //type: uint32
+                        YLeaf unit; //type: string
 
 
 
@@ -972,9 +1004,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value value_; //type: uint32
-                        Value unit; //type: string
 
+
+                        YLeaf value_; //type: uint32
+                        YLeaf unit; //type: string
 
 
 
@@ -994,8 +1027,9 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value pfc_pause_set; //type: empty
 
+
+                        YLeaf pfc_pause_set; //type: empty
 
                     class PfcBufferSize : public Entity
                     {
@@ -1010,9 +1044,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value unit; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf unit; //type: string
 
 
 
@@ -1032,9 +1067,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value unit; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf unit; //type: string
 
 
 
@@ -1054,9 +1090,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value unit; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf unit; //type: string
 
 
 
@@ -1084,18 +1121,19 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value threshold_min_value; //type: uint32
-                        Value threshold_min_units; //type: string
-                        Value threshold_max_value; //type: uint32
-                        Value threshold_max_units; //type: string
-                        Value dei; //type: uint8
-                        Value ecn; //type: empty
-                        ValueList cos; //type: list of  string
-                        ValueList discard_class; //type: list of  uint8
-                        ValueList dscp; //type: list of  string
-                        ValueList mpls_exp; //type: list of  uint8
-                        ValueList precedence; //type: list of  one of uint8, string
 
+
+                        YLeaf threshold_min_value; //type: uint32
+                        YLeaf threshold_min_units; //type: string
+                        YLeaf threshold_max_value; //type: uint32
+                        YLeaf threshold_max_units; //type: string
+                        YLeaf dei; //type: uint8
+                        YLeaf ecn; //type: empty
+                        YLeafList cos; //type: list of  string
+                        YLeafList discard_class; //type: list of  uint8
+                        YLeafList dscp; //type: list of  string
+                        YLeafList mpls_exp; //type: list of  uint8
+                        YLeafList precedence; //type: list of  one of uint8, string
 
 
 
@@ -1115,25 +1153,26 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value dscp; //type: string
-                        Value qos_group; //type: uint16
-                        Value traffic_class; //type: uint8
-                        Value discard_class; //type: uint8
-                        Value forward_class; //type: uint8
-                        Value df; //type: uint8
-                        Value cos; //type: uint8
-                        Value inner_cos; //type: uint8
-                        Value precedence; //type: one of uint8, string
-                        Value precedence_tunnel; //type: one of uint8, string
-                        Value mpls_experimental_top_most; //type: uint8
-                        Value mpls_experimental_imposition; //type: uint8
-                        Value srp_priority; //type: uint8
-                        Value fr_de; //type: uint8
-                        Value dei; //type: uint8
-                        Value dei_imposition; //type: uint8
-                        Value source_address; //type: string
-                        Value destination_address; //type: string
 
+
+                        YLeaf dscp; //type: string
+                        YLeaf qos_group; //type: uint16
+                        YLeaf traffic_class; //type: uint8
+                        YLeaf discard_class; //type: uint8
+                        YLeaf forward_class; //type: uint8
+                        YLeaf df; //type: uint8
+                        YLeaf cos; //type: uint8
+                        YLeaf inner_cos; //type: uint8
+                        YLeaf precedence; //type: one of uint8, string
+                        YLeaf precedence_tunnel; //type: one of uint8, string
+                        YLeaf mpls_experimental_top_most; //type: uint8
+                        YLeaf mpls_experimental_imposition; //type: uint8
+                        YLeaf srp_priority; //type: uint8
+                        YLeaf fr_de; //type: uint8
+                        YLeaf dei; //type: uint8
+                        YLeaf dei_imposition; //type: uint8
+                        YLeaf source_address; //type: string
+                        YLeaf destination_address; //type: string
 
 
 
@@ -1155,6 +1194,7 @@ class PolicyManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Rate : public Entity
                     {
                         public:
@@ -1168,9 +1208,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1190,9 +1231,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1212,9 +1254,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1234,9 +1277,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1256,9 +1300,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value transmit; //type: empty
-                            Value drop; //type: empty
 
+
+                            YLeaf transmit; //type: empty
+                            YLeaf drop; //type: empty
 
                         class Set : public Entity
                         {
@@ -1273,25 +1318,26 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dscp; //type: string
-                                Value qos_group; //type: uint16
-                                Value traffic_class; //type: uint8
-                                Value discard_class; //type: uint8
-                                Value forward_class; //type: uint8
-                                Value df; //type: uint8
-                                Value cos; //type: uint8
-                                Value inner_cos; //type: uint8
-                                Value precedence; //type: one of uint8, string
-                                Value precedence_tunnel; //type: one of uint8, string
-                                Value mpls_experimental_top_most; //type: uint8
-                                Value mpls_experimental_imposition; //type: uint8
-                                Value srp_priority; //type: uint8
-                                Value fr_de; //type: uint8
-                                Value dei; //type: uint8
-                                Value dei_imposition; //type: uint8
-                                Value source_address; //type: string
-                                Value destination_address; //type: string
 
+
+                                YLeaf dscp; //type: string
+                                YLeaf qos_group; //type: uint16
+                                YLeaf traffic_class; //type: uint8
+                                YLeaf discard_class; //type: uint8
+                                YLeaf forward_class; //type: uint8
+                                YLeaf df; //type: uint8
+                                YLeaf cos; //type: uint8
+                                YLeaf inner_cos; //type: uint8
+                                YLeaf precedence; //type: one of uint8, string
+                                YLeaf precedence_tunnel; //type: one of uint8, string
+                                YLeaf mpls_experimental_top_most; //type: uint8
+                                YLeaf mpls_experimental_imposition; //type: uint8
+                                YLeaf srp_priority; //type: uint8
+                                YLeaf fr_de; //type: uint8
+                                YLeaf dei; //type: uint8
+                                YLeaf dei_imposition; //type: uint8
+                                YLeaf source_address; //type: string
+                                YLeaf destination_address; //type: string
 
 
 
@@ -1317,9 +1363,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value transmit; //type: empty
-                            Value drop; //type: empty
 
+
+                            YLeaf transmit; //type: empty
+                            YLeaf drop; //type: empty
 
                         class Set : public Entity
                         {
@@ -1334,25 +1381,26 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dscp; //type: string
-                                Value qos_group; //type: uint16
-                                Value traffic_class; //type: uint8
-                                Value discard_class; //type: uint8
-                                Value forward_class; //type: uint8
-                                Value df; //type: uint8
-                                Value cos; //type: uint8
-                                Value inner_cos; //type: uint8
-                                Value precedence; //type: one of uint8, string
-                                Value precedence_tunnel; //type: one of uint8, string
-                                Value mpls_experimental_top_most; //type: uint8
-                                Value mpls_experimental_imposition; //type: uint8
-                                Value srp_priority; //type: uint8
-                                Value fr_de; //type: uint8
-                                Value dei; //type: uint8
-                                Value dei_imposition; //type: uint8
-                                Value source_address; //type: string
-                                Value destination_address; //type: string
 
+
+                                YLeaf dscp; //type: string
+                                YLeaf qos_group; //type: uint16
+                                YLeaf traffic_class; //type: uint8
+                                YLeaf discard_class; //type: uint8
+                                YLeaf forward_class; //type: uint8
+                                YLeaf df; //type: uint8
+                                YLeaf cos; //type: uint8
+                                YLeaf inner_cos; //type: uint8
+                                YLeaf precedence; //type: one of uint8, string
+                                YLeaf precedence_tunnel; //type: one of uint8, string
+                                YLeaf mpls_experimental_top_most; //type: uint8
+                                YLeaf mpls_experimental_imposition; //type: uint8
+                                YLeaf srp_priority; //type: uint8
+                                YLeaf fr_de; //type: uint8
+                                YLeaf dei; //type: uint8
+                                YLeaf dei_imposition; //type: uint8
+                                YLeaf source_address; //type: string
+                                YLeaf destination_address; //type: string
 
 
 
@@ -1378,9 +1426,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value transmit; //type: empty
-                            Value drop; //type: empty
 
+
+                            YLeaf transmit; //type: empty
+                            YLeaf drop; //type: empty
 
                         class Set : public Entity
                         {
@@ -1395,25 +1444,26 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value dscp; //type: string
-                                Value qos_group; //type: uint16
-                                Value traffic_class; //type: uint8
-                                Value discard_class; //type: uint8
-                                Value forward_class; //type: uint8
-                                Value df; //type: uint8
-                                Value cos; //type: uint8
-                                Value inner_cos; //type: uint8
-                                Value precedence; //type: one of uint8, string
-                                Value precedence_tunnel; //type: one of uint8, string
-                                Value mpls_experimental_top_most; //type: uint8
-                                Value mpls_experimental_imposition; //type: uint8
-                                Value srp_priority; //type: uint8
-                                Value fr_de; //type: uint8
-                                Value dei; //type: uint8
-                                Value dei_imposition; //type: uint8
-                                Value source_address; //type: string
-                                Value destination_address; //type: string
 
+
+                                YLeaf dscp; //type: string
+                                YLeaf qos_group; //type: uint16
+                                YLeaf traffic_class; //type: uint8
+                                YLeaf discard_class; //type: uint8
+                                YLeaf forward_class; //type: uint8
+                                YLeaf df; //type: uint8
+                                YLeaf cos; //type: uint8
+                                YLeaf inner_cos; //type: uint8
+                                YLeaf precedence; //type: one of uint8, string
+                                YLeaf precedence_tunnel; //type: one of uint8, string
+                                YLeaf mpls_experimental_top_most; //type: uint8
+                                YLeaf mpls_experimental_imposition; //type: uint8
+                                YLeaf srp_priority; //type: uint8
+                                YLeaf fr_de; //type: uint8
+                                YLeaf dei; //type: uint8
+                                YLeaf dei_imposition; //type: uint8
+                                YLeaf source_address; //type: string
+                                YLeaf destination_address; //type: string
 
 
 
@@ -1451,9 +1501,10 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value policy_name; //type: string
-                        Value type; //type: string
 
+
+                        YLeaf policy_name; //type: string
+                        YLeaf type; //type: string
 
 
 
@@ -1473,8 +1524,9 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value flow_idle_timeout; //type: one of uint16, string
 
+
+                        YLeaf flow_idle_timeout; //type: one of uint16, string
 
                     class Rate : public Entity
                     {
@@ -1489,9 +1541,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1511,9 +1564,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value value_; //type: uint32
-                            Value units; //type: string
 
+
+                            YLeaf value_; //type: uint32
+                            YLeaf units; //type: string
 
 
 
@@ -1540,11 +1594,12 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_flow; //type: uint16
-                        Value interval_duration; //type: uint32
-                        Value history; //type: uint32
-                        Value timeout; //type: uint32
 
+
+                        YLeaf max_flow; //type: uint16
+                        YLeaf interval_duration; //type: uint32
+                        YLeaf history; //type: uint32
+                        YLeaf timeout; //type: uint32
 
 
 
@@ -1566,6 +1621,7 @@ class PolicyManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Rate : public Entity
                     {
                         public:
@@ -1579,10 +1635,11 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value layer3; //type: uint32
-                            Value packet; //type: uint32
-                            Value media; //type: uint32
 
+
+                            YLeaf layer3; //type: uint32
+                            YLeaf packet; //type: uint32
+                            YLeaf media; //type: uint32
 
 
 
@@ -1602,9 +1659,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value size; //type: uint16
-                            Value count_in_layer3; //type: uint8
 
+
+                            YLeaf size; //type: uint16
+                            YLeaf count_in_layer3; //type: uint8
 
 
 
@@ -1631,13 +1689,14 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value descrition; //type: string
-                        Value criterion_delay_factor; //type: empty
-                        Value criterion_media_stop; //type: empty
-                        Value criterion_mrv; //type: empty
-                        Value criterion_flow_count; //type: empty
-                        Value criterion_packet_rate; //type: empty
 
+
+                        YLeaf descrition; //type: string
+                        YLeaf criterion_delay_factor; //type: empty
+                        YLeaf criterion_media_stop; //type: empty
+                        YLeaf criterion_mrv; //type: empty
+                        YLeaf criterion_flow_count; //type: empty
+                        YLeaf criterion_packet_rate; //type: empty
 
                     class Action : public Entity
                     {
@@ -1652,9 +1711,10 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value syslog; //type: empty
-                            Value snmp; //type: empty
 
+
+                            YLeaf syslog; //type: empty
+                            YLeaf snmp; //type: empty
 
 
 
@@ -1674,8 +1734,9 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value severity; //type: string
 
+
+                            YLeaf severity; //type: string
 
                         class Type : public Entity
                         {
@@ -1690,10 +1751,11 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value discrete; //type: empty
-                                Value group_count; //type: uint16
-                                Value group_percent; //type: uint16
 
+
+                                YLeaf discrete; //type: empty
+                                YLeaf group_count; //type: uint16
+                                YLeaf group_percent; //type: uint16
 
 
 
@@ -1721,6 +1783,7 @@ class PolicyManager : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class TriggerValue : public Entity
                         {
                             public:
@@ -1734,12 +1797,13 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value greater_than; //type: string
-                                Value greater_than_equal; //type: string
-                                Value less_than; //type: string
-                                Value less_than_equal; //type: string
-                                Value range; //type: string
 
+
+                                YLeaf greater_than; //type: string
+                                YLeaf greater_than_equal; //type: string
+                                YLeaf less_than; //type: string
+                                YLeaf less_than_equal; //type: string
+                                YLeaf range; //type: string
 
 
 
@@ -1759,9 +1823,10 @@ class PolicyManager : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value immediate; //type: empty
-                                Value average; //type: uint32
 
+
+                                YLeaf immediate; //type: empty
+                                YLeaf average; //type: uint32
 
 
 
@@ -1796,8 +1861,9 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value default_; //type: empty
 
+
+                        YLeaf default_; //type: empty
 
                     class NextHop : public Entity
                     {
@@ -1812,10 +1878,11 @@ class PolicyManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf; //type: string
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf vrf; //type: string
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -1841,10 +1908,11 @@ class PolicyManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value path_id; //type: uint32
-                        Value index_; //type: uint8
-                        Value metadata; //type: string
 
+
+                        YLeaf path_id; //type: uint32
+                        YLeaf index_; //type: uint8
+                        YLeaf metadata; //type: string
 
 
 
@@ -1866,7 +1934,6 @@ class PolicyManager : public Entity
                     std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy> service_policy;
                     std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set> set;
                     std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape> shape;
-                    class PmapClassMapTypeEnum;
 
 
             }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
@@ -1874,7 +1941,6 @@ class PolicyManager : public Entity
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event> > event;
                 std::vector<std::unique_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule> > policy_map_rule;
-                class PolicyMapTypeEnum;
 
 
         }; // PolicyManager::PolicyMaps::PolicyMap
@@ -1896,74 +1962,74 @@ class PolicyManager : public Entity
 class EventTypeEnum : public Enum
 {
     public:
-        static const Enum::Value account_logoff;
-        static const Enum::Value account_logon;
-        static const Enum::Value authentication_failure;
-        static const Enum::Value authentication_no_response;
-        static const Enum::Value authorization_failure;
-        static const Enum::Value authorization_no_response;
-        static const Enum::Value credit_exhausted;
-        static const Enum::Value exception;
-        static const Enum::Value idle_timeout;
-        static const Enum::Value quota_depleted;
-        static const Enum::Value service_start;
-        static const Enum::Value service_stop;
-        static const Enum::Value session_activate;
-        static const Enum::Value session_start;
-        static const Enum::Value session_stop;
-        static const Enum::Value timer_expiry;
+        static const Enum::YLeaf account_logoff;
+        static const Enum::YLeaf account_logon;
+        static const Enum::YLeaf authentication_failure;
+        static const Enum::YLeaf authentication_no_response;
+        static const Enum::YLeaf authorization_failure;
+        static const Enum::YLeaf authorization_no_response;
+        static const Enum::YLeaf credit_exhausted;
+        static const Enum::YLeaf exception;
+        static const Enum::YLeaf idle_timeout;
+        static const Enum::YLeaf quota_depleted;
+        static const Enum::YLeaf service_start;
+        static const Enum::YLeaf service_stop;
+        static const Enum::YLeaf session_activate;
+        static const Enum::YLeaf session_start;
+        static const Enum::YLeaf session_stop;
+        static const Enum::YLeaf timer_expiry;
 
 };
 
 class ClassMapTypeEnum : public Enum
 {
     public:
-        static const Enum::Value qos;
-        static const Enum::Value traffic;
-        static const Enum::Value control;
+        static const Enum::YLeaf qos;
+        static const Enum::YLeaf traffic;
+        static const Enum::YLeaf control;
 
 };
 
 class ExecutionStrategyEnum : public Enum
 {
     public:
-        static const Enum::Value do_all;
-        static const Enum::Value do_until_failure;
-        static const Enum::Value do_until_success;
+        static const Enum::YLeaf do_all;
+        static const Enum::YLeaf do_until_failure;
+        static const Enum::YLeaf do_until_success;
 
 };
 
 class AuthorizeIdentifierEnum : public Enum
 {
     public:
-        static const Enum::Value circuit_id;
-        static const Enum::Value dhcp_client_id;
-        static const Enum::Value remote_id;
-        static const Enum::Value source_address_ipv4;
-        static const Enum::Value source_address_ipv6;
-        static const Enum::Value source_address_mac;
-        static const Enum::Value username;
+        static const Enum::YLeaf circuit_id;
+        static const Enum::YLeaf dhcp_client_id;
+        static const Enum::YLeaf remote_id;
+        static const Enum::YLeaf source_address_ipv4;
+        static const Enum::YLeaf source_address_ipv6;
+        static const Enum::YLeaf source_address_mac;
+        static const Enum::YLeaf username;
 
 };
 
 class PmapClassMapTypeEnum : public Enum
 {
     public:
-        static const Enum::Value qos;
-        static const Enum::Value traffic;
-        static const Enum::Value subscriber_control;
+        static const Enum::YLeaf qos;
+        static const Enum::YLeaf traffic;
+        static const Enum::YLeaf subscriber_control;
 
 };
 
 class PolicyMapTypeEnum : public Enum
 {
     public:
-        static const Enum::Value qos;
-        static const Enum::Value pbr;
-        static const Enum::Value traffic;
-        static const Enum::Value subscriber_control;
-        static const Enum::Value redirect;
-        static const Enum::Value flow_monitor;
+        static const Enum::YLeaf qos;
+        static const Enum::YLeaf pbr;
+        static const Enum::YLeaf traffic;
+        static const Enum::YLeaf subscriber_control;
+        static const Enum::YLeaf redirect;
+        static const Enum::YLeaf flow_monitor;
 
 };
 

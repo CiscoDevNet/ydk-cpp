@@ -24,12 +24,13 @@ class Ntp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value max_associations; //type: int32
-        Value master; //type: uint32
-        Value broadcast_delay; //type: uint32
-        Value log_internal_sync; //type: empty
-        Value update_calendar; //type: empty
 
+
+        YLeaf max_associations; //type: int32
+        YLeaf master; //type: uint32
+        YLeaf broadcast_delay; //type: uint32
+        YLeaf log_internal_sync; //type: empty
+        YLeaf update_calendar; //type: empty
 
     class PeerVrfs : public Entity
     {
@@ -46,6 +47,7 @@ class Ntp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PeerVrf : public Entity
         {
             public:
@@ -59,8 +61,9 @@ class Ntp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class PeerIpv4S : public Entity
             {
@@ -77,6 +80,7 @@ class Ntp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PeerIpv4 : public Entity
                 {
                     public:
@@ -90,8 +94,9 @@ class Ntp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address_ipv4; //type: string
 
+
+                        YLeaf address_ipv4; //type: string
 
                     class PeerTypeIpv4 : public Entity
                     {
@@ -106,18 +111,18 @@ class Ntp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value peer_type; //type: NtpPeerEnum
-                            Value ntp_version; //type: uint32
-                            Value authentication_key; //type: uint32
-                            Value min_poll; //type: uint32
-                            Value max_poll; //type: uint32
-                            Value preferred_peer; //type: empty
-                            Value source_interface; //type: string
-                            Value burst; //type: empty
-                            Value iburst; //type: empty
 
 
-                            class NtpPeerEnum;
+                            YLeaf peer_type; //type: NtpPeerEnum
+                            YLeaf ntp_version; //type: uint32
+                            YLeaf authentication_key; //type: uint32
+                            YLeaf min_poll; //type: uint32
+                            YLeaf max_poll; //type: uint32
+                            YLeaf preferred_peer; //type: empty
+                            YLeaf source_interface; //type: string
+                            YLeaf burst; //type: empty
+                            YLeaf iburst; //type: empty
+
 
 
                     }; // Ntp::PeerVrfs::PeerVrf::PeerIpv4S::PeerIpv4::PeerTypeIpv4
@@ -150,6 +155,7 @@ class Ntp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PeerIpv6 : public Entity
                 {
                     public:
@@ -163,8 +169,9 @@ class Ntp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value address_ipv6; //type: string
 
+
+                        YLeaf address_ipv6; //type: string
 
                     class PeerTypeIpv6 : public Entity
                     {
@@ -179,19 +186,19 @@ class Ntp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value peer_type; //type: NtpPeerEnum
-                            Value ntp_version; //type: uint32
-                            Value authentication_key; //type: uint32
-                            Value min_poll; //type: uint32
-                            Value max_poll; //type: uint32
-                            Value preferred_peer; //type: empty
-                            Value source_interface; //type: string
-                            Value burst; //type: empty
-                            Value iburst; //type: empty
-                            Value address_ipv6; //type: string
 
 
-                            class NtpPeerEnum;
+                            YLeaf peer_type; //type: NtpPeerEnum
+                            YLeaf ntp_version; //type: uint32
+                            YLeaf authentication_key; //type: uint32
+                            YLeaf min_poll; //type: uint32
+                            YLeaf max_poll; //type: uint32
+                            YLeaf preferred_peer; //type: empty
+                            YLeaf source_interface; //type: string
+                            YLeaf burst; //type: empty
+                            YLeaf iburst; //type: empty
+                            YLeaf address_ipv6; //type: string
+
 
 
                     }; // Ntp::PeerVrfs::PeerVrf::PeerIpv6S::PeerIpv6::PeerTypeIpv6
@@ -235,11 +242,11 @@ class Ntp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value mode; //type: NtpdscpEnum
-            Value dscp_or_precedence_value; //type: uint32
 
 
-            class NtpdscpEnum;
+            YLeaf mode; //type: NtpdscpEnum
+            YLeaf dscp_or_precedence_value; //type: uint32
+
 
 
     }; // Ntp::DscpIpv4
@@ -258,11 +265,11 @@ class Ntp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value mode; //type: NtpdscpEnum
-            Value dscp_or_precedence_value; //type: uint32
 
 
-            class NtpdscpEnum;
+            YLeaf mode; //type: NtpdscpEnum
+            YLeaf dscp_or_precedence_value; //type: uint32
+
 
 
     }; // Ntp::DscpIpv6
@@ -283,6 +290,7 @@ class Ntp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Source : public Entity
         {
             public:
@@ -296,9 +304,10 @@ class Ntp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value source_interface; //type: string
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf source_interface; //type: string
 
 
 
@@ -324,8 +333,9 @@ class Ntp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class Keies : public Entity
         {
@@ -342,6 +352,7 @@ class Ntp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Key : public Entity
             {
                 public:
@@ -355,9 +366,10 @@ class Ntp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value key_number; //type: uint32
-                    Value authentication_key; //type: string
 
+
+                    YLeaf key_number; //type: uint32
+                    YLeaf authentication_key; //type: string
 
 
 
@@ -385,6 +397,7 @@ class Ntp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TrustedKey : public Entity
             {
                 public:
@@ -398,8 +411,9 @@ class Ntp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value key_number; //type: uint32
 
+
+                    YLeaf key_number; //type: uint32
 
 
 
@@ -432,8 +446,9 @@ class Ntp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
 
 
@@ -455,6 +470,7 @@ class Ntp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class InterfaceTable : public Entity
         {
             public:
@@ -468,8 +484,9 @@ class Ntp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class Interface : public Entity
             {
@@ -484,9 +501,10 @@ class Ntp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface; //type: string
-                    Value disable; //type: empty
 
+
+                    YLeaf interface; //type: string
+                    YLeaf disable; //type: empty
 
                 class InterfaceMulticast : public Entity
                 {
@@ -501,6 +519,7 @@ class Ntp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class MulticastClients : public Entity
@@ -518,6 +537,7 @@ class Ntp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class MulticastClient : public Entity
                         {
                             public:
@@ -531,8 +551,9 @@ class Ntp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_address; //type: string
 
+
+                                YLeaf ip_address; //type: string
 
 
 
@@ -560,6 +581,7 @@ class Ntp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class MulticastServer : public Entity
                         {
                             public:
@@ -573,11 +595,12 @@ class Ntp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_address; //type: string
-                                Value authentication_key; //type: uint32
-                                Value version; //type: uint32
-                                Value ttl; //type: uint32
 
+
+                                YLeaf ip_address; //type: string
+                                YLeaf authentication_key; //type: uint32
+                                YLeaf version; //type: uint32
+                                YLeaf ttl; //type: uint32
 
 
 
@@ -610,8 +633,9 @@ class Ntp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value broadcast_client; //type: empty
 
+
+                        YLeaf broadcast_client; //type: empty
 
                     class Broadcast : public Entity
                     {
@@ -626,10 +650,11 @@ class Ntp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value address; //type: string
-                            Value authentication_key; //type: uint32
-                            Value ntp_version; //type: uint32
 
+
+                            YLeaf address; //type: string
+                            YLeaf authentication_key; //type: uint32
+                            YLeaf ntp_version; //type: uint32
 
 
 
@@ -676,6 +701,7 @@ class Ntp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class AccessGroupTable : public Entity
         {
             public:
@@ -689,8 +715,9 @@ class Ntp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
             class AccessGroupAfTable : public Entity
             {
@@ -705,8 +732,9 @@ class Ntp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value af; //type: NtpAccessAfEnum
 
+
+                    YLeaf af; //type: NtpAccessAfEnum
 
                 class AccessGroup : public Entity
                 {
@@ -721,18 +749,17 @@ class Ntp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value access_group_type; //type: NtpAccessEnum
-                        Value access_list_name; //type: string
 
 
-                        class NtpAccessEnum;
+                        YLeaf access_group_type; //type: NtpAccessEnum
+                        YLeaf access_list_name; //type: string
+
 
 
                 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
 
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ip_ntp_cfg::Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup> > access_group;
-                    class NtpAccessAfEnum;
 
 
             }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable
@@ -766,34 +793,34 @@ class Ntp : public Entity
 class NtpAccessAfEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class NtpPeerEnum : public Enum
 {
     public:
-        static const Enum::Value peer;
-        static const Enum::Value server;
+        static const Enum::YLeaf peer;
+        static const Enum::YLeaf server;
 
 };
 
 class NtpdscpEnum : public Enum
 {
     public:
-        static const Enum::Value ntp_precedence;
-        static const Enum::Value ntpdscp;
+        static const Enum::YLeaf ntp_precedence;
+        static const Enum::YLeaf ntpdscp;
 
 };
 
 class NtpAccessEnum : public Enum
 {
     public:
-        static const Enum::Value peer;
-        static const Enum::Value serve;
-        static const Enum::Value serve_only;
-        static const Enum::Value query_only;
+        static const Enum::YLeaf peer;
+        static const Enum::YLeaf serve;
+        static const Enum::YLeaf serve_only;
+        static const Enum::YLeaf query_only;
 
 };
 

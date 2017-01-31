@@ -21,7 +21,7 @@ IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::~Ipv6Host()
 
 bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_data() const
 {
-    for (auto const & leaf : address.getValues())
+    for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -31,13 +31,14 @@ bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_operation() const
 {
-    for (auto const & leaf : address.getValues())
+    for (auto const & leaf : address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(host_name.operation);
+	|| is_set(host_name.operation)
+	|| is_set(address.operation);
 }
 
 std::string IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_segment_path() const
@@ -54,7 +55,7 @@ EntityPath IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -147,7 +148,7 @@ EntityPath IpDomain::Vrfs::Vrf::Ipv6Hosts::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -251,7 +252,7 @@ EntityPath IpDomain::Vrfs::Vrf::Servers::Server::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -343,7 +344,7 @@ EntityPath IpDomain::Vrfs::Vrf::Servers::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -447,7 +448,7 @@ EntityPath IpDomain::Vrfs::Vrf::Lists::List::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -539,7 +540,7 @@ EntityPath IpDomain::Vrfs::Vrf::Lists::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -618,7 +619,7 @@ IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::~Ipv4Host()
 
 bool IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::has_data() const
 {
-    for (auto const & leaf : address.getValues())
+    for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -628,13 +629,14 @@ bool IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::has_operation() const
 {
-    for (auto const & leaf : address.getValues())
+    for (auto const & leaf : address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(host_name.operation);
+	|| is_set(host_name.operation)
+	|| is_set(address.operation);
 }
 
 std::string IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_segment_path() const
@@ -651,7 +653,7 @@ EntityPath IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -744,7 +746,7 @@ EntityPath IpDomain::Vrfs::Vrf::Ipv4Hosts::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -862,10 +864,10 @@ bool IpDomain::Vrfs::Vrf::has_operation() const
 	|| is_set(multicast_domain.operation)
 	|| is_set(name.operation)
 	|| is_set(source_interface.operation)
-	|| (ipv4_hosts !=  nullptr && is_set(ipv4_hosts->operation))
-	|| (ipv6_hosts !=  nullptr && is_set(ipv6_hosts->operation))
-	|| (lists !=  nullptr && is_set(lists->operation))
-	|| (servers !=  nullptr && is_set(servers->operation));
+	|| (ipv4_hosts !=  nullptr && ipv4_hosts->has_operation())
+	|| (ipv6_hosts !=  nullptr && ipv6_hosts->has_operation())
+	|| (lists !=  nullptr && lists->has_operation())
+	|| (servers !=  nullptr && servers->has_operation());
 }
 
 std::string IpDomain::Vrfs::Vrf::get_segment_path() const
@@ -1168,7 +1170,7 @@ bool IpDomain::has_data() const
 bool IpDomain::has_operation() const
 {
     return is_set(operation)
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string IpDomain::get_segment_path() const
@@ -1185,7 +1187,7 @@ EntityPath IpDomain::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

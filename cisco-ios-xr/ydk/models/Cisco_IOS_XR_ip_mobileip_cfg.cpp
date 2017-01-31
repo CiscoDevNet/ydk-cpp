@@ -43,7 +43,7 @@ EntityPath MobileIp::Domains::Domain::Mags::Mag::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -130,7 +130,7 @@ EntityPath MobileIp::Domains::Domain::Mags::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -246,7 +246,7 @@ EntityPath MobileIp::Domains::Domain::Nais::Nai::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -358,7 +358,7 @@ EntityPath MobileIp::Domains::Domain::Nais::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -462,7 +462,7 @@ EntityPath MobileIp::Domains::Domain::AuthenticateOption::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -547,7 +547,7 @@ EntityPath MobileIp::Domains::Domain::Lmas::Lma::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -634,7 +634,7 @@ EntityPath MobileIp::Domains::Domain::Lmas::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -743,10 +743,10 @@ bool MobileIp::Domains::Domain::has_operation() const
     return is_set(operation)
 	|| is_set(domain_name.operation)
 	|| is_set(enable.operation)
-	|| (authenticate_option !=  nullptr && is_set(authenticate_option->operation))
-	|| (lmas !=  nullptr && is_set(lmas->operation))
-	|| (mags !=  nullptr && is_set(mags->operation))
-	|| (nais !=  nullptr && is_set(nais->operation));
+	|| (authenticate_option !=  nullptr && authenticate_option->has_operation())
+	|| (lmas !=  nullptr && lmas->has_operation())
+	|| (mags !=  nullptr && mags->has_operation())
+	|| (nais !=  nullptr && nais->has_operation());
 }
 
 std::string MobileIp::Domains::Domain::get_segment_path() const
@@ -1051,7 +1051,7 @@ EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1126,7 +1126,7 @@ bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_operation() const
 {
     return is_set(operation)
 	|| is_set(retry.operation)
-	|| (delay !=  nullptr && is_set(delay->operation));
+	|| (delay !=  nullptr && delay->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::BindingRevocationAttributes::get_segment_path() const
@@ -1143,7 +1143,7 @@ EntityPath MobileIp::Lmas::Lma::BindingRevocationAttributes::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1249,7 +1249,7 @@ EntityPath MobileIp::Lmas::Lma::RatAttributes::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1340,7 +1340,7 @@ EntityPath MobileIp::Lmas::Lma::HeartBeatAttributes::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1430,7 +1430,7 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1517,7 +1517,7 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv6Addresses::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1618,7 +1618,7 @@ EntityPath MobileIp::Lmas::Lma::Hnp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1701,7 +1701,7 @@ EntityPath MobileIp::Lmas::Lma::Redistribute::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1789,7 +1789,7 @@ EntityPath MobileIp::Lmas::Lma::Dscp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1874,7 +1874,7 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1961,7 +1961,7 @@ EntityPath MobileIp::Lmas::Lma::Lmaipv4Addresses::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2062,7 +2062,7 @@ EntityPath MobileIp::Lmas::Lma::Roles::Role::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2149,7 +2149,7 @@ EntityPath MobileIp::Lmas::Lma::Roles::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2262,7 +2262,7 @@ EntityPath MobileIp::Lmas::Lma::BindingAttributes::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2365,7 +2365,7 @@ EntityPath MobileIp::Lmas::Lma::Aaa::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2453,7 +2453,7 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2541,7 +2541,7 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::Dscp::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2636,8 +2636,8 @@ bool MobileIp::Lmas::Lma::Mags::Mag::has_operation() const
 	|| is_set(ipv4_address.operation)
 	|| is_set(ipv6_address.operation)
 	|| is_set(tunnel.operation)
-	|| (authenticate_option !=  nullptr && is_set(authenticate_option->operation))
-	|| (dscp !=  nullptr && is_set(dscp->operation));
+	|| (authenticate_option !=  nullptr && authenticate_option->has_operation())
+	|| (dscp !=  nullptr && dscp->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Mags::Mag::get_segment_path() const
@@ -2654,7 +2654,7 @@ EntityPath MobileIp::Lmas::Lma::Mags::Mag::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2812,7 +2812,7 @@ EntityPath MobileIp::Lmas::Lma::Mags::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2916,7 +2916,7 @@ EntityPath MobileIp::Lmas::Lma::TunnelAttributes::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3004,7 +3004,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Authenti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3095,7 +3095,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBea
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3191,7 +3191,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3288,7 +3288,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transpor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3392,7 +3392,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3480,7 +3480,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3556,8 +3556,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_pool !=  nullptr && is_set(ipv4_pool->operation))
-	|| (ipv6_pool !=  nullptr && is_set(ipv6_pool->operation));
+	|| (ipv4_pool !=  nullptr && ipv4_pool->has_operation())
+	|| (ipv6_pool !=  nullptr && ipv6_pool->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::get_segment_path() const
@@ -3574,7 +3574,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3701,7 +3701,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3798,7 +3798,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3905,7 +3905,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4002,7 +4002,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4094,8 +4094,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_operation() const
 {
     return is_set(operation)
-	|| (mripv4_pools !=  nullptr && is_set(mripv4_pools->operation))
-	|| (mripv6_pools !=  nullptr && is_set(mripv6_pools->operation));
+	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::get_segment_path() const
@@ -4112,7 +4112,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4224,8 +4224,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::has_operation() const
 {
     return is_set(operation)
-	|| (mobile_network !=  nullptr && is_set(mobile_network->operation))
-	|| (mobile_node !=  nullptr && is_set(mobile_node->operation));
+	|| (mobile_network !=  nullptr && mobile_network->has_operation())
+	|| (mobile_node !=  nullptr && mobile_node->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::get_segment_path() const
@@ -4242,7 +4242,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4353,7 +4353,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (pool_attributes !=  nullptr && is_set(pool_attributes->operation));
+	|| (pool_attributes !=  nullptr && pool_attributes->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_segment_path() const
@@ -4370,7 +4370,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4480,7 +4480,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4571,7 +4571,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 {
     return is_set(operation)
 	|| is_set(unauthorize.operation)
-	|| (authorizes !=  nullptr && is_set(authorizes->operation));
+	|| (authorizes !=  nullptr && authorizes->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::get_segment_path() const
@@ -4588,7 +4588,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4694,7 +4694,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4779,7 +4779,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4901,12 +4901,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::has_operation(
 	|| is_set(mnp_ipv6_lmn.operation)
 	|| is_set(mnp_lmn.operation)
 	|| is_set(mobile_route_ad.operation)
-	|| (authenticate_option !=  nullptr && is_set(authenticate_option->operation))
-	|| (binding_attributes !=  nullptr && is_set(binding_attributes->operation))
-	|| (gre_key !=  nullptr && is_set(gre_key->operation))
-	|| (heart_beat_attributes !=  nullptr && is_set(heart_beat_attributes->operation))
-	|| (network_attributes !=  nullptr && is_set(network_attributes->operation))
-	|| (transports !=  nullptr && is_set(transports->operation));
+	|| (authenticate_option !=  nullptr && authenticate_option->has_operation())
+	|| (binding_attributes !=  nullptr && binding_attributes->has_operation())
+	|| (gre_key !=  nullptr && gre_key->has_operation())
+	|| (heart_beat_attributes !=  nullptr && heart_beat_attributes->has_operation())
+	|| (network_attributes !=  nullptr && network_attributes->has_operation())
+	|| (transports !=  nullptr && transports->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_segment_path() const
@@ -4923,7 +4923,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5193,7 +5193,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::Customers::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5305,7 +5305,7 @@ bool MobileIp::Lmas::Lma::Services::Service::has_operation() const
 	|| is_set(mnp_ipv6_customer.operation)
 	|| is_set(mnp_ipv6_lmn.operation)
 	|| is_set(mnp_lmn.operation)
-	|| (customers !=  nullptr && is_set(customers->operation));
+	|| (customers !=  nullptr && customers->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Services::Service::get_segment_path() const
@@ -5322,7 +5322,7 @@ EntityPath MobileIp::Lmas::Lma::Services::Service::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5467,7 +5467,7 @@ EntityPath MobileIp::Lmas::Lma::Services::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5571,7 +5571,7 @@ EntityPath MobileIp::Lmas::Lma::ReplayProtection::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5659,7 +5659,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5747,7 +5747,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::I
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5823,8 +5823,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_dat
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_pool !=  nullptr && is_set(ipv4_pool->operation))
-	|| (ipv6_pool !=  nullptr && is_set(ipv6_pool->operation));
+	|| (ipv4_pool !=  nullptr && ipv4_pool->has_operation())
+	|| (ipv6_pool !=  nullptr && ipv6_pool->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::get_segment_path() const
@@ -5841,7 +5841,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5968,7 +5968,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6065,7 +6065,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6172,7 +6172,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6269,7 +6269,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6361,8 +6361,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_operation() const
 {
     return is_set(operation)
-	|| (mripv4_pools !=  nullptr && is_set(mripv4_pools->operation))
-	|| (mripv6_pools !=  nullptr && is_set(mripv6_pools->operation));
+	|| (mripv4_pools !=  nullptr && mripv4_pools->has_operation())
+	|| (mripv6_pools !=  nullptr && mripv6_pools->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::get_segment_path() const
@@ -6379,7 +6379,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6491,8 +6491,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_data() const
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_operation() const
 {
     return is_set(operation)
-	|| (mobile_network !=  nullptr && is_set(mobile_network->operation))
-	|| (mobile_node !=  nullptr && is_set(mobile_node->operation));
+	|| (mobile_network !=  nullptr && mobile_network->has_operation())
+	|| (mobile_node !=  nullptr && mobile_node->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_segment_path() const
@@ -6509,7 +6509,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6620,7 +6620,7 @@ bool MobileIp::Lmas::Lma::Networks::Network::has_operation() const
 {
     return is_set(operation)
 	|| is_set(lma_network.operation)
-	|| (pool_attributes !=  nullptr && is_set(pool_attributes->operation));
+	|| (pool_attributes !=  nullptr && pool_attributes->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::Networks::Network::get_segment_path() const
@@ -6637,7 +6637,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::Network::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6747,7 +6747,7 @@ EntityPath MobileIp::Lmas::Lma::Networks::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6946,22 +6946,22 @@ bool MobileIp::Lmas::Lma::has_operation() const
 	|| is_set(mobile_route_ad.operation)
 	|| is_set(multipath.operation)
 	|| is_set(pgw_subs_cont.operation)
-	|| (aaa !=  nullptr && is_set(aaa->operation))
-	|| (binding_attributes !=  nullptr && is_set(binding_attributes->operation))
-	|| (binding_revocation_attributes !=  nullptr && is_set(binding_revocation_attributes->operation))
-	|| (dscp !=  nullptr && is_set(dscp->operation))
-	|| (heart_beat_attributes !=  nullptr && is_set(heart_beat_attributes->operation))
-	|| (hnp !=  nullptr && is_set(hnp->operation))
-	|| (lmaipv4_addresses !=  nullptr && is_set(lmaipv4_addresses->operation))
-	|| (lmaipv6_addresses !=  nullptr && is_set(lmaipv6_addresses->operation))
-	|| (mags !=  nullptr && is_set(mags->operation))
-	|| (networks !=  nullptr && is_set(networks->operation))
-	|| (rat_attributes !=  nullptr && is_set(rat_attributes->operation))
-	|| (redistribute !=  nullptr && is_set(redistribute->operation))
-	|| (replay_protection !=  nullptr && is_set(replay_protection->operation))
-	|| (roles !=  nullptr && is_set(roles->operation))
-	|| (services !=  nullptr && is_set(services->operation))
-	|| (tunnel_attributes !=  nullptr && is_set(tunnel_attributes->operation));
+	|| (aaa !=  nullptr && aaa->has_operation())
+	|| (binding_attributes !=  nullptr && binding_attributes->has_operation())
+	|| (binding_revocation_attributes !=  nullptr && binding_revocation_attributes->has_operation())
+	|| (dscp !=  nullptr && dscp->has_operation())
+	|| (heart_beat_attributes !=  nullptr && heart_beat_attributes->has_operation())
+	|| (hnp !=  nullptr && hnp->has_operation())
+	|| (lmaipv4_addresses !=  nullptr && lmaipv4_addresses->has_operation())
+	|| (lmaipv6_addresses !=  nullptr && lmaipv6_addresses->has_operation())
+	|| (mags !=  nullptr && mags->has_operation())
+	|| (networks !=  nullptr && networks->has_operation())
+	|| (rat_attributes !=  nullptr && rat_attributes->has_operation())
+	|| (redistribute !=  nullptr && redistribute->has_operation())
+	|| (replay_protection !=  nullptr && replay_protection->has_operation())
+	|| (roles !=  nullptr && roles->has_operation())
+	|| (services !=  nullptr && services->has_operation())
+	|| (tunnel_attributes !=  nullptr && tunnel_attributes->has_operation());
 }
 
 std::string MobileIp::Lmas::Lma::get_segment_path() const
@@ -7580,8 +7580,8 @@ bool MobileIp::has_data() const
 bool MobileIp::has_operation() const
 {
     return is_set(operation)
-	|| (domains !=  nullptr && is_set(domains->operation))
-	|| (lmas !=  nullptr && is_set(lmas->operation));
+	|| (domains !=  nullptr && domains->has_operation())
+	|| (lmas !=  nullptr && lmas->has_operation());
 }
 
 std::string MobileIp::get_segment_path() const
@@ -7598,7 +7598,7 @@ EntityPath MobileIp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -7685,31 +7685,31 @@ std::unique_ptr<Entity> MobileIp::clone_ptr()
     return std::make_unique<MobileIp>();
 }
 
-const Enum::Value LmaRatEnum::virtual_ {0, "virtual"};
-const Enum::Value LmaRatEnum::ppp {1, "ppp"};
-const Enum::Value LmaRatEnum::ethernet {2, "ethernet"};
-const Enum::Value LmaRatEnum::wlan {3, "wlan"};
-const Enum::Value LmaRatEnum::wi_max {4, "wi-max"};
-const Enum::Value LmaRatEnum::Y_3gppgeran {5, "3gppgeran"};
-const Enum::Value LmaRatEnum::Y_3gpputran {6, "3gpputran"};
-const Enum::Value LmaRatEnum::Y_3gppeutran {7, "3gppeutran"};
-const Enum::Value LmaRatEnum::Y_3gpp2ehrpd {8, "3gpp2ehrpd"};
-const Enum::Value LmaRatEnum::Y_3gpp2hrpd {9, "3gpp2hrpd"};
-const Enum::Value LmaRatEnum::Y_3gpp21rtt {10, "3gpp21rtt"};
-const Enum::Value LmaRatEnum::Y_3gpp2umb {11, "3gpp2umb"};
+const Enum::YLeaf LmaRatEnum::virtual_ {0, "virtual"};
+const Enum::YLeaf LmaRatEnum::ppp {1, "ppp"};
+const Enum::YLeaf LmaRatEnum::ethernet {2, "ethernet"};
+const Enum::YLeaf LmaRatEnum::wlan {3, "wlan"};
+const Enum::YLeaf LmaRatEnum::wi_max {4, "wi-max"};
+const Enum::YLeaf LmaRatEnum::Y_3gppgeran {5, "3gppgeran"};
+const Enum::YLeaf LmaRatEnum::Y_3gpputran {6, "3gpputran"};
+const Enum::YLeaf LmaRatEnum::Y_3gppeutran {7, "3gppeutran"};
+const Enum::YLeaf LmaRatEnum::Y_3gpp2ehrpd {8, "3gpp2ehrpd"};
+const Enum::YLeaf LmaRatEnum::Y_3gpp2hrpd {9, "3gpp2hrpd"};
+const Enum::YLeaf LmaRatEnum::Y_3gpp21rtt {10, "3gpp21rtt"};
+const Enum::YLeaf LmaRatEnum::Y_3gpp2umb {11, "3gpp2umb"};
 
-const Enum::Value ServiceTypeEnum::ipv4 {1, "ipv4"};
-const Enum::Value ServiceTypeEnum::ipv6 {2, "ipv6"};
-const Enum::Value ServiceTypeEnum::dual {3, "dual"};
+const Enum::YLeaf ServiceTypeEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf ServiceTypeEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf ServiceTypeEnum::dual {3, "dual"};
 
-const Enum::Value LmaServiceEnum::service_mll {1, "service-mll"};
+const Enum::YLeaf LmaServiceEnum::service_mll {1, "service-mll"};
 
-const Enum::Value EncapOptEnum::greipv4 {4, "greipv4"};
-const Enum::Value EncapOptEnum::greipv6 {5, "greipv6"};
-const Enum::Value EncapOptEnum::mgreipv4 {7, "mgreipv4"};
-const Enum::Value EncapOptEnum::mgreipv6 {8, "mgreipv6"};
+const Enum::YLeaf EncapOptEnum::greipv4 {4, "greipv4"};
+const Enum::YLeaf EncapOptEnum::greipv6 {5, "greipv6"};
+const Enum::YLeaf EncapOptEnum::mgreipv4 {7, "mgreipv4"};
+const Enum::YLeaf EncapOptEnum::mgreipv6 {8, "mgreipv6"};
 
-const Enum::Value LmaRoleEnum::Y_3gma {0, "3gma"};
+const Enum::YLeaf LmaRoleEnum::Y_3gma {0, "3gma"};
 
 
 }

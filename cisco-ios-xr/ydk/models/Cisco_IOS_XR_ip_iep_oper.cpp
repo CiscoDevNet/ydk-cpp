@@ -58,7 +58,7 @@ EntityPath ExplicitPaths::Identifiers::Identifier::Address::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -410,7 +410,7 @@ EntityPath ExplicitPaths::Names::Name::Address::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -738,8 +738,8 @@ bool ExplicitPaths::has_data() const
 bool ExplicitPaths::has_operation() const
 {
     return is_set(operation)
-	|| (identifiers !=  nullptr && is_set(identifiers->operation))
-	|| (names !=  nullptr && is_set(names->operation));
+	|| (identifiers !=  nullptr && identifiers->has_operation())
+	|| (names !=  nullptr && names->has_operation());
 }
 
 std::string ExplicitPaths::get_segment_path() const
@@ -756,7 +756,7 @@ EntityPath ExplicitPaths::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -843,15 +843,15 @@ std::unique_ptr<Entity> ExplicitPaths::clone_ptr()
     return std::make_unique<ExplicitPaths>();
 }
 
-const Enum::Value IepStatusEnum::enabled {0, "enabled"};
-const Enum::Value IepStatusEnum::disabled {1, "disabled"};
+const Enum::YLeaf IepStatusEnum::enabled {0, "enabled"};
+const Enum::YLeaf IepStatusEnum::disabled {1, "disabled"};
 
-const Enum::Value IepAddressEnum::next {0, "next"};
-const Enum::Value IepAddressEnum::exclude {1, "exclude"};
-const Enum::Value IepAddressEnum::exclude_srlg {2, "exclude-srlg"};
+const Enum::YLeaf IepAddressEnum::next {0, "next"};
+const Enum::YLeaf IepAddressEnum::exclude {1, "exclude"};
+const Enum::YLeaf IepAddressEnum::exclude_srlg {2, "exclude-srlg"};
 
-const Enum::Value IepHopEnum::strict {0, "strict"};
-const Enum::Value IepHopEnum::loose {1, "loose"};
+const Enum::YLeaf IepHopEnum::strict {0, "strict"};
+const Enum::YLeaf IepHopEnum::loose {1, "loose"};
 
 
 }

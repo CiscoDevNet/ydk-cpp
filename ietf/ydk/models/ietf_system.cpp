@@ -152,7 +152,7 @@ EntityPath System::Ntp::Server::Udp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -236,7 +236,7 @@ bool System::Ntp::Server::has_operation() const
 	|| is_set(association_type.operation)
 	|| is_set(iburst.operation)
 	|| is_set(prefer.operation)
-	|| (udp !=  nullptr && is_set(udp->operation));
+	|| (udp !=  nullptr && udp->has_operation());
 }
 
 std::string System::Ntp::Server::get_segment_path() const
@@ -490,7 +490,7 @@ EntityPath System::DnsResolver::Server::UdpAndTcp::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -565,7 +565,7 @@ bool System::DnsResolver::Server::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (udp_and_tcp !=  nullptr && is_set(udp_and_tcp->operation));
+	|| (udp_and_tcp !=  nullptr && udp_and_tcp->has_operation());
 }
 
 std::string System::DnsResolver::Server::get_segment_path() const
@@ -760,7 +760,7 @@ bool System::DnsResolver::has_data() const
         if(server[index]->has_data())
             return true;
     }
-    for (auto const & leaf : search.getValues())
+    for (auto const & leaf : search.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -775,13 +775,14 @@ bool System::DnsResolver::has_operation() const
         if(server[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : search.getValues())
+    for (auto const & leaf : search.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| (options !=  nullptr && is_set(options->operation));
+	|| is_set(search.operation)
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string System::DnsResolver::get_segment_path() const
@@ -934,7 +935,7 @@ EntityPath System::Radius::Server::Udp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1017,7 +1018,7 @@ bool System::Radius::Server::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(authentication_type.operation)
-	|| (udp !=  nullptr && is_set(udp->operation));
+	|| (udp !=  nullptr && udp->has_operation());
 }
 
 std::string System::Radius::Server::get_segment_path() const
@@ -1226,7 +1227,7 @@ bool System::Radius::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string System::Radius::get_segment_path() const
@@ -1373,7 +1374,7 @@ EntityPath System::Authentication::User::AuthorizedKey::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1569,7 +1570,7 @@ bool System::Authentication::has_data() const
         if(user[index]->has_data())
             return true;
     }
-    for (auto const & leaf : user_authentication_order.getValues())
+    for (auto const & leaf : user_authentication_order.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1584,12 +1585,13 @@ bool System::Authentication::has_operation() const
         if(user[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : user_authentication_order.getValues())
+    for (auto const & leaf : user_authentication_order.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(user_authentication_order.operation);
 }
 
 std::string System::Authentication::get_segment_path() const
@@ -1726,11 +1728,11 @@ bool System::has_operation() const
 	|| is_set(contact.operation)
 	|| is_set(hostname.operation)
 	|| is_set(location.operation)
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (clock !=  nullptr && is_set(clock->operation))
-	|| (dns_resolver !=  nullptr && is_set(dns_resolver->operation))
-	|| (ntp !=  nullptr && is_set(ntp->operation))
-	|| (radius !=  nullptr && is_set(radius->operation));
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (clock !=  nullptr && clock->has_operation())
+	|| (dns_resolver !=  nullptr && dns_resolver->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (radius !=  nullptr && radius->has_operation());
 }
 
 std::string System::get_segment_path() const
@@ -1747,7 +1749,7 @@ EntityPath System::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2136,8 +2138,8 @@ bool SystemState::has_data() const
 bool SystemState::has_operation() const
 {
     return is_set(operation)
-	|| (clock !=  nullptr && is_set(clock->operation))
-	|| (platform !=  nullptr && is_set(platform->operation));
+	|| (clock !=  nullptr && clock->has_operation())
+	|| (platform !=  nullptr && platform->has_operation());
 }
 
 std::string SystemState::get_segment_path() const
@@ -2154,7 +2156,7 @@ EntityPath SystemState::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2276,7 +2278,7 @@ EntityPath SetCurrentDatetimeRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2354,7 +2356,7 @@ EntityPath SystemRestartRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2427,7 +2429,7 @@ EntityPath SystemShutdownRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2504,9 +2506,9 @@ LocalUsersIdentity::~LocalUsersIdentity()
 }
 
 
-const Enum::Value System::Ntp::Server::AssociationTypeEnum::server {0, "server"};
-const Enum::Value System::Ntp::Server::AssociationTypeEnum::peer {1, "peer"};
-const Enum::Value System::Ntp::Server::AssociationTypeEnum::pool {2, "pool"};
+const Enum::YLeaf System::Ntp::Server::AssociationTypeEnum::server {0, "server"};
+const Enum::YLeaf System::Ntp::Server::AssociationTypeEnum::peer {1, "peer"};
+const Enum::YLeaf System::Ntp::Server::AssociationTypeEnum::pool {2, "pool"};
 
 
 }

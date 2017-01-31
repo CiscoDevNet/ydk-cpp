@@ -680,7 +680,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::LaneFi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -787,7 +787,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -934,7 +934,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAla
 	|| is_set(transceiver_voltage_alarm_low.operation)
 	|| is_set(transceiver_voltage_warning_high.operation)
 	|| is_set(transceiver_voltage_warning_low.operation)
-	|| (field_validity !=  nullptr && is_set(field_validity->operation));
+	|| (field_validity !=  nullptr && field_validity->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOptMonAlarmThresholds::get_segment_path() const
@@ -951,7 +951,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1161,7 +1161,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::DigOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1267,7 +1267,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1356,7 +1356,7 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::has_op
 	|| is_set(laser_bias_current.operation)
 	|| is_set(received_laser_power.operation)
 	|| is_set(transmit_laser_power.operation)
-	|| (dig_opt_mon_alarm !=  nullptr && is_set(dig_opt_mon_alarm->operation));
+	|| (dig_opt_mon_alarm !=  nullptr && dig_opt_mon_alarm->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::get_segment_path() const
@@ -1373,7 +1373,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1525,9 +1525,9 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::has_operatio
 	|| is_set(vendor.operation)
 	|| is_set(vendor_part_number.operation)
 	|| is_set(vendor_serial_number.operation)
-	|| (dig_opt_mon_alarm_thresholds !=  nullptr && is_set(dig_opt_mon_alarm_thresholds->operation))
-	|| (dig_opt_mon_alarms !=  nullptr && is_set(dig_opt_mon_alarms->operation))
-	|| (lane_field_validity !=  nullptr && is_set(lane_field_validity->operation));
+	|| (dig_opt_mon_alarm_thresholds !=  nullptr && dig_opt_mon_alarm_thresholds->has_operation())
+	|| (dig_opt_mon_alarms !=  nullptr && dig_opt_mon_alarms->has_operation())
+	|| (lane_field_validity !=  nullptr && lane_field_validity->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::get_segment_path() const
@@ -1544,7 +1544,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1765,7 +1765,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::FecDetails::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1856,8 +1856,8 @@ bool EthernetInterface::Interfaces::Interface::PhyInfo::has_operation() const
 	|| is_set(loopback.operation)
 	|| is_set(media_type.operation)
 	|| is_set(phy_present.operation)
-	|| (fec_details !=  nullptr && is_set(fec_details->operation))
-	|| (phy_details !=  nullptr && is_set(phy_details->operation));
+	|| (fec_details !=  nullptr && fec_details->has_operation())
+	|| (phy_details !=  nullptr && phy_details->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::PhyInfo::get_segment_path() const
@@ -1874,7 +1874,7 @@ EntityPath EthernetInterface::Interfaces::Interface::PhyInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2028,7 +2028,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::Autoneg::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2162,7 +2162,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::CurrentAlarms::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2306,7 +2306,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::PreviousAlarms:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2429,7 +2429,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::ErrorCounts::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2526,7 +2526,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2616,7 +2616,7 @@ bool EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::has_op
 {
     return is_set(operation)
 	|| is_set(supported.operation)
-	|| (settings !=  nullptr && is_set(settings->operation));
+	|| (settings !=  nullptr && settings->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::get_segment_path() const
@@ -2633,7 +2633,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::BerMonitoring::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2716,12 +2716,12 @@ EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::~PfcInfo()
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::has_data() const
 {
-    for (auto const & leaf : rx_frame.getValues())
+    for (auto const & leaf : rx_frame.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : tx_frame.getValues())
+    for (auto const & leaf : tx_frame.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2732,19 +2732,21 @@ bool EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::has_data() c
 
 bool EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::has_operation() const
 {
-    for (auto const & leaf : rx_frame.getValues())
+    for (auto const & leaf : rx_frame.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : tx_frame.getValues())
+    for (auto const & leaf : tx_frame.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(priority_enabled_bitmap.operation)
-	|| is_set(priority_flowcontrol.operation);
+	|| is_set(priority_flowcontrol.operation)
+	|| is_set(rx_frame.operation)
+	|| is_set(tx_frame.operation);
 }
 
 std::string EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::get_segment_path() const
@@ -2761,7 +2763,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::PfcInfo::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2897,12 +2899,12 @@ bool EthernetInterface::Interfaces::Interface::Layer1Info::has_operation() const
 	|| is_set(led_state.operation)
 	|| is_set(link_state.operation)
 	|| is_set(speed.operation)
-	|| (autoneg !=  nullptr && is_set(autoneg->operation))
-	|| (ber_monitoring !=  nullptr && is_set(ber_monitoring->operation))
-	|| (current_alarms !=  nullptr && is_set(current_alarms->operation))
-	|| (error_counts !=  nullptr && is_set(error_counts->operation))
-	|| (pfc_info !=  nullptr && is_set(pfc_info->operation))
-	|| (previous_alarms !=  nullptr && is_set(previous_alarms->operation));
+	|| (autoneg !=  nullptr && autoneg->has_operation())
+	|| (ber_monitoring !=  nullptr && ber_monitoring->has_operation())
+	|| (current_alarms !=  nullptr && current_alarms->has_operation())
+	|| (error_counts !=  nullptr && error_counts->has_operation())
+	|| (pfc_info !=  nullptr && pfc_info->has_operation())
+	|| (previous_alarms !=  nullptr && previous_alarms->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::Layer1Info::get_segment_path() const
@@ -2919,7 +2921,7 @@ EntityPath EthernetInterface::Interfaces::Interface::Layer1Info::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3154,7 +3156,7 @@ EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::~UnicastMa
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::has_data() const
 {
-    for (auto const & leaf : unicast_mac_address.getValues())
+    for (auto const & leaf : unicast_mac_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3164,12 +3166,13 @@ bool EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::has_d
 
 bool EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::has_operation() const
 {
-    for (auto const & leaf : unicast_mac_address.getValues())
+    for (auto const & leaf : unicast_mac_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(unicast_mac_address.operation);
 }
 
 std::string EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters::get_segment_path() const
@@ -3186,7 +3189,7 @@ EntityPath EthernetInterface::Interfaces::Interface::MacInfo::UnicastMacFilters:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3270,7 +3273,7 @@ EntityPath EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3365,7 +3368,7 @@ EntityPath EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3475,8 +3478,8 @@ bool EthernetInterface::Interfaces::Interface::MacInfo::has_operation() const
 	|| is_set(mru.operation)
 	|| is_set(mtu.operation)
 	|| is_set(operational_mac_address.operation)
-	|| (multicast_mac_filters !=  nullptr && is_set(multicast_mac_filters->operation))
-	|| (unicast_mac_filters !=  nullptr && is_set(unicast_mac_filters->operation));
+	|| (multicast_mac_filters !=  nullptr && multicast_mac_filters->has_operation())
+	|| (unicast_mac_filters !=  nullptr && unicast_mac_filters->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::MacInfo::get_segment_path() const
@@ -3493,7 +3496,7 @@ EntityPath EthernetInterface::Interfaces::Interface::MacInfo::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3643,7 +3646,7 @@ EntityPath EthernetInterface::Interfaces::Interface::TransportInfo::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3749,10 +3752,10 @@ bool EthernetInterface::Interfaces::Interface::has_operation() const
 	|| is_set(interface_name.operation)
 	|| is_set(admin_state.operation)
 	|| is_set(oper_state_up.operation)
-	|| (layer1_info !=  nullptr && is_set(layer1_info->operation))
-	|| (mac_info !=  nullptr && is_set(mac_info->operation))
-	|| (phy_info !=  nullptr && is_set(phy_info->operation))
-	|| (transport_info !=  nullptr && is_set(transport_info->operation));
+	|| (layer1_info !=  nullptr && layer1_info->has_operation())
+	|| (mac_info !=  nullptr && mac_info->has_operation())
+	|| (phy_info !=  nullptr && phy_info->has_operation())
+	|| (transport_info !=  nullptr && transport_info->has_operation());
 }
 
 std::string EthernetInterface::Interfaces::Interface::get_segment_path() const
@@ -4083,7 +4086,7 @@ EntityPath EthernetInterface::Berts::Bert::BertStatus::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4199,7 +4202,7 @@ bool EthernetInterface::Berts::Bert::has_operation() const
 	|| is_set(interface_name.operation)
 	|| is_set(port_bert_interval.operation)
 	|| is_set(time_left.operation)
-	|| (bert_status !=  nullptr && is_set(bert_status->operation));
+	|| (bert_status !=  nullptr && bert_status->has_operation());
 }
 
 std::string EthernetInterface::Berts::Bert::get_segment_path() const
@@ -4433,9 +4436,9 @@ bool EthernetInterface::has_data() const
 bool EthernetInterface::has_operation() const
 {
     return is_set(operation)
-	|| (berts !=  nullptr && is_set(berts->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (berts !=  nullptr && berts->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string EthernetInterface::get_segment_path() const
@@ -4452,7 +4455,7 @@ EntityPath EthernetInterface::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4562,482 +4565,482 @@ std::unique_ptr<Entity> EthernetInterface::clone_ptr()
     return std::make_unique<EthernetInterface>();
 }
 
-const Enum::Value EtherLinkStateEnum::state_undefined {0, "state-undefined"};
-const Enum::Value EtherLinkStateEnum::unknown_state {1, "unknown-state"};
-const Enum::Value EtherLinkStateEnum::available {2, "available"};
-const Enum::Value EtherLinkStateEnum::not_available {3, "not-available"};
-const Enum::Value EtherLinkStateEnum::remote_fault {4, "remote-fault"};
-const Enum::Value EtherLinkStateEnum::invalid_signal {5, "invalid-signal"};
-const Enum::Value EtherLinkStateEnum::remote_jabber {6, "remote-jabber"};
-const Enum::Value EtherLinkStateEnum::link_loss {7, "link-loss"};
-const Enum::Value EtherLinkStateEnum::remote_test {8, "remote-test"};
-const Enum::Value EtherLinkStateEnum::offline {9, "offline"};
-const Enum::Value EtherLinkStateEnum::auto_neg_error {10, "auto-neg-error"};
-const Enum::Value EtherLinkStateEnum::pmd_link_fault {11, "pmd-link-fault"};
-const Enum::Value EtherLinkStateEnum::frame_loss {12, "frame-loss"};
-const Enum::Value EtherLinkStateEnum::signal_loss {13, "signal-loss"};
-const Enum::Value EtherLinkStateEnum::link_fault {14, "link-fault"};
-const Enum::Value EtherLinkStateEnum::excessive_ber {15, "excessive-ber"};
-const Enum::Value EtherLinkStateEnum::dxs_link_fault {16, "dxs-link-fault"};
-const Enum::Value EtherLinkStateEnum::pxs_link_fault {17, "pxs-link-fault"};
-const Enum::Value EtherLinkStateEnum::security {18, "security"};
-const Enum::Value EtherLinkStateEnum::phy_not_present {19, "phy-not-present"};
-const Enum::Value EtherLinkStateEnum::no_optic_license {20, "no-optic-license"};
-const Enum::Value EtherLinkStateEnum::unsupported_module {21, "unsupported-module"};
-const Enum::Value EtherLinkStateEnum::dwdm_laser_shut {22, "dwdm-laser-shut"};
-const Enum::Value EtherLinkStateEnum::wanphy_laser_shut {23, "wanphy-laser-shut"};
-const Enum::Value EtherLinkStateEnum::incompatible_config {24, "incompatible-config"};
-const Enum::Value EtherLinkStateEnum::system_error {25, "system-error"};
-const Enum::Value EtherLinkStateEnum::wan_framing_error {26, "wan-framing-error"};
-const Enum::Value EtherLinkStateEnum::otn_framing_error {27, "otn-framing-error"};
+const Enum::YLeaf EtherLinkStateEnum::state_undefined {0, "state-undefined"};
+const Enum::YLeaf EtherLinkStateEnum::unknown_state {1, "unknown-state"};
+const Enum::YLeaf EtherLinkStateEnum::available {2, "available"};
+const Enum::YLeaf EtherLinkStateEnum::not_available {3, "not-available"};
+const Enum::YLeaf EtherLinkStateEnum::remote_fault {4, "remote-fault"};
+const Enum::YLeaf EtherLinkStateEnum::invalid_signal {5, "invalid-signal"};
+const Enum::YLeaf EtherLinkStateEnum::remote_jabber {6, "remote-jabber"};
+const Enum::YLeaf EtherLinkStateEnum::link_loss {7, "link-loss"};
+const Enum::YLeaf EtherLinkStateEnum::remote_test {8, "remote-test"};
+const Enum::YLeaf EtherLinkStateEnum::offline {9, "offline"};
+const Enum::YLeaf EtherLinkStateEnum::auto_neg_error {10, "auto-neg-error"};
+const Enum::YLeaf EtherLinkStateEnum::pmd_link_fault {11, "pmd-link-fault"};
+const Enum::YLeaf EtherLinkStateEnum::frame_loss {12, "frame-loss"};
+const Enum::YLeaf EtherLinkStateEnum::signal_loss {13, "signal-loss"};
+const Enum::YLeaf EtherLinkStateEnum::link_fault {14, "link-fault"};
+const Enum::YLeaf EtherLinkStateEnum::excessive_ber {15, "excessive-ber"};
+const Enum::YLeaf EtherLinkStateEnum::dxs_link_fault {16, "dxs-link-fault"};
+const Enum::YLeaf EtherLinkStateEnum::pxs_link_fault {17, "pxs-link-fault"};
+const Enum::YLeaf EtherLinkStateEnum::security {18, "security"};
+const Enum::YLeaf EtherLinkStateEnum::phy_not_present {19, "phy-not-present"};
+const Enum::YLeaf EtherLinkStateEnum::no_optic_license {20, "no-optic-license"};
+const Enum::YLeaf EtherLinkStateEnum::unsupported_module {21, "unsupported-module"};
+const Enum::YLeaf EtherLinkStateEnum::dwdm_laser_shut {22, "dwdm-laser-shut"};
+const Enum::YLeaf EtherLinkStateEnum::wanphy_laser_shut {23, "wanphy-laser-shut"};
+const Enum::YLeaf EtherLinkStateEnum::incompatible_config {24, "incompatible-config"};
+const Enum::YLeaf EtherLinkStateEnum::system_error {25, "system-error"};
+const Enum::YLeaf EtherLinkStateEnum::wan_framing_error {26, "wan-framing-error"};
+const Enum::YLeaf EtherLinkStateEnum::otn_framing_error {27, "otn-framing-error"};
 
-const Enum::Value EthernetBertPatternEnum::no_test_pattern {0, "no-test-pattern"};
-const Enum::Value EthernetBertPatternEnum::high_frequency {1, "high-frequency"};
-const Enum::Value EthernetBertPatternEnum::low_frequency {2, "low-frequency"};
-const Enum::Value EthernetBertPatternEnum::mixed_frequency {3, "mixed-frequency"};
-const Enum::Value EthernetBertPatternEnum::continuous_random {4, "continuous-random"};
-const Enum::Value EthernetBertPatternEnum::continuous_jitter {5, "continuous-jitter"};
-const Enum::Value EthernetBertPatternEnum::long_continuous_random {6, "long-continuous-random"};
-const Enum::Value EthernetBertPatternEnum::short_continuous_random {7, "short-continuous-random"};
-const Enum::Value EthernetBertPatternEnum::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
-const Enum::Value EthernetBertPatternEnum::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
-const Enum::Value EthernetBertPatternEnum::prbs31 {10, "prbs31"};
-const Enum::Value EthernetBertPatternEnum::square_wave {11, "square-wave"};
-const Enum::Value EthernetBertPatternEnum::pseudorandom {12, "pseudorandom"};
-const Enum::Value EthernetBertPatternEnum::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
+const Enum::YLeaf EthernetBertPatternEnum::no_test_pattern {0, "no-test-pattern"};
+const Enum::YLeaf EthernetBertPatternEnum::high_frequency {1, "high-frequency"};
+const Enum::YLeaf EthernetBertPatternEnum::low_frequency {2, "low-frequency"};
+const Enum::YLeaf EthernetBertPatternEnum::mixed_frequency {3, "mixed-frequency"};
+const Enum::YLeaf EthernetBertPatternEnum::continuous_random {4, "continuous-random"};
+const Enum::YLeaf EthernetBertPatternEnum::continuous_jitter {5, "continuous-jitter"};
+const Enum::YLeaf EthernetBertPatternEnum::long_continuous_random {6, "long-continuous-random"};
+const Enum::YLeaf EthernetBertPatternEnum::short_continuous_random {7, "short-continuous-random"};
+const Enum::YLeaf EthernetBertPatternEnum::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
+const Enum::YLeaf EthernetBertPatternEnum::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
+const Enum::YLeaf EthernetBertPatternEnum::prbs31 {10, "prbs31"};
+const Enum::YLeaf EthernetBertPatternEnum::square_wave {11, "square-wave"};
+const Enum::YLeaf EthernetBertPatternEnum::pseudorandom {12, "pseudorandom"};
+const Enum::YLeaf EthernetBertPatternEnum::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
 
-const Enum::Value EthernetPortEnableEnum::disabled {0, "disabled"};
-const Enum::Value EthernetPortEnableEnum::rx_enabled {1, "rx-enabled"};
-const Enum::Value EthernetPortEnableEnum::tx_enabled {2, "tx-enabled"};
-const Enum::Value EthernetPortEnableEnum::enabled {3, "enabled"};
+const Enum::YLeaf EthernetPortEnableEnum::disabled {0, "disabled"};
+const Enum::YLeaf EthernetPortEnableEnum::rx_enabled {1, "rx-enabled"};
+const Enum::YLeaf EthernetPortEnableEnum::tx_enabled {2, "tx-enabled"};
+const Enum::YLeaf EthernetPortEnableEnum::enabled {3, "enabled"};
 
-const Enum::Value EthCtrlrAlarmStateEnum::alarm_not_supported {0, "alarm-not-supported"};
-const Enum::Value EthCtrlrAlarmStateEnum::alarm_set {1, "alarm-set"};
-const Enum::Value EthCtrlrAlarmStateEnum::alarm_not_set {2, "alarm-not-set"};
+const Enum::YLeaf EthCtrlrAlarmStateEnum::alarm_not_supported {0, "alarm-not-supported"};
+const Enum::YLeaf EthCtrlrAlarmStateEnum::alarm_set {1, "alarm-set"};
+const Enum::YLeaf EthCtrlrAlarmStateEnum::alarm_not_set {2, "alarm-not-set"};
 
-const Enum::Value EthernetDevEnum::no_device {0, "no-device"};
-const Enum::Value EthernetDevEnum::pma_pmd {1, "pma-pmd"};
-const Enum::Value EthernetDevEnum::wis {2, "wis"};
-const Enum::Value EthernetDevEnum::pcs {3, "pcs"};
-const Enum::Value EthernetDevEnum::phy_xs {4, "phy-xs"};
-const Enum::Value EthernetDevEnum::dte_xs {5, "dte-xs"};
-const Enum::Value EthernetDevEnum::ethernet_num_dev {6, "ethernet-num-dev"};
+const Enum::YLeaf EthernetDevEnum::no_device {0, "no-device"};
+const Enum::YLeaf EthernetDevEnum::pma_pmd {1, "pma-pmd"};
+const Enum::YLeaf EthernetDevEnum::wis {2, "wis"};
+const Enum::YLeaf EthernetDevEnum::pcs {3, "pcs"};
+const Enum::YLeaf EthernetDevEnum::phy_xs {4, "phy-xs"};
+const Enum::YLeaf EthernetDevEnum::dte_xs {5, "dte-xs"};
+const Enum::YLeaf EthernetDevEnum::ethernet_num_dev {6, "ethernet-num-dev"};
 
-const Enum::Value EtherPhyPresentEnum::phy_not_present {0, "phy-not-present"};
-const Enum::Value EtherPhyPresentEnum::phy_present {1, "phy-present"};
-const Enum::Value EtherPhyPresentEnum::no_information {2, "no-information"};
+const Enum::YLeaf EtherPhyPresentEnum::phy_not_present {0, "phy-not-present"};
+const Enum::YLeaf EtherPhyPresentEnum::phy_present {1, "phy-present"};
+const Enum::YLeaf EtherPhyPresentEnum::no_information {2, "no-information"};
 
-const Enum::Value EthernetDevIfEnum::no_interface {0, "no-interface"};
-const Enum::Value EthernetDevIfEnum::xgmii {1, "xgmii"};
-const Enum::Value EthernetDevIfEnum::xaui {2, "xaui"};
-const Enum::Value EthernetDevIfEnum::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
+const Enum::YLeaf EthernetDevIfEnum::no_interface {0, "no-interface"};
+const Enum::YLeaf EthernetDevIfEnum::xgmii {1, "xgmii"};
+const Enum::YLeaf EthernetDevIfEnum::xaui {2, "xaui"};
+const Enum::YLeaf EthernetDevIfEnum::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
 
-const Enum::Value EtherFlowcontrolEnum::no_flowcontrol {0, "no-flowcontrol"};
-const Enum::Value EtherFlowcontrolEnum::egress {1, "egress"};
-const Enum::Value EtherFlowcontrolEnum::ingress {2, "ingress"};
-const Enum::Value EtherFlowcontrolEnum::bidirectional {3, "bidirectional"};
+const Enum::YLeaf EtherFlowcontrolEnum::no_flowcontrol {0, "no-flowcontrol"};
+const Enum::YLeaf EtherFlowcontrolEnum::egress {1, "egress"};
+const Enum::YLeaf EtherFlowcontrolEnum::ingress {2, "ingress"};
+const Enum::YLeaf EtherFlowcontrolEnum::bidirectional {3, "bidirectional"};
 
-const Enum::Value EtherDomAlarmEnum::no_information {0, "no-information"};
-const Enum::Value EtherDomAlarmEnum::alarm_high {1, "alarm-high"};
-const Enum::Value EtherDomAlarmEnum::warning_high {2, "warning-high"};
-const Enum::Value EtherDomAlarmEnum::normal {3, "normal"};
-const Enum::Value EtherDomAlarmEnum::warning_low {4, "warning-low"};
-const Enum::Value EtherDomAlarmEnum::alarm_low {5, "alarm-low"};
+const Enum::YLeaf EtherDomAlarmEnum::no_information {0, "no-information"};
+const Enum::YLeaf EtherDomAlarmEnum::alarm_high {1, "alarm-high"};
+const Enum::YLeaf EtherDomAlarmEnum::warning_high {2, "warning-high"};
+const Enum::YLeaf EtherDomAlarmEnum::normal {3, "normal"};
+const Enum::YLeaf EtherDomAlarmEnum::warning_low {4, "warning-low"};
+const Enum::YLeaf EtherDomAlarmEnum::alarm_low {5, "alarm-low"};
 
-const Enum::Value EtherPfcEnum::no_pfc {0, "no-pfc"};
-const Enum::Value EtherPfcEnum::on {1, "on"};
+const Enum::YLeaf EtherPfcEnum::no_pfc {0, "no-pfc"};
+const Enum::YLeaf EtherPfcEnum::on {1, "on"};
 
-const Enum::Value EthernetBertErrCntEnum::no_count_type {0, "no-count-type"};
-const Enum::Value EthernetBertErrCntEnum::bit_error_count {1, "bit-error-count"};
-const Enum::Value EthernetBertErrCntEnum::frame_error_count {2, "frame-error-count"};
-const Enum::Value EthernetBertErrCntEnum::block_error_count {3, "block-error-count"};
-const Enum::Value EthernetBertErrCntEnum::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
+const Enum::YLeaf EthernetBertErrCntEnum::no_count_type {0, "no-count-type"};
+const Enum::YLeaf EthernetBertErrCntEnum::bit_error_count {1, "bit-error-count"};
+const Enum::YLeaf EthernetBertErrCntEnum::frame_error_count {2, "frame-error-count"};
+const Enum::YLeaf EthernetBertErrCntEnum::block_error_count {3, "block-error-count"};
+const Enum::YLeaf EthernetBertErrCntEnum::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
 
-const Enum::Value EthernetDuplexEnum::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
-const Enum::Value EthernetDuplexEnum::half_duplex {1, "half-duplex"};
-const Enum::Value EthernetDuplexEnum::full_duplex {2, "full-duplex"};
+const Enum::YLeaf EthernetDuplexEnum::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
+const Enum::YLeaf EthernetDuplexEnum::half_duplex {1, "half-duplex"};
+const Enum::YLeaf EthernetDuplexEnum::full_duplex {2, "full-duplex"};
 
-const Enum::Value EthernetIpgEnum::standard {0, "standard"};
-const Enum::Value EthernetIpgEnum::non_standard {1, "non-standard"};
+const Enum::YLeaf EthernetIpgEnum::standard {0, "standard"};
+const Enum::YLeaf EthernetIpgEnum::non_standard {1, "non-standard"};
 
-const Enum::Value EthernetSpeedEnum::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
-const Enum::Value EthernetSpeedEnum::ten_mbps {1, "ten-mbps"};
-const Enum::Value EthernetSpeedEnum::hundred_mbps {2, "hundred-mbps"};
-const Enum::Value EthernetSpeedEnum::one_gbps {3, "one-gbps"};
-const Enum::Value EthernetSpeedEnum::ten_gbps {4, "ten-gbps"};
-const Enum::Value EthernetSpeedEnum::twenty_five_gbps {5, "twenty-five-gbps"};
-const Enum::Value EthernetSpeedEnum::forty_gbps {6, "forty-gbps"};
-const Enum::Value EthernetSpeedEnum::fifty_gbps {7, "fifty-gbps"};
-const Enum::Value EthernetSpeedEnum::hundred_gbps {8, "hundred-gbps"};
-const Enum::Value EthernetSpeedEnum::ethernet_speed_types_count {9, "ethernet-speed-types-count"};
+const Enum::YLeaf EthernetSpeedEnum::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
+const Enum::YLeaf EthernetSpeedEnum::ten_mbps {1, "ten-mbps"};
+const Enum::YLeaf EthernetSpeedEnum::hundred_mbps {2, "hundred-mbps"};
+const Enum::YLeaf EthernetSpeedEnum::one_gbps {3, "one-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::ten_gbps {4, "ten-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::twenty_five_gbps {5, "twenty-five-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::forty_gbps {6, "forty-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::fifty_gbps {7, "fifty-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::hundred_gbps {8, "hundred-gbps"};
+const Enum::YLeaf EthernetSpeedEnum::ethernet_speed_types_count {9, "ethernet-speed-types-count"};
 
-const Enum::Value EtherLedStateEnum::led_state_unknown {0, "led-state-unknown"};
-const Enum::Value EtherLedStateEnum::led_off {1, "led-off"};
-const Enum::Value EtherLedStateEnum::green_on {2, "green-on"};
-const Enum::Value EtherLedStateEnum::green_flashing {3, "green-flashing"};
-const Enum::Value EtherLedStateEnum::yellow_on {4, "yellow-on"};
-const Enum::Value EtherLedStateEnum::yellow_flashing {5, "yellow-flashing"};
-const Enum::Value EtherLedStateEnum::red_on {6, "red-on"};
-const Enum::Value EtherLedStateEnum::red_flashing {7, "red-flashing"};
+const Enum::YLeaf EtherLedStateEnum::led_state_unknown {0, "led-state-unknown"};
+const Enum::YLeaf EtherLedStateEnum::led_off {1, "led-off"};
+const Enum::YLeaf EtherLedStateEnum::green_on {2, "green-on"};
+const Enum::YLeaf EtherLedStateEnum::green_flashing {3, "green-flashing"};
+const Enum::YLeaf EtherLedStateEnum::yellow_on {4, "yellow-on"};
+const Enum::YLeaf EtherLedStateEnum::yellow_flashing {5, "yellow-flashing"};
+const Enum::YLeaf EtherLedStateEnum::red_on {6, "red-on"};
+const Enum::YLeaf EtherLedStateEnum::red_flashing {7, "red-flashing"};
 
-const Enum::Value EthernetFecEnum::not_configured {0, "not-configured"};
-const Enum::Value EthernetFecEnum::standard {1, "standard"};
-const Enum::Value EthernetFecEnum::disabled {2, "disabled"};
-const Enum::Value EthernetFecEnum::base_r {3, "base-r"};
+const Enum::YLeaf EthernetFecEnum::not_configured {0, "not-configured"};
+const Enum::YLeaf EthernetFecEnum::standard {1, "standard"};
+const Enum::YLeaf EthernetFecEnum::disabled {2, "disabled"};
+const Enum::YLeaf EthernetFecEnum::base_r {3, "base-r"};
 
-const Enum::Value EthernetMediaEnum::ethernet_other {0, "ethernet-other"};
-const Enum::Value EthernetMediaEnum::ethernet_unknown {1, "ethernet-unknown"};
-const Enum::Value EthernetMediaEnum::ethernet_aui {2, "ethernet-aui"};
-const Enum::Value EthernetMediaEnum::ethernet_10base5 {3, "ethernet-10base5"};
-const Enum::Value EthernetMediaEnum::ethernet_foirl {4, "ethernet-foirl"};
-const Enum::Value EthernetMediaEnum::ethernet_10base2 {5, "ethernet-10base2"};
-const Enum::Value EthernetMediaEnum::ethernet_10broad36 {6, "ethernet-10broad36"};
-const Enum::Value EthernetMediaEnum::ethernet_10base {7, "ethernet-10base"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_thd {8, "ethernet-10base-thd"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_tfd {9, "ethernet-10base-tfd"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_fp {10, "ethernet-10base-fp"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_fb {11, "ethernet-10base-fb"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_fl {12, "ethernet-10base-fl"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_flhd {13, "ethernet-10base-flhd"};
-const Enum::Value EthernetMediaEnum::ethernet_10base_flfd {14, "ethernet-10base-flfd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_t4 {15, "ethernet-100base-t4"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_tx {16, "ethernet-100base-tx"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_txhd {17, "ethernet-100base-txhd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_txfd {18, "ethernet-100base-txfd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_fx {19, "ethernet-100base-fx"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_fxhd {20, "ethernet-100base-fxhd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_fxfd {21, "ethernet-100base-fxfd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_ex {22, "ethernet-100base-ex"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_exhd {23, "ethernet-100base-exhd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_exfd {24, "ethernet-100base-exfd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_t2 {25, "ethernet-100base-t2"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_t2hd {26, "ethernet-100base-t2hd"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_t2fd {27, "ethernet-100base-t2fd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_x {28, "ethernet-1000base-x"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_xhd {29, "ethernet-1000base-xhd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_xfd {30, "ethernet-1000base-xfd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_lx {31, "ethernet-1000base-lx"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_lxhd {32, "ethernet-1000base-lxhd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_lxfd {33, "ethernet-1000base-lxfd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_sx {34, "ethernet-1000base-sx"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_sxhd {35, "ethernet-1000base-sxhd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_sxfd {36, "ethernet-1000base-sxfd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cx {37, "ethernet-1000base-cx"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cxhd {38, "ethernet-1000base-cxhd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cxfd {39, "ethernet-1000base-cxfd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base {40, "ethernet-1000base"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_thd {41, "ethernet-1000base-thd"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_tfd {42, "ethernet-1000base-tfd"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_x {43, "ethernet-10gbase-x"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_lx4 {44, "ethernet-10gbase-lx4"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_r {45, "ethernet-10gbase-r"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_er {46, "ethernet-10gbase-er"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_lr {47, "ethernet-10gbase-lr"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_sr {48, "ethernet-10gbase-sr"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_w {49, "ethernet-10gbase-w"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_ew {50, "ethernet-10gbase-ew"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_lw {51, "ethernet-10gbase-lw"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_sw {52, "ethernet-10gbase-sw"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_zx {53, "ethernet-1000base-zx"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm {54, "ethernet-1000base-cwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1470 {55, "ethernet-1000base-cwdm-1470"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1490 {56, "ethernet-1000base-cwdm-1490"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1510 {57, "ethernet-1000base-cwdm-1510"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1530 {58, "ethernet-1000base-cwdm-1530"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1550 {59, "ethernet-1000base-cwdm-1550"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1570 {60, "ethernet-1000base-cwdm-1570"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1590 {61, "ethernet-1000base-cwdm-1590"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_cwdm_1610 {62, "ethernet-1000base-cwdm-1610"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_zr {63, "ethernet-10gbase-zr"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm {64, "ethernet-10gbase-dwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_lr4 {65, "ethernet-100gbase-lr4"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm {66, "ethernet-1000base-dwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1533 {67, "ethernet-1000base-dwdm-1533"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1537 {68, "ethernet-1000base-dwdm-1537"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1541 {69, "ethernet-1000base-dwdm-1541"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1545 {70, "ethernet-1000base-dwdm-1545"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1549 {71, "ethernet-1000base-dwdm-1549"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1553 {72, "ethernet-1000base-dwdm-1553"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1557 {73, "ethernet-1000base-dwdm-1557"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1561 {74, "ethernet-1000base-dwdm-1561"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_lr4 {75, "ethernet-40gbase-lr4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_er4 {76, "ethernet-40gbase-er4"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_er4 {77, "ethernet-100gbase-er4"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_ex {78, "ethernet-1000base-ex"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx10_d {79, "ethernet-1000base-bx10-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx10_u {80, "ethernet-1000base-bx10-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1561_42 {81, "ethernet-1000base-dwdm-1561-42"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1560_61 {82, "ethernet-1000base-dwdm-1560-61"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1559_79 {83, "ethernet-1000base-dwdm-1559-79"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1558_98 {84, "ethernet-1000base-dwdm-1558-98"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1558_17 {85, "ethernet-1000base-dwdm-1558-17"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1557_36 {86, "ethernet-1000base-dwdm-1557-36"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1556_55 {87, "ethernet-1000base-dwdm-1556-55"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1555_75 {88, "ethernet-1000base-dwdm-1555-75"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1554_94 {89, "ethernet-1000base-dwdm-1554-94"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1554_13 {90, "ethernet-1000base-dwdm-1554-13"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1553_33 {91, "ethernet-1000base-dwdm-1553-33"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1552_52 {92, "ethernet-1000base-dwdm-1552-52"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1551_72 {93, "ethernet-1000base-dwdm-1551-72"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1550_92 {94, "ethernet-1000base-dwdm-1550-92"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1550_12 {95, "ethernet-1000base-dwdm-1550-12"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1549_32 {96, "ethernet-1000base-dwdm-1549-32"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1548_51 {97, "ethernet-1000base-dwdm-1548-51"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1547_72 {98, "ethernet-1000base-dwdm-1547-72"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1546_92 {99, "ethernet-1000base-dwdm-1546-92"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1546_12 {100, "ethernet-1000base-dwdm-1546-12"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1545_32 {101, "ethernet-1000base-dwdm-1545-32"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1544_53 {102, "ethernet-1000base-dwdm-1544-53"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1543_73 {103, "ethernet-1000base-dwdm-1543-73"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1542_94 {104, "ethernet-1000base-dwdm-1542-94"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1542_14 {105, "ethernet-1000base-dwdm-1542-14"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1541_35 {106, "ethernet-1000base-dwdm-1541-35"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1540_56 {107, "ethernet-1000base-dwdm-1540-56"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1539_77 {108, "ethernet-1000base-dwdm-1539-77"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1538_98 {109, "ethernet-1000base-dwdm-1538-98"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1538_19 {110, "ethernet-1000base-dwdm-1538-19"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1537_40 {111, "ethernet-1000base-dwdm-1537-40"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1536_61 {112, "ethernet-1000base-dwdm-1536-61"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1535_82 {113, "ethernet-1000base-dwdm-1535-82"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1535_04 {114, "ethernet-1000base-dwdm-1535-04"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1534_25 {115, "ethernet-1000base-dwdm-1534-25"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1533_47 {116, "ethernet-1000base-dwdm-1533-47"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1532_68 {117, "ethernet-1000base-dwdm-1532-68"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1531_90 {118, "ethernet-1000base-dwdm-1531-90"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1531_12 {119, "ethernet-1000base-dwdm-1531-12"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_1530_33 {120, "ethernet-1000base-dwdm-1530-33"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dwdm_tunable {121, "ethernet-1000base-dwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1561_42 {122, "ethernet-10gbase-dwdm-1561-42"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1560_61 {123, "ethernet-10gbase-dwdm-1560-61"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1559_79 {124, "ethernet-10gbase-dwdm-1559-79"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1558_98 {125, "ethernet-10gbase-dwdm-1558-98"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1558_17 {126, "ethernet-10gbase-dwdm-1558-17"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1557_36 {127, "ethernet-10gbase-dwdm-1557-36"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1556_55 {128, "ethernet-10gbase-dwdm-1556-55"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1555_75 {129, "ethernet-10gbase-dwdm-1555-75"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1554_94 {130, "ethernet-10gbase-dwdm-1554-94"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1554_13 {131, "ethernet-10gbase-dwdm-1554-13"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1553_33 {132, "ethernet-10gbase-dwdm-1553-33"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1552_52 {133, "ethernet-10gbase-dwdm-1552-52"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1551_72 {134, "ethernet-10gbase-dwdm-1551-72"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1550_92 {135, "ethernet-10gbase-dwdm-1550-92"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1550_12 {136, "ethernet-10gbase-dwdm-1550-12"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1549_32 {137, "ethernet-10gbase-dwdm-1549-32"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1548_51 {138, "ethernet-10gbase-dwdm-1548-51"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1547_72 {139, "ethernet-10gbase-dwdm-1547-72"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1546_92 {140, "ethernet-10gbase-dwdm-1546-92"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1546_12 {141, "ethernet-10gbase-dwdm-1546-12"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1545_32 {142, "ethernet-10gbase-dwdm-1545-32"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1544_53 {143, "ethernet-10gbase-dwdm-1544-53"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1543_73 {144, "ethernet-10gbase-dwdm-1543-73"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1542_94 {145, "ethernet-10gbase-dwdm-1542-94"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1542_14 {146, "ethernet-10gbase-dwdm-1542-14"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1541_35 {147, "ethernet-10gbase-dwdm-1541-35"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1540_56 {148, "ethernet-10gbase-dwdm-1540-56"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1539_77 {149, "ethernet-10gbase-dwdm-1539-77"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1538_98 {150, "ethernet-10gbase-dwdm-1538-98"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1538_19 {151, "ethernet-10gbase-dwdm-1538-19"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1537_40 {152, "ethernet-10gbase-dwdm-1537-40"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1536_61 {153, "ethernet-10gbase-dwdm-1536-61"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1535_82 {154, "ethernet-10gbase-dwdm-1535-82"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1535_04 {155, "ethernet-10gbase-dwdm-1535-04"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1534_25 {156, "ethernet-10gbase-dwdm-1534-25"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1533_47 {157, "ethernet-10gbase-dwdm-1533-47"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1532_68 {158, "ethernet-10gbase-dwdm-1532-68"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1531_90 {159, "ethernet-10gbase-dwdm-1531-90"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1531_12 {160, "ethernet-10gbase-dwdm-1531-12"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_1530_33 {161, "ethernet-10gbase-dwdm-1530-33"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_dwdm_tunable {162, "ethernet-10gbase-dwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1561_42 {163, "ethernet-40gbase-dwdm-1561-42"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1560_61 {164, "ethernet-40gbase-dwdm-1560-61"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1559_79 {165, "ethernet-40gbase-dwdm-1559-79"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1558_98 {166, "ethernet-40gbase-dwdm-1558-98"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1558_17 {167, "ethernet-40gbase-dwdm-1558-17"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1557_36 {168, "ethernet-40gbase-dwdm-1557-36"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1556_55 {169, "ethernet-40gbase-dwdm-1556-55"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1555_75 {170, "ethernet-40gbase-dwdm-1555-75"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1554_94 {171, "ethernet-40gbase-dwdm-1554-94"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1554_13 {172, "ethernet-40gbase-dwdm-1554-13"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1553_33 {173, "ethernet-40gbase-dwdm-1553-33"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1552_52 {174, "ethernet-40gbase-dwdm-1552-52"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1551_72 {175, "ethernet-40gbase-dwdm-1551-72"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1550_92 {176, "ethernet-40gbase-dwdm-1550-92"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1550_12 {177, "ethernet-40gbase-dwdm-1550-12"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1549_32 {178, "ethernet-40gbase-dwdm-1549-32"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1548_51 {179, "ethernet-40gbase-dwdm-1548-51"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1547_72 {180, "ethernet-40gbase-dwdm-1547-72"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1546_92 {181, "ethernet-40gbase-dwdm-1546-92"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1546_12 {182, "ethernet-40gbase-dwdm-1546-12"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1545_32 {183, "ethernet-40gbase-dwdm-1545-32"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1544_53 {184, "ethernet-40gbase-dwdm-1544-53"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1543_73 {185, "ethernet-40gbase-dwdm-1543-73"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1542_94 {186, "ethernet-40gbase-dwdm-1542-94"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1542_14 {187, "ethernet-40gbase-dwdm-1542-14"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1541_35 {188, "ethernet-40gbase-dwdm-1541-35"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1540_56 {189, "ethernet-40gbase-dwdm-1540-56"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1539_77 {190, "ethernet-40gbase-dwdm-1539-77"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1538_98 {191, "ethernet-40gbase-dwdm-1538-98"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1538_19 {192, "ethernet-40gbase-dwdm-1538-19"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1537_40 {193, "ethernet-40gbase-dwdm-1537-40"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1536_61 {194, "ethernet-40gbase-dwdm-1536-61"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1535_82 {195, "ethernet-40gbase-dwdm-1535-82"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1535_04 {196, "ethernet-40gbase-dwdm-1535-04"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1534_25 {197, "ethernet-40gbase-dwdm-1534-25"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1533_47 {198, "ethernet-40gbase-dwdm-1533-47"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1532_68 {199, "ethernet-40gbase-dwdm-1532-68"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1531_90 {200, "ethernet-40gbase-dwdm-1531-90"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1531_12 {201, "ethernet-40gbase-dwdm-1531-12"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_1530_33 {202, "ethernet-40gbase-dwdm-1530-33"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_dwdm_tunable {203, "ethernet-40gbase-dwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1561_42 {204, "ethernet-100gbase-dwdm-1561-42"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1560_61 {205, "ethernet-100gbase-dwdm-1560-61"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1559_79 {206, "ethernet-100gbase-dwdm-1559-79"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1558_98 {207, "ethernet-100gbase-dwdm-1558-98"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1558_17 {208, "ethernet-100gbase-dwdm-1558-17"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1557_36 {209, "ethernet-100gbase-dwdm-1557-36"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1556_55 {210, "ethernet-100gbase-dwdm-1556-55"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1555_75 {211, "ethernet-100gbase-dwdm-1555-75"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1554_94 {212, "ethernet-100gbase-dwdm-1554-94"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1554_13 {213, "ethernet-100gbase-dwdm-1554-13"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1553_33 {214, "ethernet-100gbase-dwdm-1553-33"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1552_52 {215, "ethernet-100gbase-dwdm-1552-52"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1551_72 {216, "ethernet-100gbase-dwdm-1551-72"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1550_92 {217, "ethernet-100gbase-dwdm-1550-92"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1550_12 {218, "ethernet-100gbase-dwdm-1550-12"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1549_32 {219, "ethernet-100gbase-dwdm-1549-32"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1548_51 {220, "ethernet-100gbase-dwdm-1548-51"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1547_72 {221, "ethernet-100gbase-dwdm-1547-72"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1546_92 {222, "ethernet-100gbase-dwdm-1546-92"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1546_12 {223, "ethernet-100gbase-dwdm-1546-12"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1545_32 {224, "ethernet-100gbase-dwdm-1545-32"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1544_53 {225, "ethernet-100gbase-dwdm-1544-53"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1543_73 {226, "ethernet-100gbase-dwdm-1543-73"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1542_94 {227, "ethernet-100gbase-dwdm-1542-94"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1542_14 {228, "ethernet-100gbase-dwdm-1542-14"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1541_35 {229, "ethernet-100gbase-dwdm-1541-35"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1540_56 {230, "ethernet-100gbase-dwdm-1540-56"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1539_77 {231, "ethernet-100gbase-dwdm-1539-77"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1538_98 {232, "ethernet-100gbase-dwdm-1538-98"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1538_19 {233, "ethernet-100gbase-dwdm-1538-19"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1537_40 {234, "ethernet-100gbase-dwdm-1537-40"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1536_61 {235, "ethernet-100gbase-dwdm-1536-61"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1535_82 {236, "ethernet-100gbase-dwdm-1535-82"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1535_04 {237, "ethernet-100gbase-dwdm-1535-04"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1534_25 {238, "ethernet-100gbase-dwdm-1534-25"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1533_47 {239, "ethernet-100gbase-dwdm-1533-47"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1532_68 {240, "ethernet-100gbase-dwdm-1532-68"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1531_90 {241, "ethernet-100gbase-dwdm-1531-90"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1531_12 {242, "ethernet-100gbase-dwdm-1531-12"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_1530_33 {243, "ethernet-100gbase-dwdm-1530-33"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_dwdm_tunable {244, "ethernet-100gbase-dwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_kr4 {245, "ethernet-40gbase-kr4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cr4 {246, "ethernet-40gbase-cr4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_sr4 {247, "ethernet-40gbase-sr4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_fr {248, "ethernet-40gbase-fr"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cr10 {249, "ethernet-100gbase-cr10"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_sr10 {250, "ethernet-100gbase-sr10"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_csr4 {251, "ethernet-40gbase-csr4"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm {252, "ethernet-10gbase-cwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_tunable {253, "ethernet-10gbase-cwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1470 {254, "ethernet-10gbase-cwdm-1470"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1490 {255, "ethernet-10gbase-cwdm-1490"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1510 {256, "ethernet-10gbase-cwdm-1510"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1530 {257, "ethernet-10gbase-cwdm-1530"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1550 {258, "ethernet-10gbase-cwdm-1550"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1570 {259, "ethernet-10gbase-cwdm-1570"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1590 {260, "ethernet-10gbase-cwdm-1590"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cwdm_1610 {261, "ethernet-10gbase-cwdm-1610"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm {262, "ethernet-40gbase-cwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_tunable {263, "ethernet-40gbase-cwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1470 {264, "ethernet-40gbase-cwdm-1470"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1490 {265, "ethernet-40gbase-cwdm-1490"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1510 {266, "ethernet-40gbase-cwdm-1510"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1530 {267, "ethernet-40gbase-cwdm-1530"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1550 {268, "ethernet-40gbase-cwdm-1550"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1570 {269, "ethernet-40gbase-cwdm-1570"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1590 {270, "ethernet-40gbase-cwdm-1590"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_cwdm_1610 {271, "ethernet-40gbase-cwdm-1610"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm {272, "ethernet-100gbase-cwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_tunable {273, "ethernet-100gbase-cwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1470 {274, "ethernet-100gbase-cwdm-1470"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1490 {275, "ethernet-100gbase-cwdm-1490"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1510 {276, "ethernet-100gbase-cwdm-1510"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1530 {277, "ethernet-100gbase-cwdm-1530"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1550 {278, "ethernet-100gbase-cwdm-1550"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1570 {279, "ethernet-100gbase-cwdm-1570"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1590 {280, "ethernet-100gbase-cwdm-1590"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm_1610 {281, "ethernet-100gbase-cwdm-1610"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_elpb {282, "ethernet-40gbase-elpb"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_elpb {283, "ethernet-100gbase-elpb"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_lr10 {284, "ethernet-100gbase-lr10"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase {285, "ethernet-40gbase"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_kp4 {286, "ethernet-100gbase-kp4"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_kr4 {287, "ethernet-100gbase-kr4"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_lrm {288, "ethernet-10gbase-lrm"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_cx4 {289, "ethernet-10gbase-cx4"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase {290, "ethernet-10gbase"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_kx4 {291, "ethernet-10gbase-kx4"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_kr {292, "ethernet-10gbase-kr"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_pr {293, "ethernet-10gbase-pr"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_lx {294, "ethernet-100base-lx"};
-const Enum::Value EthernetMediaEnum::ethernet_100base_zx {295, "ethernet-100base-zx"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx_d {296, "ethernet-1000base-bx-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx_u {297, "ethernet-1000base-bx-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx20_d {298, "ethernet-1000base-bx20-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx20_u {299, "ethernet-1000base-bx20-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx40_d {300, "ethernet-1000base-bx40-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx40_da {301, "ethernet-1000base-bx40-da"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx40_u {302, "ethernet-1000base-bx40-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx80_d {303, "ethernet-1000base-bx80-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx80_u {304, "ethernet-1000base-bx80-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx120_d {305, "ethernet-1000base-bx120-d"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_bx120_u {306, "ethernet-1000base-bx120-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx_d {307, "ethernet-10gbase-bx-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx_u {308, "ethernet-10gbase-bx-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx10_d {309, "ethernet-10gbase-bx10-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx10_u {310, "ethernet-10gbase-bx10-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx20_d {311, "ethernet-10gbase-bx20-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx20_u {312, "ethernet-10gbase-bx20-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx40_d {313, "ethernet-10gbase-bx40-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx40_u {314, "ethernet-10gbase-bx40-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx80_d {315, "ethernet-10gbase-bx80-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx80_u {316, "ethernet-10gbase-bx80-u"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx120_d {317, "ethernet-10gbase-bx120-d"};
-const Enum::Value EthernetMediaEnum::ethernet_10gbase_bx120_u {318, "ethernet-10gbase-bx120-u"};
-const Enum::Value EthernetMediaEnum::ethernet_1000base_dr_lx {319, "ethernet-1000base-dr-lx"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_er4l {320, "ethernet-100gbase-er4l"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_sr4 {321, "ethernet-100gbase-sr4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_sr_bd {322, "ethernet-40gbase-sr-bd"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_cr {323, "ethernet-25gbase-cr"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_cr_s {324, "ethernet-25gbase-cr-s"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_kr {325, "ethernet-25gbase-kr"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_kr_s {326, "ethernet-25gbase-kr-s"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_r {327, "ethernet-25gbase-r"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_sr {328, "ethernet-25gbase-sr"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_dwdm {329, "ethernet-25gbase-dwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_dwdm_tunable {330, "ethernet-25gbase-dwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_cwdm {331, "ethernet-25gbase-cwdm"};
-const Enum::Value EthernetMediaEnum::ethernet_25gbase_cwdm_tunable {332, "ethernet-25gbase-cwdm-tunable"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_psm4 {333, "ethernet-100gbase-psm4"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_er10 {334, "ethernet-100gbase-er10"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_er10l {335, "ethernet-100gbase-er10l"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_acc {336, "ethernet-100gbase-acc"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_aoc {337, "ethernet-100gbase-aoc"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cwdm4 {338, "ethernet-100gbase-cwdm4"};
-const Enum::Value EthernetMediaEnum::ethernet_40gbase_psm4 {339, "ethernet-40gbase-psm4"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_cr4 {340, "ethernet-100gbase-cr4"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_act_loop {341, "ethernet-100gbase-act-loop"};
-const Enum::Value EthernetMediaEnum::ethernet_100gbase_pas_loop {342, "ethernet-100gbase-pas-loop"};
-const Enum::Value EthernetMediaEnum::ethernet_base_max {343, "ethernet-base-max"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_other {0, "ethernet-other"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_unknown {1, "ethernet-unknown"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_aui {2, "ethernet-aui"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base5 {3, "ethernet-10base5"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_foirl {4, "ethernet-foirl"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base2 {5, "ethernet-10base2"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10broad36 {6, "ethernet-10broad36"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base {7, "ethernet-10base"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_thd {8, "ethernet-10base-thd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_tfd {9, "ethernet-10base-tfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_fp {10, "ethernet-10base-fp"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_fb {11, "ethernet-10base-fb"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_fl {12, "ethernet-10base-fl"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_flhd {13, "ethernet-10base-flhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10base_flfd {14, "ethernet-10base-flfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_t4 {15, "ethernet-100base-t4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_tx {16, "ethernet-100base-tx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_txhd {17, "ethernet-100base-txhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_txfd {18, "ethernet-100base-txfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_fx {19, "ethernet-100base-fx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_fxhd {20, "ethernet-100base-fxhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_fxfd {21, "ethernet-100base-fxfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_ex {22, "ethernet-100base-ex"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_exhd {23, "ethernet-100base-exhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_exfd {24, "ethernet-100base-exfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_t2 {25, "ethernet-100base-t2"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_t2hd {26, "ethernet-100base-t2hd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_t2fd {27, "ethernet-100base-t2fd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_x {28, "ethernet-1000base-x"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_xhd {29, "ethernet-1000base-xhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_xfd {30, "ethernet-1000base-xfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_lx {31, "ethernet-1000base-lx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_lxhd {32, "ethernet-1000base-lxhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_lxfd {33, "ethernet-1000base-lxfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_sx {34, "ethernet-1000base-sx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_sxhd {35, "ethernet-1000base-sxhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_sxfd {36, "ethernet-1000base-sxfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cx {37, "ethernet-1000base-cx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cxhd {38, "ethernet-1000base-cxhd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cxfd {39, "ethernet-1000base-cxfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base {40, "ethernet-1000base"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_thd {41, "ethernet-1000base-thd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_tfd {42, "ethernet-1000base-tfd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_x {43, "ethernet-10gbase-x"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_lx4 {44, "ethernet-10gbase-lx4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_r {45, "ethernet-10gbase-r"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_er {46, "ethernet-10gbase-er"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_lr {47, "ethernet-10gbase-lr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_sr {48, "ethernet-10gbase-sr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_w {49, "ethernet-10gbase-w"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_ew {50, "ethernet-10gbase-ew"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_lw {51, "ethernet-10gbase-lw"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_sw {52, "ethernet-10gbase-sw"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_zx {53, "ethernet-1000base-zx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm {54, "ethernet-1000base-cwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1470 {55, "ethernet-1000base-cwdm-1470"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1490 {56, "ethernet-1000base-cwdm-1490"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1510 {57, "ethernet-1000base-cwdm-1510"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1530 {58, "ethernet-1000base-cwdm-1530"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1550 {59, "ethernet-1000base-cwdm-1550"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1570 {60, "ethernet-1000base-cwdm-1570"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1590 {61, "ethernet-1000base-cwdm-1590"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_cwdm_1610 {62, "ethernet-1000base-cwdm-1610"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_zr {63, "ethernet-10gbase-zr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm {64, "ethernet-10gbase-dwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_lr4 {65, "ethernet-100gbase-lr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm {66, "ethernet-1000base-dwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1533 {67, "ethernet-1000base-dwdm-1533"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1537 {68, "ethernet-1000base-dwdm-1537"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1541 {69, "ethernet-1000base-dwdm-1541"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1545 {70, "ethernet-1000base-dwdm-1545"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1549 {71, "ethernet-1000base-dwdm-1549"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1553 {72, "ethernet-1000base-dwdm-1553"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1557 {73, "ethernet-1000base-dwdm-1557"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1561 {74, "ethernet-1000base-dwdm-1561"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_lr4 {75, "ethernet-40gbase-lr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_er4 {76, "ethernet-40gbase-er4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_er4 {77, "ethernet-100gbase-er4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_ex {78, "ethernet-1000base-ex"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx10_d {79, "ethernet-1000base-bx10-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx10_u {80, "ethernet-1000base-bx10-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1561_42 {81, "ethernet-1000base-dwdm-1561-42"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1560_61 {82, "ethernet-1000base-dwdm-1560-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1559_79 {83, "ethernet-1000base-dwdm-1559-79"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1558_98 {84, "ethernet-1000base-dwdm-1558-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1558_17 {85, "ethernet-1000base-dwdm-1558-17"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1557_36 {86, "ethernet-1000base-dwdm-1557-36"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1556_55 {87, "ethernet-1000base-dwdm-1556-55"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1555_75 {88, "ethernet-1000base-dwdm-1555-75"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1554_94 {89, "ethernet-1000base-dwdm-1554-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1554_13 {90, "ethernet-1000base-dwdm-1554-13"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1553_33 {91, "ethernet-1000base-dwdm-1553-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1552_52 {92, "ethernet-1000base-dwdm-1552-52"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1551_72 {93, "ethernet-1000base-dwdm-1551-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1550_92 {94, "ethernet-1000base-dwdm-1550-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1550_12 {95, "ethernet-1000base-dwdm-1550-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1549_32 {96, "ethernet-1000base-dwdm-1549-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1548_51 {97, "ethernet-1000base-dwdm-1548-51"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1547_72 {98, "ethernet-1000base-dwdm-1547-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1546_92 {99, "ethernet-1000base-dwdm-1546-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1546_12 {100, "ethernet-1000base-dwdm-1546-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1545_32 {101, "ethernet-1000base-dwdm-1545-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1544_53 {102, "ethernet-1000base-dwdm-1544-53"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1543_73 {103, "ethernet-1000base-dwdm-1543-73"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1542_94 {104, "ethernet-1000base-dwdm-1542-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1542_14 {105, "ethernet-1000base-dwdm-1542-14"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1541_35 {106, "ethernet-1000base-dwdm-1541-35"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1540_56 {107, "ethernet-1000base-dwdm-1540-56"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1539_77 {108, "ethernet-1000base-dwdm-1539-77"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1538_98 {109, "ethernet-1000base-dwdm-1538-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1538_19 {110, "ethernet-1000base-dwdm-1538-19"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1537_40 {111, "ethernet-1000base-dwdm-1537-40"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1536_61 {112, "ethernet-1000base-dwdm-1536-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1535_82 {113, "ethernet-1000base-dwdm-1535-82"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1535_04 {114, "ethernet-1000base-dwdm-1535-04"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1534_25 {115, "ethernet-1000base-dwdm-1534-25"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1533_47 {116, "ethernet-1000base-dwdm-1533-47"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1532_68 {117, "ethernet-1000base-dwdm-1532-68"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1531_90 {118, "ethernet-1000base-dwdm-1531-90"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1531_12 {119, "ethernet-1000base-dwdm-1531-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_1530_33 {120, "ethernet-1000base-dwdm-1530-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dwdm_tunable {121, "ethernet-1000base-dwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1561_42 {122, "ethernet-10gbase-dwdm-1561-42"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1560_61 {123, "ethernet-10gbase-dwdm-1560-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1559_79 {124, "ethernet-10gbase-dwdm-1559-79"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1558_98 {125, "ethernet-10gbase-dwdm-1558-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1558_17 {126, "ethernet-10gbase-dwdm-1558-17"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1557_36 {127, "ethernet-10gbase-dwdm-1557-36"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1556_55 {128, "ethernet-10gbase-dwdm-1556-55"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1555_75 {129, "ethernet-10gbase-dwdm-1555-75"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1554_94 {130, "ethernet-10gbase-dwdm-1554-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1554_13 {131, "ethernet-10gbase-dwdm-1554-13"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1553_33 {132, "ethernet-10gbase-dwdm-1553-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1552_52 {133, "ethernet-10gbase-dwdm-1552-52"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1551_72 {134, "ethernet-10gbase-dwdm-1551-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1550_92 {135, "ethernet-10gbase-dwdm-1550-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1550_12 {136, "ethernet-10gbase-dwdm-1550-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1549_32 {137, "ethernet-10gbase-dwdm-1549-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1548_51 {138, "ethernet-10gbase-dwdm-1548-51"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1547_72 {139, "ethernet-10gbase-dwdm-1547-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1546_92 {140, "ethernet-10gbase-dwdm-1546-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1546_12 {141, "ethernet-10gbase-dwdm-1546-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1545_32 {142, "ethernet-10gbase-dwdm-1545-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1544_53 {143, "ethernet-10gbase-dwdm-1544-53"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1543_73 {144, "ethernet-10gbase-dwdm-1543-73"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1542_94 {145, "ethernet-10gbase-dwdm-1542-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1542_14 {146, "ethernet-10gbase-dwdm-1542-14"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1541_35 {147, "ethernet-10gbase-dwdm-1541-35"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1540_56 {148, "ethernet-10gbase-dwdm-1540-56"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1539_77 {149, "ethernet-10gbase-dwdm-1539-77"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1538_98 {150, "ethernet-10gbase-dwdm-1538-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1538_19 {151, "ethernet-10gbase-dwdm-1538-19"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1537_40 {152, "ethernet-10gbase-dwdm-1537-40"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1536_61 {153, "ethernet-10gbase-dwdm-1536-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1535_82 {154, "ethernet-10gbase-dwdm-1535-82"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1535_04 {155, "ethernet-10gbase-dwdm-1535-04"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1534_25 {156, "ethernet-10gbase-dwdm-1534-25"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1533_47 {157, "ethernet-10gbase-dwdm-1533-47"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1532_68 {158, "ethernet-10gbase-dwdm-1532-68"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1531_90 {159, "ethernet-10gbase-dwdm-1531-90"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1531_12 {160, "ethernet-10gbase-dwdm-1531-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_1530_33 {161, "ethernet-10gbase-dwdm-1530-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_dwdm_tunable {162, "ethernet-10gbase-dwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1561_42 {163, "ethernet-40gbase-dwdm-1561-42"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1560_61 {164, "ethernet-40gbase-dwdm-1560-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1559_79 {165, "ethernet-40gbase-dwdm-1559-79"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1558_98 {166, "ethernet-40gbase-dwdm-1558-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1558_17 {167, "ethernet-40gbase-dwdm-1558-17"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1557_36 {168, "ethernet-40gbase-dwdm-1557-36"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1556_55 {169, "ethernet-40gbase-dwdm-1556-55"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1555_75 {170, "ethernet-40gbase-dwdm-1555-75"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1554_94 {171, "ethernet-40gbase-dwdm-1554-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1554_13 {172, "ethernet-40gbase-dwdm-1554-13"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1553_33 {173, "ethernet-40gbase-dwdm-1553-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1552_52 {174, "ethernet-40gbase-dwdm-1552-52"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1551_72 {175, "ethernet-40gbase-dwdm-1551-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1550_92 {176, "ethernet-40gbase-dwdm-1550-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1550_12 {177, "ethernet-40gbase-dwdm-1550-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1549_32 {178, "ethernet-40gbase-dwdm-1549-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1548_51 {179, "ethernet-40gbase-dwdm-1548-51"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1547_72 {180, "ethernet-40gbase-dwdm-1547-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1546_92 {181, "ethernet-40gbase-dwdm-1546-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1546_12 {182, "ethernet-40gbase-dwdm-1546-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1545_32 {183, "ethernet-40gbase-dwdm-1545-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1544_53 {184, "ethernet-40gbase-dwdm-1544-53"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1543_73 {185, "ethernet-40gbase-dwdm-1543-73"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1542_94 {186, "ethernet-40gbase-dwdm-1542-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1542_14 {187, "ethernet-40gbase-dwdm-1542-14"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1541_35 {188, "ethernet-40gbase-dwdm-1541-35"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1540_56 {189, "ethernet-40gbase-dwdm-1540-56"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1539_77 {190, "ethernet-40gbase-dwdm-1539-77"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1538_98 {191, "ethernet-40gbase-dwdm-1538-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1538_19 {192, "ethernet-40gbase-dwdm-1538-19"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1537_40 {193, "ethernet-40gbase-dwdm-1537-40"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1536_61 {194, "ethernet-40gbase-dwdm-1536-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1535_82 {195, "ethernet-40gbase-dwdm-1535-82"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1535_04 {196, "ethernet-40gbase-dwdm-1535-04"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1534_25 {197, "ethernet-40gbase-dwdm-1534-25"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1533_47 {198, "ethernet-40gbase-dwdm-1533-47"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1532_68 {199, "ethernet-40gbase-dwdm-1532-68"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1531_90 {200, "ethernet-40gbase-dwdm-1531-90"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1531_12 {201, "ethernet-40gbase-dwdm-1531-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_1530_33 {202, "ethernet-40gbase-dwdm-1530-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_dwdm_tunable {203, "ethernet-40gbase-dwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1561_42 {204, "ethernet-100gbase-dwdm-1561-42"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1560_61 {205, "ethernet-100gbase-dwdm-1560-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1559_79 {206, "ethernet-100gbase-dwdm-1559-79"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1558_98 {207, "ethernet-100gbase-dwdm-1558-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1558_17 {208, "ethernet-100gbase-dwdm-1558-17"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1557_36 {209, "ethernet-100gbase-dwdm-1557-36"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1556_55 {210, "ethernet-100gbase-dwdm-1556-55"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1555_75 {211, "ethernet-100gbase-dwdm-1555-75"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1554_94 {212, "ethernet-100gbase-dwdm-1554-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1554_13 {213, "ethernet-100gbase-dwdm-1554-13"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1553_33 {214, "ethernet-100gbase-dwdm-1553-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1552_52 {215, "ethernet-100gbase-dwdm-1552-52"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1551_72 {216, "ethernet-100gbase-dwdm-1551-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1550_92 {217, "ethernet-100gbase-dwdm-1550-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1550_12 {218, "ethernet-100gbase-dwdm-1550-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1549_32 {219, "ethernet-100gbase-dwdm-1549-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1548_51 {220, "ethernet-100gbase-dwdm-1548-51"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1547_72 {221, "ethernet-100gbase-dwdm-1547-72"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1546_92 {222, "ethernet-100gbase-dwdm-1546-92"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1546_12 {223, "ethernet-100gbase-dwdm-1546-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1545_32 {224, "ethernet-100gbase-dwdm-1545-32"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1544_53 {225, "ethernet-100gbase-dwdm-1544-53"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1543_73 {226, "ethernet-100gbase-dwdm-1543-73"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1542_94 {227, "ethernet-100gbase-dwdm-1542-94"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1542_14 {228, "ethernet-100gbase-dwdm-1542-14"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1541_35 {229, "ethernet-100gbase-dwdm-1541-35"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1540_56 {230, "ethernet-100gbase-dwdm-1540-56"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1539_77 {231, "ethernet-100gbase-dwdm-1539-77"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1538_98 {232, "ethernet-100gbase-dwdm-1538-98"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1538_19 {233, "ethernet-100gbase-dwdm-1538-19"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1537_40 {234, "ethernet-100gbase-dwdm-1537-40"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1536_61 {235, "ethernet-100gbase-dwdm-1536-61"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1535_82 {236, "ethernet-100gbase-dwdm-1535-82"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1535_04 {237, "ethernet-100gbase-dwdm-1535-04"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1534_25 {238, "ethernet-100gbase-dwdm-1534-25"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1533_47 {239, "ethernet-100gbase-dwdm-1533-47"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1532_68 {240, "ethernet-100gbase-dwdm-1532-68"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1531_90 {241, "ethernet-100gbase-dwdm-1531-90"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1531_12 {242, "ethernet-100gbase-dwdm-1531-12"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_1530_33 {243, "ethernet-100gbase-dwdm-1530-33"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_dwdm_tunable {244, "ethernet-100gbase-dwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_kr4 {245, "ethernet-40gbase-kr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cr4 {246, "ethernet-40gbase-cr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_sr4 {247, "ethernet-40gbase-sr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_fr {248, "ethernet-40gbase-fr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cr10 {249, "ethernet-100gbase-cr10"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_sr10 {250, "ethernet-100gbase-sr10"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_csr4 {251, "ethernet-40gbase-csr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm {252, "ethernet-10gbase-cwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_tunable {253, "ethernet-10gbase-cwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1470 {254, "ethernet-10gbase-cwdm-1470"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1490 {255, "ethernet-10gbase-cwdm-1490"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1510 {256, "ethernet-10gbase-cwdm-1510"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1530 {257, "ethernet-10gbase-cwdm-1530"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1550 {258, "ethernet-10gbase-cwdm-1550"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1570 {259, "ethernet-10gbase-cwdm-1570"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1590 {260, "ethernet-10gbase-cwdm-1590"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cwdm_1610 {261, "ethernet-10gbase-cwdm-1610"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm {262, "ethernet-40gbase-cwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_tunable {263, "ethernet-40gbase-cwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1470 {264, "ethernet-40gbase-cwdm-1470"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1490 {265, "ethernet-40gbase-cwdm-1490"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1510 {266, "ethernet-40gbase-cwdm-1510"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1530 {267, "ethernet-40gbase-cwdm-1530"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1550 {268, "ethernet-40gbase-cwdm-1550"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1570 {269, "ethernet-40gbase-cwdm-1570"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1590 {270, "ethernet-40gbase-cwdm-1590"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_cwdm_1610 {271, "ethernet-40gbase-cwdm-1610"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm {272, "ethernet-100gbase-cwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_tunable {273, "ethernet-100gbase-cwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1470 {274, "ethernet-100gbase-cwdm-1470"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1490 {275, "ethernet-100gbase-cwdm-1490"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1510 {276, "ethernet-100gbase-cwdm-1510"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1530 {277, "ethernet-100gbase-cwdm-1530"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1550 {278, "ethernet-100gbase-cwdm-1550"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1570 {279, "ethernet-100gbase-cwdm-1570"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1590 {280, "ethernet-100gbase-cwdm-1590"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm_1610 {281, "ethernet-100gbase-cwdm-1610"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_elpb {282, "ethernet-40gbase-elpb"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_elpb {283, "ethernet-100gbase-elpb"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_lr10 {284, "ethernet-100gbase-lr10"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase {285, "ethernet-40gbase"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_kp4 {286, "ethernet-100gbase-kp4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_kr4 {287, "ethernet-100gbase-kr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_lrm {288, "ethernet-10gbase-lrm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_cx4 {289, "ethernet-10gbase-cx4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase {290, "ethernet-10gbase"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_kx4 {291, "ethernet-10gbase-kx4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_kr {292, "ethernet-10gbase-kr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_pr {293, "ethernet-10gbase-pr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_lx {294, "ethernet-100base-lx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100base_zx {295, "ethernet-100base-zx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx_d {296, "ethernet-1000base-bx-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx_u {297, "ethernet-1000base-bx-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx20_d {298, "ethernet-1000base-bx20-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx20_u {299, "ethernet-1000base-bx20-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx40_d {300, "ethernet-1000base-bx40-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx40_da {301, "ethernet-1000base-bx40-da"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx40_u {302, "ethernet-1000base-bx40-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx80_d {303, "ethernet-1000base-bx80-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx80_u {304, "ethernet-1000base-bx80-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx120_d {305, "ethernet-1000base-bx120-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_bx120_u {306, "ethernet-1000base-bx120-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx_d {307, "ethernet-10gbase-bx-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx_u {308, "ethernet-10gbase-bx-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx10_d {309, "ethernet-10gbase-bx10-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx10_u {310, "ethernet-10gbase-bx10-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx20_d {311, "ethernet-10gbase-bx20-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx20_u {312, "ethernet-10gbase-bx20-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx40_d {313, "ethernet-10gbase-bx40-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx40_u {314, "ethernet-10gbase-bx40-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx80_d {315, "ethernet-10gbase-bx80-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx80_u {316, "ethernet-10gbase-bx80-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx120_d {317, "ethernet-10gbase-bx120-d"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_10gbase_bx120_u {318, "ethernet-10gbase-bx120-u"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_1000base_dr_lx {319, "ethernet-1000base-dr-lx"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_er4l {320, "ethernet-100gbase-er4l"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_sr4 {321, "ethernet-100gbase-sr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_sr_bd {322, "ethernet-40gbase-sr-bd"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_cr {323, "ethernet-25gbase-cr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_cr_s {324, "ethernet-25gbase-cr-s"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_kr {325, "ethernet-25gbase-kr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_kr_s {326, "ethernet-25gbase-kr-s"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_r {327, "ethernet-25gbase-r"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_sr {328, "ethernet-25gbase-sr"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_dwdm {329, "ethernet-25gbase-dwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_dwdm_tunable {330, "ethernet-25gbase-dwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_cwdm {331, "ethernet-25gbase-cwdm"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_25gbase_cwdm_tunable {332, "ethernet-25gbase-cwdm-tunable"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_psm4 {333, "ethernet-100gbase-psm4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_er10 {334, "ethernet-100gbase-er10"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_er10l {335, "ethernet-100gbase-er10l"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_acc {336, "ethernet-100gbase-acc"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_aoc {337, "ethernet-100gbase-aoc"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cwdm4 {338, "ethernet-100gbase-cwdm4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_40gbase_psm4 {339, "ethernet-40gbase-psm4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_cr4 {340, "ethernet-100gbase-cr4"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_act_loop {341, "ethernet-100gbase-act-loop"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_100gbase_pas_loop {342, "ethernet-100gbase-pas-loop"};
+const Enum::YLeaf EthernetMediaEnum::ethernet_base_max {343, "ethernet-base-max"};
 
-const Enum::Value EtherAinsStatusEnum::ains_soak_status_none {0, "ains-soak-status-none"};
-const Enum::Value EtherAinsStatusEnum::ains_soak_status_pending {1, "ains-soak-status-pending"};
-const Enum::Value EtherAinsStatusEnum::ains_soak_status_running {2, "ains-soak-status-running"};
+const Enum::YLeaf EtherAinsStatusEnum::ains_soak_status_none {0, "ains-soak-status-none"};
+const Enum::YLeaf EtherAinsStatusEnum::ains_soak_status_pending {1, "ains-soak-status-pending"};
+const Enum::YLeaf EtherAinsStatusEnum::ains_soak_status_running {2, "ains-soak-status-running"};
 
-const Enum::Value EthernetLoopbackEnum::no_loopback {0, "no-loopback"};
-const Enum::Value EthernetLoopbackEnum::internal {1, "internal"};
-const Enum::Value EthernetLoopbackEnum::line {2, "line"};
-const Enum::Value EthernetLoopbackEnum::external {3, "external"};
+const Enum::YLeaf EthernetLoopbackEnum::no_loopback {0, "no-loopback"};
+const Enum::YLeaf EthernetLoopbackEnum::internal {1, "internal"};
+const Enum::YLeaf EthernetLoopbackEnum::line {2, "line"};
+const Enum::YLeaf EthernetLoopbackEnum::external {3, "external"};
 
 
 }

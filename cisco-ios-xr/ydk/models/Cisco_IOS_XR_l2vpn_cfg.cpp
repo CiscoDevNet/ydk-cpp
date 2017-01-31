@@ -145,7 +145,7 @@ bool L2Vpn::PwRouting::PwRoutingBgp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (evpn_route_distinguisher !=  nullptr && is_set(evpn_route_distinguisher->operation));
+	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_operation());
 }
 
 std::string L2Vpn::PwRouting::PwRoutingBgp::get_segment_path() const
@@ -255,7 +255,7 @@ bool L2Vpn::PwRouting::has_operation() const
 {
     return is_set(operation)
 	|| is_set(pw_routing_global_id.operation)
-	|| (pw_routing_bgp !=  nullptr && is_set(pw_routing_bgp->operation));
+	|| (pw_routing_bgp !=  nullptr && pw_routing_bgp->has_operation());
 }
 
 std::string L2Vpn::PwRouting::get_segment_path() const
@@ -458,7 +458,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort0S::ErpPort0::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -550,7 +550,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort0S::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -654,7 +654,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Rp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -742,7 +742,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Ap
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -823,7 +823,7 @@ bool L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Aps::has
 	|| is_set(enable.operation)
 	|| is_set(level.operation)
 	|| is_set(port0.operation)
-	|| (port1 !=  nullptr && is_set(port1->operation));
+	|| (port1 !=  nullptr && port1->has_operation());
 }
 
 std::string L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Aps::get_segment_path() const
@@ -840,7 +840,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::Ap
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -957,8 +957,8 @@ bool L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::has_oper
 	|| is_set(description.operation)
 	|| is_set(inclusion_list.operation)
 	|| is_set(profile.operation)
-	|| (aps !=  nullptr && is_set(aps->operation))
-	|| (rpl !=  nullptr && is_set(rpl->operation));
+	|| (aps !=  nullptr && aps->has_operation())
+	|| (rpl !=  nullptr && rpl->has_operation());
 }
 
 std::string L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::get_segment_path() const
@@ -975,7 +975,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::ErpInstance::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1123,7 +1123,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpInstances::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1224,7 +1224,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::None::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1307,7 +1307,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::VirtualO
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1389,7 +1389,7 @@ bool L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::has_operation(
     }
     return is_set(operation)
 	|| is_set(erp_port_type.operation)
-	|| (none !=  nullptr && is_set(none->operation));
+	|| (none !=  nullptr && none->has_operation());
 }
 
 std::string L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::get_segment_path() const
@@ -1406,7 +1406,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::ErpPort1::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1542,7 +1542,7 @@ EntityPath L2Vpn::Database::G8032Rings::G8032Ring::ErpPort1S::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1652,9 +1652,9 @@ bool L2Vpn::Database::G8032Rings::G8032Ring::has_operation() const
 	|| is_set(erp_provider_bridge.operation)
 	|| is_set(exclusion_list.operation)
 	|| is_set(open_ring.operation)
-	|| (erp_instances !=  nullptr && is_set(erp_instances->operation))
-	|| (erp_port0s !=  nullptr && is_set(erp_port0s->operation))
-	|| (erp_port1s !=  nullptr && is_set(erp_port1s->operation));
+	|| (erp_instances !=  nullptr && erp_instances->has_operation())
+	|| (erp_port0s !=  nullptr && erp_port0s->has_operation())
+	|| (erp_port1s !=  nullptr && erp_port1s->has_operation());
 }
 
 std::string L2Vpn::Database::G8032Rings::G8032Ring::get_segment_path() const
@@ -1943,7 +1943,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2030,7 +2030,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2137,7 +2137,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2234,7 +2234,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2338,7 +2338,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2426,7 +2426,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2507,7 +2507,7 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 	|| is_set(neighbor.operation)
 	|| is_set(pseudowire_id.operation)
 	|| is_set(backup_pw_class.operation)
-	|| (backup_mpls_static_labels !=  nullptr && is_set(backup_mpls_static_labels->operation));
+	|| (backup_mpls_static_labels !=  nullptr && backup_mpls_static_labels->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::BackupPseudowires::BackupPseudowire::get_segment_path() const
@@ -2524,7 +2524,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2644,7 +2644,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2751,7 +2751,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2847,7 +2847,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2943,7 +2943,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3036,9 +3036,9 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
     return is_set(operation)
 	|| is_set(l2tp_local_session_id.operation)
 	|| is_set(l2tp_remote_session_id.operation)
-	|| (l2tp_local_cookie !=  nullptr && is_set(l2tp_local_cookie->operation))
-	|| (l2tp_remote_cookie !=  nullptr && is_set(l2tp_remote_cookie->operation))
-	|| (l2tp_secondary_local_cookie !=  nullptr && is_set(l2tp_secondary_local_cookie->operation));
+	|| (l2tp_local_cookie !=  nullptr && l2tp_local_cookie->has_operation())
+	|| (l2tp_remote_cookie !=  nullptr && l2tp_remote_cookie->has_operation())
+	|| (l2tp_secondary_local_cookie !=  nullptr && l2tp_secondary_local_cookie->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::L2TpStaticAttributes::get_segment_path() const
@@ -3055,7 +3055,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3209,7 +3209,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3306,10 +3306,10 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 	|| is_set(class_.operation)
 	|| is_set(source_address.operation)
 	|| is_set(tag_impose.operation)
-	|| (backup_pseudowires !=  nullptr && is_set(backup_pseudowires->operation))
-	|| (l2tp_static !=  nullptr && is_set(l2tp_static->operation))
-	|| (l2tp_static_attributes !=  nullptr && is_set(l2tp_static_attributes->operation))
-	|| (mpls_static_labels !=  nullptr && is_set(mpls_static_labels->operation));
+	|| (backup_pseudowires !=  nullptr && backup_pseudowires->has_operation())
+	|| (l2tp_static !=  nullptr && l2tp_static->has_operation())
+	|| (l2tp_static_attributes !=  nullptr && l2tp_static_attributes->has_operation())
+	|| (mpls_static_labels !=  nullptr && mpls_static_labels->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::Neighbor::get_segment_path() const
@@ -3326,7 +3326,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3521,7 +3521,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3609,7 +3609,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3690,7 +3690,7 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 	|| is_set(neighbor.operation)
 	|| is_set(pseudowire_id.operation)
 	|| is_set(backup_pw_class.operation)
-	|| (backup_mpls_static_labels !=  nullptr && is_set(backup_mpls_static_labels->operation));
+	|| (backup_mpls_static_labels !=  nullptr && backup_mpls_static_labels->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::BackupPseudowires::BackupPseudowire::get_segment_path() const
@@ -3707,7 +3707,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3827,7 +3827,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3934,7 +3934,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4030,7 +4030,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4126,7 +4126,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4219,9 +4219,9 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
     return is_set(operation)
 	|| is_set(l2tp_local_session_id.operation)
 	|| is_set(l2tp_remote_session_id.operation)
-	|| (l2tp_local_cookie !=  nullptr && is_set(l2tp_local_cookie->operation))
-	|| (l2tp_remote_cookie !=  nullptr && is_set(l2tp_remote_cookie->operation))
-	|| (l2tp_secondary_local_cookie !=  nullptr && is_set(l2tp_secondary_local_cookie->operation));
+	|| (l2tp_local_cookie !=  nullptr && l2tp_local_cookie->has_operation())
+	|| (l2tp_remote_cookie !=  nullptr && l2tp_remote_cookie->has_operation())
+	|| (l2tp_secondary_local_cookie !=  nullptr && l2tp_secondary_local_cookie->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::L2TpStaticAttributes::get_segment_path() const
@@ -4238,7 +4238,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4392,7 +4392,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4489,10 +4489,10 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 	|| is_set(class_.operation)
 	|| is_set(source_address.operation)
 	|| is_set(tag_impose.operation)
-	|| (backup_pseudowires !=  nullptr && is_set(backup_pseudowires->operation))
-	|| (l2tp_static !=  nullptr && is_set(l2tp_static->operation))
-	|| (l2tp_static_attributes !=  nullptr && is_set(l2tp_static_attributes->operation))
-	|| (mpls_static_labels !=  nullptr && is_set(mpls_static_labels->operation));
+	|| (backup_pseudowires !=  nullptr && backup_pseudowires->has_operation())
+	|| (l2tp_static !=  nullptr && l2tp_static->has_operation())
+	|| (l2tp_static_attributes !=  nullptr && l2tp_static_attributes->has_operation())
+	|| (mpls_static_labels !=  nullptr && mpls_static_labels->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::Pseudowires::Pseudowire::PseudowireAddress::get_segment_path() const
@@ -4509,7 +4509,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4721,7 +4721,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4860,7 +4860,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4964,7 +4964,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5056,7 +5056,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5172,7 +5172,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5284,7 +5284,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5388,7 +5388,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5480,7 +5480,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5602,12 +5602,12 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::
 	|| is_set(name.operation)
 	|| is_set(interworking.operation)
 	|| is_set(p2p_description.operation)
-	|| (attachment_circuits !=  nullptr && is_set(attachment_circuits->operation))
-	|| (backup_attachment_circuits !=  nullptr && is_set(backup_attachment_circuits->operation))
-	|| (monitor_sessions !=  nullptr && is_set(monitor_sessions->operation))
-	|| (pseudowire_evpns !=  nullptr && is_set(pseudowire_evpns->operation))
-	|| (pseudowire_routeds !=  nullptr && is_set(pseudowire_routeds->operation))
-	|| (pseudowires !=  nullptr && is_set(pseudowires->operation));
+	|| (attachment_circuits !=  nullptr && attachment_circuits->has_operation())
+	|| (backup_attachment_circuits !=  nullptr && backup_attachment_circuits->has_operation())
+	|| (monitor_sessions !=  nullptr && monitor_sessions->has_operation())
+	|| (pseudowire_evpns !=  nullptr && pseudowire_evpns->has_operation())
+	|| (pseudowire_routeds !=  nullptr && pseudowire_routeds->has_operation())
+	|| (pseudowires !=  nullptr && pseudowires->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXconnect::get_segment_path() const
@@ -5624,7 +5624,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::P2PXcon
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5859,7 +5859,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::P2PXconnects::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5972,7 +5972,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6075,7 +6075,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6163,7 +6163,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6251,7 +6251,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6359,7 +6359,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6503,7 +6503,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6607,7 +6607,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6695,7 +6695,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6787,7 +6787,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6878,7 +6878,7 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconne
 {
     return is_set(operation)
 	|| is_set(ce_id.operation)
-	|| (remote_ceid_attachment_circuits !=  nullptr && is_set(remote_ceid_attachment_circuits->operation));
+	|| (remote_ceid_attachment_circuits !=  nullptr && remote_ceid_attachment_circuits->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpSignalingProtocol::Ceids::Ceid::get_segment_path() const
@@ -6895,7 +6895,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7005,7 +7005,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7104,8 +7104,8 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconne
     return is_set(operation)
 	|| is_set(ce_range.operation)
 	|| is_set(enable.operation)
-	|| (ceids !=  nullptr && is_set(ceids->operation))
-	|| (flow_label_load_balance !=  nullptr && is_set(flow_label_load_balance->operation));
+	|| (ceids !=  nullptr && ceids->has_operation())
+	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::Mp2MpSignalingProtocol::get_segment_path() const
@@ -7122,7 +7122,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7258,10 +7258,10 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconne
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (mp2mp_route_policy !=  nullptr && is_set(mp2mp_route_policy->operation))
-	|| (mp2mp_route_targets !=  nullptr && is_set(mp2mp_route_targets->operation))
-	|| (mp2mp_signaling_protocol !=  nullptr && is_set(mp2mp_signaling_protocol->operation))
-	|| (route_distinguisher !=  nullptr && is_set(route_distinguisher->operation));
+	|| (mp2mp_route_policy !=  nullptr && mp2mp_route_policy->has_operation())
+	|| (mp2mp_route_targets !=  nullptr && mp2mp_route_targets->has_operation())
+	|| (mp2mp_signaling_protocol !=  nullptr && mp2mp_signaling_protocol->has_operation())
+	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::Mp2MpAutoDiscovery::get_segment_path() const
@@ -7278,7 +7278,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7458,7 +7458,7 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconne
 	|| is_set(mp2mpl2_encapsulation.operation)
 	|| is_set(mp2mpmtu.operation)
 	|| is_set(mp2mpvpn_id.operation)
-	|| (mp2mp_auto_discovery !=  nullptr && is_set(mp2mp_auto_discovery->operation));
+	|| (mp2mp_auto_discovery !=  nullptr && mp2mp_auto_discovery->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2MpXconnect::get_segment_path() const
@@ -7475,7 +7475,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::Mp2Mp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7615,7 +7615,7 @@ EntityPath L2Vpn::Database::XconnectGroups::XconnectGroup::Mp2MpXconnects::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7711,8 +7711,8 @@ bool L2Vpn::Database::XconnectGroups::XconnectGroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (mp2mp_xconnects !=  nullptr && is_set(mp2mp_xconnects->operation))
-	|| (p2p_xconnects !=  nullptr && is_set(p2p_xconnects->operation));
+	|| (mp2mp_xconnects !=  nullptr && mp2mp_xconnects->has_operation())
+	|| (p2p_xconnects !=  nullptr && p2p_xconnects->has_operation());
 }
 
 std::string L2Vpn::Database::XconnectGroups::XconnectGroup::get_segment_path() const
@@ -7966,7 +7966,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8041,7 +8041,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(sctype.operation)
-	|| (storm_control_unit !=  nullptr && is_set(storm_control_unit->operation));
+	|| (storm_control_unit !=  nullptr && storm_control_unit->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdStormControls::BdStormControl::get_segment_path() const
@@ -8058,7 +8058,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8168,7 +8168,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8272,7 +8272,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8364,7 +8364,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8455,7 +8455,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(vni.operation)
-	|| (member_vni_static_mac_addresses !=  nullptr && is_set(member_vni_static_mac_addresses->operation));
+	|| (member_vni_static_mac_addresses !=  nullptr && member_vni_static_mac_addresses->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::MemberVnis::MemberVni::get_segment_path() const
@@ -8472,7 +8472,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8582,7 +8582,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8689,7 +8689,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8782,7 +8782,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8874,7 +8874,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8981,7 +8981,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9074,7 +9074,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9179,10 +9179,10 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(bd_mac_withdraw_access_pw_disable.operation)
 	|| is_set(bd_mac_withdraw_behavior.operation)
 	|| is_set(bd_mac_withdraw_relay.operation)
-	|| (bd_mac_aging !=  nullptr && is_set(bd_mac_aging->operation))
-	|| (bd_mac_filters !=  nullptr && is_set(bd_mac_filters->operation))
-	|| (bd_mac_limit !=  nullptr && is_set(bd_mac_limit->operation))
-	|| (mac_secure !=  nullptr && is_set(mac_secure->operation));
+	|| (bd_mac_aging !=  nullptr && bd_mac_aging->has_operation())
+	|| (bd_mac_filters !=  nullptr && bd_mac_filters->has_operation())
+	|| (bd_mac_limit !=  nullptr && bd_mac_limit->has_operation())
+	|| (mac_secure !=  nullptr && mac_secure->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::get_segment_path() const
@@ -9199,7 +9199,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9399,7 +9399,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9487,7 +9487,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9579,7 +9579,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9683,7 +9683,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9774,7 +9774,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9867,7 +9867,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9964,7 +9964,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10064,9 +10064,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(pbb_edge_mac_learning.operation)
-	|| (pbb_edge_mac_aging !=  nullptr && is_set(pbb_edge_mac_aging->operation))
-	|| (pbb_edge_mac_limit !=  nullptr && is_set(pbb_edge_mac_limit->operation))
-	|| (pbb_edge_mac_secure !=  nullptr && is_set(pbb_edge_mac_secure->operation));
+	|| (pbb_edge_mac_aging !=  nullptr && pbb_edge_mac_aging->has_operation())
+	|| (pbb_edge_mac_limit !=  nullptr && pbb_edge_mac_limit->has_operation())
+	|| (pbb_edge_mac_secure !=  nullptr && pbb_edge_mac_secure->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::get_segment_path() const
@@ -10083,7 +10083,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10241,9 +10241,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(isid.operation)
 	|| is_set(pbb_edge_igmp_profile.operation)
 	|| is_set(unknown_unicast_bmac.operation)
-	|| (pbb_edge_dhcp_profile !=  nullptr && is_set(pbb_edge_dhcp_profile->operation))
-	|| (pbb_edge_mac !=  nullptr && is_set(pbb_edge_mac->operation))
-	|| (pbb_static_mac_mappings !=  nullptr && is_set(pbb_static_mac_mappings->operation));
+	|| (pbb_edge_dhcp_profile !=  nullptr && pbb_edge_dhcp_profile->has_operation())
+	|| (pbb_edge_mac !=  nullptr && pbb_edge_mac->has_operation())
+	|| (pbb_static_mac_mappings !=  nullptr && pbb_static_mac_mappings->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::get_segment_path() const
@@ -10260,7 +10260,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10431,7 +10431,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10535,7 +10535,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10626,7 +10626,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10711,8 +10711,8 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(pbb_core_mac_learning.operation)
-	|| (pbb_core_mac_aging !=  nullptr && is_set(pbb_core_mac_aging->operation))
-	|| (pbb_core_mac_limit !=  nullptr && is_set(pbb_core_mac_limit->operation));
+	|| (pbb_core_mac_aging !=  nullptr && pbb_core_mac_aging->has_operation())
+	|| (pbb_core_mac_limit !=  nullptr && pbb_core_mac_limit->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::PbbCoreMac::get_segment_path() const
@@ -10729,7 +10729,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10855,7 +10855,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10942,7 +10942,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11046,7 +11046,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11140,9 +11140,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(pbb_core_igmp_profile.operation)
 	|| is_set(pbb_core_mmrp_flood_optimization.operation)
 	|| is_set(vlan_id.operation)
-	|| (pbb_core_dhcp_profile !=  nullptr && is_set(pbb_core_dhcp_profile->operation))
-	|| (pbb_core_evis !=  nullptr && is_set(pbb_core_evis->operation))
-	|| (pbb_core_mac !=  nullptr && is_set(pbb_core_mac->operation));
+	|| (pbb_core_dhcp_profile !=  nullptr && pbb_core_dhcp_profile->has_operation())
+	|| (pbb_core_evis !=  nullptr && pbb_core_evis->has_operation())
+	|| (pbb_core_mac !=  nullptr && pbb_core_mac->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbCore::get_segment_path() const
@@ -11159,7 +11159,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11314,8 +11314,8 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::has_operation() const
 {
     return is_set(operation)
-	|| (pbb_core !=  nullptr && is_set(pbb_core->operation))
-	|| (pbb_edges !=  nullptr && is_set(pbb_edges->operation));
+	|| (pbb_core !=  nullptr && pbb_core->has_operation())
+	|| (pbb_edges !=  nullptr && pbb_edges->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::get_segment_path() const
@@ -11332,7 +11332,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11453,7 +11453,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11540,7 +11540,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11647,7 +11647,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11733,7 +11733,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(disable.operation)
 	|| is_set(enable.operation)
 	|| is_set(logging.operation)
-	|| (pseudowire_dai_address_validation !=  nullptr && is_set(pseudowire_dai_address_validation->operation));
+	|| (pseudowire_dai_address_validation !=  nullptr && pseudowire_dai_address_validation->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireDai::get_segment_path() const
@@ -11750,7 +11750,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11866,7 +11866,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11941,7 +11941,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(sctype.operation)
-	|| (storm_control_unit !=  nullptr && is_set(storm_control_unit->operation));
+	|| (storm_control_unit !=  nullptr && storm_control_unit->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdpwStormControlTypes::BdpwStormControlType::get_segment_path() const
@@ -11958,7 +11958,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12068,7 +12068,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12172,7 +12172,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12257,7 +12257,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12344,7 +12344,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12451,7 +12451,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12550,7 +12550,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12648,7 +12648,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12739,7 +12739,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12835,9 +12835,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(enable.operation)
 	|| is_set(pseudowire_mac_learning.operation)
 	|| is_set(pseudowire_mac_port_down_flush.operation)
-	|| (pseudowire_mac_aging !=  nullptr && is_set(pseudowire_mac_aging->operation))
-	|| (pseudowire_mac_limit !=  nullptr && is_set(pseudowire_mac_limit->operation))
-	|| (pseudowire_mac_secure !=  nullptr && is_set(pseudowire_mac_secure->operation));
+	|| (pseudowire_mac_aging !=  nullptr && pseudowire_mac_aging->has_operation())
+	|| (pseudowire_mac_limit !=  nullptr && pseudowire_mac_limit->has_operation())
+	|| (pseudowire_mac_secure !=  nullptr && pseudowire_mac_secure->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::get_segment_path() const
@@ -12854,7 +12854,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13013,7 +13013,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13079,7 +13079,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::has_operation() const
 {
     return is_set(operation)
-	|| (bd_pw_split_horizon_group !=  nullptr && is_set(bd_pw_split_horizon_group->operation));
+	|| (bd_pw_split_horizon_group !=  nullptr && bd_pw_split_horizon_group->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::BdPwSplitHorizon::get_segment_path() const
@@ -13096,7 +13096,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13197,7 +13197,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13288,7 +13288,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13385,7 +13385,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13534,15 +13534,15 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(pseudowire_flooding_unknown_unicast.operation)
 	|| is_set(pseudowire_igmp_snoop.operation)
 	|| is_set(pseudowire_mld_snoop.operation)
-	|| (bd_pw_mpls_static_labels !=  nullptr && is_set(bd_pw_mpls_static_labels->operation))
-	|| (bd_pw_split_horizon !=  nullptr && is_set(bd_pw_split_horizon->operation))
-	|| (bd_pw_static_mac_addresses !=  nullptr && is_set(bd_pw_static_mac_addresses->operation))
-	|| (bdpw_storm_control_types !=  nullptr && is_set(bdpw_storm_control_types->operation))
-	|| (bridge_domain_backup_pseudowires !=  nullptr && is_set(bridge_domain_backup_pseudowires->operation))
-	|| (pseudowire_dai !=  nullptr && is_set(pseudowire_dai->operation))
-	|| (pseudowire_ip_source_guard !=  nullptr && is_set(pseudowire_ip_source_guard->operation))
-	|| (pseudowire_mac !=  nullptr && is_set(pseudowire_mac->operation))
-	|| (pseudowire_profile !=  nullptr && is_set(pseudowire_profile->operation));
+	|| (bd_pw_mpls_static_labels !=  nullptr && bd_pw_mpls_static_labels->has_operation())
+	|| (bd_pw_split_horizon !=  nullptr && bd_pw_split_horizon->has_operation())
+	|| (bd_pw_static_mac_addresses !=  nullptr && bd_pw_static_mac_addresses->has_operation())
+	|| (bdpw_storm_control_types !=  nullptr && bdpw_storm_control_types->has_operation())
+	|| (bridge_domain_backup_pseudowires !=  nullptr && bridge_domain_backup_pseudowires->has_operation())
+	|| (pseudowire_dai !=  nullptr && pseudowire_dai->has_operation())
+	|| (pseudowire_ip_source_guard !=  nullptr && pseudowire_ip_source_guard->has_operation())
+	|| (pseudowire_mac !=  nullptr && pseudowire_mac->has_operation())
+	|| (pseudowire_profile !=  nullptr && pseudowire_profile->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::get_segment_path() const
@@ -13559,7 +13559,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13883,7 +13883,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13987,7 +13987,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14079,7 +14079,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14180,7 +14180,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14267,7 +14267,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14363,8 +14363,8 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (signalings !=  nullptr && is_set(signalings->operation))
-	|| (transports !=  nullptr && is_set(transports->operation));
+	|| (signalings !=  nullptr && signalings->has_operation())
+	|| (transports !=  nullptr && transports->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::MulticastP2Mp::get_segment_path() const
@@ -14381,7 +14381,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14510,7 +14510,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14598,7 +14598,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14683,7 +14683,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14770,7 +14770,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14883,9 +14883,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(vfi_pw_class.operation)
 	|| is_set(vfi_pw_igmp_snoop.operation)
 	|| is_set(vfi_pw_mld_snoop.operation)
-	|| (pseudowire_static_mac_addresses !=  nullptr && is_set(pseudowire_static_mac_addresses->operation))
-	|| (vfi_pw_dhcp_snoop !=  nullptr && is_set(vfi_pw_dhcp_snoop->operation))
-	|| (vfi_pw_mpls_static_labels !=  nullptr && is_set(vfi_pw_mpls_static_labels->operation));
+	|| (pseudowire_static_mac_addresses !=  nullptr && pseudowire_static_mac_addresses->has_operation())
+	|| (vfi_pw_dhcp_snoop !=  nullptr && vfi_pw_dhcp_snoop->has_operation())
+	|| (vfi_pw_mpls_static_labels !=  nullptr && vfi_pw_mpls_static_labels->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::VfiPseudowires::VfiPseudowire::get_segment_path() const
@@ -14902,7 +14902,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15078,7 +15078,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15191,7 +15191,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15294,7 +15294,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15374,8 +15374,8 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (flow_label_load_balance !=  nullptr && is_set(flow_label_load_balance->operation))
-	|| (vplsid !=  nullptr && is_set(vplsid->operation));
+	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation())
+	|| (vplsid !=  nullptr && vplsid->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::get_segment_path() const
@@ -15392,7 +15392,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15518,7 +15518,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15610,7 +15610,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15713,7 +15713,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15794,7 +15794,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(enable.operation)
 	|| is_set(ve_range.operation)
 	|| is_set(veid.operation)
-	|| (flow_label_load_balance !=  nullptr && is_set(flow_label_load_balance->operation));
+	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_segment_path() const
@@ -15811,7 +15811,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15927,7 +15927,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16015,7 +16015,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16123,7 +16123,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16267,7 +16267,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16384,11 +16384,11 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(ad_control_word.operation)
 	|| is_set(enable.operation)
 	|| is_set(table_policy.operation)
-	|| (bgp_route_policy !=  nullptr && is_set(bgp_route_policy->operation))
-	|| (bgp_signaling_protocol !=  nullptr && is_set(bgp_signaling_protocol->operation))
-	|| (ldp_signaling_protocol !=  nullptr && is_set(ldp_signaling_protocol->operation))
-	|| (route_distinguisher !=  nullptr && is_set(route_distinguisher->operation))
-	|| (route_targets !=  nullptr && is_set(route_targets->operation));
+	|| (bgp_route_policy !=  nullptr && bgp_route_policy->has_operation())
+	|| (bgp_signaling_protocol !=  nullptr && bgp_signaling_protocol->has_operation())
+	|| (ldp_signaling_protocol !=  nullptr && ldp_signaling_protocol->has_operation())
+	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation())
+	|| (route_targets !=  nullptr && route_targets->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::get_segment_path() const
@@ -16405,7 +16405,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16616,9 +16616,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(name.operation)
 	|| is_set(vfi_shutdown.operation)
 	|| is_set(vpnid.operation)
-	|| (bgp_auto_discovery !=  nullptr && is_set(bgp_auto_discovery->operation))
-	|| (multicast_p2mp !=  nullptr && is_set(multicast_p2mp->operation))
-	|| (vfi_pseudowires !=  nullptr && is_set(vfi_pseudowires->operation));
+	|| (bgp_auto_discovery !=  nullptr && bgp_auto_discovery->has_operation())
+	|| (multicast_p2mp !=  nullptr && multicast_p2mp->has_operation())
+	|| (vfi_pseudowires !=  nullptr && vfi_pseudowires->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::get_segment_path() const
@@ -16635,7 +16635,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16801,7 +16801,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16908,7 +16908,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17007,7 +17007,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17098,7 +17098,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(disable.operation)
 	|| is_set(enable.operation)
 	|| is_set(logging.operation)
-	|| (interface_dai_address_validation !=  nullptr && is_set(interface_dai_address_validation->operation));
+	|| (interface_dai_address_validation !=  nullptr && interface_dai_address_validation->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_segment_path() const
@@ -17115,7 +17115,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17231,7 +17231,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17319,7 +17319,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17394,7 +17394,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     return is_set(operation)
 	|| is_set(sctype.operation)
-	|| (storm_control_unit !=  nullptr && is_set(storm_control_unit->operation));
+	|| (storm_control_unit !=  nullptr && storm_control_unit->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_segment_path() const
@@ -17411,7 +17411,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17521,7 +17521,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17622,7 +17622,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17688,7 +17688,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::has_operation() const
 {
     return is_set(operation)
-	|| (split_horizon_group_id !=  nullptr && is_set(split_horizon_group_id->operation));
+	|| (split_horizon_group_id !=  nullptr && split_horizon_group_id->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_segment_path() const
@@ -17705,7 +17705,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17803,7 +17803,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17890,7 +17890,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17994,7 +17994,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18088,7 +18088,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18189,7 +18189,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18282,9 +18282,9 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(operation)
 	|| is_set(interface_mac_learning.operation)
 	|| is_set(interface_mac_port_down_flush.operation)
-	|| (interface_mac_aging !=  nullptr && is_set(interface_mac_aging->operation))
-	|| (interface_mac_limit !=  nullptr && is_set(interface_mac_limit->operation))
-	|| (interface_mac_secure !=  nullptr && is_set(interface_mac_secure->operation));
+	|| (interface_mac_aging !=  nullptr && interface_mac_aging->has_operation())
+	|| (interface_mac_limit !=  nullptr && interface_mac_limit->has_operation())
+	|| (interface_mac_secure !=  nullptr && interface_mac_secure->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_segment_path() const
@@ -18301,7 +18301,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18487,13 +18487,13 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(interface_flooding_unknown_unicast.operation)
 	|| is_set(interface_igmp_snoop.operation)
 	|| is_set(interface_mld_snoop.operation)
-	|| (bdac_storm_control_types !=  nullptr && is_set(bdac_storm_control_types->operation))
-	|| (interface_dai !=  nullptr && is_set(interface_dai->operation))
-	|| (interface_ip_source_guard !=  nullptr && is_set(interface_ip_source_guard->operation))
-	|| (interface_mac !=  nullptr && is_set(interface_mac->operation))
-	|| (interface_profile !=  nullptr && is_set(interface_profile->operation))
-	|| (split_horizon !=  nullptr && is_set(split_horizon->operation))
-	|| (static_mac_addresses !=  nullptr && is_set(static_mac_addresses->operation));
+	|| (bdac_storm_control_types !=  nullptr && bdac_storm_control_types->has_operation())
+	|| (interface_dai !=  nullptr && interface_dai->has_operation())
+	|| (interface_ip_source_guard !=  nullptr && interface_ip_source_guard->has_operation())
+	|| (interface_mac !=  nullptr && interface_mac->has_operation())
+	|| (interface_profile !=  nullptr && interface_profile->has_operation())
+	|| (split_horizon !=  nullptr && split_horizon->has_operation())
+	|| (static_mac_addresses !=  nullptr && static_mac_addresses->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_segment_path() const
@@ -18510,7 +18510,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18778,7 +18778,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18882,7 +18882,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18974,7 +18974,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19078,7 +19078,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19172,7 +19172,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19260,7 +19260,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(logging.operation)
-	|| (dai_address_validation !=  nullptr && is_set(dai_address_validation->operation));
+	|| (dai_address_validation !=  nullptr && dai_address_validation->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_segment_path() const
@@ -19277,7 +19277,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19385,7 +19385,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19472,7 +19472,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19653,19 +19653,19 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| is_set(mld_snooping.operation)
 	|| is_set(shutdown.operation)
 	|| is_set(transport_mode.operation)
-	|| (bd_attachment_circuits !=  nullptr && is_set(bd_attachment_circuits->operation))
-	|| (bd_pseudowire_evpns !=  nullptr && is_set(bd_pseudowire_evpns->operation))
-	|| (bd_pseudowires !=  nullptr && is_set(bd_pseudowires->operation))
-	|| (bd_storm_controls !=  nullptr && is_set(bd_storm_controls->operation))
-	|| (bridge_domain_evis !=  nullptr && is_set(bridge_domain_evis->operation))
-	|| (bridge_domain_mac !=  nullptr && is_set(bridge_domain_mac->operation))
-	|| (bridge_domain_pbb !=  nullptr && is_set(bridge_domain_pbb->operation))
-	|| (dai !=  nullptr && is_set(dai->operation))
-	|| (ip_source_guard !=  nullptr && is_set(ip_source_guard->operation))
-	|| (member_vnis !=  nullptr && is_set(member_vnis->operation))
-	|| (nv_satellite !=  nullptr && is_set(nv_satellite->operation))
-	|| (routed_interfaces !=  nullptr && is_set(routed_interfaces->operation))
-	|| (vfis !=  nullptr && is_set(vfis->operation));
+	|| (bd_attachment_circuits !=  nullptr && bd_attachment_circuits->has_operation())
+	|| (bd_pseudowire_evpns !=  nullptr && bd_pseudowire_evpns->has_operation())
+	|| (bd_pseudowires !=  nullptr && bd_pseudowires->has_operation())
+	|| (bd_storm_controls !=  nullptr && bd_storm_controls->has_operation())
+	|| (bridge_domain_evis !=  nullptr && bridge_domain_evis->has_operation())
+	|| (bridge_domain_mac !=  nullptr && bridge_domain_mac->has_operation())
+	|| (bridge_domain_pbb !=  nullptr && bridge_domain_pbb->has_operation())
+	|| (dai !=  nullptr && dai->has_operation())
+	|| (ip_source_guard !=  nullptr && ip_source_guard->has_operation())
+	|| (member_vnis !=  nullptr && member_vnis->has_operation())
+	|| (nv_satellite !=  nullptr && nv_satellite->has_operation())
+	|| (routed_interfaces !=  nullptr && routed_interfaces->has_operation())
+	|| (vfis !=  nullptr && vfis->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::get_segment_path() const
@@ -19682,7 +19682,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20118,7 +20118,7 @@ EntityPath L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20209,7 +20209,7 @@ bool L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::has_operation() con
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (bridge_domains !=  nullptr && is_set(bridge_domains->operation));
+	|| (bridge_domains !=  nullptr && bridge_domains->has_operation());
 }
 
 std::string L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::get_segment_path() const
@@ -20440,7 +20440,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20528,7 +20528,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20616,7 +20616,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20704,7 +20704,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20809,10 +20809,10 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::h
 	|| is_set(source_address.operation)
 	|| is_set(time_to_live.operation)
 	|| is_set(transport_mode.operation)
-	|| (path_mtu !=  nullptr && is_set(path_mtu->operation))
-	|| (sequencing !=  nullptr && is_set(sequencing->operation))
-	|| (signaling_protocol !=  nullptr && is_set(signaling_protocol->operation))
-	|| (type_of_service !=  nullptr && is_set(type_of_service->operation));
+	|| (path_mtu !=  nullptr && path_mtu->has_operation())
+	|| (sequencing !=  nullptr && sequencing->has_operation())
+	|| (signaling_protocol !=  nullptr && signaling_protocol->has_operation())
+	|| (type_of_service !=  nullptr && type_of_service->has_operation());
 }
 
 std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_segment_path() const
@@ -20829,7 +20829,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21029,7 +21029,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDel
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21117,7 +21117,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21205,7 +21205,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21296,7 +21296,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21389,7 +21389,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21467,7 +21467,7 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Loa
     return is_set(operation)
 	|| is_set(flow_label_load_balance_code.operation)
 	|| is_set(pw_label_load_balance.operation)
-	|| (flow_label_load_balance !=  nullptr && is_set(flow_label_load_balance->operation));
+	|| (flow_label_load_balance !=  nullptr && flow_label_load_balance->has_operation());
 }
 
 std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_segment_path() const
@@ -21484,7 +21484,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21618,10 +21618,10 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::has
 	|| is_set(static_tag_rewrite.operation)
 	|| is_set(transport_mode.operation)
 	|| is_set(vccv_type.operation)
-	|| (load_balance_group !=  nullptr && is_set(load_balance_group->operation))
-	|| (mpls_redundancy !=  nullptr && is_set(mpls_redundancy->operation))
-	|| (preferred_path !=  nullptr && is_set(preferred_path->operation))
-	|| (sequencing !=  nullptr && is_set(sequencing->operation));
+	|| (load_balance_group !=  nullptr && load_balance_group->has_operation())
+	|| (mpls_redundancy !=  nullptr && mpls_redundancy->has_operation())
+	|| (preferred_path !=  nullptr && preferred_path->has_operation())
+	|| (sequencing !=  nullptr && sequencing->has_operation());
 }
 
 std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_segment_path() const
@@ -21638,7 +21638,7 @@ EntityPath L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulatio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21851,9 +21851,9 @@ bool L2Vpn::Database::PseudowireClasses::PseudowireClass::has_operation() const
 	|| is_set(name.operation)
 	|| is_set(enable.operation)
 	|| is_set(mac_withdraw.operation)
-	|| (backup_disable_delay !=  nullptr && is_set(backup_disable_delay->operation))
-	|| (l2tpv3_encapsulation !=  nullptr && is_set(l2tpv3_encapsulation->operation))
-	|| (mpls_encapsulation !=  nullptr && is_set(mpls_encapsulation->operation));
+	|| (backup_disable_delay !=  nullptr && backup_disable_delay->has_operation())
+	|| (l2tpv3_encapsulation !=  nullptr && l2tpv3_encapsulation->has_operation())
+	|| (mpls_encapsulation !=  nullptr && mpls_encapsulation->has_operation());
 }
 
 std::string L2Vpn::Database::PseudowireClasses::PseudowireClass::get_segment_path() const
@@ -22137,7 +22137,7 @@ EntityPath L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXco
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22224,7 +22224,7 @@ EntityPath L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXco
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22328,7 +22328,7 @@ EntityPath L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXco
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22420,7 +22420,7 @@ EntityPath L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXco
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22516,8 +22516,8 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectS
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (vlan_unaware_fxc_attachment_circuits !=  nullptr && is_set(vlan_unaware_fxc_attachment_circuits->operation))
-	|| (vlan_unaware_fxc_pseudowire_evpns !=  nullptr && is_set(vlan_unaware_fxc_pseudowire_evpns->operation));
+	|| (vlan_unaware_fxc_attachment_circuits !=  nullptr && vlan_unaware_fxc_attachment_circuits->has_operation())
+	|| (vlan_unaware_fxc_pseudowire_evpns !=  nullptr && vlan_unaware_fxc_pseudowire_evpns->has_operation());
 }
 
 std::string L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_segment_path() const
@@ -22754,7 +22754,7 @@ bool L2Vpn::Database::FlexibleXconnectServiceTable::has_data() const
 bool L2Vpn::Database::FlexibleXconnectServiceTable::has_operation() const
 {
     return is_set(operation)
-	|| (vlan_unaware_flexible_xconnect_services !=  nullptr && is_set(vlan_unaware_flexible_xconnect_services->operation));
+	|| (vlan_unaware_flexible_xconnect_services !=  nullptr && vlan_unaware_flexible_xconnect_services->has_operation());
 }
 
 std::string L2Vpn::Database::FlexibleXconnectServiceTable::get_segment_path() const
@@ -22881,7 +22881,7 @@ EntityPath L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGrou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22988,7 +22988,7 @@ EntityPath L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGrou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23082,7 +23082,7 @@ bool L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::has
     return is_set(operation)
 	|| is_set(group_id.operation)
 	|| is_set(multi_homing_node_id.operation)
-	|| (iccp_interfaces !=  nullptr && is_set(iccp_interfaces->operation));
+	|| (iccp_interfaces !=  nullptr && iccp_interfaces->has_operation());
 }
 
 std::string L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_segment_path() const
@@ -23305,7 +23305,7 @@ bool L2Vpn::Database::Redundancy::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (iccp_redundancy_groups !=  nullptr && is_set(iccp_redundancy_groups->operation));
+	|| (iccp_redundancy_groups !=  nullptr && iccp_redundancy_groups->has_operation());
 }
 
 std::string L2Vpn::Database::Redundancy::get_segment_path() const
@@ -23436,12 +23436,12 @@ bool L2Vpn::Database::has_data() const
 bool L2Vpn::Database::has_operation() const
 {
     return is_set(operation)
-	|| (bridge_domain_groups !=  nullptr && is_set(bridge_domain_groups->operation))
-	|| (flexible_xconnect_service_table !=  nullptr && is_set(flexible_xconnect_service_table->operation))
-	|| (g8032_rings !=  nullptr && is_set(g8032_rings->operation))
-	|| (pseudowire_classes !=  nullptr && is_set(pseudowire_classes->operation))
-	|| (redundancy !=  nullptr && is_set(redundancy->operation))
-	|| (xconnect_groups !=  nullptr && is_set(xconnect_groups->operation));
+	|| (bridge_domain_groups !=  nullptr && bridge_domain_groups->has_operation())
+	|| (flexible_xconnect_service_table !=  nullptr && flexible_xconnect_service_table->has_operation())
+	|| (g8032_rings !=  nullptr && g8032_rings->has_operation())
+	|| (pseudowire_classes !=  nullptr && pseudowire_classes->has_operation())
+	|| (redundancy !=  nullptr && redundancy->has_operation())
+	|| (xconnect_groups !=  nullptr && xconnect_groups->has_operation());
 }
 
 std::string L2Vpn::Database::get_segment_path() const
@@ -23817,7 +23817,7 @@ bool L2Vpn::AutoDiscovery::has_data() const
 bool L2Vpn::AutoDiscovery::has_operation() const
 {
     return is_set(operation)
-	|| (bgp_signaling !=  nullptr && is_set(bgp_signaling->operation));
+	|| (bgp_signaling !=  nullptr && bgp_signaling->has_operation());
 }
 
 std::string L2Vpn::AutoDiscovery::get_segment_path() const
@@ -24030,7 +24030,7 @@ bool L2Vpn::Utility::has_data() const
 bool L2Vpn::Utility::has_operation() const
 {
     return is_set(operation)
-	|| (logging !=  nullptr && is_set(logging->operation));
+	|| (logging !=  nullptr && logging->has_operation());
 }
 
 std::string L2Vpn::Utility::get_segment_path() const
@@ -24211,7 +24211,7 @@ bool L2Vpn::Snmp::Mib::MibInterface::has_data() const
 bool L2Vpn::Snmp::Mib::MibInterface::has_operation() const
 {
     return is_set(operation)
-	|| (format !=  nullptr && is_set(format->operation));
+	|| (format !=  nullptr && format->has_operation());
 }
 
 std::string L2Vpn::Snmp::Mib::MibInterface::get_segment_path() const
@@ -24397,8 +24397,8 @@ bool L2Vpn::Snmp::Mib::has_data() const
 bool L2Vpn::Snmp::Mib::has_operation() const
 {
     return is_set(operation)
-	|| (mib_interface !=  nullptr && is_set(mib_interface->operation))
-	|| (mib_pseudowire !=  nullptr && is_set(mib_pseudowire->operation));
+	|| (mib_interface !=  nullptr && mib_interface->has_operation())
+	|| (mib_pseudowire !=  nullptr && mib_pseudowire->has_operation());
 }
 
 std::string L2Vpn::Snmp::Mib::get_segment_path() const
@@ -24522,7 +24522,7 @@ bool L2Vpn::Snmp::has_data() const
 bool L2Vpn::Snmp::has_operation() const
 {
     return is_set(operation)
-	|| (mib !=  nullptr && is_set(mib->operation));
+	|| (mib !=  nullptr && mib->has_operation());
 }
 
 std::string L2Vpn::Snmp::get_segment_path() const
@@ -24687,13 +24687,13 @@ bool L2Vpn::has_operation() const
 	|| is_set(pw_status_disable.operation)
 	|| is_set(pwoam_refresh.operation)
 	|| is_set(tcn_propagation.operation)
-	|| (auto_discovery !=  nullptr && is_set(auto_discovery->operation))
-	|| (database !=  nullptr && is_set(database->operation))
-	|| (neighbor !=  nullptr && is_set(neighbor->operation))
-	|| (pbb !=  nullptr && is_set(pbb->operation))
-	|| (pw_routing !=  nullptr && is_set(pw_routing->operation))
-	|| (snmp !=  nullptr && is_set(snmp->operation))
-	|| (utility !=  nullptr && is_set(utility->operation));
+	|| (auto_discovery !=  nullptr && auto_discovery->has_operation())
+	|| (database !=  nullptr && database->has_operation())
+	|| (neighbor !=  nullptr && neighbor->has_operation())
+	|| (pbb !=  nullptr && pbb->has_operation())
+	|| (pw_routing !=  nullptr && pw_routing->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (utility !=  nullptr && utility->has_operation());
 }
 
 std::string L2Vpn::get_segment_path() const
@@ -24710,7 +24710,7 @@ EntityPath L2Vpn::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -25005,7 +25005,7 @@ EntityPath GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25097,7 +25097,7 @@ EntityPath GenericInterfaceLists::GenericInterface::Interfaces::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25191,7 +25191,7 @@ bool GenericInterfaceLists::GenericInterface::has_operation() const
     return is_set(operation)
 	|| is_set(generic_interface_list_name.operation)
 	|| is_set(enable.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string GenericInterfaceLists::GenericInterface::get_segment_path() const
@@ -25323,7 +25323,7 @@ EntityPath GenericInterfaceLists::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -25524,7 +25524,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25612,7 +25612,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25700,7 +25700,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25811,7 +25811,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25960,7 +25960,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26073,7 +26073,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::EvpnRou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26171,8 +26171,8 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::has_operation
     return is_set(operation)
 	|| is_set(enable.operation)
 	|| is_set(table_policy.operation)
-	|| (evpn_route_distinguisher !=  nullptr && is_set(evpn_route_distinguisher->operation))
-	|| (evpn_route_targets !=  nullptr && is_set(evpn_route_targets->operation));
+	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_operation())
+	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_operation());
 }
 
 std::string Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::get_segment_path() const
@@ -26189,7 +26189,7 @@ EntityPath Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevibgpAutoDiscovery::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26321,8 +26321,8 @@ bool Evpn::EvpnTables::Evpnevis::Evpnevi::has_operation() const
 	|| is_set(eviid.operation)
 	|| is_set(evpn_evi_cw_disable.operation)
 	|| is_set(evpnevi_description.operation)
-	|| (evi_load_balancing !=  nullptr && is_set(evi_load_balancing->operation))
-	|| (evpnevibgp_auto_discovery !=  nullptr && is_set(evpnevibgp_auto_discovery->operation));
+	|| (evi_load_balancing !=  nullptr && evi_load_balancing->has_operation())
+	|| (evpnevibgp_auto_discovery !=  nullptr && evpnevibgp_auto_discovery->has_operation());
 }
 
 std::string Evpn::EvpnTables::Evpnevis::Evpnevi::get_segment_path() const
@@ -26773,7 +26773,7 @@ bool Evpn::EvpnTables::EvpnbgpAutoDiscovery::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (evpn_route_distinguisher !=  nullptr && is_set(evpn_route_distinguisher->operation));
+	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_operation());
 }
 
 std::string Evpn::EvpnTables::EvpnbgpAutoDiscovery::get_segment_path() const
@@ -26899,7 +26899,7 @@ EntityPath Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27001,7 +27001,7 @@ EntityPath Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Ide
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27104,7 +27104,7 @@ EntityPath Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Man
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27179,7 +27179,7 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualSer
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (service_list !=  nullptr && is_set(service_list->operation));
+	|| (service_list !=  nullptr && service_list->has_operation());
 }
 
 std::string Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::get_segment_path() const
@@ -27196,7 +27196,7 @@ EntityPath Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Man
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27306,8 +27306,8 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::has_opera
 	|| is_set(es_import_route_target.operation)
 	|| is_set(force_single_homed.operation)
 	|| is_set(load_balancing_per_service.operation)
-	|| (identifier_type0 !=  nullptr && is_set(identifier_type0->operation))
-	|| (manual_service_carving !=  nullptr && is_set(manual_service_carving->operation));
+	|| (identifier_type0 !=  nullptr && identifier_type0->has_operation())
+	|| (manual_service_carving !=  nullptr && manual_service_carving->has_operation());
 }
 
 std::string Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::get_segment_path() const
@@ -27324,7 +27324,7 @@ EntityPath Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27468,8 +27468,8 @@ bool Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(mac_flush.operation)
-	|| (ethernet_segment !=  nullptr && is_set(ethernet_segment->operation))
-	|| (evpnac_timers !=  nullptr && is_set(evpnac_timers->operation));
+	|| (ethernet_segment !=  nullptr && ethernet_segment->has_operation())
+	|| (evpnac_timers !=  nullptr && evpnac_timers->has_operation());
 }
 
 std::string Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::get_segment_path() const
@@ -27731,11 +27731,11 @@ bool Evpn::EvpnTables::has_data() const
 bool Evpn::EvpnTables::has_operation() const
 {
     return is_set(operation)
-	|| (evpn_interfaces !=  nullptr && is_set(evpn_interfaces->operation))
-	|| (evpn_load_balancing !=  nullptr && is_set(evpn_load_balancing->operation))
-	|| (evpn_timers !=  nullptr && is_set(evpn_timers->operation))
-	|| (evpnbgp_auto_discovery !=  nullptr && is_set(evpnbgp_auto_discovery->operation))
-	|| (evpnevis !=  nullptr && is_set(evpnevis->operation));
+	|| (evpn_interfaces !=  nullptr && evpn_interfaces->has_operation())
+	|| (evpn_load_balancing !=  nullptr && evpn_load_balancing->has_operation())
+	|| (evpn_timers !=  nullptr && evpn_timers->has_operation())
+	|| (evpnbgp_auto_discovery !=  nullptr && evpnbgp_auto_discovery->has_operation())
+	|| (evpnevis !=  nullptr && evpnevis->has_operation());
 }
 
 std::string Evpn::EvpnTables::get_segment_path() const
@@ -27932,7 +27932,7 @@ bool Evpn::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (evpn_tables !=  nullptr && is_set(evpn_tables->operation));
+	|| (evpn_tables !=  nullptr && evpn_tables->has_operation());
 }
 
 std::string Evpn::get_segment_path() const
@@ -27949,7 +27949,7 @@ EntityPath Evpn::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -28018,149 +28018,149 @@ std::unique_ptr<Entity> Evpn::clone_ptr()
     return std::make_unique<Evpn>();
 }
 
-const Enum::Value FlowLabelTlvCodeEnum::Y_17 {4, "17"};
-const Enum::Value FlowLabelTlvCodeEnum::disable {8, "disable"};
+const Enum::YLeaf FlowLabelTlvCodeEnum::Y_17 {4, "17"};
+const Enum::YLeaf FlowLabelTlvCodeEnum::disable {8, "disable"};
 
-const Enum::Value BackupDisableEnum::never {0, "never"};
-const Enum::Value BackupDisableEnum::delay {1, "delay"};
+const Enum::YLeaf BackupDisableEnum::never {0, "never"};
+const Enum::YLeaf BackupDisableEnum::delay {1, "delay"};
 
-const Enum::Value BgpRouteTargetFormatEnum::none {0, "none"};
-const Enum::Value BgpRouteTargetFormatEnum::two_byte_as {1, "two-byte-as"};
-const Enum::Value BgpRouteTargetFormatEnum::four_byte_as {2, "four-byte-as"};
-const Enum::Value BgpRouteTargetFormatEnum::ipv4_address {3, "ipv4-address"};
+const Enum::YLeaf BgpRouteTargetFormatEnum::none {0, "none"};
+const Enum::YLeaf BgpRouteTargetFormatEnum::two_byte_as {1, "two-byte-as"};
+const Enum::YLeaf BgpRouteTargetFormatEnum::four_byte_as {2, "four-byte-as"};
+const Enum::YLeaf BgpRouteTargetFormatEnum::ipv4_address {3, "ipv4-address"};
 
-const Enum::Value LoadBalanceEnum::source_dest_mac {1, "source-dest-mac"};
-const Enum::Value LoadBalanceEnum::source_dest_ip {2, "source-dest-ip"};
-const Enum::Value LoadBalanceEnum::pseudowire_label {4, "pseudowire-label"};
+const Enum::YLeaf LoadBalanceEnum::source_dest_mac {1, "source-dest-mac"};
+const Enum::YLeaf LoadBalanceEnum::source_dest_ip {2, "source-dest-ip"};
+const Enum::YLeaf LoadBalanceEnum::pseudowire_label {4, "pseudowire-label"};
 
-const Enum::Value InterworkingEnum::ethernet {1, "ethernet"};
-const Enum::Value InterworkingEnum::ipv4 {3, "ipv4"};
+const Enum::YLeaf InterworkingEnum::ethernet {1, "ethernet"};
+const Enum::YLeaf InterworkingEnum::ipv4 {3, "ipv4"};
 
-const Enum::Value PwSwitchingPointTlvEnum::hide {2, "hide"};
+const Enum::YLeaf PwSwitchingPointTlvEnum::hide {2, "hide"};
 
-const Enum::Value MacAgingEnum::absolute {1, "absolute"};
-const Enum::Value MacAgingEnum::inactivity {2, "inactivity"};
+const Enum::YLeaf MacAgingEnum::absolute {1, "absolute"};
+const Enum::YLeaf MacAgingEnum::inactivity {2, "inactivity"};
 
-const Enum::Value L2Tpv3SequencingEnum::off {0, "off"};
-const Enum::Value L2Tpv3SequencingEnum::both {4, "both"};
+const Enum::YLeaf L2Tpv3SequencingEnum::off {0, "off"};
+const Enum::YLeaf L2Tpv3SequencingEnum::both {4, "both"};
 
-const Enum::Value ErpPort1Enum::port0 {0, "port0"};
-const Enum::Value ErpPort1Enum::port1 {1, "port1"};
+const Enum::YLeaf ErpPort1Enum::port0 {0, "port0"};
+const Enum::YLeaf ErpPort1Enum::port1 {1, "port1"};
 
-const Enum::Value InterfaceProfileEnum::snoop {1, "snoop"};
-const Enum::Value InterfaceProfileEnum::dhcp_protocol {2, "dhcp-protocol"};
+const Enum::YLeaf InterfaceProfileEnum::snoop {1, "snoop"};
+const Enum::YLeaf InterfaceProfileEnum::dhcp_protocol {2, "dhcp-protocol"};
 
-const Enum::Value L2EncapsulationEnum::vlan {4, "vlan"};
-const Enum::Value L2EncapsulationEnum::ethernet {5, "ethernet"};
+const Enum::YLeaf L2EncapsulationEnum::vlan {4, "vlan"};
+const Enum::YLeaf L2EncapsulationEnum::ethernet {5, "ethernet"};
 
-const Enum::Value InterfaceTrafficFloodEnum::traffic_flooding {0, "traffic-flooding"};
-const Enum::Value InterfaceTrafficFloodEnum::enable_flooding {1, "enable-flooding"};
-const Enum::Value InterfaceTrafficFloodEnum::disable_flooding {2, "disable-flooding"};
+const Enum::YLeaf InterfaceTrafficFloodEnum::traffic_flooding {0, "traffic-flooding"};
+const Enum::YLeaf InterfaceTrafficFloodEnum::enable_flooding {1, "enable-flooding"};
+const Enum::YLeaf InterfaceTrafficFloodEnum::disable_flooding {2, "disable-flooding"};
 
-const Enum::Value L2VpnLoggingEnum::enable {1, "enable"};
-const Enum::Value L2VpnLoggingEnum::disable {2, "disable"};
+const Enum::YLeaf L2VpnLoggingEnum::enable {1, "enable"};
+const Enum::YLeaf L2VpnLoggingEnum::disable {2, "disable"};
 
-const Enum::Value BgpRouteTargetRoleEnum::both {0, "both"};
-const Enum::Value BgpRouteTargetRoleEnum::import {1, "import"};
-const Enum::Value BgpRouteTargetRoleEnum::export_ {2, "export"};
+const Enum::YLeaf BgpRouteTargetRoleEnum::both {0, "both"};
+const Enum::YLeaf BgpRouteTargetRoleEnum::import {1, "import"};
+const Enum::YLeaf BgpRouteTargetRoleEnum::export_ {2, "export"};
 
-const Enum::Value ErpPortEnum::none {1, "none"};
-const Enum::Value ErpPortEnum::virtual_ {2, "virtual"};
-const Enum::Value ErpPortEnum::interface {3, "interface"};
+const Enum::YLeaf ErpPortEnum::none {1, "none"};
+const Enum::YLeaf ErpPortEnum::virtual_ {2, "virtual"};
+const Enum::YLeaf ErpPortEnum::interface {3, "interface"};
 
-const Enum::Value MacWithdrawBehaviorEnum::legacy {1, "legacy"};
-const Enum::Value MacWithdrawBehaviorEnum::optimized {2, "optimized"};
+const Enum::YLeaf MacWithdrawBehaviorEnum::legacy {1, "legacy"};
+const Enum::YLeaf MacWithdrawBehaviorEnum::optimized {2, "optimized"};
 
-const Enum::Value L2TpCookieSizeEnum::zero {0, "zero"};
-const Enum::Value L2TpCookieSizeEnum::four {4, "four"};
-const Enum::Value L2TpCookieSizeEnum::eight {8, "eight"};
+const Enum::YLeaf L2TpCookieSizeEnum::zero {0, "zero"};
+const Enum::YLeaf L2TpCookieSizeEnum::four {4, "four"};
+const Enum::YLeaf L2TpCookieSizeEnum::eight {8, "eight"};
 
-const Enum::Value StormControlEnum::unicast {1, "unicast"};
-const Enum::Value StormControlEnum::multicast {2, "multicast"};
-const Enum::Value StormControlEnum::broadcast {4, "broadcast"};
+const Enum::YLeaf StormControlEnum::unicast {1, "unicast"};
+const Enum::YLeaf StormControlEnum::multicast {2, "multicast"};
+const Enum::YLeaf StormControlEnum::broadcast {4, "broadcast"};
 
-const Enum::Value L2TpSignalingProtocolEnum::none {1, "none"};
-const Enum::Value L2TpSignalingProtocolEnum::l2tpv3 {2, "l2tpv3"};
+const Enum::YLeaf L2TpSignalingProtocolEnum::none {1, "none"};
+const Enum::YLeaf L2TpSignalingProtocolEnum::l2tpv3 {2, "l2tpv3"};
 
-const Enum::Value RplRoleEnum::owner {1, "owner"};
-const Enum::Value RplRoleEnum::neighbor {2, "neighbor"};
-const Enum::Value RplRoleEnum::next_neighbor {3, "next-neighbor"};
+const Enum::YLeaf RplRoleEnum::owner {1, "owner"};
+const Enum::YLeaf RplRoleEnum::neighbor {2, "neighbor"};
+const Enum::YLeaf RplRoleEnum::next_neighbor {3, "next-neighbor"};
 
-const Enum::Value MacLimitActionEnum::none {0, "none"};
-const Enum::Value MacLimitActionEnum::flood {1, "flood"};
-const Enum::Value MacLimitActionEnum::no_flood {2, "no-flood"};
-const Enum::Value MacLimitActionEnum::shutdown {3, "shutdown"};
+const Enum::YLeaf MacLimitActionEnum::none {0, "none"};
+const Enum::YLeaf MacLimitActionEnum::flood {1, "flood"};
+const Enum::YLeaf MacLimitActionEnum::no_flood {2, "no-flood"};
+const Enum::YLeaf MacLimitActionEnum::shutdown {3, "shutdown"};
 
-const Enum::Value TypeOfServiceModeEnum::none {0, "none"};
-const Enum::Value TypeOfServiceModeEnum::reflect {1, "reflect"};
+const Enum::YLeaf TypeOfServiceModeEnum::none {0, "none"};
+const Enum::YLeaf TypeOfServiceModeEnum::reflect {1, "reflect"};
 
-const Enum::Value MacNotificationEnum::no_notif {0, "no-notif"};
-const Enum::Value MacNotificationEnum::syslog {1, "syslog"};
-const Enum::Value MacNotificationEnum::trap {2, "trap"};
-const Enum::Value MacNotificationEnum::syslog_snmp {3, "syslog-snmp"};
+const Enum::YLeaf MacNotificationEnum::no_notif {0, "no-notif"};
+const Enum::YLeaf MacNotificationEnum::syslog {1, "syslog"};
+const Enum::YLeaf MacNotificationEnum::trap {2, "trap"};
+const Enum::YLeaf MacNotificationEnum::syslog_snmp {3, "syslog-snmp"};
 
-const Enum::Value L2VpnVerificationEnum::enable {1, "enable"};
-const Enum::Value L2VpnVerificationEnum::disable {2, "disable"};
+const Enum::YLeaf L2VpnVerificationEnum::enable {1, "enable"};
+const Enum::YLeaf L2VpnVerificationEnum::disable {2, "disable"};
 
-const Enum::Value LdpVplsIdEnum::two_byte_as {10, "two-byte-as"};
-const Enum::Value LdpVplsIdEnum::ipv4_address {266, "ipv4-address"};
+const Enum::YLeaf LdpVplsIdEnum::two_byte_as {10, "two-byte-as"};
+const Enum::YLeaf LdpVplsIdEnum::ipv4_address {266, "ipv4-address"};
 
-const Enum::Value MacLearnEnum::default_learning {0, "default-learning"};
-const Enum::Value MacLearnEnum::enable_learning {1, "enable-learning"};
-const Enum::Value MacLearnEnum::disable_learning {2, "disable-learning"};
+const Enum::YLeaf MacLearnEnum::default_learning {0, "default-learning"};
+const Enum::YLeaf MacLearnEnum::enable_learning {1, "enable-learning"};
+const Enum::YLeaf MacLearnEnum::disable_learning {2, "disable-learning"};
 
-const Enum::Value PortDownFlushEnum::port_down_flush {0, "port-down-flush"};
-const Enum::Value PortDownFlushEnum::enable_port_down_flush {1, "enable-port-down-flush"};
-const Enum::Value PortDownFlushEnum::disable_port_down_flush {2, "disable-port-down-flush"};
+const Enum::YLeaf PortDownFlushEnum::port_down_flush {0, "port-down-flush"};
+const Enum::YLeaf PortDownFlushEnum::enable_port_down_flush {1, "enable-port-down-flush"};
+const Enum::YLeaf PortDownFlushEnum::disable_port_down_flush {2, "disable-port-down-flush"};
 
-const Enum::Value L2VpnCapabilityModeEnum::high_mode {1, "high-mode"};
-const Enum::Value L2VpnCapabilityModeEnum::single_mode {2, "single-mode"};
+const Enum::YLeaf L2VpnCapabilityModeEnum::high_mode {1, "high-mode"};
+const Enum::YLeaf L2VpnCapabilityModeEnum::single_mode {2, "single-mode"};
 
-const Enum::Value MplsSignalingProtocolEnum::none {1, "none"};
-const Enum::Value MplsSignalingProtocolEnum::ldp {4, "ldp"};
+const Enum::YLeaf MplsSignalingProtocolEnum::none {1, "none"};
+const Enum::YLeaf MplsSignalingProtocolEnum::ldp {4, "ldp"};
 
-const Enum::Value BgpRouteTargetEnum::no_stitching {0, "no-stitching"};
-const Enum::Value BgpRouteTargetEnum::stitching {1, "stitching"};
+const Enum::YLeaf BgpRouteTargetEnum::no_stitching {0, "no-stitching"};
+const Enum::YLeaf BgpRouteTargetEnum::stitching {1, "stitching"};
 
-const Enum::Value ControlWordEnum::enable {1, "enable"};
-const Enum::Value ControlWordEnum::disable {2, "disable"};
+const Enum::YLeaf ControlWordEnum::enable {1, "enable"};
+const Enum::YLeaf ControlWordEnum::disable {2, "disable"};
 
-const Enum::Value PreferredPathEnum::te_tunnel {2, "te-tunnel"};
-const Enum::Value PreferredPathEnum::ip_tunnel {3, "ip-tunnel"};
-const Enum::Value PreferredPathEnum::tp_tunnel {4, "tp-tunnel"};
+const Enum::YLeaf PreferredPathEnum::te_tunnel {2, "te-tunnel"};
+const Enum::YLeaf PreferredPathEnum::ip_tunnel {3, "ip-tunnel"};
+const Enum::YLeaf PreferredPathEnum::tp_tunnel {4, "tp-tunnel"};
 
-const Enum::Value BridgeDomainTransportModeEnum::vlan_passthrough {3, "vlan-passthrough"};
+const Enum::YLeaf BridgeDomainTransportModeEnum::vlan_passthrough {3, "vlan-passthrough"};
 
-const Enum::Value FlowLabelLoadBalanceEnum::off {0, "off"};
-const Enum::Value FlowLabelLoadBalanceEnum::receive {1, "receive"};
-const Enum::Value FlowLabelLoadBalanceEnum::transmit {2, "transmit"};
-const Enum::Value FlowLabelLoadBalanceEnum::both {3, "both"};
+const Enum::YLeaf FlowLabelLoadBalanceEnum::off {0, "off"};
+const Enum::YLeaf FlowLabelLoadBalanceEnum::receive {1, "receive"};
+const Enum::YLeaf FlowLabelLoadBalanceEnum::transmit {2, "transmit"};
+const Enum::YLeaf FlowLabelLoadBalanceEnum::both {3, "both"};
 
-const Enum::Value BgpRouteDistinguisherEnum::auto_ {1, "auto"};
-const Enum::Value BgpRouteDistinguisherEnum::two_byte_as {2, "two-byte-as"};
-const Enum::Value BgpRouteDistinguisherEnum::four_byte_as {3, "four-byte-as"};
-const Enum::Value BgpRouteDistinguisherEnum::ipv4_address {4, "ipv4-address"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::auto_ {1, "auto"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::two_byte_as {2, "two-byte-as"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::four_byte_as {3, "four-byte-as"};
+const Enum::YLeaf BgpRouteDistinguisherEnum::ipv4_address {4, "ipv4-address"};
 
-const Enum::Value ErpapsEnum::interface {1, "interface"};
-const Enum::Value ErpapsEnum::bridge_domain {2, "bridge-domain"};
-const Enum::Value ErpapsEnum::xconnect {3, "xconnect"};
-const Enum::Value ErpapsEnum::none {4, "none"};
+const Enum::YLeaf ErpapsEnum::interface {1, "interface"};
+const Enum::YLeaf ErpapsEnum::bridge_domain {2, "bridge-domain"};
+const Enum::YLeaf ErpapsEnum::xconnect {3, "xconnect"};
+const Enum::YLeaf ErpapsEnum::none {4, "none"};
 
-const Enum::Value VccvVerificationEnum::none {0, "none"};
-const Enum::Value VccvVerificationEnum::lsp_ping {2, "lsp-ping"};
+const Enum::YLeaf VccvVerificationEnum::none {0, "none"};
+const Enum::YLeaf VccvVerificationEnum::lsp_ping {2, "lsp-ping"};
 
-const Enum::Value TransportModeEnum::ethernet {1, "ethernet"};
-const Enum::Value TransportModeEnum::vlan {2, "vlan"};
-const Enum::Value TransportModeEnum::vlan_passthrough {3, "vlan-passthrough"};
+const Enum::YLeaf TransportModeEnum::ethernet {1, "ethernet"};
+const Enum::YLeaf TransportModeEnum::vlan {2, "vlan"};
+const Enum::YLeaf TransportModeEnum::vlan_passthrough {3, "vlan-passthrough"};
 
-const Enum::Value MplsSequencingEnum::off {0, "off"};
-const Enum::Value MplsSequencingEnum::transmit {1, "transmit"};
-const Enum::Value MplsSequencingEnum::receive {2, "receive"};
-const Enum::Value MplsSequencingEnum::both {4, "both"};
+const Enum::YLeaf MplsSequencingEnum::off {0, "off"};
+const Enum::YLeaf MplsSequencingEnum::transmit {1, "transmit"};
+const Enum::YLeaf MplsSequencingEnum::receive {2, "receive"};
+const Enum::YLeaf MplsSequencingEnum::both {4, "both"};
 
-const Enum::Value MacSecureActionEnum::restrict {1, "restrict"};
-const Enum::Value MacSecureActionEnum::none {2, "none"};
-const Enum::Value MacSecureActionEnum::shutdown {3, "shutdown"};
+const Enum::YLeaf MacSecureActionEnum::restrict {1, "restrict"};
+const Enum::YLeaf MacSecureActionEnum::none {2, "none"};
+const Enum::YLeaf MacSecureActionEnum::shutdown {3, "shutdown"};
 
 
 }

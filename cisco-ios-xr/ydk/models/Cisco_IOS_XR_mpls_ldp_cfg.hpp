@@ -24,8 +24,9 @@ class MplsLdp : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class DefaultVrf : public Entity
     {
@@ -40,6 +41,7 @@ class MplsLdp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Afs : public Entity
@@ -57,6 +59,7 @@ class MplsLdp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Af : public Entity
             {
                 public:
@@ -70,9 +73,10 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value af_name; //type: MplsLdpafNameEnum
-                    Value enable; //type: empty
 
+
+                    YLeaf af_name; //type: MplsLdpafNameEnum
+                    YLeaf enable; //type: empty
 
                 class Label : public Entity
                 {
@@ -87,6 +91,7 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class Remote : public Entity
@@ -104,6 +109,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Accept : public Entity
                         {
                             public:
@@ -117,6 +123,7 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                             class PeerAcceptPolicies : public Entity
@@ -134,6 +141,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PeerAcceptPolicy : public Entity
                                 {
                                     public:
@@ -147,10 +155,11 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value lsr_id; //type: string
-                                        Value label_space_id; //type: uint32
-                                        Value prefix_acl_name; //type: string
 
+
+                                        YLeaf lsr_id; //type: string
+                                        YLeaf label_space_id; //type: uint32
+                                        YLeaf prefix_acl_name; //type: string
 
 
 
@@ -188,9 +197,10 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value implicit_null_override; //type: string
-                            Value default_route; //type: empty
 
+
+                            YLeaf implicit_null_override; //type: string
+                            YLeaf default_route; //type: empty
 
                         class Advertise : public Entity
                         {
@@ -205,8 +215,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value disable; //type: empty
 
+
+                                YLeaf disable; //type: empty
 
                             class PeerAdvertisePolicies : public Entity
                             {
@@ -223,6 +234,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PeerAdvertisePolicy : public Entity
                                 {
                                     public:
@@ -236,10 +248,11 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value lsr_id; //type: string
-                                        Value label_space_id; //type: uint32
-                                        Value prefix_acl_name; //type: string
 
+
+                                        YLeaf lsr_id; //type: string
+                                        YLeaf label_space_id; //type: uint32
+                                        YLeaf prefix_acl_name; //type: string
 
 
 
@@ -267,6 +280,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PrefixAdvertisePolicy : public Entity
                                 {
                                     public:
@@ -280,12 +294,12 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value prefix_acl_name; //type: string
-                                        Value advertise_type; //type: MplsLdpLabelAdvertiseEnum
-                                        Value peer_acl_name; //type: string
 
 
-                                        class MplsLdpLabelAdvertiseEnum;
+                                        YLeaf prefix_acl_name; //type: string
+                                        YLeaf advertise_type; //type: MplsLdpLabelAdvertiseEnum
+                                        YLeaf peer_acl_name; //type: string
+
 
 
                                 }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertisePolicies::PrefixAdvertisePolicy
@@ -310,12 +324,12 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value explicit_null_type; //type: MplsLdpExpNullEnum
-                                    Value prefix_acl_name; //type: string
-                                    Value peer_acl_name; //type: string
 
 
-                                    class MplsLdpExpNullEnum;
+                                    YLeaf explicit_null_type; //type: MplsLdpExpNullEnum
+                                    YLeaf prefix_acl_name; //type: string
+                                    YLeaf peer_acl_name; //type: string
+
 
 
                             }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull
@@ -336,6 +350,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Interface : public Entity
                                 {
                                     public:
@@ -349,8 +364,9 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value interface_name; //type: string
 
+
+                                        YLeaf interface_name; //type: string
 
 
 
@@ -385,11 +401,11 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value allocation_type; //type: MplsLdpLabelAllocationEnum
-                                Value prefix_acl_name; //type: string
 
 
-                                class MplsLdpLabelAllocationEnum;
+                                YLeaf allocation_type; //type: MplsLdpLabelAllocationEnum
+                                YLeaf prefix_acl_name; //type: string
+
 
 
                         }; // MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate
@@ -422,8 +438,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value transport_address; //type: string
 
+
+                        YLeaf transport_address; //type: string
 
                     class TargetedHelloAccept : public Entity
                     {
@@ -438,11 +455,11 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value accept_type; //type: MplsLdpTargetedAcceptEnum
-                            Value peer_acl_name; //type: string
 
 
-                            class MplsLdpTargetedAcceptEnum;
+                            YLeaf accept_type; //type: MplsLdpTargetedAcceptEnum
+                            YLeaf peer_acl_name; //type: string
+
 
 
                     }; // MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept
@@ -469,6 +486,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class AutoTunnelMesh : public Entity
                     {
                         public:
@@ -482,8 +500,9 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value group_all; //type: empty
 
+
+                            YLeaf group_all; //type: empty
 
                         class GroupIds : public Entity
                         {
@@ -500,6 +519,7 @@ class MplsLdp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class GroupId : public Entity
                             {
                                 public:
@@ -513,8 +533,9 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value mesh_group_id; //type: uint32
 
+
+                                    YLeaf mesh_group_id; //type: uint32
 
 
 
@@ -554,6 +575,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Addresses : public Entity
                     {
                         public:
@@ -569,6 +591,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Address : public Entity
                         {
                             public:
@@ -582,9 +605,10 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ip_address; //type: string
-                                Value targeted; //type: empty
 
+
+                                YLeaf ip_address; //type: string
+                                YLeaf targeted; //type: empty
 
 
 
@@ -618,6 +642,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Bgp : public Entity
                     {
                         public:
@@ -633,6 +658,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class As : public Entity
                         {
                             public:
@@ -646,9 +672,10 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value as_xx; //type: uint32
-                                Value as_yy; //type: uint32
 
+
+                                YLeaf as_xx; //type: uint32
+                                YLeaf as_yy; //type: uint32
 
 
 
@@ -668,11 +695,11 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value type; //type: MplsLdpAdvertiseBgpaclEnum
-                                Value peer_acl_name; //type: string
 
 
-                                class MplsLdpAdvertiseBgpaclEnum;
+                                YLeaf type; //type: MplsLdpAdvertiseBgpaclEnum
+                                YLeaf peer_acl_name; //type: string
+
 
 
                         }; // MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseTo
@@ -696,7 +723,6 @@ class MplsLdp : public Entity
                     std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Neighbor> neighbor;
                     std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol> redistribution_protocol;
                     std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering> traffic_engineering;
-                    class MplsLdpafNameEnum;
 
 
             }; // MplsLdp::DefaultVrf::Afs::Af
@@ -721,8 +747,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value router_id; //type: string
 
+
+                YLeaf router_id; //type: string
 
             class Session : public Entity
             {
@@ -739,6 +766,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Protection : public Entity
                 {
                     public:
@@ -752,12 +780,12 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protection_type; //type: MplsLdpSessionProtectionEnum
-                        Value peer_acl_name; //type: string
-                        Value duration; //type: uint32
 
 
-                        class MplsLdpSessionProtectionEnum;
+                        YLeaf protection_type; //type: MplsLdpSessionProtectionEnum
+                        YLeaf peer_acl_name; //type: string
+                        YLeaf duration; //type: uint32
+
 
 
                 }; // MplsLdp::DefaultVrf::Global::Session::Protection
@@ -776,11 +804,11 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value type; //type: MplsLdpDownstreamOnDemandEnum
-                        Value peer_acl_name; //type: string
 
 
-                        class MplsLdpDownstreamOnDemandEnum;
+                        YLeaf type; //type: MplsLdpDownstreamOnDemandEnum
+                        YLeaf peer_acl_name; //type: string
+
 
 
                 }; // MplsLdp::DefaultVrf::Global::Session::DownstreamOnDemand
@@ -806,8 +834,9 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value password; //type: string
 
+
+                    YLeaf password; //type: string
 
                 class LdpIds : public Entity
                 {
@@ -824,6 +853,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class LdpId : public Entity
                     {
                         public:
@@ -837,9 +867,10 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value lsr_id; //type: string
-                            Value label_space_id; //type: uint32
 
+
+                            YLeaf lsr_id; //type: string
+                            YLeaf label_space_id; //type: uint32
 
                         class Password : public Entity
                         {
@@ -854,11 +885,11 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value command_type; //type: MplsLdpNbrPasswordEnum
-                                Value password; //type: string
 
 
-                                class MplsLdpNbrPasswordEnum;
+                                YLeaf command_type; //type: MplsLdpNbrPasswordEnum
+                                YLeaf password; //type: string
+
 
 
                         }; // MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password
@@ -889,8 +920,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value tlv_compliance; //type: empty
 
+
+                        YLeaf tlv_compliance; //type: empty
 
                     class TransportConnection : public Entity
                     {
@@ -905,8 +937,9 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value max_wait; //type: uint32
 
+
+                            YLeaf max_wait; //type: uint32
 
                         class Prefer : public Entity
                         {
@@ -921,8 +954,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value ipv4; //type: empty
 
+
+                                YLeaf ipv4; //type: empty
 
 
 
@@ -963,6 +997,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class HelperPeer : public Entity
                 {
                     public:
@@ -976,8 +1011,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value maintain_on_local_reset; //type: string
 
+
+                        YLeaf maintain_on_local_reset; //type: string
 
 
 
@@ -1013,6 +1049,7 @@ class MplsLdp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -1026,9 +1063,10 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value enable; //type: empty
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf enable; //type: empty
 
                 class Afs : public Entity
                 {
@@ -1045,6 +1083,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Af : public Entity
                     {
                         public:
@@ -1058,9 +1097,10 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: MplsLdpafNameEnum
-                            Value enable; //type: empty
 
+
+                            YLeaf af_name; //type: MplsLdpafNameEnum
+                            YLeaf enable; //type: empty
 
                         class Discovery : public Entity
                         {
@@ -1077,6 +1117,7 @@ class MplsLdp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class TransportAddress : public Entity
                             {
                                 public:
@@ -1090,11 +1131,11 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value address_type; //type: MplsLdpTransportAddressEnum
-                                    Value address; //type: string
 
 
-                                    class MplsLdpTransportAddressEnum;
+                                    YLeaf address_type; //type: MplsLdpTransportAddressEnum
+                                    YLeaf address; //type: string
+
 
 
                             }; // MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress
@@ -1119,8 +1160,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value disable_auto_config; //type: empty
 
+
+                                YLeaf disable_auto_config; //type: empty
 
 
 
@@ -1140,8 +1182,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value disable; //type: empty
 
+
+                                YLeaf disable; //type: empty
 
 
 
@@ -1151,7 +1194,6 @@ class MplsLdp : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery> discovery;
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp> igp;
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp> mldp;
-                            class MplsLdpafNameEnum;
 
 
                     }; // MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af
@@ -1178,6 +1220,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Discovery : public Entity
                     {
                         public:
@@ -1191,8 +1234,9 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value disable_quick_start; //type: empty
 
+
+                            YLeaf disable_quick_start; //type: empty
 
                         class LinkHello : public Entity
                         {
@@ -1207,12 +1251,12 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value interval; //type: uint32
-                                Value dual_stack; //type: MplsLdpafNameEnum
-                                Value hold_time; //type: uint32
 
 
-                                class MplsLdpafNameEnum;
+                                YLeaf interval; //type: uint32
+                                YLeaf dual_stack; //type: MplsLdpafNameEnum
+                                YLeaf hold_time; //type: uint32
+
 
 
                         }; // MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHello
@@ -1239,6 +1283,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Sync : public Entity
                         {
                             public:
@@ -1252,6 +1297,7 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                             class Delay : public Entity
@@ -1269,6 +1315,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class OnSessionUp : public Entity
                                 {
                                     public:
@@ -1282,9 +1329,10 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value disable; //type: empty
-                                        Value timeout; //type: uint32
 
+
+                                        YLeaf disable; //type: empty
+                                        YLeaf timeout; //type: uint32
 
 
 
@@ -1352,6 +1400,7 @@ class MplsLdp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -1365,9 +1414,10 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf vrf_name; //type: string
+                YLeaf enable; //type: empty
 
             class Global : public Entity
             {
@@ -1382,8 +1432,9 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value router_id; //type: string
 
+
+                    YLeaf router_id; //type: string
 
                 class Session : public Entity
                 {
@@ -1400,6 +1451,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class DownstreamOnDemand : public Entity
                     {
                         public:
@@ -1413,11 +1465,11 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value type; //type: MplsLdpDownstreamOnDemandEnum
-                            Value peer_acl_name; //type: string
 
 
-                            class MplsLdpDownstreamOnDemandEnum;
+                            YLeaf type; //type: MplsLdpDownstreamOnDemandEnum
+                            YLeaf peer_acl_name; //type: string
+
 
 
                     }; // MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand
@@ -1442,8 +1494,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value password; //type: string
 
+
+                        YLeaf password; //type: string
 
                     class LdpIds : public Entity
                     {
@@ -1460,6 +1513,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class LdpId : public Entity
                         {
                             public:
@@ -1473,9 +1527,10 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value lsr_id; //type: string
-                                Value label_space_id; //type: uint32
 
+
+                                YLeaf lsr_id; //type: string
+                                YLeaf label_space_id; //type: uint32
 
                             class Password : public Entity
                             {
@@ -1490,11 +1545,11 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value command_type; //type: MplsLdpNbrPasswordEnum
-                                    Value password; //type: string
 
 
-                                    class MplsLdpNbrPasswordEnum;
+                                    YLeaf command_type; //type: MplsLdpNbrPasswordEnum
+                                    YLeaf password; //type: string
+
 
 
                             }; // MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password
@@ -1533,6 +1588,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class HelperPeer : public Entity
                     {
                         public:
@@ -1546,8 +1602,9 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value maintain_on_local_reset; //type: string
 
+
+                            YLeaf maintain_on_local_reset; //type: string
 
 
 
@@ -1583,6 +1640,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Af : public Entity
                 {
                     public:
@@ -1596,9 +1654,10 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af_name; //type: MplsLdpafNameEnum
-                        Value enable; //type: empty
 
+
+                        YLeaf af_name; //type: MplsLdpafNameEnum
+                        YLeaf enable; //type: empty
 
                     class Discovery : public Entity
                     {
@@ -1613,8 +1672,9 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value transport_address; //type: string
 
+
+                            YLeaf transport_address; //type: string
 
 
 
@@ -1636,6 +1696,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Remote : public Entity
                         {
                             public:
@@ -1649,6 +1710,7 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                             class Accept : public Entity
@@ -1666,6 +1728,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class PeerAcceptPolicies : public Entity
                                 {
                                     public:
@@ -1681,6 +1744,7 @@ class MplsLdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerAcceptPolicy : public Entity
                                     {
                                         public:
@@ -1694,8 +1758,9 @@ class MplsLdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value label_space_id; //type: uint32
 
+
+                                            YLeaf label_space_id; //type: uint32
 
                                         class PeerAcceptPolicyData : public Entity
                                         {
@@ -1710,8 +1775,9 @@ class MplsLdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_acl_name; //type: string
 
+
+                                                YLeaf prefix_acl_name; //type: string
 
 
 
@@ -1731,9 +1797,10 @@ class MplsLdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value lsr_id; //type: string
-                                                Value prefix_acl_name; //type: string
 
+
+                                                YLeaf lsr_id; //type: string
+                                                YLeaf prefix_acl_name; //type: string
 
 
 
@@ -1778,9 +1845,10 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value implicit_null_override; //type: string
-                                Value default_route; //type: empty
 
+
+                                YLeaf implicit_null_override; //type: string
+                                YLeaf default_route; //type: empty
 
                             class Advertise : public Entity
                             {
@@ -1795,8 +1863,9 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value disable; //type: empty
 
+
+                                    YLeaf disable; //type: empty
 
                                 class PeerAdvertisePolicies : public Entity
                                 {
@@ -1813,6 +1882,7 @@ class MplsLdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class PeerAdvertisePolicy : public Entity
                                     {
                                         public:
@@ -1826,8 +1896,9 @@ class MplsLdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value label_space_id; //type: uint32
 
+
+                                            YLeaf label_space_id; //type: uint32
 
                                         class PeerAdvertisePolicyData : public Entity
                                         {
@@ -1842,8 +1913,9 @@ class MplsLdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value prefix_acl_name; //type: string
 
+
+                                                YLeaf prefix_acl_name; //type: string
 
 
 
@@ -1863,9 +1935,10 @@ class MplsLdp : public Entity
                                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                                 void set_value(const std::string & value_path, std::string value) override;
                                                 std::map<std::string, Entity*> & get_children() override;
-                                                Value lsr_id; //type: string
-                                                Value prefix_acl_name; //type: string
 
+
+                                                YLeaf lsr_id; //type: string
+                                                YLeaf prefix_acl_name; //type: string
 
 
 
@@ -1900,6 +1973,7 @@ class MplsLdp : public Entity
                                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                                     class Interface : public Entity
                                     {
                                         public:
@@ -1913,8 +1987,9 @@ class MplsLdp : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value interface_name; //type: string
 
+
+                                            YLeaf interface_name; //type: string
 
 
 
@@ -1940,12 +2015,12 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value explicit_null_type; //type: MplsLdpExpNullEnum
-                                        Value prefix_acl_name; //type: string
-                                        Value peer_acl_name; //type: string
 
 
-                                        class MplsLdpExpNullEnum;
+                                        YLeaf explicit_null_type; //type: MplsLdpExpNullEnum
+                                        YLeaf prefix_acl_name; //type: string
+                                        YLeaf peer_acl_name; //type: string
+
 
 
                                 }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull
@@ -1972,11 +2047,11 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value allocation_type; //type: MplsLdpLabelAllocationEnum
-                                    Value prefix_acl_name; //type: string
 
 
-                                    class MplsLdpLabelAllocationEnum;
+                                    YLeaf allocation_type; //type: MplsLdpLabelAllocationEnum
+                                    YLeaf prefix_acl_name; //type: string
+
 
 
                             }; // MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate
@@ -1998,7 +2073,6 @@ class MplsLdp : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Discovery> discovery;
                         std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Afs::Af::Label> label;
-                        class MplsLdpafNameEnum;
 
 
                 }; // MplsLdp::Vrfs::Vrf::Afs::Af
@@ -2025,6 +2099,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -2038,9 +2113,10 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value enable; //type: empty
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf enable; //type: empty
 
                     class Afs : public Entity
                     {
@@ -2057,6 +2133,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Af : public Entity
                         {
                             public:
@@ -2070,9 +2147,10 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af_name; //type: MplsLdpafNameEnum
-                                Value enable; //type: empty
 
+
+                                YLeaf af_name; //type: MplsLdpafNameEnum
+                                YLeaf enable; //type: empty
 
                             class Discovery : public Entity
                             {
@@ -2089,6 +2167,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class TransportAddress : public Entity
                                 {
                                     public:
@@ -2102,11 +2181,11 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value address_type; //type: MplsLdpTransportAddressEnum
-                                        Value address; //type: string
 
 
-                                        class MplsLdpTransportAddressEnum;
+                                        YLeaf address_type; //type: MplsLdpTransportAddressEnum
+                                        YLeaf address; //type: string
+
 
 
                                 }; // MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::TransportAddress
@@ -2119,7 +2198,6 @@ class MplsLdp : public Entity
 
 
                                 std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery> discovery;
-                                class MplsLdpafNameEnum;
 
 
                         }; // MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af
@@ -2170,9 +2248,10 @@ class MplsLdp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value disable_implicit_ipv4; //type: empty
-            Value ltrace_buf_multiplier; //type: uint32
 
+
+            YLeaf disable_implicit_ipv4; //type: empty
+            YLeaf ltrace_buf_multiplier; //type: uint32
 
         class EntropyLabel : public Entity
         {
@@ -2187,8 +2266,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -2208,8 +2288,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value hold_time; //type: uint32
 
+
+                YLeaf hold_time; //type: uint32
 
             class BackoffTime : public Entity
             {
@@ -2224,9 +2305,10 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value initial_backoff_time; //type: uint32
-                    Value max_backoff_time; //type: uint32
 
+
+                    YLeaf initial_backoff_time; //type: uint32
+                    YLeaf max_backoff_time; //type: uint32
 
 
 
@@ -2254,6 +2336,7 @@ class MplsLdp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Sync : public Entity
             {
                 public:
@@ -2269,6 +2352,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Delay : public Entity
                 {
                     public:
@@ -2282,9 +2366,10 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value on_session_up; //type: uint32
-                        Value on_proc_restart; //type: uint32
 
+
+                        YLeaf on_session_up; //type: uint32
+                        YLeaf on_proc_restart; //type: uint32
 
 
 
@@ -2316,12 +2401,13 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value nsr; //type: empty
-                Value neighbor_changes; //type: empty
-                Value adjacency; //type: empty
-                Value session_protection; //type: empty
-                Value gr_session_changes; //type: empty
 
+
+                YLeaf nsr; //type: empty
+                YLeaf neighbor_changes; //type: empty
+                YLeaf adjacency; //type: empty
+                YLeaf session_protection; //type: empty
+                YLeaf gr_session_changes; //type: empty
 
 
 
@@ -2341,8 +2427,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value dscp; //type: uint32
 
+
+                YLeaf dscp; //type: uint32
 
 
 
@@ -2362,8 +2449,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -2383,10 +2471,11 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value reconnect_timeout; //type: uint32
-                Value enable; //type: empty
-                Value forwarding_hold_time; //type: uint32
 
+
+                YLeaf reconnect_timeout; //type: uint32
+                YLeaf enable; //type: empty
+                YLeaf forwarding_hold_time; //type: uint32
 
 
 
@@ -2406,9 +2495,10 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable_instance_tlv; //type: empty
-                Value disable_quick_start; //type: empty
 
+
+                YLeaf disable_instance_tlv; //type: empty
+                YLeaf disable_quick_start; //type: empty
 
             class LinkHello : public Entity
             {
@@ -2423,9 +2513,10 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value hold_time; //type: uint32
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf hold_time; //type: uint32
 
 
 
@@ -2445,9 +2536,10 @@ class MplsLdp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interval; //type: uint32
-                    Value hold_time; //type: uint32
 
+
+                    YLeaf interval; //type: uint32
+                    YLeaf hold_time; //type: uint32
 
 
 
@@ -2474,8 +2566,9 @@ class MplsLdp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
             class Vrfs : public Entity
             {
@@ -2492,6 +2585,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -2505,8 +2599,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
 
+
+                        YLeaf vrf_name; //type: string
 
                     class Afs : public Entity
                     {
@@ -2523,6 +2618,7 @@ class MplsLdp : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Af : public Entity
                         {
                             public:
@@ -2536,10 +2632,11 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value af_name; //type: MplsLdpafNameEnum
-                                Value enable; //type: empty
-                                Value mldp_rib_unicast_always; //type: empty
 
+
+                                YLeaf af_name; //type: MplsLdpafNameEnum
+                                YLeaf enable; //type: empty
+                                YLeaf mldp_rib_unicast_always; //type: empty
 
                             class MldpRecursiveFec : public Entity
                             {
@@ -2554,8 +2651,9 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable_mldp_recursive_fec; //type: empty
 
+
+                                    YLeaf enable_mldp_recursive_fec; //type: empty
 
 
 
@@ -2575,8 +2673,9 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable_mo_frr; //type: empty
 
+
+                                    YLeaf enable_mo_frr; //type: empty
 
 
 
@@ -2598,6 +2697,7 @@ class MplsLdp : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Signaling : public Entity
                                 {
                                     public:
@@ -2611,9 +2711,10 @@ class MplsLdp : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value forward_delay; //type: uint32
-                                        Value delete_delay; //type: uint32
 
+
+                                        YLeaf forward_delay; //type: uint32
+                                        YLeaf delete_delay; //type: uint32
 
 
 
@@ -2639,8 +2740,9 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value enable_csc; //type: empty
 
+
+                                    YLeaf enable_csc; //type: empty
 
 
 
@@ -2651,7 +2753,6 @@ class MplsLdp : public Entity
                                 std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak> make_before_break;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec> mldp_recursive_fec;
                                 std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr> mo_frr;
-                                class MplsLdpafNameEnum;
 
 
                         }; // MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af
@@ -2690,6 +2791,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Afs : public Entity
                 {
                     public:
@@ -2705,6 +2807,7 @@ class MplsLdp : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Af : public Entity
                     {
                         public:
@@ -2718,10 +2821,11 @@ class MplsLdp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: MplsLdpafNameEnum
-                            Value enable; //type: empty
-                            Value mldp_rib_unicast_always; //type: empty
 
+
+                            YLeaf af_name; //type: MplsLdpafNameEnum
+                            YLeaf enable; //type: empty
+                            YLeaf mldp_rib_unicast_always; //type: empty
 
                         class MldpRecursiveFec : public Entity
                         {
@@ -2736,8 +2840,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable_mldp_recursive_fec; //type: empty
 
+
+                                YLeaf enable_mldp_recursive_fec; //type: empty
 
 
 
@@ -2757,8 +2862,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable_mo_frr; //type: empty
 
+
+                                YLeaf enable_mo_frr; //type: empty
 
 
 
@@ -2780,6 +2886,7 @@ class MplsLdp : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Signaling : public Entity
                             {
                                 public:
@@ -2793,9 +2900,10 @@ class MplsLdp : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value forward_delay; //type: uint32
-                                    Value delete_delay; //type: uint32
 
+
+                                    YLeaf forward_delay; //type: uint32
+                                    YLeaf delete_delay; //type: uint32
 
 
 
@@ -2821,8 +2929,9 @@ class MplsLdp : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value enable_csc; //type: empty
 
+
+                                YLeaf enable_csc; //type: empty
 
 
 
@@ -2833,7 +2942,6 @@ class MplsLdp : public Entity
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak> make_before_break;
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec> mldp_recursive_fec;
                             std::unique_ptr<Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr> mo_frr;
-                            class MplsLdpafNameEnum;
 
 
                     }; // MplsLdp::Global::Mldp::DefaultVrf::Afs::Af
@@ -2866,6 +2974,7 @@ class MplsLdp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Logging : public Entity
                 {
                     public:
@@ -2879,8 +2988,9 @@ class MplsLdp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value notifications; //type: empty
 
+
+                        YLeaf notifications; //type: empty
 
 
 
@@ -2926,84 +3036,84 @@ class MplsLdp : public Entity
 class MplsLdpAdvertiseBgpaclEnum : public Enum
 {
     public:
-        static const Enum::Value peer_acl;
+        static const Enum::YLeaf peer_acl;
 
 };
 
 class MplsLdpLabelAdvertiseEnum : public Enum
 {
     public:
-        static const Enum::Value for_;
-        static const Enum::Value for_to;
+        static const Enum::YLeaf for_;
+        static const Enum::YLeaf for_to;
 
 };
 
 class MplsLdpLabelAllocationEnum : public Enum
 {
     public:
-        static const Enum::Value acl;
-        static const Enum::Value host;
+        static const Enum::YLeaf acl;
+        static const Enum::YLeaf host;
 
 };
 
 class MplsLdpTargetedAcceptEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value from;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf from;
 
 };
 
 class MplsLdpNbrPasswordEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value specified;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf specified;
 
 };
 
 class MplsLdpDownstreamOnDemandEnum : public Enum
 {
     public:
-        static const Enum::Value peer_acl;
+        static const Enum::YLeaf peer_acl;
 
 };
 
 class MplsLdpExpNullEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value for_;
-        static const Enum::Value to;
-        static const Enum::Value for_to;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf for_;
+        static const Enum::YLeaf to;
+        static const Enum::YLeaf for_to;
 
 };
 
 class MplsLdpafNameEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class MplsLdpTransportAddressEnum : public Enum
 {
     public:
-        static const Enum::Value interface;
-        static const Enum::Value address;
+        static const Enum::YLeaf interface;
+        static const Enum::YLeaf address;
 
 };
 
 class MplsLdpSessionProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value for_;
-        static const Enum::Value all_with_duration;
-        static const Enum::Value for_with_duration;
-        static const Enum::Value all_with_forever;
-        static const Enum::Value for_with_forever;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf for_;
+        static const Enum::YLeaf all_with_duration;
+        static const Enum::YLeaf for_with_duration;
+        static const Enum::YLeaf all_with_forever;
+        static const Enum::YLeaf for_with_forever;
 
 };
 

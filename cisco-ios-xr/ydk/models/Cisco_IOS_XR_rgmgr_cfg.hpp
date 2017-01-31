@@ -24,8 +24,9 @@ class RedundancyGroupManager : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
 
+
+        YLeaf enable; //type: empty
 
     class Aps : public Entity
     {
@@ -42,6 +43,7 @@ class RedundancyGroupManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DefaultRedundancyGroup : public Entity
         {
             public:
@@ -55,9 +57,10 @@ class RedundancyGroupManager : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value next_hop_address; //type: string
-                Value backup_interface_name; //type: string
 
+
+                YLeaf next_hop_address; //type: string
+                YLeaf backup_interface_name; //type: string
 
 
 
@@ -79,6 +82,7 @@ class RedundancyGroupManager : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Group : public Entity
             {
                 public:
@@ -92,8 +96,9 @@ class RedundancyGroupManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value group_id; //type: uint32
 
+
+                    YLeaf group_id; //type: uint32
 
                 class Controllers : public Entity
                 {
@@ -110,6 +115,7 @@ class RedundancyGroupManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Controller : public Entity
                     {
                         public:
@@ -123,10 +129,11 @@ class RedundancyGroupManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value controller_name; //type: string
-                            Value next_hop_address; //type: string
-                            Value backup_interface_name; //type: string
 
+
+                            YLeaf controller_name; //type: string
+                            YLeaf next_hop_address; //type: string
+                            YLeaf backup_interface_name; //type: string
 
 
 
@@ -173,6 +180,7 @@ class RedundancyGroupManager : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class IccpGroups : public Entity
         {
             public:
@@ -188,6 +196,7 @@ class RedundancyGroupManager : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class IccpGroup : public Entity
             {
                 public:
@@ -201,10 +210,11 @@ class RedundancyGroupManager : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value group_number; //type: uint32
-                    Value isolation_recovery_delay; //type: uint32
-                    Value mode; //type: IccpModeEnum
 
+
+                    YLeaf group_number; //type: uint32
+                    YLeaf isolation_recovery_delay; //type: uint32
+                    YLeaf mode; //type: IccpModeEnum
 
                 class Backbones : public Entity
                 {
@@ -221,6 +231,7 @@ class RedundancyGroupManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Backbone : public Entity
                     {
                         public:
@@ -234,8 +245,9 @@ class RedundancyGroupManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value backbone_name; //type: string
 
+
+                            YLeaf backbone_name; //type: string
 
 
 
@@ -263,6 +275,7 @@ class RedundancyGroupManager : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Member : public Entity
                     {
                         public:
@@ -276,8 +289,9 @@ class RedundancyGroupManager : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value neighbor_address; //type: string
 
+
+                            YLeaf neighbor_address; //type: string
 
 
 
@@ -303,8 +317,9 @@ class RedundancyGroupManager : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value system_mac; //type: string
 
+
+                        YLeaf system_mac; //type: string
 
 
 
@@ -314,7 +329,6 @@ class RedundancyGroupManager : public Entity
                     std::unique_ptr<Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Backbones> backbones;
                     std::unique_ptr<Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::Members> members;
                     std::unique_ptr<Cisco_IOS_XR_rgmgr_cfg::RedundancyGroupManager::Iccp::IccpGroups::IccpGroup::NvSatellite> nv_satellite;
-                    class IccpModeEnum;
 
 
             }; // RedundancyGroupManager::Iccp::IccpGroups::IccpGroup
@@ -342,7 +356,7 @@ class RedundancyGroupManager : public Entity
 class IccpModeEnum : public Enum
 {
     public:
-        static const Enum::Value singleton;
+        static const Enum::YLeaf singleton;
 
 };
 

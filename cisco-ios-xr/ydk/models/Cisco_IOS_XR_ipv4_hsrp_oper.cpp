@@ -46,7 +46,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::ResignSentTime::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -134,7 +134,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::ResignReceivedTime::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -222,7 +222,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::CoupSentTime::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -310,7 +310,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::CoupReceivedTime::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -437,7 +437,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::Statistics::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -587,7 +587,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::GlobalAddress::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -670,7 +670,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -751,7 +751,7 @@ bool Hsrp::Ipv4::Groups::Group::StateChangeHistory::has_operation() const
 	|| is_set(new_state.operation)
 	|| is_set(old_state.operation)
 	|| is_set(reason.operation)
-	|| (time !=  nullptr && is_set(time->operation));
+	|| (time !=  nullptr && time->has_operation());
 }
 
 std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_segment_path() const
@@ -768,7 +768,7 @@ EntityPath Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -953,7 +953,7 @@ bool Hsrp::Ipv4::Groups::Group::has_data() const
         if(state_change_history[index]->has_data())
             return true;
     }
-    for (auto const & leaf : secondary_address.getValues())
+    for (auto const & leaf : secondary_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1041,7 +1041,7 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
         if(state_change_history[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : secondary_address.getValues())
+    for (auto const & leaf : secondary_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1092,6 +1092,7 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
 	|| is_set(redirects_disabled.operation)
 	|| is_set(reload_delay_time.operation)
 	|| is_set(router_priority.operation)
+	|| is_set(secondary_address.operation)
 	|| is_set(session_name.operation)
 	|| is_set(slaves.operation)
 	|| is_set(standby_ip_address.operation)
@@ -1111,11 +1112,11 @@ bool Hsrp::Ipv4::Groups::Group::has_operation() const
 	|| is_set(virtual_linklocal_ipv6_address.operation)
 	|| is_set(virtual_mac_address.operation)
 	|| is_set(virtual_mac_address_state.operation)
-	|| (coup_received_time !=  nullptr && is_set(coup_received_time->operation))
-	|| (coup_sent_time !=  nullptr && is_set(coup_sent_time->operation))
-	|| (resign_received_time !=  nullptr && is_set(resign_received_time->operation))
-	|| (resign_sent_time !=  nullptr && is_set(resign_sent_time->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (coup_received_time !=  nullptr && coup_received_time->has_operation())
+	|| (coup_sent_time !=  nullptr && coup_sent_time->has_operation())
+	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
+	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Hsrp::Ipv4::Groups::Group::get_segment_path() const
@@ -2084,7 +2085,7 @@ EntityPath Hsrp::Ipv4::Interfaces::Interface::Statistics::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2200,7 +2201,7 @@ bool Hsrp::Ipv4::Interfaces::Interface::has_operation() const
 	|| is_set(interface_name.operation)
 	|| is_set(interface.operation)
 	|| is_set(use_bia_flag.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Hsrp::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -2434,9 +2435,9 @@ bool Hsrp::Ipv4::has_data() const
 bool Hsrp::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (groups !=  nullptr && is_set(groups->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (tracked_interfaces !=  nullptr && is_set(tracked_interfaces->operation));
+	|| (groups !=  nullptr && groups->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation());
 }
 
 std::string Hsrp::Ipv4::get_segment_path() const
@@ -2600,7 +2601,7 @@ EntityPath Hsrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3204,7 +3205,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::ResignSentTime::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3292,7 +3293,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::ResignReceivedTime::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3380,7 +3381,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::CoupSentTime::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3468,7 +3469,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::CoupReceivedTime::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3595,7 +3596,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::Statistics::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3745,7 +3746,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::GlobalAddress::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3828,7 +3829,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3909,7 +3910,7 @@ bool Hsrp::Ipv6::Groups::Group::StateChangeHistory::has_operation() const
 	|| is_set(new_state.operation)
 	|| is_set(old_state.operation)
 	|| is_set(reason.operation)
-	|| (time !=  nullptr && is_set(time->operation));
+	|| (time !=  nullptr && time->has_operation());
 }
 
 std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_segment_path() const
@@ -3926,7 +3927,7 @@ EntityPath Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4111,7 +4112,7 @@ bool Hsrp::Ipv6::Groups::Group::has_data() const
         if(state_change_history[index]->has_data())
             return true;
     }
-    for (auto const & leaf : secondary_address.getValues())
+    for (auto const & leaf : secondary_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4199,7 +4200,7 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
         if(state_change_history[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : secondary_address.getValues())
+    for (auto const & leaf : secondary_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4250,6 +4251,7 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
 	|| is_set(redirects_disabled.operation)
 	|| is_set(reload_delay_time.operation)
 	|| is_set(router_priority.operation)
+	|| is_set(secondary_address.operation)
 	|| is_set(session_name.operation)
 	|| is_set(slaves.operation)
 	|| is_set(standby_ip_address.operation)
@@ -4269,11 +4271,11 @@ bool Hsrp::Ipv6::Groups::Group::has_operation() const
 	|| is_set(virtual_linklocal_ipv6_address.operation)
 	|| is_set(virtual_mac_address.operation)
 	|| is_set(virtual_mac_address_state.operation)
-	|| (coup_received_time !=  nullptr && is_set(coup_received_time->operation))
-	|| (coup_sent_time !=  nullptr && is_set(coup_sent_time->operation))
-	|| (resign_received_time !=  nullptr && is_set(resign_received_time->operation))
-	|| (resign_sent_time !=  nullptr && is_set(resign_sent_time->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (coup_received_time !=  nullptr && coup_received_time->has_operation())
+	|| (coup_sent_time !=  nullptr && coup_sent_time->has_operation())
+	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
+	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Hsrp::Ipv6::Groups::Group::get_segment_path() const
@@ -4990,7 +4992,7 @@ EntityPath Hsrp::Ipv6::Interfaces::Interface::Statistics::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5106,7 +5108,7 @@ bool Hsrp::Ipv6::Interfaces::Interface::has_operation() const
 	|| is_set(interface_name.operation)
 	|| is_set(interface.operation)
 	|| is_set(use_bia_flag.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Hsrp::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -5340,9 +5342,9 @@ bool Hsrp::Ipv6::has_data() const
 bool Hsrp::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (groups !=  nullptr && is_set(groups->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (tracked_interfaces !=  nullptr && is_set(tracked_interfaces->operation));
+	|| (groups !=  nullptr && groups->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (tracked_interfaces !=  nullptr && tracked_interfaces->has_operation());
 }
 
 std::string Hsrp::Ipv6::get_segment_path() const
@@ -5506,7 +5508,7 @@ EntityPath Hsrp::BfdSessions::BfdSession::Group::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6445,11 +6447,11 @@ bool Hsrp::has_data() const
 bool Hsrp::has_operation() const
 {
     return is_set(operation)
-	|| (bfd_sessions !=  nullptr && is_set(bfd_sessions->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (mgo_sessions !=  nullptr && is_set(mgo_sessions->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (bfd_sessions !=  nullptr && bfd_sessions->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (mgo_sessions !=  nullptr && mgo_sessions->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Hsrp::get_segment_path() const
@@ -6466,7 +6468,7 @@ EntityPath Hsrp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6622,53 +6624,53 @@ std::unique_ptr<Entity> Hsrp::clone_ptr()
     return std::make_unique<Hsrp>();
 }
 
-const Enum::Value HsrpVmacStateEnum::stored {0, "stored"};
-const Enum::Value HsrpVmacStateEnum::reserved {1, "reserved"};
-const Enum::Value HsrpVmacStateEnum::active {2, "active"};
-const Enum::Value HsrpVmacStateEnum::reserving {3, "reserving"};
+const Enum::YLeaf HsrpVmacStateEnum::stored {0, "stored"};
+const Enum::YLeaf HsrpVmacStateEnum::reserved {1, "reserved"};
+const Enum::YLeaf HsrpVmacStateEnum::active {2, "active"};
+const Enum::YLeaf HsrpVmacStateEnum::reserving {3, "reserving"};
 
-const Enum::Value StandbyGrpStateEnum::state_initial {1, "state-initial"};
-const Enum::Value StandbyGrpStateEnum::state_learn {2, "state-learn"};
-const Enum::Value StandbyGrpStateEnum::state_listen {3, "state-listen"};
-const Enum::Value StandbyGrpStateEnum::state_speak {4, "state-speak"};
-const Enum::Value StandbyGrpStateEnum::state_standby {5, "state-standby"};
-const Enum::Value StandbyGrpStateEnum::state_active {6, "state-active"};
+const Enum::YLeaf StandbyGrpStateEnum::state_initial {1, "state-initial"};
+const Enum::YLeaf StandbyGrpStateEnum::state_learn {2, "state-learn"};
+const Enum::YLeaf StandbyGrpStateEnum::state_listen {3, "state-listen"};
+const Enum::YLeaf StandbyGrpStateEnum::state_speak {4, "state-speak"};
+const Enum::YLeaf StandbyGrpStateEnum::state_standby {5, "state-standby"};
+const Enum::YLeaf StandbyGrpStateEnum::state_active {6, "state-active"};
 
-const Enum::Value HsrpStateChangeReasonEnum::state_change_bfd_down {0, "state-change-bfd-down"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_vip_learnt {1, "state-change-vip-learnt"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_interface_ip {2, "state-change-interface-ip"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_delay_timer {3, "state-change-delay-timer"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_startup {4, "state-change-startup"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_shutdown {5, "state-change-shutdown"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_interface_up {6, "state-change-interface-up"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_interface_down {7, "state-change-interface-down"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_active_timer {8, "state-change-active-timer"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_standby_timer {9, "state-change-standby-timer"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_resign {10, "state-change-resign"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_coup {11, "state-change-coup"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_higher_priority_speak {12, "state-change-higher-priority-speak"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_higher_priority_standby {13, "state-change-higher-priority-standby"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_lower_priority_standby {14, "state-change-lower-priority-standby"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_higher_priority_active {15, "state-change-higher-priority-active"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_lower_priority_active {16, "state-change-lower-priority-active"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_virtual_ip_configured {17, "state-change-virtual-ip-configured"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_virtual_ip_lost {18, "state-change-virtual-ip-lost"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_recovered_from_checkpoint {19, "state-change-recovered-from-checkpoint"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_mac_update {20, "state-change-mac-update"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_admin {21, "state-change-admin"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_parent {22, "state-change-parent"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_chkpt_update {23, "state-change-chkpt-update"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_issu_resync {24, "state-change-issu-resync"};
-const Enum::Value HsrpStateChangeReasonEnum::state_change_max {25, "state-change-max"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_bfd_down {0, "state-change-bfd-down"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_vip_learnt {1, "state-change-vip-learnt"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_interface_ip {2, "state-change-interface-ip"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_delay_timer {3, "state-change-delay-timer"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_startup {4, "state-change-startup"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_shutdown {5, "state-change-shutdown"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_interface_up {6, "state-change-interface-up"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_interface_down {7, "state-change-interface-down"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_active_timer {8, "state-change-active-timer"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_standby_timer {9, "state-change-standby-timer"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_resign {10, "state-change-resign"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_coup {11, "state-change-coup"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_higher_priority_speak {12, "state-change-higher-priority-speak"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_higher_priority_standby {13, "state-change-higher-priority-standby"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_lower_priority_standby {14, "state-change-lower-priority-standby"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_higher_priority_active {15, "state-change-higher-priority-active"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_lower_priority_active {16, "state-change-lower-priority-active"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_virtual_ip_configured {17, "state-change-virtual-ip-configured"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_virtual_ip_lost {18, "state-change-virtual-ip-lost"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_recovered_from_checkpoint {19, "state-change-recovered-from-checkpoint"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_mac_update {20, "state-change-mac-update"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_admin {21, "state-change-admin"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_parent {22, "state-change-parent"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_chkpt_update {23, "state-change-chkpt-update"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_issu_resync {24, "state-change-issu-resync"};
+const Enum::YLeaf HsrpStateChangeReasonEnum::state_change_max {25, "state-change-max"};
 
-const Enum::Value HsrpBAfEnum::ipv4 {0, "ipv4"};
-const Enum::Value HsrpBAfEnum::ipv6 {1, "ipv6"};
-const Enum::Value HsrpBAfEnum::count {2, "count"};
+const Enum::YLeaf HsrpBAfEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf HsrpBAfEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf HsrpBAfEnum::count {2, "count"};
 
-const Enum::Value HsrpBfdSessionStateEnum::bfd_state_none {0, "bfd-state-none"};
-const Enum::Value HsrpBfdSessionStateEnum::bfd_state_inactive {1, "bfd-state-inactive"};
-const Enum::Value HsrpBfdSessionStateEnum::bfd_state_up {2, "bfd-state-up"};
-const Enum::Value HsrpBfdSessionStateEnum::bfd_state_down {3, "bfd-state-down"};
+const Enum::YLeaf HsrpBfdSessionStateEnum::bfd_state_none {0, "bfd-state-none"};
+const Enum::YLeaf HsrpBfdSessionStateEnum::bfd_state_inactive {1, "bfd-state-inactive"};
+const Enum::YLeaf HsrpBfdSessionStateEnum::bfd_state_up {2, "bfd-state-up"};
+const Enum::YLeaf HsrpBfdSessionStateEnum::bfd_state_down {3, "bfd-state-down"};
 
 
 }

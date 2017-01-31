@@ -14,23 +14,23 @@ namespace openconfig_bgp_policy {
 class BgpNextHopTypeEnum : public Enum
 {
     public:
-        static const Enum::Value SELF;
+        static const Enum::YLeaf SELF;
 
 };
 
 class BgpSetMedTypeEnum : public Enum
 {
     public:
-        static const Enum::Value IGP;
+        static const Enum::YLeaf IGP;
 
 };
 
 class BgpSetCommunityOptionTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ADD;
-        static const Enum::Value REMOVE;
-        static const Enum::Value REPLACE;
+        static const Enum::YLeaf ADD;
+        static const Enum::YLeaf REMOVE;
+        static const Enum::YLeaf REPLACE;
 
 };
 

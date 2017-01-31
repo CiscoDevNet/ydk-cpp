@@ -46,7 +46,7 @@ EntityPath Lacp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -97,44 +97,44 @@ std::unique_ptr<Entity> Lacp::clone_ptr()
     return std::make_unique<Lacp>();
 }
 
-const Enum::Value BundleMaximumActiveLinksModeEnum::default_ {0, "default"};
-const Enum::Value BundleMaximumActiveLinksModeEnum::hot_standby {1, "hot-standby"};
+const Enum::YLeaf BundleMaximumActiveLinksModeEnum::default_ {0, "default"};
+const Enum::YLeaf BundleMaximumActiveLinksModeEnum::hot_standby {1, "hot-standby"};
 
-const Enum::Value BundleCiscoExtTypesEnum::lon_signaling_off {0, "lon-signaling-off"};
-const Enum::Value BundleCiscoExtTypesEnum::lon_signaling_on {1, "lon-signaling-on"};
+const Enum::YLeaf BundleCiscoExtTypesEnum::lon_signaling_off {0, "lon-signaling-off"};
+const Enum::YLeaf BundleCiscoExtTypesEnum::lon_signaling_on {1, "lon-signaling-on"};
 
-const Enum::Value BundleModeEnum::on {0, "on"};
-const Enum::Value BundleModeEnum::active {1, "active"};
-const Enum::Value BundleModeEnum::passive {2, "passive"};
+const Enum::YLeaf BundleModeEnum::on {0, "on"};
+const Enum::YLeaf BundleModeEnum::active {1, "active"};
+const Enum::YLeaf BundleModeEnum::passive {2, "passive"};
 
-const Enum::Value BundleLoadBalanceEnum::default_ {0, "default"};
-const Enum::Value BundleLoadBalanceEnum::efp_auto {1, "efp-auto"};
-const Enum::Value BundleLoadBalanceEnum::efp_value {2, "efp-value"};
-const Enum::Value BundleLoadBalanceEnum::source_ip {3, "source-ip"};
-const Enum::Value BundleLoadBalanceEnum::destination_ip {4, "destination-ip"};
+const Enum::YLeaf BundleLoadBalanceEnum::default_ {0, "default"};
+const Enum::YLeaf BundleLoadBalanceEnum::efp_auto {1, "efp-auto"};
+const Enum::YLeaf BundleLoadBalanceEnum::efp_value {2, "efp-value"};
+const Enum::YLeaf BundleLoadBalanceEnum::source_ip {3, "source-ip"};
+const Enum::YLeaf BundleLoadBalanceEnum::destination_ip {4, "destination-ip"};
 
-const Enum::Value ChurnLoggingEnum::actor {1, "actor"};
-const Enum::Value ChurnLoggingEnum::partner {2, "partner"};
-const Enum::Value ChurnLoggingEnum::both {3, "both"};
+const Enum::YLeaf ChurnLoggingEnum::actor {1, "actor"};
+const Enum::YLeaf ChurnLoggingEnum::partner {2, "partner"};
+const Enum::YLeaf ChurnLoggingEnum::both {3, "both"};
 
-const Enum::Value MlacpSwitchoverEnum::brute_force {1, "brute-force"};
-const Enum::Value MlacpSwitchoverEnum::revertive {2, "revertive"};
+const Enum::YLeaf MlacpSwitchoverEnum::brute_force {1, "brute-force"};
+const Enum::YLeaf MlacpSwitchoverEnum::revertive {2, "revertive"};
 
-const Enum::Value MlacpMaximizeParameterEnum::links {1, "links"};
-const Enum::Value MlacpMaximizeParameterEnum::bandwidth {2, "bandwidth"};
+const Enum::YLeaf MlacpMaximizeParameterEnum::links {1, "links"};
+const Enum::YLeaf MlacpMaximizeParameterEnum::bandwidth {2, "bandwidth"};
 
-const Enum::Value BfdModeEnum::no_cfg {0, "no-cfg"};
-const Enum::Value BfdModeEnum::cisco {1, "cisco"};
-const Enum::Value BfdModeEnum::ietf {2, "ietf"};
+const Enum::YLeaf BfdModeEnum::no_cfg {0, "no-cfg"};
+const Enum::YLeaf BfdModeEnum::cisco {1, "cisco"};
+const Enum::YLeaf BfdModeEnum::ietf {2, "ietf"};
 
-const Enum::Value PeriodShortEnumEnum::true_ {1, "true"};
+const Enum::YLeaf PeriodShortEnumEnum::true_ {1, "true"};
 
-const Enum::Value BundlePeriodEnum::true_ {1, "true"};
+const Enum::YLeaf BundlePeriodEnum::true_ {1, "true"};
 
-const Enum::Value BundlePortActivityEnum::on {1, "on"};
-const Enum::Value BundlePortActivityEnum::active {2, "active"};
-const Enum::Value BundlePortActivityEnum::passive {3, "passive"};
-const Enum::Value BundlePortActivityEnum::inherit {4, "inherit"};
+const Enum::YLeaf BundlePortActivityEnum::on {1, "on"};
+const Enum::YLeaf BundlePortActivityEnum::active {2, "active"};
+const Enum::YLeaf BundlePortActivityEnum::passive {3, "passive"};
+const Enum::YLeaf BundlePortActivityEnum::inherit {4, "inherit"};
 
 
 }

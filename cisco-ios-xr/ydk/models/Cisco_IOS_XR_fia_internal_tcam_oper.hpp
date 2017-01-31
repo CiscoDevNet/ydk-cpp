@@ -26,6 +26,7 @@ class Controller : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Dpa : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Controller : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Nodes : public Entity
@@ -56,6 +58,7 @@ class Controller : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Node : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Controller : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_name; //type: string
 
+
+                    YLeaf node_name; //type: string
 
                 class InternalTcamResources : public Entity
                 {
@@ -87,6 +91,7 @@ class Controller : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class NpuTcam : public Entity
                     {
                         public:
@@ -100,8 +105,9 @@ class Controller : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value npu_id; //type: uint32
 
+
+                            YLeaf npu_id; //type: uint32
 
                         class TcamBank : public Entity
                         {
@@ -116,13 +122,14 @@ class Controller : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value bank_id; //type: string
-                                Value bank_key_size; //type: string
-                                Value bank_free_entries; //type: uint32
-                                Value bank_inuse_entries; //type: uint32
-                                Value owner; //type: string
-                                Value nof_dbs; //type: uint32
 
+
+                                YLeaf bank_id; //type: string
+                                YLeaf bank_key_size; //type: string
+                                YLeaf bank_free_entries; //type: uint32
+                                YLeaf bank_inuse_entries; //type: uint32
+                                YLeaf owner; //type: string
+                                YLeaf nof_dbs; //type: uint32
 
                             class BankDb : public Entity
                             {
@@ -137,10 +144,11 @@ class Controller : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value db_id; //type: uint32
-                                    Value db_inuse_entries; //type: uint32
-                                    Value db_prefix; //type: string
 
+
+                                    YLeaf db_id; //type: uint32
+                                    YLeaf db_inuse_entries; //type: uint32
+                                    YLeaf db_prefix; //type: string
 
 
 

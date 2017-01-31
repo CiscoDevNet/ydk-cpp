@@ -26,6 +26,7 @@ class Crypto : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Sam : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Crypto : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PromptInterval : public Entity
         {
             public:
@@ -54,11 +56,11 @@ class Crypto : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value action; //type: CryptoSamActionEnum
-                Value prompt_time; //type: uint32
 
 
-                class CryptoSamActionEnum;
+                YLeaf action; //type: CryptoSamActionEnum
+                YLeaf prompt_time; //type: uint32
+
 
 
         }; // Crypto::Sam::PromptInterval
@@ -85,6 +87,7 @@ class Crypto : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Client : public Entity
         {
             public:
@@ -98,11 +101,12 @@ class Crypto : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value host_public_key; //type: string
-                Value client_vrf; //type: string
-                Value source_interface; //type: string
-                Value dscp; //type: uint32
 
+
+                YLeaf host_public_key; //type: string
+                YLeaf client_vrf; //type: string
+                YLeaf source_interface; //type: string
+                YLeaf dscp; //type: uint32
 
 
 
@@ -122,14 +126,15 @@ class Crypto : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_limit; //type: uint32
-                Value netconf; //type: uint32
-                Value v2; //type: empty
-                Value logging; //type: empty
-                Value rate_limit; //type: uint32
-                Value timeout; //type: uint32
-                Value dscp; //type: uint32
 
+
+                YLeaf session_limit; //type: uint32
+                YLeaf netconf; //type: uint32
+                YLeaf v2; //type: empty
+                YLeaf logging; //type: empty
+                YLeaf rate_limit; //type: uint32
+                YLeaf timeout; //type: uint32
+                YLeaf dscp; //type: uint32
 
             class VrfTable : public Entity
             {
@@ -146,6 +151,7 @@ class Crypto : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -159,11 +165,12 @@ class Crypto : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value enable; //type: empty
-                        Value ipv4_access_list; //type: string
-                        Value ipv6_access_list; //type: string
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf ipv4_access_list; //type: string
+                        YLeaf ipv6_access_list; //type: string
 
 
 
@@ -191,6 +198,7 @@ class Crypto : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Vrf : public Entity
                 {
                     public:
@@ -204,11 +212,12 @@ class Crypto : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value vrf_name; //type: string
-                        Value enable; //type: empty
-                        Value ipv4_access_list; //type: string
-                        Value ipv6_access_list; //type: string
 
+
+                        YLeaf vrf_name; //type: string
+                        YLeaf enable; //type: empty
+                        YLeaf ipv4_access_list; //type: string
+                        YLeaf ipv6_access_list; //type: string
 
 
 
@@ -245,8 +254,8 @@ class Crypto : public Entity
 class CryptoSamActionEnum : public Enum
 {
     public:
-        static const Enum::Value proceed;
-        static const Enum::Value terminate;
+        static const Enum::YLeaf proceed;
+        static const Enum::YLeaf terminate;
 
 };
 

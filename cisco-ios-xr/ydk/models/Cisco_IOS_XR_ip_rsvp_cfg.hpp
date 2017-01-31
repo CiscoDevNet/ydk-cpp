@@ -26,6 +26,7 @@ class Rsvp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Neighbors : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Rsvp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Neighbor : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value neighbor; //type: string
 
+
+                YLeaf neighbor; //type: string
 
             class Authentication : public Entity
             {
@@ -70,11 +73,12 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value life_time; //type: uint32
-                    Value enable; //type: boolean
-                    Value window_size; //type: uint32
-                    Value key_chain; //type: string
 
+
+                    YLeaf life_time; //type: uint32
+                    YLeaf enable; //type: boolean
+                    YLeaf window_size; //type: uint32
+                    YLeaf key_chain; //type: string
 
 
 
@@ -108,6 +112,7 @@ class Rsvp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Controller : public Entity
         {
             public:
@@ -121,9 +126,10 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value controller_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf controller_name; //type: string
+                YLeaf enable; //type: empty
 
             class CntlSignalling : public Entity
             {
@@ -140,6 +146,7 @@ class Rsvp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OutOfBand : public Entity
                 {
                     public:
@@ -153,9 +160,10 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value missed_messages; //type: uint32
-                        Value refresh_interval; //type: uint32
 
+
+                        YLeaf missed_messages; //type: uint32
+                        YLeaf refresh_interval; //type: uint32
 
 
 
@@ -193,9 +201,10 @@ class Rsvp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log_nsr_status; //type: empty
-            Value log_issu_status; //type: empty
 
+
+            YLeaf log_nsr_status; //type: empty
+            YLeaf log_issu_status; //type: empty
 
 
 
@@ -217,6 +226,7 @@ class Rsvp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class DefaultInterfacePercent : public Entity
         {
             public:
@@ -232,6 +242,7 @@ class Rsvp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Mam : public Entity
             {
                 public:
@@ -245,10 +256,11 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value max_res_percent; //type: uint32
-                    Value bc0_percent; //type: uint32
-                    Value bc1_percent; //type: uint32
 
+
+                    YLeaf max_res_percent; //type: uint32
+                    YLeaf bc0_percent; //type: uint32
+                    YLeaf bc1_percent; //type: uint32
 
 
 
@@ -268,9 +280,10 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value bc0_percent; //type: uint32
-                    Value bc1_percent; //type: uint32
 
+
+                    YLeaf bc0_percent; //type: uint32
+                    YLeaf bc1_percent; //type: uint32
 
 
 
@@ -305,6 +318,7 @@ class Rsvp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interface : public Entity
         {
             public:
@@ -318,9 +332,10 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf name; //type: string
+                YLeaf enable; //type: empty
 
             class IfSignalling : public Entity
             {
@@ -335,12 +350,13 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value dscp; //type: uint32
-                    Value missed_messages; //type: uint32
-                    Value hello_graceful_restart_if_based; //type: empty
-                    Value pacing; //type: empty
-                    Value refresh_interval; //type: uint32
 
+
+                    YLeaf dscp; //type: uint32
+                    YLeaf missed_messages; //type: uint32
+                    YLeaf hello_graceful_restart_if_based; //type: empty
+                    YLeaf pacing; //type: empty
+                    YLeaf refresh_interval; //type: uint32
 
                 class RefreshReduction : public Entity
                 {
@@ -355,14 +371,15 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value disable; //type: empty
-                        Value reliable_ack_max_size; //type: uint32
-                        Value reliable_ack_hold_time; //type: uint32
-                        Value reliable_retransmit_time; //type: uint32
-                        Value reliable_s_refresh; //type: empty
-                        Value summary_max_size; //type: uint32
-                        Value bundle_message_max_size; //type: uint32
 
+
+                        YLeaf disable; //type: empty
+                        YLeaf reliable_ack_max_size; //type: uint32
+                        YLeaf reliable_ack_hold_time; //type: uint32
+                        YLeaf reliable_retransmit_time; //type: uint32
+                        YLeaf reliable_s_refresh; //type: empty
+                        YLeaf summary_max_size; //type: uint32
+                        YLeaf bundle_message_max_size; //type: uint32
 
 
 
@@ -382,9 +399,10 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value messages_per_interval; //type: uint32
-                        Value interval_size; //type: uint32
 
+
+                        YLeaf messages_per_interval; //type: uint32
+                        YLeaf interval_size; //type: uint32
 
 
 
@@ -404,9 +422,10 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value missed_messages; //type: uint32
-                        Value refresh_interval; //type: uint32
 
+
+                        YLeaf missed_messages; //type: uint32
+                        YLeaf refresh_interval; //type: uint32
 
 
 
@@ -436,6 +455,7 @@ class Rsvp : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Mam : public Entity
                 {
                     public:
@@ -449,14 +469,14 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_resv_bandwidth; //type: uint32
-                        Value max_resv_flow; //type: uint32
-                        Value bc0_bandwidth; //type: uint32
-                        Value bc1_bandwidth; //type: uint32
-                        Value bandwidth_mode; //type: RsvpBwCfgEnum
 
 
-                        class RsvpBwCfgEnum;
+                        YLeaf max_resv_bandwidth; //type: uint32
+                        YLeaf max_resv_flow; //type: uint32
+                        YLeaf bc0_bandwidth; //type: uint32
+                        YLeaf bc1_bandwidth; //type: uint32
+                        YLeaf bandwidth_mode; //type: RsvpBwCfgEnum
+
 
 
                 }; // Rsvp::Interfaces::Interface::Bandwidth::Mam
@@ -475,19 +495,16 @@ class Rsvp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value max_resv_flow; //type: uint32
-                        Value bc0_bandwidth; //type: uint32
-                        Value bc1_bandwidth; //type: uint32
-                        Value rdm_keyword; //type: RsvpRdmEnum
-                        Value bc0_keyword; //type: RsvpBc0Enum
-                        Value bc1_keyword; //type: RsvpBc1Enum
-                        Value bandwidth_mode; //type: RsvpBwCfgEnum
 
 
-                        class RsvpBwCfgEnum;
-                        class RsvpBc0Enum;
-                        class RsvpBc1Enum;
-                        class RsvpRdmEnum;
+                        YLeaf max_resv_flow; //type: uint32
+                        YLeaf bc0_bandwidth; //type: uint32
+                        YLeaf bc1_bandwidth; //type: uint32
+                        YLeaf rdm_keyword; //type: RsvpRdmEnum
+                        YLeaf bc0_keyword; //type: RsvpBc0Enum
+                        YLeaf bc1_keyword; //type: RsvpBc1Enum
+                        YLeaf bandwidth_mode; //type: RsvpBwCfgEnum
+
 
 
                 }; // Rsvp::Interfaces::Interface::Bandwidth::Rdm
@@ -513,11 +530,12 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value life_time; //type: uint32
-                    Value enable; //type: boolean
-                    Value window_size; //type: uint32
-                    Value key_chain; //type: string
 
+
+                    YLeaf life_time; //type: uint32
+                    YLeaf enable; //type: boolean
+                    YLeaf window_size; //type: uint32
+                    YLeaf key_chain; //type: string
 
 
 
@@ -551,9 +569,10 @@ class Rsvp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value hello_graceful_restart_misses; //type: uint32
-            Value hello_graceful_restart_interval; //type: uint32
 
+
+            YLeaf hello_graceful_restart_misses; //type: uint32
+            YLeaf hello_graceful_restart_interval; //type: uint32
 
         class GlobalOutOfBand : public Entity
         {
@@ -568,8 +587,9 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf; //type: string
 
+
+                YLeaf vrf; //type: string
 
 
 
@@ -589,10 +609,11 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: boolean
-                Value restart_time; //type: uint32
-                Value recovery_time; //type: uint32
 
+
+                YLeaf enable; //type: boolean
+                YLeaf restart_time; //type: uint32
+                YLeaf recovery_time; //type: uint32
 
 
 
@@ -612,8 +633,9 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value acl; //type: string
 
+
+                YLeaf acl; //type: string
 
             class DefaultDenyAction : public Entity
             {
@@ -628,8 +650,9 @@ class Rsvp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value drop; //type: empty
 
+
+                    YLeaf drop; //type: empty
 
 
 
@@ -655,8 +678,9 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: empty
 
+
+                YLeaf disable; //type: empty
 
 
 
@@ -676,8 +700,9 @@ class Rsvp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value disable; //type: empty
 
+
+                YLeaf disable; //type: empty
 
 
 
@@ -707,11 +732,12 @@ class Rsvp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value life_time; //type: uint32
-            Value enable; //type: boolean
-            Value window_size; //type: uint32
-            Value key_chain; //type: string
 
+
+            YLeaf life_time; //type: uint32
+            YLeaf enable; //type: boolean
+            YLeaf window_size; //type: uint32
+            YLeaf key_chain; //type: string
 
 
 
@@ -733,34 +759,34 @@ class Rsvp : public Entity
 class RsvpBwCfgEnum : public Enum
 {
     public:
-        static const Enum::Value absolute;
-        static const Enum::Value percentage;
+        static const Enum::YLeaf absolute;
+        static const Enum::YLeaf percentage;
 
 };
 
 class RsvpBc0Enum : public Enum
 {
     public:
-        static const Enum::Value bc0;
-        static const Enum::Value global_pool;
-        static const Enum::Value not_specified;
+        static const Enum::YLeaf bc0;
+        static const Enum::YLeaf global_pool;
+        static const Enum::YLeaf not_specified;
 
 };
 
 class RsvpBc1Enum : public Enum
 {
     public:
-        static const Enum::Value bc1;
-        static const Enum::Value sub_pool;
+        static const Enum::YLeaf bc1;
+        static const Enum::YLeaf sub_pool;
 
 };
 
 class RsvpRdmEnum : public Enum
 {
     public:
-        static const Enum::Value rdm;
-        static const Enum::Value not_specified;
-        static const Enum::Value use_default_bandwidth;
+        static const Enum::YLeaf rdm;
+        static const Enum::YLeaf not_specified;
+        static const Enum::YLeaf use_default_bandwidth;
 
 };
 

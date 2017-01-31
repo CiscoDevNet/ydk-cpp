@@ -26,6 +26,7 @@ class PerfMgmt : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Resources : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TftpResources : public Entity
         {
             public:
@@ -54,10 +56,11 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value server_address; //type: string
-                Value directory; //type: string
-                Value vrf_name; //type: string
 
+
+                YLeaf server_address; //type: string
+                YLeaf directory; //type: string
+                YLeaf vrf_name; //type: string
 
 
 
@@ -77,8 +80,9 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value enable; //type: empty
 
+
+                YLeaf enable; //type: empty
 
 
 
@@ -98,9 +102,10 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value max_limit; //type: int32
-                Value min_reserved; //type: int32
 
+
+                YLeaf max_limit; //type: int32
+                YLeaf min_reserved; //type: int32
 
 
 
@@ -130,6 +135,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class GenericCounterInterface : public Entity
         {
             public:
@@ -143,6 +149,7 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class Templates : public Entity
@@ -160,6 +167,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -173,13 +181,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -213,6 +222,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -228,6 +238,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -241,13 +252,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -281,6 +293,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -296,6 +309,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -309,13 +323,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -349,6 +364,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -364,6 +380,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -377,13 +394,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -417,6 +435,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -432,6 +451,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -445,13 +465,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -485,6 +506,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -500,6 +522,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -513,13 +536,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -553,6 +577,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -568,6 +593,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -581,13 +607,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -621,6 +648,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -636,6 +664,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -649,13 +678,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -689,6 +719,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -704,6 +735,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -717,13 +749,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -757,6 +790,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Templates : public Entity
             {
                 public:
@@ -772,6 +806,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Template_ : public Entity
                 {
                     public:
@@ -785,13 +820,14 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value reg_exp_group; //type: string
-                        Value history_persistent; //type: empty
-                        Value vrf_group; //type: string
-                        Value sample_interval; //type: uint32
-                        Value sample_size; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf history_persistent; //type: empty
+                        YLeaf vrf_group; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf sample_size; //type: uint32
 
 
 
@@ -840,6 +876,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Threshold : public Entity
         {
             public:
@@ -855,6 +892,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ospfv3Protocol : public Entity
             {
                 public:
@@ -868,8 +906,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -889,8 +928,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -910,8 +950,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -931,8 +972,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -954,6 +996,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nodes : public Entity
                 {
                     public:
@@ -969,6 +1012,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -982,9 +1026,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1010,8 +1055,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1038,8 +1084,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1061,6 +1108,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nodes : public Entity
                 {
                     public:
@@ -1076,6 +1124,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -1089,9 +1138,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1117,8 +1167,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1145,8 +1196,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1168,6 +1220,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nodes : public Entity
                 {
                     public:
@@ -1183,6 +1236,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -1196,9 +1250,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1224,8 +1279,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1252,8 +1308,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1290,6 +1347,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class GenericCounterInterface : public Entity
             {
                 public:
@@ -1303,8 +1361,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1324,8 +1383,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1345,8 +1405,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1366,8 +1427,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1389,6 +1451,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NodeAll : public Entity
                 {
                     public:
@@ -1402,8 +1465,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1425,6 +1489,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -1438,9 +1503,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1473,8 +1539,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1496,6 +1563,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NodeAll : public Entity
                 {
                     public:
@@ -1509,8 +1577,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1532,6 +1601,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -1545,9 +1615,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1580,8 +1651,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1603,6 +1675,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NodeAll : public Entity
                 {
                     public:
@@ -1616,8 +1689,9 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
 
+
+                        YLeaf template_name; //type: string
 
 
 
@@ -1639,6 +1713,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -1652,9 +1727,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1687,8 +1763,9 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value template_name; //type: string
 
+
+                    YLeaf template_name; //type: string
 
 
 
@@ -1725,6 +1802,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LdpMpls : public Entity
             {
                 public:
@@ -1738,6 +1816,7 @@ class PerfMgmt : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Sessions : public Entity
@@ -1755,6 +1834,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Session : public Entity
                     {
                         public:
@@ -1768,9 +1848,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value session; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf session; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1804,6 +1885,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OspfInstances : public Entity
                 {
                     public:
@@ -1819,6 +1901,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class OspfInstance : public Entity
                     {
                         public:
@@ -1832,9 +1915,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance_name; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf instance_name; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1868,6 +1952,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interfaces : public Entity
                 {
                     public:
@@ -1883,6 +1968,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -1896,9 +1982,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -1932,6 +2019,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ProcessNodes : public Entity
                 {
                     public:
@@ -1947,6 +2035,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class ProcessNode : public Entity
                     {
                         public:
@@ -1960,8 +2049,9 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
 
+
+                            YLeaf node_id; //type: string
 
                         class Pids : public Entity
                         {
@@ -1978,6 +2068,7 @@ class PerfMgmt : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Pid : public Entity
                             {
                                 public:
@@ -1991,9 +2082,10 @@ class PerfMgmt : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value pid; //type: uint32
-                                    Value template_name; //type: string
 
+
+                                    YLeaf pid; //type: uint32
+                                    YLeaf template_name; //type: string
 
 
 
@@ -2039,6 +2131,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interfaces : public Entity
                 {
                     public:
@@ -2054,6 +2147,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -2067,9 +2161,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2103,6 +2198,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nodes : public Entity
                 {
                     public:
@@ -2118,6 +2214,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -2131,9 +2228,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2167,6 +2265,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class OspfInstances : public Entity
                 {
                     public:
@@ -2182,6 +2281,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class OspfInstance : public Entity
                     {
                         public:
@@ -2195,9 +2295,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value instance_name; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf instance_name; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2231,6 +2332,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Nodes : public Entity
                 {
                     public:
@@ -2246,6 +2348,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Node : public Entity
                     {
                         public:
@@ -2259,9 +2362,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value node_id; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf node_id; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2295,6 +2399,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Neighbors : public Entity
                 {
                     public:
@@ -2310,6 +2415,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Neighbor : public Entity
                     {
                         public:
@@ -2323,9 +2429,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value peer_address; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf peer_address; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2359,6 +2466,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interfaces : public Entity
                 {
                     public:
@@ -2374,6 +2482,7 @@ class PerfMgmt : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -2387,9 +2496,10 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value template_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf template_name; //type: string
 
 
 
@@ -2446,6 +2556,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RegExpGroup : public Entity
         {
             public:
@@ -2459,8 +2570,9 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value reg_exp_group_name; //type: string
 
+
+                YLeaf reg_exp_group_name; //type: string
 
             class RegExps : public Entity
             {
@@ -2477,6 +2589,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class RegExp : public Entity
                 {
                     public:
@@ -2490,9 +2603,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value reg_exp_index; //type: uint32
-                        Value reg_exp_string; //type: string
 
+
+                        YLeaf reg_exp_index; //type: uint32
+                        YLeaf reg_exp_string; //type: string
 
 
 
@@ -2532,6 +2646,7 @@ class PerfMgmt : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class GenericCounterInterface : public Entity
         {
             public:
@@ -2545,6 +2660,7 @@ class PerfMgmt : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class GenericCounterInterfaceTemplates : public Entity
@@ -2562,6 +2678,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class GenericCounterInterfaceTemplate : public Entity
                 {
                     public:
@@ -2575,11 +2692,12 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
-                        Value reg_exp_group; //type: string
-                        Value vrf_group; //type: string
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf vrf_group; //type: string
 
                     class InOctets : public Entity
                     {
@@ -2594,16 +2712,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets
@@ -2622,16 +2739,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts
@@ -2650,16 +2766,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts
@@ -2678,16 +2793,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts
@@ -2706,16 +2820,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts
@@ -2734,16 +2847,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun
@@ -2762,16 +2874,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets
@@ -2790,16 +2901,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun
@@ -2818,16 +2928,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors
@@ -2846,16 +2955,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops
@@ -2874,16 +2982,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc
@@ -2902,16 +3009,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts
@@ -2930,16 +3036,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts
@@ -2958,16 +3063,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets
@@ -2986,16 +3090,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors
@@ -3014,16 +3117,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets
@@ -3042,16 +3144,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto
@@ -3070,16 +3171,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops
@@ -3098,16 +3198,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops
@@ -3126,16 +3225,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame
@@ -3193,6 +3291,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class LdpMplsTemplates : public Entity
             {
                 public:
@@ -3208,6 +3307,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class LdpMplsTemplate : public Entity
                 {
                     public:
@@ -3221,9 +3321,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class AddressWithdrawMsgsRcvd : public Entity
                     {
@@ -3238,16 +3339,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd
@@ -3266,16 +3366,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd
@@ -3294,16 +3393,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent
@@ -3322,16 +3420,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent
@@ -3350,16 +3447,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd
@@ -3378,16 +3474,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd
@@ -3406,16 +3501,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent
@@ -3434,16 +3528,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent
@@ -3462,16 +3555,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd
@@ -3490,16 +3582,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd
@@ -3518,16 +3609,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent
@@ -3546,16 +3636,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent
@@ -3574,16 +3663,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd
@@ -3602,16 +3690,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd
@@ -3630,16 +3717,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent
@@ -3658,16 +3744,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent
@@ -3686,16 +3771,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd
@@ -3714,16 +3798,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent
@@ -3779,6 +3862,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BasicCounterInterfaceTemplates : public Entity
             {
                 public:
@@ -3794,6 +3878,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BasicCounterInterfaceTemplate : public Entity
                 {
                     public:
@@ -3807,11 +3892,12 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
-                        Value reg_exp_group; //type: string
-                        Value vrf_group; //type: string
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf vrf_group; //type: string
 
                     class InOctets : public Entity
                     {
@@ -3826,16 +3912,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets
@@ -3854,16 +3939,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets
@@ -3882,16 +3966,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops
@@ -3910,16 +3993,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors
@@ -3938,16 +4020,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops
@@ -3966,16 +4047,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets
@@ -3994,16 +4074,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors
@@ -4022,16 +4101,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets
@@ -4050,16 +4128,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops
@@ -4078,16 +4155,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops
@@ -4135,6 +4211,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class BgpTemplates : public Entity
             {
                 public:
@@ -4150,6 +4227,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BgpTemplate : public Entity
                 {
                     public:
@@ -4163,9 +4241,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class OutputUpdateMessages : public Entity
                     {
@@ -4180,16 +4259,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages
@@ -4208,16 +4286,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived
@@ -4236,16 +4313,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished
@@ -4264,16 +4340,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages
@@ -4292,16 +4367,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped
@@ -4320,16 +4394,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages
@@ -4348,16 +4421,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent
@@ -4376,16 +4448,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages
@@ -4431,6 +4502,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ospfv2ProtocolTemplates : public Entity
             {
                 public:
@@ -4446,6 +4518,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv2ProtocolTemplate : public Entity
                 {
                     public:
@@ -4459,9 +4532,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class ChecksumErrors : public Entity
                     {
@@ -4476,16 +4550,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors
@@ -4504,16 +4577,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa
@@ -4532,16 +4604,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa
@@ -4560,16 +4631,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa
@@ -4588,16 +4658,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates
@@ -4616,16 +4685,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs
@@ -4644,16 +4712,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa
@@ -4672,16 +4739,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs
@@ -4700,16 +4766,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa
@@ -4728,16 +4793,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets
@@ -4756,16 +4820,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets
@@ -4784,16 +4847,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets
@@ -4812,16 +4874,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets
@@ -4840,16 +4901,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests
@@ -4868,16 +4928,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa
@@ -4896,16 +4955,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks
@@ -4924,16 +4982,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks
@@ -4952,16 +5009,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates
@@ -4980,16 +5036,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa
@@ -5008,16 +5063,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa
@@ -5036,16 +5090,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests
@@ -5104,6 +5157,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class CpuNodeTemplates : public Entity
             {
                 public:
@@ -5119,6 +5173,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class CpuNodeTemplate : public Entity
                 {
                     public:
@@ -5132,9 +5187,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class AverageCpuUsed : public Entity
                     {
@@ -5149,16 +5205,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed
@@ -5177,16 +5232,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses
@@ -5226,6 +5280,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class DataRateInterfaceTemplates : public Entity
             {
                 public:
@@ -5241,6 +5296,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DataRateInterfaceTemplate : public Entity
                 {
                     public:
@@ -5254,11 +5310,12 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
-                        Value reg_exp_group; //type: string
-                        Value vrf_group; //type: string
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
+                        YLeaf reg_exp_group; //type: string
+                        YLeaf vrf_group; //type: string
 
                     class InputDataRate : public Entity
                     {
@@ -5273,16 +5330,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate
@@ -5301,16 +5357,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth
@@ -5329,16 +5384,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate
@@ -5357,16 +5411,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts
@@ -5385,16 +5438,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate
@@ -5413,16 +5465,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate
@@ -5441,16 +5492,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate
@@ -5469,16 +5519,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts
@@ -5497,16 +5546,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate
@@ -5553,6 +5601,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class ProcessNodeTemplates : public Entity
             {
                 public:
@@ -5568,6 +5617,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ProcessNodeTemplate : public Entity
                 {
                     public:
@@ -5581,9 +5631,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class AverageCpuUsed : public Entity
                     {
@@ -5598,16 +5649,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed
@@ -5626,16 +5676,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory
@@ -5654,16 +5703,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads
@@ -5704,6 +5752,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MemoryNodeTemplates : public Entity
             {
                 public:
@@ -5719,6 +5768,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class MemoryNodeTemplate : public Entity
                 {
                     public:
@@ -5732,9 +5782,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class PeakMemory : public Entity
                     {
@@ -5749,16 +5800,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory
@@ -5777,16 +5827,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: int32
-                            Value end_range_value; //type: int32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: int32
+                            YLeaf end_range_value; //type: int32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory
@@ -5826,6 +5875,7 @@ class PerfMgmt : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ospfv3ProtocolTemplates : public Entity
             {
                 public:
@@ -5841,6 +5891,7 @@ class PerfMgmt : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Ospfv3ProtocolTemplate : public Entity
                 {
                     public:
@@ -5854,9 +5905,10 @@ class PerfMgmt : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value template_name; //type: string
-                        Value sample_interval; //type: uint32
 
+
+                        YLeaf template_name; //type: string
+                        YLeaf sample_interval; //type: uint32
 
                     class InputLsaAcksLsa : public Entity
                     {
@@ -5871,16 +5923,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa
@@ -5899,16 +5950,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa
@@ -5927,16 +5977,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa
@@ -5955,16 +6004,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates
@@ -5983,16 +6031,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs
@@ -6011,16 +6058,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa
@@ -6039,16 +6085,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs
@@ -6067,16 +6112,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa
@@ -6095,16 +6139,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets
@@ -6123,16 +6166,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets
@@ -6151,16 +6193,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets
@@ -6179,16 +6220,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets
@@ -6207,16 +6247,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests
@@ -6235,16 +6274,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa
@@ -6263,16 +6301,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks
@@ -6291,16 +6328,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks
@@ -6319,16 +6355,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates
@@ -6347,16 +6382,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa
@@ -6375,16 +6409,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa
@@ -6403,16 +6436,15 @@ class PerfMgmt : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value operator_; //type: PmThresholdOpEnum
-                            Value value_; //type: uint32
-                            Value end_range_value; //type: uint32
-                            Value percent; //type: boolean
-                            Value rearm_type; //type: PmThresholdRearmEnum
-                            Value rearm_window; //type: uint32
 
 
-                            class PmThresholdOpEnum;
-                            class PmThresholdRearmEnum;
+                            YLeaf operator_; //type: PmThresholdOpEnum
+                            YLeaf value_; //type: uint32
+                            YLeaf end_range_value; //type: uint32
+                            YLeaf percent; //type: boolean
+                            YLeaf rearm_type; //type: PmThresholdRearmEnum
+                            YLeaf rearm_window; //type: uint32
+
 
 
                     }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests
@@ -6483,22 +6515,22 @@ class PerfMgmt : public Entity
 class PmThresholdOpEnum : public Enum
 {
     public:
-        static const Enum::Value eq;
-        static const Enum::Value ne;
-        static const Enum::Value lt;
-        static const Enum::Value le;
-        static const Enum::Value gt;
-        static const Enum::Value ge;
-        static const Enum::Value rg;
+        static const Enum::YLeaf eq;
+        static const Enum::YLeaf ne;
+        static const Enum::YLeaf lt;
+        static const Enum::YLeaf le;
+        static const Enum::YLeaf gt;
+        static const Enum::YLeaf ge;
+        static const Enum::YLeaf rg;
 
 };
 
 class PmThresholdRearmEnum : public Enum
 {
     public:
-        static const Enum::Value always;
-        static const Enum::Value window;
-        static const Enum::Value toggle;
+        static const Enum::YLeaf always;
+        static const Enum::YLeaf window;
+        static const Enum::YLeaf toggle;
 
 };
 

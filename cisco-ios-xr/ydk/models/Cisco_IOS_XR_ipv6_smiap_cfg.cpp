@@ -46,7 +46,7 @@ EntityPath Ipv6Virtual::Vrfs::Vrf::Address::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -118,7 +118,7 @@ bool Ipv6Virtual::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (address !=  nullptr && is_set(address->operation));
+	|| (address !=  nullptr && address->has_operation());
 }
 
 std::string Ipv6Virtual::Vrfs::Vrf::get_segment_path() const
@@ -336,7 +336,7 @@ bool Ipv6Virtual::has_operation() const
 {
     return is_set(operation)
 	|| is_set(use_as_source_address.operation)
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Ipv6Virtual::get_segment_path() const
@@ -353,7 +353,7 @@ EntityPath Ipv6Virtual::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

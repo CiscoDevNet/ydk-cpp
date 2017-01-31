@@ -21,7 +21,7 @@ Nacm::Groups::Group::~Group()
 
 bool Nacm::Groups::Group::has_data() const
 {
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -31,13 +31,14 @@ bool Nacm::Groups::Group::has_data() const
 
 bool Nacm::Groups::Group::has_operation() const
 {
-    for (auto const & leaf : user_name.getValues())
+    for (auto const & leaf : user_name.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(user_name.operation);
 }
 
 std::string Nacm::Groups::Group::get_segment_path() const
@@ -269,7 +270,7 @@ EntityPath Nacm::RuleList::Rule::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -367,7 +368,7 @@ bool Nacm::RuleList::has_data() const
         if(rule[index]->has_data())
             return true;
     }
-    for (auto const & leaf : group.getValues())
+    for (auto const & leaf : group.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -382,13 +383,14 @@ bool Nacm::RuleList::has_operation() const
         if(rule[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : group.getValues())
+    for (auto const & leaf : group.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(name.operation);
+	|| is_set(name.operation)
+	|| is_set(group.operation);
 }
 
 std::string Nacm::RuleList::get_segment_path() const
@@ -538,7 +540,7 @@ bool Nacm::has_operation() const
 	|| is_set(exec_default.operation)
 	|| is_set(read_default.operation)
 	|| is_set(write_default.operation)
-	|| (groups !=  nullptr && is_set(groups->operation));
+	|| (groups !=  nullptr && groups->has_operation());
 }
 
 std::string Nacm::get_segment_path() const
@@ -555,7 +557,7 @@ EntityPath Nacm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -685,8 +687,8 @@ std::unique_ptr<Entity> Nacm::clone_ptr()
     return std::make_unique<Nacm>();
 }
 
-const Enum::Value ActionTypeEnum::permit {0, "permit"};
-const Enum::Value ActionTypeEnum::deny {1, "deny"};
+const Enum::YLeaf ActionTypeEnum::permit {0, "permit"};
+const Enum::YLeaf ActionTypeEnum::deny {1, "deny"};
 
 
 }

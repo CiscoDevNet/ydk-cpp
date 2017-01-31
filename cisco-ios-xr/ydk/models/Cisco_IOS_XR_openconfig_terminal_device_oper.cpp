@@ -55,7 +55,7 @@ EntityPath OpticalInterface::OpticalClientInterfaces::OpticalClientInterface::Op
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -162,7 +162,7 @@ EntityPath OpticalInterface::OpticalClientInterfaces::OpticalClientInterface::Op
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -253,7 +253,7 @@ bool OpticalInterface::OpticalClientInterfaces::OpticalClientInterface::has_oper
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (optical_client_logical_channel_assignments !=  nullptr && is_set(optical_client_logical_channel_assignments->operation));
+	|| (optical_client_logical_channel_assignments !=  nullptr && optical_client_logical_channel_assignments->has_operation());
 }
 
 std::string OpticalInterface::OpticalClientInterfaces::OpticalClientInterface::get_segment_path() const
@@ -484,7 +484,7 @@ EntityPath OpticalInterface::OperationalModes::OperationalMode::OperationalModeA
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -559,7 +559,7 @@ bool OpticalInterface::OperationalModes::OperationalMode::has_operation() const
 {
     return is_set(operation)
 	|| is_set(mode_id.operation)
-	|| (operational_mode_attributes !=  nullptr && is_set(operational_mode_attributes->operation));
+	|| (operational_mode_attributes !=  nullptr && operational_mode_attributes->has_operation());
 }
 
 std::string OpticalInterface::OperationalModes::OperationalMode::get_segment_path() const
@@ -793,7 +793,7 @@ EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -895,7 +895,7 @@ EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1002,7 +1002,7 @@ EntityPath OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1098,8 +1098,8 @@ bool OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::has_op
 {
     return is_set(operation)
 	|| is_set(index_.operation)
-	|| (optical_logical_interface_attr !=  nullptr && is_set(optical_logical_interface_attr->operation))
-	|| (optical_logical_interface_logical_channel_assignments !=  nullptr && is_set(optical_logical_interface_logical_channel_assignments->operation));
+	|| (optical_logical_interface_attr !=  nullptr && optical_logical_interface_attr->has_operation())
+	|| (optical_logical_interface_logical_channel_assignments !=  nullptr && optical_logical_interface_logical_channel_assignments->has_operation());
 }
 
 std::string OpticalInterface::OpticalLogicalInterfaces::OpticalLogicalInterface::get_segment_path() const
@@ -1346,9 +1346,9 @@ bool OpticalInterface::has_data() const
 bool OpticalInterface::has_operation() const
 {
     return is_set(operation)
-	|| (operational_modes !=  nullptr && is_set(operational_modes->operation))
-	|| (optical_client_interfaces !=  nullptr && is_set(optical_client_interfaces->operation))
-	|| (optical_logical_interfaces !=  nullptr && is_set(optical_logical_interfaces->operation));
+	|| (operational_modes !=  nullptr && operational_modes->has_operation())
+	|| (optical_client_interfaces !=  nullptr && optical_client_interfaces->has_operation())
+	|| (optical_logical_interfaces !=  nullptr && optical_logical_interfaces->has_operation());
 }
 
 std::string OpticalInterface::get_segment_path() const
@@ -1365,7 +1365,7 @@ EntityPath OpticalInterface::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1475,40 +1475,40 @@ std::unique_ptr<Entity> OpticalInterface::clone_ptr()
     return std::make_unique<OpticalInterface>();
 }
 
-const Enum::Value LogicalProtocolEnum::proto_type_unknown {0, "proto-type-unknown"};
-const Enum::Value LogicalProtocolEnum::proto_type_ethernet {1, "proto-type-ethernet"};
-const Enum::Value LogicalProtocolEnum::proto_type_otn {2, "proto-type-otn"};
+const Enum::YLeaf LogicalProtocolEnum::proto_type_unknown {0, "proto-type-unknown"};
+const Enum::YLeaf LogicalProtocolEnum::proto_type_ethernet {1, "proto-type-ethernet"};
+const Enum::YLeaf LogicalProtocolEnum::proto_type_otn {2, "proto-type-otn"};
 
-const Enum::Value TribProtocolEnum::trib_proto_type_unknown {0, "trib-proto-type-unknown"};
-const Enum::Value TribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
-const Enum::Value TribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
-const Enum::Value TribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
-const Enum::Value TribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
-const Enum::Value TribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
-const Enum::Value TribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
-const Enum::Value TribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
-const Enum::Value TribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
-const Enum::Value TribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
-const Enum::Value TribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
-const Enum::Value TribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
-const Enum::Value TribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
-const Enum::Value TribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
-const Enum::Value TribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
-const Enum::Value TribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
-const Enum::Value TribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
-const Enum::Value TribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_unknown {0, "trib-proto-type-unknown"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type1ge {1, "trib-proto-type1ge"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc48 {2, "trib-proto-type-oc48"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm16 {3, "trib-proto-type-stm16"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type10gelan {4, "trib-proto-type10gelan"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type10gewan {5, "trib-proto-type10gewan"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc192 {6, "trib-proto-type-oc192"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm64 {7, "trib-proto-type-stm64"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu2 {8, "trib-proto-type-otu2"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu2e {9, "trib-proto-type-otu2e"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu1e {10, "trib-proto-type-otu1e"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu2 {11, "trib-proto-type-odu2"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu2e {12, "trib-proto-type-odu2e"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type40ge {13, "trib-proto-type40ge"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_oc768 {14, "trib-proto-type-oc768"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_stm256 {15, "trib-proto-type-stm256"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu3 {16, "trib-proto-type-otu3"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu3 {17, "trib-proto-type-odu3"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type100ge {18, "trib-proto-type100ge"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type100g_mlg {19, "trib-proto-type100g-mlg"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu4 {20, "trib-proto-type-otu4"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_otu_cn {21, "trib-proto-type-otu-cn"};
+const Enum::YLeaf TribProtocolEnum::trib_proto_type_odu4 {22, "trib-proto-type-odu4"};
 
-const Enum::Value TribRateClassEnum::trib_rate1g {0, "trib-rate1g"};
-const Enum::Value TribRateClassEnum::trib_rate25g {1, "trib-rate25g"};
-const Enum::Value TribRateClassEnum::trib_rate10g {2, "trib-rate10g"};
-const Enum::Value TribRateClassEnum::trib_rate40g {3, "trib-rate40g"};
-const Enum::Value TribRateClassEnum::trib_rate100g {4, "trib-rate100g"};
-const Enum::Value TribRateClassEnum::trib_rate_unknown {5, "trib-rate-unknown"};
+const Enum::YLeaf TribRateClassEnum::trib_rate1g {0, "trib-rate1g"};
+const Enum::YLeaf TribRateClassEnum::trib_rate25g {1, "trib-rate25g"};
+const Enum::YLeaf TribRateClassEnum::trib_rate10g {2, "trib-rate10g"};
+const Enum::YLeaf TribRateClassEnum::trib_rate40g {3, "trib-rate40g"};
+const Enum::YLeaf TribRateClassEnum::trib_rate100g {4, "trib-rate100g"};
+const Enum::YLeaf TribRateClassEnum::trib_rate_unknown {5, "trib-rate-unknown"};
 
 
 }

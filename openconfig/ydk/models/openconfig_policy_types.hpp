@@ -148,17 +148,17 @@ class Ospf3Identity : public openconfig_policy_types::InstallProtocolTypeIdentit
 class MatchSetOptionsRestrictedTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ANY;
-        static const Enum::Value INVERT;
+        static const Enum::YLeaf ANY;
+        static const Enum::YLeaf INVERT;
 
 };
 
 class MatchSetOptionsTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ANY;
-        static const Enum::Value ALL;
-        static const Enum::Value INVERT;
+        static const Enum::YLeaf ANY;
+        static const Enum::YLeaf ALL;
+        static const Enum::YLeaf INVERT;
 
 };
 

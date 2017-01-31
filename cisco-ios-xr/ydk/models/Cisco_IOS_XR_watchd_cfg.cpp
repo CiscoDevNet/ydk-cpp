@@ -138,7 +138,7 @@ bool Watchdog::has_operation() const
 	|| is_set(overload_throttle_timeout.operation)
 	|| is_set(restart_deadlock_disable.operation)
 	|| is_set(restart_memoryhog_disable.operation)
-	|| (threshold_memory !=  nullptr && is_set(threshold_memory->operation));
+	|| (threshold_memory !=  nullptr && threshold_memory->has_operation());
 }
 
 std::string Watchdog::get_segment_path() const
@@ -155,7 +155,7 @@ EntityPath Watchdog::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -274,7 +274,7 @@ EntityPath Watchd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

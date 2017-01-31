@@ -26,6 +26,7 @@ class ProcessesMemory : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class ProcessesMemory : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class ProcessesMemory : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class ProcessIds : public Entity
             {
@@ -72,6 +75,7 @@ class ProcessesMemory : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ProcessId : public Entity
                 {
                     public:
@@ -85,15 +89,16 @@ class ProcessesMemory : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value process_id; //type: int32
-                        Value name; //type: string
-                        Value jid; //type: uint32
-                        Value pid; //type: uint32
-                        Value text_seg_size; //type: uint32
-                        Value data_seg_size; //type: uint32
-                        Value stack_seg_size; //type: uint32
-                        Value malloc_size; //type: uint32
 
+
+                        YLeaf process_id; //type: int32
+                        YLeaf name; //type: string
+                        YLeaf jid; //type: uint32
+                        YLeaf pid; //type: uint32
+                        YLeaf text_seg_size; //type: uint32
+                        YLeaf data_seg_size; //type: uint32
+                        YLeaf stack_seg_size; //type: uint32
+                        YLeaf malloc_size; //type: uint32
 
 
 

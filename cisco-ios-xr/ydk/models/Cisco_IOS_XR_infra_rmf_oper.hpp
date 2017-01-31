@@ -26,6 +26,7 @@ class Redundancy : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Redundancy : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class Redundancy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_id; //type: string
-                Value log; //type: string
-                Value active_reboot_reason; //type: string
-                Value standby_reboot_reason; //type: string
-                Value err_log; //type: string
 
+
+                YLeaf node_id; //type: string
+                YLeaf log; //type: string
+                YLeaf active_reboot_reason; //type: string
+                YLeaf standby_reboot_reason; //type: string
+                YLeaf err_log; //type: string
 
             class Redundancy_ : public Entity
             {
@@ -74,11 +77,12 @@ class Redundancy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value active; //type: string
-                    Value standby; //type: string
-                    Value ha_state; //type: string
-                    Value nsr_state; //type: string
 
+
+                    YLeaf active; //type: string
+                    YLeaf standby; //type: string
+                    YLeaf ha_state; //type: string
+                    YLeaf nsr_state; //type: string
 
                 class Groupinfo : public Entity
                 {
@@ -93,11 +97,12 @@ class Redundancy : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active; //type: string
-                        Value standby; //type: string
-                        Value ha_state; //type: string
-                        Value nsr_state; //type: string
 
+
+                        YLeaf active; //type: string
+                        YLeaf standby; //type: string
+                        YLeaf ha_state; //type: string
+                        YLeaf nsr_state; //type: string
 
 
 
@@ -135,8 +140,9 @@ class Redundancy : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value err_log; //type: string
 
+
+            YLeaf err_log; //type: string
 
         class RedPair : public Entity
         {
@@ -151,11 +157,12 @@ class Redundancy : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value active; //type: string
-                Value standby; //type: string
-                Value ha_state; //type: string
-                Value nsr_state; //type: string
 
+
+                YLeaf active; //type: string
+                YLeaf standby; //type: string
+                YLeaf ha_state; //type: string
+                YLeaf nsr_state; //type: string
 
             class Groupinfo : public Entity
             {
@@ -170,11 +177,12 @@ class Redundancy : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value active; //type: string
-                    Value standby; //type: string
-                    Value ha_state; //type: string
-                    Value nsr_state; //type: string
 
+
+                    YLeaf active; //type: string
+                    YLeaf standby; //type: string
+                    YLeaf ha_state; //type: string
+                    YLeaf nsr_state; //type: string
 
 
 

@@ -214,8 +214,8 @@ bool NetconfYang::Agent::has_operation() const
 {
     return is_set(operation)
 	|| is_set(rate_limit.operation)
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (ssh !=  nullptr && is_set(ssh->operation));
+	|| (session !=  nullptr && session->has_operation())
+	|| (ssh !=  nullptr && ssh->has_operation());
 }
 
 std::string NetconfYang::Agent::get_segment_path() const
@@ -344,7 +344,7 @@ bool NetconfYang::has_data() const
 bool NetconfYang::has_operation() const
 {
     return is_set(operation)
-	|| (agent !=  nullptr && is_set(agent->operation));
+	|| (agent !=  nullptr && agent->has_operation());
 }
 
 std::string NetconfYang::get_segment_path() const
@@ -361,7 +361,7 @@ EntityPath NetconfYang::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

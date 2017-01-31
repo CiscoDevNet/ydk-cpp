@@ -26,6 +26,7 @@ class Pbr : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Pbr : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Pbr : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class PolicyMap : public Entity
             {
@@ -70,6 +73,7 @@ class Pbr : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
+
 
 
                 class Interfaces : public Entity
@@ -87,6 +91,7 @@ class Pbr : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Interface : public Entity
                     {
                         public:
@@ -100,8 +105,9 @@ class Pbr : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
 
+
+                            YLeaf interface_name; //type: string
 
                         class Direction : public Entity
                         {
@@ -118,6 +124,7 @@ class Pbr : public Entity
                                 std::map<std::string, Entity*> & get_children() override;
 
 
+
                             class Input : public Entity
                             {
                                 public:
@@ -131,11 +138,12 @@ class Pbr : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value node_name; //type: string
-                                    Value policy_name; //type: string
-                                    Value state; //type: PolicyStateEnum
-                                    Value state_description; //type: string
 
+
+                                    YLeaf node_name; //type: string
+                                    YLeaf policy_name; //type: string
+                                    YLeaf state; //type: PolicyStateEnum
+                                    YLeaf state_description; //type: string
 
                                 class ClassStat : public Entity
                                 {
@@ -150,10 +158,11 @@ class Pbr : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value counter_validity_bitmask; //type: uint64
-                                        Value class_name; //type: string
-                                        Value class_id; //type: uint32
 
+
+                                        YLeaf counter_validity_bitmask; //type: uint64
+                                        YLeaf class_name; //type: string
+                                        YLeaf class_id; //type: uint32
 
                                     class GeneralStats : public Entity
                                     {
@@ -168,16 +177,17 @@ class Pbr : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value transmit_packets; //type: uint64
-                                            Value transmit_bytes; //type: uint64
-                                            Value total_drop_packets; //type: uint64
-                                            Value total_drop_bytes; //type: uint64
-                                            Value total_drop_rate; //type: uint32
-                                            Value match_data_rate; //type: uint32
-                                            Value total_transmit_rate; //type: uint32
-                                            Value pre_policy_matched_packets; //type: uint64
-                                            Value pre_policy_matched_bytes; //type: uint64
 
+
+                                            YLeaf transmit_packets; //type: uint64
+                                            YLeaf transmit_bytes; //type: uint64
+                                            YLeaf total_drop_packets; //type: uint64
+                                            YLeaf total_drop_bytes; //type: uint64
+                                            YLeaf total_drop_rate; //type: uint32
+                                            YLeaf match_data_rate; //type: uint32
+                                            YLeaf total_transmit_rate; //type: uint32
+                                            YLeaf pre_policy_matched_packets; //type: uint64
+                                            YLeaf pre_policy_matched_bytes; //type: uint64
 
 
 
@@ -197,13 +207,14 @@ class Pbr : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value rqst_rcvd_packets; //type: uint64
-                                            Value rqst_rcvd_bytes; //type: uint64
-                                            Value drop_packets; //type: uint64
-                                            Value drop_bytes; //type: uint64
-                                            Value resp_sent_packets; //type: uint64
-                                            Value resp_sent_bytes; //type: uint64
 
+
+                                            YLeaf rqst_rcvd_packets; //type: uint64
+                                            YLeaf rqst_rcvd_bytes; //type: uint64
+                                            YLeaf drop_packets; //type: uint64
+                                            YLeaf drop_bytes; //type: uint64
+                                            YLeaf resp_sent_packets; //type: uint64
+                                            YLeaf resp_sent_bytes; //type: uint64
 
 
 
@@ -218,7 +229,6 @@ class Pbr : public Entity
 
 
                                     std::vector<std::unique_ptr<Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat> > class_stat;
-                                    class PolicyStateEnum;
 
 
                             }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
@@ -269,8 +279,8 @@ class Pbr : public Entity
 class PolicyStateEnum : public Enum
 {
     public:
-        static const Enum::Value active;
-        static const Enum::Value suspended;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf suspended;
 
 };
 

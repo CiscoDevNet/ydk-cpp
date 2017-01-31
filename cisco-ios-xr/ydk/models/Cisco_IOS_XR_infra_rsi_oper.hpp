@@ -26,6 +26,7 @@ class VrfGroup : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class VrfGroup : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class VrfGroup : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Groups : public Entity
             {
@@ -72,6 +75,7 @@ class VrfGroup : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Group : public Entity
                 {
                     public:
@@ -85,10 +89,11 @@ class VrfGroup : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value group_name; //type: string
-                        Value vr_fs; //type: uint32
-                        Value forward_reference; //type: boolean
 
+
+                        YLeaf group_name; //type: string
+                        YLeaf vr_fs; //type: uint32
+                        YLeaf forward_reference; //type: boolean
 
                     class Vrf : public Entity
                     {
@@ -103,8 +108,9 @@ class VrfGroup : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
 
+
+                            YLeaf vrf_name; //type: string
 
 
 
@@ -156,6 +162,7 @@ class Srlg : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class SrlgMaps : public Entity
     {
         public:
@@ -171,6 +178,7 @@ class Srlg : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class SrlgMap : public Entity
         {
             public:
@@ -184,10 +192,11 @@ class Srlg : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value srlg_name; //type: string
-                Value srlg_value; //type: uint32
-                Value srlg_name_xr; //type: string
 
+
+                YLeaf srlg_name; //type: string
+                YLeaf srlg_value; //type: uint32
+                YLeaf srlg_name_xr; //type: string
 
 
 
@@ -215,6 +224,7 @@ class Srlg : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -228,8 +238,9 @@ class Srlg : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class SrlgMaps : public Entity
             {
@@ -246,6 +257,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SrlgMap : public Entity
                 {
                     public:
@@ -259,10 +271,11 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value srlg_name; //type: string
-                        Value srlg_value; //type: uint32
-                        Value srlg_name_xr; //type: string
 
+
+                        YLeaf srlg_name; //type: string
+                        YLeaf srlg_value; //type: uint32
+                        YLeaf srlg_name_xr; //type: string
 
 
 
@@ -290,6 +303,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Group : public Entity
                 {
                     public:
@@ -303,10 +317,11 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value group_name; //type: string
-                        Value group_name_xr; //type: string
-                        Value group_values; //type: uint32
 
+
+                        YLeaf group_name; //type: string
+                        YLeaf group_name_xr; //type: string
+                        YLeaf group_values; //type: uint32
 
                     class SrlgAttribute : public Entity
                     {
@@ -321,12 +336,12 @@ class Srlg : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg_value; //type: uint32
-                            Value priority; //type: PriorityEnum
-                            Value srlg_index; //type: uint16
 
 
-                            class PriorityEnum;
+                            YLeaf srlg_value; //type: uint32
+                            YLeaf priority; //type: PriorityEnum
+                            YLeaf srlg_index; //type: uint16
+
 
 
                     }; // Srlg::Nodes::Node::Groups::Group::SrlgAttribute
@@ -359,6 +374,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InheritNode : public Entity
                 {
                     public:
@@ -372,10 +388,11 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value inherit_node_name; //type: string
-                        Value node_name; //type: string
-                        Value node_values; //type: uint32
 
+
+                        YLeaf inherit_node_name; //type: string
+                        YLeaf node_name; //type: string
+                        YLeaf node_values; //type: uint32
 
                     class SrlgAttribute : public Entity
                     {
@@ -390,12 +407,12 @@ class Srlg : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg_value; //type: uint32
-                            Value priority; //type: PriorityEnum
-                            Value srlg_index; //type: uint16
 
 
-                            class PriorityEnum;
+                            YLeaf srlg_value; //type: uint32
+                            YLeaf priority; //type: PriorityEnum
+                            YLeaf srlg_index; //type: uint16
+
 
 
                     }; // Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute
@@ -428,6 +445,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Interface : public Entity
                 {
                     public:
@@ -441,12 +459,13 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value interface_name_xr; //type: string
-                        Value value_count; //type: uint32
-                        Value registrations; //type: uint32
-                        ValueList srlg_value; //type: list of  uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf interface_name_xr; //type: string
+                        YLeaf value_count; //type: uint32
+                        YLeaf registrations; //type: uint32
+                        YLeafList srlg_value; //type: list of  uint32
 
 
 
@@ -474,6 +493,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceDetail : public Entity
                 {
                     public:
@@ -487,10 +507,11 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value interface_name; //type: string
-                        Value groups; //type: uint32
-                        Value nodes; //type: uint32
 
+
+                        YLeaf interface_name; //type: string
+                        YLeaf groups; //type: uint32
+                        YLeaf nodes; //type: uint32
 
                     class SrlgAttribute : public Entity
                     {
@@ -505,15 +526,14 @@ class Srlg : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg_value; //type: uint32
-                            Value priority; //type: PriorityEnum
-                            Value source; //type: SourceEnum
-                            Value source_name; //type: string
-                            Value srlg_index; //type: uint16
 
 
-                            class PriorityEnum;
-                            class SourceEnum;
+                            YLeaf srlg_value; //type: uint32
+                            YLeaf priority; //type: PriorityEnum
+                            YLeaf source; //type: SourceEnum
+                            YLeaf source_name; //type: string
+                            YLeaf srlg_index; //type: uint16
+
 
 
                     }; // Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute
@@ -546,6 +566,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SrlgValue : public Entity
                 {
                     public:
@@ -559,9 +580,10 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value value_; //type: int32
-                        ValueList interface_name; //type: list of  string
 
+
+                        YLeaf value_; //type: int32
+                        YLeafList interface_name; //type: list of  string
 
 
 
@@ -589,6 +611,7 @@ class Srlg : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceSrlgName : public Entity
                 {
                     public:
@@ -602,10 +625,11 @@ class Srlg : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value srlg_name; //type: string
-                        Value srlg_name_xr; //type: string
-                        Value srlg_value; //type: uint32
 
+
+                        YLeaf srlg_name; //type: string
+                        YLeaf srlg_name_xr; //type: string
+                        YLeaf srlg_value; //type: uint32
 
                     class Interfaces : public Entity
                     {
@@ -620,8 +644,9 @@ class Srlg : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList interface_name; //type: list of  string
 
+
+                            YLeafList interface_name; //type: list of  string
 
 
 
@@ -673,6 +698,7 @@ class Srlg : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class InterfaceSrlgName : public Entity
         {
             public:
@@ -686,10 +712,11 @@ class Srlg : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value srlg_name; //type: string
-                Value srlg_name_xr; //type: string
-                Value srlg_value; //type: uint32
 
+
+                YLeaf srlg_name; //type: string
+                YLeaf srlg_name_xr; //type: string
+                YLeaf srlg_value; //type: uint32
 
             class Interfaces : public Entity
             {
@@ -704,8 +731,9 @@ class Srlg : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    ValueList interface_name; //type: list of  string
 
+
+                    YLeafList interface_name; //type: list of  string
 
 
 
@@ -747,6 +775,7 @@ class SelectiveVrfDownload : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class State : public Entity
     {
         public:
@@ -760,9 +789,10 @@ class SelectiveVrfDownload : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value is_svd_enabled; //type: boolean
-            Value is_svd_enabled_cfg; //type: boolean
 
+
+            YLeaf is_svd_enabled; //type: boolean
+            YLeaf is_svd_enabled_cfg; //type: boolean
 
 
 
@@ -778,25 +808,25 @@ class SelectiveVrfDownload : public Entity
 class PriorityEnum : public Enum
 {
     public:
-        static const Enum::Value critical;
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
-        static const Enum::Value very_low;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
+        static const Enum::YLeaf very_low;
 
 };
 
 class SourceEnum : public Enum
 {
     public:
-        static const Enum::Value configured;
-        static const Enum::Value from_group;
-        static const Enum::Value inherited;
-        static const Enum::Value from_optical;
-        static const Enum::Value configured_and_notified;
-        static const Enum::Value from_group_and_notified;
-        static const Enum::Value inherited_and_notified;
-        static const Enum::Value from_optical_and_notified;
+        static const Enum::YLeaf configured;
+        static const Enum::YLeaf from_group;
+        static const Enum::YLeaf inherited;
+        static const Enum::YLeaf from_optical;
+        static const Enum::YLeaf configured_and_notified;
+        static const Enum::YLeaf from_group_and_notified;
+        static const Enum::YLeaf inherited_and_notified;
+        static const Enum::YLeaf from_optical_and_notified;
 
 };
 

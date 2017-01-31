@@ -8,11 +8,11 @@ namespace ydk {
 namespace Cisco_IOS_XR_Ethernet_SPAN_datatypes {
 
 
-const Enum::Value SpanSessionClassOldEnum::true_ {0, "true"};
+const Enum::YLeaf SpanSessionClassOldEnum::true_ {0, "true"};
 
-const Enum::Value SpanSessionClassEnum::ethernet {0, "ethernet"};
-const Enum::Value SpanSessionClassEnum::ipv4 {1, "ipv4"};
-const Enum::Value SpanSessionClassEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf SpanSessionClassEnum::ethernet {0, "ethernet"};
+const Enum::YLeaf SpanSessionClassEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf SpanSessionClassEnum::ipv6 {2, "ipv6"};
 
 
 }

@@ -26,6 +26,7 @@ class MemorySummary : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class MemorySummary : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class MemorySummary : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class Summary : public Entity
             {
@@ -70,17 +73,18 @@ class MemorySummary : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value page_size; //type: uint32
-                    Value ram_memory; //type: uint64
-                    Value free_physical_memory; //type: uint64
-                    Value system_ram_memory; //type: uint64
-                    Value free_application_memory; //type: uint64
-                    Value image_memory; //type: uint64
-                    Value boot_ram_size; //type: uint64
-                    Value reserved_memory; //type: uint64
-                    Value io_memory; //type: uint64
-                    Value flash_system; //type: uint64
 
+
+                    YLeaf page_size; //type: uint32
+                    YLeaf ram_memory; //type: uint64
+                    YLeaf free_physical_memory; //type: uint64
+                    YLeaf system_ram_memory; //type: uint64
+                    YLeaf free_application_memory; //type: uint64
+                    YLeaf image_memory; //type: uint64
+                    YLeaf boot_ram_size; //type: uint64
+                    YLeaf reserved_memory; //type: uint64
+                    YLeaf io_memory; //type: uint64
+                    YLeaf flash_system; //type: uint64
 
 
 
@@ -100,23 +104,24 @@ class MemorySummary : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value page_size; //type: uint32
-                    Value ram_memory; //type: uint64
-                    Value free_physical_memory; //type: uint64
-                    Value private_physical_memory; //type: uint64
-                    Value system_ram_memory; //type: uint64
-                    Value free_application_memory; //type: uint64
-                    Value image_memory; //type: uint64
-                    Value boot_ram_size; //type: uint64
-                    Value reserved_memory; //type: uint64
-                    Value io_memory; //type: uint64
-                    Value flash_system; //type: uint64
-                    Value total_shared_window; //type: uint64
-                    Value allocated_memory; //type: uint64
-                    Value program_text; //type: uint64
-                    Value program_data; //type: uint64
-                    Value program_stack; //type: uint64
 
+
+                    YLeaf page_size; //type: uint32
+                    YLeaf ram_memory; //type: uint64
+                    YLeaf free_physical_memory; //type: uint64
+                    YLeaf private_physical_memory; //type: uint64
+                    YLeaf system_ram_memory; //type: uint64
+                    YLeaf free_application_memory; //type: uint64
+                    YLeaf image_memory; //type: uint64
+                    YLeaf boot_ram_size; //type: uint64
+                    YLeaf reserved_memory; //type: uint64
+                    YLeaf io_memory; //type: uint64
+                    YLeaf flash_system; //type: uint64
+                    YLeaf total_shared_window; //type: uint64
+                    YLeaf allocated_memory; //type: uint64
+                    YLeaf program_text; //type: uint64
+                    YLeaf program_data; //type: uint64
+                    YLeaf program_stack; //type: uint64
 
                 class SharedWindow : public Entity
                 {
@@ -131,9 +136,10 @@ class MemorySummary : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value shared_window; //type: string
-                        Value window_size; //type: uint64
 
+
+                        YLeaf shared_window; //type: string
+                        YLeaf window_size; //type: uint64
 
 
 

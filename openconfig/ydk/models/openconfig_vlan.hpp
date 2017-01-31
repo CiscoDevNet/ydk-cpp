@@ -26,6 +26,7 @@ class Vlans : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Vlan : public Entity
     {
         public:
@@ -39,9 +40,10 @@ class Vlans : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            //type: uint16 (refers to openconfig_vlan::Vlans::Vlan::Config::vlan_id)
-            Value vlan_id;
 
+
+            //type: uint16 (refers to openconfig_vlan::Vlans::Vlan::Config::vlan_id)
+            YLeaf vlan_id;
 
         class Config : public Entity
         {
@@ -56,10 +58,11 @@ class Vlans : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vlan_id; //type: uint16
-                Value name; //type: string
-                Value status; //type: StatusEnum
 
+
+                YLeaf vlan_id; //type: uint16
+                YLeaf name; //type: string
+                YLeaf status; //type: StatusEnum
 
                 class StatusEnum;
 
@@ -80,12 +83,13 @@ class Vlans : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vlan_id; //type: uint16
-                Value name; //type: string
-                Value status; //type: StatusEnum
-                //type: list of  leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
-                ValueList member_ports;
 
+
+                YLeaf vlan_id; //type: uint16
+                YLeaf name; //type: string
+                YLeaf status; //type: StatusEnum
+                //type: list of  leafref (refers to openconfig_interfaces::Interfaces::Interface::name)
+                YLeafList member_ports;
 
                 class StatusEnum;
 
@@ -109,24 +113,24 @@ class Vlans : public Entity
 class VlanModeTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ACCESS;
-        static const Enum::Value TRUNK;
+        static const Enum::YLeaf ACCESS;
+        static const Enum::YLeaf TRUNK;
 
 };
 
 class Vlans::Vlan::Config::StatusEnum : public Enum
 {
     public:
-        static const Enum::Value ACTIVE;
-        static const Enum::Value SUSPENDED;
+        static const Enum::YLeaf ACTIVE;
+        static const Enum::YLeaf SUSPENDED;
 
 };
 
 class Vlans::Vlan::State::StatusEnum : public Enum
 {
     public:
-        static const Enum::Value ACTIVE;
-        static const Enum::Value SUSPENDED;
+        static const Enum::YLeaf ACTIVE;
+        static const Enum::YLeaf SUSPENDED;
 
 };
 

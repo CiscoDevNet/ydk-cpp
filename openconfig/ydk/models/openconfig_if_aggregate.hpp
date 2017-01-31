@@ -14,40 +14,40 @@ namespace openconfig_if_aggregate {
 class AggregationTypeEnum : public Enum
 {
     public:
-        static const Enum::Value LACP;
-        static const Enum::Value STATIC;
+        static const Enum::YLeaf LACP;
+        static const Enum::YLeaf STATIC;
 
 };
 
 class LacpTimeoutTypeEnum : public Enum
 {
     public:
-        static const Enum::Value LONG;
-        static const Enum::Value SHORT;
+        static const Enum::YLeaf LONG;
+        static const Enum::YLeaf SHORT;
 
 };
 
 class LacpPeriodTypeEnum : public Enum
 {
     public:
-        static const Enum::Value FAST;
-        static const Enum::Value SLOW;
+        static const Enum::YLeaf FAST;
+        static const Enum::YLeaf SLOW;
 
 };
 
 class LacpActivityTypeEnum : public Enum
 {
     public:
-        static const Enum::Value ACTIVE;
-        static const Enum::Value PASSIVE;
+        static const Enum::YLeaf ACTIVE;
+        static const Enum::YLeaf PASSIVE;
 
 };
 
 class LacpSynchronizationTypeEnum : public Enum
 {
     public:
-        static const Enum::Value IN_SYNC;
-        static const Enum::Value OUT_SYNC;
+        static const Enum::YLeaf IN_SYNC;
+        static const Enum::YLeaf OUT_SYNC;
 
 };
 

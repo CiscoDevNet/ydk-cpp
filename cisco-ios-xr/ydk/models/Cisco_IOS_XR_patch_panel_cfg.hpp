@@ -24,11 +24,12 @@ class PatchPanel : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable; //type: empty
-        Value user_name; //type: string
-        Value password; //type: string
-        Value ipv4; //type: string
 
+
+        YLeaf enable; //type: empty
+        YLeaf user_name; //type: string
+        YLeaf password; //type: string
+        YLeaf ipv4; //type: string
 
 
 

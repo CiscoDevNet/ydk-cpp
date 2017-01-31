@@ -28,7 +28,7 @@ AsicErrorStats::Nodes::Node::Counts::Count::SumData::~SumData()
 
 bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_data() const
 {
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -45,7 +45,7 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_data() const
 
 bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_operation() const
 {
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -55,6 +55,7 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_operation() const
 	|| is_set(gen_err_count.operation)
 	|| is_set(instance.operation)
 	|| is_set(mbe_err_count.operation)
+	|| is_set(node_key.operation)
 	|| is_set(num_nodes.operation)
 	|| is_set(par_err_count.operation)
 	|| is_set(reset_err_count.operation)
@@ -75,7 +76,7 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -206,7 +207,7 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -319,7 +320,7 @@ EntityPath AsicErrorStats::Nodes::Node::Counts::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -410,7 +411,7 @@ bool AsicErrorStats::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (counts !=  nullptr && is_set(counts->operation));
+	|| (counts !=  nullptr && counts->has_operation());
 }
 
 std::string AsicErrorStats::Nodes::Node::get_segment_path() const
@@ -624,7 +625,7 @@ bool AsicErrorStats::has_data() const
 bool AsicErrorStats::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string AsicErrorStats::get_segment_path() const
@@ -641,7 +642,7 @@ EntityPath AsicErrorStats::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

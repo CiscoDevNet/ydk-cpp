@@ -24,9 +24,10 @@ class MplsOam : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value enable_oam; //type: empty
-        Value disable_vendor_extension; //type: empty
 
+
+        YLeaf enable_oam; //type: empty
+        YLeaf disable_vendor_extension; //type: empty
 
     class ReplyMode : public Entity
     {
@@ -43,6 +44,7 @@ class MplsOam : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ControlChannel : public Entity
         {
             public:
@@ -56,8 +58,9 @@ class MplsOam : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value allow_reverse_lsp; //type: empty
 
+
+                YLeaf allow_reverse_lsp; //type: empty
 
 
 

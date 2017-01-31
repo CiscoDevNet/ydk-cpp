@@ -14,285 +14,285 @@ namespace Cisco_IOS_XR_mpls_te_datatypes {
 class SrPrependEnum : public Enum
 {
     public:
-        static const Enum::Value none_type;
-        static const Enum::Value next_label;
-        static const Enum::Value bgp_n_hop;
+        static const Enum::YLeaf none_type;
+        static const Enum::YLeaf next_label;
+        static const Enum::YLeaf bgp_n_hop;
 
 };
 
 class MplsTeBandwidthLimitEnum : public Enum
 {
     public:
-        static const Enum::Value unlimited;
-        static const Enum::Value limited;
+        static const Enum::YLeaf unlimited;
+        static const Enum::YLeaf limited;
 
 };
 
 class MplsTeBandwidthPoolEnum : public Enum
 {
     public:
-        static const Enum::Value any_pool;
-        static const Enum::Value sub_pool;
+        static const Enum::YLeaf any_pool;
+        static const Enum::YLeaf sub_pool;
 
 };
 
 class MplsTeAttrSetEnum : public Enum
 {
     public:
-        static const Enum::Value not_used;
-        static const Enum::Value static_;
-        static const Enum::Value lsp;
-        static const Enum::Value unassigned;
-        static const Enum::Value auto_backup;
-        static const Enum::Value auto_mesh;
-        static const Enum::Value xro;
-        static const Enum::Value p2mp_te;
-        static const Enum::Value otn_pp;
-        static const Enum::Value p2p_te;
+        static const Enum::YLeaf not_used;
+        static const Enum::YLeaf static_;
+        static const Enum::YLeaf lsp;
+        static const Enum::YLeaf unassigned;
+        static const Enum::YLeaf auto_backup;
+        static const Enum::YLeaf auto_mesh;
+        static const Enum::YLeaf xro;
+        static const Enum::YLeaf p2mp_te;
+        static const Enum::YLeaf otn_pp;
+        static const Enum::YLeaf p2p_te;
 
 };
 
 class MplsTeSwitchingCapEnum : public Enum
 {
     public:
-        static const Enum::Value psc1;
-        static const Enum::Value lsc;
-        static const Enum::Value fsc;
+        static const Enum::YLeaf psc1;
+        static const Enum::YLeaf lsc;
+        static const Enum::YLeaf fsc;
 
 };
 
 class MplsTeBfdSessionDownActionEnum : public Enum
 {
     public:
-        static const Enum::Value re_setup;
+        static const Enum::YLeaf re_setup;
 
 };
 
 class MplsTeBackupBandwidthClassEnum : public Enum
 {
     public:
-        static const Enum::Value class0;
-        static const Enum::Value class1;
-        static const Enum::Value any_class;
+        static const Enum::YLeaf class0;
+        static const Enum::YLeaf class1;
+        static const Enum::YLeaf any_class;
 
 };
 
 class MplsTeLogFrrProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value frr_active_primary;
-        static const Enum::Value backup;
-        static const Enum::Value frr_ready_primary;
-        static const Enum::Value primary;
-        static const Enum::Value all;
+        static const Enum::YLeaf frr_active_primary;
+        static const Enum::YLeaf backup;
+        static const Enum::YLeaf frr_ready_primary;
+        static const Enum::YLeaf primary;
+        static const Enum::YLeaf all;
 
 };
 
 class MplsTeTunnelAffinityEnum : public Enum
 {
     public:
-        static const Enum::Value include;
-        static const Enum::Value include_strict;
-        static const Enum::Value exclude;
-        static const Enum::Value exclude_all;
-        static const Enum::Value ignore;
+        static const Enum::YLeaf include;
+        static const Enum::YLeaf include_strict;
+        static const Enum::YLeaf exclude;
+        static const Enum::YLeaf exclude_all;
+        static const Enum::YLeaf ignore;
 
 };
 
 class MplsTePathOptionPropertyEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value lockdown;
-        static const Enum::Value verbatim;
-        static const Enum::Value pce;
-        static const Enum::Value segment_routing;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf lockdown;
+        static const Enum::YLeaf verbatim;
+        static const Enum::YLeaf pce;
+        static const Enum::YLeaf segment_routing;
 
 };
 
 class MplsTePathSelectionInvalidationTimerExpireEnum : public Enum
 {
     public:
-        static const Enum::Value tunnel_action_tear;
-        static const Enum::Value tunnel_action_drop;
+        static const Enum::YLeaf tunnel_action_tear;
+        static const Enum::YLeaf tunnel_action_drop;
 
 };
 
 class MplsTeOtnApsProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value Y_1plus1_unidir_no_aps;
-        static const Enum::Value Y_1plus1_unidir_aps;
-        static const Enum::Value Y_1plus1_bdir_aps;
+        static const Enum::YLeaf Y_1plus1_unidir_no_aps;
+        static const Enum::YLeaf Y_1plus1_unidir_aps;
+        static const Enum::YLeaf Y_1plus1_bdir_aps;
 
 };
 
 class CtypeEnum : public Enum
 {
     public:
-        static const Enum::Value ctype_null;
-        static const Enum::Value ctype_ipv4;
-        static const Enum::Value ctype_ipv4_p2p_tunnel;
-        static const Enum::Value ctype_ipv6_p2p_tunnel;
-        static const Enum::Value ctype_ipv4_uni;
-        static const Enum::Value ctype_ipv4_p2mp_tunnel;
-        static const Enum::Value ctype_ipv6_p2mp_tunnel;
+        static const Enum::YLeaf ctype_null;
+        static const Enum::YLeaf ctype_ipv4;
+        static const Enum::YLeaf ctype_ipv4_p2p_tunnel;
+        static const Enum::YLeaf ctype_ipv6_p2p_tunnel;
+        static const Enum::YLeaf ctype_ipv4_uni;
+        static const Enum::YLeaf ctype_ipv4_p2mp_tunnel;
+        static const Enum::YLeaf ctype_ipv6_p2mp_tunnel;
 
 };
 
 class MplsTeAffinityValueEnum : public Enum
 {
     public:
-        static const Enum::Value hex_value;
-        static const Enum::Value bit_position;
+        static const Enum::YLeaf hex_value;
+        static const Enum::YLeaf bit_position;
 
 };
 
 class MplsTeBandwidthDsteEnum : public Enum
 {
     public:
-        static const Enum::Value standard_dste;
-        static const Enum::Value pre_standard_dste;
+        static const Enum::YLeaf standard_dste;
+        static const Enum::YLeaf pre_standard_dste;
 
 };
 
 class MplsTePathSelectionSegmentRoutingAdjacencyProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value adj_unprotected;
-        static const Enum::Value adj_protected;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf adj_unprotected;
+        static const Enum::YLeaf adj_protected;
 
 };
 
 class MplsTeIgpProtocolEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value isis;
-        static const Enum::Value ospf;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf isis;
+        static const Enum::YLeaf ospf;
 
 };
 
 class MplsTePathSelectionTiebreakerEnum : public Enum
 {
     public:
-        static const Enum::Value min_fill;
-        static const Enum::Value max_fill;
-        static const Enum::Value random;
+        static const Enum::YLeaf min_fill;
+        static const Enum::YLeaf max_fill;
+        static const Enum::YLeaf random;
 
 };
 
 class MplsTeSigNameOptionEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value address;
-        static const Enum::Value name;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf address;
+        static const Enum::YLeaf name;
 
 };
 
 class PathInvalidationActionEnum : public Enum
 {
     public:
-        static const Enum::Value tear;
-        static const Enum::Value drop;
+        static const Enum::YLeaf tear;
+        static const Enum::YLeaf drop;
 
 };
 
 class MplsTeAutorouteMetricEnum : public Enum
 {
     public:
-        static const Enum::Value relative;
-        static const Enum::Value absolute;
-        static const Enum::Value constant;
+        static const Enum::YLeaf relative;
+        static const Enum::YLeaf absolute;
+        static const Enum::YLeaf constant;
 
 };
 
 class MplsTesrlgExcludeEnum : public Enum
 {
     public:
-        static const Enum::Value mandatory;
-        static const Enum::Value preferred;
-        static const Enum::Value weighted;
+        static const Enum::YLeaf mandatory;
+        static const Enum::YLeaf preferred;
+        static const Enum::YLeaf weighted;
 
 };
 
 class MplsTeBackupBandwidthPoolEnum : public Enum
 {
     public:
-        static const Enum::Value any_pool;
-        static const Enum::Value global_pool;
-        static const Enum::Value sub_pool;
+        static const Enum::YLeaf any_pool;
+        static const Enum::YLeaf global_pool;
+        static const Enum::YLeaf sub_pool;
 
 };
 
 class MplsTePathSelectionMetricEnum : public Enum
 {
     public:
-        static const Enum::Value igp;
-        static const Enum::Value te;
-        static const Enum::Value delay;
+        static const Enum::YLeaf igp;
+        static const Enum::YLeaf te;
+        static const Enum::YLeaf delay;
 
 };
 
 class MplsTePathOptionProtectionEnum : public Enum
 {
     public:
-        static const Enum::Value active;
-        static const Enum::Value protecting;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf protecting;
 
 };
 
 class MplsTePathOptionEnum : public Enum
 {
     public:
-        static const Enum::Value not_set;
-        static const Enum::Value dynamic;
-        static const Enum::Value explicit_name;
-        static const Enum::Value explicit_number;
-        static const Enum::Value no_ero;
-        static const Enum::Value sr;
+        static const Enum::YLeaf not_set;
+        static const Enum::YLeaf dynamic;
+        static const Enum::YLeaf explicit_name;
+        static const Enum::YLeaf explicit_number;
+        static const Enum::YLeaf no_ero;
+        static const Enum::YLeaf sr;
 
 };
 
 class BfdReversePathEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_reverse_path_binding_label;
+        static const Enum::YLeaf bfd_reverse_path_binding_label;
 
 };
 
 class MplsTeOtnApsRestorationStyleEnum : public Enum
 {
     public:
-        static const Enum::Value keep_failed_lsp;
-        static const Enum::Value delete_failed_lsp;
+        static const Enum::YLeaf keep_failed_lsp;
+        static const Enum::YLeaf delete_failed_lsp;
 
 };
 
 class MplsTeOtnSncModeEnum : public Enum
 {
     public:
-        static const Enum::Value snc_n;
-        static const Enum::Value snc_i;
-        static const Enum::Value snc_s;
+        static const Enum::YLeaf snc_n;
+        static const Enum::YLeaf snc_i;
+        static const Enum::YLeaf snc_s;
 
 };
 
 class MplsTePathDiversityConformanceEnum : public Enum
 {
     public:
-        static const Enum::Value strict;
-        static const Enum::Value best_effort;
+        static const Enum::YLeaf strict;
+        static const Enum::YLeaf best_effort;
 
 };
 
 class MplsTeOtnApsProtectionModeEnum : public Enum
 {
     public:
-        static const Enum::Value revertive;
-        static const Enum::Value non_revertive;
+        static const Enum::YLeaf revertive;
+        static const Enum::YLeaf non_revertive;
 
 };
 

@@ -26,6 +26,7 @@ class AsicErrors : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class AsicErrors : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class AsicErrors : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
 
+
+                YLeaf node_name; //type: string
 
             class AsicInformation : public Entity
             {
@@ -70,8 +73,9 @@ class AsicErrors : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value asic; //type: string
 
+
+                    YLeaf asic; //type: string
 
                 class AllInstances : public Entity
                 {
@@ -86,6 +90,7 @@ class AsicErrors : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
+
 
 
                     class AllErrorPath : public Entity
@@ -103,6 +108,7 @@ class AsicErrors : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class Summary : public Entity
                         {
                             public:
@@ -116,9 +122,10 @@ class AsicErrors : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value legacy_client; //type: boolean
-                                Value cih_client; //type: boolean
 
+
+                                YLeaf legacy_client; //type: boolean
+                                YLeaf cih_client; //type: boolean
 
                             class SumData : public Entity
                             {
@@ -133,17 +140,18 @@ class AsicErrors : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value num_nodes; //type: uint32
-                                    Value crc_err_count; //type: uint32
-                                    Value sbe_err_count; //type: uint32
-                                    Value mbe_err_count; //type: uint32
-                                    Value par_err_count; //type: uint32
-                                    Value gen_err_count; //type: uint32
-                                    Value reset_err_count; //type: uint32
-                                    ValueList err_count; //type: list of  uint32
-                                    ValueList pcie_err_count; //type: list of  uint32
-                                    ValueList node_key; //type: list of  uint32
 
+
+                                    YLeaf num_nodes; //type: uint32
+                                    YLeaf crc_err_count; //type: uint32
+                                    YLeaf sbe_err_count; //type: uint32
+                                    YLeaf mbe_err_count; //type: uint32
+                                    YLeaf par_err_count; //type: uint32
+                                    YLeaf gen_err_count; //type: uint32
+                                    YLeaf reset_err_count; //type: uint32
+                                    YLeafList err_count; //type: list of  uint32
+                                    YLeafList pcie_err_count; //type: list of  uint32
+                                    YLeafList node_key; //type: list of  uint32
 
 
 
@@ -183,6 +191,7 @@ class AsicErrors : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Instance : public Entity
                     {
                         public:
@@ -196,8 +205,9 @@ class AsicErrors : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value asic_instance; //type: int32
 
+
+                            YLeaf asic_instance; //type: int32
 
                         class ErrorPath : public Entity
                         {
@@ -212,6 +222,7 @@ class AsicErrors : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
+
 
 
                             class MultipleBitSoftErrors : public Entity
@@ -229,6 +240,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -242,19 +254,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -269,10 +282,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -292,12 +306,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -332,6 +347,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -345,19 +361,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -372,10 +389,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -395,12 +413,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -435,6 +454,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -448,19 +468,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -475,10 +496,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -498,12 +520,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -538,6 +561,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -551,19 +575,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -578,10 +603,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -601,12 +627,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -641,6 +668,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -654,19 +682,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -681,10 +710,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -704,12 +734,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -744,6 +775,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -757,19 +789,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -784,10 +817,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -807,12 +841,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -847,6 +882,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -860,19 +896,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -887,10 +924,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -910,12 +948,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -950,6 +989,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -963,19 +1003,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -990,10 +1031,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1013,12 +1055,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1053,6 +1096,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1066,19 +1110,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1093,10 +1138,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1116,12 +1162,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1156,6 +1203,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1169,19 +1217,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1196,10 +1245,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1219,12 +1269,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1259,6 +1310,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1272,19 +1324,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1299,10 +1352,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1322,12 +1376,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1362,6 +1417,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1375,19 +1431,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1402,10 +1459,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1425,12 +1483,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1465,6 +1524,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1478,19 +1538,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1505,10 +1566,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1528,12 +1590,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1568,6 +1631,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1581,19 +1645,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1608,10 +1673,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1631,12 +1697,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1671,6 +1738,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1684,19 +1752,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1711,10 +1780,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1734,12 +1804,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1774,6 +1845,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1787,19 +1859,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1814,10 +1887,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1837,12 +1911,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1877,6 +1952,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1890,19 +1966,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -1917,10 +1994,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -1940,12 +2018,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -1980,6 +2059,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -1993,19 +2073,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2020,10 +2101,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2043,12 +2125,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2083,6 +2166,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2096,19 +2180,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2123,10 +2208,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2146,12 +2232,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2186,6 +2273,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2199,19 +2287,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2226,10 +2315,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2249,12 +2339,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2289,6 +2380,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2302,19 +2394,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2329,10 +2422,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2352,12 +2446,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2392,6 +2487,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2405,19 +2501,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2432,10 +2529,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2455,12 +2553,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2495,6 +2594,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2508,19 +2608,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2535,10 +2636,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2558,12 +2660,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2598,6 +2701,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2611,19 +2715,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2638,10 +2743,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2661,12 +2767,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2701,6 +2808,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2714,19 +2822,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2741,10 +2850,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2764,12 +2874,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2802,9 +2913,10 @@ class AsicErrors : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value legacy_client; //type: boolean
-                                    Value cih_client; //type: boolean
 
+
+                                    YLeaf legacy_client; //type: boolean
+                                    YLeaf cih_client; //type: boolean
 
                                 class SumData : public Entity
                                 {
@@ -2819,17 +2931,18 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value num_nodes; //type: uint32
-                                        Value crc_err_count; //type: uint32
-                                        Value sbe_err_count; //type: uint32
-                                        Value mbe_err_count; //type: uint32
-                                        Value par_err_count; //type: uint32
-                                        Value gen_err_count; //type: uint32
-                                        Value reset_err_count; //type: uint32
-                                        ValueList err_count; //type: list of  uint32
-                                        ValueList pcie_err_count; //type: list of  uint32
-                                        ValueList node_key; //type: list of  uint32
 
+
+                                        YLeaf num_nodes; //type: uint32
+                                        YLeaf crc_err_count; //type: uint32
+                                        YLeaf sbe_err_count; //type: uint32
+                                        YLeaf mbe_err_count; //type: uint32
+                                        YLeaf par_err_count; //type: uint32
+                                        YLeaf gen_err_count; //type: uint32
+                                        YLeaf reset_err_count; //type: uint32
+                                        YLeafList err_count; //type: list of  uint32
+                                        YLeafList pcie_err_count; //type: list of  uint32
+                                        YLeafList node_key; //type: list of  uint32
 
 
 
@@ -2857,6 +2970,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2870,19 +2984,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -2897,10 +3012,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -2920,12 +3036,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -2960,6 +3077,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -2973,19 +3091,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3000,10 +3119,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3023,12 +3143,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3063,6 +3184,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3076,19 +3198,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3103,10 +3226,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3126,12 +3250,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3166,6 +3291,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3179,19 +3305,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3206,10 +3333,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3229,12 +3357,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3269,6 +3398,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3282,19 +3412,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3309,10 +3440,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3332,12 +3464,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3372,6 +3505,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3385,19 +3519,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3412,10 +3547,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3435,12 +3571,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3475,6 +3612,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3488,19 +3626,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3515,10 +3654,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3538,12 +3678,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3578,6 +3719,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3591,19 +3733,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3618,10 +3761,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3641,12 +3785,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3681,6 +3826,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3694,19 +3840,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3721,10 +3868,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3744,12 +3892,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3784,6 +3933,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3797,19 +3947,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3824,10 +3975,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3847,12 +3999,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3887,6 +4040,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -3900,19 +4054,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -3927,10 +4082,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -3950,12 +4106,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -3990,6 +4147,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4003,19 +4161,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4030,10 +4189,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4053,12 +4213,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4093,6 +4254,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4106,19 +4268,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4133,10 +4296,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4156,12 +4320,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4196,6 +4361,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4209,19 +4375,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4236,10 +4403,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4259,12 +4427,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4299,6 +4468,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4312,19 +4482,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4339,10 +4510,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4362,12 +4534,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4402,6 +4575,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4415,19 +4589,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4442,10 +4617,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4465,12 +4641,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4505,6 +4682,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4518,19 +4696,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4545,10 +4724,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4568,12 +4748,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4608,6 +4789,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4621,19 +4803,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4648,10 +4831,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4671,12 +4855,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4711,6 +4896,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4724,19 +4910,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4751,10 +4938,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4774,12 +4962,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4814,6 +5003,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4827,19 +5017,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4854,10 +5045,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4877,12 +5069,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -4917,6 +5110,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -4930,19 +5124,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -4957,10 +5152,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -4980,12 +5176,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -5020,6 +5217,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -5033,19 +5231,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -5060,10 +5259,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -5083,12 +5283,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -5123,6 +5324,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -5136,19 +5338,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -5163,10 +5366,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -5186,12 +5390,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -5226,6 +5431,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -5239,19 +5445,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -5266,10 +5473,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -5289,12 +5497,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 
@@ -5329,6 +5538,7 @@ class AsicErrors : public Entity
                                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                                 class Error : public Entity
                                 {
                                     public:
@@ -5342,19 +5552,20 @@ class AsicErrors : public Entity
                                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                         void set_value(const std::string & value_path, std::string value) override;
                                         std::map<std::string, Entity*> & get_children() override;
-                                        Value name; //type: string
-                                        Value asic_info; //type: string
-                                        Value node_key; //type: uint32
-                                        Value alarm_on; //type: boolean
-                                        Value thresh_hi; //type: uint32
-                                        Value period_hi; //type: uint32
-                                        Value thresh_lo; //type: uint32
-                                        Value period_lo; //type: uint32
-                                        Value count; //type: uint32
-                                        Value intr_type; //type: uint32
-                                        Value leaf_id; //type: uint32
-                                        Value last_cleared; //type: uint64
 
+
+                                        YLeaf name; //type: string
+                                        YLeaf asic_info; //type: string
+                                        YLeaf node_key; //type: uint32
+                                        YLeaf alarm_on; //type: boolean
+                                        YLeaf thresh_hi; //type: uint32
+                                        YLeaf period_hi; //type: uint32
+                                        YLeaf thresh_lo; //type: uint32
+                                        YLeaf period_lo; //type: uint32
+                                        YLeaf count; //type: uint32
+                                        YLeaf intr_type; //type: uint32
+                                        YLeaf leaf_id; //type: uint32
+                                        YLeaf last_cleared; //type: uint64
 
                                     class CsrsInfo : public Entity
                                     {
@@ -5369,10 +5580,11 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value name; //type: string
-                                            Value address; //type: uint64
-                                            Value width; //type: uint32
 
+
+                                            YLeaf name; //type: string
+                                            YLeaf address; //type: uint64
+                                            YLeaf width; //type: uint32
 
 
 
@@ -5392,12 +5604,13 @@ class AsicErrors : public Entity
                                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                             void set_value(const std::string & value_path, std::string value) override;
                                             std::map<std::string, Entity*> & get_children() override;
-                                            Value at_time; //type: uint64
-                                            Value at_time_nsec; //type: uint64
-                                            Value counter_val; //type: uint32
-                                            Value error_desc; //type: string
-                                            ValueList error_regval; //type: list of  uint8
 
+
+                                            YLeaf at_time; //type: uint64
+                                            YLeaf at_time_nsec; //type: uint64
+                                            YLeaf counter_val; //type: uint32
+                                            YLeaf error_desc; //type: string
+                                            YLeafList error_regval; //type: list of  uint8
 
 
 

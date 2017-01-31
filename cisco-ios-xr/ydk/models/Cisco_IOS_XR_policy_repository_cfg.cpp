@@ -2717,19 +2717,19 @@ bool RoutingPolicy::Sets::has_data() const
 bool RoutingPolicy::Sets::has_operation() const
 {
     return is_set(operation)
-	|| (as_path_sets !=  nullptr && is_set(as_path_sets->operation))
-	|| (community_sets !=  nullptr && is_set(community_sets->operation))
-	|| (extended_community_bandwidth_sets !=  nullptr && is_set(extended_community_bandwidth_sets->operation))
-	|| (extended_community_cost_sets !=  nullptr && is_set(extended_community_cost_sets->operation))
-	|| (extended_community_opaque_sets !=  nullptr && is_set(extended_community_opaque_sets->operation))
-	|| (extended_community_rt_sets !=  nullptr && is_set(extended_community_rt_sets->operation))
-	|| (extended_community_seg_nh_sets !=  nullptr && is_set(extended_community_seg_nh_sets->operation))
-	|| (extended_community_soo_sets !=  nullptr && is_set(extended_community_soo_sets->operation))
-	|| (ospf_area_sets !=  nullptr && is_set(ospf_area_sets->operation))
-	|| (policy_global_set_table !=  nullptr && is_set(policy_global_set_table->operation))
-	|| (prefix_sets !=  nullptr && is_set(prefix_sets->operation))
-	|| (rd_sets !=  nullptr && is_set(rd_sets->operation))
-	|| (tag_sets !=  nullptr && is_set(tag_sets->operation));
+	|| (as_path_sets !=  nullptr && as_path_sets->has_operation())
+	|| (community_sets !=  nullptr && community_sets->has_operation())
+	|| (extended_community_bandwidth_sets !=  nullptr && extended_community_bandwidth_sets->has_operation())
+	|| (extended_community_cost_sets !=  nullptr && extended_community_cost_sets->has_operation())
+	|| (extended_community_opaque_sets !=  nullptr && extended_community_opaque_sets->has_operation())
+	|| (extended_community_rt_sets !=  nullptr && extended_community_rt_sets->has_operation())
+	|| (extended_community_seg_nh_sets !=  nullptr && extended_community_seg_nh_sets->has_operation())
+	|| (extended_community_soo_sets !=  nullptr && extended_community_soo_sets->has_operation())
+	|| (ospf_area_sets !=  nullptr && ospf_area_sets->has_operation())
+	|| (policy_global_set_table !=  nullptr && policy_global_set_table->has_operation())
+	|| (prefix_sets !=  nullptr && prefix_sets->has_operation())
+	|| (rd_sets !=  nullptr && rd_sets->has_operation())
+	|| (tag_sets !=  nullptr && tag_sets->has_operation());
 }
 
 std::string RoutingPolicy::Sets::get_segment_path() const
@@ -3208,9 +3208,9 @@ bool RoutingPolicy::has_operation() const
 {
     return is_set(operation)
 	|| is_set(editor.operation)
-	|| (limits !=  nullptr && is_set(limits->operation))
-	|| (route_policies !=  nullptr && is_set(route_policies->operation))
-	|| (sets !=  nullptr && is_set(sets->operation));
+	|| (limits !=  nullptr && limits->has_operation())
+	|| (route_policies !=  nullptr && route_policies->has_operation())
+	|| (sets !=  nullptr && sets->has_operation());
 }
 
 std::string RoutingPolicy::get_segment_path() const
@@ -3227,7 +3227,7 @@ EntityPath RoutingPolicy::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

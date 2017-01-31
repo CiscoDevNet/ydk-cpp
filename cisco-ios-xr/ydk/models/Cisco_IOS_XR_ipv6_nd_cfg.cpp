@@ -253,7 +253,7 @@ bool Ipv6Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(scavenge_timeout.operation)
-	|| (neighbors !=  nullptr && is_set(neighbors->operation));
+	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
 
 std::string Ipv6Neighbor::get_segment_path() const
@@ -270,7 +270,7 @@ EntityPath Ipv6Neighbor::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -339,25 +339,25 @@ std::unique_ptr<Entity> Ipv6Neighbor::clone_ptr()
     return std::make_unique<Ipv6Neighbor>();
 }
 
-const Enum::Value Ipv6NdMonthEnum::january {0, "january"};
-const Enum::Value Ipv6NdMonthEnum::february {1, "february"};
-const Enum::Value Ipv6NdMonthEnum::march {2, "march"};
-const Enum::Value Ipv6NdMonthEnum::april {3, "april"};
-const Enum::Value Ipv6NdMonthEnum::may {4, "may"};
-const Enum::Value Ipv6NdMonthEnum::june {5, "june"};
-const Enum::Value Ipv6NdMonthEnum::july {6, "july"};
-const Enum::Value Ipv6NdMonthEnum::august {7, "august"};
-const Enum::Value Ipv6NdMonthEnum::september {8, "september"};
-const Enum::Value Ipv6NdMonthEnum::october {9, "october"};
-const Enum::Value Ipv6NdMonthEnum::november {10, "november"};
-const Enum::Value Ipv6NdMonthEnum::december {11, "december"};
+const Enum::YLeaf Ipv6NdMonthEnum::january {0, "january"};
+const Enum::YLeaf Ipv6NdMonthEnum::february {1, "february"};
+const Enum::YLeaf Ipv6NdMonthEnum::march {2, "march"};
+const Enum::YLeaf Ipv6NdMonthEnum::april {3, "april"};
+const Enum::YLeaf Ipv6NdMonthEnum::may {4, "may"};
+const Enum::YLeaf Ipv6NdMonthEnum::june {5, "june"};
+const Enum::YLeaf Ipv6NdMonthEnum::july {6, "july"};
+const Enum::YLeaf Ipv6NdMonthEnum::august {7, "august"};
+const Enum::YLeaf Ipv6NdMonthEnum::september {8, "september"};
+const Enum::YLeaf Ipv6NdMonthEnum::october {9, "october"};
+const Enum::YLeaf Ipv6NdMonthEnum::november {10, "november"};
+const Enum::YLeaf Ipv6NdMonthEnum::december {11, "december"};
 
-const Enum::Value Ipv6NdRouterPrefEnum::high {1, "high"};
-const Enum::Value Ipv6NdRouterPrefEnum::medium {2, "medium"};
-const Enum::Value Ipv6NdRouterPrefEnum::low {3, "low"};
+const Enum::YLeaf Ipv6NdRouterPrefEnum::high {1, "high"};
+const Enum::YLeaf Ipv6NdRouterPrefEnum::medium {2, "medium"};
+const Enum::YLeaf Ipv6NdRouterPrefEnum::low {3, "low"};
 
-const Enum::Value Ipv6SrpEncapsulationEnum::srpa {5, "srpa"};
-const Enum::Value Ipv6SrpEncapsulationEnum::srpb {6, "srpb"};
+const Enum::YLeaf Ipv6SrpEncapsulationEnum::srpa {5, "srpa"};
+const Enum::YLeaf Ipv6SrpEncapsulationEnum::srpb {6, "srpb"};
 
 
 }

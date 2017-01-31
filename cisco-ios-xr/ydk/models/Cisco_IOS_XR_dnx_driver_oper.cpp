@@ -55,7 +55,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -154,7 +154,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 	|| is_set(link_stage.operation)
 	|| is_set(link_type.operation)
 	|| is_set(phy_link_num.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::ThisLink::get_segment_path() const
@@ -171,7 +171,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -301,7 +301,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -400,7 +400,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 	|| is_set(link_stage.operation)
 	|| is_set(link_type.operation)
 	|| is_set(phy_link_num.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLink::get_segment_path() const
@@ -417,7 +417,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -547,7 +547,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -646,7 +646,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 	|| is_set(link_stage.operation)
 	|| is_set(link_type.operation)
 	|| is_set(phy_link_num.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::FarEndLinkInHw::get_segment_path() const
@@ -663,7 +663,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -793,7 +793,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -906,7 +906,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1052,10 +1052,10 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 	|| is_set(oper_state.operation)
 	|| is_set(speed.operation)
 	|| is_set(stage.operation)
-	|| (far_end_link !=  nullptr && is_set(far_end_link->operation))
-	|| (far_end_link_in_hw !=  nullptr && is_set(far_end_link_in_hw->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (this_link !=  nullptr && is_set(this_link->operation));
+	|| (far_end_link !=  nullptr && far_end_link->has_operation())
+	|| (far_end_link_in_hw !=  nullptr && far_end_link_in_hw->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (this_link !=  nullptr && this_link->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::get_segment_path() const
@@ -1072,7 +1072,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1310,7 +1310,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1433,7 +1433,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1524,7 +1524,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstanc
 {
     return is_set(operation)
 	|| is_set(instance.operation)
-	|| (rx_links !=  nullptr && is_set(rx_links->operation));
+	|| (rx_links !=  nullptr && rx_links->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::get_segment_path() const
@@ -1541,7 +1541,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1651,7 +1651,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicI
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1742,7 +1742,7 @@ bool Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::has_operation
 {
     return is_set(operation)
 	|| is_set(option.operation)
-	|| (rx_asic_instances !=  nullptr && is_set(rx_asic_instances->operation));
+	|| (rx_asic_instances !=  nullptr && rx_asic_instances->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_segment_path() const
@@ -1759,7 +1759,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1869,7 +1869,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::LinkOptions::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1956,7 +1956,7 @@ bool Fia::Nodes::Node::RxLinkInformation::has_data() const
 bool Fia::Nodes::Node::RxLinkInformation::has_operation() const
 {
     return is_set(operation)
-	|| (link_options !=  nullptr && is_set(link_options->operation));
+	|| (link_options !=  nullptr && link_options->has_operation());
 }
 
 std::string Fia::Nodes::Node::RxLinkInformation::get_segment_path() const
@@ -1973,7 +1973,7 @@ EntityPath Fia::Nodes::Node::RxLinkInformation::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2083,7 +2083,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::DeviceInfo::AsicId::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2203,7 +2203,7 @@ bool Fia::Nodes::Node::DriverInformation::DeviceInfo::has_operation() const
 	|| is_set(num_pon_resets.operation)
 	|| is_set(oper_state.operation)
 	|| is_set(slice_state.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::get_segment_path() const
@@ -2220,7 +2220,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::DeviceInfo::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2391,7 +2391,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::Fia
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2517,7 +2517,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2665,7 +2665,7 @@ bool Fia::Nodes::Node::DriverInformation::CardInfo::has_operation() const
 	|| is_set(num_local_ports_per_ilkn.operation)
 	|| is_set(reg_flag.operation)
 	|| is_set(slot_no.operation)
-	|| (oir_circular_buffer !=  nullptr && is_set(oir_circular_buffer->operation));
+	|| (oir_circular_buffer !=  nullptr && oir_circular_buffer->has_operation());
 }
 
 std::string Fia::Nodes::Node::DriverInformation::CardInfo::get_segment_path() const
@@ -2682,7 +2682,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::CardInfo::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3001,7 +3001,7 @@ EntityPath Fia::Nodes::Node::DriverInformation::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3346,7 +3346,7 @@ EntityPath Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3438,7 +3438,7 @@ EntityPath Fia::Nodes::Node::ClearStatistics::AsicInstances::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3525,7 +3525,7 @@ bool Fia::Nodes::Node::ClearStatistics::has_data() const
 bool Fia::Nodes::Node::ClearStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (asic_instances !=  nullptr && is_set(asic_instances->operation));
+	|| (asic_instances !=  nullptr && asic_instances->has_operation());
 }
 
 std::string Fia::Nodes::Node::ClearStatistics::get_segment_path() const
@@ -3542,7 +3542,7 @@ EntityPath Fia::Nodes::Node::ClearStatistics::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3652,7 +3652,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3751,7 +3751,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 	|| is_set(link_stage.operation)
 	|| is_set(link_type.operation)
 	|| is_set(phy_link_num.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::ThisLink::get_segment_path() const
@@ -3768,7 +3768,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3898,7 +3898,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3997,7 +3997,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 	|| is_set(link_stage.operation)
 	|| is_set(link_type.operation)
 	|| is_set(phy_link_num.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::FarEndLink::get_segment_path() const
@@ -4014,7 +4014,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4132,7 +4132,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4224,7 +4224,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4337,7 +4337,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4486,10 +4486,10 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 	|| is_set(oper_state.operation)
 	|| is_set(speed.operation)
 	|| is_set(stage.operation)
-	|| (far_end_link !=  nullptr && is_set(far_end_link->operation))
-	|| (history !=  nullptr && is_set(history->operation))
-	|| (stats !=  nullptr && is_set(stats->operation))
-	|| (this_link !=  nullptr && is_set(this_link->operation));
+	|| (far_end_link !=  nullptr && far_end_link->has_operation())
+	|| (history !=  nullptr && history->has_operation())
+	|| (stats !=  nullptr && stats->has_operation())
+	|| (this_link !=  nullptr && this_link->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::get_segment_path() const
@@ -4506,7 +4506,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4746,7 +4746,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4864,7 +4864,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4955,7 +4955,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::T
 {
     return is_set(operation)
 	|| is_set(instance.operation)
-	|| (tx_links !=  nullptr && is_set(tx_links->operation));
+	|| (tx_links !=  nullptr && tx_links->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::get_segment_path() const
@@ -4972,7 +4972,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5082,7 +5082,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5169,7 +5169,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::h
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::has_operation() const
 {
     return is_set(operation)
-	|| (tx_asic_instances !=  nullptr && is_set(tx_asic_instances->operation));
+	|| (tx_asic_instances !=  nullptr && tx_asic_instances->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::get_segment_path() const
@@ -5186,7 +5186,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOpt
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5270,7 +5270,7 @@ bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_data() const
 bool Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::has_operation() const
 {
     return is_set(operation)
-	|| (tx_status_option !=  nullptr && is_set(tx_status_option->operation));
+	|| (tx_status_option !=  nullptr && tx_status_option->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_segment_path() const
@@ -5287,7 +5287,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5371,7 +5371,7 @@ bool Fia::Nodes::Node::TxLinkInformation::has_data() const
 bool Fia::Nodes::Node::TxLinkInformation::has_operation() const
 {
     return is_set(operation)
-	|| (tx_status_option_table !=  nullptr && is_set(tx_status_option_table->operation));
+	|| (tx_status_option_table !=  nullptr && tx_status_option_table->has_operation());
 }
 
 std::string Fia::Nodes::Node::TxLinkInformation::get_segment_path() const
@@ -5388,7 +5388,7 @@ EntityPath Fia::Nodes::Node::TxLinkInformation::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5489,7 +5489,7 @@ EntityPath Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::RegisterDumpUnit::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5581,7 +5581,7 @@ EntityPath Fia::Nodes::Node::RegisterDump::RegisterDumpUnits::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5668,7 +5668,7 @@ bool Fia::Nodes::Node::RegisterDump::has_data() const
 bool Fia::Nodes::Node::RegisterDump::has_operation() const
 {
     return is_set(operation)
-	|| (register_dump_units !=  nullptr && is_set(register_dump_units->operation));
+	|| (register_dump_units !=  nullptr && register_dump_units->has_operation());
 }
 
 std::string Fia::Nodes::Node::RegisterDump::get_segment_path() const
@@ -5685,7 +5685,7 @@ EntityPath Fia::Nodes::Node::RegisterDump::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5786,7 +5786,7 @@ EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5881,7 +5881,7 @@ EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5994,7 +5994,7 @@ EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6085,7 +6085,7 @@ bool Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::has_operation()
 {
     return is_set(operation)
 	|| is_set(unit.operation)
-	|| (commands !=  nullptr && is_set(commands->operation));
+	|| (commands !=  nullptr && commands->has_operation());
 }
 
 std::string Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_segment_path() const
@@ -6102,7 +6102,7 @@ EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6212,7 +6212,7 @@ EntityPath Fia::Nodes::Node::DiagShell::DiagShellUnits::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6299,7 +6299,7 @@ bool Fia::Nodes::Node::DiagShell::has_data() const
 bool Fia::Nodes::Node::DiagShell::has_operation() const
 {
     return is_set(operation)
-	|| (diag_shell_units !=  nullptr && is_set(diag_shell_units->operation));
+	|| (diag_shell_units !=  nullptr && diag_shell_units->has_operation());
 }
 
 std::string Fia::Nodes::Node::DiagShell::get_segment_path() const
@@ -6316,7 +6316,7 @@ EntityPath Fia::Nodes::Node::DiagShell::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6426,7 +6426,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::A
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6546,7 +6546,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::has_ope
 	|| is_set(num_pon_resets.operation)
 	|| is_set(oper_state.operation)
 	|| is_set(slice_state.operation)
-	|| (asic_id !=  nullptr && is_set(asic_id->operation));
+	|| (asic_id !=  nullptr && asic_id->has_operation());
 }
 
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::get_segment_path() const
@@ -6563,7 +6563,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6734,7 +6734,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oir
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6860,7 +6860,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oir
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7008,7 +7008,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::has_opera
 	|| is_set(num_local_ports_per_ilkn.operation)
 	|| is_set(reg_flag.operation)
 	|| is_set(slot_no.operation)
-	|| (oir_circular_buffer !=  nullptr && is_set(oir_circular_buffer->operation));
+	|| (oir_circular_buffer !=  nullptr && oir_circular_buffer->has_operation());
 }
 
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::get_segment_path() const
@@ -7025,7 +7025,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7347,7 +7347,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7701,7 +7701,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7792,7 +7792,7 @@ bool Fia::Nodes::Node::OirHistory::Flags::Flag::has_operation() const
 {
     return is_set(operation)
 	|| is_set(flag.operation)
-	|| (slots !=  nullptr && is_set(slots->operation));
+	|| (slots !=  nullptr && slots->has_operation());
 }
 
 std::string Fia::Nodes::Node::OirHistory::Flags::Flag::get_segment_path() const
@@ -7809,7 +7809,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::Flag::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7919,7 +7919,7 @@ EntityPath Fia::Nodes::Node::OirHistory::Flags::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8006,7 +8006,7 @@ bool Fia::Nodes::Node::OirHistory::has_data() const
 bool Fia::Nodes::Node::OirHistory::has_operation() const
 {
     return is_set(operation)
-	|| (flags !=  nullptr && is_set(flags->operation));
+	|| (flags !=  nullptr && flags->has_operation());
 }
 
 std::string Fia::Nodes::Node::OirHistory::get_segment_path() const
@@ -8023,7 +8023,7 @@ EntityPath Fia::Nodes::Node::OirHistory::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8127,7 +8127,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8230,7 +8230,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8351,7 +8351,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8459,7 +8459,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 	|| is_set(rack_no.operation)
 	|| is_set(slot_no.operation)
 	|| is_set(valid.operation)
-	|| (stats_info !=  nullptr && is_set(stats_info->operation));
+	|| (stats_info !=  nullptr && stats_info->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::get_segment_path() const
@@ -8476,7 +8476,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8585,7 +8585,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (pbc_stats !=  nullptr && is_set(pbc_stats->operation));
+	|| (pbc_stats !=  nullptr && pbc_stats->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::get_segment_path() const
@@ -8602,7 +8602,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8721,7 +8721,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8875,7 +8875,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9059,7 +9059,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9200,9 +9200,9 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::has_operation() const
 {
     return is_set(operation)
-	|| (link_counters !=  nullptr && is_set(link_counters->operation))
-	|| (link_error_status !=  nullptr && is_set(link_error_status->operation))
-	|| (ovf_status !=  nullptr && is_set(ovf_status->operation));
+	|| (link_counters !=  nullptr && link_counters->has_operation())
+	|| (link_error_status !=  nullptr && link_error_status->has_operation())
+	|| (ovf_status !=  nullptr && ovf_status->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::AggrStats::get_segment_path() const
@@ -9219,7 +9219,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9384,7 +9384,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9538,7 +9538,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9722,7 +9722,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9863,9 +9863,9 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::has_operation() const
 {
     return is_set(operation)
-	|| (link_counters !=  nullptr && is_set(link_counters->operation))
-	|| (link_error_status !=  nullptr && is_set(link_error_status->operation))
-	|| (ovf_status !=  nullptr && is_set(ovf_status->operation));
+	|| (link_counters !=  nullptr && link_counters->has_operation())
+	|| (link_error_status !=  nullptr && link_error_status->has_operation())
+	|| (ovf_status !=  nullptr && ovf_status->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::get_segment_path() const
@@ -9882,7 +9882,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10039,8 +10039,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 	|| is_set(rack_no.operation)
 	|| is_set(slot_no.operation)
 	|| is_set(valid.operation)
-	|| (aggr_stats !=  nullptr && is_set(aggr_stats->operation))
-	|| (incr_stats !=  nullptr && is_set(incr_stats->operation));
+	|| (aggr_stats !=  nullptr && aggr_stats->has_operation())
+	|| (incr_stats !=  nullptr && incr_stats->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::get_segment_path() const
@@ -10057,7 +10057,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10223,7 +10223,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10336,7 +10336,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10423,7 +10423,7 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (fmac_links !=  nullptr && is_set(fmac_links->operation));
+	|| (fmac_links !=  nullptr && fmac_links->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::get_segment_path() const
@@ -10440,7 +10440,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10533,8 +10533,8 @@ bool Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicIn
 {
     return is_set(operation)
 	|| is_set(instance.operation)
-	|| (fmac_statistics !=  nullptr && is_set(fmac_statistics->operation))
-	|| (pbc_statistics !=  nullptr && is_set(pbc_statistics->operation));
+	|| (fmac_statistics !=  nullptr && fmac_statistics->has_operation())
+	|| (pbc_statistics !=  nullptr && pbc_statistics->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::get_segment_path() const
@@ -10551,7 +10551,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistics
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10684,7 +10684,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10771,7 +10771,7 @@ bool Fia::Nodes::Node::AsicStatistics::has_data() const
 bool Fia::Nodes::Node::AsicStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (statistics_asic_instances !=  nullptr && is_set(statistics_asic_instances->operation));
+	|| (statistics_asic_instances !=  nullptr && statistics_asic_instances->has_operation());
 }
 
 std::string Fia::Nodes::Node::AsicStatistics::get_segment_path() const
@@ -10788,7 +10788,7 @@ EntityPath Fia::Nodes::Node::AsicStatistics::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10911,14 +10911,14 @@ bool Fia::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (asic_statistics !=  nullptr && is_set(asic_statistics->operation))
-	|| (clear_statistics !=  nullptr && is_set(clear_statistics->operation))
-	|| (diag_shell !=  nullptr && is_set(diag_shell->operation))
-	|| (driver_information !=  nullptr && is_set(driver_information->operation))
-	|| (oir_history !=  nullptr && is_set(oir_history->operation))
-	|| (register_dump !=  nullptr && is_set(register_dump->operation))
-	|| (rx_link_information !=  nullptr && is_set(rx_link_information->operation))
-	|| (tx_link_information !=  nullptr && is_set(tx_link_information->operation));
+	|| (asic_statistics !=  nullptr && asic_statistics->has_operation())
+	|| (clear_statistics !=  nullptr && clear_statistics->has_operation())
+	|| (diag_shell !=  nullptr && diag_shell->has_operation())
+	|| (driver_information !=  nullptr && driver_information->has_operation())
+	|| (oir_history !=  nullptr && oir_history->has_operation())
+	|| (register_dump !=  nullptr && register_dump->has_operation())
+	|| (rx_link_information !=  nullptr && rx_link_information->has_operation())
+	|| (tx_link_information !=  nullptr && tx_link_information->has_operation());
 }
 
 std::string Fia::Nodes::Node::get_segment_path() const
@@ -11293,7 +11293,7 @@ bool Fia::has_data() const
 bool Fia::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Fia::get_segment_path() const
@@ -11310,7 +11310,7 @@ EntityPath Fia::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -11374,108 +11374,108 @@ std::unique_ptr<Entity> Fia::clone_ptr()
     return std::make_unique<Fia>();
 }
 
-const Enum::Value SliceStateEnum::slice_oper_unset {-1, "slice-oper-unset"};
-const Enum::Value SliceStateEnum::slice_oper_down {0, "slice-oper-down"};
-const Enum::Value SliceStateEnum::slice_oper_up {1, "slice-oper-up"};
-const Enum::Value SliceStateEnum::slice_oper_na {2, "slice-oper-na"};
+const Enum::YLeaf SliceStateEnum::slice_oper_unset {-1, "slice-oper-unset"};
+const Enum::YLeaf SliceStateEnum::slice_oper_down {0, "slice-oper-down"};
+const Enum::YLeaf SliceStateEnum::slice_oper_up {1, "slice-oper-up"};
+const Enum::YLeaf SliceStateEnum::slice_oper_na {2, "slice-oper-na"};
 
-const Enum::Value AsicAccessStateEnum::asic_state_unset {-1, "asic-state-unset"};
-const Enum::Value AsicAccessStateEnum::asic_state_none {0, "asic-state-none"};
-const Enum::Value AsicAccessStateEnum::asic_state_device_off_line {1, "asic-state-device-off-line"};
-const Enum::Value AsicAccessStateEnum::asic_state_device_created {2, "asic-state-device-created"};
-const Enum::Value AsicAccessStateEnum::asic_state_device_online {3, "asic-state-device-online"};
-const Enum::Value AsicAccessStateEnum::asic_state_warmboot {4, "asic-state-warmboot"};
-const Enum::Value AsicAccessStateEnum::asic_state_de_init_start {5, "asic-state-de-init-start"};
-const Enum::Value AsicAccessStateEnum::asic_state_intr_de_init {6, "asic-state-intr-de-init"};
-const Enum::Value AsicAccessStateEnum::asic_state_bcm_detach {7, "asic-state-bcm-detach"};
-const Enum::Value AsicAccessStateEnum::asic_state_soc_de_init {8, "asic-state-soc-de-init"};
-const Enum::Value AsicAccessStateEnum::asic_state_de_init_done {9, "asic-state-de-init-done"};
-const Enum::Value AsicAccessStateEnum::asic_state_soc_init {10, "asic-state-soc-init"};
-const Enum::Value AsicAccessStateEnum::asic_state_bcm_init {11, "asic-state-bcm-init"};
-const Enum::Value AsicAccessStateEnum::asic_state_intr_init {12, "asic-state-intr-init"};
-const Enum::Value AsicAccessStateEnum::asic_state_soc_init_start {13, "asic-state-soc-init-start"};
-const Enum::Value AsicAccessStateEnum::asic_state_bcm_init_start {14, "asic-state-bcm-init-start"};
-const Enum::Value AsicAccessStateEnum::asic_state_intr_init_start {15, "asic-state-intr-init-start"};
-const Enum::Value AsicAccessStateEnum::asic_state_hard_reset {16, "asic-state-hard-reset"};
-const Enum::Value AsicAccessStateEnum::asic_state_normal {17, "asic-state-normal"};
-const Enum::Value AsicAccessStateEnum::asic_state_exception {18, "asic-state-exception"};
-const Enum::Value AsicAccessStateEnum::asic_state_hp_attached {19, "asic-state-hp-attached"};
-const Enum::Value AsicAccessStateEnum::asic_state_quiesce {20, "asic-state-quiesce"};
-const Enum::Value AsicAccessStateEnum::asic_state_issu_started {21, "asic-state-issu-started"};
-const Enum::Value AsicAccessStateEnum::asic_state_issu_started_nn {22, "asic-state-issu-started-nn"};
-const Enum::Value AsicAccessStateEnum::asic_state_issu_abort {23, "asic-state-issu-abort"};
-const Enum::Value AsicAccessStateEnum::asic_state_max {24, "asic-state-max"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_unset {-1, "asic-state-unset"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_none {0, "asic-state-none"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_device_off_line {1, "asic-state-device-off-line"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_device_created {2, "asic-state-device-created"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_device_online {3, "asic-state-device-online"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_warmboot {4, "asic-state-warmboot"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_de_init_start {5, "asic-state-de-init-start"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_intr_de_init {6, "asic-state-intr-de-init"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_bcm_detach {7, "asic-state-bcm-detach"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_soc_de_init {8, "asic-state-soc-de-init"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_de_init_done {9, "asic-state-de-init-done"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_soc_init {10, "asic-state-soc-init"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_bcm_init {11, "asic-state-bcm-init"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_intr_init {12, "asic-state-intr-init"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_soc_init_start {13, "asic-state-soc-init-start"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_bcm_init_start {14, "asic-state-bcm-init-start"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_intr_init_start {15, "asic-state-intr-init-start"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_hard_reset {16, "asic-state-hard-reset"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_normal {17, "asic-state-normal"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_exception {18, "asic-state-exception"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_hp_attached {19, "asic-state-hp-attached"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_quiesce {20, "asic-state-quiesce"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_issu_started {21, "asic-state-issu-started"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_issu_started_nn {22, "asic-state-issu-started-nn"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_issu_abort {23, "asic-state-issu-abort"};
+const Enum::YLeaf AsicAccessStateEnum::asic_state_max {24, "asic-state-max"};
 
-const Enum::Value LinkErrorStateEnum::link_error_unset {-1, "link-error-unset"};
-const Enum::Value LinkErrorStateEnum::link_error_none {0, "link-error-none"};
-const Enum::Value LinkErrorStateEnum::link_error_shut {1, "link-error-shut"};
-const Enum::Value LinkErrorStateEnum::link_error_max {2, "link-error-max"};
+const Enum::YLeaf LinkErrorStateEnum::link_error_unset {-1, "link-error-unset"};
+const Enum::YLeaf LinkErrorStateEnum::link_error_none {0, "link-error-none"};
+const Enum::YLeaf LinkErrorStateEnum::link_error_shut {1, "link-error-shut"};
+const Enum::YLeaf LinkErrorStateEnum::link_error_max {2, "link-error-max"};
 
-const Enum::Value FcModeEnum::fc_mode_unset {-1, "fc-mode-unset"};
-const Enum::Value FcModeEnum::fc_mode_unavail {0, "fc-mode-unavail"};
-const Enum::Value FcModeEnum::fc_mode_inband {1, "fc-mode-inband"};
-const Enum::Value FcModeEnum::fc_mode_oob {2, "fc-mode-oob"};
+const Enum::YLeaf FcModeEnum::fc_mode_unset {-1, "fc-mode-unset"};
+const Enum::YLeaf FcModeEnum::fc_mode_unavail {0, "fc-mode-unavail"};
+const Enum::YLeaf FcModeEnum::fc_mode_inband {1, "fc-mode-inband"};
+const Enum::YLeaf FcModeEnum::fc_mode_oob {2, "fc-mode-oob"};
 
-const Enum::Value AsicEnum::asic_unset {-1, "asic-unset"};
-const Enum::Value AsicEnum::asic_unavail {0, "asic-unavail"};
-const Enum::Value AsicEnum::asic_fia {1, "asic-fia"};
-const Enum::Value AsicEnum::asic_s123 {2, "asic-s123"};
-const Enum::Value AsicEnum::asic_s13 {3, "asic-s13"};
-const Enum::Value AsicEnum::asic_s2 {4, "asic-s2"};
-const Enum::Value AsicEnum::asic_b2b {5, "asic-b2b"};
-const Enum::Value AsicEnum::asic_unknown {6, "asic-unknown"};
+const Enum::YLeaf AsicEnum::asic_unset {-1, "asic-unset"};
+const Enum::YLeaf AsicEnum::asic_unavail {0, "asic-unavail"};
+const Enum::YLeaf AsicEnum::asic_fia {1, "asic-fia"};
+const Enum::YLeaf AsicEnum::asic_s123 {2, "asic-s123"};
+const Enum::YLeaf AsicEnum::asic_s13 {3, "asic-s13"};
+const Enum::YLeaf AsicEnum::asic_s2 {4, "asic-s2"};
+const Enum::YLeaf AsicEnum::asic_b2b {5, "asic-b2b"};
+const Enum::YLeaf AsicEnum::asic_unknown {6, "asic-unknown"};
 
-const Enum::Value AsicOperStateEnum::asic_oper_unset {-1, "asic-oper-unset"};
-const Enum::Value AsicOperStateEnum::asic_oper_unknown {0, "asic-oper-unknown"};
-const Enum::Value AsicOperStateEnum::asic_oper_up {1, "asic-oper-up"};
-const Enum::Value AsicOperStateEnum::asic_oper_down {2, "asic-oper-down"};
-const Enum::Value AsicOperStateEnum::asic_card_down {3, "asic-card-down"};
+const Enum::YLeaf AsicOperStateEnum::asic_oper_unset {-1, "asic-oper-unset"};
+const Enum::YLeaf AsicOperStateEnum::asic_oper_unknown {0, "asic-oper-unknown"};
+const Enum::YLeaf AsicOperStateEnum::asic_oper_up {1, "asic-oper-up"};
+const Enum::YLeaf AsicOperStateEnum::asic_oper_down {2, "asic-oper-down"};
+const Enum::YLeaf AsicOperStateEnum::asic_card_down {3, "asic-card-down"};
 
-const Enum::Value LinkEnum::link_type_unset {-1, "link-type-unset"};
-const Enum::Value LinkEnum::link_type_unavail {0, "link-type-unavail"};
-const Enum::Value LinkEnum::link_type_tx {1, "link-type-tx"};
-const Enum::Value LinkEnum::link_type_rx {2, "link-type-rx"};
+const Enum::YLeaf LinkEnum::link_type_unset {-1, "link-type-unset"};
+const Enum::YLeaf LinkEnum::link_type_unavail {0, "link-type-unavail"};
+const Enum::YLeaf LinkEnum::link_type_tx {1, "link-type-tx"};
+const Enum::YLeaf LinkEnum::link_type_rx {2, "link-type-rx"};
 
-const Enum::Value OperStateEnum::oper_unset {-1, "oper-unset"};
-const Enum::Value OperStateEnum::oper_unknown {0, "oper-unknown"};
-const Enum::Value OperStateEnum::oper_up {1, "oper-up"};
-const Enum::Value OperStateEnum::oper_down {2, "oper-down"};
-const Enum::Value OperStateEnum::card_down {3, "card-down"};
+const Enum::YLeaf OperStateEnum::oper_unset {-1, "oper-unset"};
+const Enum::YLeaf OperStateEnum::oper_unknown {0, "oper-unknown"};
+const Enum::YLeaf OperStateEnum::oper_up {1, "oper-up"};
+const Enum::YLeaf OperStateEnum::oper_down {2, "oper-down"};
+const Enum::YLeaf OperStateEnum::card_down {3, "card-down"};
 
-const Enum::Value AsicInitMethodEnum::asic_init_method_unset {-1, "asic-init-method-unset"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_no_reset {0, "asic-init-method-no-reset"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_pon_reset {1, "asic-init-method-pon-reset"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_pon_reset_on_intr {2, "asic-init-method-pon-reset-on-intr"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_hard_reset {3, "asic-init-method-hard-reset"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_warmboot {4, "asic-init-method-warmboot"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_issu_wb {5, "asic-init-method-issu-wb"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_pci_shutdown {6, "asic-init-method-pci-shutdown"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_quiesce {7, "asic-init-method-quiesce"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_issu_started {8, "asic-init-method-issu-started"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_issu_rollback {9, "asic-init-method-issu-rollback"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_issu_abort {10, "asic-init-method-issu-abort"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_slice_cleanup {11, "asic-init-method-slice-cleanup"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_lc_remove {12, "asic-init-method-lc-remove"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_node_down {13, "asic-init-method-node-down"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_intr {14, "asic-init-method-intr"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_board_reload {15, "asic-init-method-board-reload"};
-const Enum::Value AsicInitMethodEnum::asic_init_method_max {16, "asic-init-method-max"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_unset {-1, "asic-init-method-unset"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_no_reset {0, "asic-init-method-no-reset"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_pon_reset {1, "asic-init-method-pon-reset"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_pon_reset_on_intr {2, "asic-init-method-pon-reset-on-intr"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_hard_reset {3, "asic-init-method-hard-reset"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_warmboot {4, "asic-init-method-warmboot"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_issu_wb {5, "asic-init-method-issu-wb"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_pci_shutdown {6, "asic-init-method-pci-shutdown"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_quiesce {7, "asic-init-method-quiesce"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_issu_started {8, "asic-init-method-issu-started"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_issu_rollback {9, "asic-init-method-issu-rollback"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_issu_abort {10, "asic-init-method-issu-abort"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_slice_cleanup {11, "asic-init-method-slice-cleanup"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_lc_remove {12, "asic-init-method-lc-remove"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_node_down {13, "asic-init-method-node-down"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_intr {14, "asic-init-method-intr"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_board_reload {15, "asic-init-method-board-reload"};
+const Enum::YLeaf AsicInitMethodEnum::asic_init_method_max {16, "asic-init-method-max"};
 
-const Enum::Value AdminStateEnum::admin_unset {-1, "admin-unset"};
-const Enum::Value AdminStateEnum::admin_up {0, "admin-up"};
-const Enum::Value AdminStateEnum::admin_down {1, "admin-down"};
+const Enum::YLeaf AdminStateEnum::admin_unset {-1, "admin-unset"};
+const Enum::YLeaf AdminStateEnum::admin_up {0, "admin-up"};
+const Enum::YLeaf AdminStateEnum::admin_down {1, "admin-down"};
 
-const Enum::Value LinkStageEnum::link_stage_unset {-1, "link-stage-unset"};
-const Enum::Value LinkStageEnum::link_stage_unused {0, "link-stage-unused"};
-const Enum::Value LinkStageEnum::link_stage_fia {1, "link-stage-fia"};
-const Enum::Value LinkStageEnum::link_stage_s1 {2, "link-stage-s1"};
-const Enum::Value LinkStageEnum::link_stage_s2 {3, "link-stage-s2"};
-const Enum::Value LinkStageEnum::link_stage_s3 {4, "link-stage-s3"};
-const Enum::Value LinkStageEnum::link_stage_unknown {5, "link-stage-unknown"};
+const Enum::YLeaf LinkStageEnum::link_stage_unset {-1, "link-stage-unset"};
+const Enum::YLeaf LinkStageEnum::link_stage_unused {0, "link-stage-unused"};
+const Enum::YLeaf LinkStageEnum::link_stage_fia {1, "link-stage-fia"};
+const Enum::YLeaf LinkStageEnum::link_stage_s1 {2, "link-stage-s1"};
+const Enum::YLeaf LinkStageEnum::link_stage_s2 {3, "link-stage-s2"};
+const Enum::YLeaf LinkStageEnum::link_stage_s3 {4, "link-stage-s3"};
+const Enum::YLeaf LinkStageEnum::link_stage_unknown {5, "link-stage-unknown"};
 
-const Enum::Value RackEnum::rack_type_unset {-1, "rack-type-unset"};
-const Enum::Value RackEnum::rack_type_lcc {0, "rack-type-lcc"};
-const Enum::Value RackEnum::rack_type_fcc {1, "rack-type-fcc"};
+const Enum::YLeaf RackEnum::rack_type_unset {-1, "rack-type-unset"};
+const Enum::YLeaf RackEnum::rack_type_lcc {0, "rack-type-lcc"};
+const Enum::YLeaf RackEnum::rack_type_fcc {1, "rack-type-fcc"};
 
 
 }

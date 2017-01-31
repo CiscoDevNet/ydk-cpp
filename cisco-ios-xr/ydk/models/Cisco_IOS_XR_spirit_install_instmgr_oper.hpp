@@ -26,6 +26,7 @@ class SoftwareInstall : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Files : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class File : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value file_name; //type: string
 
+
+                YLeaf file_name; //type: string
 
             class Brief : public Entity
             {
@@ -70,8 +73,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -91,8 +95,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -127,6 +132,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LastNOperationLog : public Entity
         {
             public:
@@ -140,8 +146,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value last_n_logs; //type: int32
 
+
+                YLeaf last_n_logs; //type: int32
 
             class Summary : public Entity
             {
@@ -156,8 +163,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -177,8 +185,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -211,8 +220,9 @@ class SoftwareInstall : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log; //type: string
 
+
+            YLeaf log; //type: string
 
 
 
@@ -234,6 +244,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class ActivePackageInfo : public Entity
         {
             public:
@@ -247,13 +258,14 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value error_message; //type: string
-                Value location; //type: string
-                Value node_type; //type: string
-                Value boot_partition_name; //type: string
-                Value number_of_active_packages; //type: uint32
-                Value active_packages; //type: string
 
+
+                YLeaf error_message; //type: string
+                YLeaf location; //type: string
+                YLeaf node_type; //type: string
+                YLeaf boot_partition_name; //type: string
+                YLeaf number_of_active_packages; //type: uint32
+                YLeaf active_packages; //type: string
 
 
 
@@ -279,8 +291,9 @@ class SoftwareInstall : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log; //type: string
 
+
+            YLeaf log; //type: string
 
 
 
@@ -300,8 +313,9 @@ class SoftwareInstall : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log; //type: string
 
+
+            YLeaf log; //type: string
 
 
 
@@ -321,8 +335,9 @@ class SoftwareInstall : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value log; //type: string
 
+
+            YLeaf log; //type: string
 
 
 
@@ -344,6 +359,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Stage : public Entity
         {
             public:
@@ -357,17 +373,15 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value state; //type: IsdStateEtEnum
-                Value issu_node_cnt; //type: int32
-                Value issu_ready_node_cnt; //type: int32
-                Value percentage; //type: int32
-                Value issu_status; //type: IsdIssuStatusEtEnum
-                Value issu_error; //type: IsdErrorEtEnum
 
 
-                class IsdErrorEtEnum;
-                class IsdIssuStatusEtEnum;
-                class IsdStateEtEnum;
+                YLeaf state; //type: IsdStateEtEnum
+                YLeaf issu_node_cnt; //type: int32
+                YLeaf issu_ready_node_cnt; //type: int32
+                YLeaf percentage; //type: int32
+                YLeaf issu_status; //type: IsdIssuStatusEtEnum
+                YLeaf issu_error; //type: IsdErrorEtEnum
+
 
 
         }; // SoftwareInstall::Issu::Stage
@@ -388,6 +402,7 @@ class SoftwareInstall : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Invinfo : public Entity
             {
                 public:
@@ -401,17 +416,14 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value node_id; //type: int32
-                    Value node_type; //type: CardTypeEtEnum
-                    Value issu_node_role; //type: IssuNodeRoleEtEnum
-                    Value node_state; //type: IssudirNodeStatusEtEnum
-                    Value node_role; //type: NodeRoleEtEnum
 
 
-                    class IssuNodeRoleEtEnum;
-                    class NodeRoleEtEnum;
-                    class IssudirNodeStatusEtEnum;
-                    class CardTypeEtEnum;
+                    YLeaf node_id; //type: int32
+                    YLeaf node_type; //type: CardTypeEtEnum
+                    YLeaf issu_node_role; //type: IssuNodeRoleEtEnum
+                    YLeaf node_state; //type: IssudirNodeStatusEtEnum
+                    YLeaf node_role; //type: NodeRoleEtEnum
+
 
 
             }; // SoftwareInstall::Issu::Inventory::Invinfo
@@ -445,6 +457,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class CommittedPackageInfo : public Entity
         {
             public:
@@ -458,13 +471,14 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value error_message; //type: string
-                Value location; //type: string
-                Value node_type; //type: string
-                Value boot_partition_name; //type: string
-                Value number_of_committed_packages; //type: uint32
-                Value committed_packages; //type: string
 
+
+                YLeaf error_message; //type: string
+                YLeaf location; //type: string
+                YLeaf node_type; //type: string
+                YLeaf boot_partition_name; //type: string
+                YLeaf number_of_committed_packages; //type: uint32
+                YLeaf committed_packages; //type: string
 
 
 
@@ -492,6 +506,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Summary : public Entity
         {
             public:
@@ -505,8 +520,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log; //type: string
 
+
+                YLeaf log; //type: string
 
 
 
@@ -526,8 +542,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log; //type: string
 
+
+                YLeaf log; //type: string
 
 
 
@@ -556,6 +573,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Package : public Entity
         {
             public:
@@ -569,8 +587,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value package_name; //type: string
 
+
+                YLeaf package_name; //type: string
 
             class Verbose : public Entity
             {
@@ -585,8 +604,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -606,8 +626,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -627,8 +648,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -664,6 +686,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class OperationLog : public Entity
         {
             public:
@@ -677,8 +700,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log_id; //type: int32
 
+
+                YLeaf log_id; //type: int32
 
             class Summary : public Entity
             {
@@ -693,8 +717,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -714,8 +739,9 @@ class SoftwareInstall : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value log; //type: string
 
+
+                    YLeaf log; //type: string
 
 
 
@@ -750,6 +776,7 @@ class SoftwareInstall : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Xr : public Entity
         {
             public:
@@ -763,8 +790,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log; //type: string
 
+
+                YLeaf log; //type: string
 
 
 
@@ -784,8 +812,9 @@ class SoftwareInstall : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value log; //type: string
 
+
+                YLeaf log; //type: string
 
 
 
@@ -820,108 +849,108 @@ class SoftwareInstall : public Entity
 class IsdErrorEtEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value not_compatible;
-        static const Enum::Value not_enough_resource;
-        static const Enum::Value not_nsr_ready;
-        static const Enum::Value not_conn_sdrsm;
-        static const Enum::Value cmd_invalid;
-        static const Enum::Value load_prep_fail;
-        static const Enum::Value error_timeout;
-        static const Enum::Value err_node_down;
-        static const Enum::Value node_not_ready;
-        static const Enum::Value err_node_new;
-        static const Enum::Value err_card_oir;
-        static const Enum::Value invalid_evt;
-        static const Enum::Value disconn_from_calv;
-        static const Enum::Value gsp_down;
-        static const Enum::Value abort_by_ism;
-        static const Enum::Value rpfo;
-        static const Enum::Value pkg_null;
-        static const Enum::Value error_general;
-        static const Enum::Value fsa_error;
-        static const Enum::Value err_post_issu;
-        static const Enum::Value err_issu_dir_restart;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf not_compatible;
+        static const Enum::YLeaf not_enough_resource;
+        static const Enum::YLeaf not_nsr_ready;
+        static const Enum::YLeaf not_conn_sdrsm;
+        static const Enum::YLeaf cmd_invalid;
+        static const Enum::YLeaf load_prep_fail;
+        static const Enum::YLeaf error_timeout;
+        static const Enum::YLeaf err_node_down;
+        static const Enum::YLeaf node_not_ready;
+        static const Enum::YLeaf err_node_new;
+        static const Enum::YLeaf err_card_oir;
+        static const Enum::YLeaf invalid_evt;
+        static const Enum::YLeaf disconn_from_calv;
+        static const Enum::YLeaf gsp_down;
+        static const Enum::YLeaf abort_by_ism;
+        static const Enum::YLeaf rpfo;
+        static const Enum::YLeaf pkg_null;
+        static const Enum::YLeaf error_general;
+        static const Enum::YLeaf fsa_error;
+        static const Enum::YLeaf err_post_issu;
+        static const Enum::YLeaf err_issu_dir_restart;
 
 };
 
 class NodeRoleEtEnum : public Enum
 {
     public:
-        static const Enum::Value node_unknown;
-        static const Enum::Value node_active;
-        static const Enum::Value node_standby;
-        static const Enum::Value node_unusable;
+        static const Enum::YLeaf node_unknown;
+        static const Enum::YLeaf node_active;
+        static const Enum::YLeaf node_standby;
+        static const Enum::YLeaf node_unusable;
 
 };
 
 class IsdStateEtEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value idle;
-        static const Enum::Value init;
-        static const Enum::Value init_done;
-        static const Enum::Value load_prep;
-        static const Enum::Value load_exec;
-        static const Enum::Value load_issu_go;
-        static const Enum::Value load_done;
-        static const Enum::Value run_prep;
-        static const Enum::Value big_bang;
-        static const Enum::Value run_done;
-        static const Enum::Value cleanup;
-        static const Enum::Value cleanup_done;
-        static const Enum::Value abort;
-        static const Enum::Value abort_done;
-        static const Enum::Value abort_cleanup;
-        static const Enum::Value unknown_state;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf idle;
+        static const Enum::YLeaf init;
+        static const Enum::YLeaf init_done;
+        static const Enum::YLeaf load_prep;
+        static const Enum::YLeaf load_exec;
+        static const Enum::YLeaf load_issu_go;
+        static const Enum::YLeaf load_done;
+        static const Enum::YLeaf run_prep;
+        static const Enum::YLeaf big_bang;
+        static const Enum::YLeaf run_done;
+        static const Enum::YLeaf cleanup;
+        static const Enum::YLeaf cleanup_done;
+        static const Enum::YLeaf abort;
+        static const Enum::YLeaf abort_done;
+        static const Enum::YLeaf abort_cleanup;
+        static const Enum::YLeaf unknown_state;
 
 };
 
 class IsdIssuStatusEtEnum : public Enum
 {
     public:
-        static const Enum::Value ok;
-        static const Enum::Value prep_done;
-        static const Enum::Value big_bang;
-        static const Enum::Value done;
-        static const Enum::Value abort;
-        static const Enum::Value cmd_reject;
-        static const Enum::Value unknown;
-        static const Enum::Value abort_cleanup;
-        static const Enum::Value abort_cmd_reject;
+        static const Enum::YLeaf ok;
+        static const Enum::YLeaf prep_done;
+        static const Enum::YLeaf big_bang;
+        static const Enum::YLeaf done;
+        static const Enum::YLeaf abort;
+        static const Enum::YLeaf cmd_reject;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf abort_cleanup;
+        static const Enum::YLeaf abort_cmd_reject;
 
 };
 
 class IssudirNodeStatusEtEnum : public Enum
 {
     public:
-        static const Enum::Value not_issu_ready;
-        static const Enum::Value issu_ready;
-        static const Enum::Value isus_go;
-        static const Enum::Value node_fail;
+        static const Enum::YLeaf not_issu_ready;
+        static const Enum::YLeaf issu_ready;
+        static const Enum::YLeaf isus_go;
+        static const Enum::YLeaf node_fail;
 
 };
 
 class IssuNodeRoleEtEnum : public Enum
 {
     public:
-        static const Enum::Value unknown_role;
-        static const Enum::Value primary_role;
-        static const Enum::Value secondary_role;
-        static const Enum::Value tertiary_role;
+        static const Enum::YLeaf unknown_role;
+        static const Enum::YLeaf primary_role;
+        static const Enum::YLeaf secondary_role;
+        static const Enum::YLeaf tertiary_role;
 
 };
 
 class CardTypeEtEnum : public Enum
 {
     public:
-        static const Enum::Value card_rp;
-        static const Enum::Value card_drp;
-        static const Enum::Value card_lc;
-        static const Enum::Value card_sc;
-        static const Enum::Value card_sp;
-        static const Enum::Value card_other;
+        static const Enum::YLeaf card_rp;
+        static const Enum::YLeaf card_drp;
+        static const Enum::YLeaf card_lc;
+        static const Enum::YLeaf card_sc;
+        static const Enum::YLeaf card_sp;
+        static const Enum::YLeaf card_other;
 
 };
 

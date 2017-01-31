@@ -114,7 +114,7 @@ bool Crypto::Sam::has_data() const
 bool Crypto::Sam::has_operation() const
 {
     return is_set(operation)
-	|| (prompt_interval !=  nullptr && is_set(prompt_interval->operation));
+	|| (prompt_interval !=  nullptr && prompt_interval->has_operation());
 }
 
 std::string Crypto::Sam::get_segment_path() const
@@ -770,8 +770,8 @@ bool Crypto::Ssh::Server::has_operation() const
 	|| is_set(session_limit.operation)
 	|| is_set(timeout.operation)
 	|| is_set(v2.operation)
-	|| (netconf_vrf_table !=  nullptr && is_set(netconf_vrf_table->operation))
-	|| (vrf_table !=  nullptr && is_set(vrf_table->operation));
+	|| (netconf_vrf_table !=  nullptr && netconf_vrf_table->has_operation())
+	|| (vrf_table !=  nullptr && vrf_table->has_operation());
 }
 
 std::string Crypto::Ssh::Server::get_segment_path() const
@@ -935,8 +935,8 @@ bool Crypto::Ssh::has_data() const
 bool Crypto::Ssh::has_operation() const
 {
     return is_set(operation)
-	|| (client !=  nullptr && is_set(client->operation))
-	|| (server !=  nullptr && is_set(server->operation));
+	|| (client !=  nullptr && client->has_operation())
+	|| (server !=  nullptr && server->has_operation());
 }
 
 std::string Crypto::Ssh::get_segment_path() const
@@ -1065,8 +1065,8 @@ bool Crypto::has_data() const
 bool Crypto::has_operation() const
 {
     return is_set(operation)
-	|| (sam !=  nullptr && is_set(sam->operation))
-	|| (ssh !=  nullptr && is_set(ssh->operation));
+	|| (sam !=  nullptr && sam->has_operation())
+	|| (ssh !=  nullptr && ssh->has_operation());
 }
 
 std::string Crypto::get_segment_path() const
@@ -1083,7 +1083,7 @@ EntityPath Crypto::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1170,8 +1170,8 @@ std::unique_ptr<Entity> Crypto::clone_ptr()
     return std::make_unique<Crypto>();
 }
 
-const Enum::Value CryptoSamActionEnum::proceed {1, "proceed"};
-const Enum::Value CryptoSamActionEnum::terminate {2, "terminate"};
+const Enum::YLeaf CryptoSamActionEnum::proceed {1, "proceed"};
+const Enum::YLeaf CryptoSamActionEnum::terminate {2, "terminate"};
 
 
 }

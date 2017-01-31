@@ -52,7 +52,7 @@ EntityPath SpanMonitorSession::Sessions::Session::Destination::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -140,7 +140,7 @@ bool SpanMonitorSession::Sessions::Session::has_operation() const
     return is_set(operation)
 	|| is_set(session.operation)
 	|| is_set(class_.operation)
-	|| (destination !=  nullptr && is_set(destination->operation));
+	|| (destination !=  nullptr && destination->has_operation());
 }
 
 std::string SpanMonitorSession::Sessions::Session::get_segment_path() const
@@ -359,7 +359,7 @@ bool SpanMonitorSession::has_data() const
 bool SpanMonitorSession::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string SpanMonitorSession::get_segment_path() const
@@ -376,7 +376,7 @@ EntityPath SpanMonitorSession::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -440,20 +440,20 @@ std::unique_ptr<Entity> SpanMonitorSession::clone_ptr()
     return std::make_unique<SpanMonitorSession>();
 }
 
-const Enum::Value SpanTrafficDirectionEnum::rx_only {1, "rx-only"};
-const Enum::Value SpanTrafficDirectionEnum::tx_only {2, "tx-only"};
+const Enum::YLeaf SpanTrafficDirectionEnum::rx_only {1, "rx-only"};
+const Enum::YLeaf SpanTrafficDirectionEnum::tx_only {2, "tx-only"};
 
-const Enum::Value SpanMirrorIntervalEnum::Y_512 {1, "512"};
-const Enum::Value SpanMirrorIntervalEnum::Y_1k {2, "1k"};
-const Enum::Value SpanMirrorIntervalEnum::Y_2k {3, "2k"};
-const Enum::Value SpanMirrorIntervalEnum::Y_4k {4, "4k"};
-const Enum::Value SpanMirrorIntervalEnum::Y_8k {5, "8k"};
-const Enum::Value SpanMirrorIntervalEnum::Y_16k {6, "16k"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_512 {1, "512"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_1k {2, "1k"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_2k {3, "2k"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_4k {4, "4k"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_8k {5, "8k"};
+const Enum::YLeaf SpanMirrorIntervalEnum::Y_16k {6, "16k"};
 
-const Enum::Value SpanDestinationEnum::interface {0, "interface"};
-const Enum::Value SpanDestinationEnum::pseudowire {1, "pseudowire"};
-const Enum::Value SpanDestinationEnum::ipv4_address {2, "ipv4-address"};
-const Enum::Value SpanDestinationEnum::ipv6_address {3, "ipv6-address"};
+const Enum::YLeaf SpanDestinationEnum::interface {0, "interface"};
+const Enum::YLeaf SpanDestinationEnum::pseudowire {1, "pseudowire"};
+const Enum::YLeaf SpanDestinationEnum::ipv4_address {2, "ipv4-address"};
+const Enum::YLeaf SpanDestinationEnum::ipv6_address {3, "ipv6-address"};
 
 
 }

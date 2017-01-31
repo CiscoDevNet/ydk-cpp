@@ -214,7 +214,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -302,7 +302,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Continuity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -390,7 +390,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -478,7 +478,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Trans
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -546,7 +546,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_data() 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_operation() const
 {
     return is_set(operation)
-	|| (transmission !=  nullptr && is_set(transmission->operation));
+	|| (transmission !=  nullptr && transmission->has_operation());
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_segment_path() const
@@ -563,7 +563,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -667,7 +667,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -764,7 +764,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -855,7 +855,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_
 {
     return is_set(operation)
 	|| is_set(auto_.operation)
-	|| (cross_check_meps !=  nullptr && is_set(cross_check_meps->operation));
+	|| (cross_check_meps !=  nullptr && cross_check_meps->has_operation());
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::get_segment_path() const
@@ -872,7 +872,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1008,7 +1008,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServicePro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1173,12 +1173,12 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_operation() 
 	|| is_set(log_efd.operation)
 	|| is_set(maximum_meps.operation)
 	|| is_set(tags.operation)
-	|| (ais !=  nullptr && is_set(ais->operation))
-	|| (continuity_check_interval !=  nullptr && is_set(continuity_check_interval->operation))
-	|| (cross_check !=  nullptr && is_set(cross_check->operation))
-	|| (efd2 !=  nullptr && is_set(efd2->operation))
-	|| (mip_auto_creation !=  nullptr && is_set(mip_auto_creation->operation))
-	|| (service_properties !=  nullptr && is_set(service_properties->operation));
+	|| (ais !=  nullptr && ais->has_operation())
+	|| (continuity_check_interval !=  nullptr && continuity_check_interval->has_operation())
+	|| (cross_check !=  nullptr && cross_check->has_operation())
+	|| (efd2 !=  nullptr && efd2->has_operation())
+	|| (mip_auto_creation !=  nullptr && mip_auto_creation->has_operation())
+	|| (service_properties !=  nullptr && service_properties->has_operation());
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_segment_path() const
@@ -1195,7 +1195,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1465,7 +1465,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::Services::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1578,7 +1578,7 @@ EntityPath EthernetFeatures::Cfm::Domains::Domain::DomainProperties::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1673,8 +1673,8 @@ bool EthernetFeatures::Cfm::Domains::Domain::has_operation() const
 {
     return is_set(operation)
 	|| is_set(domain.operation)
-	|| (domain_properties !=  nullptr && is_set(domain_properties->operation))
-	|| (services !=  nullptr && is_set(services->operation));
+	|| (domain_properties !=  nullptr && domain_properties->has_operation())
+	|| (services !=  nullptr && services->has_operation());
 }
 
 std::string EthernetFeatures::Cfm::Domains::Domain::get_segment_path() const
@@ -1920,8 +1920,8 @@ bool EthernetFeatures::Cfm::has_operation() const
 {
     return is_set(operation)
 	|| is_set(nv_satellite_sla_processing_disable.operation)
-	|| (domains !=  nullptr && is_set(domains->operation))
-	|| (traceroute_cache !=  nullptr && is_set(traceroute_cache->operation));
+	|| (domains !=  nullptr && domains->has_operation())
+	|| (traceroute_cache !=  nullptr && traceroute_cache->has_operation());
 }
 
 std::string EthernetFeatures::Cfm::get_segment_path() const
@@ -2067,7 +2067,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2142,7 +2142,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::FramePeriod
 {
     return is_set(operation)
 	|| is_set(window.operation)
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::FramePeriod::get_segment_path() const
@@ -2159,7 +2159,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2265,7 +2265,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2340,7 +2340,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::FrameSecond
 {
     return is_set(operation)
 	|| is_set(window.operation)
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::FrameSeconds::get_segment_path() const
@@ -2357,7 +2357,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2463,7 +2463,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2538,7 +2538,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame::has_
 {
     return is_set(operation)
 	|| is_set(window.operation)
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame::get_segment_path() const
@@ -2555,7 +2555,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Frame
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2661,7 +2661,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Symbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2736,7 +2736,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::SymbolPerio
 {
     return is_set(operation)
 	|| is_set(window.operation)
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::SymbolPeriod::get_segment_path() const
@@ -2753,7 +2753,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::Symbo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2861,10 +2861,10 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::has_operati
 {
     return is_set(operation)
 	|| is_set(monitoring.operation)
-	|| (frame !=  nullptr && is_set(frame->operation))
-	|| (frame_period !=  nullptr && is_set(frame_period->operation))
-	|| (frame_seconds !=  nullptr && is_set(frame_seconds->operation))
-	|| (symbol_period !=  nullptr && is_set(symbol_period->operation));
+	|| (frame !=  nullptr && frame->has_operation())
+	|| (frame_period !=  nullptr && frame_period->has_operation())
+	|| (frame_seconds !=  nullptr && frame_seconds->has_operation())
+	|| (symbol_period !=  nullptr && symbol_period->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::get_segment_path() const
@@ -2881,7 +2881,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitor::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3080,7 +3080,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3214,7 +3214,7 @@ EntityPath EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3327,9 +3327,9 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::has_operation() const
 	|| is_set(remote_loopback.operation)
 	|| is_set(timeout.operation)
 	|| is_set(udlf.operation)
-	|| (action !=  nullptr && is_set(action->operation))
-	|| (link_monitor !=  nullptr && is_set(link_monitor->operation))
-	|| (require_remote !=  nullptr && is_set(require_remote->operation));
+	|| (action !=  nullptr && action->has_operation())
+	|| (link_monitor !=  nullptr && link_monitor->has_operation())
+	|| (require_remote !=  nullptr && require_remote->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::get_segment_path() const
@@ -3619,7 +3619,7 @@ bool EthernetFeatures::EtherLinkOam::has_data() const
 bool EthernetFeatures::EtherLinkOam::has_operation() const
 {
     return is_set(operation)
-	|| (profiles !=  nullptr && is_set(profiles->operation));
+	|| (profiles !=  nullptr && profiles->has_operation());
 }
 
 std::string EthernetFeatures::EtherLinkOam::get_segment_path() const
@@ -3730,9 +3730,9 @@ bool EthernetFeatures::has_data() const
 bool EthernetFeatures::has_operation() const
 {
     return is_set(operation)
-	|| (cfm !=  nullptr && is_set(cfm->operation))
-	|| (egress_filtering !=  nullptr && is_set(egress_filtering->operation))
-	|| (ether_link_oam !=  nullptr && is_set(ether_link_oam->operation));
+	|| (cfm !=  nullptr && cfm->has_operation())
+	|| (egress_filtering !=  nullptr && egress_filtering->has_operation())
+	|| (ether_link_oam !=  nullptr && ether_link_oam->has_operation());
 }
 
 std::string EthernetFeatures::get_segment_path() const
@@ -3749,7 +3749,7 @@ EntityPath EthernetFeatures::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3859,23 +3859,23 @@ std::unique_ptr<Entity> EthernetFeatures::clone_ptr()
     return std::make_unique<EthernetFeatures>();
 }
 
-const Enum::Value EgressFilteringEnum::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
-const Enum::Value EgressFilteringEnum::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
-const Enum::Value EgressFilteringEnum::egress_filtering_type_default {3, "egress-filtering-type-default"};
+const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
+const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
+const Enum::YLeaf EgressFilteringEnum::egress_filtering_type_default {3, "egress-filtering-type-default"};
 
-const Enum::Value L2ProtocolNameEnum::cdp {0, "cdp"};
-const Enum::Value L2ProtocolNameEnum::stp {1, "stp"};
-const Enum::Value L2ProtocolNameEnum::vtp {2, "vtp"};
-const Enum::Value L2ProtocolNameEnum::pvst {3, "pvst"};
-const Enum::Value L2ProtocolNameEnum::cpsv {4, "cpsv"};
+const Enum::YLeaf L2ProtocolNameEnum::cdp {0, "cdp"};
+const Enum::YLeaf L2ProtocolNameEnum::stp {1, "stp"};
+const Enum::YLeaf L2ProtocolNameEnum::vtp {2, "vtp"};
+const Enum::YLeaf L2ProtocolNameEnum::pvst {3, "pvst"};
+const Enum::YLeaf L2ProtocolNameEnum::cpsv {4, "cpsv"};
 
-const Enum::Value FilteringEnum::filtering_type_dot1q {0, "filtering-type-dot1q"};
-const Enum::Value FilteringEnum::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
+const Enum::YLeaf FilteringEnum::filtering_type_dot1q {0, "filtering-type-dot1q"};
+const Enum::YLeaf FilteringEnum::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
 
-const Enum::Value L2ProtocolModeEnum::forward {0, "forward"};
-const Enum::Value L2ProtocolModeEnum::drop {1, "drop"};
-const Enum::Value L2ProtocolModeEnum::tunnel {2, "tunnel"};
-const Enum::Value L2ProtocolModeEnum::reverse_tunnel {3, "reverse-tunnel"};
+const Enum::YLeaf L2ProtocolModeEnum::forward {0, "forward"};
+const Enum::YLeaf L2ProtocolModeEnum::drop {1, "drop"};
+const Enum::YLeaf L2ProtocolModeEnum::tunnel {2, "tunnel"};
+const Enum::YLeaf L2ProtocolModeEnum::reverse_tunnel {3, "reverse-tunnel"};
 
 
 }

@@ -533,7 +533,7 @@ bool Snmp::Logging::has_data() const
 bool Snmp::Logging::has_operation() const
 {
     return is_set(operation)
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string Snmp::Logging::get_segment_path() const
@@ -1127,8 +1127,8 @@ bool Snmp::Administration::has_data() const
 bool Snmp::Administration::has_operation() const
 {
     return is_set(operation)
-	|| (default_communities !=  nullptr && is_set(default_communities->operation))
-	|| (encrypted_communities !=  nullptr && is_set(encrypted_communities->operation));
+	|| (default_communities !=  nullptr && default_communities->has_operation())
+	|| (encrypted_communities !=  nullptr && encrypted_communities->has_operation());
 }
 
 std::string Snmp::Administration::get_segment_path() const
@@ -1460,7 +1460,7 @@ bool Snmp::Agent::EngineId::has_operation() const
 {
     return is_set(operation)
 	|| is_set(local.operation)
-	|| (remotes !=  nullptr && is_set(remotes->operation));
+	|| (remotes !=  nullptr && remotes->has_operation());
 }
 
 std::string Snmp::Agent::EngineId::get_segment_path() const
@@ -1566,7 +1566,7 @@ bool Snmp::Agent::has_data() const
 bool Snmp::Agent::has_operation() const
 {
     return is_set(operation)
-	|| (engine_id !=  nullptr && is_set(engine_id->operation));
+	|| (engine_id !=  nullptr && engine_id->has_operation());
 }
 
 std::string Snmp::Agent::get_segment_path() const
@@ -1859,7 +1859,7 @@ bool Snmp::Ipv6::has_data() const
 bool Snmp::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (tos !=  nullptr && is_set(tos->operation));
+	|| (tos !=  nullptr && tos->has_operation());
 }
 
 std::string Snmp::Ipv6::get_segment_path() const
@@ -2056,7 +2056,7 @@ bool Snmp::Ipv4::has_data() const
 bool Snmp::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (tos !=  nullptr && is_set(tos->operation));
+	|| (tos !=  nullptr && tos->has_operation());
 }
 
 std::string Snmp::Ipv4::get_segment_path() const
@@ -2267,7 +2267,7 @@ EntityPath Snmp::Target::Targets::Target_::VrfNames::VrfName::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2354,7 +2354,7 @@ EntityPath Snmp::Target::Targets::Target_::VrfNames::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2455,7 +2455,7 @@ EntityPath Snmp::Target::Targets::Target_::TargetAddresses::TargetAddress::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2542,7 +2542,7 @@ EntityPath Snmp::Target::Targets::Target_::TargetAddresses::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2638,8 +2638,8 @@ bool Snmp::Target::Targets::Target_::has_operation() const
 {
     return is_set(operation)
 	|| is_set(target_list_name.operation)
-	|| (target_addresses !=  nullptr && is_set(target_addresses->operation))
-	|| (vrf_names !=  nullptr && is_set(vrf_names->operation));
+	|| (target_addresses !=  nullptr && target_addresses->has_operation())
+	|| (vrf_names !=  nullptr && vrf_names->has_operation());
 }
 
 std::string Snmp::Target::Targets::Target_::get_segment_path() const
@@ -2876,7 +2876,7 @@ bool Snmp::Target::has_data() const
 bool Snmp::Target::has_operation() const
 {
     return is_set(operation)
-	|| (targets !=  nullptr && is_set(targets->operation));
+	|| (targets !=  nullptr && targets->has_operation());
 }
 
 std::string Snmp::Target::get_segment_path() const
@@ -4630,8 +4630,8 @@ bool Snmp::Notification::Bgp::has_data() const
 bool Snmp::Notification::Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (bgp4mib !=  nullptr && is_set(bgp4mib->operation))
-	|| (cisco_bgp4mib !=  nullptr && is_set(cisco_bgp4mib->operation));
+	|| (bgp4mib !=  nullptr && bgp4mib->has_operation())
+	|| (cisco_bgp4mib !=  nullptr && cisco_bgp4mib->has_operation());
 }
 
 std::string Snmp::Notification::Bgp::get_segment_path() const
@@ -5250,10 +5250,10 @@ bool Snmp::Notification::Ospf::has_data() const
 bool Snmp::Notification::Ospf::has_operation() const
 {
     return is_set(operation)
-	|| (error !=  nullptr && is_set(error->operation))
-	|| (lsa !=  nullptr && is_set(lsa->operation))
-	|| (retransmit !=  nullptr && is_set(retransmit->operation))
-	|| (state_change !=  nullptr && is_set(state_change->operation));
+	|| (error !=  nullptr && error->has_operation())
+	|| (lsa !=  nullptr && lsa->has_operation())
+	|| (retransmit !=  nullptr && retransmit->has_operation())
+	|| (state_change !=  nullptr && state_change->has_operation());
 }
 
 std::string Snmp::Notification::Ospf::get_segment_path() const
@@ -5748,8 +5748,8 @@ bool Snmp::Notification::Ospfv3::has_data() const
 bool Snmp::Notification::Ospfv3::has_operation() const
 {
     return is_set(operation)
-	|| (error !=  nullptr && is_set(error->operation))
-	|| (state_change !=  nullptr && is_set(state_change->operation));
+	|| (error !=  nullptr && error->has_operation())
+	|| (state_change !=  nullptr && state_change->has_operation());
 }
 
 std::string Snmp::Notification::Ospfv3::get_segment_path() const
@@ -6185,7 +6185,7 @@ bool Snmp::Notification::MplsTe::has_operation() const
 	|| is_set(reoptimize.operation)
 	|| is_set(reroute.operation)
 	|| is_set(up.operation)
-	|| (cisco_extension !=  nullptr && is_set(cisco_extension->operation));
+	|| (cisco_extension !=  nullptr && cisco_extension->has_operation());
 }
 
 std::string Snmp::Notification::MplsTe::get_segment_path() const
@@ -7125,37 +7125,37 @@ bool Snmp::Notification::has_data() const
 bool Snmp::Notification::has_operation() const
 {
     return is_set(operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cfm !=  nullptr && is_set(cfm->operation))
-	|| (config_copy !=  nullptr && is_set(config_copy->operation))
-	|| (config_man !=  nullptr && is_set(config_man->operation))
-	|| (entity_ !=  nullptr && is_set(entity_->operation))
-	|| (entity_redundancy !=  nullptr && is_set(entity_redundancy->operation))
-	|| (entity_state !=  nullptr && is_set(entity_state->operation))
-	|| (flash !=  nullptr && is_set(flash->operation))
-	|| (fru_control !=  nullptr && is_set(fru_control->operation))
-	|| (hsrp !=  nullptr && is_set(hsrp->operation))
-	|| (isis !=  nullptr && is_set(isis->operation))
-	|| (l2vpn !=  nullptr && is_set(l2vpn->operation))
-	|| (mpls_frr !=  nullptr && is_set(mpls_frr->operation))
-	|| (mpls_ldp !=  nullptr && is_set(mpls_ldp->operation))
-	|| (mpls_te !=  nullptr && is_set(mpls_te->operation))
-	|| (mpls_te_p2mp !=  nullptr && is_set(mpls_te_p2mp->operation))
-	|| (ntp !=  nullptr && is_set(ntp->operation))
-	|| (oam !=  nullptr && is_set(oam->operation))
-	|| (ospf !=  nullptr && is_set(ospf->operation))
-	|| (ospfv3 !=  nullptr && is_set(ospfv3->operation))
-	|| (otn !=  nullptr && is_set(otn->operation))
-	|| (rf !=  nullptr && is_set(rf->operation))
-	|| (rsvp !=  nullptr && is_set(rsvp->operation))
-	|| (selective_vrf_download !=  nullptr && is_set(selective_vrf_download->operation))
-	|| (sensor !=  nullptr && is_set(sensor->operation))
-	|| (snmp !=  nullptr && is_set(snmp->operation))
-	|| (syslog !=  nullptr && is_set(syslog->operation))
-	|| (system !=  nullptr && is_set(system->operation))
-	|| (vpls !=  nullptr && is_set(vpls->operation))
-	|| (vrrp !=  nullptr && is_set(vrrp->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cfm !=  nullptr && cfm->has_operation())
+	|| (config_copy !=  nullptr && config_copy->has_operation())
+	|| (config_man !=  nullptr && config_man->has_operation())
+	|| (entity_ !=  nullptr && entity_->has_operation())
+	|| (entity_redundancy !=  nullptr && entity_redundancy->has_operation())
+	|| (entity_state !=  nullptr && entity_state->has_operation())
+	|| (flash !=  nullptr && flash->has_operation())
+	|| (fru_control !=  nullptr && fru_control->has_operation())
+	|| (hsrp !=  nullptr && hsrp->has_operation())
+	|| (isis !=  nullptr && isis->has_operation())
+	|| (l2vpn !=  nullptr && l2vpn->has_operation())
+	|| (mpls_frr !=  nullptr && mpls_frr->has_operation())
+	|| (mpls_ldp !=  nullptr && mpls_ldp->has_operation())
+	|| (mpls_te !=  nullptr && mpls_te->has_operation())
+	|| (mpls_te_p2mp !=  nullptr && mpls_te_p2mp->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (oam !=  nullptr && oam->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (otn !=  nullptr && otn->has_operation())
+	|| (rf !=  nullptr && rf->has_operation())
+	|| (rsvp !=  nullptr && rsvp->has_operation())
+	|| (selective_vrf_download !=  nullptr && selective_vrf_download->has_operation())
+	|| (sensor !=  nullptr && sensor->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (syslog !=  nullptr && syslog->has_operation())
+	|| (system !=  nullptr && system->has_operation())
+	|| (vpls !=  nullptr && vpls->has_operation())
+	|| (vrrp !=  nullptr && vrrp->has_operation());
 }
 
 std::string Snmp::Notification::get_segment_path() const
@@ -7963,7 +7963,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::Va
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8038,7 +8038,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds
 {
     return is_set(operation)
 	|| is_set(oid.operation)
-	|| (match !=  nullptr && is_set(match->operation));
+	|| (match !=  nullptr && match->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::VarBinds::VarBind::get_segment_path() const
@@ -8055,7 +8055,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::Va
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8165,7 +8165,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::Va
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8259,7 +8259,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::has_oper
     return is_set(operation)
 	|| is_set(oid.operation)
 	|| is_set(created.operation)
-	|| (var_binds !=  nullptr && is_set(var_binds->operation));
+	|| (var_binds !=  nullptr && var_binds->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::get_segment_path() const
@@ -8276,7 +8276,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::RootCause::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8391,7 +8391,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::RootCauses::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8495,7 +8495,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8570,7 +8570,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::Va
 {
     return is_set(operation)
 	|| is_set(oid.operation)
-	|| (match !=  nullptr && is_set(match->operation));
+	|| (match !=  nullptr && match->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::VarBinds::VarBind::get_segment_path() const
@@ -8587,7 +8587,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8697,7 +8697,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8791,7 +8791,7 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::ha
     return is_set(operation)
 	|| is_set(oid.operation)
 	|| is_set(created.operation)
-	|| (var_binds !=  nullptr && is_set(var_binds->operation));
+	|| (var_binds !=  nullptr && var_binds->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCause::get_segment_path() const
@@ -8808,7 +8808,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::NonRootCau
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8923,7 +8923,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::NonRootCauses::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9019,8 +9019,8 @@ bool Snmp::Correlator::Rules::Rule::NonStateful::has_operation() const
 {
     return is_set(operation)
 	|| is_set(timeout.operation)
-	|| (non_root_causes !=  nullptr && is_set(non_root_causes->operation))
-	|| (root_causes !=  nullptr && is_set(root_causes->operation));
+	|| (non_root_causes !=  nullptr && non_root_causes->has_operation())
+	|| (root_causes !=  nullptr && root_causes->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::NonStateful::get_segment_path() const
@@ -9037,7 +9037,7 @@ EntityPath Snmp::Correlator::Rules::Rule::NonStateful::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9166,7 +9166,7 @@ EntityPath Snmp::Correlator::Rules::Rule::AppliedTo::Hosts::Host::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9258,7 +9258,7 @@ EntityPath Snmp::Correlator::Rules::Rule::AppliedTo::Hosts::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9349,7 +9349,7 @@ bool Snmp::Correlator::Rules::Rule::AppliedTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all.operation)
-	|| (hosts !=  nullptr && is_set(hosts->operation));
+	|| (hosts !=  nullptr && hosts->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::AppliedTo::get_segment_path() const
@@ -9366,7 +9366,7 @@ EntityPath Snmp::Correlator::Rules::Rule::AppliedTo::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9461,8 +9461,8 @@ bool Snmp::Correlator::Rules::Rule::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (applied_to !=  nullptr && is_set(applied_to->operation))
-	|| (non_stateful !=  nullptr && is_set(non_stateful->operation));
+	|| (applied_to !=  nullptr && applied_to->has_operation())
+	|| (non_stateful !=  nullptr && non_stateful->has_operation());
 }
 
 std::string Snmp::Correlator::Rules::Rule::get_segment_path() const
@@ -9713,7 +9713,7 @@ EntityPath Snmp::Correlator::RuleSets::RuleSet::Rulenames::Rulename::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9800,7 +9800,7 @@ EntityPath Snmp::Correlator::RuleSets::RuleSet::Rulenames::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9904,7 +9904,7 @@ EntityPath Snmp::Correlator::RuleSets::RuleSet::AppliedTo::Hosts::Host::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9996,7 +9996,7 @@ EntityPath Snmp::Correlator::RuleSets::RuleSet::AppliedTo::Hosts::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10087,7 +10087,7 @@ bool Snmp::Correlator::RuleSets::RuleSet::AppliedTo::has_operation() const
 {
     return is_set(operation)
 	|| is_set(all.operation)
-	|| (hosts !=  nullptr && is_set(hosts->operation));
+	|| (hosts !=  nullptr && hosts->has_operation());
 }
 
 std::string Snmp::Correlator::RuleSets::RuleSet::AppliedTo::get_segment_path() const
@@ -10104,7 +10104,7 @@ EntityPath Snmp::Correlator::RuleSets::RuleSet::AppliedTo::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10202,8 +10202,8 @@ bool Snmp::Correlator::RuleSets::RuleSet::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (applied_to !=  nullptr && is_set(applied_to->operation))
-	|| (rulenames !=  nullptr && is_set(rulenames->operation));
+	|| (applied_to !=  nullptr && applied_to->has_operation())
+	|| (rulenames !=  nullptr && rulenames->has_operation());
 }
 
 std::string Snmp::Correlator::RuleSets::RuleSet::get_segment_path() const
@@ -10449,8 +10449,8 @@ bool Snmp::Correlator::has_operation() const
 {
     return is_set(operation)
 	|| is_set(buffer_size.operation)
-	|| (rule_sets !=  nullptr && is_set(rule_sets->operation))
-	|| (rules !=  nullptr && is_set(rules->operation));
+	|| (rule_sets !=  nullptr && rule_sets->has_operation())
+	|| (rules !=  nullptr && rules->has_operation());
 }
 
 std::string Snmp::Correlator::get_segment_path() const
@@ -10608,7 +10608,7 @@ EntityPath Snmp::BulkStats::Schemas::Schema::Instance::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10709,7 +10709,7 @@ bool Snmp::BulkStats::Schemas::Schema::has_operation() const
 	|| is_set(poll_interval.operation)
 	|| is_set(schema_object_list.operation)
 	|| is_set(type.operation)
-	|| (instance !=  nullptr && is_set(instance->operation));
+	|| (instance !=  nullptr && instance->has_operation());
 }
 
 std::string Snmp::BulkStats::Schemas::Schema::get_segment_path() const
@@ -10952,7 +10952,7 @@ EntityPath Snmp::BulkStats::Objects::Object::Objects_::Object_::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11039,7 +11039,7 @@ EntityPath Snmp::BulkStats::Objects::Object::Objects_::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11133,7 +11133,7 @@ bool Snmp::BulkStats::Objects::Object::has_operation() const
     return is_set(operation)
 	|| is_set(object_list_name.operation)
 	|| is_set(type.operation)
-	|| (objects !=  nullptr && is_set(objects->operation));
+	|| (objects !=  nullptr && objects->has_operation());
 }
 
 std::string Snmp::BulkStats::Objects::Object::get_segment_path() const
@@ -11366,7 +11366,7 @@ EntityPath Snmp::BulkStats::Transfers::Transfer::TransferSchemas::TransferSchema
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11453,7 +11453,7 @@ EntityPath Snmp::BulkStats::Transfers::Transfer::TransferSchemas::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11571,7 +11571,7 @@ bool Snmp::BulkStats::Transfers::Transfer::has_operation() const
 	|| is_set(retry.operation)
 	|| is_set(secondary.operation)
 	|| is_set(type.operation)
-	|| (transfer_schemas !=  nullptr && is_set(transfer_schemas->operation));
+	|| (transfer_schemas !=  nullptr && transfer_schemas->has_operation());
 }
 
 std::string Snmp::BulkStats::Transfers::Transfer::get_segment_path() const
@@ -11844,9 +11844,9 @@ bool Snmp::BulkStats::has_operation() const
 {
     return is_set(operation)
 	|| is_set(memory.operation)
-	|| (objects !=  nullptr && is_set(objects->operation))
-	|| (schemas !=  nullptr && is_set(schemas->operation))
-	|| (transfers !=  nullptr && is_set(transfers->operation));
+	|| (objects !=  nullptr && objects->has_operation())
+	|| (schemas !=  nullptr && schemas->has_operation())
+	|| (transfers !=  nullptr && transfers->has_operation());
 }
 
 std::string Snmp::BulkStats::get_segment_path() const
@@ -12742,7 +12742,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::Encry
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12859,7 +12859,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::EncryptedUserCommunities::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12978,7 +12978,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommuniti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13095,7 +13095,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformUserCommuniti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13214,7 +13214,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUser
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13331,7 +13331,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::InformEncryptedUser
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13423,8 +13423,8 @@ bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::has_data() const
 bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::has_operation() const
 {
     return is_set(operation)
-	|| (inform_encrypted_user_communities !=  nullptr && is_set(inform_encrypted_user_communities->operation))
-	|| (inform_user_communities !=  nullptr && is_set(inform_user_communities->operation));
+	|| (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_operation())
+	|| (inform_user_communities !=  nullptr && inform_user_communities->has_operation());
 }
 
 std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_segment_path() const
@@ -13441,7 +13441,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::InformHost::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13580,7 +13580,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::Default
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13697,7 +13697,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::DefaultUserCommunities::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13798,9 +13798,9 @@ bool Snmp::Vrfs::Vrf::TrapHosts::TrapHost::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip_address.operation)
-	|| (default_user_communities !=  nullptr && is_set(default_user_communities->operation))
-	|| (encrypted_user_communities !=  nullptr && is_set(encrypted_user_communities->operation))
-	|| (inform_host !=  nullptr && is_set(inform_host->operation));
+	|| (default_user_communities !=  nullptr && default_user_communities->has_operation())
+	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_operation())
+	|| (inform_host !=  nullptr && inform_host->has_operation());
 }
 
 std::string Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_segment_path() const
@@ -13817,7 +13817,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::TrapHost::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13973,7 +13973,7 @@ EntityPath Snmp::Vrfs::Vrf::TrapHosts::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14074,7 +14074,7 @@ EntityPath Snmp::Vrfs::Vrf::Contexts::Context::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14161,7 +14161,7 @@ EntityPath Snmp::Vrfs::Vrf::Contexts::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14274,7 +14274,7 @@ EntityPath Snmp::Vrfs::Vrf::ContextMappings::ContextMapping::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14381,7 +14381,7 @@ EntityPath Snmp::Vrfs::Vrf::ContextMappings::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14482,9 +14482,9 @@ bool Snmp::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (context_mappings !=  nullptr && is_set(context_mappings->operation))
-	|| (contexts !=  nullptr && is_set(contexts->operation))
-	|| (trap_hosts !=  nullptr && is_set(trap_hosts->operation));
+	|| (context_mappings !=  nullptr && context_mappings->has_operation())
+	|| (contexts !=  nullptr && contexts->has_operation())
+	|| (trap_hosts !=  nullptr && trap_hosts->has_operation());
 }
 
 std::string Snmp::Vrfs::Vrf::get_segment_path() const
@@ -15044,7 +15044,7 @@ EntityPath Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::EncryptedUserCom
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15161,7 +15161,7 @@ EntityPath Snmp::TrapHosts::TrapHost::EncryptedUserCommunities::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15280,7 +15280,7 @@ EntityPath Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::InformU
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15397,7 +15397,7 @@ EntityPath Snmp::TrapHosts::TrapHost::InformHost::InformUserCommunities::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15516,7 +15516,7 @@ EntityPath Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15633,7 +15633,7 @@ EntityPath Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15725,8 +15725,8 @@ bool Snmp::TrapHosts::TrapHost::InformHost::has_data() const
 bool Snmp::TrapHosts::TrapHost::InformHost::has_operation() const
 {
     return is_set(operation)
-	|| (inform_encrypted_user_communities !=  nullptr && is_set(inform_encrypted_user_communities->operation))
-	|| (inform_user_communities !=  nullptr && is_set(inform_user_communities->operation));
+	|| (inform_encrypted_user_communities !=  nullptr && inform_encrypted_user_communities->has_operation())
+	|| (inform_user_communities !=  nullptr && inform_user_communities->has_operation());
 }
 
 std::string Snmp::TrapHosts::TrapHost::InformHost::get_segment_path() const
@@ -15743,7 +15743,7 @@ EntityPath Snmp::TrapHosts::TrapHost::InformHost::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15882,7 +15882,7 @@ EntityPath Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommuni
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15999,7 +15999,7 @@ EntityPath Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16100,9 +16100,9 @@ bool Snmp::TrapHosts::TrapHost::has_operation() const
 {
     return is_set(operation)
 	|| is_set(ip_address.operation)
-	|| (default_user_communities !=  nullptr && is_set(default_user_communities->operation))
-	|| (encrypted_user_communities !=  nullptr && is_set(encrypted_user_communities->operation))
-	|| (inform_host !=  nullptr && is_set(inform_host->operation));
+	|| (default_user_communities !=  nullptr && default_user_communities->has_operation())
+	|| (encrypted_user_communities !=  nullptr && encrypted_user_communities->has_operation())
+	|| (inform_host !=  nullptr && inform_host->has_operation());
 }
 
 std::string Snmp::TrapHosts::TrapHost::get_segment_path() const
@@ -16906,28 +16906,28 @@ bool Snmp::has_operation() const
 	|| is_set(trap_source_ipv4.operation)
 	|| is_set(trap_source_ipv6.operation)
 	|| is_set(vrf_authentication_trap_disable.operation)
-	|| (administration !=  nullptr && is_set(administration->operation))
-	|| (agent !=  nullptr && is_set(agent->operation))
-	|| (bulk_stats !=  nullptr && is_set(bulk_stats->operation))
-	|| (context_mappings !=  nullptr && is_set(context_mappings->operation))
-	|| (contexts !=  nullptr && is_set(contexts->operation))
-	|| (correlator !=  nullptr && is_set(correlator->operation))
-	|| (default_community_maps !=  nullptr && is_set(default_community_maps->operation))
-	|| (encrypted_community_maps !=  nullptr && is_set(encrypted_community_maps->operation))
-	|| (groups !=  nullptr && is_set(groups->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (logging !=  nullptr && is_set(logging->operation))
-	|| (notification !=  nullptr && is_set(notification->operation))
-	|| (overload_control !=  nullptr && is_set(overload_control->operation))
-	|| (system !=  nullptr && is_set(system->operation))
-	|| (target !=  nullptr && is_set(target->operation))
-	|| (timeouts !=  nullptr && is_set(timeouts->operation))
-	|| (trap !=  nullptr && is_set(trap->operation))
-	|| (trap_hosts !=  nullptr && is_set(trap_hosts->operation))
-	|| (users !=  nullptr && is_set(users->operation))
-	|| (views !=  nullptr && is_set(views->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (administration !=  nullptr && administration->has_operation())
+	|| (agent !=  nullptr && agent->has_operation())
+	|| (bulk_stats !=  nullptr && bulk_stats->has_operation())
+	|| (context_mappings !=  nullptr && context_mappings->has_operation())
+	|| (contexts !=  nullptr && contexts->has_operation())
+	|| (correlator !=  nullptr && correlator->has_operation())
+	|| (default_community_maps !=  nullptr && default_community_maps->has_operation())
+	|| (encrypted_community_maps !=  nullptr && encrypted_community_maps->has_operation())
+	|| (groups !=  nullptr && groups->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (logging !=  nullptr && logging->has_operation())
+	|| (notification !=  nullptr && notification->has_operation())
+	|| (overload_control !=  nullptr && overload_control->has_operation())
+	|| (system !=  nullptr && system->has_operation())
+	|| (target !=  nullptr && target->has_operation())
+	|| (timeouts !=  nullptr && timeouts->has_operation())
+	|| (trap !=  nullptr && trap->has_operation())
+	|| (trap_hosts !=  nullptr && trap_hosts->has_operation())
+	|| (users !=  nullptr && users->has_operation())
+	|| (views !=  nullptr && views->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Snmp::get_segment_path() const
@@ -16944,7 +16944,7 @@ EntityPath Snmp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -18078,7 +18078,7 @@ bool Mib::CbQosmib::has_operation() const
     return is_set(operation)
 	|| is_set(member_interface_stats.operation)
 	|| is_set(persist.operation)
-	|| (cache !=  nullptr && is_set(cache->operation));
+	|| (cache !=  nullptr && cache->has_operation());
 }
 
 std::string Mib::CbQosmib::get_segment_path() const
@@ -18570,7 +18570,7 @@ EntityPath Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18645,7 +18645,7 @@ bool Mib::InterfaceMib::Subsets::Subset::has_operation() const
 {
     return is_set(operation)
 	|| is_set(subset_id.operation)
-	|| (link_up_down !=  nullptr && is_set(link_up_down->operation));
+	|| (link_up_down !=  nullptr && link_up_down->has_operation());
 }
 
 std::string Mib::InterfaceMib::Subsets::Subset::get_segment_path() const
@@ -18885,9 +18885,9 @@ bool Mib::InterfaceMib::has_operation() const
 	|| is_set(internal_cache.operation)
 	|| is_set(ip_subscriber.operation)
 	|| is_set(statistics_cache.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (notification !=  nullptr && is_set(notification->operation))
-	|| (subsets !=  nullptr && is_set(subsets->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (notification !=  nullptr && notification->has_operation())
+	|| (subsets !=  nullptr && subsets->has_operation());
 }
 
 std::string Mib::InterfaceMib::get_segment_path() const
@@ -19098,14 +19098,14 @@ bool Mib::has_operation() const
 {
     return is_set(operation)
 	|| is_set(sensor_mib_cache.operation)
-	|| (cb_qosmib !=  nullptr && is_set(cb_qosmib->operation))
-	|| (entity_mib !=  nullptr && is_set(entity_mib->operation))
-	|| (interface_mib !=  nullptr && is_set(interface_mib->operation))
-	|| (mpls_frr_mib !=  nullptr && is_set(mpls_frr_mib->operation))
-	|| (mpls_p2mp_mib !=  nullptr && is_set(mpls_p2mp_mib->operation))
-	|| (mpls_te_ext_mib !=  nullptr && is_set(mpls_te_ext_mib->operation))
-	|| (mpls_te_ext_std_mib !=  nullptr && is_set(mpls_te_ext_std_mib->operation))
-	|| (mpls_te_mib !=  nullptr && is_set(mpls_te_mib->operation));
+	|| (cb_qosmib !=  nullptr && cb_qosmib->has_operation())
+	|| (entity_mib !=  nullptr && entity_mib->has_operation())
+	|| (interface_mib !=  nullptr && interface_mib->has_operation())
+	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_operation())
+	|| (mpls_p2mp_mib !=  nullptr && mpls_p2mp_mib->has_operation())
+	|| (mpls_te_ext_mib !=  nullptr && mpls_te_ext_mib->has_operation())
+	|| (mpls_te_ext_std_mib !=  nullptr && mpls_te_ext_std_mib->has_operation())
+	|| (mpls_te_mib !=  nullptr && mpls_te_mib->has_operation());
 }
 
 std::string Mib::get_segment_path() const
@@ -19122,7 +19122,7 @@ EntityPath Mib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -19352,90 +19352,90 @@ std::unique_ptr<Entity> Mib::clone_ptr()
     return std::make_unique<Mib>();
 }
 
-const Enum::Value SnmpHashAlgorithmEnum::none {0, "none"};
-const Enum::Value SnmpHashAlgorithmEnum::md5 {1, "md5"};
-const Enum::Value SnmpHashAlgorithmEnum::sha {2, "sha"};
+const Enum::YLeaf SnmpHashAlgorithmEnum::none {0, "none"};
+const Enum::YLeaf SnmpHashAlgorithmEnum::md5 {1, "md5"};
+const Enum::YLeaf SnmpHashAlgorithmEnum::sha {2, "sha"};
 
-const Enum::Value SnmpAccessLevelEnum::read_only {0, "read-only"};
-const Enum::Value SnmpAccessLevelEnum::read_write {1, "read-write"};
+const Enum::YLeaf SnmpAccessLevelEnum::read_only {0, "read-only"};
+const Enum::YLeaf SnmpAccessLevelEnum::read_write {1, "read-write"};
 
-const Enum::Value SnmpBulkstatSchemaEnum::exact_interface {1, "exact-interface"};
-const Enum::Value SnmpBulkstatSchemaEnum::exact_oid {2, "exact-oid"};
-const Enum::Value SnmpBulkstatSchemaEnum::wild_interface {3, "wild-interface"};
-const Enum::Value SnmpBulkstatSchemaEnum::wild_oid {4, "wild-oid"};
-const Enum::Value SnmpBulkstatSchemaEnum::range_oid {5, "range-oid"};
-const Enum::Value SnmpBulkstatSchemaEnum::repeat_oid {6, "repeat-oid"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::exact_interface {1, "exact-interface"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::exact_oid {2, "exact-oid"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::wild_interface {3, "wild-interface"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::wild_oid {4, "wild-oid"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::range_oid {5, "range-oid"};
+const Enum::YLeaf SnmpBulkstatSchemaEnum::repeat_oid {6, "repeat-oid"};
 
-const Enum::Value GroupSnmpVersionEnum::v1 {0, "v1"};
-const Enum::Value GroupSnmpVersionEnum::v2c {1, "v2c"};
-const Enum::Value GroupSnmpVersionEnum::v3 {2, "v3"};
+const Enum::YLeaf GroupSnmpVersionEnum::v1 {0, "v1"};
+const Enum::YLeaf GroupSnmpVersionEnum::v2c {1, "v2c"};
+const Enum::YLeaf GroupSnmpVersionEnum::v3 {2, "v3"};
 
-const Enum::Value SnmpOwnerAccessEnum::sdr_owner {0, "sdr-owner"};
-const Enum::Value SnmpOwnerAccessEnum::system_owner {1, "system-owner"};
+const Enum::YLeaf SnmpOwnerAccessEnum::sdr_owner {0, "sdr-owner"};
+const Enum::YLeaf SnmpOwnerAccessEnum::system_owner {1, "system-owner"};
 
-const Enum::Value SnmpBulkstatFileFormatEnum::schema_ascii {1, "schema-ascii"};
-const Enum::Value SnmpBulkstatFileFormatEnum::bulk_ascii {2, "bulk-ascii"};
-const Enum::Value SnmpBulkstatFileFormatEnum::bulk_binary {3, "bulk-binary"};
+const Enum::YLeaf SnmpBulkstatFileFormatEnum::schema_ascii {1, "schema-ascii"};
+const Enum::YLeaf SnmpBulkstatFileFormatEnum::bulk_ascii {2, "bulk-ascii"};
+const Enum::YLeaf SnmpBulkstatFileFormatEnum::bulk_binary {3, "bulk-binary"};
 
-const Enum::Value SnmpSecurityModelEnum::no_authentication {0, "no-authentication"};
-const Enum::Value SnmpSecurityModelEnum::authentication {1, "authentication"};
-const Enum::Value SnmpSecurityModelEnum::privacy {2, "privacy"};
+const Enum::YLeaf SnmpSecurityModelEnum::no_authentication {0, "no-authentication"};
+const Enum::YLeaf SnmpSecurityModelEnum::authentication {1, "authentication"};
+const Enum::YLeaf SnmpSecurityModelEnum::privacy {2, "privacy"};
 
-const Enum::Value SnmpTosEnum::precedence {0, "precedence"};
-const Enum::Value SnmpTosEnum::dscp {1, "dscp"};
+const Enum::YLeaf SnmpTosEnum::precedence {0, "precedence"};
+const Enum::YLeaf SnmpTosEnum::dscp {1, "dscp"};
 
-const Enum::Value SnmpaclEnum::ipv4 {1, "ipv4"};
-const Enum::Value SnmpaclEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf SnmpaclEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf SnmpaclEnum::ipv6 {2, "ipv6"};
 
-const Enum::Value SnmpDscpValueEnum::default_ {0, "default"};
-const Enum::Value SnmpDscpValueEnum::af11 {10, "af11"};
-const Enum::Value SnmpDscpValueEnum::af12 {12, "af12"};
-const Enum::Value SnmpDscpValueEnum::af13 {14, "af13"};
-const Enum::Value SnmpDscpValueEnum::af21 {18, "af21"};
-const Enum::Value SnmpDscpValueEnum::af22 {20, "af22"};
-const Enum::Value SnmpDscpValueEnum::af23 {22, "af23"};
-const Enum::Value SnmpDscpValueEnum::af31 {26, "af31"};
-const Enum::Value SnmpDscpValueEnum::af32 {28, "af32"};
-const Enum::Value SnmpDscpValueEnum::af33 {30, "af33"};
-const Enum::Value SnmpDscpValueEnum::af41 {34, "af41"};
-const Enum::Value SnmpDscpValueEnum::af42 {36, "af42"};
-const Enum::Value SnmpDscpValueEnum::af43 {38, "af43"};
-const Enum::Value SnmpDscpValueEnum::ef {46, "ef"};
-const Enum::Value SnmpDscpValueEnum::cs1 {8, "cs1"};
-const Enum::Value SnmpDscpValueEnum::cs2 {16, "cs2"};
-const Enum::Value SnmpDscpValueEnum::cs3 {24, "cs3"};
-const Enum::Value SnmpDscpValueEnum::cs4 {32, "cs4"};
-const Enum::Value SnmpDscpValueEnum::cs5 {40, "cs5"};
-const Enum::Value SnmpDscpValueEnum::cs6 {48, "cs6"};
-const Enum::Value SnmpDscpValueEnum::cs7 {56, "cs7"};
+const Enum::YLeaf SnmpDscpValueEnum::default_ {0, "default"};
+const Enum::YLeaf SnmpDscpValueEnum::af11 {10, "af11"};
+const Enum::YLeaf SnmpDscpValueEnum::af12 {12, "af12"};
+const Enum::YLeaf SnmpDscpValueEnum::af13 {14, "af13"};
+const Enum::YLeaf SnmpDscpValueEnum::af21 {18, "af21"};
+const Enum::YLeaf SnmpDscpValueEnum::af22 {20, "af22"};
+const Enum::YLeaf SnmpDscpValueEnum::af23 {22, "af23"};
+const Enum::YLeaf SnmpDscpValueEnum::af31 {26, "af31"};
+const Enum::YLeaf SnmpDscpValueEnum::af32 {28, "af32"};
+const Enum::YLeaf SnmpDscpValueEnum::af33 {30, "af33"};
+const Enum::YLeaf SnmpDscpValueEnum::af41 {34, "af41"};
+const Enum::YLeaf SnmpDscpValueEnum::af42 {36, "af42"};
+const Enum::YLeaf SnmpDscpValueEnum::af43 {38, "af43"};
+const Enum::YLeaf SnmpDscpValueEnum::ef {46, "ef"};
+const Enum::YLeaf SnmpDscpValueEnum::cs1 {8, "cs1"};
+const Enum::YLeaf SnmpDscpValueEnum::cs2 {16, "cs2"};
+const Enum::YLeaf SnmpDscpValueEnum::cs3 {24, "cs3"};
+const Enum::YLeaf SnmpDscpValueEnum::cs4 {32, "cs4"};
+const Enum::YLeaf SnmpDscpValueEnum::cs5 {40, "cs5"};
+const Enum::YLeaf SnmpDscpValueEnum::cs6 {48, "cs6"};
+const Enum::YLeaf SnmpDscpValueEnum::cs7 {56, "cs7"};
 
-const Enum::Value UserSnmpVersionEnum::v1 {1, "v1"};
-const Enum::Value UserSnmpVersionEnum::v2c {2, "v2c"};
-const Enum::Value UserSnmpVersionEnum::v3 {3, "v3"};
+const Enum::YLeaf UserSnmpVersionEnum::v1 {1, "v1"};
+const Enum::YLeaf UserSnmpVersionEnum::v2c {2, "v2c"};
+const Enum::YLeaf UserSnmpVersionEnum::v3 {3, "v3"};
 
-const Enum::Value SnmpPrecedenceValue1Enum::routine {0, "routine"};
-const Enum::Value SnmpPrecedenceValue1Enum::priority {1, "priority"};
-const Enum::Value SnmpPrecedenceValue1Enum::immediate {2, "immediate"};
-const Enum::Value SnmpPrecedenceValue1Enum::flash {3, "flash"};
-const Enum::Value SnmpPrecedenceValue1Enum::flash_override {4, "flash-override"};
-const Enum::Value SnmpPrecedenceValue1Enum::critical {5, "critical"};
-const Enum::Value SnmpPrecedenceValue1Enum::internet {6, "internet"};
-const Enum::Value SnmpPrecedenceValue1Enum::network {7, "network"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::routine {0, "routine"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::priority {1, "priority"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::immediate {2, "immediate"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::flash {3, "flash"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::flash_override {4, "flash-override"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::critical {5, "critical"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::internet {6, "internet"};
+const Enum::YLeaf SnmpPrecedenceValue1Enum::network {7, "network"};
 
-const Enum::Value SnmpPrivAlgorithmEnum::none {0, "none"};
-const Enum::Value SnmpPrivAlgorithmEnum::des {1, "des"};
-const Enum::Value SnmpPrivAlgorithmEnum::Y_3des {2, "3des"};
-const Enum::Value SnmpPrivAlgorithmEnum::aes128 {3, "aes128"};
-const Enum::Value SnmpPrivAlgorithmEnum::aes192 {4, "aes192"};
-const Enum::Value SnmpPrivAlgorithmEnum::aes256 {5, "aes256"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::none {0, "none"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::des {1, "des"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::Y_3des {2, "3des"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::aes128 {3, "aes128"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::aes192 {4, "aes192"};
+const Enum::YLeaf SnmpPrivAlgorithmEnum::aes256 {5, "aes256"};
 
-const Enum::Value SnmpMibViewInclusionEnum::included {1, "included"};
-const Enum::Value SnmpMibViewInclusionEnum::excluded {2, "excluded"};
+const Enum::YLeaf SnmpMibViewInclusionEnum::included {1, "included"};
+const Enum::YLeaf SnmpMibViewInclusionEnum::excluded {2, "excluded"};
 
-const Enum::Value SnmpContextEnum::vrf {1, "vrf"};
-const Enum::Value SnmpContextEnum::bridge {4, "bridge"};
-const Enum::Value SnmpContextEnum::ospf {5, "ospf"};
-const Enum::Value SnmpContextEnum::ospfv3 {6, "ospfv3"};
+const Enum::YLeaf SnmpContextEnum::vrf {1, "vrf"};
+const Enum::YLeaf SnmpContextEnum::bridge {4, "bridge"};
+const Enum::YLeaf SnmpContextEnum::ospf {5, "ospf"};
+const Enum::YLeaf SnmpContextEnum::ospfv3 {6, "ospfv3"};
 
 
 }

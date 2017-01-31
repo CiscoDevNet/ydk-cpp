@@ -29,17 +29,17 @@ AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::has_data() const
 {
-    for (auto const & leaf : err_count.getValues())
+    for (auto const & leaf : err_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getValues())
+    for (auto const & leaf : pcie_err_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -55,27 +55,30 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summa
 
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::Summary::SumData::has_operation() const
 {
-    for (auto const & leaf : err_count.getValues())
+    for (auto const & leaf : err_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getValues())
+    for (auto const & leaf : pcie_err_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(crc_err_count.operation)
+	|| is_set(err_count.operation)
 	|| is_set(gen_err_count.operation)
 	|| is_set(mbe_err_count.operation)
+	|| is_set(node_key.operation)
 	|| is_set(num_nodes.operation)
 	|| is_set(par_err_count.operation)
+	|| is_set(pcie_err_count.operation)
 	|| is_set(reset_err_count.operation)
 	|| is_set(sbe_err_count.operation);
 }
@@ -94,7 +97,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -235,7 +238,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -332,7 +335,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::has_d
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::has_operation() const
 {
     return is_set(operation)
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath::get_segment_path() const
@@ -349,7 +352,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -433,7 +436,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::has_data() const
 bool AsicErrors::Nodes::Node::AsicInformation::AllInstances::has_operation() const
 {
     return is_set(operation)
-	|| (all_error_path !=  nullptr && is_set(all_error_path->operation));
+	|| (all_error_path !=  nullptr && all_error_path->has_operation());
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::get_segment_path() const
@@ -450,7 +453,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::AllInstances::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -554,7 +557,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -625,7 +628,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -638,7 +641,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -647,7 +650,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitSoftErrors::Error::LastErr::get_segment_path() const
@@ -664,7 +668,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -818,7 +822,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1012,7 +1016,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1119,7 +1123,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1190,7 +1194,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1203,7 +1207,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1212,7 +1216,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericSoft::Error::LastErr::get_segment_path() const
@@ -1229,7 +1234,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1383,7 +1388,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1577,7 +1582,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1684,7 +1689,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1755,7 +1760,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHar
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1768,7 +1773,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1777,7 +1782,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcHardErrors::Error::LastErr::get_segment_path() const
@@ -1794,7 +1800,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1948,7 +1954,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2142,7 +2148,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2249,7 +2255,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2320,7 +2326,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2333,7 +2339,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2342,7 +2348,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeSoft::Error::LastErr::get_segment_path() const
@@ -2359,7 +2366,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2513,7 +2520,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2707,7 +2714,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2814,7 +2821,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2885,7 +2892,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2898,7 +2905,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -2907,7 +2914,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareSoftErrors::Error::LastErr::get_segment_path() const
@@ -2924,7 +2932,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3078,7 +3086,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3272,7 +3280,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3379,7 +3387,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3450,7 +3458,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3463,7 +3471,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -3472,7 +3480,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcSoft::Error::LastErr::get_segment_path() const
@@ -3489,7 +3498,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3643,7 +3652,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3837,7 +3846,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3944,7 +3953,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4015,7 +4024,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4028,7 +4037,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4037,7 +4046,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParitySoft::Error::LastErr::get_segment_path() const
@@ -4054,7 +4064,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4208,7 +4218,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4402,7 +4412,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4509,7 +4519,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4580,7 +4590,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoft
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4593,7 +4603,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -4602,7 +4612,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoSoftErrors::Error::LastErr::get_segment_path() const
@@ -4619,7 +4630,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4773,7 +4784,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4967,7 +4978,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5074,7 +5085,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5145,7 +5156,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5158,7 +5169,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -5167,7 +5178,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetSoftErrors::Error::LastErr::get_segment_path() const
@@ -5184,7 +5196,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5338,7 +5350,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5532,7 +5544,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5639,7 +5651,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5710,7 +5722,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5723,7 +5735,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -5732,7 +5744,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierHardErrors::Error::LastErr::get_segment_path() const
@@ -5749,7 +5762,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5903,7 +5916,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6097,7 +6110,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6204,7 +6217,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6275,7 +6288,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeS
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6288,7 +6301,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6297,7 +6310,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeSoftErrors::Error::LastErr::get_segment_path() const
@@ -6314,7 +6328,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6468,7 +6482,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6662,7 +6676,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6769,7 +6783,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6840,7 +6854,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -6853,7 +6867,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -6862,7 +6876,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetHard::Error::LastErr::get_segment_path() const
@@ -6879,7 +6894,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7033,7 +7048,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7227,7 +7242,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7334,7 +7349,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7405,7 +7420,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7418,7 +7433,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -7427,7 +7442,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitHardErrors::Error::LastErr::get_segment_path() const
@@ -7444,7 +7460,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7598,7 +7614,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7792,7 +7808,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7899,7 +7915,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7970,7 +7986,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7983,7 +7999,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -7992,7 +8008,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectHardErrors::Error::LastErr::get_segment_path() const
@@ -8009,7 +8026,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8163,7 +8180,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8357,7 +8374,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8464,7 +8481,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8535,7 +8552,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8548,7 +8565,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8557,7 +8574,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceSoft::Error::LastErr::get_segment_path() const
@@ -8574,7 +8592,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8728,7 +8746,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8922,7 +8940,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9029,7 +9047,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9100,7 +9118,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSof
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9113,7 +9131,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9122,7 +9140,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::CrcSoftErrors::Error::LastErr::get_segment_path() const
@@ -9139,7 +9158,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9293,7 +9312,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9487,7 +9506,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9594,7 +9613,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9665,7 +9684,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9678,7 +9697,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9687,7 +9706,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutHardErrors::Error::LastErr::get_segment_path() const
@@ -9704,7 +9724,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9858,7 +9878,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10052,7 +10072,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10159,7 +10179,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10230,7 +10250,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Barrie
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10243,7 +10263,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -10252,7 +10272,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BarrierSoftErrors::Error::LastErr::get_segment_path() const
@@ -10269,7 +10290,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10423,7 +10444,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10617,7 +10638,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10724,7 +10745,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10795,7 +10816,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10808,7 +10829,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -10817,7 +10838,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeSoft::Error::LastErr::get_segment_path() const
@@ -10834,7 +10856,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10988,7 +11010,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11182,7 +11204,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11289,7 +11311,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11360,7 +11382,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11373,7 +11395,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -11382,7 +11404,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureHardErrors::Error::LastErr::get_segment_path() const
@@ -11399,7 +11422,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11553,7 +11576,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11747,7 +11770,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11854,7 +11877,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11925,7 +11948,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Single
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -11938,7 +11961,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -11947,7 +11970,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::S
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::SingleBitSoftErrors::Error::LastErr::get_segment_path() const
@@ -11964,7 +11988,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12118,7 +12142,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12312,7 +12336,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12419,7 +12443,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12490,7 +12514,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Indire
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -12503,7 +12527,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -12512,7 +12536,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IndirectSoftErrors::Error::LastErr::get_segment_path() const
@@ -12529,7 +12554,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12683,7 +12708,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12877,7 +12902,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12984,7 +13009,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13055,7 +13080,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13068,7 +13093,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -13077,7 +13102,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericHardErrors::Error::LastErr::get_segment_path() const
@@ -13094,7 +13120,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13248,7 +13274,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13442,7 +13468,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13549,7 +13575,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13620,7 +13646,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -13633,7 +13659,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -13642,7 +13668,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkHardErrors::Error::LastErr::get_segment_path() const
@@ -13659,7 +13686,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13813,7 +13840,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14007,7 +14034,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14114,7 +14141,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14185,7 +14212,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14198,7 +14225,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -14207,7 +14234,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationHardErrors::Error::LastErr::get_segment_path() const
@@ -14224,7 +14252,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14378,7 +14406,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14572,7 +14600,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14659,17 +14687,17 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Instan
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::has_data() const
 {
-    for (auto const & leaf : err_count.getValues())
+    for (auto const & leaf : err_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getValues())
+    for (auto const & leaf : pcie_err_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14685,27 +14713,30 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InstanceSummary::SumData::has_operation() const
 {
-    for (auto const & leaf : err_count.getValues())
+    for (auto const & leaf : err_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : node_key.getValues())
+    for (auto const & leaf : node_key.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : pcie_err_count.getValues())
+    for (auto const & leaf : pcie_err_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(crc_err_count.operation)
+	|| is_set(err_count.operation)
 	|| is_set(gen_err_count.operation)
 	|| is_set(mbe_err_count.operation)
+	|| is_set(node_key.operation)
 	|| is_set(num_nodes.operation)
 	|| is_set(par_err_count.operation)
+	|| is_set(pcie_err_count.operation)
 	|| is_set(reset_err_count.operation)
 	|| is_set(sbe_err_count.operation);
 }
@@ -14724,7 +14755,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14865,7 +14896,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14982,7 +15013,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15053,7 +15084,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15066,7 +15097,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -15075,7 +15106,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedHardErrors::Error::LastErr::get_segment_path() const
@@ -15092,7 +15124,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15246,7 +15278,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15440,7 +15472,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15547,7 +15579,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15618,7 +15650,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOu
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15631,7 +15663,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -15640,7 +15672,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::T
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::TimeOutSoftErrors::Error::LastErr::get_segment_path() const
@@ -15657,7 +15690,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15811,7 +15844,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16005,7 +16038,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16112,7 +16145,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16183,7 +16216,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16196,7 +16229,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -16205,7 +16238,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorGenericHard::Error::LastErr::get_segment_path() const
@@ -16222,7 +16256,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16376,7 +16410,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16570,7 +16604,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16677,7 +16711,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16748,7 +16782,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -16761,7 +16795,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -16770,7 +16804,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParityHardErrors::Error::LastErr::get_segment_path() const
@@ -16787,7 +16822,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16941,7 +16976,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17135,7 +17170,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17242,7 +17277,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17313,7 +17348,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -17326,7 +17361,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -17335,7 +17370,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorHardErrors::Error::LastErr::get_segment_path() const
@@ -17352,7 +17388,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17506,7 +17542,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17700,7 +17736,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17807,7 +17843,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17878,7 +17914,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -17891,7 +17927,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -17900,7 +17936,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceHardErrors::Error::LastErr::get_segment_path() const
@@ -17917,7 +17954,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18071,7 +18108,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18265,7 +18302,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18372,7 +18409,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18443,7 +18480,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -18456,7 +18493,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -18465,7 +18502,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorSbeHard::Error::LastErr::get_segment_path() const
@@ -18482,7 +18520,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18636,7 +18674,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18830,7 +18868,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18937,7 +18975,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19008,7 +19046,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -19021,7 +19059,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -19030,7 +19068,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorCrcHard::Error::LastErr::get_segment_path() const
@@ -19047,7 +19086,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19201,7 +19240,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19395,7 +19434,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19502,7 +19541,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19573,7 +19612,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -19586,7 +19625,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -19595,7 +19634,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorParityHard::Error::LastErr::get_segment_path() const
@@ -19612,7 +19652,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19766,7 +19806,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19960,7 +20000,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20067,7 +20107,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20138,7 +20178,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -20151,7 +20191,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -20160,7 +20200,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr::get_segment_path() const
@@ -20177,7 +20218,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20331,7 +20372,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20525,7 +20566,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20632,7 +20673,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20703,7 +20744,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -20716,7 +20757,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -20725,7 +20766,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::B
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr::get_segment_path() const
@@ -20742,7 +20784,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20896,7 +20938,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21090,7 +21132,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21197,7 +21239,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21268,7 +21310,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Generi
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21281,7 +21323,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -21290,7 +21332,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::G
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr::get_segment_path() const
@@ -21307,7 +21350,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21461,7 +21504,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21655,7 +21698,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21762,7 +21805,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21833,7 +21876,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSo
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21846,7 +21889,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -21855,7 +21898,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::L
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr::get_segment_path() const
@@ -21872,7 +21916,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22026,7 +22070,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22220,7 +22264,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22327,7 +22371,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22398,7 +22442,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Config
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -22411,7 +22455,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -22420,7 +22464,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::C
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr::get_segment_path() const
@@ -22437,7 +22482,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22591,7 +22636,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22785,7 +22830,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22892,7 +22937,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22963,7 +23008,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Multip
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -22976,7 +23021,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -22985,7 +23030,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::M
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr::get_segment_path() const
@@ -23002,7 +23048,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23156,7 +23202,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23350,7 +23396,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23457,7 +23503,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23528,7 +23574,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Unexpe
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -23541,7 +23587,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -23550,7 +23596,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr::get_segment_path() const
@@ -23567,7 +23614,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23721,7 +23768,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23915,7 +23962,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24022,7 +24069,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24093,7 +24140,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofR
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -24106,7 +24153,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -24115,7 +24162,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::O
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr::get_segment_path() const
@@ -24132,7 +24180,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24286,7 +24334,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24480,7 +24528,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24587,7 +24635,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24658,7 +24706,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Hardwa
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -24671,7 +24719,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -24680,7 +24728,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::H
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr::get_segment_path() const
@@ -24697,7 +24746,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24851,7 +24900,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25045,7 +25094,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25152,7 +25201,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25223,7 +25272,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Parity
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25236,7 +25285,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -25245,7 +25294,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::P
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr::get_segment_path() const
@@ -25262,7 +25312,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25416,7 +25466,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25610,7 +25660,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25717,7 +25767,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25788,7 +25838,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Descri
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25801,7 +25851,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -25810,7 +25860,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::D
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr::get_segment_path() const
@@ -25827,7 +25878,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25981,7 +26032,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26175,7 +26226,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26282,7 +26333,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26353,7 +26404,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::Interf
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -26366,7 +26417,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -26375,7 +26426,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr::get_segment_path() const
@@ -26392,7 +26444,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26546,7 +26598,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26740,7 +26792,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26847,7 +26899,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26918,7 +26970,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHard
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -26931,7 +26983,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -26940,7 +26992,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::I
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr::get_segment_path() const
@@ -26957,7 +27010,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27111,7 +27164,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27305,7 +27358,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27412,7 +27465,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27483,7 +27536,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetH
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -27496,7 +27549,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -27505,7 +27558,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::R
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr::get_segment_path() const
@@ -27522,7 +27576,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27676,7 +27730,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27870,7 +27924,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27977,7 +28031,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28048,7 +28102,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeH
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -28061,7 +28115,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -28070,7 +28124,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::U
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr::get_segment_path() const
@@ -28087,7 +28142,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28241,7 +28296,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28435,7 +28490,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28542,7 +28597,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28613,7 +28668,7 @@ AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicEr
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr::has_data() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -28626,7 +28681,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr::has_operation() const
 {
-    for (auto const & leaf : error_regval.getValues())
+    for (auto const & leaf : error_regval.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -28635,7 +28690,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::A
 	|| is_set(at_time.operation)
 	|| is_set(at_time_nsec.operation)
 	|| is_set(counter_val.operation)
-	|| is_set(error_desc.operation);
+	|| is_set(error_desc.operation)
+	|| is_set(error_regval.operation);
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr::get_segment_path() const
@@ -28652,7 +28708,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28806,7 +28862,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29000,7 +29056,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29337,57 +29393,57 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::h
 bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::has_operation() const
 {
     return is_set(operation)
-	|| (asic_error_crc_hard !=  nullptr && is_set(asic_error_crc_hard->operation))
-	|| (asic_error_crc_soft !=  nullptr && is_set(asic_error_crc_soft->operation))
-	|| (asic_error_generic_hard !=  nullptr && is_set(asic_error_generic_hard->operation))
-	|| (asic_error_generic_soft !=  nullptr && is_set(asic_error_generic_soft->operation))
-	|| (asic_error_mbe_hard !=  nullptr && is_set(asic_error_mbe_hard->operation))
-	|| (asic_error_mbe_soft !=  nullptr && is_set(asic_error_mbe_soft->operation))
-	|| (asic_error_parity_hard !=  nullptr && is_set(asic_error_parity_hard->operation))
-	|| (asic_error_parity_soft !=  nullptr && is_set(asic_error_parity_soft->operation))
-	|| (asic_error_reset_hard !=  nullptr && is_set(asic_error_reset_hard->operation))
-	|| (asic_error_reset_soft !=  nullptr && is_set(asic_error_reset_soft->operation))
-	|| (asic_error_sbe_hard !=  nullptr && is_set(asic_error_sbe_hard->operation))
-	|| (asic_error_sbe_soft !=  nullptr && is_set(asic_error_sbe_soft->operation))
-	|| (back_pressure_hard_errors !=  nullptr && is_set(back_pressure_hard_errors->operation))
-	|| (back_pressure_soft_errors !=  nullptr && is_set(back_pressure_soft_errors->operation))
-	|| (barrier_hard_errors !=  nullptr && is_set(barrier_hard_errors->operation))
-	|| (barrier_soft_errors !=  nullptr && is_set(barrier_soft_errors->operation))
-	|| (configuration_hard_errors !=  nullptr && is_set(configuration_hard_errors->operation))
-	|| (configuration_soft_errors !=  nullptr && is_set(configuration_soft_errors->operation))
-	|| (crc_hard_errors !=  nullptr && is_set(crc_hard_errors->operation))
-	|| (crc_soft_errors !=  nullptr && is_set(crc_soft_errors->operation))
-	|| (descriptor_hard_errors !=  nullptr && is_set(descriptor_hard_errors->operation))
-	|| (descriptor_soft_errors !=  nullptr && is_set(descriptor_soft_errors->operation))
-	|| (generic_hard_errors !=  nullptr && is_set(generic_hard_errors->operation))
-	|| (generic_soft_errors !=  nullptr && is_set(generic_soft_errors->operation))
-	|| (hardware_hard_errors !=  nullptr && is_set(hardware_hard_errors->operation))
-	|| (hardware_soft_errors !=  nullptr && is_set(hardware_soft_errors->operation))
-	|| (indirect_hard_errors !=  nullptr && is_set(indirect_hard_errors->operation))
-	|| (indirect_soft_errors !=  nullptr && is_set(indirect_soft_errors->operation))
-	|| (instance_summary !=  nullptr && is_set(instance_summary->operation))
-	|| (interface_hard_errors !=  nullptr && is_set(interface_hard_errors->operation))
-	|| (interface_soft_errors !=  nullptr && is_set(interface_soft_errors->operation))
-	|| (io_hard_errors !=  nullptr && is_set(io_hard_errors->operation))
-	|| (io_soft_errors !=  nullptr && is_set(io_soft_errors->operation))
-	|| (link_hard_errors !=  nullptr && is_set(link_hard_errors->operation))
-	|| (link_soft_errors !=  nullptr && is_set(link_soft_errors->operation))
-	|| (multiple_bit_hard_errors !=  nullptr && is_set(multiple_bit_hard_errors->operation))
-	|| (multiple_bit_soft_errors !=  nullptr && is_set(multiple_bit_soft_errors->operation))
-	|| (outof_resource_hard !=  nullptr && is_set(outof_resource_hard->operation))
-	|| (outof_resource_soft !=  nullptr && is_set(outof_resource_soft->operation))
-	|| (parity_hard_errors !=  nullptr && is_set(parity_hard_errors->operation))
-	|| (parity_soft_errors !=  nullptr && is_set(parity_soft_errors->operation))
-	|| (reset_hard_errors !=  nullptr && is_set(reset_hard_errors->operation))
-	|| (reset_soft_errors !=  nullptr && is_set(reset_soft_errors->operation))
-	|| (single_bit_hard_errors !=  nullptr && is_set(single_bit_hard_errors->operation))
-	|| (single_bit_soft_errors !=  nullptr && is_set(single_bit_soft_errors->operation))
-	|| (time_out_hard_errors !=  nullptr && is_set(time_out_hard_errors->operation))
-	|| (time_out_soft_errors !=  nullptr && is_set(time_out_soft_errors->operation))
-	|| (ucode_hard_errors !=  nullptr && is_set(ucode_hard_errors->operation))
-	|| (ucode_soft_errors !=  nullptr && is_set(ucode_soft_errors->operation))
-	|| (unexpected_hard_errors !=  nullptr && is_set(unexpected_hard_errors->operation))
-	|| (unexpected_soft_errors !=  nullptr && is_set(unexpected_soft_errors->operation));
+	|| (asic_error_crc_hard !=  nullptr && asic_error_crc_hard->has_operation())
+	|| (asic_error_crc_soft !=  nullptr && asic_error_crc_soft->has_operation())
+	|| (asic_error_generic_hard !=  nullptr && asic_error_generic_hard->has_operation())
+	|| (asic_error_generic_soft !=  nullptr && asic_error_generic_soft->has_operation())
+	|| (asic_error_mbe_hard !=  nullptr && asic_error_mbe_hard->has_operation())
+	|| (asic_error_mbe_soft !=  nullptr && asic_error_mbe_soft->has_operation())
+	|| (asic_error_parity_hard !=  nullptr && asic_error_parity_hard->has_operation())
+	|| (asic_error_parity_soft !=  nullptr && asic_error_parity_soft->has_operation())
+	|| (asic_error_reset_hard !=  nullptr && asic_error_reset_hard->has_operation())
+	|| (asic_error_reset_soft !=  nullptr && asic_error_reset_soft->has_operation())
+	|| (asic_error_sbe_hard !=  nullptr && asic_error_sbe_hard->has_operation())
+	|| (asic_error_sbe_soft !=  nullptr && asic_error_sbe_soft->has_operation())
+	|| (back_pressure_hard_errors !=  nullptr && back_pressure_hard_errors->has_operation())
+	|| (back_pressure_soft_errors !=  nullptr && back_pressure_soft_errors->has_operation())
+	|| (barrier_hard_errors !=  nullptr && barrier_hard_errors->has_operation())
+	|| (barrier_soft_errors !=  nullptr && barrier_soft_errors->has_operation())
+	|| (configuration_hard_errors !=  nullptr && configuration_hard_errors->has_operation())
+	|| (configuration_soft_errors !=  nullptr && configuration_soft_errors->has_operation())
+	|| (crc_hard_errors !=  nullptr && crc_hard_errors->has_operation())
+	|| (crc_soft_errors !=  nullptr && crc_soft_errors->has_operation())
+	|| (descriptor_hard_errors !=  nullptr && descriptor_hard_errors->has_operation())
+	|| (descriptor_soft_errors !=  nullptr && descriptor_soft_errors->has_operation())
+	|| (generic_hard_errors !=  nullptr && generic_hard_errors->has_operation())
+	|| (generic_soft_errors !=  nullptr && generic_soft_errors->has_operation())
+	|| (hardware_hard_errors !=  nullptr && hardware_hard_errors->has_operation())
+	|| (hardware_soft_errors !=  nullptr && hardware_soft_errors->has_operation())
+	|| (indirect_hard_errors !=  nullptr && indirect_hard_errors->has_operation())
+	|| (indirect_soft_errors !=  nullptr && indirect_soft_errors->has_operation())
+	|| (instance_summary !=  nullptr && instance_summary->has_operation())
+	|| (interface_hard_errors !=  nullptr && interface_hard_errors->has_operation())
+	|| (interface_soft_errors !=  nullptr && interface_soft_errors->has_operation())
+	|| (io_hard_errors !=  nullptr && io_hard_errors->has_operation())
+	|| (io_soft_errors !=  nullptr && io_soft_errors->has_operation())
+	|| (link_hard_errors !=  nullptr && link_hard_errors->has_operation())
+	|| (link_soft_errors !=  nullptr && link_soft_errors->has_operation())
+	|| (multiple_bit_hard_errors !=  nullptr && multiple_bit_hard_errors->has_operation())
+	|| (multiple_bit_soft_errors !=  nullptr && multiple_bit_soft_errors->has_operation())
+	|| (outof_resource_hard !=  nullptr && outof_resource_hard->has_operation())
+	|| (outof_resource_soft !=  nullptr && outof_resource_soft->has_operation())
+	|| (parity_hard_errors !=  nullptr && parity_hard_errors->has_operation())
+	|| (parity_soft_errors !=  nullptr && parity_soft_errors->has_operation())
+	|| (reset_hard_errors !=  nullptr && reset_hard_errors->has_operation())
+	|| (reset_soft_errors !=  nullptr && reset_soft_errors->has_operation())
+	|| (single_bit_hard_errors !=  nullptr && single_bit_hard_errors->has_operation())
+	|| (single_bit_soft_errors !=  nullptr && single_bit_soft_errors->has_operation())
+	|| (time_out_hard_errors !=  nullptr && time_out_hard_errors->has_operation())
+	|| (time_out_soft_errors !=  nullptr && time_out_soft_errors->has_operation())
+	|| (ucode_hard_errors !=  nullptr && ucode_hard_errors->has_operation())
+	|| (ucode_soft_errors !=  nullptr && ucode_soft_errors->has_operation())
+	|| (unexpected_hard_errors !=  nullptr && unexpected_hard_errors->has_operation())
+	|| (unexpected_soft_errors !=  nullptr && unexpected_soft_errors->has_operation());
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::get_segment_path() const
@@ -29404,7 +29460,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30642,7 +30698,7 @@ bool AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::has_operatio
 {
     return is_set(operation)
 	|| is_set(asic_instance.operation)
-	|| (error_path !=  nullptr && is_set(error_path->operation));
+	|| (error_path !=  nullptr && error_path->has_operation());
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::get_segment_path() const
@@ -30659,7 +30715,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30769,7 +30825,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::Instances::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30865,8 +30921,8 @@ bool AsicErrors::Nodes::Node::AsicInformation::has_operation() const
 {
     return is_set(operation)
 	|| is_set(asic.operation)
-	|| (all_instances !=  nullptr && is_set(all_instances->operation))
-	|| (instances !=  nullptr && is_set(instances->operation));
+	|| (all_instances !=  nullptr && all_instances->has_operation())
+	|| (instances !=  nullptr && instances->has_operation());
 }
 
 std::string AsicErrors::Nodes::Node::AsicInformation::get_segment_path() const
@@ -30883,7 +30939,7 @@ EntityPath AsicErrors::Nodes::Node::AsicInformation::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31219,7 +31275,7 @@ bool AsicErrors::has_data() const
 bool AsicErrors::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string AsicErrors::get_segment_path() const
@@ -31236,7 +31292,7 @@ EntityPath AsicErrors::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

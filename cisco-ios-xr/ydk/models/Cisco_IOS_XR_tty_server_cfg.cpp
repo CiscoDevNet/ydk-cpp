@@ -49,7 +49,7 @@ EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -139,7 +139,7 @@ EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -222,7 +222,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -314,7 +314,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -421,7 +421,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -511,7 +511,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -594,7 +594,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -690,10 +690,10 @@ bool Tty::TtyLines::TtyLine::Aaa::has_operation() const
 	|| is_set(login_timeout.operation)
 	|| is_set(password.operation)
 	|| is_set(secret.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (authentication !=  nullptr && is_set(authentication->operation))
-	|| (authorization !=  nullptr && is_set(authorization->operation))
-	|| (user_groups !=  nullptr && is_set(user_groups->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (authorization !=  nullptr && authorization->has_operation())
+	|| (user_groups !=  nullptr && user_groups->has_operation());
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::get_segment_path() const
@@ -710,7 +710,7 @@ EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -895,7 +895,7 @@ EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -967,7 +967,7 @@ bool Tty::TtyLines::TtyLine::Exec::has_operation() const
 {
     return is_set(operation)
 	|| is_set(time_stamp.operation)
-	|| (timeout !=  nullptr && is_set(timeout->operation));
+	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
 std::string Tty::TtyLines::TtyLine::Exec::get_segment_path() const
@@ -984,7 +984,7 @@ EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1096,7 +1096,7 @@ EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1200,7 +1200,7 @@ EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1298,7 +1298,7 @@ EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1395,9 +1395,9 @@ bool Tty::TtyLines::TtyLine::Connection::has_operation() const
 	|| is_set(escape_character.operation)
 	|| is_set(session_limit.operation)
 	|| is_set(transport_preferred.operation)
-	|| (session_timeout !=  nullptr && is_set(session_timeout->operation))
-	|| (transport_input !=  nullptr && is_set(transport_input->operation))
-	|| (transport_output !=  nullptr && is_set(transport_output->operation));
+	|| (session_timeout !=  nullptr && session_timeout->has_operation())
+	|| (transport_input !=  nullptr && transport_input->has_operation())
+	|| (transport_output !=  nullptr && transport_output->has_operation());
 }
 
 std::string Tty::TtyLines::TtyLine::Connection::get_segment_path() const
@@ -1414,7 +1414,7 @@ EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1593,7 +1593,7 @@ EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1688,12 +1688,12 @@ bool Tty::TtyLines::TtyLine::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (aaa !=  nullptr && is_set(aaa->operation))
-	|| (connection !=  nullptr && is_set(connection->operation))
-	|| (exec !=  nullptr && is_set(exec->operation))
-	|| (exec_mode !=  nullptr && is_set(exec_mode->operation))
-	|| (general !=  nullptr && is_set(general->operation))
-	|| (telnet !=  nullptr && is_set(telnet->operation));
+	|| (aaa !=  nullptr && aaa->has_operation())
+	|| (connection !=  nullptr && connection->has_operation())
+	|| (exec !=  nullptr && exec->has_operation())
+	|| (exec_mode !=  nullptr && exec_mode->has_operation())
+	|| (general !=  nullptr && general->has_operation())
+	|| (telnet !=  nullptr && telnet->has_operation());
 }
 
 std::string Tty::TtyLines::TtyLine::get_segment_path() const
@@ -2022,7 +2022,7 @@ bool Tty::has_data() const
 bool Tty::has_operation() const
 {
     return is_set(operation)
-	|| (tty_lines !=  nullptr && is_set(tty_lines->operation));
+	|| (tty_lines !=  nullptr && tty_lines->has_operation());
 }
 
 std::string Tty::get_segment_path() const
@@ -2039,7 +2039,7 @@ EntityPath Tty::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

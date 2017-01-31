@@ -26,6 +26,7 @@ class Otu : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Controllers : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Otu : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Controller : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class Otu : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value controller_name; //type: string
 
+
+                YLeaf controller_name; //type: string
 
             class Info : public Entity
             {
@@ -70,33 +73,34 @@ class Otu : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value state; //type: OtuStateEtEnum
-                    Value name; //type: string
-                    Value remote_intf_name; //type: string
-                    Value remote_host_name; //type: string
-                    Value remote_host_ip; //type: string
-                    Value sf; //type: uint8
-                    Value sd; //type: uint8
-                    Value loopback_mode; //type: OtuLoopBackModeEnum
-                    Value fec_mode; //type: OtuG709FecModeEnum
-                    Value derivedstate_mode; //type: OtuDerStateEnum
-                    Value sec_state; //type: OtuSecStateEnum
-                    Value gcc_mode; //type: boolean
-                    Value q; //type: uint64
-                    Value q_margin; //type: uint64
-                    Value performance_monitoring; //type: OtuPerMonEnum
-                    Value ec; //type: uint64
-                    Value uc; //type: uint64
-                    Value pre_fec_val; //type: int32
-                    Value pre_fec_mantissa; //type: int8
-                    Value ec_value; //type: boolean
-                    Value uc_value; //type: boolean
-                    Value pre_fec_ber_value; //type: boolean
-                    Value pre_fec_ber_mantissa; //type: boolean
-                    Value nv_optical_support; //type: boolean
-                    Value gmpls_tti_mode; //type: GmplsOtuTtiModeEnum
-                    Value gmpls_tvm_id; //type: uint8
 
+
+                    YLeaf state; //type: OtuStateEtEnum
+                    YLeaf name; //type: string
+                    YLeaf remote_intf_name; //type: string
+                    YLeaf remote_host_name; //type: string
+                    YLeaf remote_host_ip; //type: string
+                    YLeaf sf; //type: uint8
+                    YLeaf sd; //type: uint8
+                    YLeaf loopback_mode; //type: OtuLoopBackModeEnum
+                    YLeaf fec_mode; //type: OtuG709FecModeEnum
+                    YLeaf derivedstate_mode; //type: OtuDerStateEnum
+                    YLeaf sec_state; //type: OtuSecStateEnum
+                    YLeaf gcc_mode; //type: boolean
+                    YLeaf q; //type: uint64
+                    YLeaf q_margin; //type: uint64
+                    YLeaf performance_monitoring; //type: OtuPerMonEnum
+                    YLeaf ec; //type: uint64
+                    YLeaf uc; //type: uint64
+                    YLeaf pre_fec_val; //type: int32
+                    YLeaf pre_fec_mantissa; //type: int8
+                    YLeaf ec_value; //type: boolean
+                    YLeaf uc_value; //type: boolean
+                    YLeaf pre_fec_ber_value; //type: boolean
+                    YLeaf pre_fec_ber_mantissa; //type: boolean
+                    YLeaf nv_optical_support; //type: boolean
+                    YLeaf gmpls_tti_mode; //type: GmplsOtuTtiModeEnum
+                    YLeaf gmpls_tvm_id; //type: uint8
 
                 class Local : public Entity
                 {
@@ -111,9 +115,10 @@ class Otu : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value router_id; //type: uint32
-                        Value if_index; //type: uint32
 
+
+                        YLeaf router_id; //type: uint32
+                        YLeaf if_index; //type: uint32
 
 
 
@@ -133,9 +138,10 @@ class Otu : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value router_id; //type: uint32
-                        Value if_index; //type: uint32
 
+
+                        YLeaf router_id; //type: uint32
+                        YLeaf if_index; //type: uint32
 
 
 
@@ -155,10 +161,11 @@ class Otu : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value g709tti_sent_mode; //type: OtuTtiEtEnum
-                        Value g709tti_exp_mode; //type: OtuTtiEtEnum
-                        Value g709tti_rec_mode; //type: OtuTtiEtEnum
 
+
+                        YLeaf g709tti_sent_mode; //type: OtuTtiEtEnum
+                        YLeaf g709tti_exp_mode; //type: OtuTtiEtEnum
+                        YLeaf g709tti_rec_mode; //type: OtuTtiEtEnum
 
                     class Tx : public Entity
                     {
@@ -173,10 +180,11 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList sapi; //type: list of  uint8
-                            ValueList dapi; //type: list of  uint8
-                            ValueList operator_specific; //type: list of  uint8
 
+
+                            YLeafList sapi; //type: list of  uint8
+                            YLeafList dapi; //type: list of  uint8
+                            YLeafList operator_specific; //type: list of  uint8
 
 
 
@@ -196,10 +204,11 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList sapi; //type: list of  uint8
-                            ValueList dapi; //type: list of  uint8
-                            ValueList operator_specific; //type: list of  uint8
 
+
+                            YLeafList sapi; //type: list of  uint8
+                            YLeafList dapi; //type: list of  uint8
+                            YLeafList operator_specific; //type: list of  uint8
 
 
 
@@ -219,10 +228,11 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            ValueList sapi; //type: list of  uint8
-                            ValueList dapi; //type: list of  uint8
-                            ValueList operator_specific; //type: list of  uint8
 
+
+                            YLeafList sapi; //type: list of  uint8
+                            YLeafList dapi; //type: list of  uint8
+                            YLeafList operator_specific; //type: list of  uint8
 
 
 
@@ -232,9 +242,6 @@ class Otu : public Entity
                         std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::TtiMode::Exp> exp;
                         std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::TtiMode::Rec> rec;
                         std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::TtiMode::Tx> tx;
-                        class OtuTtiEtEnum;
-                        class OtuTtiEtEnum;
-                        class OtuTtiEtEnum;
 
 
                 }; // Otu::Controllers::Controller::Info::TtiMode
@@ -255,6 +262,7 @@ class Otu : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SrlgInfo : public Entity
                     {
                         public:
@@ -268,8 +276,9 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value srlg; //type: uint32
 
+
+                            YLeaf srlg; //type: uint32
 
 
 
@@ -297,6 +306,7 @@ class Otu : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Los : public Entity
                     {
                         public:
@@ -310,11 +320,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -334,11 +345,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -358,11 +370,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -382,11 +395,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -406,11 +420,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -430,11 +445,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -454,11 +470,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -478,11 +495,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -502,11 +520,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -526,11 +545,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -550,11 +570,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -574,11 +595,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -598,11 +620,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -622,11 +645,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -646,11 +670,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -670,11 +695,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -694,11 +720,12 @@ class Otu : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reporting_enabled; //type: boolean
-                            Value is_detected; //type: boolean
-                            Value is_asserted; //type: boolean
-                            Value counter; //type: uint64
 
+
+                            YLeaf reporting_enabled; //type: boolean
+                            YLeaf is_detected; //type: boolean
+                            YLeaf is_asserted; //type: boolean
+                            YLeaf counter; //type: uint64
 
 
 
@@ -740,21 +767,19 @@ class Otu : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value proactive_status; //type: boolean
-                        Value sec_state; //type: OtuSecStateEnum
-                        Value proactive_fsm_state; //type: OtuPpFsmStateEnum
-                        Value proactive_fsm_if_state; //type: OtuPpIntfStateEnum
-                        Value trig_thresh_coeff; //type: uint8
-                        Value trig_thresh_power; //type: uint8
-                        Value rvrt_thresh_coeff; //type: uint8
-                        Value rvrt_thresh_power; //type: uint8
-                        Value trigger_window; //type: uint32
-                        Value revert_window; //type: uint32
 
 
-                        class OtuPpIntfStateEnum;
-                        class OtuPpFsmStateEnum;
-                        class OtuSecStateEnum;
+                        YLeaf proactive_status; //type: boolean
+                        YLeaf sec_state; //type: OtuSecStateEnum
+                        YLeaf proactive_fsm_state; //type: OtuPpFsmStateEnum
+                        YLeaf proactive_fsm_if_state; //type: OtuPpIntfStateEnum
+                        YLeaf trig_thresh_coeff; //type: uint8
+                        YLeaf trig_thresh_power; //type: uint8
+                        YLeaf rvrt_thresh_coeff; //type: uint8
+                        YLeaf rvrt_thresh_power; //type: uint8
+                        YLeaf trigger_window; //type: uint32
+                        YLeaf revert_window; //type: uint32
+
 
 
                 }; // Otu::Controllers::Controller::Info::Proactive
@@ -773,9 +798,10 @@ class Otu : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value post_fec_ber; //type: string
-                        Value pre_fec_ber; //type: string
 
+
+                        YLeaf post_fec_ber; //type: string
+                        YLeaf pre_fec_ber; //type: string
 
 
 
@@ -789,13 +815,6 @@ class Otu : public Entity
                     std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::Proactive> proactive;
                     std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::Remote> remote;
                     std::unique_ptr<Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::TtiMode> tti_mode;
-                    class OtuDerStateEnum;
-                    class OtuG709FecModeEnum;
-                    class GmplsOtuTtiModeEnum;
-                    class OtuLoopBackModeEnum;
-                    class OtuPerMonEnum;
-                    class OtuSecStateEnum;
-                    class OtuStateEtEnum;
 
 
             }; // Otu::Controllers::Controller::Info
@@ -822,123 +841,123 @@ class Otu : public Entity
 class OtuStateEtEnum : public Enum
 {
     public:
-        static const Enum::Value not_ready;
-        static const Enum::Value admin_down;
-        static const Enum::Value down;
-        static const Enum::Value up;
-        static const Enum::Value shutdown;
-        static const Enum::Value error_disable;
-        static const Enum::Value down_immediate;
-        static const Enum::Value down_immediate_admin;
-        static const Enum::Value down_graceful;
-        static const Enum::Value begin_shutdown;
-        static const Enum::Value end_shutdown;
-        static const Enum::Value begin_error_disable;
-        static const Enum::Value end_error_disable;
-        static const Enum::Value begin_down_graceful;
-        static const Enum::Value reset;
-        static const Enum::Value operational;
-        static const Enum::Value not_operational;
-        static const Enum::Value unknown;
-        static const Enum::Value last;
+        static const Enum::YLeaf not_ready;
+        static const Enum::YLeaf admin_down;
+        static const Enum::YLeaf down;
+        static const Enum::YLeaf up;
+        static const Enum::YLeaf shutdown;
+        static const Enum::YLeaf error_disable;
+        static const Enum::YLeaf down_immediate;
+        static const Enum::YLeaf down_immediate_admin;
+        static const Enum::YLeaf down_graceful;
+        static const Enum::YLeaf begin_shutdown;
+        static const Enum::YLeaf end_shutdown;
+        static const Enum::YLeaf begin_error_disable;
+        static const Enum::YLeaf end_error_disable;
+        static const Enum::YLeaf begin_down_graceful;
+        static const Enum::YLeaf reset;
+        static const Enum::YLeaf operational;
+        static const Enum::YLeaf not_operational;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf last;
 
 };
 
 class OtuPerMonEnum : public Enum
 {
     public:
-        static const Enum::Value disable;
-        static const Enum::Value enable;
+        static const Enum::YLeaf disable;
+        static const Enum::YLeaf enable;
 
 };
 
 class OtuPpIntfStateEnum : public Enum
 {
     public:
-        static const Enum::Value otu_pp_intf_up;
-        static const Enum::Value otu_pp_intf_failing;
-        static const Enum::Value otu_pp_intf_down;
+        static const Enum::YLeaf otu_pp_intf_up;
+        static const Enum::YLeaf otu_pp_intf_failing;
+        static const Enum::YLeaf otu_pp_intf_down;
 
 };
 
 class OtuPpFsmStateEnum : public Enum
 {
     public:
-        static const Enum::Value otu_in_active;
-        static const Enum::Value otu_disabled;
-        static const Enum::Value otu_normal_state;
-        static const Enum::Value otu_local_failing;
-        static const Enum::Value otu_remote_failing;
-        static const Enum::Value otu_main_t_failing;
-        static const Enum::Value otu_regen_failing;
-        static const Enum::Value otu_local_failed;
-        static const Enum::Value otu_remote_failed;
-        static const Enum::Value otu_main_t_failed;
-        static const Enum::Value otu_regen_failed;
+        static const Enum::YLeaf otu_in_active;
+        static const Enum::YLeaf otu_disabled;
+        static const Enum::YLeaf otu_normal_state;
+        static const Enum::YLeaf otu_local_failing;
+        static const Enum::YLeaf otu_remote_failing;
+        static const Enum::YLeaf otu_main_t_failing;
+        static const Enum::YLeaf otu_regen_failing;
+        static const Enum::YLeaf otu_local_failed;
+        static const Enum::YLeaf otu_remote_failed;
+        static const Enum::YLeaf otu_main_t_failed;
+        static const Enum::YLeaf otu_regen_failed;
 
 };
 
 class OtuTtiEtEnum : public Enum
 {
     public:
-        static const Enum::Value ascii;
-        static const Enum::Value hex;
-        static const Enum::Value full_ascii;
-        static const Enum::Value full_hex;
+        static const Enum::YLeaf ascii;
+        static const Enum::YLeaf hex;
+        static const Enum::YLeaf full_ascii;
+        static const Enum::YLeaf full_hex;
 
 };
 
 class OtuG709FecModeEnum : public Enum
 {
     public:
-        static const Enum::Value otu_bag_none_fec;
-        static const Enum::Value otu_bag_standard_fec;
-        static const Enum::Value otu_bag_1_i_7_fec;
-        static const Enum::Value otu_bag_1_i_4_fec;
-        static const Enum::Value otu_bag_swizzle_fec;
-        static const Enum::Value otu_bag_hg20_fec;
-        static const Enum::Value otu_bag_enhanced_hg7_fec;
-        static const Enum::Value otu_bag_sd20_fec;
-        static const Enum::Value otu_bag_sd7_fec;
-        static const Enum::Value otu_bag_all_fec;
+        static const Enum::YLeaf otu_bag_none_fec;
+        static const Enum::YLeaf otu_bag_standard_fec;
+        static const Enum::YLeaf otu_bag_1_i_7_fec;
+        static const Enum::YLeaf otu_bag_1_i_4_fec;
+        static const Enum::YLeaf otu_bag_swizzle_fec;
+        static const Enum::YLeaf otu_bag_hg20_fec;
+        static const Enum::YLeaf otu_bag_enhanced_hg7_fec;
+        static const Enum::YLeaf otu_bag_sd20_fec;
+        static const Enum::YLeaf otu_bag_sd7_fec;
+        static const Enum::YLeaf otu_bag_all_fec;
 
 };
 
 class OtuSecStateEnum : public Enum
 {
     public:
-        static const Enum::Value normal;
-        static const Enum::Value maintenance;
-        static const Enum::Value ais;
+        static const Enum::YLeaf normal;
+        static const Enum::YLeaf maintenance;
+        static const Enum::YLeaf ais;
 
 };
 
 class OtuLoopBackModeEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value line;
-        static const Enum::Value internal;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf line;
+        static const Enum::YLeaf internal;
 
 };
 
 class GmplsOtuTtiModeEnum : public Enum
 {
     public:
-        static const Enum::Value gmpls_otu_tti_mode_none;
-        static const Enum::Value gmpls_otu_tti_mode_sm;
-        static const Enum::Value gmpls_otu_tti_mode_pm;
-        static const Enum::Value gmpls_otu_tti_mode_tcm;
+        static const Enum::YLeaf gmpls_otu_tti_mode_none;
+        static const Enum::YLeaf gmpls_otu_tti_mode_sm;
+        static const Enum::YLeaf gmpls_otu_tti_mode_pm;
+        static const Enum::YLeaf gmpls_otu_tti_mode_tcm;
 
 };
 
 class OtuDerStateEnum : public Enum
 {
     public:
-        static const Enum::Value out_of_service;
-        static const Enum::Value in_service;
-        static const Enum::Value maintenance;
-        static const Enum::Value ais;
+        static const Enum::YLeaf out_of_service;
+        static const Enum::YLeaf in_service;
+        static const Enum::YLeaf maintenance;
+        static const Enum::YLeaf ais;
 
 };
 

@@ -43,7 +43,7 @@ EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUser
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -130,7 +130,7 @@ EntityPath Aaa::Usernames::Username::UsergroupUnderUsernames::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -224,7 +224,7 @@ bool Aaa::Usernames::Username::has_operation() const
     return is_set(operation)
 	|| is_set(name.operation)
 	|| is_set(secret.operation)
-	|| (usergroup_under_usernames !=  nullptr && is_set(usergroup_under_usernames->operation));
+	|| (usergroup_under_usernames !=  nullptr && usergroup_under_usernames->has_operation());
 }
 
 std::string Aaa::Usernames::Username::get_segment_path() const
@@ -443,7 +443,7 @@ bool Aaa::has_data() const
 bool Aaa::has_operation() const
 {
     return is_set(operation)
-	|| (usernames !=  nullptr && is_set(usernames->operation));
+	|| (usernames !=  nullptr && usernames->has_operation());
 }
 
 std::string Aaa::get_segment_path() const
@@ -460,7 +460,7 @@ EntityPath Aaa::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

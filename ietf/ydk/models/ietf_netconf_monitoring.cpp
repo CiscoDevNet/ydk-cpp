@@ -38,7 +38,7 @@ NetconfState::Capabilities::~Capabilities()
 
 bool NetconfState::Capabilities::has_data() const
 {
-    for (auto const & leaf : capability.getValues())
+    for (auto const & leaf : capability.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -48,12 +48,13 @@ bool NetconfState::Capabilities::has_data() const
 
 bool NetconfState::Capabilities::has_operation() const
 {
-    for (auto const & leaf : capability.getValues())
+    for (auto const & leaf : capability.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(capability.operation);
 }
 
 std::string NetconfState::Capabilities::get_segment_path() const
@@ -154,7 +155,7 @@ EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -220,12 +221,12 @@ NetconfState::Datastores::Datastore::Locks::PartialLock::~PartialLock()
 
 bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_data() const
 {
-    for (auto const & leaf : locked_node.getValues())
+    for (auto const & leaf : locked_node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : select.getValues())
+    for (auto const & leaf : select.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -237,12 +238,12 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_data() const
 
 bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_operation() const
 {
-    for (auto const & leaf : locked_node.getValues())
+    for (auto const & leaf : locked_node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : select.getValues())
+    for (auto const & leaf : select.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -250,7 +251,9 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_operation() co
     return is_set(operation)
 	|| is_set(lock_id.operation)
 	|| is_set(locked_by_session.operation)
-	|| is_set(locked_time.operation);
+	|| is_set(locked_node.operation)
+	|| is_set(locked_time.operation)
+	|| is_set(select.operation);
 }
 
 std::string NetconfState::Datastores::Datastore::Locks::PartialLock::get_segment_path() const
@@ -267,7 +270,7 @@ EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -365,7 +368,7 @@ bool NetconfState::Datastores::Datastore::Locks::has_operation() const
             return true;
     }
     return is_set(operation)
-	|| (global_lock !=  nullptr && is_set(global_lock->operation));
+	|| (global_lock !=  nullptr && global_lock->has_operation());
 }
 
 std::string NetconfState::Datastores::Datastore::Locks::get_segment_path() const
@@ -382,7 +385,7 @@ EntityPath NetconfState::Datastores::Datastore::Locks::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -493,7 +496,7 @@ bool NetconfState::Datastores::Datastore::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (locks !=  nullptr && is_set(locks->operation));
+	|| (locks !=  nullptr && locks->has_operation());
 }
 
 std::string NetconfState::Datastores::Datastore::get_segment_path() const
@@ -702,7 +705,7 @@ NetconfState::Schemas::Schema::~Schema()
 
 bool NetconfState::Schemas::Schema::has_data() const
 {
-    for (auto const & leaf : location.getValues())
+    for (auto const & leaf : location.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -715,7 +718,7 @@ bool NetconfState::Schemas::Schema::has_data() const
 
 bool NetconfState::Schemas::Schema::has_operation() const
 {
-    for (auto const & leaf : location.getValues())
+    for (auto const & leaf : location.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -724,6 +727,7 @@ bool NetconfState::Schemas::Schema::has_operation() const
 	|| is_set(format.operation)
 	|| is_set(identifier.operation)
 	|| is_set(version.operation)
+	|| is_set(location.operation)
 	|| is_set(namespace_.operation);
 }
 
@@ -1344,11 +1348,11 @@ bool NetconfState::has_data() const
 bool NetconfState::has_operation() const
 {
     return is_set(operation)
-	|| (capabilities !=  nullptr && is_set(capabilities->operation))
-	|| (datastores !=  nullptr && is_set(datastores->operation))
-	|| (schemas !=  nullptr && is_set(schemas->operation))
-	|| (sessions !=  nullptr && is_set(sessions->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (capabilities !=  nullptr && capabilities->has_operation())
+	|| (datastores !=  nullptr && datastores->has_operation())
+	|| (schemas !=  nullptr && schemas->has_operation())
+	|| (sessions !=  nullptr && sessions->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string NetconfState::get_segment_path() const
@@ -1365,7 +1369,7 @@ EntityPath NetconfState::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1624,7 +1628,7 @@ bool GetSchemaRpc::has_operation() const
 	|| is_set(format.operation)
 	|| is_set(identifier.operation)
 	|| is_set(version.operation)
-	|| (output !=  nullptr && is_set(output->operation));
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string GetSchemaRpc::get_segment_path() const
@@ -1641,7 +1645,7 @@ EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1810,11 +1814,11 @@ NetconfSoapOverHttpsIdentity::~NetconfSoapOverHttpsIdentity()
 }
 
 
-const Enum::Value NetconfDatastoreTypeEnum::running {0, "running"};
-const Enum::Value NetconfDatastoreTypeEnum::candidate {1, "candidate"};
-const Enum::Value NetconfDatastoreTypeEnum::startup {2, "startup"};
+const Enum::YLeaf NetconfDatastoreTypeEnum::running {0, "running"};
+const Enum::YLeaf NetconfDatastoreTypeEnum::candidate {1, "candidate"};
+const Enum::YLeaf NetconfDatastoreTypeEnum::startup {2, "startup"};
 
-const Enum::Value NetconfState::Schemas::Schema::LocationEnum::NETCONF {0, "NETCONF"};
+const Enum::YLeaf NetconfState::Schemas::Schema::LocationEnum::NETCONF {0, "NETCONF"};
 
 
 }

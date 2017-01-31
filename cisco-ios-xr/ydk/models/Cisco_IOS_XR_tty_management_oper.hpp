@@ -48,10 +48,10 @@ class Ipv6Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdenti
 class TransportServiceEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value telnet;
-        static const Enum::Value rlogin;
-        static const Enum::Value ssh;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf rlogin;
+        static const Enum::YLeaf ssh;
 
 };
 

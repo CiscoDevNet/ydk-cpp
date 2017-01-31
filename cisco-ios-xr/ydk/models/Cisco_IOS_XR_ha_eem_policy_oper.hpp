@@ -26,6 +26,7 @@ class Eem : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class DirUser : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Eem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Library : public Entity
         {
             public:
@@ -54,9 +56,10 @@ class Eem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value policy; //type: string
-                Value library; //type: string
 
+
+                YLeaf policy; //type: string
+                YLeaf library; //type: string
 
 
 
@@ -76,9 +79,10 @@ class Eem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value policy; //type: string
-                Value library; //type: string
 
+
+                YLeaf policy; //type: string
+                YLeaf library; //type: string
 
 
 
@@ -107,6 +111,7 @@ class Eem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class EnvVariable : public Entity
         {
             public:
@@ -120,10 +125,11 @@ class Eem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value name_xr; //type: string
-                Value value_; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf name_xr; //type: string
+                YLeaf value_; //type: string
 
 
 
@@ -149,8 +155,9 @@ class Eem : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value refreshtime; //type: uint32
 
+
+            YLeaf refreshtime; //type: uint32
 
 
 
@@ -172,6 +179,7 @@ class Eem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RegPolicy : public Entity
         {
             public:
@@ -185,17 +193,18 @@ class Eem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value type; //type: string
-                Value time_created; //type: string
-                Value policy_name; //type: string
-                Value class_; //type: string
-                Value event_type; //type: string
-                Value trap; //type: string
-                Value persist_time; //type: uint32
-                Value username; //type: string
-                Value description; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf type; //type: string
+                YLeaf time_created; //type: string
+                YLeaf policy_name; //type: string
+                YLeaf class_; //type: string
+                YLeaf event_type; //type: string
+                YLeaf trap; //type: string
+                YLeaf persist_time; //type: uint32
+                YLeaf username; //type: string
+                YLeaf description; //type: string
 
 
 
@@ -223,6 +232,7 @@ class Eem : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class AvlPolicy : public Entity
         {
             public:
@@ -236,11 +246,12 @@ class Eem : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
-                Value type; //type: string
-                Value time_created; //type: string
-                Value policy_name; //type: string
 
+
+                YLeaf name; //type: string
+                YLeaf type; //type: string
+                YLeaf time_created; //type: string
+                YLeaf policy_name; //type: string
 
 
 

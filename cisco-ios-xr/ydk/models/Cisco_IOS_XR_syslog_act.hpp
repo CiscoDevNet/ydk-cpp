@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "ydk_ietf/ietf_syslog_types.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_syslog_act {
@@ -26,11 +25,11 @@ class LogmsgRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value severity; //type: SeverityEnum
-        Value message; //type: string
 
 
-        class SeverityEnum;
+        YLeaf severity; //type: SeverityEnum
+        YLeaf message; //type: string
+
 
 
 }; // LogmsgRpc

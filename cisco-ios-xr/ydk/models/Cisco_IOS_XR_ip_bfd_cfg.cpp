@@ -234,8 +234,8 @@ bool Bfd::FlapDamp::has_operation() const
 	|| is_set(maximum_delay.operation)
 	|| is_set(secondary_delay.operation)
 	|| is_set(threshold.operation)
-	|| (bundle_member !=  nullptr && is_set(bundle_member->operation))
-	|| (extensions !=  nullptr && is_set(extensions->operation));
+	|| (bundle_member !=  nullptr && bundle_member->has_operation())
+	|| (extensions !=  nullptr && extensions->has_operation());
 }
 
 std::string Bfd::FlapDamp::get_segment_path() const
@@ -480,7 +480,7 @@ bool Bfd::EchoLatency::has_data() const
 bool Bfd::EchoLatency::has_operation() const
 {
     return is_set(operation)
-	|| (detect !=  nullptr && is_set(detect->operation));
+	|| (detect !=  nullptr && detect->has_operation());
 }
 
 std::string Bfd::EchoLatency::get_segment_path() const
@@ -1141,7 +1141,7 @@ bool Bfd::Bundle::has_data() const
 bool Bfd::Bundle::has_operation() const
 {
     return is_set(operation)
-	|| (coexistence !=  nullptr && is_set(coexistence->operation));
+	|| (coexistence !=  nullptr && coexistence->has_operation());
 }
 
 std::string Bfd::Bundle::get_segment_path() const
@@ -1286,12 +1286,12 @@ bool Bfd::has_operation() const
 	|| is_set(ipv6_checksum_disable.operation)
 	|| is_set(single_hop_trap.operation)
 	|| is_set(ttl_drop_threshold.operation)
-	|| (bundle !=  nullptr && is_set(bundle->operation))
-	|| (echo_latency !=  nullptr && is_set(echo_latency->operation))
-	|| (echo_startup !=  nullptr && is_set(echo_startup->operation))
-	|| (flap_damp !=  nullptr && is_set(flap_damp->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (multi_path_includes !=  nullptr && is_set(multi_path_includes->operation));
+	|| (bundle !=  nullptr && bundle->has_operation())
+	|| (echo_latency !=  nullptr && echo_latency->has_operation())
+	|| (echo_startup !=  nullptr && echo_startup->has_operation())
+	|| (flap_damp !=  nullptr && flap_damp->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (multi_path_includes !=  nullptr && multi_path_includes->has_operation());
 }
 
 std::string Bfd::get_segment_path() const
@@ -1308,7 +1308,7 @@ EntityPath Bfd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1517,18 +1517,18 @@ std::unique_ptr<Entity> Bfd::clone_ptr()
     return std::make_unique<Bfd>();
 }
 
-const Enum::Value BfdEchoStartupValidateEnum::off {0, "off"};
-const Enum::Value BfdEchoStartupValidateEnum::on {1, "on"};
-const Enum::Value BfdEchoStartupValidateEnum::force {2, "force"};
+const Enum::YLeaf BfdEchoStartupValidateEnum::off {0, "off"};
+const Enum::YLeaf BfdEchoStartupValidateEnum::on {1, "on"};
+const Enum::YLeaf BfdEchoStartupValidateEnum::force {2, "force"};
 
-const Enum::Value BfdIfIpv6ChecksumUsageEnum::disable {0, "disable"};
-const Enum::Value BfdIfIpv6ChecksumUsageEnum::enable {1, "enable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsageEnum::disable {0, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsageEnum::enable {1, "enable"};
 
-const Enum::Value BfdIfEchoUsageEnum::enable {0, "enable"};
-const Enum::Value BfdIfEchoUsageEnum::disable {1, "disable"};
+const Enum::YLeaf BfdIfEchoUsageEnum::enable {0, "enable"};
+const Enum::YLeaf BfdIfEchoUsageEnum::disable {1, "disable"};
 
-const Enum::Value BfdBundleCoexistenceBobBlbEnum::inherited {1, "inherited"};
-const Enum::Value BfdBundleCoexistenceBobBlbEnum::logical {2, "logical"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlbEnum::inherited {1, "inherited"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlbEnum::logical {2, "logical"};
 
 
 }

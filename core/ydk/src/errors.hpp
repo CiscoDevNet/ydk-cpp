@@ -35,37 +35,54 @@
 
 namespace ydk {
 ///
-/// @brief Base class for YDK Exceptions
+/// @brief Base class for YCPP Errors
 ///
 /// The subclasses give a specialized view of the error that has occurred.
 ///
-struct YDKException : public std::exception, public boost::exception
+struct YCPPError : public std::exception, public boost::exception
 {
-	YDKException(const std::string& msg);
+	YCPPError(const std::string& msg);
 
 	const char* what() const noexcept;
 
 	std::string err_msg;
 };
 
-struct YDKServiceProviderException : public YDKException
+struct YCPPClientError : public YCPPError
 {
-    YDKServiceProviderException(const std::string& msg) : YDKException{msg}
+	YCPPClientError(const std::string& msg) : YCPPError{msg}, err_msg{msg}
+	{
+	}
+
+	std::string err_msg;
+};
+
+struct YCPPServiceProviderError : public YCPPError
+{
+    YCPPServiceProviderError(const std::string& msg) : YCPPError{msg}
+    {
+
+    }
+};
+
+struct YCPPServiceError : public YCPPError
+{
+    YCPPServiceError(const std::string& msg) : YCPPError{msg}
     {
 
     }
 };
 
 ///
-/// @brief Illegal State Exception.
+/// @brief Illegal State Error.
 ///
 ///
 /// Thrown when an operation/service is invoked
 /// on an object that is not in the right state. Use the err_msg for the error.
 ///
-struct YDKIllegalStateException : public YDKException
+struct YCPPIllegalStateError : public YCPPError
 {
-     YDKIllegalStateException(const std::string& msg);
+     YCPPIllegalStateError(const std::string& msg);
 };
 
 ///
@@ -73,21 +90,30 @@ struct YDKIllegalStateException : public YDKException
 ///
 /// Use the err_msg for the error.
 ///
-struct YDKInvalidArgumentException : public YDKException
+struct YCPPInvalidArgumentError : public YCPPError
 {
-     YDKInvalidArgumentException(const std::string& msg);
+     YCPPInvalidArgumentError(const std::string& msg);
 };
 
 ///
-/// @brief Operation Not Supported Exception
+/// @brief Operation Not Supported Error
 ///
 /// Thrown when an operation is not supported.
 ///
-struct YDKOperationNotSupportedException : public YDKException
+struct YCPPOperationNotSupportedError : public YCPPError
 {
-    YDKOperationNotSupportedException(const std::string& msg);
+    YCPPOperationNotSupportedError(const std::string& msg);
 };
 
+///
+/// @brief Model Error
+///
+/// Thrown when a model constraint is violated.
+///
+struct YCPPModelError : public YCPPError
+{
+	YCPPModelError(const std::string& msg);
+};
 }
 
 #endif /* _EXCEPTION_HPP_ */

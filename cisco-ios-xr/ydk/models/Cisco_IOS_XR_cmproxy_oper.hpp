@@ -26,6 +26,7 @@ class SdrInventoryVm : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Nodes : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class SdrInventoryVm : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -54,8 +56,9 @@ class SdrInventoryVm : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value name; //type: string
 
+
+                YLeaf name; //type: string
 
             class NodeEntries : public Entity
             {
@@ -72,6 +75,7 @@ class SdrInventoryVm : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class NodeEntry : public Entity
                 {
                     public:
@@ -85,23 +89,24 @@ class SdrInventoryVm : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value valid; //type: uint32
-                        Value card_type; //type: uint32
-                        Value card_type_string; //type: string
-                        Value nodeid; //type: int32
-                        Value node_name; //type: string
-                        Value partner_id; //type: int32
-                        Value partner_name; //type: string
-                        Value red_state; //type: uint32
-                        Value red_state_string; //type: string
-                        Value node_sw_state; //type: uint32
-                        Value node_sw_state_string; //type: string
-                        Value prev_sw_state; //type: uint32
-                        Value prev_sw_state_string; //type: string
-                        Value node_ip; //type: uint32
-                        Value node_ipv4_string; //type: string
 
+
+                        YLeaf name; //type: string
+                        YLeaf valid; //type: uint32
+                        YLeaf card_type; //type: uint32
+                        YLeaf card_type_string; //type: string
+                        YLeaf nodeid; //type: int32
+                        YLeaf node_name; //type: string
+                        YLeaf partner_id; //type: int32
+                        YLeaf partner_name; //type: string
+                        YLeaf red_state; //type: uint32
+                        YLeaf red_state_string; //type: string
+                        YLeaf node_sw_state; //type: uint32
+                        YLeaf node_sw_state_string; //type: string
+                        YLeaf prev_sw_state; //type: uint32
+                        YLeaf prev_sw_state_string; //type: string
+                        YLeaf node_ip; //type: uint32
+                        YLeaf node_ipv4_string; //type: string
 
 
 

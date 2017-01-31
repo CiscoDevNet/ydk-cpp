@@ -109,7 +109,7 @@ bool Ipv6Telnet::has_data() const
 bool Ipv6Telnet::has_operation() const
 {
     return is_set(operation)
-	|| (client !=  nullptr && is_set(client->operation));
+	|| (client !=  nullptr && client->has_operation());
 }
 
 std::string Ipv6Telnet::get_segment_path() const
@@ -126,7 +126,7 @@ EntityPath Ipv6Telnet::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -291,7 +291,7 @@ bool Ipv4Telnet::has_data() const
 bool Ipv4Telnet::has_operation() const
 {
     return is_set(operation)
-	|| (client !=  nullptr && is_set(client->operation));
+	|| (client !=  nullptr && client->has_operation());
 }
 
 std::string Ipv4Telnet::get_segment_path() const
@@ -308,7 +308,7 @@ EntityPath Ipv4Telnet::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

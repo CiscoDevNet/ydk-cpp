@@ -26,6 +26,7 @@ class MacSecKeychains : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class MacSecKeychain : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class MacSecKeychains : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value chain_name; //type: string
 
+
+            YLeaf chain_name; //type: string
 
         class Keies : public Entity
         {
@@ -57,6 +59,7 @@ class MacSecKeychains : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Key : public Entity
             {
                 public:
@@ -70,8 +73,9 @@ class MacSecKeychains : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value key_id; //type: string
 
+
+                    YLeaf key_id; //type: string
 
                 class Lifetime : public Entity
                 {
@@ -86,24 +90,23 @@ class MacSecKeychains : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value start_hour; //type: uint32
-                        Value start_minutes; //type: uint32
-                        Value start_seconds; //type: uint32
-                        Value start_date; //type: uint32
-                        Value start_month; //type: MacSecKeyChainMonthEnum
-                        Value start_year; //type: uint32
-                        Value life_time; //type: uint32
-                        Value infinite_flag; //type: boolean
-                        Value end_hour; //type: uint32
-                        Value end_minutes; //type: uint32
-                        Value end_seconds; //type: uint32
-                        Value end_date; //type: uint32
-                        Value end_month; //type: MacSecKeyChainMonthEnum
-                        Value end_year; //type: uint32
 
 
-                        class MacSecKeyChainMonthEnum;
-                        class MacSecKeyChainMonthEnum;
+                        YLeaf start_hour; //type: uint32
+                        YLeaf start_minutes; //type: uint32
+                        YLeaf start_seconds; //type: uint32
+                        YLeaf start_date; //type: uint32
+                        YLeaf start_month; //type: MacSecKeyChainMonthEnum
+                        YLeaf start_year; //type: uint32
+                        YLeaf life_time; //type: uint32
+                        YLeaf infinite_flag; //type: boolean
+                        YLeaf end_hour; //type: uint32
+                        YLeaf end_minutes; //type: uint32
+                        YLeaf end_seconds; //type: uint32
+                        YLeaf end_date; //type: uint32
+                        YLeaf end_month; //type: MacSecKeyChainMonthEnum
+                        YLeaf end_year; //type: uint32
+
 
 
                 }; // MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime
@@ -122,11 +125,11 @@ class MacSecKeychains : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value string; //type: string
-                        Value cryptographic_algorithm; //type: MacSecCryptoAlgEnum
 
 
-                        class MacSecCryptoAlgEnum;
+                        YLeaf string; //type: string
+                        YLeaf cryptographic_algorithm; //type: MacSecCryptoAlgEnum
+
 
 
                 }; // MacSecKeychains::MacSecKeychain::Keies::Key::KeyString
@@ -160,26 +163,26 @@ class MacSecKeychains : public Entity
 class MacSecKeyChainMonthEnum : public Enum
 {
     public:
-        static const Enum::Value jan;
-        static const Enum::Value feb;
-        static const Enum::Value mar;
-        static const Enum::Value apr;
-        static const Enum::Value may;
-        static const Enum::Value jun;
-        static const Enum::Value jul;
-        static const Enum::Value aug;
-        static const Enum::Value sep;
-        static const Enum::Value oct;
-        static const Enum::Value nov;
-        static const Enum::Value dec;
+        static const Enum::YLeaf jan;
+        static const Enum::YLeaf feb;
+        static const Enum::YLeaf mar;
+        static const Enum::YLeaf apr;
+        static const Enum::YLeaf may;
+        static const Enum::YLeaf jun;
+        static const Enum::YLeaf jul;
+        static const Enum::YLeaf aug;
+        static const Enum::YLeaf sep;
+        static const Enum::YLeaf oct;
+        static const Enum::YLeaf nov;
+        static const Enum::YLeaf dec;
 
 };
 
 class MacSecCryptoAlgEnum : public Enum
 {
     public:
-        static const Enum::Value aes_128_cmac;
-        static const Enum::Value aes_256_cmac;
+        static const Enum::YLeaf aes_128_cmac;
+        static const Enum::YLeaf aes_256_cmac;
 
 };
 

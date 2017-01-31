@@ -26,6 +26,7 @@ class Macsec : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Mka : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Macsec : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Interfaces : public Entity
@@ -56,6 +58,7 @@ class Macsec : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -69,8 +72,9 @@ class Macsec : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value name; //type: string
 
+
+                    YLeaf name; //type: string
 
                 class Session : public Entity
                 {
@@ -87,6 +91,7 @@ class Macsec : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class SessionSummary : public Entity
                     {
                         public:
@@ -100,21 +105,22 @@ class Macsec : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value interface_name; //type: string
-                            Value inherited_policy; //type: boolean
-                            Value policy; //type: string
-                            Value priority; //type: uint32
-                            Value my_mac; //type: string
-                            Value delay_protect; //type: boolean
-                            Value replay_protect; //type: boolean
-                            Value window_size; //type: uint32
-                            Value confidentiality_offset; //type: uint32
-                            Value algo_agility; //type: uint32
-                            Value capability; //type: uint32
-                            Value cipher_str; //type: string
-                            Value mac_sec_desired; //type: boolean
-                            Value key_chain; //type: string
 
+
+                            YLeaf interface_name; //type: string
+                            YLeaf inherited_policy; //type: boolean
+                            YLeaf policy; //type: string
+                            YLeaf priority; //type: uint32
+                            YLeaf my_mac; //type: string
+                            YLeaf delay_protect; //type: boolean
+                            YLeaf replay_protect; //type: boolean
+                            YLeaf window_size; //type: uint32
+                            YLeaf confidentiality_offset; //type: uint32
+                            YLeaf algo_agility; //type: uint32
+                            YLeaf capability; //type: uint32
+                            YLeaf cipher_str; //type: string
+                            YLeaf mac_sec_desired; //type: boolean
+                            YLeaf key_chain; //type: string
 
                         class OuterTag : public Entity
                         {
@@ -129,11 +135,12 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value etype; //type: uint16
-                                Value priority; //type: uint8
-                                Value cfi; //type: uint8
-                                Value vlan_id; //type: uint16
 
+
+                                YLeaf etype; //type: uint16
+                                YLeaf priority; //type: uint8
+                                YLeaf cfi; //type: uint8
+                                YLeaf vlan_id; //type: uint16
 
 
 
@@ -153,11 +160,12 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value etype; //type: uint16
-                                Value priority; //type: uint8
-                                Value cfi; //type: uint8
-                                Value vlan_id; //type: uint16
 
+
+                                YLeaf etype; //type: uint16
+                                YLeaf priority; //type: uint8
+                                YLeaf cfi; //type: uint8
+                                YLeaf vlan_id; //type: uint16
 
 
 
@@ -184,23 +192,24 @@ class Macsec : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value my_sci; //type: string
-                            Value virtual_port_id; //type: uint32
-                            Value latest_rx; //type: boolean
-                            Value latest_tx; //type: boolean
-                            Value latest_an; //type: uint32
-                            Value latest_ki; //type: string
-                            Value latest_kn; //type: uint32
-                            Value old_rx; //type: boolean
-                            Value old_tx; //type: boolean
-                            Value old_an; //type: uint32
-                            Value old_ki; //type: string
-                            Value old_kn; //type: uint32
-                            Value wait_time; //type: uint32
-                            Value retire_time; //type: uint32
-                            Value cipher_suite; //type: uint32
-                            Value ssci; //type: uint32
 
+
+                            YLeaf my_sci; //type: string
+                            YLeaf virtual_port_id; //type: uint32
+                            YLeaf latest_rx; //type: boolean
+                            YLeaf latest_tx; //type: boolean
+                            YLeaf latest_an; //type: uint32
+                            YLeaf latest_ki; //type: string
+                            YLeaf latest_kn; //type: uint32
+                            YLeaf old_rx; //type: boolean
+                            YLeaf old_tx; //type: boolean
+                            YLeaf old_an; //type: uint32
+                            YLeaf old_ki; //type: string
+                            YLeaf old_kn; //type: uint32
+                            YLeaf wait_time; //type: uint32
+                            YLeaf retire_time; //type: uint32
+                            YLeaf cipher_suite; //type: uint32
+                            YLeaf ssci; //type: uint32
 
 
 
@@ -220,18 +229,19 @@ class Macsec : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value is_key_server; //type: boolean
-                            Value status; //type: uint32
-                            Value num_live_peers; //type: uint32
-                            Value first_ca; //type: boolean
-                            Value peer_sci; //type: string
-                            Value num_live_peers_responded; //type: uint32
-                            Value ckn; //type: string
-                            Value my_mi; //type: string
-                            Value my_mn; //type: uint32
-                            Value authenticator; //type: boolean
-                            Value status_description; //type: string
 
+
+                            YLeaf is_key_server; //type: boolean
+                            YLeaf status; //type: uint32
+                            YLeaf num_live_peers; //type: uint32
+                            YLeaf first_ca; //type: boolean
+                            YLeaf peer_sci; //type: string
+                            YLeaf num_live_peers_responded; //type: uint32
+                            YLeaf ckn; //type: string
+                            YLeaf my_mi; //type: string
+                            YLeaf my_mn; //type: uint32
+                            YLeaf authenticator; //type: boolean
+                            YLeaf status_description; //type: string
 
                         class LivePeer : public Entity
                         {
@@ -246,12 +256,13 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mi; //type: string
-                                Value sci; //type: string
-                                Value mn; //type: uint32
-                                Value priority; //type: uint32
-                                Value ssci; //type: uint32
 
+
+                                YLeaf mi; //type: string
+                                YLeaf sci; //type: string
+                                YLeaf mn; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf ssci; //type: uint32
 
 
 
@@ -271,12 +282,13 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mi; //type: string
-                                Value sci; //type: string
-                                Value mn; //type: uint32
-                                Value priority; //type: uint32
-                                Value ssci; //type: uint32
 
+
+                                YLeaf mi; //type: string
+                                YLeaf sci; //type: string
+                                YLeaf mn; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf ssci; //type: uint32
 
 
 
@@ -296,12 +308,13 @@ class Macsec : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value mi; //type: string
-                                Value sci; //type: string
-                                Value mn; //type: uint32
-                                Value priority; //type: uint32
-                                Value ssci; //type: uint32
 
+
+                                YLeaf mi; //type: string
+                                YLeaf sci; //type: string
+                                YLeaf mn; //type: uint32
+                                YLeaf priority; //type: uint32
+                                YLeaf ssci; //type: uint32
 
 
 

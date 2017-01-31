@@ -26,6 +26,7 @@ class Alarms : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Detail : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Alarms : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class DetailSystem : public Entity
@@ -56,6 +58,7 @@ class Alarms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Active : public Entity
             {
                 public:
@@ -71,6 +74,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AlarmInfo : public Entity
                 {
                     public:
@@ -84,26 +88,27 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value description; //type: string
-                        Value location; //type: string
-                        Value aid; //type: string
-                        Value tag; //type: string
-                        Value module; //type: string
-                        Value eid; //type: string
-                        Value reporting_agent_id; //type: uint32
-                        Value pending_sync; //type: boolean
-                        Value severity; //type: AlarmSeverityEnum
-                        Value status; //type: AlarmStatusEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value clear_time; //type: string
-                        Value clear_timestamp; //type: uint64
-                        Value service_affecting; //type: AlarmServiceAffectingEnum
-                        Value type; //type: AlarmEventEnum
-                        Value interface; //type: string
-                        Value alarm_name; //type: string
 
+
+                        YLeaf description; //type: string
+                        YLeaf location; //type: string
+                        YLeaf aid; //type: string
+                        YLeaf tag; //type: string
+                        YLeaf module; //type: string
+                        YLeaf eid; //type: string
+                        YLeaf reporting_agent_id; //type: uint32
+                        YLeaf pending_sync; //type: boolean
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf status; //type: AlarmStatusEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf clear_time; //type: string
+                        YLeaf clear_timestamp; //type: uint64
+                        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                        YLeaf type; //type: AlarmEventEnum
+                        YLeaf interface; //type: string
+                        YLeaf alarm_name; //type: string
 
                     class Otn : public Entity
                     {
@@ -118,12 +123,11 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value direction; //type: AlarmDirectionEnum
-                            Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                            class AlarmDirectionEnum;
-                            class AlarmNotificationSrcEnum;
+                            YLeaf direction; //type: AlarmDirectionEnum
+                            YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                     }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn
@@ -142,12 +146,12 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value threshold_value; //type: string
-                            Value current_value; //type: string
-                            Value bucket_type; //type: TimingBucketEnum
 
 
-                            class TimingBucketEnum;
+                            YLeaf threshold_value; //type: string
+                            YLeaf current_value; //type: string
+                            YLeaf bucket_type; //type: TimingBucketEnum
+
 
 
                     }; // Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca
@@ -155,11 +159,6 @@ class Alarms : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn> otn;
                         std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca> tca;
-                        class AlarmGroupsEnum;
-                        class AlarmServiceAffectingEnum;
-                        class AlarmSeverityEnum;
-                        class AlarmStatusEnum;
-                        class AlarmEventEnum;
 
 
                 }; // Alarms::Detail::DetailSystem::Active::AlarmInfo
@@ -186,6 +185,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AlarmInfo : public Entity
                 {
                     public:
@@ -199,26 +199,27 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value description; //type: string
-                        Value location; //type: string
-                        Value aid; //type: string
-                        Value tag; //type: string
-                        Value module; //type: string
-                        Value eid; //type: string
-                        Value reporting_agent_id; //type: uint32
-                        Value pending_sync; //type: boolean
-                        Value severity; //type: AlarmSeverityEnum
-                        Value status; //type: AlarmStatusEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value clear_time; //type: string
-                        Value clear_timestamp; //type: uint64
-                        Value service_affecting; //type: AlarmServiceAffectingEnum
-                        Value type; //type: AlarmEventEnum
-                        Value interface; //type: string
-                        Value alarm_name; //type: string
 
+
+                        YLeaf description; //type: string
+                        YLeaf location; //type: string
+                        YLeaf aid; //type: string
+                        YLeaf tag; //type: string
+                        YLeaf module; //type: string
+                        YLeaf eid; //type: string
+                        YLeaf reporting_agent_id; //type: uint32
+                        YLeaf pending_sync; //type: boolean
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf status; //type: AlarmStatusEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf clear_time; //type: string
+                        YLeaf clear_timestamp; //type: uint64
+                        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                        YLeaf type; //type: AlarmEventEnum
+                        YLeaf interface; //type: string
+                        YLeaf alarm_name; //type: string
 
                     class Otn : public Entity
                     {
@@ -233,12 +234,11 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value direction; //type: AlarmDirectionEnum
-                            Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                            class AlarmDirectionEnum;
-                            class AlarmNotificationSrcEnum;
+                            YLeaf direction; //type: AlarmDirectionEnum
+                            YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                     }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Otn
@@ -257,12 +257,12 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value threshold_value; //type: string
-                            Value current_value; //type: string
-                            Value bucket_type; //type: TimingBucketEnum
 
 
-                            class TimingBucketEnum;
+                            YLeaf threshold_value; //type: string
+                            YLeaf current_value; //type: string
+                            YLeaf bucket_type; //type: TimingBucketEnum
+
 
 
                     }; // Alarms::Detail::DetailSystem::History::AlarmInfo::Tca
@@ -270,11 +270,6 @@ class Alarms : public Entity
 
                         std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo::Otn> otn;
                         std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo::Tca> tca;
-                        class AlarmGroupsEnum;
-                        class AlarmServiceAffectingEnum;
-                        class AlarmSeverityEnum;
-                        class AlarmStatusEnum;
-                        class AlarmEventEnum;
 
 
                 }; // Alarms::Detail::DetailSystem::History::AlarmInfo
@@ -301,6 +296,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SuppressedInfo : public Entity
                 {
                     public:
@@ -314,25 +310,26 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value description; //type: string
-                        Value location; //type: string
-                        Value aid; //type: string
-                        Value tag; //type: string
-                        Value module; //type: string
-                        Value eid; //type: string
-                        Value reporting_agent_id; //type: uint32
-                        Value pending_sync; //type: boolean
-                        Value severity; //type: AlarmSeverityEnum
-                        Value status; //type: AlarmStatusEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value suppressed_time; //type: string
-                        Value suppressed_timestamp; //type: uint64
-                        Value service_affecting; //type: AlarmServiceAffectingEnum
-                        Value interface; //type: string
-                        Value alarm_name; //type: string
 
+
+                        YLeaf description; //type: string
+                        YLeaf location; //type: string
+                        YLeaf aid; //type: string
+                        YLeaf tag; //type: string
+                        YLeaf module; //type: string
+                        YLeaf eid; //type: string
+                        YLeaf reporting_agent_id; //type: uint32
+                        YLeaf pending_sync; //type: boolean
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf status; //type: AlarmStatusEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf suppressed_time; //type: string
+                        YLeaf suppressed_timestamp; //type: uint64
+                        YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                        YLeaf interface; //type: string
+                        YLeaf alarm_name; //type: string
 
                     class Otn : public Entity
                     {
@@ -347,22 +344,17 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value direction; //type: AlarmDirectionEnum
-                            Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                            class AlarmDirectionEnum;
-                            class AlarmNotificationSrcEnum;
+                            YLeaf direction; //type: AlarmDirectionEnum
+                            YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                     }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn
 
 
                         std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn> otn;
-                        class AlarmGroupsEnum;
-                        class AlarmServiceAffectingEnum;
-                        class AlarmSeverityEnum;
-                        class AlarmStatusEnum;
 
 
                 }; // Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
@@ -387,22 +379,23 @@ class Alarms : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value reported; //type: uint64
-                    Value dropped; //type: uint64
-                    Value active; //type: uint64
-                    Value history; //type: uint64
-                    Value suppressed; //type: uint64
-                    Value sysadmin_active; //type: uint64
-                    Value sysadmin_history; //type: uint64
-                    Value sysadmin_suppressed; //type: uint64
-                    Value dropped_invalid_aid; //type: uint32
-                    Value dropped_insuff_mem; //type: uint32
-                    Value dropped_db_error; //type: uint32
-                    Value dropped_clear_without_set; //type: uint32
-                    Value dropped_duplicate; //type: uint32
-                    Value cache_hit; //type: uint32
-                    Value cache_miss; //type: uint32
 
+
+                    YLeaf reported; //type: uint64
+                    YLeaf dropped; //type: uint64
+                    YLeaf active; //type: uint64
+                    YLeaf history; //type: uint64
+                    YLeaf suppressed; //type: uint64
+                    YLeaf sysadmin_active; //type: uint64
+                    YLeaf sysadmin_history; //type: uint64
+                    YLeaf sysadmin_suppressed; //type: uint64
+                    YLeaf dropped_invalid_aid; //type: uint32
+                    YLeaf dropped_insuff_mem; //type: uint32
+                    YLeaf dropped_db_error; //type: uint32
+                    YLeaf dropped_clear_without_set; //type: uint32
+                    YLeaf dropped_duplicate; //type: uint32
+                    YLeaf cache_hit; //type: uint32
+                    YLeaf cache_miss; //type: uint32
 
 
 
@@ -424,6 +417,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class ClientInfo : public Entity
                 {
                     public:
@@ -437,29 +431,25 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value name; //type: string
-                        Value id; //type: uint32
-                        Value location; //type: string
-                        Value handle; //type: string
-                        Value state; //type: AlarmClientStateEnum
-                        Value type; //type: AlarmClientEnum
-                        Value filter_disp; //type: boolean
-                        Value subscriber_id; //type: uint32
-                        Value filter_severity; //type: AlarmSeverityEnum
-                        Value filter_state; //type: AlarmStatusEnum
-                        Value filter_group; //type: AlarmGroupsEnum
-                        Value connect_count; //type: uint32
-                        Value connect_timestamp; //type: string
-                        Value get_count; //type: uint32
-                        Value subscribe_count; //type: uint32
-                        Value report_count; //type: uint32
 
 
-                        class AlarmGroupsEnum;
-                        class AlarmSeverityEnum;
-                        class AlarmStatusEnum;
-                        class AlarmClientStateEnum;
-                        class AlarmClientEnum;
+                        YLeaf name; //type: string
+                        YLeaf id; //type: uint32
+                        YLeaf location; //type: string
+                        YLeaf handle; //type: string
+                        YLeaf state; //type: AlarmClientStateEnum
+                        YLeaf type; //type: AlarmClientEnum
+                        YLeaf filter_disp; //type: boolean
+                        YLeaf subscriber_id; //type: uint32
+                        YLeaf filter_severity; //type: AlarmSeverityEnum
+                        YLeaf filter_state; //type: AlarmStatusEnum
+                        YLeaf filter_group; //type: AlarmGroupsEnum
+                        YLeaf connect_count; //type: uint32
+                        YLeaf connect_timestamp; //type: string
+                        YLeaf get_count; //type: uint32
+                        YLeaf subscribe_count; //type: uint32
+                        YLeaf report_count; //type: uint32
+
 
 
                 }; // Alarms::Detail::DetailSystem::Clients::ClientInfo
@@ -496,6 +486,7 @@ class Alarms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class DetailLocations : public Entity
             {
                 public:
@@ -511,6 +502,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class DetailLocation : public Entity
                 {
                     public:
@@ -524,8 +516,9 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value node_id; //type: string
 
+
+                        YLeaf node_id; //type: string
 
                     class Active : public Entity
                     {
@@ -542,6 +535,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AlarmInfo : public Entity
                         {
                             public:
@@ -555,26 +549,27 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value location; //type: string
-                                Value aid; //type: string
-                                Value tag; //type: string
-                                Value module; //type: string
-                                Value eid; //type: string
-                                Value reporting_agent_id; //type: uint32
-                                Value pending_sync; //type: boolean
-                                Value severity; //type: AlarmSeverityEnum
-                                Value status; //type: AlarmStatusEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value clear_time; //type: string
-                                Value clear_timestamp; //type: uint64
-                                Value service_affecting; //type: AlarmServiceAffectingEnum
-                                Value type; //type: AlarmEventEnum
-                                Value interface; //type: string
-                                Value alarm_name; //type: string
 
+
+                                YLeaf description; //type: string
+                                YLeaf location; //type: string
+                                YLeaf aid; //type: string
+                                YLeaf tag; //type: string
+                                YLeaf module; //type: string
+                                YLeaf eid; //type: string
+                                YLeaf reporting_agent_id; //type: uint32
+                                YLeaf pending_sync; //type: boolean
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf status; //type: AlarmStatusEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf clear_time; //type: string
+                                YLeaf clear_timestamp; //type: uint64
+                                YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                                YLeaf type; //type: AlarmEventEnum
+                                YLeaf interface; //type: string
+                                YLeaf alarm_name; //type: string
 
                             class Otn : public Entity
                             {
@@ -589,12 +584,11 @@ class Alarms : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value direction; //type: AlarmDirectionEnum
-                                    Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                                    class AlarmDirectionEnum;
-                                    class AlarmNotificationSrcEnum;
+                                    YLeaf direction; //type: AlarmDirectionEnum
+                                    YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                             }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn
@@ -613,12 +607,12 @@ class Alarms : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value threshold_value; //type: string
-                                    Value current_value; //type: string
-                                    Value bucket_type; //type: TimingBucketEnum
 
 
-                                    class TimingBucketEnum;
+                                    YLeaf threshold_value; //type: string
+                                    YLeaf current_value; //type: string
+                                    YLeaf bucket_type; //type: TimingBucketEnum
+
 
 
                             }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca
@@ -626,11 +620,6 @@ class Alarms : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn> otn;
                                 std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca> tca;
-                                class AlarmGroupsEnum;
-                                class AlarmServiceAffectingEnum;
-                                class AlarmSeverityEnum;
-                                class AlarmStatusEnum;
-                                class AlarmEventEnum;
 
 
                         }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
@@ -657,6 +646,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AlarmInfo : public Entity
                         {
                             public:
@@ -670,26 +660,27 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value location; //type: string
-                                Value aid; //type: string
-                                Value tag; //type: string
-                                Value module; //type: string
-                                Value eid; //type: string
-                                Value reporting_agent_id; //type: uint32
-                                Value pending_sync; //type: boolean
-                                Value severity; //type: AlarmSeverityEnum
-                                Value status; //type: AlarmStatusEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value clear_time; //type: string
-                                Value clear_timestamp; //type: uint64
-                                Value service_affecting; //type: AlarmServiceAffectingEnum
-                                Value type; //type: AlarmEventEnum
-                                Value interface; //type: string
-                                Value alarm_name; //type: string
 
+
+                                YLeaf description; //type: string
+                                YLeaf location; //type: string
+                                YLeaf aid; //type: string
+                                YLeaf tag; //type: string
+                                YLeaf module; //type: string
+                                YLeaf eid; //type: string
+                                YLeaf reporting_agent_id; //type: uint32
+                                YLeaf pending_sync; //type: boolean
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf status; //type: AlarmStatusEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf clear_time; //type: string
+                                YLeaf clear_timestamp; //type: uint64
+                                YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                                YLeaf type; //type: AlarmEventEnum
+                                YLeaf interface; //type: string
+                                YLeaf alarm_name; //type: string
 
                             class Otn : public Entity
                             {
@@ -704,12 +695,11 @@ class Alarms : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value direction; //type: AlarmDirectionEnum
-                                    Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                                    class AlarmDirectionEnum;
-                                    class AlarmNotificationSrcEnum;
+                                    YLeaf direction; //type: AlarmDirectionEnum
+                                    YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                             }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn
@@ -728,12 +718,12 @@ class Alarms : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value threshold_value; //type: string
-                                    Value current_value; //type: string
-                                    Value bucket_type; //type: TimingBucketEnum
 
 
-                                    class TimingBucketEnum;
+                                    YLeaf threshold_value; //type: string
+                                    YLeaf current_value; //type: string
+                                    YLeaf bucket_type; //type: TimingBucketEnum
+
 
 
                             }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca
@@ -741,11 +731,6 @@ class Alarms : public Entity
 
                                 std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn> otn;
                                 std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca> tca;
-                                class AlarmGroupsEnum;
-                                class AlarmServiceAffectingEnum;
-                                class AlarmSeverityEnum;
-                                class AlarmStatusEnum;
-                                class AlarmEventEnum;
 
 
                         }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
@@ -772,6 +757,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SuppressedInfo : public Entity
                         {
                             public:
@@ -785,25 +771,26 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value description; //type: string
-                                Value location; //type: string
-                                Value aid; //type: string
-                                Value tag; //type: string
-                                Value module; //type: string
-                                Value eid; //type: string
-                                Value reporting_agent_id; //type: uint32
-                                Value pending_sync; //type: boolean
-                                Value severity; //type: AlarmSeverityEnum
-                                Value status; //type: AlarmStatusEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value suppressed_time; //type: string
-                                Value suppressed_timestamp; //type: uint64
-                                Value service_affecting; //type: AlarmServiceAffectingEnum
-                                Value interface; //type: string
-                                Value alarm_name; //type: string
 
+
+                                YLeaf description; //type: string
+                                YLeaf location; //type: string
+                                YLeaf aid; //type: string
+                                YLeaf tag; //type: string
+                                YLeaf module; //type: string
+                                YLeaf eid; //type: string
+                                YLeaf reporting_agent_id; //type: uint32
+                                YLeaf pending_sync; //type: boolean
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf status; //type: AlarmStatusEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf suppressed_time; //type: string
+                                YLeaf suppressed_timestamp; //type: uint64
+                                YLeaf service_affecting; //type: AlarmServiceAffectingEnum
+                                YLeaf interface; //type: string
+                                YLeaf alarm_name; //type: string
 
                             class Otn : public Entity
                             {
@@ -818,22 +805,17 @@ class Alarms : public Entity
                                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                     void set_value(const std::string & value_path, std::string value) override;
                                     std::map<std::string, Entity*> & get_children() override;
-                                    Value direction; //type: AlarmDirectionEnum
-                                    Value notification_source; //type: AlarmNotificationSrcEnum
 
 
-                                    class AlarmDirectionEnum;
-                                    class AlarmNotificationSrcEnum;
+                                    YLeaf direction; //type: AlarmDirectionEnum
+                                    YLeaf notification_source; //type: AlarmNotificationSrcEnum
+
 
 
                             }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn
 
 
                                 std::unique_ptr<Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn> otn;
-                                class AlarmGroupsEnum;
-                                class AlarmServiceAffectingEnum;
-                                class AlarmSeverityEnum;
-                                class AlarmStatusEnum;
 
 
                         }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
@@ -858,22 +840,23 @@ class Alarms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value reported; //type: uint64
-                            Value dropped; //type: uint64
-                            Value active; //type: uint64
-                            Value history; //type: uint64
-                            Value suppressed; //type: uint64
-                            Value sysadmin_active; //type: uint64
-                            Value sysadmin_history; //type: uint64
-                            Value sysadmin_suppressed; //type: uint64
-                            Value dropped_invalid_aid; //type: uint32
-                            Value dropped_insuff_mem; //type: uint32
-                            Value dropped_db_error; //type: uint32
-                            Value dropped_clear_without_set; //type: uint32
-                            Value dropped_duplicate; //type: uint32
-                            Value cache_hit; //type: uint32
-                            Value cache_miss; //type: uint32
 
+
+                            YLeaf reported; //type: uint64
+                            YLeaf dropped; //type: uint64
+                            YLeaf active; //type: uint64
+                            YLeaf history; //type: uint64
+                            YLeaf suppressed; //type: uint64
+                            YLeaf sysadmin_active; //type: uint64
+                            YLeaf sysadmin_history; //type: uint64
+                            YLeaf sysadmin_suppressed; //type: uint64
+                            YLeaf dropped_invalid_aid; //type: uint32
+                            YLeaf dropped_insuff_mem; //type: uint32
+                            YLeaf dropped_db_error; //type: uint32
+                            YLeaf dropped_clear_without_set; //type: uint32
+                            YLeaf dropped_duplicate; //type: uint32
+                            YLeaf cache_hit; //type: uint32
+                            YLeaf cache_miss; //type: uint32
 
 
 
@@ -895,6 +878,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class ClientInfo : public Entity
                         {
                             public:
@@ -908,29 +892,25 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value name; //type: string
-                                Value id; //type: uint32
-                                Value location; //type: string
-                                Value handle; //type: string
-                                Value state; //type: AlarmClientStateEnum
-                                Value type; //type: AlarmClientEnum
-                                Value filter_disp; //type: boolean
-                                Value subscriber_id; //type: uint32
-                                Value filter_severity; //type: AlarmSeverityEnum
-                                Value filter_state; //type: AlarmStatusEnum
-                                Value filter_group; //type: AlarmGroupsEnum
-                                Value connect_count; //type: uint32
-                                Value connect_timestamp; //type: string
-                                Value get_count; //type: uint32
-                                Value subscribe_count; //type: uint32
-                                Value report_count; //type: uint32
 
 
-                                class AlarmGroupsEnum;
-                                class AlarmSeverityEnum;
-                                class AlarmStatusEnum;
-                                class AlarmClientStateEnum;
-                                class AlarmClientEnum;
+                                YLeaf name; //type: string
+                                YLeaf id; //type: uint32
+                                YLeaf location; //type: string
+                                YLeaf handle; //type: string
+                                YLeaf state; //type: AlarmClientStateEnum
+                                YLeaf type; //type: AlarmClientEnum
+                                YLeaf filter_disp; //type: boolean
+                                YLeaf subscriber_id; //type: uint32
+                                YLeaf filter_severity; //type: AlarmSeverityEnum
+                                YLeaf filter_state; //type: AlarmStatusEnum
+                                YLeaf filter_group; //type: AlarmGroupsEnum
+                                YLeaf connect_count; //type: uint32
+                                YLeaf connect_timestamp; //type: string
+                                YLeaf get_count; //type: uint32
+                                YLeaf subscribe_count; //type: uint32
+                                YLeaf report_count; //type: uint32
+
 
 
                         }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
@@ -986,6 +966,7 @@ class Alarms : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class BriefCard : public Entity
         {
             public:
@@ -999,6 +980,7 @@ class Alarms : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class BriefLocations : public Entity
@@ -1016,6 +998,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class BriefLocation : public Entity
                 {
                     public:
@@ -1029,8 +1012,9 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value node_id; //type: string
 
+
+                        YLeaf node_id; //type: string
 
                     class Active : public Entity
                     {
@@ -1047,6 +1031,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AlarmInfo : public Entity
                         {
                             public:
@@ -1060,18 +1045,17 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
-                                Value severity; //type: AlarmSeverityEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value clear_time; //type: string
-                                Value clear_timestamp; //type: uint64
-                                Value description; //type: string
 
 
-                                class AlarmGroupsEnum;
-                                class AlarmSeverityEnum;
+                                YLeaf location; //type: string
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf clear_time; //type: string
+                                YLeaf clear_timestamp; //type: uint64
+                                YLeaf description; //type: string
+
 
 
                         }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
@@ -1098,6 +1082,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class AlarmInfo : public Entity
                         {
                             public:
@@ -1111,18 +1096,17 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
-                                Value severity; //type: AlarmSeverityEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value clear_time; //type: string
-                                Value clear_timestamp; //type: uint64
-                                Value description; //type: string
 
 
-                                class AlarmGroupsEnum;
-                                class AlarmSeverityEnum;
+                                YLeaf location; //type: string
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf clear_time; //type: string
+                                YLeaf clear_timestamp; //type: uint64
+                                YLeaf description; //type: string
+
 
 
                         }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
@@ -1149,6 +1133,7 @@ class Alarms : public Entity
                             std::map<std::string, Entity*> & get_children() override;
 
 
+
                         class SuppressedInfo : public Entity
                         {
                             public:
@@ -1162,18 +1147,17 @@ class Alarms : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value location; //type: string
-                                Value severity; //type: AlarmSeverityEnum
-                                Value group; //type: AlarmGroupsEnum
-                                Value set_time; //type: string
-                                Value set_timestamp; //type: uint64
-                                Value suppressed_time; //type: string
-                                Value suppressed_timestamp; //type: uint64
-                                Value description; //type: string
 
 
-                                class AlarmGroupsEnum;
-                                class AlarmSeverityEnum;
+                                YLeaf location; //type: string
+                                YLeaf severity; //type: AlarmSeverityEnum
+                                YLeaf group; //type: AlarmGroupsEnum
+                                YLeaf set_time; //type: string
+                                YLeaf set_timestamp; //type: uint64
+                                YLeaf suppressed_time; //type: string
+                                YLeaf suppressed_timestamp; //type: uint64
+                                YLeaf description; //type: string
+
 
 
                         }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
@@ -1220,6 +1204,7 @@ class Alarms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Active : public Entity
             {
                 public:
@@ -1235,6 +1220,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AlarmInfo : public Entity
                 {
                     public:
@@ -1248,18 +1234,17 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value severity; //type: AlarmSeverityEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value clear_time; //type: string
-                        Value clear_timestamp; //type: uint64
-                        Value description; //type: string
 
 
-                        class AlarmGroupsEnum;
-                        class AlarmSeverityEnum;
+                        YLeaf location; //type: string
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf clear_time; //type: string
+                        YLeaf clear_timestamp; //type: uint64
+                        YLeaf description; //type: string
+
 
 
                 }; // Alarms::Brief::BriefSystem::Active::AlarmInfo
@@ -1286,6 +1271,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AlarmInfo : public Entity
                 {
                     public:
@@ -1299,18 +1285,17 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value severity; //type: AlarmSeverityEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value clear_time; //type: string
-                        Value clear_timestamp; //type: uint64
-                        Value description; //type: string
 
 
-                        class AlarmGroupsEnum;
-                        class AlarmSeverityEnum;
+                        YLeaf location; //type: string
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf clear_time; //type: string
+                        YLeaf clear_timestamp; //type: uint64
+                        YLeaf description; //type: string
+
 
 
                 }; // Alarms::Brief::BriefSystem::History::AlarmInfo
@@ -1337,6 +1322,7 @@ class Alarms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class SuppressedInfo : public Entity
                 {
                     public:
@@ -1350,18 +1336,17 @@ class Alarms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value location; //type: string
-                        Value severity; //type: AlarmSeverityEnum
-                        Value group; //type: AlarmGroupsEnum
-                        Value set_time; //type: string
-                        Value set_timestamp; //type: uint64
-                        Value suppressed_time; //type: string
-                        Value suppressed_timestamp; //type: uint64
-                        Value description; //type: string
 
 
-                        class AlarmGroupsEnum;
-                        class AlarmSeverityEnum;
+                        YLeaf location; //type: string
+                        YLeaf severity; //type: AlarmSeverityEnum
+                        YLeaf group; //type: AlarmGroupsEnum
+                        YLeaf set_time; //type: string
+                        YLeaf set_timestamp; //type: uint64
+                        YLeaf suppressed_time; //type: string
+                        YLeaf suppressed_timestamp; //type: uint64
+                        YLeaf description; //type: string
+
 
 
                 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
@@ -1398,118 +1383,118 @@ class Alarms : public Entity
 class TimingBucketEnum : public Enum
 {
     public:
-        static const Enum::Value not_specified;
-        static const Enum::Value fifteen_min;
-        static const Enum::Value one_day;
+        static const Enum::YLeaf not_specified;
+        static const Enum::YLeaf fifteen_min;
+        static const Enum::YLeaf one_day;
 
 };
 
 class AlarmSeverityEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value not_reported;
-        static const Enum::Value not_alarmed;
-        static const Enum::Value minor;
-        static const Enum::Value major;
-        static const Enum::Value critical;
-        static const Enum::Value severity_last;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf not_reported;
+        static const Enum::YLeaf not_alarmed;
+        static const Enum::YLeaf minor;
+        static const Enum::YLeaf major;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf severity_last;
 
 };
 
 class AlarmDirectionEnum : public Enum
 {
     public:
-        static const Enum::Value not_specified;
-        static const Enum::Value send;
-        static const Enum::Value receive;
-        static const Enum::Value send_receive;
+        static const Enum::YLeaf not_specified;
+        static const Enum::YLeaf send;
+        static const Enum::YLeaf receive;
+        static const Enum::YLeaf send_receive;
 
 };
 
 class AlarmStatusEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value set;
-        static const Enum::Value clear;
-        static const Enum::Value suppress;
-        static const Enum::Value last;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf set;
+        static const Enum::YLeaf clear;
+        static const Enum::YLeaf suppress;
+        static const Enum::YLeaf last;
 
 };
 
 class AlarmServiceAffectingEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value not_service_affecting;
-        static const Enum::Value service_affecting;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf not_service_affecting;
+        static const Enum::YLeaf service_affecting;
 
 };
 
 class AlarmNotificationSrcEnum : public Enum
 {
     public:
-        static const Enum::Value not_specified;
-        static const Enum::Value near_end;
-        static const Enum::Value far_end;
+        static const Enum::YLeaf not_specified;
+        static const Enum::YLeaf near_end;
+        static const Enum::YLeaf far_end;
 
 };
 
 class AlarmEventEnum : public Enum
 {
     public:
-        static const Enum::Value default_;
-        static const Enum::Value notification;
-        static const Enum::Value last;
+        static const Enum::YLeaf default_;
+        static const Enum::YLeaf notification;
+        static const Enum::YLeaf last;
 
 };
 
 class AlarmClientEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value producer;
-        static const Enum::Value consumer;
-        static const Enum::Value subscriber;
-        static const Enum::Value client_last;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf producer;
+        static const Enum::YLeaf consumer;
+        static const Enum::YLeaf subscriber;
+        static const Enum::YLeaf client_last;
 
 };
 
 class AlarmClientStateEnum : public Enum
 {
     public:
-        static const Enum::Value start;
-        static const Enum::Value init;
-        static const Enum::Value connecting;
-        static const Enum::Value connected;
-        static const Enum::Value registered;
-        static const Enum::Value disconnected;
-        static const Enum::Value ready;
+        static const Enum::YLeaf start;
+        static const Enum::YLeaf init;
+        static const Enum::YLeaf connecting;
+        static const Enum::YLeaf connected;
+        static const Enum::YLeaf registered;
+        static const Enum::YLeaf disconnected;
+        static const Enum::YLeaf ready;
 
 };
 
 class AlarmGroupsEnum : public Enum
 {
     public:
-        static const Enum::Value unknown;
-        static const Enum::Value environ;
-        static const Enum::Value ethernet;
-        static const Enum::Value fabric;
-        static const Enum::Value power;
-        static const Enum::Value software;
-        static const Enum::Value slice;
-        static const Enum::Value cpu;
-        static const Enum::Value controller;
-        static const Enum::Value sonet;
-        static const Enum::Value otn;
-        static const Enum::Value sdh_controller;
-        static const Enum::Value asic;
-        static const Enum::Value fpd_infra;
-        static const Enum::Value shelf;
-        static const Enum::Value mpa;
-        static const Enum::Value ots;
-        static const Enum::Value last;
+        static const Enum::YLeaf unknown;
+        static const Enum::YLeaf environ;
+        static const Enum::YLeaf ethernet;
+        static const Enum::YLeaf fabric;
+        static const Enum::YLeaf power;
+        static const Enum::YLeaf software;
+        static const Enum::YLeaf slice;
+        static const Enum::YLeaf cpu;
+        static const Enum::YLeaf controller;
+        static const Enum::YLeaf sonet;
+        static const Enum::YLeaf otn;
+        static const Enum::YLeaf sdh_controller;
+        static const Enum::YLeaf asic;
+        static const Enum::YLeaf fpd_infra;
+        static const Enum::YLeaf shelf;
+        static const Enum::YLeaf mpa;
+        static const Enum::YLeaf ots;
+        static const Enum::YLeaf last;
 
 };
 

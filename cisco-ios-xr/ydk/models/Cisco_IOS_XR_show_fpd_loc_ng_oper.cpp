@@ -64,7 +64,7 @@ EntityPath ShowFpd::Locations::Location::Fpd::FpdInfoDetaile::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -189,7 +189,7 @@ EntityPath ShowFpd::Locations::Location::Fpd::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -766,7 +766,7 @@ EntityPath ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -858,7 +858,7 @@ EntityPath ShowFpd::HelpLocations::HelpLocation::HelpFpd::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -949,7 +949,7 @@ bool ShowFpd::HelpLocations::HelpLocation::has_operation() const
 {
     return is_set(operation)
 	|| is_set(location_name.operation)
-	|| (help_fpd !=  nullptr && is_set(help_fpd->operation));
+	|| (help_fpd !=  nullptr && help_fpd->has_operation());
 }
 
 std::string ShowFpd::HelpLocations::HelpLocation::get_segment_path() const
@@ -1800,12 +1800,12 @@ bool ShowFpd::has_data() const
 bool ShowFpd::has_operation() const
 {
     return is_set(operation)
-	|| (help_locations !=  nullptr && is_set(help_locations->operation))
-	|| (hw_module_fpd !=  nullptr && is_set(hw_module_fpd->operation))
-	|| (hw_module_fpd_help_fpd !=  nullptr && is_set(hw_module_fpd_help_fpd->operation))
-	|| (location_help !=  nullptr && is_set(location_help->operation))
-	|| (locations !=  nullptr && is_set(locations->operation))
-	|| (package !=  nullptr && is_set(package->operation));
+	|| (help_locations !=  nullptr && help_locations->has_operation())
+	|| (hw_module_fpd !=  nullptr && hw_module_fpd->has_operation())
+	|| (hw_module_fpd_help_fpd !=  nullptr && hw_module_fpd_help_fpd->has_operation())
+	|| (location_help !=  nullptr && location_help->has_operation())
+	|| (locations !=  nullptr && locations->has_operation())
+	|| (package !=  nullptr && package->has_operation());
 }
 
 std::string ShowFpd::get_segment_path() const
@@ -1822,7 +1822,7 @@ EntityPath ShowFpd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

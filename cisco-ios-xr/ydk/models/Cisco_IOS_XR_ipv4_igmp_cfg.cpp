@@ -43,7 +43,7 @@ EntityPath Igmp::Vrfs::Vrf::Traffic::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -129,7 +129,7 @@ EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -222,7 +222,7 @@ EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -314,8 +314,8 @@ bool Igmp::Vrfs::Vrf::InheritableDefaults::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
 
 std::string Igmp::Vrfs::Vrf::InheritableDefaults::get_segment_path() const
@@ -332,7 +332,7 @@ EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -486,7 +486,7 @@ EntityPath Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -578,7 +578,7 @@ EntityPath Igmp::Vrfs::Vrf::SsmAccessGroups::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -679,7 +679,7 @@ EntityPath Igmp::Vrfs::Vrf::Maximum::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -765,7 +765,7 @@ EntityPath Igmp::Vrfs::Vrf::UnicastQosAdjust::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -855,7 +855,7 @@ EntityPath Igmp::Vrfs::Vrf::Accounting::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -938,7 +938,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1029,7 +1029,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1136,7 +1136,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1272,7 +1272,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1379,7 +1379,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1494,7 +1494,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1611,7 +1611,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1726,7 +1726,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1849,7 +1849,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2016,7 +2016,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2253,7 +2253,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2346,7 +2346,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2448,10 +2448,10 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (join_groups !=  nullptr && is_set(join_groups->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation))
-	|| (static_group_group_addresses !=  nullptr && is_set(static_group_group_addresses->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (join_groups !=  nullptr && join_groups->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
+	|| (static_group_group_addresses !=  nullptr && static_group_group_addresses->has_operation());
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
@@ -2468,7 +2468,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2677,7 +2677,7 @@ EntityPath Igmp::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2804,13 +2804,13 @@ bool Igmp::Vrfs::Vrf::has_operation() const
 	|| is_set(vrf_name.operation)
 	|| is_set(robustness.operation)
 	|| is_set(ssmdns_query_group.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (ssm_access_groups !=  nullptr && is_set(ssm_access_groups->operation))
-	|| (traffic !=  nullptr && is_set(traffic->operation))
-	|| (unicast_qos_adjust !=  nullptr && is_set(unicast_qos_adjust->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (ssm_access_groups !=  nullptr && ssm_access_groups->has_operation())
+	|| (traffic !=  nullptr && traffic->has_operation())
+	|| (unicast_qos_adjust !=  nullptr && unicast_qos_adjust->has_operation());
 }
 
 std::string Igmp::Vrfs::Vrf::get_segment_path() const
@@ -3537,8 +3537,8 @@ bool Igmp::DefaultContext::InheritableDefaults::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
 
 std::string Igmp::DefaultContext::InheritableDefaults::get_segment_path() const
@@ -4161,7 +4161,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4252,7 +4252,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSou
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4359,7 +4359,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4495,7 +4495,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4602,7 +4602,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4717,7 +4717,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4834,7 +4834,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4949,7 +4949,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5072,7 +5072,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5239,7 +5239,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresse
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5476,7 +5476,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfac
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5569,7 +5569,7 @@ EntityPath Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5671,10 +5671,10 @@ bool Igmp::DefaultContext::Interfaces::Interface::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (join_groups !=  nullptr && is_set(join_groups->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation))
-	|| (static_group_group_addresses !=  nullptr && is_set(static_group_group_addresses->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (join_groups !=  nullptr && join_groups->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
+	|| (static_group_group_addresses !=  nullptr && static_group_group_addresses->has_operation());
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::get_segment_path() const
@@ -6029,14 +6029,14 @@ bool Igmp::DefaultContext::has_operation() const
     return is_set(operation)
 	|| is_set(robustness.operation)
 	|| is_set(ssmdns_query_group.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (ssm_access_groups !=  nullptr && is_set(ssm_access_groups->operation))
-	|| (traffic !=  nullptr && is_set(traffic->operation))
-	|| (unicast_qos_adjust !=  nullptr && is_set(unicast_qos_adjust->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (ssm_access_groups !=  nullptr && ssm_access_groups->has_operation())
+	|| (traffic !=  nullptr && traffic->has_operation())
+	|| (unicast_qos_adjust !=  nullptr && unicast_qos_adjust->has_operation());
 }
 
 std::string Igmp::DefaultContext::get_segment_path() const
@@ -6310,8 +6310,8 @@ bool Igmp::has_data() const
 bool Igmp::has_operation() const
 {
     return is_set(operation)
-	|| (default_context !=  nullptr && is_set(default_context->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_context !=  nullptr && default_context->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Igmp::get_segment_path() const
@@ -6328,7 +6328,7 @@ EntityPath Igmp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6642,8 +6642,8 @@ bool Amt::has_operation() const
 	|| is_set(maximum_v4_routes.operation)
 	|| is_set(maximum_v6_route_gateway.operation)
 	|| is_set(maximum_v6_routes.operation)
-	|| (relay_adv_add !=  nullptr && is_set(relay_adv_add->operation))
-	|| (relay_anycast_prefix !=  nullptr && is_set(relay_anycast_prefix->operation));
+	|| (relay_adv_add !=  nullptr && relay_adv_add->has_operation())
+	|| (relay_anycast_prefix !=  nullptr && relay_anycast_prefix->has_operation());
 }
 
 std::string Amt::get_segment_path() const
@@ -6660,7 +6660,7 @@ EntityPath Amt::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -6832,7 +6832,7 @@ EntityPath Mld::Vrfs::Vrf::Traffic::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6918,7 +6918,7 @@ EntityPath Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7011,7 +7011,7 @@ EntityPath Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7103,8 +7103,8 @@ bool Mld::Vrfs::Vrf::InheritableDefaults::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
 
 std::string Mld::Vrfs::Vrf::InheritableDefaults::get_segment_path() const
@@ -7121,7 +7121,7 @@ EntityPath Mld::Vrfs::Vrf::InheritableDefaults::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7275,7 +7275,7 @@ EntityPath Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7367,7 +7367,7 @@ EntityPath Mld::Vrfs::Vrf::SsmAccessGroups::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7468,7 +7468,7 @@ EntityPath Mld::Vrfs::Vrf::Maximum::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7554,7 +7554,7 @@ EntityPath Mld::Vrfs::Vrf::UnicastQosAdjust::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7644,7 +7644,7 @@ EntityPath Mld::Vrfs::Vrf::Accounting::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7727,7 +7727,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7818,7 +7818,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAdd
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7925,7 +7925,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8061,7 +8061,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8168,7 +8168,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8283,7 +8283,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8400,7 +8400,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8515,7 +8515,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8638,7 +8638,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::Sta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8805,7 +8805,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9042,7 +9042,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9135,7 +9135,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9237,10 +9237,10 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (join_groups !=  nullptr && is_set(join_groups->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation))
-	|| (static_group_group_addresses !=  nullptr && is_set(static_group_group_addresses->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (join_groups !=  nullptr && join_groups->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
+	|| (static_group_group_addresses !=  nullptr && static_group_group_addresses->has_operation());
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
@@ -9257,7 +9257,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9466,7 +9466,7 @@ EntityPath Mld::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9593,13 +9593,13 @@ bool Mld::Vrfs::Vrf::has_operation() const
 	|| is_set(vrf_name.operation)
 	|| is_set(robustness.operation)
 	|| is_set(ssmdns_query_group.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (ssm_access_groups !=  nullptr && is_set(ssm_access_groups->operation))
-	|| (traffic !=  nullptr && is_set(traffic->operation))
-	|| (unicast_qos_adjust !=  nullptr && is_set(unicast_qos_adjust->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (ssm_access_groups !=  nullptr && ssm_access_groups->has_operation())
+	|| (traffic !=  nullptr && traffic->has_operation())
+	|| (unicast_qos_adjust !=  nullptr && unicast_qos_adjust->has_operation());
 }
 
 std::string Mld::Vrfs::Vrf::get_segment_path() const
@@ -10326,8 +10326,8 @@ bool Mld::DefaultContext::InheritableDefaults::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
 
 std::string Mld::DefaultContext::InheritableDefaults::get_segment_path() const
@@ -10950,7 +10950,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11041,7 +11041,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSour
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11148,7 +11148,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11284,7 +11284,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11391,7 +11391,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11506,7 +11506,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11623,7 +11623,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11738,7 +11738,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11861,7 +11861,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12028,7 +12028,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12265,7 +12265,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12358,7 +12358,7 @@ EntityPath Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12460,10 +12460,10 @@ bool Mld::DefaultContext::Interfaces::Interface::has_operation() const
 	|| is_set(query_timeout.operation)
 	|| is_set(router_enable.operation)
 	|| is_set(version.operation)
-	|| (explicit_tracking !=  nullptr && is_set(explicit_tracking->operation))
-	|| (join_groups !=  nullptr && is_set(join_groups->operation))
-	|| (maximum_groups_per_interface_oor !=  nullptr && is_set(maximum_groups_per_interface_oor->operation))
-	|| (static_group_group_addresses !=  nullptr && is_set(static_group_group_addresses->operation));
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
+	|| (join_groups !=  nullptr && join_groups->has_operation())
+	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
+	|| (static_group_group_addresses !=  nullptr && static_group_group_addresses->has_operation());
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::get_segment_path() const
@@ -12818,14 +12818,14 @@ bool Mld::DefaultContext::has_operation() const
     return is_set(operation)
 	|| is_set(robustness.operation)
 	|| is_set(ssmdns_query_group.operation)
-	|| (accounting !=  nullptr && is_set(accounting->operation))
-	|| (inheritable_defaults !=  nullptr && is_set(inheritable_defaults->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (maximum !=  nullptr && is_set(maximum->operation))
-	|| (nsf !=  nullptr && is_set(nsf->operation))
-	|| (ssm_access_groups !=  nullptr && is_set(ssm_access_groups->operation))
-	|| (traffic !=  nullptr && is_set(traffic->operation))
-	|| (unicast_qos_adjust !=  nullptr && is_set(unicast_qos_adjust->operation));
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (maximum !=  nullptr && maximum->has_operation())
+	|| (nsf !=  nullptr && nsf->has_operation())
+	|| (ssm_access_groups !=  nullptr && ssm_access_groups->has_operation())
+	|| (traffic !=  nullptr && traffic->has_operation())
+	|| (unicast_qos_adjust !=  nullptr && unicast_qos_adjust->has_operation());
 }
 
 std::string Mld::DefaultContext::get_segment_path() const
@@ -13099,8 +13099,8 @@ bool Mld::has_data() const
 bool Mld::has_operation() const
 {
     return is_set(operation)
-	|| (default_context !=  nullptr && is_set(default_context->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_context !=  nullptr && default_context->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Mld::get_segment_path() const
@@ -13117,7 +13117,7 @@ EntityPath Mld::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -13204,8 +13204,8 @@ std::unique_ptr<Entity> Mld::clone_ptr()
     return std::make_unique<Mld>();
 }
 
-const Enum::Value IgmpFilterEnum::include {0, "include"};
-const Enum::Value IgmpFilterEnum::exclude {1, "exclude"};
+const Enum::YLeaf IgmpFilterEnum::include {0, "include"};
+const Enum::YLeaf IgmpFilterEnum::exclude {1, "exclude"};
 
 
 }

@@ -351,8 +351,8 @@ bool Sr::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (global_block !=  nullptr && is_set(global_block->operation))
-	|| (mappings !=  nullptr && is_set(mappings->operation));
+	|| (global_block !=  nullptr && global_block->has_operation())
+	|| (mappings !=  nullptr && mappings->has_operation());
 }
 
 std::string Sr::get_segment_path() const
@@ -369,7 +369,7 @@ EntityPath Sr::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -461,8 +461,8 @@ std::unique_ptr<Entity> Sr::clone_ptr()
     return std::make_unique<Sr>();
 }
 
-const Enum::Value SrmsMiFlagEnum::disable {0, "disable"};
-const Enum::Value SrmsMiFlagEnum::enable {1, "enable"};
+const Enum::YLeaf SrmsMiFlagEnum::disable {0, "disable"};
+const Enum::YLeaf SrmsMiFlagEnum::enable {1, "enable"};
 
 
 }

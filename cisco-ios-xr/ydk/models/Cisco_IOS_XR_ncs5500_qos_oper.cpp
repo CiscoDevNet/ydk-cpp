@@ -70,7 +70,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -198,7 +198,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -286,7 +286,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -374,7 +374,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -462,7 +462,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -550,7 +550,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -638,7 +638,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -726,7 +726,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -814,7 +814,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -909,7 +909,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1018,7 +1018,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1113,7 +1113,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1222,7 +1222,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1317,7 +1317,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1426,7 +1426,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1514,7 +1514,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1602,7 +1602,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1690,7 +1690,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1782,7 +1782,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1886,7 +1886,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1974,7 +1974,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2071,9 +2071,9 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
 	|| is_set(hardware_min_threshold_bytes.operation)
 	|| is_set(segment_size.operation)
 	|| is_set(wred_match_type.operation)
-	|| (config_max_threshold !=  nullptr && is_set(config_max_threshold->operation))
-	|| (config_min_threshold !=  nullptr && is_set(config_min_threshold->operation))
-	|| (wred_match_value !=  nullptr && is_set(wred_match_value->operation));
+	|| (config_max_threshold !=  nullptr && config_max_threshold->has_operation())
+	|| (config_min_threshold !=  nullptr && config_min_threshold->has_operation())
+	|| (wred_match_value !=  nullptr && wred_match_value->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::Wred::get_segment_path() const
@@ -2090,7 +2090,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2391,16 +2391,16 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
 	|| is_set(policer_stats_handle.operation)
 	|| is_set(priority_level.operation)
 	|| is_set(queue_type.operation)
-	|| (config_max_rate !=  nullptr && is_set(config_max_rate->operation))
-	|| (config_min_rate !=  nullptr && is_set(config_min_rate->operation))
-	|| (config_policer_average_rate !=  nullptr && is_set(config_policer_average_rate->operation))
-	|| (config_policer_conform_burst !=  nullptr && is_set(config_policer_conform_burst->operation))
-	|| (config_policer_excess_burst !=  nullptr && is_set(config_policer_excess_burst->operation))
-	|| (config_policer_peak_rate !=  nullptr && is_set(config_policer_peak_rate->operation))
-	|| (config_queue_limit !=  nullptr && is_set(config_queue_limit->operation))
-	|| (conform_action !=  nullptr && is_set(conform_action->operation))
-	|| (exceed_action !=  nullptr && is_set(exceed_action->operation))
-	|| (violate_action !=  nullptr && is_set(violate_action->operation));
+	|| (config_max_rate !=  nullptr && config_max_rate->has_operation())
+	|| (config_min_rate !=  nullptr && config_min_rate->has_operation())
+	|| (config_policer_average_rate !=  nullptr && config_policer_average_rate->has_operation())
+	|| (config_policer_conform_burst !=  nullptr && config_policer_conform_burst->has_operation())
+	|| (config_policer_excess_burst !=  nullptr && config_policer_excess_burst->has_operation())
+	|| (config_policer_peak_rate !=  nullptr && config_policer_peak_rate->has_operation())
+	|| (config_queue_limit !=  nullptr && config_queue_limit->has_operation())
+	|| (conform_action !=  nullptr && conform_action->has_operation())
+	|| (exceed_action !=  nullptr && exceed_action->has_operation())
+	|| (violate_action !=  nullptr && violate_action->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::Classes::Class_::get_segment_path() const
@@ -2417,7 +2417,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2933,7 +2933,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3029,8 +3029,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfac
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (classes !=  nullptr && is_set(classes->operation))
-	|| (policy_details !=  nullptr && is_set(policy_details->operation));
+	|| (classes !=  nullptr && classes->has_operation())
+	|| (policy_details !=  nullptr && policy_details->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_segment_path() const
@@ -3047,7 +3047,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3180,7 +3180,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberIn
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3308,7 +3308,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::PolicyDe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3436,7 +3436,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3524,7 +3524,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3612,7 +3612,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3700,7 +3700,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3788,7 +3788,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3876,7 +3876,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3964,7 +3964,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4052,7 +4052,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4147,7 +4147,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4256,7 +4256,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4351,7 +4351,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4460,7 +4460,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4555,7 +4555,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4664,7 +4664,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4752,7 +4752,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4840,7 +4840,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4928,7 +4928,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5020,7 +5020,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5124,7 +5124,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5212,7 +5212,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5309,9 +5309,9 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class
 	|| is_set(hardware_min_threshold_bytes.operation)
 	|| is_set(segment_size.operation)
 	|| is_set(wred_match_type.operation)
-	|| (config_max_threshold !=  nullptr && is_set(config_max_threshold->operation))
-	|| (config_min_threshold !=  nullptr && is_set(config_min_threshold->operation))
-	|| (wred_match_value !=  nullptr && is_set(wred_match_value->operation));
+	|| (config_max_threshold !=  nullptr && config_max_threshold->has_operation())
+	|| (config_min_threshold !=  nullptr && config_min_threshold->has_operation())
+	|| (wred_match_value !=  nullptr && wred_match_value->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::Wred::get_segment_path() const
@@ -5328,7 +5328,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5629,16 +5629,16 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class
 	|| is_set(policer_stats_handle.operation)
 	|| is_set(priority_level.operation)
 	|| is_set(queue_type.operation)
-	|| (config_max_rate !=  nullptr && is_set(config_max_rate->operation))
-	|| (config_min_rate !=  nullptr && is_set(config_min_rate->operation))
-	|| (config_policer_average_rate !=  nullptr && is_set(config_policer_average_rate->operation))
-	|| (config_policer_conform_burst !=  nullptr && is_set(config_policer_conform_burst->operation))
-	|| (config_policer_excess_burst !=  nullptr && is_set(config_policer_excess_burst->operation))
-	|| (config_policer_peak_rate !=  nullptr && is_set(config_policer_peak_rate->operation))
-	|| (config_queue_limit !=  nullptr && is_set(config_queue_limit->operation))
-	|| (conform_action !=  nullptr && is_set(conform_action->operation))
-	|| (exceed_action !=  nullptr && is_set(exceed_action->operation))
-	|| (violate_action !=  nullptr && is_set(violate_action->operation));
+	|| (config_max_rate !=  nullptr && config_max_rate->has_operation())
+	|| (config_min_rate !=  nullptr && config_min_rate->has_operation())
+	|| (config_policer_average_rate !=  nullptr && config_policer_average_rate->has_operation())
+	|| (config_policer_conform_burst !=  nullptr && config_policer_conform_burst->has_operation())
+	|| (config_policer_excess_burst !=  nullptr && config_policer_excess_burst->has_operation())
+	|| (config_policer_peak_rate !=  nullptr && config_policer_peak_rate->has_operation())
+	|| (config_queue_limit !=  nullptr && config_queue_limit->has_operation())
+	|| (conform_action !=  nullptr && conform_action->has_operation())
+	|| (exceed_action !=  nullptr && exceed_action->has_operation())
+	|| (violate_action !=  nullptr && violate_action->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes::Class_::get_segment_path() const
@@ -5655,7 +5655,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6171,7 +6171,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::Classes:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6278,9 +6278,9 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::has_operation(
 	|| is_set(interface_name.operation)
 	|| is_set(npu_id.operation)
 	|| is_set(qos_direction.operation)
-	|| (classes !=  nullptr && is_set(classes->operation))
-	|| (member_interfaces !=  nullptr && is_set(member_interfaces->operation))
-	|| (policy_details !=  nullptr && is_set(policy_details->operation));
+	|| (classes !=  nullptr && classes->has_operation())
+	|| (member_interfaces !=  nullptr && member_interfaces->has_operation())
+	|| (policy_details !=  nullptr && policy_details->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_segment_path() const
@@ -6297,7 +6297,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6463,7 +6463,7 @@ EntityPath PlatformQos::Nodes::Node::BundleInterfaces::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6591,7 +6591,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::PolicyDetails::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6719,7 +6719,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6807,7 +6807,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6895,7 +6895,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6983,7 +6983,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7071,7 +7071,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7159,7 +7159,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7247,7 +7247,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7335,7 +7335,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7430,7 +7430,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7539,7 +7539,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Exc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7634,7 +7634,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Exc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7743,7 +7743,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Vio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7838,7 +7838,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Vio
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7947,7 +7947,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::IpM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8035,7 +8035,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Com
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8123,7 +8123,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Mpl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8211,7 +8211,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8303,7 +8303,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8407,7 +8407,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8495,7 +8495,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8592,9 +8592,9 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::has
 	|| is_set(hardware_min_threshold_bytes.operation)
 	|| is_set(segment_size.operation)
 	|| is_set(wred_match_type.operation)
-	|| (config_max_threshold !=  nullptr && is_set(config_max_threshold->operation))
-	|| (config_min_threshold !=  nullptr && is_set(config_min_threshold->operation))
-	|| (wred_match_value !=  nullptr && is_set(wred_match_value->operation));
+	|| (config_max_threshold !=  nullptr && config_max_threshold->has_operation())
+	|| (config_min_threshold !=  nullptr && config_min_threshold->has_operation())
+	|| (wred_match_value !=  nullptr && wred_match_value->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wred::get_segment_path() const
@@ -8611,7 +8611,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::Wre
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8912,16 +8912,16 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::has_opera
 	|| is_set(policer_stats_handle.operation)
 	|| is_set(priority_level.operation)
 	|| is_set(queue_type.operation)
-	|| (config_max_rate !=  nullptr && is_set(config_max_rate->operation))
-	|| (config_min_rate !=  nullptr && is_set(config_min_rate->operation))
-	|| (config_policer_average_rate !=  nullptr && is_set(config_policer_average_rate->operation))
-	|| (config_policer_conform_burst !=  nullptr && is_set(config_policer_conform_burst->operation))
-	|| (config_policer_excess_burst !=  nullptr && is_set(config_policer_excess_burst->operation))
-	|| (config_policer_peak_rate !=  nullptr && is_set(config_policer_peak_rate->operation))
-	|| (config_queue_limit !=  nullptr && is_set(config_queue_limit->operation))
-	|| (conform_action !=  nullptr && is_set(conform_action->operation))
-	|| (exceed_action !=  nullptr && is_set(exceed_action->operation))
-	|| (violate_action !=  nullptr && is_set(violate_action->operation));
+	|| (config_max_rate !=  nullptr && config_max_rate->has_operation())
+	|| (config_min_rate !=  nullptr && config_min_rate->has_operation())
+	|| (config_policer_average_rate !=  nullptr && config_policer_average_rate->has_operation())
+	|| (config_policer_conform_burst !=  nullptr && config_policer_conform_burst->has_operation())
+	|| (config_policer_excess_burst !=  nullptr && config_policer_excess_burst->has_operation())
+	|| (config_policer_peak_rate !=  nullptr && config_policer_peak_rate->has_operation())
+	|| (config_queue_limit !=  nullptr && config_queue_limit->has_operation())
+	|| (conform_action !=  nullptr && conform_action->has_operation())
+	|| (exceed_action !=  nullptr && exceed_action->has_operation())
+	|| (violate_action !=  nullptr && violate_action->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::get_segment_path() const
@@ -8938,7 +8938,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::Class_::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9454,7 +9454,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::Classes::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9553,8 +9553,8 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(qos_direction.operation)
-	|| (classes !=  nullptr && is_set(classes->operation))
-	|| (policy_details !=  nullptr && is_set(policy_details->operation));
+	|| (classes !=  nullptr && classes->has_operation())
+	|| (policy_details !=  nullptr && policy_details->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -9571,7 +9571,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::Interface::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9709,7 +9709,7 @@ EntityPath PlatformQos::Nodes::Node::Interfaces::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9816,7 +9816,7 @@ EntityPath PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteCl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9912,7 +9912,7 @@ EntityPath PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteCl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10034,7 +10034,7 @@ EntityPath PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteCl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10211,7 +10211,7 @@ EntityPath PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10349,7 +10349,7 @@ EntityPath PlatformQos::Nodes::Node::RemoteInterfaces::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10450,9 +10450,9 @@ bool PlatformQos::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (bundle_interfaces !=  nullptr && is_set(bundle_interfaces->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (remote_interfaces !=  nullptr && is_set(remote_interfaces->operation));
+	|| (bundle_interfaces !=  nullptr && bundle_interfaces->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (remote_interfaces !=  nullptr && remote_interfaces->has_operation());
 }
 
 std::string PlatformQos::Nodes::Node::get_segment_path() const
@@ -10712,7 +10712,7 @@ bool PlatformQos::has_data() const
 bool PlatformQos::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PlatformQos::get_segment_path() const
@@ -10729,7 +10729,7 @@ EntityPath PlatformQos::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -10793,92 +10793,92 @@ std::unique_ptr<Entity> PlatformQos::clone_ptr()
     return std::make_unique<PlatformQos>();
 }
 
-const Enum::Value DnxQoseaShowActionEnum::action_none {0, "action-none"};
-const Enum::Value DnxQoseaShowActionEnum::action_transmit {1, "action-transmit"};
-const Enum::Value DnxQoseaShowActionEnum::action_drop {2, "action-drop"};
-const Enum::Value DnxQoseaShowActionEnum::action_mark {3, "action-mark"};
+const Enum::YLeaf DnxQoseaShowActionEnum::action_none {0, "action-none"};
+const Enum::YLeaf DnxQoseaShowActionEnum::action_transmit {1, "action-transmit"};
+const Enum::YLeaf DnxQoseaShowActionEnum::action_drop {2, "action-drop"};
+const Enum::YLeaf DnxQoseaShowActionEnum::action_mark {3, "action-mark"};
 
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_us {11, "policy-param-unit-us"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_ms {12, "policy-param-unit-ms"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_packets {14, "policy-param-unit-packets"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_cells {15, "policy-param-unit-cells"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_percent {16, "policy-param-unit-percent"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_hz {19, "policy-param-unit-hz"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_khz {20, "policy-param-unit-khz"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
-const Enum::Value PolicyParamUnitEnum::policy_param_unit_max {23, "policy-param-unit-max"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_us {11, "policy-param-unit-us"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_ms {12, "policy-param-unit-ms"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_packets {14, "policy-param-unit-packets"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_cells {15, "policy-param-unit-cells"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_percent {16, "policy-param-unit-percent"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_hz {19, "policy-param-unit-hz"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_khz {20, "policy-param-unit-khz"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
+const Enum::YLeaf PolicyParamUnitEnum::policy_param_unit_max {23, "policy-param-unit-max"};
 
-const Enum::Value DnxQoseaShowWredEnum::wred_cos {0, "wred-cos"};
-const Enum::Value DnxQoseaShowWredEnum::wred_dscp {1, "wred-dscp"};
-const Enum::Value DnxQoseaShowWredEnum::wred_precedence {2, "wred-precedence"};
-const Enum::Value DnxQoseaShowWredEnum::wred_discard_class {3, "wred-discard-class"};
-const Enum::Value DnxQoseaShowWredEnum::wred_mpls_exp {4, "wred-mpls-exp"};
-const Enum::Value DnxQoseaShowWredEnum::red_with_user_min_max {5, "red-with-user-min-max"};
-const Enum::Value DnxQoseaShowWredEnum::red_with_default_min_max {6, "red-with-default-min-max"};
-const Enum::Value DnxQoseaShowWredEnum::wred_invalid {7, "wred-invalid"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_cos {0, "wred-cos"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_dscp {1, "wred-dscp"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_precedence {2, "wred-precedence"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_discard_class {3, "wred-discard-class"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_mpls_exp {4, "wred-mpls-exp"};
+const Enum::YLeaf DnxQoseaShowWredEnum::red_with_user_min_max {5, "red-with-user-min-max"};
+const Enum::YLeaf DnxQoseaShowWredEnum::red_with_default_min_max {6, "red-with-default-min-max"};
+const Enum::YLeaf DnxQoseaShowWredEnum::wred_invalid {7, "wred-invalid"};
 
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level1 {0, "high-priority-level1"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level2 {1, "high-priority-level2"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level3 {2, "high-priority-level3"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level4 {3, "high-priority-level4"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level5 {4, "high-priority-level5"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level6 {5, "high-priority-level6"};
-const Enum::Value DnxQoseaShowHpLevelEnum::high_priority_level7 {6, "high-priority-level7"};
-const Enum::Value DnxQoseaShowHpLevelEnum::unknown {7, "unknown"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level1 {0, "high-priority-level1"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level2 {1, "high-priority-level2"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level3 {2, "high-priority-level3"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level4 {3, "high-priority-level4"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level5 {4, "high-priority-level5"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level6 {5, "high-priority-level6"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::high_priority_level7 {6, "high-priority-level7"};
+const Enum::YLeaf DnxQoseaShowHpLevelEnum::unknown {7, "unknown"};
 
-const Enum::Value QosPolicyAccountEnumEnum::qos_serv_policy_no_ac_count_pref {0, "qos-serv-policy-no-ac-count-pref"};
-const Enum::Value QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_l2 {1, "qos-serv-policy-ac-count-l2"};
-const Enum::Value QosPolicyAccountEnumEnum::qos_serv_policy_no_ac_count_l2 {2, "qos-serv-policy-no-ac-count-l2"};
-const Enum::Value QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_user_def {3, "qos-serv-policy-ac-count-user-def"};
-const Enum::Value QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_l1 {4, "qos-serv-policy-ac-count-l1"};
+const Enum::YLeaf QosPolicyAccountEnumEnum::qos_serv_policy_no_ac_count_pref {0, "qos-serv-policy-no-ac-count-pref"};
+const Enum::YLeaf QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_l2 {1, "qos-serv-policy-ac-count-l2"};
+const Enum::YLeaf QosPolicyAccountEnumEnum::qos_serv_policy_no_ac_count_l2 {2, "qos-serv-policy-no-ac-count-l2"};
+const Enum::YLeaf QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_user_def {3, "qos-serv-policy-ac-count-user-def"};
+const Enum::YLeaf QosPolicyAccountEnumEnum::qos_serv_policy_ac_count_l1 {4, "qos-serv-policy-ac-count-l1"};
 
-const Enum::Value DnxQoseaShowMarkEnum::mark_none {0, "mark-none"};
-const Enum::Value DnxQoseaShowMarkEnum::dscp {1, "dscp"};
-const Enum::Value DnxQoseaShowMarkEnum::precedence {2, "precedence"};
-const Enum::Value DnxQoseaShowMarkEnum::mpls_topmost {3, "mpls-topmost"};
-const Enum::Value DnxQoseaShowMarkEnum::mpls_imposition {4, "mpls-imposition"};
-const Enum::Value DnxQoseaShowMarkEnum::qos_group {5, "qos-group"};
-const Enum::Value DnxQoseaShowMarkEnum::discard_class {6, "discard-class"};
-const Enum::Value DnxQoseaShowMarkEnum::cos {7, "cos"};
-const Enum::Value DnxQoseaShowMarkEnum::inner_cos {8, "inner-cos"};
-const Enum::Value DnxQoseaShowMarkEnum::un_supported9 {9, "un-supported9"};
-const Enum::Value DnxQoseaShowMarkEnum::un_supported10 {10, "un-supported10"};
-const Enum::Value DnxQoseaShowMarkEnum::dscp_tunnel {11, "dscp-tunnel"};
-const Enum::Value DnxQoseaShowMarkEnum::precedence_tunnel {12, "precedence-tunnel"};
-const Enum::Value DnxQoseaShowMarkEnum::dei {13, "dei"};
-const Enum::Value DnxQoseaShowMarkEnum::dei_imposition {14, "dei-imposition"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::mark_none {0, "mark-none"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::dscp {1, "dscp"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::precedence {2, "precedence"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::mpls_topmost {3, "mpls-topmost"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::mpls_imposition {4, "mpls-imposition"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::qos_group {5, "qos-group"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::discard_class {6, "discard-class"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::cos {7, "cos"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::inner_cos {8, "inner-cos"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::un_supported9 {9, "un-supported9"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::un_supported10 {10, "un-supported10"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::dscp_tunnel {11, "dscp-tunnel"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::precedence_tunnel {12, "precedence-tunnel"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::dei {13, "dei"};
+const Enum::YLeaf DnxQoseaShowMarkEnum::dei_imposition {14, "dei-imposition"};
 
-const Enum::Value DnxQoseaShowPolicyStatusEnum::no_error {0, "no-error"};
-const Enum::Value DnxQoseaShowPolicyStatusEnum::policy_in_reset {1, "policy-in-reset"};
+const Enum::YLeaf DnxQoseaShowPolicyStatusEnum::no_error {0, "no-error"};
+const Enum::YLeaf DnxQoseaShowPolicyStatusEnum::policy_in_reset {1, "policy-in-reset"};
 
-const Enum::Value DnxQoseaShowIntfStatusEnum::state_unknown {0, "state-unknown"};
-const Enum::Value DnxQoseaShowIntfStatusEnum::state_down {1, "state-down"};
+const Enum::YLeaf DnxQoseaShowIntfStatusEnum::state_unknown {0, "state-unknown"};
+const Enum::YLeaf DnxQoseaShowIntfStatusEnum::state_down {1, "state-down"};
 
-const Enum::Value DnxQoseaShowLevelEnum::level1 {0, "level1"};
-const Enum::Value DnxQoseaShowLevelEnum::level2 {1, "level2"};
-const Enum::Value DnxQoseaShowLevelEnum::level3 {2, "level3"};
-const Enum::Value DnxQoseaShowLevelEnum::level4 {3, "level4"};
-const Enum::Value DnxQoseaShowLevelEnum::level5 {4, "level5"};
+const Enum::YLeaf DnxQoseaShowLevelEnum::level1 {0, "level1"};
+const Enum::YLeaf DnxQoseaShowLevelEnum::level2 {1, "level2"};
+const Enum::YLeaf DnxQoseaShowLevelEnum::level3 {2, "level3"};
+const Enum::YLeaf DnxQoseaShowLevelEnum::level4 {3, "level4"};
+const Enum::YLeaf DnxQoseaShowLevelEnum::level5 {4, "level5"};
 
-const Enum::Value DnxQoseaShowQueueEnum::low_priority_default_queue {0, "low-priority-default-queue"};
-const Enum::Value DnxQoseaShowQueueEnum::low_priority_queue {1, "low-priority-queue"};
-const Enum::Value DnxQoseaShowQueueEnum::high_priority_queue {2, "high-priority-queue"};
-const Enum::Value DnxQoseaShowQueueEnum::unknown_queue_type {3, "unknown-queue-type"};
+const Enum::YLeaf DnxQoseaShowQueueEnum::low_priority_default_queue {0, "low-priority-default-queue"};
+const Enum::YLeaf DnxQoseaShowQueueEnum::low_priority_queue {1, "low-priority-queue"};
+const Enum::YLeaf DnxQoseaShowQueueEnum::high_priority_queue {2, "high-priority-queue"};
+const Enum::YLeaf DnxQoseaShowQueueEnum::unknown_queue_type {3, "unknown-queue-type"};
 
 
 }

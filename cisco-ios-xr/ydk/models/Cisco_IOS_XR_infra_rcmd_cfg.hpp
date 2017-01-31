@@ -24,13 +24,14 @@ class RouterConvergence : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value event_buffer_size; //type: uint32
-        Value prefix_monitor_limit; //type: uint32
-        Value disable; //type: empty
-        Value enable; //type: empty
-        Value max_events_stored; //type: uint32
-        Value monitoring_interval; //type: uint32
 
+
+        YLeaf event_buffer_size; //type: uint32
+        YLeaf prefix_monitor_limit; //type: uint32
+        YLeaf disable; //type: empty
+        YLeaf enable; //type: empty
+        YLeaf max_events_stored; //type: uint32
+        YLeaf monitoring_interval; //type: uint32
 
     class Protocols : public Entity
     {
@@ -47,6 +48,7 @@ class RouterConvergence : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Protocol : public Entity
         {
             public:
@@ -60,9 +62,10 @@ class RouterConvergence : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value protocol_name; //type: ProtocolNameEnum
-                Value enable; //type: empty
 
+
+                YLeaf protocol_name; //type: ProtocolNameEnum
+                YLeaf enable; //type: empty
 
             class Priorities : public Entity
             {
@@ -79,6 +82,7 @@ class RouterConvergence : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class Priority : public Entity
                 {
                     public:
@@ -92,15 +96,15 @@ class RouterConvergence : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value rcmd_priority; //type: RcmdPriorityEnum
-                        Value threshold; //type: int32
-                        Value leaf_networks; //type: uint32
-                        Value disable; //type: empty
-                        Value enable; //type: empty
-                        Value frr_threshold; //type: uint32
 
 
-                        class RcmdPriorityEnum;
+                        YLeaf rcmd_priority; //type: RcmdPriorityEnum
+                        YLeaf threshold; //type: int32
+                        YLeaf leaf_networks; //type: uint32
+                        YLeaf disable; //type: empty
+                        YLeaf enable; //type: empty
+                        YLeaf frr_threshold; //type: uint32
+
 
 
                 }; // RouterConvergence::Protocols::Protocol::Priorities::Priority
@@ -113,7 +117,6 @@ class RouterConvergence : public Entity
 
 
                 std::unique_ptr<Cisco_IOS_XR_infra_rcmd_cfg::RouterConvergence::Protocols::Protocol::Priorities> priorities;
-                class ProtocolNameEnum;
 
 
         }; // RouterConvergence::Protocols::Protocol
@@ -138,11 +141,12 @@ class RouterConvergence : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value diagnostics; //type: string
-            Value diagnostics_size; //type: uint32
-            Value reports_size; //type: uint32
-            Value reports; //type: string
 
+
+            YLeaf diagnostics; //type: string
+            YLeaf diagnostics_size; //type: uint32
+            YLeaf reports_size; //type: uint32
+            YLeaf reports; //type: string
 
 
 
@@ -164,6 +168,7 @@ class RouterConvergence : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class RemoteLfa : public Entity
         {
             public:
@@ -177,8 +182,9 @@ class RouterConvergence : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value threshold; //type: uint32
 
+
+                YLeaf threshold; //type: uint32
 
 
 
@@ -206,6 +212,7 @@ class RouterConvergence : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class CollectDiagnostic : public Entity
         {
             public:
@@ -219,9 +226,10 @@ class RouterConvergence : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
-                Value enable; //type: empty
 
+
+                YLeaf node_name; //type: string
+                YLeaf enable; //type: empty
 
 
 
@@ -249,6 +257,7 @@ class RouterConvergence : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Node : public Entity
         {
             public:
@@ -262,10 +271,11 @@ class RouterConvergence : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value node_name; //type: string
-                Value disable; //type: empty
-                Value enable; //type: empty
 
+
+                YLeaf node_name; //type: string
+                YLeaf disable; //type: empty
+                YLeaf enable; //type: empty
 
 
 
@@ -291,18 +301,18 @@ class RouterConvergence : public Entity
 class RcmdPriorityEnum : public Enum
 {
     public:
-        static const Enum::Value critical;
-        static const Enum::Value high;
-        static const Enum::Value medium;
-        static const Enum::Value low;
+        static const Enum::YLeaf critical;
+        static const Enum::YLeaf high;
+        static const Enum::YLeaf medium;
+        static const Enum::YLeaf low;
 
 };
 
 class ProtocolNameEnum : public Enum
 {
     public:
-        static const Enum::Value ospf;
-        static const Enum::Value isis;
+        static const Enum::YLeaf ospf;
+        static const Enum::YLeaf isis;
 
 };
 

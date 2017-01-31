@@ -71,19 +71,6 @@ path::DataNode* get_data_node_from_entity(Entity & entity, const ydk::path::Root
 	return root_data_node;
 }
 
-static void populate_data_node(Entity & entity, path::DataNode* parent_data_node)
-{
-	EntityPath path = entity.get_entity_path(entity.parent);
-	auto data_node = parent_data_node->create(path.path);
-	if(is_set(entity.operation))
-	{
-		add_annotation_to_datanode(entity, *data_node);
-	}
-
-	populate_name_values(data_node, path);
-	walk_children(entity, data_node);
-}
-
 static void walk_children(Entity & entity, path::DataNode* data_node)
 {
 	std::map<string, Entity*> & children = entity.get_children();
@@ -95,8 +82,30 @@ static void walk_children(Entity & entity, path::DataNode* data_node)
 		if(child.second->has_operation() || child.second->has_data())
 			populate_data_node(*(child.second), data_node);
 		else
-			BOOST_LOG_TRIVIAL(trace)  <<"Child has no data";
+			BOOST_LOG_TRIVIAL(trace)  <<"Child has no data and no operations";
 	}
+}
+
+static void populate_data_node(Entity & entity, path::DataNode* parent_data_node)
+{
+	EntityPath path = entity.get_entity_path(entity.parent);
+	path::DataNode* data_node = nullptr;
+	if(entity.has_data())
+	{
+		data_node = parent_data_node->create(path.path);
+	}
+	else
+	{
+		data_node = parent_data_node->create_filter(entity.yang_name);
+	}
+
+	if(is_set(entity.operation))
+	{
+		add_annotation_to_datanode(entity, *data_node);
+	}
+
+	populate_name_values(data_node, path);
+	walk_children(entity, data_node);
 }
 
 static void populate_name_values(path::DataNode* data_node, EntityPath & path)
@@ -104,14 +113,26 @@ static void populate_name_values(path::DataNode* data_node, EntityPath & path)
 	BOOST_LOG_TRIVIAL(trace) <<"Leaf count: "<<path.value_paths.size();
 	for(const std::pair<std::string, LeafData> & name_value : path.value_paths)
 	{
-		auto result = data_node->create(name_value.first, name_value.second.value);
-		if(is_set(name_value.second.operation))
+		path::DataNode* result = nullptr;
+		LeafData leaf_data = name_value.second;
+		BOOST_LOG_TRIVIAL(trace)  <<"Creating child "<<name_value.first<<" of "<<data_node->path()
+				<<" with value: \""<<leaf_data.value<<"\", is_set: "<<leaf_data.is_set;
+
+		if(leaf_data.is_set)
+		{
+			result = data_node->create(name_value.first, leaf_data.value);
+		}
+		else
+		{
+			result = data_node->create_filter(name_value.first, leaf_data.value);
+		}
+
+		if(is_set(leaf_data.operation))
 		{
 			add_annotation_to_datanode(name_value, *result);
 		}
 
-		BOOST_LOG_TRIVIAL(trace)  <<"Creating child "<<name_value.first<<" of "<<data_node->path()
-				<<" with value: \""<<name_value.second.value<<"\" . Result: "<<(result?"success":"failure");
+		BOOST_LOG_TRIVIAL(trace)  << "Result: "<<(result?"success":"failure");
 	}
 }
 
@@ -144,7 +165,7 @@ static void add_annotation_to_datanode(const std::pair<std::string, LeafData> & 
 static path::Annotation get_annotation(EditOperation operation)
 {
 	if(operation == EditOperation::not_set)
-		BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Invalid operation"});
+		BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Invalid operation"});
 	return {IETF_NETCONF_MODULE_NAME, "operation", to_string(operation)};
 }
 

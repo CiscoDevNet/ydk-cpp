@@ -109,7 +109,7 @@ EntityPath FibStatistics::Nodes::Node::Drops::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -289,7 +289,7 @@ bool FibStatistics::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (drops !=  nullptr && is_set(drops->operation));
+	|| (drops !=  nullptr && drops->has_operation());
 }
 
 std::string FibStatistics::Nodes::Node::get_segment_path() const
@@ -503,7 +503,7 @@ bool FibStatistics::has_data() const
 bool FibStatistics::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string FibStatistics::get_segment_path() const
@@ -520,7 +520,7 @@ EntityPath FibStatistics::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -658,7 +658,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -843,7 +843,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::IssuState::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1023,7 +1023,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::ExclusiveL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1167,7 +1167,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::SharedLoad
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1311,7 +1311,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::CrossShare
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1455,7 +1455,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::LabelShare
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1703,10 +1703,10 @@ bool Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::has_operation() 
 	|| is_set(total_load_share_element_bytes.operation)
 	|| is_set(unresolve_entries.operation)
 	|| is_set(vrf_name.operation)
-	|| (cross_shared_load_sharing_element !=  nullptr && is_set(cross_shared_load_sharing_element->operation))
-	|| (exclusive_load_sharing_element !=  nullptr && is_set(exclusive_load_sharing_element->operation))
-	|| (label_shared_load_sharing_element !=  nullptr && is_set(label_shared_load_sharing_element->operation))
-	|| (shared_load_sharing_element !=  nullptr && is_set(shared_load_sharing_element->operation));
+	|| (cross_shared_load_sharing_element !=  nullptr && cross_shared_load_sharing_element->has_operation())
+	|| (exclusive_load_sharing_element !=  nullptr && exclusive_load_sharing_element->has_operation())
+	|| (label_shared_load_sharing_element !=  nullptr && label_shared_load_sharing_element->has_operation())
+	|| (shared_load_sharing_element !=  nullptr && shared_load_sharing_element->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::get_segment_path() const
@@ -1723,7 +1723,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::Summary::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2107,7 +2107,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Summaries::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2187,7 +2187,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::~SesaPlSum
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_data() const
 {
-    for (auto const & leaf : sep_num_ecd_pl_per_interest.getValues())
+    for (auto const & leaf : sep_num_ecd_pl_per_interest.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -2198,13 +2198,14 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_d
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum::has_operation() const
 {
-    for (auto const & leaf : sep_num_ecd_pl_per_interest.getValues())
+    for (auto const & leaf : sep_num_ecd_pl_per_interest.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(sep_num_ecd_pathlist.operation)
+	|| is_set(sep_num_ecd_pl_per_interest.operation)
 	|| is_set(sep_num_ecd_pl_unresolved.operation);
 }
 
@@ -2222,7 +2223,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2303,7 +2304,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::has_operation() 
 {
     return is_set(operation)
 	|| is_set(sesa_num_client.operation)
-	|| (sesa_pl_sum !=  nullptr && is_set(sesa_pl_sum->operation));
+	|| (sesa_pl_sum !=  nullptr && sesa_pl_sum->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_segment_path() const
@@ -2320,7 +2321,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2426,7 +2427,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2516,7 +2517,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 	|| is_set(frr_prefix.operation)
 	|| is_set(frr_protocol_type.operation)
 	|| is_set(frr_switching_time.operation)
-	|| (frr_timestamp !=  nullptr && is_set(frr_timestamp->operation));
+	|| (frr_timestamp !=  nullptr && frr_timestamp->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::Logs::Log::get_segment_path() const
@@ -2533,7 +2534,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2668,7 +2669,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2759,7 +2760,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface:
 {
     return is_set(operation)
 	|| is_set(frr_interface_name.operation)
-	|| (logs !=  nullptr && is_set(logs->operation));
+	|| (logs !=  nullptr && logs->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInterface::get_segment_path() const
@@ -2776,7 +2777,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::FrrInte
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2886,7 +2887,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::FrrInterfaces::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2973,7 +2974,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::has_data() const
 bool Fib::Nodes::Node::Protocols::Protocol::FrrLog::has_operation() const
 {
     return is_set(operation)
-	|| (frr_interfaces !=  nullptr && is_set(frr_interfaces->operation));
+	|| (frr_interfaces !=  nullptr && frr_interfaces->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_segment_path() const
@@ -2990,7 +2991,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::FrrLog::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3088,7 +3089,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3168,7 +3169,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3248,7 +3249,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3328,7 +3329,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3422,17 +3423,17 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
         if(tunnel_is_forward_class[index]->has_data())
             return true;
     }
-    for (auto const & leaf : interface_handle.getValues())
+    for (auto const & leaf : interface_handle.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sanity_flag.getValues())
+    for (auto const & leaf : sanity_flag.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : weights_of_path.getValues())
+    for (auto const & leaf : weights_of_path.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3476,22 +3477,23 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
         if(tunnel_is_forward_class[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : interface_handle.getValues())
+    for (auto const & leaf : interface_handle.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sanity_flag.getValues())
+    for (auto const & leaf : sanity_flag.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : weights_of_path.getValues())
+    for (auto const & leaf : weights_of_path.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(interface_handle.operation)
 	|| is_set(is_pbts_info_valid.operation)
 	|| is_set(ldi_next_hop_buckets.operation)
 	|| is_set(level_ofldis.operation)
@@ -3506,7 +3508,9 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| is_set(pbts_fallback_mapped_class.operation)
 	|| is_set(platform_hardware_information.operation)
 	|| is_set(round_robin_disable.operation)
-	|| is_set(tunnel_class_value.operation);
+	|| is_set(sanity_flag.operation)
+	|| is_set(tunnel_class_value.operation)
+	|| is_set(weights_of_path.operation);
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_segment_path() const
@@ -3523,7 +3527,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3815,7 +3819,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| is_set(prefix_of_owner.operation)
 	|| is_set(total_bytes_through_load_information.operation)
 	|| is_set(total_packets_through_load_information.operation)
-	|| (load_informtion_internal_data !=  nullptr && is_set(load_informtion_internal_data->operation));
+	|| (load_informtion_internal_data !=  nullptr && load_informtion_internal_data->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::LoadshareInformation::get_segment_path() const
@@ -3832,7 +3836,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4089,7 +4093,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| is_set(remote_adjacency_flag.operation)
 	|| is_set(switch_compontent_id.operation)
 	|| is_set(traffic_index_for_packets.operation)
-	|| (loadshare_information !=  nullptr && is_set(loadshare_information->operation));
+	|| (loadshare_information !=  nullptr && loadshare_information->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::DetailFibEntryInformation::get_segment_path() const
@@ -4106,7 +4110,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4405,7 +4409,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4529,7 +4533,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4760,7 +4764,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4971,7 +4975,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetai
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_data() const
 {
-    for (auto const & leaf : lstack.getValues())
+    for (auto const & leaf : lstack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -4983,12 +4987,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_operation() const
 {
-    for (auto const & leaf : lstack.getValues())
+    for (auto const & leaf : lstack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(lstack.operation)
 	|| is_set(nh_address.operation)
 	|| is_set(number_of_labels.operation)
 	|| is_set(out_interface.operation);
@@ -5008,7 +5013,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5129,7 +5134,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5315,8 +5320,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| is_set(recursive_path.operation)
 	|| is_set(resolved_path.operation)
 	|| is_set(via_label_to_recurse.operation)
-	|| (more_detail_about_path !=  nullptr && is_set(more_detail_about_path->operation))
-	|| (mpls_information_for_path !=  nullptr && is_set(mpls_information_for_path->operation));
+	|| (more_detail_about_path !=  nullptr && more_detail_about_path->has_operation())
+	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::FibEntryPath::FibShTblPath::get_segment_path() const
@@ -5333,7 +5338,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5566,7 +5571,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5764,8 +5769,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefix
 	|| is_set(type_of_ldi_lw_ldi.operation)
 	|| is_set(version_of_route.operation)
 	|| is_set(zero_by_zero_route_as_default.operation)
-	|| (detail_fib_entry_information !=  nullptr && is_set(detail_fib_entry_information->operation))
-	|| (fib_entry_path !=  nullptr && is_set(fib_entry_path->operation));
+	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_operation())
+	|| (fib_entry_path !=  nullptr && fib_entry_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::IpPrefixDetail::get_segment_path() const
@@ -5782,7 +5787,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::Ip
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6085,7 +6090,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6210,7 +6215,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::ExclusiveL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6354,7 +6359,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::SharedLoad
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6498,7 +6503,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::CrossShare
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6642,7 +6647,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::LabelShare
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6881,10 +6886,10 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::has_operation() 
 	|| is_set(stale_prefix_deletes.operation)
 	|| is_set(total_load_share_element_bytes.operation)
 	|| is_set(unresolve_entries.operation)
-	|| (cross_shared_load_sharing_element !=  nullptr && is_set(cross_shared_load_sharing_element->operation))
-	|| (exclusive_load_sharing_element !=  nullptr && is_set(exclusive_load_sharing_element->operation))
-	|| (label_shared_load_sharing_element !=  nullptr && is_set(label_shared_load_sharing_element->operation))
-	|| (shared_load_sharing_element !=  nullptr && is_set(shared_load_sharing_element->operation));
+	|| (cross_shared_load_sharing_element !=  nullptr && cross_shared_load_sharing_element->has_operation())
+	|| (exclusive_load_sharing_element !=  nullptr && exclusive_load_sharing_element->has_operation())
+	|| (label_shared_load_sharing_element !=  nullptr && label_shared_load_sharing_element->has_operation())
+	|| (shared_load_sharing_element !=  nullptr && shared_load_sharing_element->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_segment_path() const
@@ -6901,7 +6906,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7302,7 +7307,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7429,7 +7434,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo:
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::has_data() const
 {
-    for (auto const & leaf : evt_data.getValues())
+    for (auto const & leaf : evt_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7443,12 +7448,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Interface
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibIdbHist::EvtEntry::has_operation() const
 {
-    for (auto const & leaf : evt_data.getValues())
+    for (auto const & leaf : evt_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(evt_data.operation)
 	|| is_set(evt_many.operation)
 	|| is_set(evt_name.operation)
 	|| is_set(evt_sticky.operation)
@@ -7470,7 +7476,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7586,7 +7592,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7674,7 +7680,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo:
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::has_data() const
 {
-    for (auto const & leaf : evt_data.getValues())
+    for (auto const & leaf : evt_data.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -7688,12 +7694,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Interface
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::FibSrteHeadHist::EvtEntry::has_operation() const
 {
-    for (auto const & leaf : evt_data.getValues())
+    for (auto const & leaf : evt_data.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(evt_data.operation)
 	|| is_set(evt_many.operation)
 	|| is_set(evt_name.operation)
 	|| is_set(evt_sticky.operation)
@@ -7715,7 +7722,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7831,7 +7838,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7928,8 +7935,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Interface
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::has_operation() const
 {
     return is_set(operation)
-	|| (fib_idb_hist !=  nullptr && is_set(fib_idb_hist->operation))
-	|| (fib_srte_head_hist !=  nullptr && is_set(fib_srte_head_hist->operation));
+	|| (fib_idb_hist !=  nullptr && fib_idb_hist->has_operation())
+	|| (fib_srte_head_hist !=  nullptr && fib_srte_head_hist->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::SiInternal::get_segment_path() const
@@ -7946,7 +7953,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8149,8 +8156,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Interface
 	|| is_set(reference_count.operation)
 	|| is_set(tunnel_interface_flag.operation)
 	|| is_set(vrf_local_cef_information_pointer.operation)
-	|| (detail_fib_int_information !=  nullptr && is_set(detail_fib_int_information->operation))
-	|| (si_internal !=  nullptr && is_set(si_internal->operation));
+	|| (detail_fib_int_information !=  nullptr && detail_fib_int_information->has_operation())
+	|| (si_internal !=  nullptr && si_internal->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::Interfaces::Interface::get_segment_path() const
@@ -8167,7 +8174,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8445,7 +8452,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8536,7 +8543,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Interface
 {
     return is_set(operation)
 	|| is_set(link_type.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::InterfaceInfo::get_segment_path() const
@@ -8553,7 +8560,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8663,7 +8670,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8764,7 +8771,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8844,7 +8851,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8924,7 +8931,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9004,7 +9011,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9098,17 +9105,17 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
         if(tunnel_is_forward_class[index]->has_data())
             return true;
     }
-    for (auto const & leaf : interface_handle.getValues())
+    for (auto const & leaf : interface_handle.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : sanity_flag.getValues())
+    for (auto const & leaf : sanity_flag.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : weights_of_path.getValues())
+    for (auto const & leaf : weights_of_path.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9152,22 +9159,23 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
         if(tunnel_is_forward_class[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : interface_handle.getValues())
+    for (auto const & leaf : interface_handle.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : sanity_flag.getValues())
+    for (auto const & leaf : sanity_flag.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : weights_of_path.getValues())
+    for (auto const & leaf : weights_of_path.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(interface_handle.operation)
 	|| is_set(is_pbts_info_valid.operation)
 	|| is_set(ldi_next_hop_buckets.operation)
 	|| is_set(level_ofldis.operation)
@@ -9182,7 +9190,9 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 	|| is_set(pbts_fallback_mapped_class.operation)
 	|| is_set(platform_hardware_information.operation)
 	|| is_set(round_robin_disable.operation)
-	|| is_set(tunnel_class_value.operation);
+	|| is_set(sanity_flag.operation)
+	|| is_set(tunnel_class_value.operation)
+	|| is_set(weights_of_path.operation);
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::LoadInformtionInternalData::get_segment_path() const
@@ -9199,7 +9209,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9491,7 +9501,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 	|| is_set(prefix_of_owner.operation)
 	|| is_set(total_bytes_through_load_information.operation)
 	|| is_set(total_packets_through_load_information.operation)
-	|| (load_informtion_internal_data !=  nullptr && is_set(load_informtion_internal_data->operation));
+	|| (load_informtion_internal_data !=  nullptr && load_informtion_internal_data->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::LoadshareInformation::get_segment_path() const
@@ -9508,7 +9518,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9765,7 +9775,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 	|| is_set(remote_adjacency_flag.operation)
 	|| is_set(switch_compontent_id.operation)
 	|| is_set(traffic_index_for_packets.operation)
-	|| (loadshare_information !=  nullptr && is_set(loadshare_information->operation));
+	|| (loadshare_information !=  nullptr && loadshare_information->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation::get_segment_path() const
@@ -9782,7 +9792,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10081,7 +10091,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10205,7 +10215,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10436,7 +10446,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10647,7 +10657,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief:
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_data() const
 {
-    for (auto const & leaf : lstack.getValues())
+    for (auto const & leaf : lstack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -10659,12 +10669,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::MplsInformationForPath::IgpLabelStackArray::has_operation() const
 {
-    for (auto const & leaf : lstack.getValues())
+    for (auto const & leaf : lstack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
+	|| is_set(lstack.operation)
 	|| is_set(nh_address.operation)
 	|| is_set(number_of_labels.operation)
 	|| is_set(out_interface.operation);
@@ -10684,7 +10695,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10805,7 +10816,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10991,8 +11002,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 	|| is_set(recursive_path.operation)
 	|| is_set(resolved_path.operation)
 	|| is_set(via_label_to_recurse.operation)
-	|| (more_detail_about_path !=  nullptr && is_set(more_detail_about_path->operation))
-	|| (mpls_information_for_path !=  nullptr && is_set(mpls_information_for_path->operation));
+	|| (more_detail_about_path !=  nullptr && more_detail_about_path->has_operation())
+	|| (mpls_information_for_path !=  nullptr && mpls_information_for_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath::FibShTblPath::get_segment_path() const
@@ -11009,7 +11020,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11242,7 +11253,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11440,8 +11451,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixB
 	|| is_set(type_of_ldi_lw_ldi.operation)
 	|| is_set(version_of_route.operation)
 	|| is_set(zero_by_zero_route_as_default.operation)
-	|| (detail_fib_entry_information !=  nullptr && is_set(detail_fib_entry_information->operation))
-	|| (fib_entry_path !=  nullptr && is_set(fib_entry_path->operation));
+	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_operation())
+	|| (fib_entry_path !=  nullptr && fib_entry_path->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::get_segment_path() const
@@ -11458,7 +11469,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11761,7 +11772,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11867,10 +11878,10 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (interface_infos !=  nullptr && is_set(interface_infos->operation))
-	|| (ip_prefix_briefs !=  nullptr && is_set(ip_prefix_briefs->operation))
-	|| (ip_prefix_details !=  nullptr && is_set(ip_prefix_details->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interface_infos !=  nullptr && interface_infos->has_operation())
+	|| (ip_prefix_briefs !=  nullptr && ip_prefix_briefs->has_operation())
+	|| (ip_prefix_details !=  nullptr && ip_prefix_details->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_segment_path() const
@@ -11887,7 +11898,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12066,7 +12077,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Vrfs::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12146,7 +12157,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSu
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::has_data() const
 {
-    for (auto const & leaf : sep_num_ecd_pl_per_interest.getValues())
+    for (auto const & leaf : sep_num_ecd_pl_per_interest.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -12157,13 +12168,14 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalCli
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::SesPlSum::has_operation() const
 {
-    for (auto const & leaf : sep_num_ecd_pl_per_interest.getValues())
+    for (auto const & leaf : sep_num_ecd_pl_per_interest.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(sep_num_ecd_pathlist.operation)
+	|| is_set(sep_num_ecd_pl_per_interest.operation)
 	|| is_set(sep_num_ecd_pl_unresolved.operation);
 }
 
@@ -12181,7 +12193,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12286,7 +12298,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalCli
 	|| is_set(ses_feci_fib_proto.operation)
 	|| is_set(ses_num_pending.operation)
 	|| is_set(ses_num_regs.operation)
-	|| (ses_pl_sum !=  nullptr && is_set(ses_pl_sum->operation));
+	|| (ses_pl_sum !=  nullptr && ses_pl_sum->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::ExternalClientSummary::get_segment_path() const
@@ -12303,7 +12315,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exter
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12453,7 +12465,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12593,7 +12605,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoSta
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12778,7 +12790,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12934,7 +12946,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13014,7 +13026,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13094,7 +13106,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcL
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13174,7 +13186,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::FpcR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13357,7 +13369,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13664,7 +13676,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13787,7 +13799,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13914,7 +13926,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlatf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14045,7 +14057,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14166,7 +14178,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtrie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14316,17 +14328,17 @@ Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::~MiProtoDbgStat()
 
 bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_data() const
 {
-    for (auto const & leaf : fpd_gbltbl_src_entry.getValues())
+    for (auto const & leaf : fpd_gbltbl_src_entry.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : fpd_num_retry.getValues())
+    for (auto const & leaf : fpd_num_retry.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : fpd_vrftbl_src_entry.getValues())
+    for (auto const & leaf : fpd_vrftbl_src_entry.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14383,17 +14395,17 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_data() con
 
 bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_operation() const
 {
-    for (auto const & leaf : fpd_gbltbl_src_entry.getValues())
+    for (auto const & leaf : fpd_gbltbl_src_entry.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : fpd_num_retry.getValues())
+    for (auto const & leaf : fpd_num_retry.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : fpd_vrftbl_src_entry.getValues())
+    for (auto const & leaf : fpd_vrftbl_src_entry.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -14411,6 +14423,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_operation(
 	|| is_set(fpd_bcdl_msgs.operation)
 	|| is_set(fpd_gbltbl_entries.operation)
 	|| is_set(fpd_gbltbl_rej_entries.operation)
+	|| is_set(fpd_gbltbl_src_entry.operation)
 	|| is_set(fpd_lbl_recycled.operation)
 	|| is_set(fpd_ldi_avg_backup_activate_time.operation)
 	|| is_set(fpd_ldi_backup_activate_count.operation)
@@ -14423,6 +14436,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_operation(
 	|| is_set(fpd_ldi_total_backup_activate_time.operation)
 	|| is_set(fpd_num_allocs.operation)
 	|| is_set(fpd_num_frees.operation)
+	|| is_set(fpd_num_retry.operation)
 	|| is_set(fpd_num_retry_touts.operation)
 	|| is_set(fpd_num_tbls.operation)
 	|| is_set(fpd_pl_backup_disable_count.operation)
@@ -14445,8 +14459,9 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::has_operation(
 	|| is_set(fpd_version_mismatch_drops.operation)
 	|| is_set(fpd_vrftbl_entries.operation)
 	|| is_set(fpd_vrftbl_rej_entries.operation)
-	|| (fpd_gtrie_timing !=  nullptr && is_set(fpd_gtrie_timing->operation))
-	|| (fpd_platf_upd_stats !=  nullptr && is_set(fpd_platf_upd_stats->operation));
+	|| is_set(fpd_vrftbl_src_entry.operation)
+	|| (fpd_gtrie_timing !=  nullptr && fpd_gtrie_timing->has_operation())
+	|| (fpd_platf_upd_stats !=  nullptr && fpd_platf_upd_stats->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_segment_path() const
@@ -14463,7 +14478,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14809,7 +14824,7 @@ Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::~MiIdbPurgeCntr()
 
 bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::has_data() const
 {
-    for (auto const & leaf : fpp_cntr.getValues())
+    for (auto const & leaf : fpp_cntr.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -14819,12 +14834,13 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::has_data() con
 
 bool Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::has_operation() const
 {
-    for (auto const & leaf : fpp_cntr.getValues())
+    for (auto const & leaf : fpp_cntr.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    return is_set(operation);
+    return is_set(operation)
+	|| is_set(fpp_cntr.operation);
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_segment_path() const
@@ -14841,7 +14857,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14934,7 +14950,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15076,7 +15092,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15259,42 +15275,42 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_data() const
         if(mi_proto_dbg_stat[index]->has_data())
             return true;
     }
-    for (auto const & leaf : mi_cpuless_node.getValues())
+    for (auto const & leaf : mi_cpuless_node.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_idb_ext_cleanup_failed_count.getValues())
+    for (auto const & leaf : mi_idb_ext_cleanup_failed_count.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_idb_lsec_enabled_num.getValues())
+    for (auto const & leaf : mi_idb_lsec_enabled_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_lrpf_num.getValues())
+    for (auto const & leaf : mi_lrpf_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_lrpf_stats_act.getValues())
+    for (auto const & leaf : mi_lrpf_stats_act.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_lrpf_stats_fail.getValues())
+    for (auto const & leaf : mi_lrpf_stats_fail.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_num_lisp_eid.getValues())
+    for (auto const & leaf : mi_num_lisp_eid.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : mi_num_lisp_valid_eid.getValues())
+    for (auto const & leaf : mi_num_lisp_valid_eid.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -15345,42 +15361,42 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_operation() const
         if(mi_proto_dbg_stat[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : mi_cpuless_node.getValues())
+    for (auto const & leaf : mi_cpuless_node.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_idb_ext_cleanup_failed_count.getValues())
+    for (auto const & leaf : mi_idb_ext_cleanup_failed_count.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_idb_lsec_enabled_num.getValues())
+    for (auto const & leaf : mi_idb_lsec_enabled_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_lrpf_num.getValues())
+    for (auto const & leaf : mi_lrpf_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_lrpf_stats_act.getValues())
+    for (auto const & leaf : mi_lrpf_stats_act.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_lrpf_stats_fail.getValues())
+    for (auto const & leaf : mi_lrpf_stats_fail.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_num_lisp_eid.getValues())
+    for (auto const & leaf : mi_num_lisp_eid.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : mi_num_lisp_valid_eid.getValues())
+    for (auto const & leaf : mi_num_lisp_valid_eid.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -15390,8 +15406,16 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_operation() const
 	|| is_set(mi_cpu_time.operation)
 	|| is_set(mi_cpuless_count.operation)
 	|| is_set(mi_cpuless_init.operation)
+	|| is_set(mi_cpuless_node.operation)
+	|| is_set(mi_idb_ext_cleanup_failed_count.operation)
+	|| is_set(mi_idb_lsec_enabled_num.operation)
 	|| is_set(mi_idb_recycle_cleanup_count.operation)
 	|| is_set(mi_idb_recycle_count.operation)
+	|| is_set(mi_lrpf_num.operation)
+	|| is_set(mi_lrpf_stats_act.operation)
+	|| is_set(mi_lrpf_stats_fail.operation)
+	|| is_set(mi_num_lisp_eid.operation)
+	|| is_set(mi_num_lisp_valid_eid.operation)
 	|| is_set(mi_num_mgmt_list.operation)
 	|| is_set(mi_num_virtual_ll_addresses_added.operation)
 	|| is_set(mi_num_virtual_ll_addresses_cached.operation)
@@ -15406,8 +15430,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::Misc::has_operation() const
 	|| is_set(mi_tot_dnld_time.operation)
 	|| is_set(mi_tot_gtrie_time.operation)
 	|| is_set(mi_tot_plat_upd_time.operation)
-	|| (mi_issu_state !=  nullptr && is_set(mi_issu_state->operation))
-	|| (mi_plat_capabilities !=  nullptr && is_set(mi_plat_capabilities->operation));
+	|| (mi_issu_state !=  nullptr && mi_issu_state->has_operation())
+	|| (mi_plat_capabilities !=  nullptr && mi_plat_capabilities->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::Misc::get_segment_path() const
@@ -15424,7 +15448,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::Misc::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15800,7 +15824,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15888,7 +15912,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15968,8 +15992,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
 {
     return is_set(operation)
 	|| is_set(type.operation)
-	|| (lsm !=  nullptr && is_set(lsm->operation))
-	|| (pfx !=  nullptr && is_set(pfx->operation));
+	|| (lsm !=  nullptr && lsm->has_operation())
+	|| (pfx !=  nullptr && pfx->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::get_segment_path() const
@@ -15986,7 +16010,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16132,7 +16156,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::has
 	|| is_set(source.operation)
 	|| is_set(source_xr.operation)
 	|| is_set(update_ts.operation)
-	|| (ext !=  nullptr && is_set(ext->operation));
+	|| (ext !=  nullptr && ext->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::get_segment_path() const
@@ -16149,7 +16173,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflic
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16309,7 +16333,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16396,7 +16420,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::LocalLabel::has_data() const
 bool Fib::Nodes::Node::Protocols::Protocol::LocalLabel::has_operation() const
 {
     return is_set(operation)
-	|| (conflicts !=  nullptr && is_set(conflicts->operation));
+	|| (conflicts !=  nullptr && conflicts->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_segment_path() const
@@ -16413,7 +16437,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::LocalLabel::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16536,14 +16560,14 @@ bool Fib::Nodes::Node::Protocols::Protocol::has_operation() const
 {
     return is_set(operation)
 	|| is_set(protocol_name.operation)
-	|| (external_client_summaries !=  nullptr && is_set(external_client_summaries->operation))
-	|| (external_summary_all !=  nullptr && is_set(external_summary_all->operation))
-	|| (frr_log !=  nullptr && is_set(frr_log->operation))
-	|| (issu_state !=  nullptr && is_set(issu_state->operation))
-	|| (local_label !=  nullptr && is_set(local_label->operation))
-	|| (misc !=  nullptr && is_set(misc->operation))
-	|| (summaries !=  nullptr && is_set(summaries->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (external_client_summaries !=  nullptr && external_client_summaries->has_operation())
+	|| (external_summary_all !=  nullptr && external_summary_all->has_operation())
+	|| (frr_log !=  nullptr && frr_log->has_operation())
+	|| (issu_state !=  nullptr && issu_state->has_operation())
+	|| (local_label !=  nullptr && local_label->has_operation())
+	|| (misc !=  nullptr && misc->has_operation())
+	|| (summaries !=  nullptr && summaries->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::get_segment_path() const
@@ -16560,7 +16584,7 @@ EntityPath Fib::Nodes::Node::Protocols::Protocol::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16831,7 +16855,7 @@ EntityPath Fib::Nodes::Node::Protocols::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16922,7 +16946,7 @@ bool Fib::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (protocols !=  nullptr && is_set(protocols->operation));
+	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
 std::string Fib::Nodes::Node::get_segment_path() const
@@ -17136,7 +17160,7 @@ bool Fib::has_data() const
 bool Fib::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Fib::get_segment_path() const
@@ -17153,7 +17177,7 @@ EntityPath Fib::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -17336,7 +17360,7 @@ EntityPath MplsForwarding::Nodes::Node::ForwardingSummary::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17556,7 +17580,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17675,7 +17699,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17806,7 +17830,7 @@ MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Labe
 
 bool MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::has_data() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -17824,13 +17848,14 @@ bool MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail:
 
 bool MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::LabelInformationDetail::has_operation() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(l3_mtu.operation)
+	|| is_set(label_stack.operation)
 	|| is_set(mac_size.operation)
 	|| is_set(next_hop_interface.operation)
 	|| is_set(next_hop_protocol.operation)
@@ -17855,7 +17880,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18025,7 +18050,7 @@ bool MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail:
 	|| is_set(tunnel_interface.operation)
 	|| is_set(tx_bytes.operation)
 	|| is_set(tx_packets.operation)
-	|| (label_information_detail !=  nullptr && is_set(label_information_detail->operation));
+	|| (label_information_detail !=  nullptr && label_information_detail->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::get_segment_path() const
@@ -18042,7 +18067,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18300,8 +18325,8 @@ bool MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail:
 	|| is_set(multicast_label.operation)
 	|| is_set(path_list_flags.operation)
 	|| is_set(path_list_referance_count.operation)
-	|| (ldi_information !=  nullptr && is_set(ldi_information->operation))
-	|| (multicast_information !=  nullptr && is_set(multicast_information->operation));
+	|| (ldi_information !=  nullptr && ldi_information->has_operation())
+	|| (multicast_information !=  nullptr && multicast_information->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_segment_path() const
@@ -18318,7 +18343,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::ForwardingD
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18577,7 +18602,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18678,7 +18703,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Ldi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18797,7 +18822,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Mul
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18928,7 +18953,7 @@ MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformati
 
 bool MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::has_data() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -18946,13 +18971,14 @@ bool MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInfo
 
 bool MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::LabelInformationDetail::has_operation() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(l3_mtu.operation)
+	|| is_set(label_stack.operation)
 	|| is_set(mac_size.operation)
 	|| is_set(next_hop_interface.operation)
 	|| is_set(next_hop_protocol.operation)
@@ -18977,7 +19003,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Lab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19147,7 +19173,7 @@ bool MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInfo
 	|| is_set(tunnel_interface.operation)
 	|| is_set(tx_bytes.operation)
 	|| is_set(tx_packets.operation)
-	|| (label_information_detail !=  nullptr && is_set(label_information_detail->operation));
+	|| (label_information_detail !=  nullptr && label_information_detail->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::LabelInformation::get_segment_path() const
@@ -19164,7 +19190,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::Lab
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19422,8 +19448,8 @@ bool MplsForwarding::Nodes::Node::LabelFib::Informations::Information::has_opera
 	|| is_set(multicast_label.operation)
 	|| is_set(path_list_flags.operation)
 	|| is_set(path_list_referance_count.operation)
-	|| (ldi_information !=  nullptr && is_set(ldi_information->operation))
-	|| (multicast_information !=  nullptr && is_set(multicast_information->operation));
+	|| (ldi_information !=  nullptr && ldi_information->has_operation())
+	|| (multicast_information !=  nullptr && multicast_information->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get_segment_path() const
@@ -19440,7 +19466,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::Information::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19699,7 +19725,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::Informations::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19821,7 +19847,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19943,7 +19969,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Interfaces::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20047,7 +20073,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::Summary::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20123,8 +20149,8 @@ bool MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::has_data() const
 bool MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_segment_path() const
@@ -20141,7 +20167,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::LabelSecurity::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20258,9 +20284,9 @@ bool MplsForwarding::Nodes::Node::LabelFib::has_data() const
 bool MplsForwarding::Nodes::Node::LabelFib::has_operation() const
 {
     return is_set(operation)
-	|| (forwarding_details !=  nullptr && is_set(forwarding_details->operation))
-	|| (informations !=  nullptr && is_set(informations->operation))
-	|| (label_security !=  nullptr && is_set(label_security->operation));
+	|| (forwarding_details !=  nullptr && forwarding_details->has_operation())
+	|| (informations !=  nullptr && informations->has_operation())
+	|| (label_security !=  nullptr && label_security->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::LabelFib::get_segment_path() const
@@ -20277,7 +20303,7 @@ EntityPath MplsForwarding::Nodes::Node::LabelFib::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20416,8 +20442,8 @@ bool MplsForwarding::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (forwarding_summary !=  nullptr && is_set(forwarding_summary->operation))
-	|| (label_fib !=  nullptr && is_set(label_fib->operation));
+	|| (forwarding_summary !=  nullptr && forwarding_summary->has_operation())
+	|| (label_fib !=  nullptr && label_fib->has_operation());
 }
 
 std::string MplsForwarding::Nodes::Node::get_segment_path() const
@@ -20654,7 +20680,7 @@ bool MplsForwarding::has_data() const
 bool MplsForwarding::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string MplsForwarding::get_segment_path() const
@@ -20671,7 +20697,7 @@ EntityPath MplsForwarding::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -20762,7 +20788,7 @@ FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMp
 
 bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_data() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -20786,13 +20812,14 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::
 
 bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_operation() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(l3_mtu.operation)
+	|| is_set(label_stack.operation)
 	|| is_set(mac_size.operation)
 	|| is_set(next_hop_interface_name.operation)
 	|| is_set(next_hop_protocol.operation)
@@ -20823,7 +20850,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20968,22 +20995,22 @@ FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMp
 
 bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMplsAdjInfo::MpiInfo::has_data() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -21001,22 +21028,22 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::
 
 bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMplsAdjInfo::MpiInfo::has_operation() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -21024,7 +21051,11 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::
     return is_set(operation)
 	|| is_set(backup_is_local.operation)
 	|| is_set(bk_tos_mask.operation)
+	|| is_set(bkup_if_hdl.operation)
+	|| is_set(bkup_if_node_id.operation)
 	|| is_set(flags.operation)
+	|| is_set(if_hdl.operation)
+	|| is_set(if_node_id.operation)
 	|| is_set(mcast_id.operation)
 	|| is_set(my_node_id.operation)
 	|| is_set(pd_ts_ms.operation)
@@ -21047,7 +21078,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21297,8 +21328,8 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::
 	|| is_set(tunnel_id_present.operation)
 	|| is_set(tunnel_interface_name.operation)
 	|| is_set(weight.operation)
-	|| (label_information_detail !=  nullptr && is_set(label_information_detail->operation))
-	|| (mpi_info !=  nullptr && is_set(mpi_info->operation));
+	|| (label_information_detail !=  nullptr && label_information_detail->has_operation())
+	|| (mpi_info !=  nullptr && mpi_info->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInformation::FibMplsAdjInfo::get_segment_path() const
@@ -21315,7 +21346,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21633,7 +21664,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LabelInforma
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21734,7 +21765,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::LdiInformati
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21874,7 +21905,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::MulticastInf
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22057,7 +22088,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::RpfV4Nb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22145,7 +22176,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::RpfV6Nb
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22233,7 +22264,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::RpfIfMa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22316,7 +22347,7 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::has_data() co
         if(rpf_v6_nbr[index]->has_data())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -22346,7 +22377,7 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::has_operation
         if(rpf_v6_nbr[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -22355,6 +22386,7 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::has_operation
 	|| is_set(rpf_create_ts.operation)
 	|| is_set(rpf_flags.operation)
 	|| is_set(rpf_hardware.operation)
+	|| is_set(rpf_if.operation)
 	|| is_set(rpf_mod_ts.operation)
 	|| is_set(rpf_pd_ts.operation)
 	|| is_set(rpf_pl_flags.operation);
@@ -22374,7 +22406,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::Rpf::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22658,10 +22690,10 @@ bool FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::has_operation() co
 	|| is_set(pl_time_stamp_type.operation)
 	|| is_set(pwhe_interface_list_id.operation)
 	|| is_set(pwhe_interface_list_ptr.operation)
-	|| (label_information !=  nullptr && is_set(label_information->operation))
-	|| (ldi_information !=  nullptr && is_set(ldi_information->operation))
-	|| (multicast_information !=  nullptr && is_set(multicast_information->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation));
+	|| (label_information !=  nullptr && label_information->has_operation())
+	|| (ldi_information !=  nullptr && ldi_information->has_operation())
+	|| (multicast_information !=  nullptr && multicast_information->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::get_segment_path() const
@@ -22678,7 +22710,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::Forwarding::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23007,7 +23039,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::Forwardings::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23100,7 +23132,7 @@ FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInform
 
 bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_data() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -23124,13 +23156,14 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelI
 
 bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_operation() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(l3_mtu.operation)
+	|| is_set(label_stack.operation)
 	|| is_set(mac_size.operation)
 	|| is_set(next_hop_interface_name.operation)
 	|| is_set(next_hop_protocol.operation)
@@ -23161,7 +23194,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23306,22 +23339,22 @@ FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInform
 
 bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::FibMplsAdjInfo::MpiInfo::has_data() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -23339,22 +23372,22 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelI
 
 bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::FibMplsAdjInfo::MpiInfo::has_operation() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -23362,7 +23395,11 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelI
     return is_set(operation)
 	|| is_set(backup_is_local.operation)
 	|| is_set(bk_tos_mask.operation)
+	|| is_set(bkup_if_hdl.operation)
+	|| is_set(bkup_if_node_id.operation)
 	|| is_set(flags.operation)
+	|| is_set(if_hdl.operation)
+	|| is_set(if_node_id.operation)
 	|| is_set(mcast_id.operation)
 	|| is_set(my_node_id.operation)
 	|| is_set(pd_ts_ms.operation)
@@ -23385,7 +23422,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23635,8 +23672,8 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelI
 	|| is_set(tunnel_id_present.operation)
 	|| is_set(tunnel_interface_name.operation)
 	|| is_set(weight.operation)
-	|| (label_information_detail !=  nullptr && is_set(label_information_detail->operation))
-	|| (mpi_info !=  nullptr && is_set(mpi_info->operation));
+	|| (label_information_detail !=  nullptr && label_information_detail->has_operation())
+	|| (mpi_info !=  nullptr && mpi_info->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::LabelInformation::FibMplsAdjInfo::get_segment_path() const
@@ -23653,7 +23690,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23971,7 +24008,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24072,7 +24109,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24212,7 +24249,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24395,7 +24432,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24483,7 +24520,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24571,7 +24608,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24654,7 +24691,7 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Rpf::h
         if(rpf_v6_nbr[index]->has_data())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -24684,7 +24721,7 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Rpf::h
         if(rpf_v6_nbr[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -24693,6 +24730,7 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::Rpf::h
 	|| is_set(rpf_create_ts.operation)
 	|| is_set(rpf_flags.operation)
 	|| is_set(rpf_hardware.operation)
+	|| is_set(rpf_if.operation)
 	|| is_set(rpf_mod_ts.operation)
 	|| is_set(rpf_pd_ts.operation)
 	|| is_set(rpf_pl_flags.operation);
@@ -24712,7 +24750,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24996,10 +25034,10 @@ bool FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::has_op
 	|| is_set(pl_time_stamp_type.operation)
 	|| is_set(pwhe_interface_list_id.operation)
 	|| is_set(pwhe_interface_list_ptr.operation)
-	|| (label_information !=  nullptr && is_set(label_information->operation))
-	|| (ldi_information !=  nullptr && is_set(ldi_information->operation))
-	|| (multicast_information !=  nullptr && is_set(multicast_information->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation));
+	|| (label_information !=  nullptr && label_information->has_operation())
+	|| (ldi_information !=  nullptr && ldi_information->has_operation())
+	|| (multicast_information !=  nullptr && multicast_information->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::get_segment_path() const
@@ -25016,7 +25054,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::ForwardingDetail::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25345,7 +25383,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::ForwardingDetails::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25437,8 +25475,8 @@ bool FibMpls::Nodes::Node::LabelFib::has_data() const
 bool FibMpls::Nodes::Node::LabelFib::has_operation() const
 {
     return is_set(operation)
-	|| (forwarding_details !=  nullptr && is_set(forwarding_details->operation))
-	|| (forwardings !=  nullptr && is_set(forwardings->operation));
+	|| (forwarding_details !=  nullptr && forwarding_details->has_operation())
+	|| (forwardings !=  nullptr && forwardings->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::LabelFib::get_segment_path() const
@@ -25455,7 +25493,7 @@ EntityPath FibMpls::Nodes::Node::LabelFib::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25612,7 +25650,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Tu
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25744,7 +25782,7 @@ FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelIn
 
 bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_data() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25768,13 +25806,14 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::La
 
 bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::FibMplsAdjInfo::LabelInformationDetail::has_operation() const
 {
-    for (auto const & leaf : label_stack.getValues())
+    for (auto const & leaf : label_stack.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
 	|| is_set(l3_mtu.operation)
+	|| is_set(label_stack.operation)
 	|| is_set(mac_size.operation)
 	|| is_set(next_hop_interface_name.operation)
 	|| is_set(next_hop_protocol.operation)
@@ -25805,7 +25844,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25950,22 +25989,22 @@ FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelIn
 
 bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::FibMplsAdjInfo::MpiInfo::has_data() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -25983,22 +26022,22 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::La
 
 bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::FibMplsAdjInfo::MpiInfo::has_operation() const
 {
-    for (auto const & leaf : bkup_if_hdl.getValues())
+    for (auto const & leaf : bkup_if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : bkup_if_node_id.getValues())
+    for (auto const & leaf : bkup_if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_hdl.getValues())
+    for (auto const & leaf : if_hdl.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : if_node_id.getValues())
+    for (auto const & leaf : if_node_id.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -26006,7 +26045,11 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::La
     return is_set(operation)
 	|| is_set(backup_is_local.operation)
 	|| is_set(bk_tos_mask.operation)
+	|| is_set(bkup_if_hdl.operation)
+	|| is_set(bkup_if_node_id.operation)
 	|| is_set(flags.operation)
+	|| is_set(if_hdl.operation)
+	|| is_set(if_node_id.operation)
 	|| is_set(mcast_id.operation)
 	|| is_set(my_node_id.operation)
 	|| is_set(pd_ts_ms.operation)
@@ -26029,7 +26072,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26279,8 +26322,8 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::La
 	|| is_set(tunnel_id_present.operation)
 	|| is_set(tunnel_interface_name.operation)
 	|| is_set(weight.operation)
-	|| (label_information_detail !=  nullptr && is_set(label_information_detail->operation))
-	|| (mpi_info !=  nullptr && is_set(mpi_info->operation));
+	|| (label_information_detail !=  nullptr && label_information_detail->has_operation())
+	|| (mpi_info !=  nullptr && mpi_info->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::LabelInformation::FibMplsAdjInfo::get_segment_path() const
@@ -26297,7 +26340,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26615,7 +26658,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26716,7 +26759,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26856,7 +26899,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27039,7 +27082,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27127,7 +27170,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27215,7 +27258,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27298,7 +27341,7 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::Rp
         if(rpf_v6_nbr[index]->has_data())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -27328,7 +27371,7 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::Rp
         if(rpf_v6_nbr[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : rpf_if.getValues())
+    for (auto const & leaf : rpf_if.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -27337,6 +27380,7 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::Rp
 	|| is_set(rpf_create_ts.operation)
 	|| is_set(rpf_flags.operation)
 	|| is_set(rpf_hardware.operation)
+	|| is_set(rpf_if.operation)
 	|| is_set(rpf_mod_ts.operation)
 	|| is_set(rpf_pd_ts.operation)
 	|| is_set(rpf_pl_flags.operation);
@@ -27356,7 +27400,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27634,10 +27678,10 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::ha
 	|| is_set(pl_time_stamp_type.operation)
 	|| is_set(pwhe_interface_list_id.operation)
 	|| is_set(pwhe_interface_list_ptr.operation)
-	|| (label_information !=  nullptr && is_set(label_information->operation))
-	|| (ldi_information !=  nullptr && is_set(ldi_information->operation))
-	|| (multicast_information !=  nullptr && is_set(multicast_information->operation))
-	|| (rpf !=  nullptr && is_set(rpf->operation));
+	|| (label_information !=  nullptr && label_information->has_operation())
+	|| (ldi_information !=  nullptr && ldi_information->has_operation())
+	|| (multicast_information !=  nullptr && multicast_information->has_operation())
+	|| (rpf !=  nullptr && rpf->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fwdg::get_segment_path() const
@@ -27654,7 +27698,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::Fw
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27961,8 +28005,8 @@ bool FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::has_oper
 {
     return is_set(operation)
 	|| is_set(interface_name.operation)
-	|| (fwdg !=  nullptr && is_set(fwdg->operation))
-	|| (tunnel_info !=  nullptr && is_set(tunnel_info->operation));
+	|| (fwdg !=  nullptr && fwdg->has_operation())
+	|| (tunnel_info !=  nullptr && tunnel_info->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::get_segment_path() const
@@ -27979,7 +28023,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTunnel::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28112,7 +28156,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::ForwardingTunnels::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28199,7 +28243,7 @@ bool FibMpls::Nodes::Node::Tunnel::has_data() const
 bool FibMpls::Nodes::Node::Tunnel::has_operation() const
 {
     return is_set(operation)
-	|| (forwarding_tunnels !=  nullptr && is_set(forwarding_tunnels->operation));
+	|| (forwarding_tunnels !=  nullptr && forwarding_tunnels->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::Tunnel::get_segment_path() const
@@ -28216,7 +28260,7 @@ EntityPath FibMpls::Nodes::Node::Tunnel::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28323,7 +28367,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeadSummary::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28430,7 +28474,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::Frr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28537,7 +28581,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbBackupInterfaceSummaries::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28647,7 +28691,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbSummary::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28754,7 +28798,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28861,7 +28905,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbProtectedInterfaceTableSummar
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28971,7 +29015,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpointSummary::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29069,7 +29113,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29160,7 +29204,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29245,8 +29289,8 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoin
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::FrrEntryId::get_segment_path() const
@@ -29263,7 +29307,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29392,7 +29436,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29483,7 +29527,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29568,8 +29612,8 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoin
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::FrrEntryId::get_segment_path() const
@@ -29586,7 +29630,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29726,7 +29770,7 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoin
 	|| is_set(outgoing_interface.operation)
 	|| is_set(outgoing_label.operation)
 	|| is_set(tunnel_interface_name.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::MulticastLeg::get_segment_path() const
@@ -29743,7 +29787,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29919,7 +29963,7 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoin
 	|| is_set(outgoing_interface.operation)
 	|| is_set(outgoing_label.operation)
 	|| is_set(tunnel_interface_name.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelMidpoint::get_segment_path() const
@@ -29936,7 +29980,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::FrrdbTunnelM
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30127,7 +30171,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30231,7 +30275,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30322,7 +30366,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30407,8 +30451,8 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEn
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::FrrEntryId::get_segment_path() const
@@ -30425,7 +30469,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30554,7 +30598,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30645,7 +30689,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30730,8 +30774,8 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Multi
 {
     return is_set(operation)
 	|| is_set(role.operation)
-	|| (head !=  nullptr && is_set(head->operation))
-	|| (midpoint !=  nullptr && is_set(midpoint->operation));
+	|| (head !=  nullptr && head->has_operation())
+	|| (midpoint !=  nullptr && midpoint->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::FrrEntryId::get_segment_path() const
@@ -30748,7 +30792,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30888,7 +30932,7 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::Multi
 	|| is_set(outgoing_interface.operation)
 	|| is_set(outgoing_label.operation)
 	|| is_set(tunnel_interface_name.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::MulticastLeg::get_segment_path() const
@@ -30905,7 +30949,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31081,7 +31125,7 @@ bool FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::has_o
 	|| is_set(outgoing_interface.operation)
 	|| is_set(outgoing_label.operation)
 	|| is_set(tunnel_interface_name.operation)
-	|| (frr_entry_id !=  nullptr && is_set(frr_entry_id->operation));
+	|| (frr_entry_id !=  nullptr && frr_entry_id->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead::get_segment_path() const
@@ -31098,7 +31142,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTunnelHead:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31289,7 +31333,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31406,13 +31450,13 @@ bool FibMpls::Nodes::Node::FrrDatabase::has_data() const
 bool FibMpls::Nodes::Node::FrrDatabase::has_operation() const
 {
     return is_set(operation)
-	|| (frrdb_backup_interface_summaries !=  nullptr && is_set(frrdb_backup_interface_summaries->operation))
-	|| (frrdb_protected_interface_table_summaries !=  nullptr && is_set(frrdb_protected_interface_table_summaries->operation))
-	|| (frrdb_summary !=  nullptr && is_set(frrdb_summary->operation))
-	|| (frrdb_tunnel_head_summary !=  nullptr && is_set(frrdb_tunnel_head_summary->operation))
-	|| (frrdb_tunnel_heads !=  nullptr && is_set(frrdb_tunnel_heads->operation))
-	|| (frrdb_tunnel_midpoint_summary !=  nullptr && is_set(frrdb_tunnel_midpoint_summary->operation))
-	|| (frrdb_tunnel_midpoints !=  nullptr && is_set(frrdb_tunnel_midpoints->operation));
+	|| (frrdb_backup_interface_summaries !=  nullptr && frrdb_backup_interface_summaries->has_operation())
+	|| (frrdb_protected_interface_table_summaries !=  nullptr && frrdb_protected_interface_table_summaries->has_operation())
+	|| (frrdb_summary !=  nullptr && frrdb_summary->has_operation())
+	|| (frrdb_tunnel_head_summary !=  nullptr && frrdb_tunnel_head_summary->has_operation())
+	|| (frrdb_tunnel_heads !=  nullptr && frrdb_tunnel_heads->has_operation())
+	|| (frrdb_tunnel_midpoint_summary !=  nullptr && frrdb_tunnel_midpoint_summary->has_operation())
+	|| (frrdb_tunnel_midpoints !=  nullptr && frrdb_tunnel_midpoints->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrDatabase::get_segment_path() const
@@ -31429,7 +31473,7 @@ EntityPath FibMpls::Nodes::Node::FrrDatabase::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31746,7 +31790,7 @@ EntityPath FibMpls::Nodes::Node::ForwardingSummary::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31964,7 +32008,7 @@ EntityPath FibMpls::Nodes::Node::FrrLogs::FrrLog::StartTime::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32060,7 +32104,7 @@ bool FibMpls::Nodes::Node::FrrLogs::FrrLog::has_operation() const
 	|| is_set(number_of_rewrites_affected.operation)
 	|| is_set(protected_frr_interface_name.operation)
 	|| is_set(switching_time_nsecs.operation)
-	|| (start_time !=  nullptr && is_set(start_time->operation));
+	|| (start_time !=  nullptr && start_time->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::FrrLogs::FrrLog::get_segment_path() const
@@ -32077,7 +32121,7 @@ EntityPath FibMpls::Nodes::Node::FrrLogs::FrrLog::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32222,7 +32266,7 @@ EntityPath FibMpls::Nodes::Node::FrrLogs::get_entity_path(Entity* ancestor) cons
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -32333,11 +32377,11 @@ bool FibMpls::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (forwarding_summary !=  nullptr && is_set(forwarding_summary->operation))
-	|| (frr_database !=  nullptr && is_set(frr_database->operation))
-	|| (frr_logs !=  nullptr && is_set(frr_logs->operation))
-	|| (label_fib !=  nullptr && is_set(label_fib->operation))
-	|| (tunnel !=  nullptr && is_set(tunnel->operation));
+	|| (forwarding_summary !=  nullptr && forwarding_summary->has_operation())
+	|| (frr_database !=  nullptr && frr_database->has_operation())
+	|| (frr_logs !=  nullptr && frr_logs->has_operation())
+	|| (label_fib !=  nullptr && label_fib->has_operation())
+	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
 std::string FibMpls::Nodes::Node::get_segment_path() const
@@ -32643,7 +32687,7 @@ bool FibMpls::has_data() const
 bool FibMpls::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string FibMpls::get_segment_path() const
@@ -32660,7 +32704,7 @@ EntityPath FibMpls::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -32724,102 +32768,102 @@ std::unique_ptr<Entity> FibMpls::clone_ptr()
     return std::make_unique<FibMpls>();
 }
 
-const Enum::Value FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_xc {1, "fib-mpls-llc-bag-type-xc"};
-const Enum::Value FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_pfx {2, "fib-mpls-llc-bag-type-pfx"};
-const Enum::Value FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_lsm {3, "fib-mpls-llc-bag-type-lsm"};
-const Enum::Value FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_max {4, "fib-mpls-llc-bag-type-max"};
+const Enum::YLeaf FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_xc {1, "fib-mpls-llc-bag-type-xc"};
+const Enum::YLeaf FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_pfx {2, "fib-mpls-llc-bag-type-pfx"};
+const Enum::YLeaf FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_lsm {3, "fib-mpls-llc-bag-type-lsm"};
+const Enum::YLeaf FibMplsLlcEntryBagEnum::fib_mpls_llc_bag_type_max {4, "fib-mpls-llc-bag-type-max"};
 
-const Enum::Value MgmtFibMplsFrrStateEnum::partial {0, "partial"};
-const Enum::Value MgmtFibMplsFrrStateEnum::active {1, "active"};
-const Enum::Value MgmtFibMplsFrrStateEnum::ready {2, "ready"};
-const Enum::Value MgmtFibMplsFrrStateEnum::complete {3, "complete"};
-const Enum::Value MgmtFibMplsFrrStateEnum::any {4, "any"};
+const Enum::YLeaf MgmtFibMplsFrrStateEnum::partial {0, "partial"};
+const Enum::YLeaf MgmtFibMplsFrrStateEnum::active {1, "active"};
+const Enum::YLeaf MgmtFibMplsFrrStateEnum::ready {2, "ready"};
+const Enum::YLeaf MgmtFibMplsFrrStateEnum::complete {3, "complete"};
+const Enum::YLeaf MgmtFibMplsFrrStateEnum::any {4, "any"};
 
-const Enum::Value FibShIpencapHdrEnum::fib_sh_ip_encap_none {0, "fib-sh-ip-encap-none"};
-const Enum::Value FibShIpencapHdrEnum::fib_sh_ip_encap_ip4 {1, "fib-sh-ip-encap-ip4"};
-const Enum::Value FibShIpencapHdrEnum::fib_sh_ip_encap_ip6 {2, "fib-sh-ip-encap-ip6"};
-const Enum::Value FibShIpencapHdrEnum::fib_sh_ip_encap_udp {3, "fib-sh-ip-encap-udp"};
-const Enum::Value FibShIpencapHdrEnum::fib_sh_ip_encap_lisp {4, "fib-sh-ip-encap-lisp"};
+const Enum::YLeaf FibShIpencapHdrEnum::fib_sh_ip_encap_none {0, "fib-sh-ip-encap-none"};
+const Enum::YLeaf FibShIpencapHdrEnum::fib_sh_ip_encap_ip4 {1, "fib-sh-ip-encap-ip4"};
+const Enum::YLeaf FibShIpencapHdrEnum::fib_sh_ip_encap_ip6 {2, "fib-sh-ip-encap-ip6"};
+const Enum::YLeaf FibShIpencapHdrEnum::fib_sh_ip_encap_udp {3, "fib-sh-ip-encap-udp"};
+const Enum::YLeaf FibShIpencapHdrEnum::fib_sh_ip_encap_lisp {4, "fib-sh-ip-encap-lisp"};
 
-const Enum::Value FibProtocolEnum::ipv4 {0, "ipv4"};
-const Enum::Value FibProtocolEnum::ipv6 {1, "ipv6"};
-const Enum::Value FibProtocolEnum::mpls {2, "mpls"};
+const Enum::YLeaf FibProtocolEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf FibProtocolEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf FibProtocolEnum::mpls {2, "mpls"};
 
-const Enum::Value FibNehEnum::nh_local {0, "nh-local"};
-const Enum::Value FibNehEnum::nh_remote {1, "nh-remote"};
-const Enum::Value FibNehEnum::nh_special {2, "nh-special"};
+const Enum::YLeaf FibNehEnum::nh_local {0, "nh-local"};
+const Enum::YLeaf FibNehEnum::nh_remote {1, "nh-remote"};
+const Enum::YLeaf FibNehEnum::nh_special {2, "nh-special"};
 
-const Enum::Value FibFrrProtocolShowEnum::frr_protocol_ipv4 {0, "frr-protocol-ipv4"};
-const Enum::Value FibFrrProtocolShowEnum::frr_protocol_ipv6 {1, "frr-protocol-ipv6"};
-const Enum::Value FibFrrProtocolShowEnum::frr_protocol_mpls {2, "frr-protocol-mpls"};
+const Enum::YLeaf FibFrrProtocolShowEnum::frr_protocol_ipv4 {0, "frr-protocol-ipv4"};
+const Enum::YLeaf FibFrrProtocolShowEnum::frr_protocol_ipv6 {1, "frr-protocol-ipv6"};
+const Enum::YLeaf FibFrrProtocolShowEnum::frr_protocol_mpls {2, "frr-protocol-mpls"};
 
-const Enum::Value ProtoEnum::ipv4 {0, "ipv4"};
-const Enum::Value ProtoEnum::ipv6 {1, "ipv6"};
-const Enum::Value ProtoEnum::mpls {2, "mpls"};
+const Enum::YLeaf ProtoEnum::ipv4 {0, "ipv4"};
+const Enum::YLeaf ProtoEnum::ipv6 {1, "ipv6"};
+const Enum::YLeaf ProtoEnum::mpls {2, "mpls"};
 
-const Enum::Value FibLinkEnum::link_ipv4 {0, "link-ipv4"};
-const Enum::Value FibLinkEnum::link_ipv6 {1, "link-ipv6"};
-const Enum::Value FibLinkEnum::link_mpls {2, "link-mpls"};
+const Enum::YLeaf FibLinkEnum::link_ipv4 {0, "link-ipv4"};
+const Enum::YLeaf FibLinkEnum::link_ipv6 {1, "link-ipv6"};
+const Enum::YLeaf FibLinkEnum::link_mpls {2, "link-mpls"};
 
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_normal {0, "fib-adjacency-normal"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_null {1, "fib-adjacency-null"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_punt {2, "fib-adjacency-punt"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_drop {3, "fib-adjacency-drop"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_glean {4, "fib-adjacency-glean"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_discard {5, "fib-adjacency-discard"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_broadcast {6, "fib-adjacency-broadcast"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_external {7, "fib-adjacency-external"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_lisp {8, "fib-adjacency-lisp"};
-const Enum::Value FibAdjacencyShowEnum::fib_adjacency_unknown {9, "fib-adjacency-unknown"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_normal {0, "fib-adjacency-normal"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_null {1, "fib-adjacency-null"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_punt {2, "fib-adjacency-punt"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_drop {3, "fib-adjacency-drop"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_glean {4, "fib-adjacency-glean"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_discard {5, "fib-adjacency-discard"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_broadcast {6, "fib-adjacency-broadcast"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_external {7, "fib-adjacency-external"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_lisp {8, "fib-adjacency-lisp"};
+const Enum::YLeaf FibAdjacencyShowEnum::fib_adjacency_unknown {9, "fib-adjacency-unknown"};
 
-const Enum::Value FibLoadshareShowEnum::fib_load_share_none {0, "fib-load-share-none"};
-const Enum::Value FibLoadshareShowEnum::fib_load_share_per_packet {1, "fib-load-share-per-packet"};
-const Enum::Value FibLoadshareShowEnum::fib_load_share_dest_sharing {2, "fib-load-share-dest-sharing"};
+const Enum::YLeaf FibLoadshareShowEnum::fib_load_share_none {0, "fib-load-share-none"};
+const Enum::YLeaf FibLoadshareShowEnum::fib_load_share_per_packet {1, "fib-load-share-per-packet"};
+const Enum::YLeaf FibLoadshareShowEnum::fib_load_share_dest_sharing {2, "fib-load-share-dest-sharing"};
 
-const Enum::Value EosEnum::eos0 {0, "eos0"};
-const Enum::Value EosEnum::eos1 {1, "eos1"};
+const Enum::YLeaf EosEnum::eos0 {0, "eos0"};
+const Enum::YLeaf EosEnum::eos1 {1, "eos1"};
 
-const Enum::Value FibllcEntryEnum::xc {1, "xc"};
-const Enum::Value FibllcEntryEnum::pfx {2, "pfx"};
+const Enum::YLeaf FibllcEntryEnum::xc {1, "xc"};
+const Enum::YLeaf FibllcEntryEnum::pfx {2, "pfx"};
 
-const Enum::Value FibRpfModeEnum::fib_rpf_mode_strict {0, "fib-rpf-mode-strict"};
-const Enum::Value FibRpfModeEnum::fib_rpf_mode_loose {1, "fib-rpf-mode-loose"};
-const Enum::Value FibRpfModeEnum::fib_rpf_mode_unknown {2, "fib-rpf-mode-unknown"};
+const Enum::YLeaf FibRpfModeEnum::fib_rpf_mode_strict {0, "fib-rpf-mode-strict"};
+const Enum::YLeaf FibRpfModeEnum::fib_rpf_mode_loose {1, "fib-rpf-mode-loose"};
+const Enum::YLeaf FibRpfModeEnum::fib_rpf_mode_unknown {2, "fib-rpf-mode-unknown"};
 
-const Enum::Value FibidbOperEnum::fibidb_none {0, "fibidb-none"};
-const Enum::Value FibidbOperEnum::fibidb_create {1, "fibidb-create"};
-const Enum::Value FibidbOperEnum::fibidb_delete {2, "fibidb-delete"};
-const Enum::Value FibidbOperEnum::fibidb_modify {3, "fibidb-modify"};
-const Enum::Value FibidbOperEnum::fibidb_max {4, "fibidb-max"};
+const Enum::YLeaf FibidbOperEnum::fibidb_none {0, "fibidb-none"};
+const Enum::YLeaf FibidbOperEnum::fibidb_create {1, "fibidb-create"};
+const Enum::YLeaf FibidbOperEnum::fibidb_delete {2, "fibidb-delete"};
+const Enum::YLeaf FibidbOperEnum::fibidb_modify {3, "fibidb-modify"};
+const Enum::YLeaf FibidbOperEnum::fibidb_max {4, "fibidb-max"};
 
-const Enum::Value SsLbaStateEnum::l3 {0, "l3"};
-const Enum::Value SsLbaStateEnum::l4 {1, "l4"};
+const Enum::YLeaf SsLbaStateEnum::l3 {0, "l3"};
+const Enum::YLeaf SsLbaStateEnum::l4 {1, "l4"};
 
-const Enum::Value NextHopEnum::tx {0, "tx"};
-const Enum::Value NextHopEnum::rx {1, "rx"};
-const Enum::Value NextHopEnum::special {2, "special"};
+const Enum::YLeaf NextHopEnum::tx {0, "tx"};
+const Enum::YLeaf NextHopEnum::rx {1, "rx"};
+const Enum::YLeaf NextHopEnum::special {2, "special"};
 
-const Enum::Value FibRouteSourceEnum::lsd {5, "lsd"};
-const Enum::Value FibRouteSourceEnum::rib {7, "rib"};
-const Enum::Value FibRouteSourceEnum::mrib {13, "mrib"};
+const Enum::YLeaf FibRouteSourceEnum::lsd {5, "lsd"};
+const Enum::YLeaf FibRouteSourceEnum::rib {7, "rib"};
+const Enum::YLeaf FibRouteSourceEnum::mrib {13, "mrib"};
 
-const Enum::Value MplseosEnum::eos0 {0, "eos0"};
-const Enum::Value MplseosEnum::eos1 {1, "eos1"};
+const Enum::YLeaf MplseosEnum::eos0 {0, "eos0"};
+const Enum::YLeaf MplseosEnum::eos1 {1, "eos1"};
 
-const Enum::Value MgmtFibMplsLspRoleEnum::head {0, "head"};
-const Enum::Value MgmtFibMplsLspRoleEnum::midpoint {1, "midpoint"};
+const Enum::YLeaf MgmtFibMplsLspRoleEnum::head {0, "head"};
+const Enum::YLeaf MgmtFibMplsLspRoleEnum::midpoint {1, "midpoint"};
 
-const Enum::Value FibNehSpecialEnum::nh_not_found {0, "nh-not-found"};
-const Enum::Value FibNehSpecialEnum::nh_null0 {1, "nh-null0"};
-const Enum::Value FibNehSpecialEnum::nh_punt {2, "nh-punt"};
-const Enum::Value FibNehSpecialEnum::nh_drop {3, "nh-drop"};
-const Enum::Value FibNehSpecialEnum::nh_glean {4, "nh-glean"};
-const Enum::Value FibNehSpecialEnum::nh_receive {5, "nh-receive"};
-const Enum::Value FibNehSpecialEnum::nh_broadcast {6, "nh-broadcast"};
-const Enum::Value FibNehSpecialEnum::nh_external {7, "nh-external"};
-const Enum::Value FibNehSpecialEnum::nh_lisp {8, "nh-lisp"};
-const Enum::Value FibNehSpecialEnum::nh_lookup {9, "nh-lookup"};
-const Enum::Value FibNehSpecialEnum::nh_max_type {10, "nh-max-type"};
+const Enum::YLeaf FibNehSpecialEnum::nh_not_found {0, "nh-not-found"};
+const Enum::YLeaf FibNehSpecialEnum::nh_null0 {1, "nh-null0"};
+const Enum::YLeaf FibNehSpecialEnum::nh_punt {2, "nh-punt"};
+const Enum::YLeaf FibNehSpecialEnum::nh_drop {3, "nh-drop"};
+const Enum::YLeaf FibNehSpecialEnum::nh_glean {4, "nh-glean"};
+const Enum::YLeaf FibNehSpecialEnum::nh_receive {5, "nh-receive"};
+const Enum::YLeaf FibNehSpecialEnum::nh_broadcast {6, "nh-broadcast"};
+const Enum::YLeaf FibNehSpecialEnum::nh_external {7, "nh-external"};
+const Enum::YLeaf FibNehSpecialEnum::nh_lisp {8, "nh-lisp"};
+const Enum::YLeaf FibNehSpecialEnum::nh_lookup {9, "nh-lookup"};
+const Enum::YLeaf FibNehSpecialEnum::nh_max_type {10, "nh-max-type"};
 
 
 }

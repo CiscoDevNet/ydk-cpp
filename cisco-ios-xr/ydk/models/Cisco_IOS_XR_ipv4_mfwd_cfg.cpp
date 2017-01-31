@@ -492,8 +492,8 @@ bool Mfwd::DefaultContext::Ipv6::has_operation() const
 	|| is_set(multicast_forwarding.operation)
 	|| is_set(nsf.operation)
 	|| is_set(rate_per_route.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (static_rpf_rules !=  nullptr && is_set(static_rpf_rules->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
 
 std::string Mfwd::DefaultContext::Ipv6::get_segment_path() const
@@ -1138,8 +1138,8 @@ bool Mfwd::DefaultContext::Ipv4::has_operation() const
 	|| is_set(nsf.operation)
 	|| is_set(out_of_memory_handling.operation)
 	|| is_set(rate_per_route.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (static_rpf_rules !=  nullptr && is_set(static_rpf_rules->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
 
 std::string Mfwd::DefaultContext::Ipv4::get_segment_path() const
@@ -1328,8 +1328,8 @@ bool Mfwd::DefaultContext::has_data() const
 bool Mfwd::DefaultContext::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Mfwd::DefaultContext::get_segment_path() const
@@ -1476,7 +1476,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1578,7 +1578,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1688,7 +1688,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1790,7 +1790,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1916,8 +1916,8 @@ bool Mfwd::Vrfs::Vrf::Ipv6::has_operation() const
 	|| is_set(multicast_forwarding.operation)
 	|| is_set(nsf.operation)
 	|| is_set(rate_per_route.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (static_rpf_rules !=  nullptr && is_set(static_rpf_rules->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv6::get_segment_path() const
@@ -1934,7 +1934,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv6::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2119,7 +2119,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2221,7 +2221,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2331,7 +2331,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2433,7 +2433,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2562,8 +2562,8 @@ bool Mfwd::Vrfs::Vrf::Ipv4::has_operation() const
 	|| is_set(nsf.operation)
 	|| is_set(out_of_memory_handling.operation)
 	|| is_set(rate_per_route.operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (static_rpf_rules !=  nullptr && is_set(static_rpf_rules->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (static_rpf_rules !=  nullptr && static_rpf_rules->has_operation());
 }
 
 std::string Mfwd::Vrfs::Vrf::Ipv4::get_segment_path() const
@@ -2580,7 +2580,7 @@ EntityPath Mfwd::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2756,8 +2756,8 @@ bool Mfwd::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Mfwd::Vrfs::Vrf::get_segment_path() const
@@ -2996,8 +2996,8 @@ bool Mfwd::has_data() const
 bool Mfwd::has_operation() const
 {
     return is_set(operation)
-	|| (default_context !=  nullptr && is_set(default_context->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_context !=  nullptr && default_context->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string Mfwd::get_segment_path() const
@@ -3014,7 +3014,7 @@ EntityPath Mfwd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -3101,8 +3101,8 @@ std::unique_ptr<Entity> Mfwd::clone_ptr()
     return std::make_unique<Mfwd>();
 }
 
-const Enum::Value AccountingModeEnum::enable {0, "enable"};
-const Enum::Value AccountingModeEnum::forward_only_enable {1, "forward-only-enable"};
+const Enum::YLeaf AccountingModeEnum::enable {0, "enable"};
+const Enum::YLeaf AccountingModeEnum::forward_only_enable {1, "forward-only-enable"};
 
 
 }

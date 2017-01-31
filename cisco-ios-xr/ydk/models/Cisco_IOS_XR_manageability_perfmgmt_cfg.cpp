@@ -300,9 +300,9 @@ bool PerfMgmt::Resources::has_data() const
 bool PerfMgmt::Resources::has_operation() const
 {
     return is_set(operation)
-	|| (dump_local !=  nullptr && is_set(dump_local->operation))
-	|| (memory_resources !=  nullptr && is_set(memory_resources->operation))
-	|| (tftp_resources !=  nullptr && is_set(tftp_resources->operation));
+	|| (dump_local !=  nullptr && dump_local->has_operation())
+	|| (memory_resources !=  nullptr && memory_resources->has_operation())
+	|| (tftp_resources !=  nullptr && tftp_resources->has_operation());
 }
 
 std::string PerfMgmt::Resources::get_segment_path() const
@@ -677,7 +677,7 @@ bool PerfMgmt::Statistics::GenericCounterInterface::has_data() const
 bool PerfMgmt::Statistics::GenericCounterInterface::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::GenericCounterInterface::get_segment_path() const
@@ -1006,7 +1006,7 @@ bool PerfMgmt::Statistics::ProcessNode::has_data() const
 bool PerfMgmt::Statistics::ProcessNode::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::ProcessNode::get_segment_path() const
@@ -1335,7 +1335,7 @@ bool PerfMgmt::Statistics::BasicCounterInterface::has_data() const
 bool PerfMgmt::Statistics::BasicCounterInterface::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::BasicCounterInterface::get_segment_path() const
@@ -1664,7 +1664,7 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::has_data() const
 bool PerfMgmt::Statistics::Ospfv3Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::Ospfv3Protocol::get_segment_path() const
@@ -1993,7 +1993,7 @@ bool PerfMgmt::Statistics::CpuNode::has_data() const
 bool PerfMgmt::Statistics::CpuNode::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::CpuNode::get_segment_path() const
@@ -2322,7 +2322,7 @@ bool PerfMgmt::Statistics::DataRateInterface::has_data() const
 bool PerfMgmt::Statistics::DataRateInterface::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::DataRateInterface::get_segment_path() const
@@ -2651,7 +2651,7 @@ bool PerfMgmt::Statistics::MemoryNode::has_data() const
 bool PerfMgmt::Statistics::MemoryNode::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::MemoryNode::get_segment_path() const
@@ -2980,7 +2980,7 @@ bool PerfMgmt::Statistics::LdpMpls::has_data() const
 bool PerfMgmt::Statistics::LdpMpls::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::LdpMpls::get_segment_path() const
@@ -3309,7 +3309,7 @@ bool PerfMgmt::Statistics::Bgp::has_data() const
 bool PerfMgmt::Statistics::Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::Bgp::get_segment_path() const
@@ -3638,7 +3638,7 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::has_data() const
 bool PerfMgmt::Statistics::Ospfv2Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (templates !=  nullptr && is_set(templates->operation));
+	|| (templates !=  nullptr && templates->has_operation());
 }
 
 std::string PerfMgmt::Statistics::Ospfv2Protocol::get_segment_path() const
@@ -3784,16 +3784,16 @@ bool PerfMgmt::Statistics::has_data() const
 bool PerfMgmt::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counter_interface !=  nullptr && is_set(basic_counter_interface->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cpu_node !=  nullptr && is_set(cpu_node->operation))
-	|| (data_rate_interface !=  nullptr && is_set(data_rate_interface->operation))
-	|| (generic_counter_interface !=  nullptr && is_set(generic_counter_interface->operation))
-	|| (ldp_mpls !=  nullptr && is_set(ldp_mpls->operation))
-	|| (memory_node !=  nullptr && is_set(memory_node->operation))
-	|| (ospfv2_protocol !=  nullptr && is_set(ospfv2_protocol->operation))
-	|| (ospfv3_protocol !=  nullptr && is_set(ospfv3_protocol->operation))
-	|| (process_node !=  nullptr && is_set(process_node->operation));
+	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cpu_node !=  nullptr && cpu_node->has_operation())
+	|| (data_rate_interface !=  nullptr && data_rate_interface->has_operation())
+	|| (generic_counter_interface !=  nullptr && generic_counter_interface->has_operation())
+	|| (ldp_mpls !=  nullptr && ldp_mpls->has_operation())
+	|| (memory_node !=  nullptr && memory_node->has_operation())
+	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_operation())
+	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_operation())
+	|| (process_node !=  nullptr && process_node->has_operation());
 }
 
 std::string PerfMgmt::Statistics::get_segment_path() const
@@ -4702,8 +4702,8 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::has_data() const
 bool PerfMgmt::Enable::Threshold::MemoryNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Threshold::MemoryNode::get_segment_path() const
@@ -5188,8 +5188,8 @@ bool PerfMgmt::Enable::Threshold::CpuNode::has_data() const
 bool PerfMgmt::Enable::Threshold::CpuNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Threshold::CpuNode::get_segment_path() const
@@ -5674,8 +5674,8 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::has_data() const
 bool PerfMgmt::Enable::Threshold::ProcessNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Threshold::ProcessNode::get_segment_path() const
@@ -5924,16 +5924,16 @@ bool PerfMgmt::Enable::Threshold::has_data() const
 bool PerfMgmt::Enable::Threshold::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counter_interface !=  nullptr && is_set(basic_counter_interface->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cpu_node !=  nullptr && is_set(cpu_node->operation))
-	|| (data_rate_interface !=  nullptr && is_set(data_rate_interface->operation))
-	|| (generic_counter_interface !=  nullptr && is_set(generic_counter_interface->operation))
-	|| (ldp_mpls !=  nullptr && is_set(ldp_mpls->operation))
-	|| (memory_node !=  nullptr && is_set(memory_node->operation))
-	|| (ospfv2_protocol !=  nullptr && is_set(ospfv2_protocol->operation))
-	|| (ospfv3_protocol !=  nullptr && is_set(ospfv3_protocol->operation))
-	|| (process_node !=  nullptr && is_set(process_node->operation));
+	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cpu_node !=  nullptr && cpu_node->has_operation())
+	|| (data_rate_interface !=  nullptr && data_rate_interface->has_operation())
+	|| (generic_counter_interface !=  nullptr && generic_counter_interface->has_operation())
+	|| (ldp_mpls !=  nullptr && ldp_mpls->has_operation())
+	|| (memory_node !=  nullptr && memory_node->has_operation())
+	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_operation())
+	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_operation())
+	|| (process_node !=  nullptr && process_node->has_operation());
 }
 
 std::string PerfMgmt::Enable::Threshold::get_segment_path() const
@@ -6842,8 +6842,8 @@ bool PerfMgmt::Enable::Statistics::CpuNode::has_data() const
 bool PerfMgmt::Enable::Statistics::CpuNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Statistics::CpuNode::get_segment_path() const
@@ -7328,8 +7328,8 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::has_data() const
 bool PerfMgmt::Enable::Statistics::ProcessNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Statistics::ProcessNode::get_segment_path() const
@@ -7814,8 +7814,8 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::has_data() const
 bool PerfMgmt::Enable::Statistics::MemoryNode::has_operation() const
 {
     return is_set(operation)
-	|| (node_all !=  nullptr && is_set(node_all->operation))
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (node_all !=  nullptr && node_all->has_operation())
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::Statistics::MemoryNode::get_segment_path() const
@@ -8064,16 +8064,16 @@ bool PerfMgmt::Enable::Statistics::has_data() const
 bool PerfMgmt::Enable::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counter_interface !=  nullptr && is_set(basic_counter_interface->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cpu_node !=  nullptr && is_set(cpu_node->operation))
-	|| (data_rate_interface !=  nullptr && is_set(data_rate_interface->operation))
-	|| (generic_counter_interface !=  nullptr && is_set(generic_counter_interface->operation))
-	|| (ldp_mpls !=  nullptr && is_set(ldp_mpls->operation))
-	|| (memory_node !=  nullptr && is_set(memory_node->operation))
-	|| (ospfv2_protocol !=  nullptr && is_set(ospfv2_protocol->operation))
-	|| (ospfv3_protocol !=  nullptr && is_set(ospfv3_protocol->operation))
-	|| (process_node !=  nullptr && is_set(process_node->operation));
+	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cpu_node !=  nullptr && cpu_node->has_operation())
+	|| (data_rate_interface !=  nullptr && data_rate_interface->has_operation())
+	|| (generic_counter_interface !=  nullptr && generic_counter_interface->has_operation())
+	|| (ldp_mpls !=  nullptr && ldp_mpls->has_operation())
+	|| (memory_node !=  nullptr && memory_node->has_operation())
+	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_operation())
+	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_operation())
+	|| (process_node !=  nullptr && process_node->has_operation());
 }
 
 std::string PerfMgmt::Enable::Statistics::get_segment_path() const
@@ -8577,7 +8577,7 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_operation() const
 {
     return is_set(operation)
-	|| (sessions !=  nullptr && is_set(sessions->operation));
+	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::get_segment_path() const
@@ -8874,7 +8874,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (ospf_instances !=  nullptr && is_set(ospf_instances->operation));
+	|| (ospf_instances !=  nullptr && ospf_instances->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::get_segment_path() const
@@ -9171,7 +9171,7 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::get_segment_path() const
@@ -9289,7 +9289,7 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9381,7 +9381,7 @@ EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9472,7 +9472,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_op
 {
     return is_set(operation)
 	|| is_set(node_id.operation)
-	|| (pids !=  nullptr && is_set(pids->operation));
+	|| (pids !=  nullptr && pids->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_segment_path() const
@@ -9686,7 +9686,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Process::has_operation() const
 {
     return is_set(operation)
-	|| (process_nodes !=  nullptr && is_set(process_nodes->operation));
+	|| (process_nodes !=  nullptr && process_nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Process::get_segment_path() const
@@ -9983,7 +9983,7 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::get_segment_path() const
@@ -10280,7 +10280,7 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Memory::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Memory::get_segment_path() const
@@ -10577,7 +10577,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (ospf_instances !=  nullptr && is_set(ospf_instances->operation));
+	|| (ospf_instances !=  nullptr && ospf_instances->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::get_segment_path() const
@@ -10874,7 +10874,7 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Cpu::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Cpu::get_segment_path() const
@@ -11171,7 +11171,7 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (neighbors !=  nullptr && is_set(neighbors->operation));
+	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Bgp::get_segment_path() const
@@ -11468,7 +11468,7 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::DataRates::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::DataRates::get_segment_path() const
@@ -11614,16 +11614,16 @@ bool PerfMgmt::Enable::MonitorEnable::has_data() const
 bool PerfMgmt::Enable::MonitorEnable::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counters !=  nullptr && is_set(basic_counters->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cpu !=  nullptr && is_set(cpu->operation))
-	|| (data_rates !=  nullptr && is_set(data_rates->operation))
-	|| (generic_counters !=  nullptr && is_set(generic_counters->operation))
-	|| (ldp_mpls !=  nullptr && is_set(ldp_mpls->operation))
-	|| (memory !=  nullptr && is_set(memory->operation))
-	|| (ospfv2_protocol !=  nullptr && is_set(ospfv2_protocol->operation))
-	|| (ospfv3_protocol !=  nullptr && is_set(ospfv3_protocol->operation))
-	|| (process !=  nullptr && is_set(process->operation));
+	|| (basic_counters !=  nullptr && basic_counters->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cpu !=  nullptr && cpu->has_operation())
+	|| (data_rates !=  nullptr && data_rates->has_operation())
+	|| (generic_counters !=  nullptr && generic_counters->has_operation())
+	|| (ldp_mpls !=  nullptr && ldp_mpls->has_operation())
+	|| (memory !=  nullptr && memory->has_operation())
+	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_operation())
+	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_operation())
+	|| (process !=  nullptr && process->has_operation());
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::get_segment_path() const
@@ -11941,9 +11941,9 @@ bool PerfMgmt::Enable::has_data() const
 bool PerfMgmt::Enable::has_operation() const
 {
     return is_set(operation)
-	|| (monitor_enable !=  nullptr && is_set(monitor_enable->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation))
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (monitor_enable !=  nullptr && monitor_enable->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation())
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string PerfMgmt::Enable::get_segment_path() const
@@ -12107,7 +12107,7 @@ EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12199,7 +12199,7 @@ EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12290,7 +12290,7 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(reg_exp_group_name.operation)
-	|| (reg_exps !=  nullptr && is_set(reg_exps->operation));
+	|| (reg_exps !=  nullptr && reg_exps->has_operation());
 }
 
 std::string PerfMgmt::RegExpGroups::RegExpGroup::get_segment_path() const
@@ -12533,7 +12533,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12653,7 +12653,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12773,7 +12773,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12893,7 +12893,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13013,7 +13013,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13133,7 +13133,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13253,7 +13253,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13373,7 +13373,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13493,7 +13493,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13613,7 +13613,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13733,7 +13733,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13853,7 +13853,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13973,7 +13973,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14093,7 +14093,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14213,7 +14213,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14333,7 +14333,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14453,7 +14453,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14573,7 +14573,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14693,7 +14693,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14813,7 +14813,7 @@ EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14952,26 +14952,26 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 	|| is_set(reg_exp_group.operation)
 	|| is_set(sample_interval.operation)
 	|| is_set(vrf_group.operation)
-	|| (in_broadcast_pkts !=  nullptr && is_set(in_broadcast_pkts->operation))
-	|| (in_multicast_pkts !=  nullptr && is_set(in_multicast_pkts->operation))
-	|| (in_octets !=  nullptr && is_set(in_octets->operation))
-	|| (in_packets !=  nullptr && is_set(in_packets->operation))
-	|| (in_ucast_pkts !=  nullptr && is_set(in_ucast_pkts->operation))
-	|| (input_crc !=  nullptr && is_set(input_crc->operation))
-	|| (input_frame !=  nullptr && is_set(input_frame->operation))
-	|| (input_overrun !=  nullptr && is_set(input_overrun->operation))
-	|| (input_queue_drops !=  nullptr && is_set(input_queue_drops->operation))
-	|| (input_total_drops !=  nullptr && is_set(input_total_drops->operation))
-	|| (input_total_errors !=  nullptr && is_set(input_total_errors->operation))
-	|| (input_unknown_proto !=  nullptr && is_set(input_unknown_proto->operation))
-	|| (out_broadcast_pkts !=  nullptr && is_set(out_broadcast_pkts->operation))
-	|| (out_multicast_pkts !=  nullptr && is_set(out_multicast_pkts->operation))
-	|| (out_octets !=  nullptr && is_set(out_octets->operation))
-	|| (out_packets !=  nullptr && is_set(out_packets->operation))
-	|| (out_ucast_pkts !=  nullptr && is_set(out_ucast_pkts->operation))
-	|| (output_total_drops !=  nullptr && is_set(output_total_drops->operation))
-	|| (output_total_errors !=  nullptr && is_set(output_total_errors->operation))
-	|| (output_underrun !=  nullptr && is_set(output_underrun->operation));
+	|| (in_broadcast_pkts !=  nullptr && in_broadcast_pkts->has_operation())
+	|| (in_multicast_pkts !=  nullptr && in_multicast_pkts->has_operation())
+	|| (in_octets !=  nullptr && in_octets->has_operation())
+	|| (in_packets !=  nullptr && in_packets->has_operation())
+	|| (in_ucast_pkts !=  nullptr && in_ucast_pkts->has_operation())
+	|| (input_crc !=  nullptr && input_crc->has_operation())
+	|| (input_frame !=  nullptr && input_frame->has_operation())
+	|| (input_overrun !=  nullptr && input_overrun->has_operation())
+	|| (input_queue_drops !=  nullptr && input_queue_drops->has_operation())
+	|| (input_total_drops !=  nullptr && input_total_drops->has_operation())
+	|| (input_total_errors !=  nullptr && input_total_errors->has_operation())
+	|| (input_unknown_proto !=  nullptr && input_unknown_proto->has_operation())
+	|| (out_broadcast_pkts !=  nullptr && out_broadcast_pkts->has_operation())
+	|| (out_multicast_pkts !=  nullptr && out_multicast_pkts->has_operation())
+	|| (out_octets !=  nullptr && out_octets->has_operation())
+	|| (out_packets !=  nullptr && out_packets->has_operation())
+	|| (out_ucast_pkts !=  nullptr && out_ucast_pkts->has_operation())
+	|| (output_total_drops !=  nullptr && output_total_drops->has_operation())
+	|| (output_total_errors !=  nullptr && output_total_errors->has_operation())
+	|| (output_underrun !=  nullptr && output_underrun->has_operation());
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_segment_path() const
@@ -15637,7 +15637,7 @@ bool PerfMgmt::Threshold::GenericCounterInterface::has_data() const
 bool PerfMgmt::Threshold::GenericCounterInterface::has_operation() const
 {
     return is_set(operation)
-	|| (generic_counter_interface_templates !=  nullptr && is_set(generic_counter_interface_templates->operation));
+	|| (generic_counter_interface_templates !=  nullptr && generic_counter_interface_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::get_segment_path() const
@@ -15767,7 +15767,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -15887,7 +15887,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16007,7 +16007,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16127,7 +16127,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16247,7 +16247,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Noti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16367,7 +16367,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tota
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16487,7 +16487,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Noti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16607,7 +16607,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Tota
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16727,7 +16727,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16847,7 +16847,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Init
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -16967,7 +16967,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17087,7 +17087,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Init
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17207,7 +17207,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17327,7 +17327,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keep
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17447,7 +17447,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Labe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17567,7 +17567,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Keep
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17687,7 +17687,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17807,7 +17807,7 @@ EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Addr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -17936,24 +17936,24 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_operat
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (address_msgs_rcvd !=  nullptr && is_set(address_msgs_rcvd->operation))
-	|| (address_msgs_sent !=  nullptr && is_set(address_msgs_sent->operation))
-	|| (address_withdraw_msgs_rcvd !=  nullptr && is_set(address_withdraw_msgs_rcvd->operation))
-	|| (address_withdraw_msgs_sent !=  nullptr && is_set(address_withdraw_msgs_sent->operation))
-	|| (init_msgs_rcvd !=  nullptr && is_set(init_msgs_rcvd->operation))
-	|| (init_msgs_sent !=  nullptr && is_set(init_msgs_sent->operation))
-	|| (keepalive_msgs_rcvd !=  nullptr && is_set(keepalive_msgs_rcvd->operation))
-	|| (keepalive_msgs_sent !=  nullptr && is_set(keepalive_msgs_sent->operation))
-	|| (label_mapping_msgs_rcvd !=  nullptr && is_set(label_mapping_msgs_rcvd->operation))
-	|| (label_mapping_msgs_sent !=  nullptr && is_set(label_mapping_msgs_sent->operation))
-	|| (label_release_msgs_rcvd !=  nullptr && is_set(label_release_msgs_rcvd->operation))
-	|| (label_release_msgs_sent !=  nullptr && is_set(label_release_msgs_sent->operation))
-	|| (label_withdraw_msgs_rcvd !=  nullptr && is_set(label_withdraw_msgs_rcvd->operation))
-	|| (label_withdraw_msgs_sent !=  nullptr && is_set(label_withdraw_msgs_sent->operation))
-	|| (notification_msgs_rcvd !=  nullptr && is_set(notification_msgs_rcvd->operation))
-	|| (notification_msgs_sent !=  nullptr && is_set(notification_msgs_sent->operation))
-	|| (total_msgs_rcvd !=  nullptr && is_set(total_msgs_rcvd->operation))
-	|| (total_msgs_sent !=  nullptr && is_set(total_msgs_sent->operation));
+	|| (address_msgs_rcvd !=  nullptr && address_msgs_rcvd->has_operation())
+	|| (address_msgs_sent !=  nullptr && address_msgs_sent->has_operation())
+	|| (address_withdraw_msgs_rcvd !=  nullptr && address_withdraw_msgs_rcvd->has_operation())
+	|| (address_withdraw_msgs_sent !=  nullptr && address_withdraw_msgs_sent->has_operation())
+	|| (init_msgs_rcvd !=  nullptr && init_msgs_rcvd->has_operation())
+	|| (init_msgs_sent !=  nullptr && init_msgs_sent->has_operation())
+	|| (keepalive_msgs_rcvd !=  nullptr && keepalive_msgs_rcvd->has_operation())
+	|| (keepalive_msgs_sent !=  nullptr && keepalive_msgs_sent->has_operation())
+	|| (label_mapping_msgs_rcvd !=  nullptr && label_mapping_msgs_rcvd->has_operation())
+	|| (label_mapping_msgs_sent !=  nullptr && label_mapping_msgs_sent->has_operation())
+	|| (label_release_msgs_rcvd !=  nullptr && label_release_msgs_rcvd->has_operation())
+	|| (label_release_msgs_sent !=  nullptr && label_release_msgs_sent->has_operation())
+	|| (label_withdraw_msgs_rcvd !=  nullptr && label_withdraw_msgs_rcvd->has_operation())
+	|| (label_withdraw_msgs_sent !=  nullptr && label_withdraw_msgs_sent->has_operation())
+	|| (notification_msgs_rcvd !=  nullptr && notification_msgs_rcvd->has_operation())
+	|| (notification_msgs_sent !=  nullptr && notification_msgs_sent->has_operation())
+	|| (total_msgs_rcvd !=  nullptr && total_msgs_rcvd->has_operation())
+	|| (total_msgs_sent !=  nullptr && total_msgs_sent->has_operation());
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_segment_path() const
@@ -18563,7 +18563,7 @@ bool PerfMgmt::Threshold::LdpMpls::has_data() const
 bool PerfMgmt::Threshold::LdpMpls::has_operation() const
 {
     return is_set(operation)
-	|| (ldp_mpls_templates !=  nullptr && is_set(ldp_mpls_templates->operation));
+	|| (ldp_mpls_templates !=  nullptr && ldp_mpls_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::get_segment_path() const
@@ -18693,7 +18693,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18813,7 +18813,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -18933,7 +18933,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19053,7 +19053,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19173,7 +19173,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19293,7 +19293,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19413,7 +19413,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19533,7 +19533,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19653,7 +19653,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19773,7 +19773,7 @@ EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -19892,16 +19892,16 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 	|| is_set(reg_exp_group.operation)
 	|| is_set(sample_interval.operation)
 	|| is_set(vrf_group.operation)
-	|| (in_octets !=  nullptr && is_set(in_octets->operation))
-	|| (in_packets !=  nullptr && is_set(in_packets->operation))
-	|| (input_queue_drops !=  nullptr && is_set(input_queue_drops->operation))
-	|| (input_total_drops !=  nullptr && is_set(input_total_drops->operation))
-	|| (input_total_errors !=  nullptr && is_set(input_total_errors->operation))
-	|| (out_octets !=  nullptr && is_set(out_octets->operation))
-	|| (out_packets !=  nullptr && is_set(out_packets->operation))
-	|| (output_queue_drops !=  nullptr && is_set(output_queue_drops->operation))
-	|| (output_total_drops !=  nullptr && is_set(output_total_drops->operation))
-	|| (output_total_errors !=  nullptr && is_set(output_total_errors->operation));
+	|| (in_octets !=  nullptr && in_octets->has_operation())
+	|| (in_packets !=  nullptr && in_packets->has_operation())
+	|| (input_queue_drops !=  nullptr && input_queue_drops->has_operation())
+	|| (input_total_drops !=  nullptr && input_total_drops->has_operation())
+	|| (input_total_errors !=  nullptr && input_total_errors->has_operation())
+	|| (out_octets !=  nullptr && out_octets->has_operation())
+	|| (out_packets !=  nullptr && out_packets->has_operation())
+	|| (output_queue_drops !=  nullptr && output_queue_drops->has_operation())
+	|| (output_total_drops !=  nullptr && output_total_drops->has_operation())
+	|| (output_total_errors !=  nullptr && output_total_errors->has_operation());
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::get_segment_path() const
@@ -20337,7 +20337,7 @@ bool PerfMgmt::Threshold::BasicCounterInterface::has_data() const
 bool PerfMgmt::Threshold::BasicCounterInterface::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counter_interface_templates !=  nullptr && is_set(basic_counter_interface_templates->operation));
+	|| (basic_counter_interface_templates !=  nullptr && basic_counter_interface_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::get_segment_path() const
@@ -20467,7 +20467,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMess
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20587,7 +20587,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20707,7 +20707,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20827,7 +20827,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -20947,7 +20947,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21067,7 +21067,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21187,7 +21187,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21307,7 +21307,7 @@ EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -21416,14 +21416,14 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::has_operation() const
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (conn_dropped !=  nullptr && is_set(conn_dropped->operation))
-	|| (conn_established !=  nullptr && is_set(conn_established->operation))
-	|| (errors_received !=  nullptr && is_set(errors_received->operation))
-	|| (errors_sent !=  nullptr && is_set(errors_sent->operation))
-	|| (input_messages !=  nullptr && is_set(input_messages->operation))
-	|| (input_update_messages !=  nullptr && is_set(input_update_messages->operation))
-	|| (output_messages !=  nullptr && is_set(output_messages->operation))
-	|| (output_update_messages !=  nullptr && is_set(output_update_messages->operation));
+	|| (conn_dropped !=  nullptr && conn_dropped->has_operation())
+	|| (conn_established !=  nullptr && conn_established->has_operation())
+	|| (errors_received !=  nullptr && errors_received->has_operation())
+	|| (errors_sent !=  nullptr && errors_sent->has_operation())
+	|| (input_messages !=  nullptr && input_messages->has_operation())
+	|| (input_update_messages !=  nullptr && input_update_messages->has_operation())
+	|| (output_messages !=  nullptr && output_messages->has_operation())
+	|| (output_update_messages !=  nullptr && output_update_messages->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_segment_path() const
@@ -21803,7 +21803,7 @@ bool PerfMgmt::Threshold::Bgp::has_data() const
 bool PerfMgmt::Threshold::Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (bgp_templates !=  nullptr && is_set(bgp_templates->operation));
+	|| (bgp_templates !=  nullptr && bgp_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Bgp::get_segment_path() const
@@ -21933,7 +21933,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22053,7 +22053,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22173,7 +22173,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22293,7 +22293,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22413,7 +22413,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22533,7 +22533,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22653,7 +22653,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22773,7 +22773,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -22893,7 +22893,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23013,7 +23013,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23133,7 +23133,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23253,7 +23253,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23373,7 +23373,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23493,7 +23493,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23613,7 +23613,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23733,7 +23733,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23853,7 +23853,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -23973,7 +23973,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24093,7 +24093,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24213,7 +24213,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24333,7 +24333,7 @@ EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -24468,27 +24468,27 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (checksum_errors !=  nullptr && is_set(checksum_errors->operation))
-	|| (input_db_ds !=  nullptr && is_set(input_db_ds->operation))
-	|| (input_db_ds_lsa !=  nullptr && is_set(input_db_ds_lsa->operation))
-	|| (input_hello_packets !=  nullptr && is_set(input_hello_packets->operation))
-	|| (input_ls_requests !=  nullptr && is_set(input_ls_requests->operation))
-	|| (input_ls_requests_lsa !=  nullptr && is_set(input_ls_requests_lsa->operation))
-	|| (input_lsa_acks !=  nullptr && is_set(input_lsa_acks->operation))
-	|| (input_lsa_acks_lsa !=  nullptr && is_set(input_lsa_acks_lsa->operation))
-	|| (input_lsa_updates !=  nullptr && is_set(input_lsa_updates->operation))
-	|| (input_lsa_updates_lsa !=  nullptr && is_set(input_lsa_updates_lsa->operation))
-	|| (input_packets !=  nullptr && is_set(input_packets->operation))
-	|| (output_db_ds !=  nullptr && is_set(output_db_ds->operation))
-	|| (output_db_ds_lsa !=  nullptr && is_set(output_db_ds_lsa->operation))
-	|| (output_hello_packets !=  nullptr && is_set(output_hello_packets->operation))
-	|| (output_ls_requests !=  nullptr && is_set(output_ls_requests->operation))
-	|| (output_ls_requests_lsa !=  nullptr && is_set(output_ls_requests_lsa->operation))
-	|| (output_lsa_acks !=  nullptr && is_set(output_lsa_acks->operation))
-	|| (output_lsa_acks_lsa !=  nullptr && is_set(output_lsa_acks_lsa->operation))
-	|| (output_lsa_updates !=  nullptr && is_set(output_lsa_updates->operation))
-	|| (output_lsa_updates_lsa !=  nullptr && is_set(output_lsa_updates_lsa->operation))
-	|| (output_packets !=  nullptr && is_set(output_packets->operation));
+	|| (checksum_errors !=  nullptr && checksum_errors->has_operation())
+	|| (input_db_ds !=  nullptr && input_db_ds->has_operation())
+	|| (input_db_ds_lsa !=  nullptr && input_db_ds_lsa->has_operation())
+	|| (input_hello_packets !=  nullptr && input_hello_packets->has_operation())
+	|| (input_ls_requests !=  nullptr && input_ls_requests->has_operation())
+	|| (input_ls_requests_lsa !=  nullptr && input_ls_requests_lsa->has_operation())
+	|| (input_lsa_acks !=  nullptr && input_lsa_acks->has_operation())
+	|| (input_lsa_acks_lsa !=  nullptr && input_lsa_acks_lsa->has_operation())
+	|| (input_lsa_updates !=  nullptr && input_lsa_updates->has_operation())
+	|| (input_lsa_updates_lsa !=  nullptr && input_lsa_updates_lsa->has_operation())
+	|| (input_packets !=  nullptr && input_packets->has_operation())
+	|| (output_db_ds !=  nullptr && output_db_ds->has_operation())
+	|| (output_db_ds_lsa !=  nullptr && output_db_ds_lsa->has_operation())
+	|| (output_hello_packets !=  nullptr && output_hello_packets->has_operation())
+	|| (output_ls_requests !=  nullptr && output_ls_requests->has_operation())
+	|| (output_ls_requests_lsa !=  nullptr && output_ls_requests_lsa->has_operation())
+	|| (output_lsa_acks !=  nullptr && output_lsa_acks->has_operation())
+	|| (output_lsa_acks_lsa !=  nullptr && output_lsa_acks_lsa->has_operation())
+	|| (output_lsa_updates !=  nullptr && output_lsa_updates->has_operation())
+	|| (output_lsa_updates_lsa !=  nullptr && output_lsa_updates_lsa->has_operation())
+	|| (output_packets !=  nullptr && output_packets->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::get_segment_path() const
@@ -25167,7 +25167,7 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::has_data() const
 bool PerfMgmt::Threshold::Ospfv2Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (ospfv2_protocol_templates !=  nullptr && is_set(ospfv2_protocol_templates->operation));
+	|| (ospfv2_protocol_templates !=  nullptr && ospfv2_protocol_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::get_segment_path() const
@@ -25297,7 +25297,7 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::Aver
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25417,7 +25417,7 @@ EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoPr
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -25514,8 +25514,8 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::has_operat
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (average_cpu_used !=  nullptr && is_set(average_cpu_used->operation))
-	|| (no_processes !=  nullptr && is_set(no_processes->operation));
+	|| (average_cpu_used !=  nullptr && average_cpu_used->has_operation())
+	|| (no_processes !=  nullptr && no_processes->has_operation());
 }
 
 std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::get_segment_path() const
@@ -25757,7 +25757,7 @@ bool PerfMgmt::Threshold::CpuNode::has_data() const
 bool PerfMgmt::Threshold::CpuNode::has_operation() const
 {
     return is_set(operation)
-	|| (cpu_node_templates !=  nullptr && is_set(cpu_node_templates->operation));
+	|| (cpu_node_templates !=  nullptr && cpu_node_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::CpuNode::get_segment_path() const
@@ -25887,7 +25887,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26007,7 +26007,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26127,7 +26127,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26247,7 +26247,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26367,7 +26367,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26487,7 +26487,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26607,7 +26607,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26727,7 +26727,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26847,7 +26847,7 @@ EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -26964,15 +26964,15 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 	|| is_set(reg_exp_group.operation)
 	|| is_set(sample_interval.operation)
 	|| is_set(vrf_group.operation)
-	|| (bandwidth !=  nullptr && is_set(bandwidth->operation))
-	|| (input_data_rate !=  nullptr && is_set(input_data_rate->operation))
-	|| (input_packet_rate !=  nullptr && is_set(input_packet_rate->operation))
-	|| (input_peak_pkts !=  nullptr && is_set(input_peak_pkts->operation))
-	|| (input_peak_rate !=  nullptr && is_set(input_peak_rate->operation))
-	|| (output_data_rate !=  nullptr && is_set(output_data_rate->operation))
-	|| (output_packet_rate !=  nullptr && is_set(output_packet_rate->operation))
-	|| (output_peak_pkts !=  nullptr && is_set(output_peak_pkts->operation))
-	|| (output_peak_rate !=  nullptr && is_set(output_peak_rate->operation));
+	|| (bandwidth !=  nullptr && bandwidth->has_operation())
+	|| (input_data_rate !=  nullptr && input_data_rate->has_operation())
+	|| (input_packet_rate !=  nullptr && input_packet_rate->has_operation())
+	|| (input_peak_pkts !=  nullptr && input_peak_pkts->has_operation())
+	|| (input_peak_rate !=  nullptr && input_peak_rate->has_operation())
+	|| (output_data_rate !=  nullptr && output_data_rate->has_operation())
+	|| (output_packet_rate !=  nullptr && output_packet_rate->has_operation())
+	|| (output_peak_pkts !=  nullptr && output_peak_pkts->has_operation())
+	|| (output_peak_rate !=  nullptr && output_peak_rate->has_operation());
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::get_segment_path() const
@@ -27385,7 +27385,7 @@ bool PerfMgmt::Threshold::DataRateInterface::has_data() const
 bool PerfMgmt::Threshold::DataRateInterface::has_operation() const
 {
     return is_set(operation)
-	|| (data_rate_interface_templates !=  nullptr && is_set(data_rate_interface_templates->operation));
+	|| (data_rate_interface_templates !=  nullptr && data_rate_interface_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::get_segment_path() const
@@ -27515,7 +27515,7 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27635,7 +27635,7 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27755,7 +27755,7 @@ EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -27854,9 +27854,9 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (average_cpu_used !=  nullptr && is_set(average_cpu_used->operation))
-	|| (no_threads !=  nullptr && is_set(no_threads->operation))
-	|| (peak_memory !=  nullptr && is_set(peak_memory->operation));
+	|| (average_cpu_used !=  nullptr && average_cpu_used->has_operation())
+	|| (no_threads !=  nullptr && no_threads->has_operation())
+	|| (peak_memory !=  nullptr && peak_memory->has_operation());
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::get_segment_path() const
@@ -28121,7 +28121,7 @@ bool PerfMgmt::Threshold::ProcessNode::has_data() const
 bool PerfMgmt::Threshold::ProcessNode::has_operation() const
 {
     return is_set(operation)
-	|| (process_node_templates !=  nullptr && is_set(process_node_templates->operation));
+	|| (process_node_templates !=  nullptr && process_node_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::get_segment_path() const
@@ -28251,7 +28251,7 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTempl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28371,7 +28371,7 @@ EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTempl
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28468,8 +28468,8 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::h
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (curr_memory !=  nullptr && is_set(curr_memory->operation))
-	|| (peak_memory !=  nullptr && is_set(peak_memory->operation));
+	|| (curr_memory !=  nullptr && curr_memory->has_operation())
+	|| (peak_memory !=  nullptr && peak_memory->has_operation());
 }
 
 std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::get_segment_path() const
@@ -28711,7 +28711,7 @@ bool PerfMgmt::Threshold::MemoryNode::has_data() const
 bool PerfMgmt::Threshold::MemoryNode::has_operation() const
 {
     return is_set(operation)
-	|| (memory_node_templates !=  nullptr && is_set(memory_node_templates->operation));
+	|| (memory_node_templates !=  nullptr && memory_node_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::MemoryNode::get_segment_path() const
@@ -28841,7 +28841,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -28961,7 +28961,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29081,7 +29081,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29201,7 +29201,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29321,7 +29321,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29441,7 +29441,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29561,7 +29561,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29681,7 +29681,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29801,7 +29801,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -29921,7 +29921,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30041,7 +30041,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30161,7 +30161,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30281,7 +30281,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30401,7 +30401,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30521,7 +30521,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30641,7 +30641,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30761,7 +30761,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -30881,7 +30881,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31001,7 +31001,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31121,7 +31121,7 @@ EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3P
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -31254,26 +31254,26 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
     return is_set(operation)
 	|| is_set(template_name.operation)
 	|| is_set(sample_interval.operation)
-	|| (input_db_ds !=  nullptr && is_set(input_db_ds->operation))
-	|| (input_db_ds_lsa !=  nullptr && is_set(input_db_ds_lsa->operation))
-	|| (input_hello_packets !=  nullptr && is_set(input_hello_packets->operation))
-	|| (input_ls_requests !=  nullptr && is_set(input_ls_requests->operation))
-	|| (input_ls_requests_lsa !=  nullptr && is_set(input_ls_requests_lsa->operation))
-	|| (input_lsa_acks !=  nullptr && is_set(input_lsa_acks->operation))
-	|| (input_lsa_acks_lsa !=  nullptr && is_set(input_lsa_acks_lsa->operation))
-	|| (input_lsa_updates !=  nullptr && is_set(input_lsa_updates->operation))
-	|| (input_lsa_updates_lsa !=  nullptr && is_set(input_lsa_updates_lsa->operation))
-	|| (input_packets !=  nullptr && is_set(input_packets->operation))
-	|| (output_db_ds !=  nullptr && is_set(output_db_ds->operation))
-	|| (output_db_ds_lsa !=  nullptr && is_set(output_db_ds_lsa->operation))
-	|| (output_hello_packets !=  nullptr && is_set(output_hello_packets->operation))
-	|| (output_ls_requests !=  nullptr && is_set(output_ls_requests->operation))
-	|| (output_ls_requests_lsa !=  nullptr && is_set(output_ls_requests_lsa->operation))
-	|| (output_lsa_acks !=  nullptr && is_set(output_lsa_acks->operation))
-	|| (output_lsa_acks_lsa !=  nullptr && is_set(output_lsa_acks_lsa->operation))
-	|| (output_lsa_updates !=  nullptr && is_set(output_lsa_updates->operation))
-	|| (output_lsa_updates_lsa !=  nullptr && is_set(output_lsa_updates_lsa->operation))
-	|| (output_packets !=  nullptr && is_set(output_packets->operation));
+	|| (input_db_ds !=  nullptr && input_db_ds->has_operation())
+	|| (input_db_ds_lsa !=  nullptr && input_db_ds_lsa->has_operation())
+	|| (input_hello_packets !=  nullptr && input_hello_packets->has_operation())
+	|| (input_ls_requests !=  nullptr && input_ls_requests->has_operation())
+	|| (input_ls_requests_lsa !=  nullptr && input_ls_requests_lsa->has_operation())
+	|| (input_lsa_acks !=  nullptr && input_lsa_acks->has_operation())
+	|| (input_lsa_acks_lsa !=  nullptr && input_lsa_acks_lsa->has_operation())
+	|| (input_lsa_updates !=  nullptr && input_lsa_updates->has_operation())
+	|| (input_lsa_updates_lsa !=  nullptr && input_lsa_updates_lsa->has_operation())
+	|| (input_packets !=  nullptr && input_packets->has_operation())
+	|| (output_db_ds !=  nullptr && output_db_ds->has_operation())
+	|| (output_db_ds_lsa !=  nullptr && output_db_ds_lsa->has_operation())
+	|| (output_hello_packets !=  nullptr && output_hello_packets->has_operation())
+	|| (output_ls_requests !=  nullptr && output_ls_requests->has_operation())
+	|| (output_ls_requests_lsa !=  nullptr && output_ls_requests_lsa->has_operation())
+	|| (output_lsa_acks !=  nullptr && output_lsa_acks->has_operation())
+	|| (output_lsa_acks_lsa !=  nullptr && output_lsa_acks_lsa->has_operation())
+	|| (output_lsa_updates !=  nullptr && output_lsa_updates->has_operation())
+	|| (output_lsa_updates_lsa !=  nullptr && output_lsa_updates_lsa->has_operation())
+	|| (output_packets !=  nullptr && output_packets->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::get_segment_path() const
@@ -31929,7 +31929,7 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::has_data() const
 bool PerfMgmt::Threshold::Ospfv3Protocol::has_operation() const
 {
     return is_set(operation)
-	|| (ospfv3_protocol_templates !=  nullptr && is_set(ospfv3_protocol_templates->operation));
+	|| (ospfv3_protocol_templates !=  nullptr && ospfv3_protocol_templates->has_operation());
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::get_segment_path() const
@@ -32075,16 +32075,16 @@ bool PerfMgmt::Threshold::has_data() const
 bool PerfMgmt::Threshold::has_operation() const
 {
     return is_set(operation)
-	|| (basic_counter_interface !=  nullptr && is_set(basic_counter_interface->operation))
-	|| (bgp !=  nullptr && is_set(bgp->operation))
-	|| (cpu_node !=  nullptr && is_set(cpu_node->operation))
-	|| (data_rate_interface !=  nullptr && is_set(data_rate_interface->operation))
-	|| (generic_counter_interface !=  nullptr && is_set(generic_counter_interface->operation))
-	|| (ldp_mpls !=  nullptr && is_set(ldp_mpls->operation))
-	|| (memory_node !=  nullptr && is_set(memory_node->operation))
-	|| (ospfv2_protocol !=  nullptr && is_set(ospfv2_protocol->operation))
-	|| (ospfv3_protocol !=  nullptr && is_set(ospfv3_protocol->operation))
-	|| (process_node !=  nullptr && is_set(process_node->operation));
+	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (cpu_node !=  nullptr && cpu_node->has_operation())
+	|| (data_rate_interface !=  nullptr && data_rate_interface->has_operation())
+	|| (generic_counter_interface !=  nullptr && generic_counter_interface->has_operation())
+	|| (ldp_mpls !=  nullptr && ldp_mpls->has_operation())
+	|| (memory_node !=  nullptr && memory_node->has_operation())
+	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_operation())
+	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_operation())
+	|| (process_node !=  nullptr && process_node->has_operation());
 }
 
 std::string PerfMgmt::Threshold::get_segment_path() const
@@ -32412,11 +32412,11 @@ bool PerfMgmt::has_data() const
 bool PerfMgmt::has_operation() const
 {
     return is_set(operation)
-	|| (enable !=  nullptr && is_set(enable->operation))
-	|| (reg_exp_groups !=  nullptr && is_set(reg_exp_groups->operation))
-	|| (resources !=  nullptr && is_set(resources->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation))
-	|| (threshold !=  nullptr && is_set(threshold->operation));
+	|| (enable !=  nullptr && enable->has_operation())
+	|| (reg_exp_groups !=  nullptr && reg_exp_groups->has_operation())
+	|| (resources !=  nullptr && resources->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation())
+	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
 std::string PerfMgmt::get_segment_path() const
@@ -32433,7 +32433,7 @@ EntityPath PerfMgmt::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -32589,17 +32589,17 @@ std::unique_ptr<Entity> PerfMgmt::clone_ptr()
     return std::make_unique<PerfMgmt>();
 }
 
-const Enum::Value PmThresholdOpEnum::eq {1, "eq"};
-const Enum::Value PmThresholdOpEnum::ne {2, "ne"};
-const Enum::Value PmThresholdOpEnum::lt {3, "lt"};
-const Enum::Value PmThresholdOpEnum::le {4, "le"};
-const Enum::Value PmThresholdOpEnum::gt {5, "gt"};
-const Enum::Value PmThresholdOpEnum::ge {6, "ge"};
-const Enum::Value PmThresholdOpEnum::rg {7, "rg"};
+const Enum::YLeaf PmThresholdOpEnum::eq {1, "eq"};
+const Enum::YLeaf PmThresholdOpEnum::ne {2, "ne"};
+const Enum::YLeaf PmThresholdOpEnum::lt {3, "lt"};
+const Enum::YLeaf PmThresholdOpEnum::le {4, "le"};
+const Enum::YLeaf PmThresholdOpEnum::gt {5, "gt"};
+const Enum::YLeaf PmThresholdOpEnum::ge {6, "ge"};
+const Enum::YLeaf PmThresholdOpEnum::rg {7, "rg"};
 
-const Enum::Value PmThresholdRearmEnum::always {0, "always"};
-const Enum::Value PmThresholdRearmEnum::window {1, "window"};
-const Enum::Value PmThresholdRearmEnum::toggle {2, "toggle"};
+const Enum::YLeaf PmThresholdRearmEnum::always {0, "always"};
+const Enum::YLeaf PmThresholdRearmEnum::window {1, "window"};
+const Enum::YLeaf PmThresholdRearmEnum::toggle {2, "toggle"};
 
 
 }

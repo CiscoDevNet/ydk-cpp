@@ -26,6 +26,7 @@ class CfgHistGl : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class RecordType : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class CfgHistGl : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value record_type; //type: string
 
+
+            YLeaf record_type; //type: string
 
         class Record : public Entity
         {
@@ -55,10 +57,11 @@ class CfgHistGl : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value record; //type: int32
-                Value timestamp; //type: uint32
-                Value record_type; //type: HistRecordEnum
 
+
+                YLeaf record; //type: int32
+                YLeaf timestamp; //type: uint32
+                YLeaf record_type; //type: HistRecordEnum
 
             class Info : public Entity
             {
@@ -73,9 +76,10 @@ class CfgHistGl : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value type; //type: HistRecordEnum
-                    Value a; //type: uint32
 
+
+                    YLeaf type; //type: HistRecordEnum
+                    YLeaf a; //type: uint32
 
                 class AlarmInfo : public Entity
                 {
@@ -90,9 +94,10 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value state; //type: string
-                        Value where; //type: string
 
+
+                        YLeaf state; //type: string
+                        YLeaf where; //type: string
 
 
 
@@ -112,9 +117,10 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value user_id; //type: string
-                        Value line; //type: string
 
+
+                        YLeaf user_id; //type: string
+                        YLeaf line; //type: string
 
 
 
@@ -134,13 +140,14 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value commit_id; //type: string
-                        Value user_id; //type: string
-                        Value line; //type: string
-                        Value client_name; //type: string
-                        Value label; //type: string
-                        Value comment; //type: string
 
+
+                        YLeaf commit_id; //type: string
+                        YLeaf user_id; //type: string
+                        YLeaf line; //type: string
+                        YLeaf client_name; //type: string
+                        YLeaf label; //type: string
+                        YLeaf comment; //type: string
 
 
 
@@ -160,10 +167,11 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value config_type; //type: string
-                        Value operation_; //type: string
-                        Value config_name; //type: string
 
+
+                        YLeaf config_type; //type: string
+                        YLeaf operation_; //type: string
+                        YLeaf config_name; //type: string
 
 
 
@@ -183,8 +191,9 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value comment; //type: string
 
+
+                        YLeaf comment; //type: string
 
 
 
@@ -204,9 +213,10 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value how_booted; //type: string
-                        Value boot_path; //type: string
 
+
+                        YLeaf how_booted; //type: string
+                        YLeaf boot_path; //type: string
 
 
 
@@ -226,8 +236,9 @@ class CfgHistGl : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value comment; //type: string
 
+
+                        YLeaf comment; //type: string
 
 
 
@@ -241,14 +252,12 @@ class CfgHistGl : public Entity
                     std::unique_ptr<Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::OirInfo> oir_info;
                     std::unique_ptr<Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::ShutdownInfo> shutdown_info;
                     std::unique_ptr<Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info::StartupInfo> startup_info;
-                    class HistRecordEnum;
 
 
             }; // CfgHistGl::RecordType::Record::Info
 
 
                 std::unique_ptr<Cisco_IOS_XR_config_cfgmgr_exec_oper::CfgHistGl::RecordType::Record::Info> info;
-                class HistRecordEnum;
 
 
         }; // CfgHistGl::RecordType::Record
@@ -269,16 +278,16 @@ class CfgHistGl : public Entity
 class HistRecordEnum : public Enum
 {
     public:
-        static const Enum::Value cfghist_bag_record_all;
-        static const Enum::Value cfghist_bag_record_alarm;
-        static const Enum::Value cfghist_bag_record_cfs_check;
-        static const Enum::Value cfghist_bag_record_commit;
-        static const Enum::Value cfghist_bag_record_oir;
-        static const Enum::Value cfghist_bag_record_shutdown;
-        static const Enum::Value cfghist_bag_record_startup;
-        static const Enum::Value cfghist_bag_record_backup;
-        static const Enum::Value cfghist_bag_record_rebase;
-        static const Enum::Value cfghist_bag_record_last;
+        static const Enum::YLeaf cfghist_bag_record_all;
+        static const Enum::YLeaf cfghist_bag_record_alarm;
+        static const Enum::YLeaf cfghist_bag_record_cfs_check;
+        static const Enum::YLeaf cfghist_bag_record_commit;
+        static const Enum::YLeaf cfghist_bag_record_oir;
+        static const Enum::YLeaf cfghist_bag_record_shutdown;
+        static const Enum::YLeaf cfghist_bag_record_startup;
+        static const Enum::YLeaf cfghist_bag_record_backup;
+        static const Enum::YLeaf cfghist_bag_record_rebase;
+        static const Enum::YLeaf cfghist_bag_record_last;
 
 };
 

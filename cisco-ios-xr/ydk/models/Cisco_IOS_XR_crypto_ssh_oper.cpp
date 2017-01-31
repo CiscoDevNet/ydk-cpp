@@ -61,7 +61,7 @@ EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -178,7 +178,7 @@ EntityPath Ssh1::Kex::Nodes::Node::IncomingSessions::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -297,7 +297,7 @@ EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -414,7 +414,7 @@ EntityPath Ssh1::Kex::Nodes::Node::OutgoingConnections::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -510,8 +510,8 @@ bool Ssh1::Kex::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (incoming_sessions !=  nullptr && is_set(incoming_sessions->operation))
-	|| (outgoing_connections !=  nullptr && is_set(outgoing_connections->operation));
+	|| (incoming_sessions !=  nullptr && incoming_sessions->has_operation())
+	|| (outgoing_connections !=  nullptr && outgoing_connections->has_operation());
 }
 
 std::string Ssh1::Kex::Nodes::Node::get_segment_path() const
@@ -748,7 +748,7 @@ bool Ssh1::Kex::has_data() const
 bool Ssh1::Kex::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Ssh1::Kex::get_segment_path() const
@@ -849,7 +849,7 @@ bool Ssh1::has_data() const
 bool Ssh1::has_operation() const
 {
     return is_set(operation)
-	|| (kex !=  nullptr && is_set(kex->operation));
+	|| (kex !=  nullptr && kex->has_operation());
 }
 
 std::string Ssh1::get_segment_path() const
@@ -866,7 +866,7 @@ EntityPath Ssh1::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -1492,8 +1492,8 @@ bool Ssh::Session::Brief::has_data() const
 bool Ssh::Session::Brief::has_operation() const
 {
     return is_set(operation)
-	|| (incoming_sessions !=  nullptr && is_set(incoming_sessions->operation))
-	|| (outgoing_sessions !=  nullptr && is_set(outgoing_sessions->operation));
+	|| (incoming_sessions !=  nullptr && incoming_sessions->has_operation())
+	|| (outgoing_sessions !=  nullptr && outgoing_sessions->has_operation());
 }
 
 std::string Ssh::Session::Brief::get_segment_path() const
@@ -2094,8 +2094,8 @@ bool Ssh::Session::Detail::has_data() const
 bool Ssh::Session::Detail::has_operation() const
 {
     return is_set(operation)
-	|| (incoming_sessions !=  nullptr && is_set(incoming_sessions->operation))
-	|| (outgoing_connections !=  nullptr && is_set(outgoing_connections->operation));
+	|| (incoming_sessions !=  nullptr && incoming_sessions->has_operation())
+	|| (outgoing_connections !=  nullptr && outgoing_connections->has_operation());
 }
 
 std::string Ssh::Session::Detail::get_segment_path() const
@@ -2224,8 +2224,8 @@ bool Ssh::Session::has_data() const
 bool Ssh::Session::has_operation() const
 {
     return is_set(operation)
-	|| (brief !=  nullptr && is_set(brief->operation))
-	|| (detail !=  nullptr && is_set(detail->operation));
+	|| (brief !=  nullptr && brief->has_operation())
+	|| (detail !=  nullptr && detail->has_operation());
 }
 
 std::string Ssh::Session::get_segment_path() const
@@ -2349,7 +2349,7 @@ bool Ssh::has_data() const
 bool Ssh::has_operation() const
 {
     return is_set(operation)
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string Ssh::get_segment_path() const
@@ -2366,7 +2366,7 @@ EntityPath Ssh::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -2430,50 +2430,50 @@ std::unique_ptr<Entity> Ssh::clone_ptr()
     return std::make_unique<Ssh>();
 }
 
-const Enum::Value KexNameEnum::diffie_hellman {0, "diffie-hellman"};
-const Enum::Value KexNameEnum::password_authenticated {1, "password-authenticated"};
+const Enum::YLeaf KexNameEnum::diffie_hellman {0, "diffie-hellman"};
+const Enum::YLeaf KexNameEnum::password_authenticated {1, "password-authenticated"};
 
-const Enum::Value HostkeyEnum::ssh_dss {0, "ssh-dss"};
-const Enum::Value HostkeyEnum::ssh_rsa {1, "ssh-rsa"};
+const Enum::YLeaf HostkeyEnum::ssh_dss {0, "ssh-dss"};
+const Enum::YLeaf HostkeyEnum::ssh_rsa {1, "ssh-rsa"};
 
-const Enum::Value VersionEnum::v2 {0, "v2"};
-const Enum::Value VersionEnum::v1 {1, "v1"};
+const Enum::YLeaf VersionEnum::v2 {0, "v2"};
+const Enum::YLeaf VersionEnum::v1 {1, "v1"};
 
-const Enum::Value ConnectionEnum::undefined {0, "undefined"};
-const Enum::Value ConnectionEnum::shell {1, "shell"};
-const Enum::Value ConnectionEnum::exec {2, "exec"};
-const Enum::Value ConnectionEnum::scp {3, "scp"};
-const Enum::Value ConnectionEnum::sftp_subsystem {4, "sftp-subsystem"};
-const Enum::Value ConnectionEnum::netconf_subsystem {5, "netconf-subsystem"};
+const Enum::YLeaf ConnectionEnum::undefined {0, "undefined"};
+const Enum::YLeaf ConnectionEnum::shell {1, "shell"};
+const Enum::YLeaf ConnectionEnum::exec {2, "exec"};
+const Enum::YLeaf ConnectionEnum::scp {3, "scp"};
+const Enum::YLeaf ConnectionEnum::sftp_subsystem {4, "sftp-subsystem"};
+const Enum::YLeaf ConnectionEnum::netconf_subsystem {5, "netconf-subsystem"};
 
-const Enum::Value StatesEnum::open {1, "open"};
-const Enum::Value StatesEnum::version_ok {2, "version-ok"};
-const Enum::Value StatesEnum::key_exchange_initialize {3, "key-exchange-initialize"};
-const Enum::Value StatesEnum::key_exchange_dh {4, "key-exchange-dh"};
-const Enum::Value StatesEnum::new_keys {5, "new-keys"};
-const Enum::Value StatesEnum::authenticate_information {6, "authenticate-information"};
-const Enum::Value StatesEnum::authenticated {7, "authenticated"};
-const Enum::Value StatesEnum::channel_open {8, "channel-open"};
-const Enum::Value StatesEnum::pty_open {9, "pty-open"};
-const Enum::Value StatesEnum::session_open {10, "session-open"};
-const Enum::Value StatesEnum::rekey {11, "rekey"};
-const Enum::Value StatesEnum::suspended {12, "suspended"};
-const Enum::Value StatesEnum::session_closed {13, "session-closed"};
+const Enum::YLeaf StatesEnum::open {1, "open"};
+const Enum::YLeaf StatesEnum::version_ok {2, "version-ok"};
+const Enum::YLeaf StatesEnum::key_exchange_initialize {3, "key-exchange-initialize"};
+const Enum::YLeaf StatesEnum::key_exchange_dh {4, "key-exchange-dh"};
+const Enum::YLeaf StatesEnum::new_keys {5, "new-keys"};
+const Enum::YLeaf StatesEnum::authenticate_information {6, "authenticate-information"};
+const Enum::YLeaf StatesEnum::authenticated {7, "authenticated"};
+const Enum::YLeaf StatesEnum::channel_open {8, "channel-open"};
+const Enum::YLeaf StatesEnum::pty_open {9, "pty-open"};
+const Enum::YLeaf StatesEnum::session_open {10, "session-open"};
+const Enum::YLeaf StatesEnum::rekey {11, "rekey"};
+const Enum::YLeaf StatesEnum::suspended {12, "suspended"};
+const Enum::YLeaf StatesEnum::session_closed {13, "session-closed"};
 
-const Enum::Value MacEnum::hmac_md5 {0, "hmac-md5"};
-const Enum::Value MacEnum::hmac_sha1 {1, "hmac-sha1"};
+const Enum::YLeaf MacEnum::hmac_md5 {0, "hmac-md5"};
+const Enum::YLeaf MacEnum::hmac_sha1 {1, "hmac-sha1"};
 
-const Enum::Value CipherEnum::aes128_cbc {0, "aes128-cbc"};
-const Enum::Value CipherEnum::aes192_cbc {1, "aes192-cbc"};
-const Enum::Value CipherEnum::aes256_cbc {2, "aes256-cbc"};
-const Enum::Value CipherEnum::triple_des_cbc {3, "triple-des-cbc"};
-const Enum::Value CipherEnum::aes128_ctr {4, "aes128-ctr"};
-const Enum::Value CipherEnum::aes192_ctr {5, "aes192-ctr"};
-const Enum::Value CipherEnum::aes256_ctr {6, "aes256-ctr"};
+const Enum::YLeaf CipherEnum::aes128_cbc {0, "aes128-cbc"};
+const Enum::YLeaf CipherEnum::aes192_cbc {1, "aes192-cbc"};
+const Enum::YLeaf CipherEnum::aes256_cbc {2, "aes256-cbc"};
+const Enum::YLeaf CipherEnum::triple_des_cbc {3, "triple-des-cbc"};
+const Enum::YLeaf CipherEnum::aes128_ctr {4, "aes128-ctr"};
+const Enum::YLeaf CipherEnum::aes192_ctr {5, "aes192-ctr"};
+const Enum::YLeaf CipherEnum::aes256_ctr {6, "aes256-ctr"};
 
-const Enum::Value AuthenEnum::password {0, "password"};
-const Enum::Value AuthenEnum::rsa_public_key {1, "rsa-public-key"};
-const Enum::Value AuthenEnum::keyboard_interactive {2, "keyboard-interactive"};
+const Enum::YLeaf AuthenEnum::password {0, "password"};
+const Enum::YLeaf AuthenEnum::rsa_public_key {1, "rsa-public-key"};
+const Enum::YLeaf AuthenEnum::keyboard_interactive {2, "keyboard-interactive"};
 
 
 }

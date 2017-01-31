@@ -88,7 +88,7 @@ EntityPath SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -250,7 +250,7 @@ EntityPath SdrInventoryVm::Nodes::Node::NodeEntries::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -341,7 +341,7 @@ bool SdrInventoryVm::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (node_entries !=  nullptr && is_set(node_entries->operation));
+	|| (node_entries !=  nullptr && node_entries->has_operation());
 }
 
 std::string SdrInventoryVm::Nodes::Node::get_segment_path() const
@@ -555,7 +555,7 @@ bool SdrInventoryVm::has_data() const
 bool SdrInventoryVm::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string SdrInventoryVm::get_segment_path() const
@@ -572,7 +572,7 @@ EntityPath SdrInventoryVm::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

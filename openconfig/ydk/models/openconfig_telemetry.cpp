@@ -43,7 +43,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::Config::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -123,7 +123,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::State::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -206,7 +206,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -294,7 +294,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -374,8 +374,8 @@ bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::has_op
 {
     return is_set(operation)
 	|| is_set(path.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_segment_path() const
@@ -392,7 +392,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -525,7 +525,7 @@ EntityPath TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -626,9 +626,9 @@ bool TelemetrySystem::SensorGroups::SensorGroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(sensor_group_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (sensor_paths !=  nullptr && is_set(sensor_paths->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (sensor_paths !=  nullptr && sensor_paths->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::SensorGroups::SensorGroup::get_segment_path() const
@@ -902,7 +902,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Config::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -982,7 +982,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::State::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1068,7 +1068,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1164,7 +1164,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1252,8 +1252,8 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destina
     return is_set(operation)
 	|| is_set(destination_address.operation)
 	|| is_set(destination_port.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_segment_path() const
@@ -1270,7 +1270,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::D
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1408,7 +1408,7 @@ EntityPath TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1509,9 +1509,9 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::has_operation() const
 {
     return is_set(operation)
 	|| is_set(group_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (destinations !=  nullptr && is_set(destinations->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (destinations !=  nullptr && destinations->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::DestinationGroups::DestinationGroup::get_segment_path() const
@@ -1791,7 +1791,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Config::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1887,7 +1887,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::State::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1986,7 +1986,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2090,7 +2090,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2180,8 +2180,8 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::S
 {
     return is_set(operation)
 	|| is_set(sensor_group.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_segment_path() const
@@ -2198,7 +2198,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2331,7 +2331,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfi
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2432,7 +2432,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2512,7 +2512,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2587,8 +2587,8 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 {
     return is_set(operation)
 	|| is_set(group_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_segment_path() const
@@ -2605,7 +2605,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2738,7 +2738,7 @@ EntityPath TelemetrySystem::Subscriptions::Persistent::Subscription::Destination
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2844,10 +2844,10 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::has_operation() c
 {
     return is_set(operation)
 	|| is_set(subscription_id.operation)
-	|| (config !=  nullptr && is_set(config->operation))
-	|| (destination_groups !=  nullptr && is_set(destination_groups->operation))
-	|| (sensor_profiles !=  nullptr && is_set(sensor_profiles->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (config !=  nullptr && config->has_operation())
+	|| (destination_groups !=  nullptr && destination_groups->has_operation())
+	|| (sensor_profiles !=  nullptr && sensor_profiles->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::get_segment_path() const
@@ -3165,7 +3165,7 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::State::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3283,7 +3283,7 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3358,7 +3358,7 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorP
 {
     return is_set(operation)
 	|| is_set(path.operation)
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_segment_path() const
@@ -3375,7 +3375,7 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::S
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3485,7 +3485,7 @@ EntityPath TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3581,8 +3581,8 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(subscription_id.operation)
-	|| (sensor_paths !=  nullptr && is_set(sensor_paths->operation))
-	|| (state !=  nullptr && is_set(state->operation));
+	|| (sensor_paths !=  nullptr && sensor_paths->has_operation())
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::get_segment_path() const
@@ -3824,8 +3824,8 @@ bool TelemetrySystem::Subscriptions::has_data() const
 bool TelemetrySystem::Subscriptions::has_operation() const
 {
     return is_set(operation)
-	|| (dynamic !=  nullptr && is_set(dynamic->operation))
-	|| (persistent !=  nullptr && is_set(persistent->operation));
+	|| (dynamic !=  nullptr && dynamic->has_operation())
+	|| (persistent !=  nullptr && persistent->has_operation());
 }
 
 std::string TelemetrySystem::Subscriptions::get_segment_path() const
@@ -3959,9 +3959,9 @@ bool TelemetrySystem::has_data() const
 bool TelemetrySystem::has_operation() const
 {
     return is_set(operation)
-	|| (destination_groups !=  nullptr && is_set(destination_groups->operation))
-	|| (sensor_groups !=  nullptr && is_set(sensor_groups->operation))
-	|| (subscriptions !=  nullptr && is_set(subscriptions->operation));
+	|| (destination_groups !=  nullptr && destination_groups->has_operation())
+	|| (sensor_groups !=  nullptr && sensor_groups->has_operation())
+	|| (subscriptions !=  nullptr && subscriptions->has_operation());
 }
 
 std::string TelemetrySystem::get_segment_path() const
@@ -3978,7 +3978,7 @@ EntityPath TelemetrySystem::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -4088,8 +4088,8 @@ std::unique_ptr<Entity> TelemetrySystem::clone_ptr()
     return std::make_unique<TelemetrySystem>();
 }
 
-const Enum::Value TelemetryStreamProtocolEnum::TCP {0, "TCP"};
-const Enum::Value TelemetryStreamProtocolEnum::UDP {1, "UDP"};
+const Enum::YLeaf TelemetryStreamProtocolEnum::TCP {0, "TCP"};
+const Enum::YLeaf TelemetryStreamProtocolEnum::UDP {1, "UDP"};
 
 
 }

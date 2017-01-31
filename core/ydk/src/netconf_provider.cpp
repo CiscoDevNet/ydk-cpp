@@ -23,7 +23,11 @@
 
 #include <iostream>
 #include <sstream>
+#include <memory>
+#include <boost/log/trivial.hpp>
+#include <libyang/libyang.h>
 
+#include "ietf_parser.hpp"
 #include "types.hpp"
 #include "netconf_client.hpp"
 #include "netconf_provider.hpp"
@@ -31,9 +35,6 @@
 #include "entity_data_node_walker.hpp"
 #include "errors.hpp"
 #include "ydk_yang.hpp"
-#include <memory>
-#include <boost/log/trivial.hpp>
-#include <libyang/libyang.h>
 
 using namespace std;
 using namespace ydk;
@@ -41,7 +42,6 @@ using namespace ydk;
 namespace ydk
 {
 static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode& root_schema, string operation);
-static std::vector<ydk::path::Capability> get_core_capabilities(const std::vector<std::string> & server_capabilities);
 
 static unique_ptr<path::Rpc> create_rpc_instance(path::RootSchemaNode & root_schema, string rpc_name);
 static path::DataNode* create_rpc_input(path::Rpc & netconf_rpc);
@@ -63,29 +63,25 @@ static path::DataNode* handle_read_reply(string reply, path::RootSchemaNode * ro
 const char* CANDIDATE = "urn:ietf:params:netconf:capability:candidate:1.0";
 
 NetconfServiceProvider::NetconfServiceProvider(string address, string username, string password, int port)
-    : m_repo_ptr(make_unique<path::Repository>()), m_repo{m_repo_ptr.get()}, client(make_unique<NetconfClient>(username, password, address, port, 0)),
+    : client(make_unique<NetconfClient>(username, password, address, port, 0)),
 	  model_provider(make_unique<NetconfModelProvider>(*client))
 {
-    initialize();
+	path::Repository repo;
+    initialize(repo);
     BOOST_LOG_TRIVIAL(debug) << "Connected to " << address << " on port "<< port <<" using ssh";
 }
 
-NetconfServiceProvider::NetconfServiceProvider(path::Repository* repo, string address, string username, string password, int port)
-    : m_repo_ptr(nullptr),m_repo{repo}, client(make_unique<NetconfClient>(username, password, address, port, 0)),
+NetconfServiceProvider::NetconfServiceProvider(path::Repository & repo, string address, string username, string password, int port)
+    : client(make_unique<NetconfClient>(username, password, address, port, 0)),
 	  model_provider(make_unique<NetconfModelProvider>(*client))
 {
-    initialize();
+    initialize(repo);
     BOOST_LOG_TRIVIAL(debug) << "Connected to " << address << " on port "<< port <<" using ssh";
 }
 
-void NetconfServiceProvider::initialize()
+void NetconfServiceProvider::initialize(path::Repository & repo)
 {
-	if(m_repo == nullptr)
-	{
-		BOOST_LOG_TRIVIAL(error) << "Repo passed in is nullptr";
-		BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"repo is null"});
-	}
-
+	IetfCapabilitiesParser capabilities_parser{};
 	client->connect();
 	server_capabilities = client->get_capabilities();
 
@@ -93,45 +89,35 @@ void NetconfServiceProvider::initialize()
 	{
 		if(c.find("ietf-netconf-monitoring") != std::string::npos)
 		{
-			ietf_nc_monitoring_available = true;
-			m_repo->add_model_provider(model_provider.get());
+			repo.add_model_provider(model_provider.get());
 		}
 	}
 
 	root_schema = std::unique_ptr<ydk::path::RootSchemaNode>(
-								m_repo->create_root_schema
+								repo.create_root_schema
 									(
-									get_core_capabilities(server_capabilities)
+									capabilities_parser.parse(server_capabilities)
 									)
 								);
 
 	if(root_schema.get() == nullptr)
 	{
 		BOOST_LOG_TRIVIAL(error) << "Root schema cannot be obtained";
-		BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Root schema cannot be obtained"});
+		BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Root schema cannot be obtained"});
 	}
 }
 
 NetconfServiceProvider::~NetconfServiceProvider()
 {
 	BOOST_LOG_TRIVIAL(debug) << "Disconnected from device";
-	if(ietf_nc_monitoring_available){
-		m_repo->remove_model_provider(model_provider.get());
-	}
 }
 
-std::string NetconfServiceProvider::execute_payload(std::string payload)
+EncodingFormat NetconfServiceProvider::get_encoding() const
 {
-       std::string reply = client->execute_payload(payload);
-    BOOST_LOG_TRIVIAL(debug) <<"=============Reply payload=============";
-    BOOST_LOG_TRIVIAL(debug) << reply;
-    BOOST_LOG_TRIVIAL(debug) <<"=========================="<<endl;
-    // return handle_read_reply(reply, root_schema.get());
-    return reply;
+	return EncodingFormat::XML;
 }
 
-path::RootSchemaNode* NetconfServiceProvider::get_root_schema() const 	//current
-// core::RootSchemaNode* NetconfServiceProvider::get_root_schema() const 	//old
+path::RootSchemaNode* NetconfServiceProvider::get_root_schema() const
 {
     return root_schema.get();
 }
@@ -176,6 +162,35 @@ path::DataNode* NetconfServiceProvider::handle_edit(path::Rpc* ydk_rpc, path::An
     return handle_edit_reply(reply, *client, candidate_supported);
 }
 
+path::DataNode* NetconfServiceProvider::handle_netconf_operation(path::Rpc* ydk_rpc) const
+{
+    bool candidate_supported = is_candidate_supported(server_capabilities);
+
+    path::CodecService codec_service{};
+    auto netconf_payload = codec_service.encode(ydk_rpc->input(), EncodingFormat::XML, true);
+    std::string payload{"<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">"};
+    netconf_payload = payload + netconf_payload + "</rpc>";
+
+    BOOST_LOG_TRIVIAL(debug) << netconf_payload;
+
+    std::string reply = client->execute_payload(netconf_payload);
+    BOOST_LOG_TRIVIAL(debug) <<"=============Reply payload=============";
+    BOOST_LOG_TRIVIAL(debug) << reply;
+    BOOST_LOG_TRIVIAL(debug) << endl;
+    BOOST_LOG_TRIVIAL(trace) << "Executing rpc " + ydk_rpc->schema()->path();
+    if (ydk_rpc->schema()->path().find("get") != string::npos or ydk_rpc->schema()->path().find("get-config") != string::npos)
+    {
+        return handle_read_reply(reply, root_schema.get());
+    }
+    if(reply.find("<ok/>") == std::string::npos)
+    {
+        BOOST_LOG_TRIVIAL(error) << "No ok in reply ";
+        BOOST_THROW_EXCEPTION(YCPPServiceProviderError{reply});
+    }
+    return nullptr;
+
+}
+
 path::DataNode* NetconfServiceProvider::invoke(path::Rpc* rpc) const
 {
 	path::SchemaNode* create_schema = get_schema_for_operation(*root_schema, "ydk:create");
@@ -187,7 +202,7 @@ path::DataNode* NetconfServiceProvider::invoke(path::Rpc* rpc) const
     if(rpc == nullptr)
     {
         BOOST_LOG_TRIVIAL(error) << "rpc is nullptr";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"rpc is null!"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"rpc is null!"});
     }
 
      //for now we only support crud rpc's
@@ -203,12 +218,15 @@ path::DataNode* NetconfServiceProvider::invoke(path::Rpc* rpc) const
     else if(rpc_schema == read_schema)
     {
         return handle_read(rpc);
-
+    }
+    else if(rpc_schema->path().find("ietf-netconf:")!= string::npos)
+    {
+       return handle_netconf_operation(rpc);
     }
     else
     {
         BOOST_LOG_TRIVIAL(error) << "rpc is not supported";
-        BOOST_THROW_EXCEPTION(YDKOperationNotSupportedException{"rpc is not supported!"});
+        BOOST_THROW_EXCEPTION(YCPPOperationNotSupportedError{"rpc is not supported!"});
     }
 
     return datanode;
@@ -219,7 +237,7 @@ static unique_ptr<path::Rpc> create_rpc_instance(path::RootSchemaNode & root_sch
 	auto rpc = unique_ptr<path::Rpc>(root_schema.rpc(rpc_name));
 	if(rpc == nullptr){
             BOOST_LOG_TRIVIAL(error) << "Cannot create payload for RPC: " << rpc_name;
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Cannot create payload for RPC: "+ rpc_name});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Cannot create payload for RPC: "+ rpc_name});
 	}
 	return rpc;
 }
@@ -250,12 +268,12 @@ static void create_input_target(path::DataNode & input, bool candidate_supported
     if(candidate_supported){
         if(!input.create("target/candidate", "")){
             BOOST_LOG_TRIVIAL(error) << "Failed setting target datastore";
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Failed setting target datastore"});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Failed setting target datastore"});
         }
     } else {
         if(!input.create("target/running", "")){
             BOOST_LOG_TRIVIAL(error) << "Failed setting running datastore";
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Failed setting running datastore"});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Failed setting running datastore"});
         }
     }
 }
@@ -264,7 +282,7 @@ static void create_input_error_option(path::DataNode & input)
 {
 	if(!input.create("error-option", "rollback-on-error")){
             BOOST_LOG_TRIVIAL(error) << "Failed to set rollback-on-error";
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Failed to set rollback-on-error option"});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Failed to set rollback-on-error option"});
 	}
 }
 
@@ -273,7 +291,7 @@ static void create_input_source(path::DataNode & input, bool config)
 	if(config && !input.create("source/running"))
 	{
             BOOST_LOG_TRIVIAL(error) << "Failed setting source";
-            BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Failed setting source"});
+            BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Failed setting source"});
 	}
 }
 
@@ -284,18 +302,18 @@ static string get_annotated_config_payload(path::RootSchemaNode* root_schema,
     auto entity = rpc.input()->find("entity");
     if(entity.empty()){
         BOOST_LOG_TRIVIAL(error) << "Failed to get entity node";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Failed to get entity node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Failed to get entity node"});
     }
 
     path::DataNode* entity_node = entity[0];
     std::string entity_value = entity_node->get();
 
     //deserialize the entity_value
-    path::DataNode* datanode = codec_service.decode(root_schema, entity_value, path::CodecService::Format::XML);
+    path::DataNode* datanode = codec_service.decode(root_schema, entity_value, EncodingFormat::XML);
 
     if(!datanode){
         BOOST_LOG_TRIVIAL(error) << "Failed to decode entity node";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Failed to decode entity node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Failed to decode entity node"});
     }
 
     std::string config_payload {};
@@ -306,7 +324,7 @@ static string get_annotated_config_payload(path::RootSchemaNode* root_schema,
     	{
     		child->add_annotation(annotation);
     	}
-        config_payload += codec_service.encode(child, path::CodecService::Format::XML, true);
+        config_payload += codec_service.encode(child, EncodingFormat::XML, true);
     }
     return config_payload;
 }
@@ -316,7 +334,7 @@ static string get_filter_payload(path::Rpc & ydk_rpc)
     auto entity = ydk_rpc.input()->find("filter");
     if(entity.empty()){
         BOOST_LOG_TRIVIAL(error) << "Failed to get entity node.";
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"Failed to get entity node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"Failed to get entity node"});
     }
 
     auto datanode = entity[0];
@@ -330,11 +348,11 @@ static string get_netconf_payload(path::DataNode* input, string data_tag, string
     if(!config_node)
     {
         BOOST_LOG_TRIVIAL(error) << "Failed to create data tree";
-        BOOST_THROW_EXCEPTION(YDKIllegalStateException{"Failed to create data tree"});
+        BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"Failed to create data tree"});
     }
 
     std::string payload{"<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">"};
-    payload+=codec_service.encode(input, path::CodecService::Format::XML, true);
+    payload+=codec_service.encode(input, EncodingFormat::XML, true);
     payload+="</rpc>";
     BOOST_LOG_TRIVIAL(debug) <<"=============Generating payload=============";
     BOOST_LOG_TRIVIAL(debug) <<payload;
@@ -347,7 +365,7 @@ static path::DataNode* handle_edit_reply(string reply, NetconfClient & client, b
 	if(reply.find("<ok/>") == std::string::npos)
 	{
         BOOST_LOG_TRIVIAL(error) << "No ok in reply ";
-		BOOST_THROW_EXCEPTION(YDKServiceProviderException{reply});
+		BOOST_THROW_EXCEPTION(YCPPServiceProviderError{reply});
 	}
 
 	if(candidate_supported)
@@ -364,7 +382,7 @@ static path::DataNode* handle_edit_reply(string reply, NetconfClient & client, b
 		if(reply.find("<ok/>") == std::string::npos)
 		{
 			BOOST_LOG_TRIVIAL(error) << "RPC error occurred: " << reply;
-		    BOOST_THROW_EXCEPTION(YDKServiceProviderException{reply});
+		    BOOST_THROW_EXCEPTION(YCPPServiceProviderError{reply});
 		}
 	}
 
@@ -386,23 +404,23 @@ static path::DataNode* handle_read_reply(string reply, path::RootSchemaNode * ro
 	if(data_start == std::string::npos)
 	{
 		BOOST_LOG_TRIVIAL(debug) << "Can't find data tag in reply " << reply;
-		BOOST_THROW_EXCEPTION(YDKServiceProviderException{reply});
+		BOOST_THROW_EXCEPTION(YCPPServiceProviderError{reply});
 	}
 	data_start+= sizeof("<data>") - 1;
 	auto data_end = reply.find("</data>", data_start);
 	if(data_end == std::string::npos)
 	{
 		BOOST_LOG_TRIVIAL(debug) << "No end data tag found in reply " << reply;
-		BOOST_THROW_EXCEPTION(YDKException{"No end data tag found"});
+		BOOST_THROW_EXCEPTION(YCPPError{"No end data tag found"});
 	}
 
 	string data = reply.substr(data_start, data_end-data_start);
 
-	auto datanode = codec_service.decode(root_schema, data, path::CodecService::Format::XML);
+	auto datanode = codec_service.decode(root_schema, data, EncodingFormat::XML);
 
 	if(!datanode){
 		BOOST_LOG_TRIVIAL(debug) << "Codec service failed to decode datanode";
-		BOOST_THROW_EXCEPTION(YDKException{"Problems deserializing output"});
+		BOOST_THROW_EXCEPTION(YCPPError{"Problems deserializing output"});
 	}
 	return datanode;
 }
@@ -431,7 +449,7 @@ static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_sc
 	if(c.empty())
 	{
 		BOOST_LOG_TRIVIAL(error) << "CRUD create rpc schema not found!";
-		BOOST_THROW_EXCEPTION(YDKIllegalStateException{"CRUD create rpc schema not found!"});
+		BOOST_THROW_EXCEPTION(YCPPIllegalStateError{"CRUD create rpc schema not found!"});
 	}
 	return c[0];
 }
@@ -476,105 +494,5 @@ static std::vector<std::string> get_parameter_list(const std::string & capabilit
 	return c_features;
 }
 */
-static std::vector<ydk::path::Capability> get_core_capabilities(const std::vector<std::string> & server_capabilities)
-{
-	std::vector<path::Capability> yang_caps {};
-	for(std::string c : server_capabilities )
-	{
-		if(c.find("calvados") != std::string::npos || c.find("tailf") != std::string::npos || c.find("tail-f") != std::string::npos)
-		{
-			continue;
-		}
 
-		auto p = std::find(c.begin(), c.end(),'?');
-
-		if(p == c.end())
-			continue;
-
-		auto module_start = c.find("module=");
-
-
-		if(module_start == std::string::npos)
-			continue;
-
-		auto revision_start = c.find("revision=");
-		if(revision_start == std::string::npos)
-			continue;
-
-		std::vector<std::string> c_features{};
-		std::vector<std::string> c_deviations{};
-
-		auto module_end = c.find("&", module_start);
-
-		module_start+=sizeof("module=");
-		auto size = module_end;
-		if(size != string::npos ){
-			size = module_end - module_start + 1;
-		}
-
-		std::string c_module = c.substr( module_start - 1, size );
-
-
-		auto revision_end = c.find("&", revision_start);
-		revision_start+=sizeof("revision=");
-		size = revision_end;
-		if(size!= string::npos) {
-			size= revision_end - revision_start + 1;
-		}
-		std::string c_revision = c.substr(revision_start - 1, size);
-
-		auto features_start = c.find("features=");
-		if(features_start != string::npos){
-			auto features_end = c.find("&", features_start);
-			features_start+=sizeof("features=");
-			size=features_end;
-			if(size!=string::npos){
-				size = features_end - features_start + 1;
-			}
-			std::string features = c.substr(features_start - 1 , size);
-			std::istringstream iss{features};
-			std::string feature;
-			while(std::getline(iss, feature, ',')) {
-				c_features.push_back(std::move(feature));
-			}
-
-		}
-
-		auto deviations_start = c.find("deviations=");
-		if(deviations_start != string::npos){
-			auto deviations_end = c.find("&", deviations_start);
-			deviations_start+=sizeof("deviations=");
-			size=deviations_end;
-			if(size!=string::npos){
-				size = deviations_end - deviations_start + 1;
-			}
-			std::string deviations = c.substr(deviations_start - 1, size);
-			std::istringstream iss{deviations};
-			std::string deviation;
-			while(std::getline(iss, deviation, ',')) {
-				c_deviations.push_back(std::move(deviation));
-			}
-
-		}
-		if(c_module.find("tailf") != std::string::npos) {
-			continue;
-		}
-		path::Capability core_cap{c_module, c_revision, c_features, c_deviations};
-		yang_caps.emplace_back(core_cap);
-	}
-
-	//add ydk capability
-	path::Capability ydk_cap{ydk::path::YDK_MODULE_NAME, ydk::path::YDK_MODULE_REVISION, {}, {}};
-	auto result = std::find(yang_caps.begin(), yang_caps.end(), ydk_cap);
-	if(result == yang_caps.end()){
-		yang_caps.push_back(ydk_cap);
-	}
-	//add ietf-netconf capability
-	path::Capability ietf_netconf_cap{ydk::IETF_NETCONF_MODULE_NAME, ydk::IETF_NETCONF_MODULE_REVISION, {}, {}};
-	result = std::find(yang_caps.begin(), yang_caps.end(), ietf_netconf_cap);
-	if(result == yang_caps.end()){
-		yang_caps.push_back(ietf_netconf_cap);
-	}
-	return yang_caps;
-}
 }

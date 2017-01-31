@@ -123,7 +123,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -210,7 +210,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -314,7 +314,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -406,7 +406,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -516,7 +516,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -614,7 +614,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -706,7 +706,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -810,7 +810,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -920,11 +920,11 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter:
 	|| is_set(preempt.operation)
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
-	|| (global_ipv6_addresses !=  nullptr && is_set(global_ipv6_addresses->operation))
-	|| (link_local_ipv6_address !=  nullptr && is_set(link_local_ipv6_address->operation))
-	|| (timer !=  nullptr && is_set(timer->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation))
-	|| (tracks !=  nullptr && is_set(tracks->operation));
+	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
+	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation())
+	|| (timer !=  nullptr && timer->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation())
+	|| (tracks !=  nullptr && tracks->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualRouter::get_segment_path() const
@@ -941,7 +941,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1168,7 +1168,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::VirtualRouters::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1255,7 +1255,7 @@ bool Vrrp::Interfaces::Interface::Ipv6::Version3::has_data() const
 bool Vrrp::Interfaces::Interface::Ipv6::Version3::has_operation() const
 {
     return is_set(operation)
-	|| (virtual_routers !=  nullptr && is_set(virtual_routers->operation));
+	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::Version3::get_segment_path() const
@@ -1272,7 +1272,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::Version3::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1373,7 +1373,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1458,7 +1458,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1545,7 +1545,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1647,8 +1647,8 @@ bool Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter:
 	|| is_set(slave_virtual_router_id.operation)
 	|| is_set(accept_mode_disable.operation)
 	|| is_set(follow.operation)
-	|| (global_ipv6_addresses !=  nullptr && is_set(global_ipv6_addresses->operation))
-	|| (link_local_ipv6_address !=  nullptr && is_set(link_local_ipv6_address->operation));
+	|| (global_ipv6_addresses !=  nullptr && global_ipv6_addresses->has_operation())
+	|| (link_local_ipv6_address !=  nullptr && link_local_ipv6_address->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualRouter::get_segment_path() const
@@ -1665,7 +1665,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1808,7 +1808,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::SlaveVirtualRouters::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1900,8 +1900,8 @@ bool Vrrp::Interfaces::Interface::Ipv6::has_data() const
 bool Vrrp::Interfaces::Interface::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (slave_virtual_routers !=  nullptr && is_set(slave_virtual_routers->operation))
-	|| (version3 !=  nullptr && is_set(version3->operation));
+	|| (slave_virtual_routers !=  nullptr && slave_virtual_routers->has_operation())
+	|| (version3 !=  nullptr && version3->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv6::get_segment_path() const
@@ -1918,7 +1918,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv6::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2042,7 +2042,7 @@ EntityPath Vrrp::Interfaces::Interface::Delay::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2136,7 +2136,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2231,7 +2231,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2318,7 +2318,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2422,7 +2422,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2514,7 +2514,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2618,7 +2618,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2710,7 +2710,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2834,10 +2834,10 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter:
 	|| is_set(primary_ipv4_address.operation)
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation))
-	|| (timer !=  nullptr && is_set(timer->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation))
-	|| (tracks !=  nullptr && is_set(tracks->operation));
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
+	|| (timer !=  nullptr && timer->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation())
+	|| (tracks !=  nullptr && tracks->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualRouter::get_segment_path() const
@@ -2854,7 +2854,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3063,7 +3063,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::VirtualRouters::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3150,7 +3150,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version3::has_data() const
 bool Vrrp::Interfaces::Interface::Ipv4::Version3::has_operation() const
 {
     return is_set(operation)
-	|| (virtual_routers !=  nullptr && is_set(virtual_routers->operation));
+	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version3::get_segment_path() const
@@ -3167,7 +3167,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version3::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3265,7 +3265,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3352,7 +3352,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3452,7 +3452,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter:
 	|| is_set(accept_mode_disable.operation)
 	|| is_set(follow.operation)
 	|| is_set(primary_ipv4_address.operation)
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation));
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualRouter::get_segment_path() const
@@ -3469,7 +3469,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::SlaveVirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3594,7 +3594,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::SlaveVirtualRouters::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3704,7 +3704,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3799,7 +3799,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3886,7 +3886,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3990,7 +3990,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4082,7 +4082,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4186,7 +4186,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4278,7 +4278,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4405,10 +4405,10 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter:
 	|| is_set(priority.operation)
 	|| is_set(session_name.operation)
 	|| is_set(text_password.operation)
-	|| (secondary_ipv4_addresses !=  nullptr && is_set(secondary_ipv4_addresses->operation))
-	|| (timer !=  nullptr && is_set(timer->operation))
-	|| (tracked_objects !=  nullptr && is_set(tracked_objects->operation))
-	|| (tracks !=  nullptr && is_set(tracks->operation));
+	|| (secondary_ipv4_addresses !=  nullptr && secondary_ipv4_addresses->has_operation())
+	|| (timer !=  nullptr && timer->has_operation())
+	|| (tracked_objects !=  nullptr && tracked_objects->has_operation())
+	|| (tracks !=  nullptr && tracks->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualRouter::get_segment_path() const
@@ -4425,7 +4425,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::VirtualR
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4639,7 +4639,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::VirtualRouters::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4726,7 +4726,7 @@ bool Vrrp::Interfaces::Interface::Ipv4::Version2::has_data() const
 bool Vrrp::Interfaces::Interface::Ipv4::Version2::has_operation() const
 {
     return is_set(operation)
-	|| (virtual_routers !=  nullptr && is_set(virtual_routers->operation));
+	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::Version2::get_segment_path() const
@@ -4743,7 +4743,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::Version2::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4837,9 +4837,9 @@ bool Vrrp::Interfaces::Interface::Ipv4::has_data() const
 bool Vrrp::Interfaces::Interface::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (slave_virtual_routers !=  nullptr && is_set(slave_virtual_routers->operation))
-	|| (version2 !=  nullptr && is_set(version2->operation))
-	|| (version3 !=  nullptr && is_set(version3->operation));
+	|| (slave_virtual_routers !=  nullptr && slave_virtual_routers->has_operation())
+	|| (version2 !=  nullptr && version2->has_operation())
+	|| (version3 !=  nullptr && version3->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::Ipv4::get_segment_path() const
@@ -4856,7 +4856,7 @@ EntityPath Vrrp::Interfaces::Interface::Ipv4::get_entity_path(Entity* ancestor) 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5003,7 +5003,7 @@ EntityPath Vrrp::Interfaces::Interface::Bfd::get_entity_path(Entity* ancestor) c
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5096,10 +5096,10 @@ bool Vrrp::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(mac_refresh.operation)
-	|| (bfd !=  nullptr && is_set(bfd->operation))
-	|| (delay !=  nullptr && is_set(delay->operation))
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (delay !=  nullptr && delay->has_operation())
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Vrrp::Interfaces::Interface::get_segment_path() const
@@ -5392,8 +5392,8 @@ bool Vrrp::has_data() const
 bool Vrrp::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (logging !=  nullptr && is_set(logging->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (logging !=  nullptr && logging->has_operation());
 }
 
 std::string Vrrp::get_segment_path() const
@@ -5410,7 +5410,7 @@ EntityPath Vrrp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -738,7 +738,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -826,7 +826,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -911,7 +911,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -991,7 +991,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1074,7 +1074,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1155,7 +1155,7 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::has_operatio
 	|| is_set(new_state.operation)
 	|| is_set(old_state.operation)
 	|| is_set(reason.operation)
-	|| (time !=  nullptr && is_set(time->operation));
+	|| (time !=  nullptr && time->has_operation());
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::get_segment_path() const
@@ -1172,7 +1172,7 @@ EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1356,17 +1356,17 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_data() const
         if(state_change_history[index]->has_data())
             return true;
     }
-    for (auto const & leaf : authentication_string.getValues())
+    for (auto const & leaf : authentication_string.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_configured_down_address.getValues())
+    for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : operational_address.getValues())
+    for (auto const & leaf : operational_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1460,17 +1460,17 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
         if(state_change_history[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : authentication_string.getValues())
+    for (auto const & leaf : authentication_string.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_configured_down_address.getValues())
+    for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : operational_address.getValues())
+    for (auto const & leaf : operational_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -1486,6 +1486,7 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(auth_type_mismatch_count.operation)
 	|| is_set(authentication_fail_count.operation)
 	|| is_set(authentication_flag.operation)
+	|| is_set(authentication_string.operation)
 	|| is_set(authentication_type.operation)
 	|| is_set(bfd_cfg_remote_ip.operation)
 	|| is_set(bfd_configured_remote_ipv6_address.operation)
@@ -1506,6 +1507,7 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(invalid_auth_type_count.operation)
 	|| is_set(invalid_packet_count.operation)
 	|| is_set(ip_address_owner_flag.operation)
+	|| is_set(ipv4_configured_down_address.operation)
 	|| is_set(is_accept_mode.operation)
 	|| is_set(is_slave.operation)
 	|| is_set(master_count.operation)
@@ -1514,6 +1516,7 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(master_priority.operation)
 	|| is_set(min_delay_time.operation)
 	|| is_set(oper_advertize_time.operation)
+	|| is_set(operational_address.operation)
 	|| is_set(operational_address_count.operation)
 	|| is_set(operational_priority.operation)
 	|| is_set(pkt_length_errors_count.operation)
@@ -1544,8 +1547,8 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(virtual_mac_address_state.operation)
 	|| is_set(virtual_router_id_xr.operation)
 	|| is_set(vrrp_state.operation)
-	|| (resign_received_time !=  nullptr && is_set(resign_received_time->operation))
-	|| (resign_sent_time !=  nullptr && is_set(resign_sent_time->operation));
+	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
+	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation());
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_segment_path() const
@@ -2451,9 +2454,9 @@ bool Vrrp::Ipv6::has_data() const
 bool Vrrp::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (track_items !=  nullptr && is_set(track_items->operation))
-	|| (virtual_routers !=  nullptr && is_set(virtual_routers->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (track_items !=  nullptr && track_items->has_operation())
+	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
 std::string Vrrp::Ipv6::get_segment_path() const
@@ -3097,7 +3100,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3185,7 +3188,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3270,7 +3273,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3350,7 +3353,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3433,7 +3436,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3514,7 +3517,7 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::has_operatio
 	|| is_set(new_state.operation)
 	|| is_set(old_state.operation)
 	|| is_set(reason.operation)
-	|| (time !=  nullptr && is_set(time->operation));
+	|| (time !=  nullptr && time->has_operation());
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::get_segment_path() const
@@ -3531,7 +3534,7 @@ EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3715,17 +3718,17 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_data() const
         if(state_change_history[index]->has_data())
             return true;
     }
-    for (auto const & leaf : authentication_string.getValues())
+    for (auto const & leaf : authentication_string.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : ipv4_configured_down_address.getValues())
+    for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : operational_address.getValues())
+    for (auto const & leaf : operational_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -3819,17 +3822,17 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
         if(state_change_history[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : authentication_string.getValues())
+    for (auto const & leaf : authentication_string.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : ipv4_configured_down_address.getValues())
+    for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : operational_address.getValues())
+    for (auto const & leaf : operational_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -3845,6 +3848,7 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(auth_type_mismatch_count.operation)
 	|| is_set(authentication_fail_count.operation)
 	|| is_set(authentication_flag.operation)
+	|| is_set(authentication_string.operation)
 	|| is_set(authentication_type.operation)
 	|| is_set(bfd_cfg_remote_ip.operation)
 	|| is_set(bfd_configured_remote_ipv6_address.operation)
@@ -3865,6 +3869,7 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(invalid_auth_type_count.operation)
 	|| is_set(invalid_packet_count.operation)
 	|| is_set(ip_address_owner_flag.operation)
+	|| is_set(ipv4_configured_down_address.operation)
 	|| is_set(is_accept_mode.operation)
 	|| is_set(is_slave.operation)
 	|| is_set(master_count.operation)
@@ -3873,6 +3878,7 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(master_priority.operation)
 	|| is_set(min_delay_time.operation)
 	|| is_set(oper_advertize_time.operation)
+	|| is_set(operational_address.operation)
 	|| is_set(operational_address_count.operation)
 	|| is_set(operational_priority.operation)
 	|| is_set(pkt_length_errors_count.operation)
@@ -3903,8 +3909,8 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
 	|| is_set(virtual_mac_address_state.operation)
 	|| is_set(virtual_router_id_xr.operation)
 	|| is_set(vrrp_state.operation)
-	|| (resign_received_time !=  nullptr && is_set(resign_received_time->operation))
-	|| (resign_sent_time !=  nullptr && is_set(resign_sent_time->operation));
+	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
+	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation());
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_segment_path() const
@@ -4582,9 +4588,9 @@ bool Vrrp::Ipv4::has_data() const
 bool Vrrp::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (track_items !=  nullptr && is_set(track_items->operation))
-	|| (virtual_routers !=  nullptr && is_set(virtual_routers->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (track_items !=  nullptr && track_items->has_operation())
+	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
 }
 
 std::string Vrrp::Ipv4::get_segment_path() const
@@ -4748,7 +4754,7 @@ EntityPath Vrrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5098,10 +5104,10 @@ bool Vrrp::has_data() const
 bool Vrrp::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation))
-	|| (mgo_sessions !=  nullptr && is_set(mgo_sessions->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation())
+	|| (mgo_sessions !=  nullptr && mgo_sessions->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string Vrrp::get_segment_path() const
@@ -5118,7 +5124,7 @@ EntityPath Vrrp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -5251,44 +5257,44 @@ std::unique_ptr<Entity> Vrrp::clone_ptr()
     return std::make_unique<Vrrp>();
 }
 
-const Enum::Value VrrpStateChangeReasonEnum::state_change_bfd_down {0, "state-change-bfd-down"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_interface_ip {2, "state-change-interface-ip"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_delay_timer {3, "state-change-delay-timer"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_startup {4, "state-change-startup"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_interface_up {5, "state-change-interface-up"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_interface_down {6, "state-change-interface-down"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_master_down_timer {7, "state-change-master-down-timer"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_higher_priority_master {8, "state-change-higher-priority-master"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_fhrp_admin {9, "state-change-fhrp-admin"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_mgo_parent {10, "state-change-mgo-parent"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_chkpt_update {11, "state-change-chkpt-update"};
-const Enum::Value VrrpStateChangeReasonEnum::state_change_issu_resync {12, "state-change-issu-resync"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_bfd_down {0, "state-change-bfd-down"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_ip {2, "state-change-interface-ip"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_delay_timer {3, "state-change-delay-timer"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_startup {4, "state-change-startup"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_up {5, "state-change-interface-up"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_down {6, "state-change-interface-down"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_master_down_timer {7, "state-change-master-down-timer"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_higher_priority_master {8, "state-change-higher-priority-master"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_fhrp_admin {9, "state-change-fhrp-admin"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_mgo_parent {10, "state-change-mgo-parent"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_chkpt_update {11, "state-change-chkpt-update"};
+const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_issu_resync {12, "state-change-issu-resync"};
 
-const Enum::Value VrrpVmacStateEnum::stored {0, "stored"};
-const Enum::Value VrrpVmacStateEnum::reserved {1, "reserved"};
-const Enum::Value VrrpVmacStateEnum::active {2, "active"};
-const Enum::Value VrrpVmacStateEnum::reserving {3, "reserving"};
+const Enum::YLeaf VrrpVmacStateEnum::stored {0, "stored"};
+const Enum::YLeaf VrrpVmacStateEnum::reserved {1, "reserved"};
+const Enum::YLeaf VrrpVmacStateEnum::active {2, "active"};
+const Enum::YLeaf VrrpVmacStateEnum::reserving {3, "reserving"};
 
-const Enum::Value VrrpBAfEnum::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::Value VrrpBAfEnum::address_family_ipv6 {1, "address-family-ipv6"};
-const Enum::Value VrrpBAfEnum::vrrp_baf_count {2, "vrrp-baf-count"};
+const Enum::YLeaf VrrpBAfEnum::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf VrrpBAfEnum::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf VrrpBAfEnum::vrrp_baf_count {2, "vrrp-baf-count"};
 
-const Enum::Value VrrpVipStateEnum::virtual_ip_state_down {0, "virtual-ip-state-down"};
-const Enum::Value VrrpVipStateEnum::virtual_ip_state_up {1, "virtual-ip-state-up"};
+const Enum::YLeaf VrrpVipStateEnum::virtual_ip_state_down {0, "virtual-ip-state-down"};
+const Enum::YLeaf VrrpVipStateEnum::virtual_ip_state_up {1, "virtual-ip-state-up"};
 
-const Enum::Value VrrpProtAuthEnum::authentication_none {0, "authentication-none"};
-const Enum::Value VrrpProtAuthEnum::authentication_text {1, "authentication-text"};
-const Enum::Value VrrpProtAuthEnum::authentication_ip {2, "authentication-ip"};
+const Enum::YLeaf VrrpProtAuthEnum::authentication_none {0, "authentication-none"};
+const Enum::YLeaf VrrpProtAuthEnum::authentication_text {1, "authentication-text"};
+const Enum::YLeaf VrrpProtAuthEnum::authentication_ip {2, "authentication-ip"};
 
-const Enum::Value VrrpBfdSessionStateEnum::bfd_state_none {0, "bfd-state-none"};
-const Enum::Value VrrpBfdSessionStateEnum::bfd_state_inactive {1, "bfd-state-inactive"};
-const Enum::Value VrrpBfdSessionStateEnum::bfd_state_up {2, "bfd-state-up"};
-const Enum::Value VrrpBfdSessionStateEnum::bfd_state_down {3, "bfd-state-down"};
+const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_none {0, "bfd-state-none"};
+const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_inactive {1, "bfd-state-inactive"};
+const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_up {2, "bfd-state-up"};
+const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_down {3, "bfd-state-down"};
 
-const Enum::Value VrrpBagProtocolStateEnum::state_initial {1, "state-initial"};
-const Enum::Value VrrpBagProtocolStateEnum::state_backup {2, "state-backup"};
-const Enum::Value VrrpBagProtocolStateEnum::state_master {3, "state-master"};
+const Enum::YLeaf VrrpBagProtocolStateEnum::state_initial {1, "state-initial"};
+const Enum::YLeaf VrrpBagProtocolStateEnum::state_backup {2, "state-backup"};
+const Enum::YLeaf VrrpBagProtocolStateEnum::state_master {3, "state-master"};
 
 
 }

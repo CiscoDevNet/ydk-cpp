@@ -32,6 +32,8 @@
 #include <vector>
 #include <algorithm>
 #include "errors.hpp"
+#include "types.hpp"
+#include "validation_service.hpp"
 #include <boost/filesystem.hpp>
 
 namespace ydk {
@@ -79,7 +81,7 @@ namespace ydk {
         ///
         /// @page howto How To ...
         ///
-        /// - @subpage howtoexceptions
+        /// - @subpage howtoErrors
         /// - @subpage howtoserviceprovider
         /// - @subpage howtoschemas
         /// - @subpage howtodata
@@ -92,7 +94,7 @@ namespace ydk {
         ///
 
         ///
-        /// @page howtoexceptions Exceptions and Error Handling.
+        /// @page howtoErrors Exceptions and Error Handling.
         /// TODO
         ///
 
@@ -250,27 +252,14 @@ namespace ydk {
             virtual ~ValidationService() {};
 
             ///
-            /// @brief Options for validation.
-            ///
-            /// All validation is performed in the context of some operation.
-            /// These options capture the context of use.
-            ///
-            enum class Option {
-                DATASTORE,  /// Datastore validation. Note the DataNode Tree should contain everything for cross reference resolution
-                GET_CONFIG, // Get config validation. Checks to see if only config nodes are references
-                GET, // Get validation
-                EDIT_CONFIG // Edit validation. Checks on the values of leafs etc
-            };
-
-            ///
             /// @brief validates dn based on the option
             ///
             /// @param[in] dn The root of DataNode tree to validate.
             /// @param[in] option The context for validation.
-            /// @throws YDKValidationException if validation errors were detected.
-            /// @throws YDKInvalidArgumentException if the arguments are invalid.
+            /// @throws YCPPValidationError if validation errors were detected.
+            /// @throws YCPPInvalidArgumentError if the arguments are invalid.
             ///
-            virtual void validate(const DataNode* dn, Option option);
+            virtual void validate(const DataNode & dn, ydk::ValidationService::Option option);
         };
 
         ///
@@ -285,25 +274,15 @@ namespace ydk {
             virtual ~CodecService() {}
 
             ///
-            /// @brief Options for encode
-            ///
-            /// These options can be used for encoding the given tree
-            enum class Format {
-                XML, /// XML
-                JSON /// JSON
-
-            };
-
-            ///
             /// @brief encode the given DataNode Tree
             ///
             /// @param[in] dn The DataNode to encode
             /// @param[in] format to encode to.
             /// @param[in] pretty if true the output is indented for human consumption.
             /// @return The encoded string.
-            //  @throws YDKInvalidArgumentException if the arguments are invalid.
+            //  @throws YCPPInvalidArgumentError if the arguments are invalid.
             ///
-            virtual std::string encode(const DataNode* dn, Format format, bool pretty);
+            virtual std::string encode(const DataNode* dn, EncodingFormat format, bool pretty);
 
             ///
             /// @brief decode the buffer to return a DataNode
@@ -312,33 +291,33 @@ namespace ydk {
             /// @param[in] buffer The string representation of the DataNode.
             /// @param[in] format .Note ::TREE is not supported.
             /// @return The DataNode instantiated or nullptr in case of error.
-            /// @throws YDKInvalidArgumentException if the arguments are invalid.
+            /// @throws YCPPInvalidArgumentError if the arguments are invalid.
             ///
-            virtual DataNode* decode(const RootSchemaNode* root_schema, const std::string& buffer, Format format);
+            virtual DataNode* decode(const RootSchemaNode* root_schema, const std::string& buffer, EncodingFormat format);
 
 
         };
 
 
         ///
-        /// @brief Base class for YDK Exceptions
+        /// @brief Base class for YCPP Errors
         ///
         /// The subclasses give a specialized view of the error that has occurred.
         ///
-        struct YDKCoreException : public ydk::YDKException
+        struct YCPPCoreError : public ydk::YCPPError
         {
-            YDKCoreException();
+            YCPPCoreError();
 
-            YDKCoreException(const std::string& msg);
+            YCPPCoreError(const std::string& msg);
 
         };
 
 
         ///
-        /// @brief Exception that encapsualtes the validation errors
+        /// @brief Error that encapsualtes the validation errors
         ///        on a data tree
         ///
-        struct YDKDataValidationException : public YDKCoreException
+        struct YCPPDataValidationError : public YCPPCoreError
         {
             /// Data Validation Error Enum
             enum class Error {
@@ -375,7 +354,7 @@ namespace ydk {
 
             };
 
-            YDKDataValidationException();
+            YCPPDataValidationError();
 
             /// List of pair<DataNode, ValidationError>. The Validation Error is specific to
             /// this node
@@ -383,7 +362,7 @@ namespace ydk {
 
         };
 
-        struct YDKPathException : public YDKCoreException
+        struct YCPPPathError : public YCPPCoreError
         {
             enum class Error {
                 SUCCESS,  /// no error
@@ -407,11 +386,11 @@ namespace ydk {
 
             Error err;
 
-            YDKPathException(YDKPathException::Error error_code);
+            YCPPPathError(YCPPPathError::Error error_code);
 
         };
 
-        struct YDKCodecException : public YDKCoreException
+        struct YCPPCodecError : public YCPPCoreError
         {
             enum class Error {
                 SUCCESS,  /// no error
@@ -426,10 +405,10 @@ namespace ydk {
 
             Error err;
 
-            YDKCodecException(YDKCodecException::Error merror);
+            YCPPCodecError(YCPPCodecError::Error merror);
         };
 
-        struct YDKSchemaValidationException : public YDKCoreException
+        struct YCPPSchemaValidationError : public YCPPCoreError
         {
             enum class Error {
                 SUCCESS,  /// no error
@@ -609,365 +588,6 @@ namespace ydk {
 
         };
 
-
-        template<typename T>
-        struct Range{
-            Range(T m_min, T m_max) : min{m_min}, max{m_max}
-            {
-
-            }
-
-
-            T min;
-            T max;
-
-        };
-
-
-
-
-        template<typename T>
-        struct LengthRangeIntervals {
-            LengthRangeIntervals(Range<T> m_default_range): default_range(m_default_range)
-            {
-
-            }
-
-
-            Range<T> default_range;
-            std::vector<Range<T>> intervals;
-        };
-
-        ///
-        /// @brief the type of the leaf or leaf-list
-        ///
-        struct SchemaValueType {
-
-
-            ///
-            /// Enumeration representing the yang data types
-            ///
-            enum class DataType {
-                /// UNKNOWN
-                UNKNOWN,
-
-                /// binary
-                BINARY,
-
-                /// bits
-                BITS,
-
-                /// boolean
-                BOOL,
-
-                /// decimal64
-                DEC64,
-
-                /// empty
-                EMPTY,
-
-                /// enumeration
-                ENUMERATION,
-
-                /// identity
-                IDENTITY,
-
-                /// leafref
-                LEAFREF,
-
-                /// string
-                STRING,
-
-                /// int8
-                INT8,
-
-                /// uint8
-                UINT8,
-
-                /// int16
-                INT16,
-
-                /// uint16
-                UINT16,
-
-                /// int32
-                INT32,
-
-                /// uint32
-                UINT32,
-
-                /// int64
-                INT64,
-
-                /// uint64
-                UINT64,
-
-                /// union
-                UNION
-
-            };
-
-
-            virtual ~SchemaValueType();
-
-            ///
-            /// @brief validate the value and return a DiagnosticNode
-            ///
-            /// If the value is valid the
-            virtual DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const = 0;
-
-            ///
-            /// module name of the type referenced
-            std::string module_name;
-
-            /// data type
-            DataType type;
-
-
-
-        };
-
-
-        ///
-        /// binary type
-        ///
-        struct SchemaValueBinaryType : public SchemaValueType {
-
-            SchemaValueBinaryType();
-
-            ~SchemaValueBinaryType();
-
-             DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-
-
-            LengthRangeIntervals<uint64_t> length;
-
-
-        };
-
-        ///
-        /// Bits type
-        ///
-        struct SchemaValueBitsType  : public SchemaValueType {
-
-            ///
-            /// Single bit value specification
-            ///
-            struct Bit {
-
-                Bit(std::string m_name, uint32_t m_pos);
-
-                ///
-                /// bit name
-                ///
-                std::string name;
-
-                ///
-                /// position
-                ///
-                uint32_t pos;
-
-            };
-
-            SchemaValueBitsType(std::vector<Bit> bits);
-            ~SchemaValueBitsType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            ///
-            /// bit definitions
-            ///
-            std::vector<Bit> bits;
-        };
-
-        ///
-        /// Decimal64 type
-        ///
-        struct SchemaValueDec64Type : public SchemaValueType {
-
-
-
-            /// fraction digits
-            uint8_t fraction_digits;
-
-            ~SchemaValueDec64Type();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-        };
-
-        ///
-        /// enumeration value specification
-        ///
-        struct SchemaValueEnumerationType : public SchemaValueType {
-
-            struct Enum {
-
-                Enum(std::string m_name, int32_t m_value);
-
-                /// enum's name (mandatory)
-                std::string name;
-
-
-                /// enum's value (mandatory)
-                int32_t value;
-
-
-            };
-
-            ~SchemaValueEnumerationType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            /// enum literals
-            std::vector<Enum> enums;
-
-        };
-
-        ///
-        /// Identity Schema value type
-        ///
-        struct SchemaValueIdentityType : public SchemaValueType {
-
-            ~SchemaValueIdentityType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            /// identity name
-            std::string name;
-
-            /// name of the module
-            std::string module_name;
-
-
-            /// derived identities
-            std::vector<std::unique_ptr<SchemaValueIdentityType>> derived;
-
-        };
-
-        ///
-        /// Instance identifier value type
-        ///
-        struct SchemaValueInstanceIdType : public SchemaValueType {
-
-            ~SchemaValueInstanceIdType();
-
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            /// require
-            bool require_identifier = false;
-
-        };
-
-        ///
-        /// Number types
-        ///
-        template<typename T>
-        struct SchemaValueNumberType: public SchemaValueType {
-
-            SchemaValueNumberType(T min, T max) : SchemaValueType{} , range{Range<T>{min, max}}
-            {
-
-            }
-
-            ~SchemaValueNumberType()
-            {
-
-            }
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const
-            {
-                DiagnosticNode<std::string, ValidationError> diag{};
-
-                if(value.empty()){
-                    diag.errors.push_back(ydk::path::ValidationError::INVALATTR);
-                    return diag;
-                }
-
-                T number = static_cast<T>(std::atoll(value.c_str()));
-                if(range.intervals.empty()){
-                    //use the default
-                    if(number < range.default_range.min || number > range.default_range.max) {
-                        diag.errors.push_back(ydk::path::ValidationError::RANGE_VIOLATION);
-                        return diag;
-                    }
-                } else {
-                    for(auto r : range.intervals) {
-                        /* if it complies with any one here then it is ok */
-                        if(number >= r.min && number <= r.max) {
-                            return diag;
-                        }
-                    }
-
-                    diag.errors.push_back(ydk::path::ValidationError::RANGE_VIOLATION);
-                }
-
-                return diag;
-
-            }
-
-            LengthRangeIntervals<T> range;
-
-        };
-
-        ///
-        /// string types
-        ///
-        struct SchemaValueStringType : public SchemaValueType {
-
-            SchemaValueStringType();
-
-            ~SchemaValueStringType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            /// length restriction
-            LengthRangeIntervals<uint64_t> length;
-
-            /// pattern restrictions
-            std::vector<std::string> patterns;
-        };
-
-        ///
-        /// Union type
-        ///
-        struct SchemaValueUnionType : public SchemaValueType {
-
-            ~SchemaValueUnionType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            /// types defined
-            std::vector<std::unique_ptr<SchemaValueType>> types;
-        };
-
-        ///
-        /// Empty type
-        ///
-        struct SchemaValueEmptyType : public SchemaValueType {
-
-            SchemaValueEmptyType(const std::string& mleaf_name);
-            ~SchemaValueEmptyType();
-
-            DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-
-            std::string leaf_name;
-        };
-
-        ///
-        /// Bool type
-        ///
-        struct SchemaValueBoolType : public SchemaValueType {
-
-           ~SchemaValueBoolType();
-
-
-           DiagnosticNode<std::string, ValidationError> validate(const std::string& value) const;
-        };
-
-
-
         ///
         /// @brief Represents a Node in the SchemaTree.
         ///
@@ -998,8 +618,8 @@ namespace ydk {
             /// the given path expression. See @see howtopath
             /// @param path The path expression.
             /// @return vector of SchemaNode  that satisfies the criterion.
-            /// @throws YDKPathException if the path expression in invalid, See error code for details.
-            /// @throws YDKInvalidArgumentException if the argument is invalid.
+            /// @throws YCPPPathError if the path expression in invalid, See error code for details.
+            /// @throws YCPPInvalidArgumentError if the argument is invalid.
             ///
             virtual std::vector<SchemaNode*> find(const std::string& path) const = 0;
 
@@ -1042,19 +662,6 @@ namespace ydk {
             ///
             virtual std::vector<Statement> keys() const = 0;
 
-
-            ///
-            /// @brief return the pointer to the type associated with this
-            /// schema node.
-            ///
-            /// Note this method will only work for SchemaNodes that represent a leaf
-            /// or  leaf-list. Otherwise a nullptr will be returned.
-            ///
-            /// @return ptr to SchemaValueType or nullptr. User should not free this pointer
-            /// it is contained within the SchemaNode so destroying the SchemaNode.
-            ///
-            virtual SchemaValueType & type() const = 0;
-
         };
 
         ///
@@ -1082,8 +689,8 @@ namespace ydk {
             /// the given path expression. See @see howtopath
             /// @param path The path expression.
             /// @return vector of SchemaNode  that satisfies the criterion.
-            /// @throws YDKPathException if the path expression in invalid, See error code for details.
-            /// @throws YDKInvalidArgumentException if the argument is invalid.
+            /// @throws YCPPPathError if the path expression in invalid, See error code for details.
+            /// @throws YCPPInvalidArgumentError if the argument is invalid.
             ///
             virtual std::vector<SchemaNode*> find(const std::string& path) const = 0;
 
@@ -1126,8 +733,8 @@ namespace ydk {
             /// of the schema tree
             /// @param[in] value The string representation of the value to set.
             /// @return Pointer to DataNode created.
-            /// @throws YDKInvalidArgumentException In case the argument is invalid.
-            /// @throws YDKPathException In case the path is invalid.
+            /// @throws YCPPInvalidArgumentError In case the argument is invalid.
+            /// @throws YCPPPathError In case the path is invalid.
             ///
             virtual DataNode* create(const std::string& path, const std::string& value) const = 0;
 
@@ -1145,8 +752,8 @@ namespace ydk {
             ///
             /// @param[in] path The XPath expression identifying the node.
             /// @return DataNode created or nullptr
-            /// @throws YDKInvalidArgumentException In case the argument is invalid.
-            /// @throws YDKPathException In case the path is invalid.
+            /// @throws YCPPInvalidArgumentError In case the argument is invalid.
+            /// @throws YCPPPathError In case the path is invalid.
             ///
             virtual DataNode* create(const std::string& path) const  = 0;
 
@@ -1173,8 +780,8 @@ namespace ydk {
             /// The path expression should point to a SchemaNode that represents the Rpc
             /// @param[in] path The path to the rpc schema node
             /// @return rpc or nullptr
-            /// @throws YDKInvalidArgumentException if the argument is invalid.
-            /// @throws YDKPathException if the path is invalid
+            /// @throws YCPPInvalidArgumentError if the argument is invalid.
+            /// @throws YCPPPathError if the path is invalid
             ///
             virtual Rpc* rpc(const std::string& path) const = 0;
 
@@ -1226,8 +833,8 @@ namespace ydk {
             /// @param[in] path The XPath expression identifying the node.
             /// @param[in] value The string representation of the value to set.
             /// @return Pointer to DataNode created.
-            /// @throws YDKInvalidArgumentException In case the argument is invalid.
-            /// @throws YDKPathException In case the path is invalid.
+            /// @throws YCPPInvalidArgumentError In case the argument is invalid.
+            /// @throws YCPPPathError In case the path is invalid.
             ///
            virtual DataNode* create(const std::string& path);
            virtual DataNode* create_filter(const std::string& path);
@@ -1246,8 +853,8 @@ namespace ydk {
             ///
             /// @param[in] path The XPath expression identifying the node.
             /// @return Pointer to DataNode created.
-            /// @throws YDKInvalidArgumentException In case the argument is invalid.
-            /// @throws YDKPathException In case the path is invalid.
+            /// @throws YCPPInvalidArgumentError In case the argument is invalid.
+            /// @throws YCPPPathError In case the path is invalid.
             ///
             virtual DataNode* create(const std::string& path, const std::string& value) = 0;
             virtual DataNode* create_filter(const std::string& path, const std::string& value) = 0;
@@ -1261,7 +868,7 @@ namespace ydk {
             /// Note this method does not validate the value being set. To validate please see the ValidationService.
             ///
             /// @param[in] value The value to set. This should be the string representation of the YANG type.
-            /// @throws YDKInvalidArgumentException if the DataNode's value cannot be set (for example it represents
+            /// @throws YCPPInvalidArgumentError if the DataNode's value cannot be set (for example it represents
             /// a container)
             virtual void set(const std::string& value) = 0;
 
@@ -1314,7 +921,7 @@ namespace ydk {
             /// This method adds the annotation to this datanode
             ///
             /// @param[in] an The annotation to add to this DataNode
-            /// @throws YDKInvalidArgumentException In case the argument is invalid
+            /// @throws YCPPInvalidArgumentError In case the argument is invalid
             ///
             virtual void add_annotation(const Annotation& an) = 0;
 
@@ -1430,7 +1037,7 @@ namespace ydk {
             ///
             /// Constructor
             /// @param[in] search_dir The path in the filesystem where yang files can be found.
-            /// @throws YDKInvalidArgumentException if the search_dir is not a valid directory in the
+            /// @throws YCPPInvalidArgumentError if the search_dir is not a valid directory in the
             /// filesystem
             Repository(const std::string& search_dir);
 
@@ -1438,7 +1045,7 @@ namespace ydk {
             /// @brief Creates the root schema based on the capabilities passed in.
             ///
             /// Creates the root schema based on the vector of capabilities passed in.
-            /// This method verifies the said capabilities and can throw exceptions if
+            /// This method verifies the said capabilities and can throw Errors if
             /// a module is not found in the search directory or cannot be loaded.
             ///
             /// @param[in] capabilities vector of Capability
@@ -1499,6 +1106,8 @@ namespace ydk {
 
 
             virtual ~ServiceProvider();
+
+            virtual EncodingFormat get_encoding() const = 0;
 
             ///
             /// @brief invoke the Rpc

@@ -49,7 +49,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolici
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -146,7 +146,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolici
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -233,7 +233,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::has_operation() const
 {
     return is_set(operation)
-	|| (peer_accept_policies !=  nullptr && is_set(peer_accept_policies->operation));
+	|| (peer_accept_policies !=  nullptr && peer_accept_policies->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::get_segment_path() const
@@ -250,7 +250,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Remote::Accept::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -334,7 +334,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::Label::Remote::has_operation() const
 {
     return is_set(operation)
-	|| (accept !=  nullptr && is_set(accept->operation));
+	|| (accept !=  nullptr && accept->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Remote::get_segment_path() const
@@ -351,7 +351,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Remote::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -455,7 +455,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertiseP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -552,7 +552,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PeerAdvertiseP
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -659,7 +659,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -756,7 +756,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::PrefixAdvertis
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -863,7 +863,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::ExplicitNull::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -953,7 +953,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::In
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1040,7 +1040,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::Interfaces::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1146,10 +1146,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::has_operation() cons
 {
     return is_set(operation)
 	|| is_set(disable.operation)
-	|| (explicit_null !=  nullptr && is_set(explicit_null->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (peer_advertise_policies !=  nullptr && is_set(peer_advertise_policies->operation))
-	|| (prefix_advertise_policies !=  nullptr && is_set(prefix_advertise_policies->operation));
+	|| (explicit_null !=  nullptr && explicit_null->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (peer_advertise_policies !=  nullptr && peer_advertise_policies->has_operation())
+	|| (prefix_advertise_policies !=  nullptr && prefix_advertise_policies->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::get_segment_path() const
@@ -1166,7 +1166,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Advertise::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1341,7 +1341,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::Allocate::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1424,8 +1424,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::Local::has_operation() const
     return is_set(operation)
 	|| is_set(default_route.operation)
 	|| is_set(implicit_null_override.operation)
-	|| (advertise !=  nullptr && is_set(advertise->operation))
-	|| (allocate !=  nullptr && is_set(allocate->operation));
+	|| (advertise !=  nullptr && advertise->has_operation())
+	|| (allocate !=  nullptr && allocate->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::Local::get_segment_path() const
@@ -1442,7 +1442,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::Local::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1564,8 +1564,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::Label::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::Label::has_operation() const
 {
     return is_set(operation)
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (remote !=  nullptr && is_set(remote->operation));
+	|| (local !=  nullptr && local->has_operation())
+	|| (remote !=  nullptr && remote->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Label::get_segment_path() const
@@ -1582,7 +1582,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Label::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1706,7 +1706,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Discovery::TargetedHelloAccept::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1781,7 +1781,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Discovery::has_operation() const
 {
     return is_set(operation)
 	|| is_set(transport_address.operation)
-	|| (targeted_hello_accept !=  nullptr && is_set(targeted_hello_accept->operation));
+	|| (targeted_hello_accept !=  nullptr && targeted_hello_accept->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Discovery::get_segment_path() const
@@ -1798,7 +1798,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Discovery::get_entity_path(Entity* ance
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1901,7 +1901,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::Gro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1988,7 +1988,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::Gro
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2079,7 +2079,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::has_opera
 {
     return is_set(operation)
 	|| is_set(group_all.operation)
-	|| (group_ids !=  nullptr && is_set(group_ids->operation));
+	|| (group_ids !=  nullptr && group_ids->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::get_segment_path() const
@@ -2096,7 +2096,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2185,7 +2185,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::has_operation() const
 {
     return is_set(operation)
-	|| (auto_tunnel_mesh !=  nullptr && is_set(auto_tunnel_mesh->operation));
+	|| (auto_tunnel_mesh !=  nullptr && auto_tunnel_mesh->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::get_segment_path() const
@@ -2202,7 +2202,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2303,7 +2303,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2395,7 +2395,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2482,7 +2482,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_operation() const
 {
     return is_set(operation)
-	|| (addresses !=  nullptr && is_set(addresses->operation));
+	|| (addresses !=  nullptr && addresses->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::get_segment_path() const
@@ -2499,7 +2499,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::Neighbor::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2600,7 +2600,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::As::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2688,7 +2688,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::AdvertiseT
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2764,8 +2764,8 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::has_operation() const
 {
     return is_set(operation)
-	|| (advertise_to !=  nullptr && is_set(advertise_to->operation))
-	|| (as !=  nullptr && is_set(as->operation));
+	|| (advertise_to !=  nullptr && advertise_to->has_operation())
+	|| (as !=  nullptr && as->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::get_segment_path() const
@@ -2782,7 +2782,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::Bgp::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2889,7 +2889,7 @@ bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::has_data() const
 bool MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::has_operation() const
 {
     return is_set(operation)
-	|| (bgp !=  nullptr && is_set(bgp->operation));
+	|| (bgp !=  nullptr && bgp->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::get_segment_path() const
@@ -2906,7 +2906,7 @@ EntityPath MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3017,11 +3017,11 @@ bool MplsLdp::DefaultVrf::Afs::Af::has_operation() const
     return is_set(operation)
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation))
-	|| (label !=  nullptr && is_set(label->operation))
-	|| (neighbor !=  nullptr && is_set(neighbor->operation))
-	|| (redistribution_protocol !=  nullptr && is_set(redistribution_protocol->operation))
-	|| (traffic_engineering !=  nullptr && is_set(traffic_engineering->operation));
+	|| (discovery !=  nullptr && discovery->has_operation())
+	|| (label !=  nullptr && label->has_operation())
+	|| (neighbor !=  nullptr && neighbor->has_operation())
+	|| (redistribution_protocol !=  nullptr && redistribution_protocol->has_operation())
+	|| (traffic_engineering !=  nullptr && traffic_engineering->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::get_segment_path() const
@@ -3521,8 +3521,8 @@ bool MplsLdp::DefaultVrf::Global::Session::has_data() const
 bool MplsLdp::DefaultVrf::Global::Session::has_operation() const
 {
     return is_set(operation)
-	|| (downstream_on_demand !=  nullptr && is_set(downstream_on_demand->operation))
-	|| (protection !=  nullptr && is_set(protection->operation));
+	|| (downstream_on_demand !=  nullptr && downstream_on_demand->has_operation())
+	|| (protection !=  nullptr && protection->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::Session::get_segment_path() const
@@ -3663,7 +3663,7 @@ EntityPath MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::Password::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3741,7 +3741,7 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::has_operation() const
     return is_set(operation)
 	|| is_set(label_space_id.operation)
 	|| is_set(lsr_id.operation)
-	|| (password !=  nullptr && is_set(password->operation));
+	|| (password !=  nullptr && password->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::LdpIds::LdpId::get_segment_path() const
@@ -4044,7 +4044,7 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::has_
 {
     return is_set(operation)
 	|| is_set(max_wait.operation)
-	|| (prefer !=  nullptr && is_set(prefer->operation));
+	|| (prefer !=  nullptr && prefer->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::DualStack::TransportConnection::get_segment_path() const
@@ -4154,7 +4154,7 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::DualStack::has_operation() const
 {
     return is_set(operation)
 	|| is_set(tlv_compliance.operation)
-	|| (transport_connection !=  nullptr && is_set(transport_connection->operation));
+	|| (transport_connection !=  nullptr && transport_connection->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::DualStack::get_segment_path() const
@@ -4269,8 +4269,8 @@ bool MplsLdp::DefaultVrf::Global::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(password.operation)
-	|| (dual_stack !=  nullptr && is_set(dual_stack->operation))
-	|| (ldp_ids !=  nullptr && is_set(ldp_ids->operation));
+	|| (dual_stack !=  nullptr && dual_stack->has_operation())
+	|| (ldp_ids !=  nullptr && ldp_ids->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::Neighbor::get_segment_path() const
@@ -4479,7 +4479,7 @@ bool MplsLdp::DefaultVrf::Global::GracefulRestart::has_data() const
 bool MplsLdp::DefaultVrf::Global::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (helper_peer !=  nullptr && is_set(helper_peer->operation));
+	|| (helper_peer !=  nullptr && helper_peer->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::GracefulRestart::get_segment_path() const
@@ -4594,9 +4594,9 @@ bool MplsLdp::DefaultVrf::Global::has_operation() const
 {
     return is_set(operation)
 	|| is_set(router_id.operation)
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (neighbor !=  nullptr && is_set(neighbor->operation))
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (neighbor !=  nullptr && neighbor->has_operation())
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Global::get_segment_path() const
@@ -4765,7 +4765,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::Trans
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4836,7 +4836,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::has_data() 
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::has_operation() const
 {
     return is_set(operation)
-	|| (transport_address !=  nullptr && is_set(transport_address->operation));
+	|| (transport_address !=  nullptr && transport_address->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::get_segment_path() const
@@ -4853,7 +4853,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Discovery::get_e
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4951,7 +4951,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Igp::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5031,7 +5031,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::Mldp::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5114,9 +5114,9 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::has_operation() const
     return is_set(operation)
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation))
-	|| (igp !=  nullptr && is_set(igp->operation))
-	|| (mldp !=  nullptr && is_set(mldp->operation));
+	|| (discovery !=  nullptr && discovery->has_operation())
+	|| (igp !=  nullptr && igp->has_operation())
+	|| (mldp !=  nullptr && mldp->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::get_segment_path() const
@@ -5133,7 +5133,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::Af::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5294,7 +5294,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Afs::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5401,7 +5401,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::LinkHe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5481,7 +5481,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::has_operatio
 {
     return is_set(operation)
 	|| is_set(disable_quick_start.operation)
-	|| (link_hello !=  nullptr && is_set(link_hello->operation));
+	|| (link_hello !=  nullptr && link_hello->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::get_segment_path() const
@@ -5498,7 +5498,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Discovery::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5604,7 +5604,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5675,7 +5675,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::has_d
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::has_operation() const
 {
     return is_set(operation)
-	|| (on_session_up !=  nullptr && is_set(on_session_up->operation));
+	|| (on_session_up !=  nullptr && on_session_up->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay::get_segment_path() const
@@ -5692,7 +5692,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::Delay:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5776,7 +5776,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::has_data() c
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::has_operation() const
 {
     return is_set(operation)
-	|| (delay !=  nullptr && is_set(delay->operation));
+	|| (delay !=  nullptr && delay->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::get_segment_path() const
@@ -5793,7 +5793,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::Sync::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5877,7 +5877,7 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::has_data() const
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::has_operation() const
 {
     return is_set(operation)
-	|| (sync !=  nullptr && is_set(sync->operation));
+	|| (sync !=  nullptr && sync->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::get_segment_path() const
@@ -5894,7 +5894,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::Igp::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5983,8 +5983,8 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::has_data() const
 bool MplsLdp::DefaultVrf::Interfaces::Interface::Global::has_operation() const
 {
     return is_set(operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation))
-	|| (igp !=  nullptr && is_set(igp->operation));
+	|| (discovery !=  nullptr && discovery->has_operation())
+	|| (igp !=  nullptr && igp->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::Global::get_segment_path() const
@@ -6001,7 +6001,7 @@ EntityPath MplsLdp::DefaultVrf::Interfaces::Interface::Global::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6120,8 +6120,8 @@ bool MplsLdp::DefaultVrf::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(enable.operation)
-	|| (afs !=  nullptr && is_set(afs->operation))
-	|| (global !=  nullptr && is_set(global->operation));
+	|| (afs !=  nullptr && afs->has_operation())
+	|| (global !=  nullptr && global->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Interfaces::Interface::get_segment_path() const
@@ -6373,9 +6373,9 @@ bool MplsLdp::DefaultVrf::has_data() const
 bool MplsLdp::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (afs !=  nullptr && is_set(afs->operation))
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (afs !=  nullptr && afs->has_operation())
+	|| (global !=  nullptr && global->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::get_segment_path() const
@@ -6539,7 +6539,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Session::DownstreamOnDemand::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6610,7 +6610,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Session::has_data() const
 bool MplsLdp::Vrfs::Vrf::Global::Session::has_operation() const
 {
     return is_set(operation)
-	|| (downstream_on_demand !=  nullptr && is_set(downstream_on_demand->operation));
+	|| (downstream_on_demand !=  nullptr && downstream_on_demand->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Session::get_segment_path() const
@@ -6627,7 +6627,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Session::get_entity_path(Entity* ancestor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6728,7 +6728,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::Password::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6806,7 +6806,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::has_operation() const
     return is_set(operation)
 	|| is_set(label_space_id.operation)
 	|| is_set(lsr_id.operation)
-	|| (password !=  nullptr && is_set(password->operation));
+	|| (password !=  nullptr && password->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::get_segment_path() const
@@ -6823,7 +6823,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::LdpId::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6938,7 +6938,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::LdpIds::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7029,7 +7029,7 @@ bool MplsLdp::Vrfs::Vrf::Global::Neighbor::has_operation() const
 {
     return is_set(operation)
 	|| is_set(password.operation)
-	|| (ldp_ids !=  nullptr && is_set(ldp_ids->operation));
+	|| (ldp_ids !=  nullptr && ldp_ids->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::Neighbor::get_segment_path() const
@@ -7046,7 +7046,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::Neighbor::get_entity_path(Entity* ancesto
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7149,7 +7149,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::GracefulRestart::HelperPeer::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7215,7 +7215,7 @@ bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::has_data() const
 bool MplsLdp::Vrfs::Vrf::Global::GracefulRestart::has_operation() const
 {
     return is_set(operation)
-	|| (helper_peer !=  nullptr && is_set(helper_peer->operation));
+	|| (helper_peer !=  nullptr && helper_peer->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::GracefulRestart::get_segment_path() const
@@ -7232,7 +7232,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::GracefulRestart::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7330,9 +7330,9 @@ bool MplsLdp::Vrfs::Vrf::Global::has_operation() const
 {
     return is_set(operation)
 	|| is_set(router_id.operation)
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (neighbor !=  nullptr && is_set(neighbor->operation))
-	|| (session !=  nullptr && is_set(session->operation));
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (neighbor !=  nullptr && neighbor->has_operation())
+	|| (session !=  nullptr && session->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Global::get_segment_path() const
@@ -7349,7 +7349,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Global::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7498,7 +7498,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Discovery::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7578,7 +7578,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7661,7 +7661,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7746,7 +7746,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::Pee
     }
     return is_set(operation)
 	|| is_set(label_space_id.operation)
-	|| (peer_accept_policy_data !=  nullptr && is_set(peer_accept_policy_data->operation));
+	|| (peer_accept_policy_data !=  nullptr && peer_accept_policy_data->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicies::PeerAcceptPolicy::get_segment_path() const
@@ -7763,7 +7763,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7899,7 +7899,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::PeerAcceptPolicie
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7986,7 +7986,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::has_data() const
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::has_operation() const
 {
     return is_set(operation)
-	|| (peer_accept_policies !=  nullptr && is_set(peer_accept_policies->operation));
+	|| (peer_accept_policies !=  nullptr && peer_accept_policies->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::get_segment_path() const
@@ -8003,7 +8003,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::Accept::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8087,7 +8087,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::has_data() const
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::has_operation() const
 {
     return is_set(operation)
-	|| (accept !=  nullptr && is_set(accept->operation));
+	|| (accept !=  nullptr && accept->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::get_segment_path() const
@@ -8104,7 +8104,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Remote::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8202,7 +8202,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8285,7 +8285,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8370,7 +8370,7 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies
     }
     return is_set(operation)
 	|| is_set(label_space_id.operation)
-	|| (peer_advertise_policy_data !=  nullptr && is_set(peer_advertise_policy_data->operation));
+	|| (peer_advertise_policy_data !=  nullptr && peer_advertise_policy_data->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePolicies::PeerAdvertisePolicy::get_segment_path() const
@@ -8387,7 +8387,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8523,7 +8523,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::PeerAdvertisePo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8624,7 +8624,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::Int
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8711,7 +8711,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::Interfaces::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8818,7 +8818,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::ExplicitNull::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8908,9 +8908,9 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::has_operation() const
 {
     return is_set(operation)
 	|| is_set(disable.operation)
-	|| (explicit_null !=  nullptr && is_set(explicit_null->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (peer_advertise_policies !=  nullptr && is_set(peer_advertise_policies->operation));
+	|| (explicit_null !=  nullptr && explicit_null->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (peer_advertise_policies !=  nullptr && peer_advertise_policies->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::get_segment_path() const
@@ -8927,7 +8927,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Advertise::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9079,7 +9079,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::Allocate::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9162,8 +9162,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::has_operation() const
     return is_set(operation)
 	|| is_set(default_route.operation)
 	|| is_set(implicit_null_override.operation)
-	|| (advertise !=  nullptr && is_set(advertise->operation))
-	|| (allocate !=  nullptr && is_set(allocate->operation));
+	|| (advertise !=  nullptr && advertise->has_operation())
+	|| (allocate !=  nullptr && allocate->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::get_segment_path() const
@@ -9180,7 +9180,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::Local::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9302,8 +9302,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::has_data() const
 bool MplsLdp::Vrfs::Vrf::Afs::Af::Label::has_operation() const
 {
     return is_set(operation)
-	|| (local !=  nullptr && is_set(local->operation))
-	|| (remote !=  nullptr && is_set(remote->operation));
+	|| (local !=  nullptr && local->has_operation())
+	|| (remote !=  nullptr && remote->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::Label::get_segment_path() const
@@ -9320,7 +9320,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::Label::get_entity_path(Entity* ancestor)
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9439,8 +9439,8 @@ bool MplsLdp::Vrfs::Vrf::Afs::Af::has_operation() const
     return is_set(operation)
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation))
-	|| (label !=  nullptr && is_set(label->operation));
+	|| (discovery !=  nullptr && discovery->has_operation())
+	|| (label !=  nullptr && label->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -9457,7 +9457,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9595,7 +9595,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Afs::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9699,7 +9699,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::Transp
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9770,7 +9770,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::has_data() c
 bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::has_operation() const
 {
     return is_set(operation)
-	|| (transport_address !=  nullptr && is_set(transport_address->operation));
+	|| (transport_address !=  nullptr && transport_address->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::get_segment_path() const
@@ -9787,7 +9787,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::Discovery::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9878,7 +9878,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::has_operation() const
     return is_set(operation)
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation));
+	|| (discovery !=  nullptr && discovery->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::get_segment_path() const
@@ -9895,7 +9895,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::Af::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10010,7 +10010,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::Afs::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10104,7 +10104,7 @@ bool MplsLdp::Vrfs::Vrf::Interfaces::Interface::has_operation() const
     return is_set(operation)
 	|| is_set(interface_name.operation)
 	|| is_set(enable.operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
@@ -10121,7 +10121,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10236,7 +10236,7 @@ EntityPath MplsLdp::Vrfs::Vrf::Interfaces::get_entity_path(Entity* ancestor) con
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10340,9 +10340,9 @@ bool MplsLdp::Vrfs::Vrf::has_operation() const
     return is_set(operation)
 	|| is_set(vrf_name.operation)
 	|| is_set(enable.operation)
-	|| (afs !=  nullptr && is_set(afs->operation))
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (interfaces !=  nullptr && is_set(interfaces->operation));
+	|| (afs !=  nullptr && afs->has_operation())
+	|| (global !=  nullptr && global->has_operation())
+	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
 std::string MplsLdp::Vrfs::Vrf::get_segment_path() const
@@ -10779,7 +10779,7 @@ bool MplsLdp::Global::Session::has_operation() const
 {
     return is_set(operation)
 	|| is_set(hold_time.operation)
-	|| (backoff_time !=  nullptr && is_set(backoff_time->operation));
+	|| (backoff_time !=  nullptr && backoff_time->has_operation());
 }
 
 std::string MplsLdp::Global::Session::get_segment_path() const
@@ -10973,7 +10973,7 @@ bool MplsLdp::Global::Igp::Sync::has_data() const
 bool MplsLdp::Global::Igp::Sync::has_operation() const
 {
     return is_set(operation)
-	|| (delay !=  nullptr && is_set(delay->operation));
+	|| (delay !=  nullptr && delay->has_operation());
 }
 
 std::string MplsLdp::Global::Igp::Sync::get_segment_path() const
@@ -11074,7 +11074,7 @@ bool MplsLdp::Global::Igp::has_data() const
 bool MplsLdp::Global::Igp::has_operation() const
 {
     return is_set(operation)
-	|| (sync !=  nullptr && is_set(sync->operation));
+	|| (sync !=  nullptr && sync->has_operation());
 }
 
 std::string MplsLdp::Global::Igp::get_segment_path() const
@@ -11731,8 +11731,8 @@ bool MplsLdp::Global::Discovery::has_operation() const
     return is_set(operation)
 	|| is_set(disable_instance_tlv.operation)
 	|| is_set(disable_quick_start.operation)
-	|| (link_hello !=  nullptr && is_set(link_hello->operation))
-	|| (targeted_hello !=  nullptr && is_set(targeted_hello->operation));
+	|| (link_hello !=  nullptr && link_hello->has_operation())
+	|| (targeted_hello !=  nullptr && targeted_hello->has_operation());
 }
 
 std::string MplsLdp::Global::Discovery::get_segment_path() const
@@ -11880,7 +11880,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MldpRecursiveFec::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11960,7 +11960,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MoFrr::get_entity_path(Ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12043,7 +12043,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::Signaling
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12114,7 +12114,7 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::has_data() cons
 bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::has_operation() const
 {
     return is_set(operation)
-	|| (signaling !=  nullptr && is_set(signaling->operation));
+	|| (signaling !=  nullptr && signaling->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::get_segment_path() const
@@ -12131,7 +12131,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::MakeBeforeBreak::get_entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12229,7 +12229,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::Csc::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12320,10 +12320,10 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::has_operation() const
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
 	|| is_set(mldp_rib_unicast_always.operation)
-	|| (csc !=  nullptr && is_set(csc->operation))
-	|| (make_before_break !=  nullptr && is_set(make_before_break->operation))
-	|| (mldp_recursive_fec !=  nullptr && is_set(mldp_recursive_fec->operation))
-	|| (mo_frr !=  nullptr && is_set(mo_frr->operation));
+	|| (csc !=  nullptr && csc->has_operation())
+	|| (make_before_break !=  nullptr && make_before_break->has_operation())
+	|| (mldp_recursive_fec !=  nullptr && mldp_recursive_fec->has_operation())
+	|| (mo_frr !=  nullptr && mo_frr->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::get_segment_path() const
@@ -12340,7 +12340,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::Af::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12529,7 +12529,7 @@ EntityPath MplsLdp::Global::Mldp::Vrfs::Vrf::Afs::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12620,7 +12620,7 @@ bool MplsLdp::Global::Mldp::Vrfs::Vrf::has_operation() const
 {
     return is_set(operation)
 	|| is_set(vrf_name.operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::Vrfs::Vrf::get_segment_path() const
@@ -12848,7 +12848,7 @@ EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MldpRecursiveFec::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12928,7 +12928,7 @@ EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MoFrr::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13011,7 +13011,7 @@ EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::Signalin
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13082,7 +13082,7 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::has_data() con
 bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::has_operation() const
 {
     return is_set(operation)
-	|| (signaling !=  nullptr && is_set(signaling->operation));
+	|| (signaling !=  nullptr && signaling->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::get_segment_path() const
@@ -13099,7 +13099,7 @@ EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::MakeBeforeBreak::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13197,7 +13197,7 @@ EntityPath MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::Csc::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13288,10 +13288,10 @@ bool MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::has_operation() const
 	|| is_set(af_name.operation)
 	|| is_set(enable.operation)
 	|| is_set(mldp_rib_unicast_always.operation)
-	|| (csc !=  nullptr && is_set(csc->operation))
-	|| (make_before_break !=  nullptr && is_set(make_before_break->operation))
-	|| (mldp_recursive_fec !=  nullptr && is_set(mldp_recursive_fec->operation))
-	|| (mo_frr !=  nullptr && is_set(mo_frr->operation));
+	|| (csc !=  nullptr && csc->has_operation())
+	|| (make_before_break !=  nullptr && make_before_break->has_operation())
+	|| (mldp_recursive_fec !=  nullptr && mldp_recursive_fec->has_operation())
+	|| (mo_frr !=  nullptr && mo_frr->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::Afs::Af::get_segment_path() const
@@ -13584,7 +13584,7 @@ bool MplsLdp::Global::Mldp::DefaultVrf::has_data() const
 bool MplsLdp::Global::Mldp::DefaultVrf::has_operation() const
 {
     return is_set(operation)
-	|| (afs !=  nullptr && is_set(afs->operation));
+	|| (afs !=  nullptr && afs->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::DefaultVrf::get_segment_path() const
@@ -13765,7 +13765,7 @@ bool MplsLdp::Global::Mldp::MldpGlobal::has_data() const
 bool MplsLdp::Global::Mldp::MldpGlobal::has_operation() const
 {
     return is_set(operation)
-	|| (logging !=  nullptr && is_set(logging->operation));
+	|| (logging !=  nullptr && logging->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::MldpGlobal::get_segment_path() const
@@ -13880,9 +13880,9 @@ bool MplsLdp::Global::Mldp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation))
-	|| (mldp_global !=  nullptr && is_set(mldp_global->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation())
+	|| (mldp_global !=  nullptr && mldp_global->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string MplsLdp::Global::Mldp::get_segment_path() const
@@ -14081,15 +14081,15 @@ bool MplsLdp::Global::has_operation() const
     return is_set(operation)
 	|| is_set(disable_implicit_ipv4.operation)
 	|| is_set(ltrace_buf_multiplier.operation)
-	|| (discovery !=  nullptr && is_set(discovery->operation))
-	|| (enable_logging !=  nullptr && is_set(enable_logging->operation))
-	|| (entropy_label !=  nullptr && is_set(entropy_label->operation))
-	|| (graceful_restart !=  nullptr && is_set(graceful_restart->operation))
-	|| (igp !=  nullptr && is_set(igp->operation))
-	|| (mldp !=  nullptr && is_set(mldp->operation))
-	|| (nsr !=  nullptr && is_set(nsr->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (signalling !=  nullptr && is_set(signalling->operation));
+	|| (discovery !=  nullptr && discovery->has_operation())
+	|| (enable_logging !=  nullptr && enable_logging->has_operation())
+	|| (entropy_label !=  nullptr && entropy_label->has_operation())
+	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
+	|| (igp !=  nullptr && igp->has_operation())
+	|| (mldp !=  nullptr && mldp->has_operation())
+	|| (nsr !=  nullptr && nsr->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (signalling !=  nullptr && signalling->has_operation());
 }
 
 std::string MplsLdp::Global::get_segment_path() const
@@ -14398,9 +14398,9 @@ bool MplsLdp::has_operation() const
 {
     return is_set(operation)
 	|| is_set(enable.operation)
-	|| (default_vrf !=  nullptr && is_set(default_vrf->operation))
-	|| (global !=  nullptr && is_set(global->operation))
-	|| (vrfs !=  nullptr && is_set(vrfs->operation));
+	|| (default_vrf !=  nullptr && default_vrf->has_operation())
+	|| (global !=  nullptr && global->has_operation())
+	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
 std::string MplsLdp::get_segment_path() const
@@ -14417,7 +14417,7 @@ EntityPath MplsLdp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -14532,39 +14532,39 @@ std::unique_ptr<Entity> MplsLdp::clone_ptr()
     return std::make_unique<MplsLdp>();
 }
 
-const Enum::Value MplsLdpAdvertiseBgpaclEnum::peer_acl {1, "peer-acl"};
+const Enum::YLeaf MplsLdpAdvertiseBgpaclEnum::peer_acl {1, "peer-acl"};
 
-const Enum::Value MplsLdpLabelAdvertiseEnum::for_ {1, "for"};
-const Enum::Value MplsLdpLabelAdvertiseEnum::for_to {2, "for-to"};
+const Enum::YLeaf MplsLdpLabelAdvertiseEnum::for_ {1, "for"};
+const Enum::YLeaf MplsLdpLabelAdvertiseEnum::for_to {2, "for-to"};
 
-const Enum::Value MplsLdpLabelAllocationEnum::acl {1, "acl"};
-const Enum::Value MplsLdpLabelAllocationEnum::host {2, "host"};
+const Enum::YLeaf MplsLdpLabelAllocationEnum::acl {1, "acl"};
+const Enum::YLeaf MplsLdpLabelAllocationEnum::host {2, "host"};
 
-const Enum::Value MplsLdpTargetedAcceptEnum::all {1, "all"};
-const Enum::Value MplsLdpTargetedAcceptEnum::from {2, "from"};
+const Enum::YLeaf MplsLdpTargetedAcceptEnum::all {1, "all"};
+const Enum::YLeaf MplsLdpTargetedAcceptEnum::from {2, "from"};
 
-const Enum::Value MplsLdpNbrPasswordEnum::disable {1, "disable"};
-const Enum::Value MplsLdpNbrPasswordEnum::specified {2, "specified"};
+const Enum::YLeaf MplsLdpNbrPasswordEnum::disable {1, "disable"};
+const Enum::YLeaf MplsLdpNbrPasswordEnum::specified {2, "specified"};
 
-const Enum::Value MplsLdpDownstreamOnDemandEnum::peer_acl {1, "peer-acl"};
+const Enum::YLeaf MplsLdpDownstreamOnDemandEnum::peer_acl {1, "peer-acl"};
 
-const Enum::Value MplsLdpExpNullEnum::all {1, "all"};
-const Enum::Value MplsLdpExpNullEnum::for_ {2, "for"};
-const Enum::Value MplsLdpExpNullEnum::to {3, "to"};
-const Enum::Value MplsLdpExpNullEnum::for_to {4, "for-to"};
+const Enum::YLeaf MplsLdpExpNullEnum::all {1, "all"};
+const Enum::YLeaf MplsLdpExpNullEnum::for_ {2, "for"};
+const Enum::YLeaf MplsLdpExpNullEnum::to {3, "to"};
+const Enum::YLeaf MplsLdpExpNullEnum::for_to {4, "for-to"};
 
-const Enum::Value MplsLdpafNameEnum::ipv4 {4, "ipv4"};
-const Enum::Value MplsLdpafNameEnum::ipv6 {6, "ipv6"};
+const Enum::YLeaf MplsLdpafNameEnum::ipv4 {4, "ipv4"};
+const Enum::YLeaf MplsLdpafNameEnum::ipv6 {6, "ipv6"};
 
-const Enum::Value MplsLdpTransportAddressEnum::interface {1, "interface"};
-const Enum::Value MplsLdpTransportAddressEnum::address {2, "address"};
+const Enum::YLeaf MplsLdpTransportAddressEnum::interface {1, "interface"};
+const Enum::YLeaf MplsLdpTransportAddressEnum::address {2, "address"};
 
-const Enum::Value MplsLdpSessionProtectionEnum::all {1, "all"};
-const Enum::Value MplsLdpSessionProtectionEnum::for_ {2, "for"};
-const Enum::Value MplsLdpSessionProtectionEnum::all_with_duration {3, "all-with-duration"};
-const Enum::Value MplsLdpSessionProtectionEnum::for_with_duration {4, "for-with-duration"};
-const Enum::Value MplsLdpSessionProtectionEnum::all_with_forever {5, "all-with-forever"};
-const Enum::Value MplsLdpSessionProtectionEnum::for_with_forever {6, "for-with-forever"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::all {1, "all"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::for_ {2, "for"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::all_with_duration {3, "all-with-duration"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::for_with_duration {4, "for-with-duration"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::all_with_forever {5, "all-with-forever"};
+const Enum::YLeaf MplsLdpSessionProtectionEnum::for_with_forever {6, "for-with-forever"};
 
 
 }

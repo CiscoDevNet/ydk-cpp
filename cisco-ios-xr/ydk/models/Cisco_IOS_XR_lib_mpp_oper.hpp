@@ -38,6 +38,7 @@ class ManagementPlaneProtection : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Outband : public Entity
     {
         public:
@@ -53,6 +54,7 @@ class ManagementPlaneProtection : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Vrf : public Entity
         {
             public:
@@ -66,8 +68,9 @@ class ManagementPlaneProtection : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value vrf_name; //type: string
 
+
+                YLeaf vrf_name; //type: string
 
 
 
@@ -89,6 +92,7 @@ class ManagementPlaneProtection : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -102,8 +106,9 @@ class ManagementPlaneProtection : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
 
+
+                    YLeaf interface_name; //type: string
 
                 class Protocol : public Entity
                 {
@@ -118,9 +123,10 @@ class ManagementPlaneProtection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow; //type: MppAllowEnum
-                        Value is_all_peers_allowed; //type: boolean
 
+
+                        YLeaf allow; //type: MppAllowEnum
+                        YLeaf is_all_peers_allowed; //type: boolean
 
                     class PeerAddress : public Entity
                     {
@@ -135,10 +141,11 @@ class ManagementPlaneProtection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: MppAfIdBaseIdentity
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf af_name; //type: MppAfIdBaseIdentity
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -146,7 +153,6 @@ class ManagementPlaneProtection : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
-                        class MppAllowEnum;
 
 
                 }; // ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol
@@ -186,6 +192,7 @@ class ManagementPlaneProtection : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Interfaces : public Entity
         {
             public:
@@ -201,6 +208,7 @@ class ManagementPlaneProtection : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -214,8 +222,9 @@ class ManagementPlaneProtection : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
 
+
+                    YLeaf interface_name; //type: string
 
                 class Protocol : public Entity
                 {
@@ -230,9 +239,10 @@ class ManagementPlaneProtection : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value allow; //type: MppAllowEnum
-                        Value is_all_peers_allowed; //type: boolean
 
+
+                        YLeaf allow; //type: MppAllowEnum
+                        YLeaf is_all_peers_allowed; //type: boolean
 
                     class PeerAddress : public Entity
                     {
@@ -247,10 +257,11 @@ class ManagementPlaneProtection : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af_name; //type: MppAfIdBaseIdentity
-                            Value ipv4_address; //type: string
-                            Value ipv6_address; //type: string
 
+
+                            YLeaf af_name; //type: MppAfIdBaseIdentity
+                            YLeaf ipv4_address; //type: string
+                            YLeaf ipv6_address; //type: string
 
 
 
@@ -258,7 +269,6 @@ class ManagementPlaneProtection : public Entity
 
 
                         std::vector<std::unique_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
-                        class MppAllowEnum;
 
 
                 }; // ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol
@@ -314,14 +324,14 @@ class Ipv6Identity : public Cisco_IOS_XR_lib_mpp_oper::MppAfIdBaseIdentity, virt
 class MppAllowEnum : public Enum
 {
     public:
-        static const Enum::Value ssh;
-        static const Enum::Value telnet;
-        static const Enum::Value snmp;
-        static const Enum::Value tftp;
-        static const Enum::Value http;
-        static const Enum::Value xr_xml;
-        static const Enum::Value netconf;
-        static const Enum::Value all;
+        static const Enum::YLeaf ssh;
+        static const Enum::YLeaf telnet;
+        static const Enum::YLeaf snmp;
+        static const Enum::YLeaf tftp;
+        static const Enum::YLeaf http;
+        static const Enum::YLeaf xr_xml;
+        static const Enum::YLeaf netconf;
+        static const Enum::YLeaf all;
 
 };
 

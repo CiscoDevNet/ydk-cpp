@@ -300,8 +300,8 @@ bool Clock::has_data() const
 bool Clock::has_operation() const
 {
     return is_set(operation)
-	|| (summer_time !=  nullptr && is_set(summer_time->operation))
-	|| (time_zone !=  nullptr && is_set(time_zone->operation));
+	|| (summer_time !=  nullptr && summer_time->has_operation())
+	|| (time_zone !=  nullptr && time_zone->has_operation());
 }
 
 std::string Clock::get_segment_path() const
@@ -318,7 +318,7 @@ EntityPath Clock::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -405,21 +405,21 @@ std::unique_ptr<Entity> Clock::clone_ptr()
     return std::make_unique<Clock>();
 }
 
-const Enum::Value ClockMonthEnum::january {0, "january"};
-const Enum::Value ClockMonthEnum::february {1, "february"};
-const Enum::Value ClockMonthEnum::march {2, "march"};
-const Enum::Value ClockMonthEnum::april {3, "april"};
-const Enum::Value ClockMonthEnum::may {4, "may"};
-const Enum::Value ClockMonthEnum::june {5, "june"};
-const Enum::Value ClockMonthEnum::july {6, "july"};
-const Enum::Value ClockMonthEnum::august {7, "august"};
-const Enum::Value ClockMonthEnum::september {8, "september"};
-const Enum::Value ClockMonthEnum::october {9, "october"};
-const Enum::Value ClockMonthEnum::november {10, "november"};
-const Enum::Value ClockMonthEnum::december {11, "december"};
+const Enum::YLeaf ClockMonthEnum::january {0, "january"};
+const Enum::YLeaf ClockMonthEnum::february {1, "february"};
+const Enum::YLeaf ClockMonthEnum::march {2, "march"};
+const Enum::YLeaf ClockMonthEnum::april {3, "april"};
+const Enum::YLeaf ClockMonthEnum::may {4, "may"};
+const Enum::YLeaf ClockMonthEnum::june {5, "june"};
+const Enum::YLeaf ClockMonthEnum::july {6, "july"};
+const Enum::YLeaf ClockMonthEnum::august {7, "august"};
+const Enum::YLeaf ClockMonthEnum::september {8, "september"};
+const Enum::YLeaf ClockMonthEnum::october {9, "october"};
+const Enum::YLeaf ClockMonthEnum::november {10, "november"};
+const Enum::YLeaf ClockMonthEnum::december {11, "december"};
 
-const Enum::Value ClockSummerTimeModeEnum::recurring {0, "recurring"};
-const Enum::Value ClockSummerTimeModeEnum::date {1, "date"};
+const Enum::YLeaf ClockSummerTimeModeEnum::recurring {0, "recurring"};
+const Enum::YLeaf ClockSummerTimeModeEnum::date {1, "date"};
 
 
 }

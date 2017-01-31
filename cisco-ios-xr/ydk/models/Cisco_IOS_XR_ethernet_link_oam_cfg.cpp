@@ -8,50 +8,50 @@ namespace ydk {
 namespace Cisco_IOS_XR_ethernet_link_oam_cfg {
 
 
-const Enum::Value EtherLinkOamInterfaceModeEnumEnum::passive {0, "passive"};
-const Enum::Value EtherLinkOamInterfaceModeEnumEnum::active {1, "active"};
+const Enum::YLeaf EtherLinkOamInterfaceModeEnumEnum::passive {0, "passive"};
+const Enum::YLeaf EtherLinkOamInterfaceModeEnumEnum::active {1, "active"};
 
-const Enum::Value EtherLinkOamProfileHelloIntervalEnumEnum::Y_100ms {1, "100ms"};
+const Enum::YLeaf EtherLinkOamProfileHelloIntervalEnumEnum::Y_100ms {1, "100ms"};
 
-const Enum::Value EtherLinkOamEventActionEnumEnum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionEnumEnum::error_disable {2, "error-disable"};
-const Enum::Value EtherLinkOamEventActionEnumEnum::log {3, "log"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEnum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEnum::error_disable {2, "error-disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEnum::log {3, "log"};
 
-const Enum::Value EtherLinkOamEventActionPrimEnumEnum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionPrimEnumEnum::log {3, "log"};
+const Enum::YLeaf EtherLinkOamEventActionPrimEnumEnum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionPrimEnumEnum::log {3, "log"};
 
-const Enum::Value EtherLinkOamProfileRequireModeEnumEnum::passive {0, "passive"};
-const Enum::Value EtherLinkOamProfileRequireModeEnumEnum::active {1, "active"};
+const Enum::YLeaf EtherLinkOamProfileRequireModeEnumEnum::passive {0, "passive"};
+const Enum::YLeaf EtherLinkOamProfileRequireModeEnumEnum::active {1, "active"};
 
-const Enum::Value EtherLinkOamInterfaceRequireModeEnumEnum::passive {0, "passive"};
-const Enum::Value EtherLinkOamInterfaceRequireModeEnumEnum::active {1, "active"};
-const Enum::Value EtherLinkOamInterfaceRequireModeEnumEnum::dont_care {2, "dont-care"};
+const Enum::YLeaf EtherLinkOamInterfaceRequireModeEnumEnum::passive {0, "passive"};
+const Enum::YLeaf EtherLinkOamInterfaceRequireModeEnumEnum::active {1, "active"};
+const Enum::YLeaf EtherLinkOamInterfaceRequireModeEnumEnum::dont_care {2, "dont-care"};
 
-const Enum::Value EtherLinkOamEventActionEnum2Enum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionEnum2Enum::error_disable {2, "error-disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum2Enum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum2Enum::error_disable {2, "error-disable"};
 
-const Enum::Value EtherLinkOamEventActionEnum5Enum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionEnum5Enum::error_disable {2, "error-disable"};
-const Enum::Value EtherLinkOamEventActionEnum5Enum::efd {4, "efd"};
+const Enum::YLeaf EtherLinkOamEventActionEnum5Enum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum5Enum::error_disable {2, "error-disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum5Enum::efd {4, "efd"};
 
-const Enum::Value EtherLinkOamEventActionEnum4Enum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum4Enum::disable {1, "disable"};
 
-const Enum::Value EtherLinkOamProfileModeEnumEnum::passive {0, "passive"};
+const Enum::YLeaf EtherLinkOamProfileModeEnumEnum::passive {0, "passive"};
 
-const Enum::Value EtherLinkOamEventActionEnum6Enum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionEnum6Enum::log {3, "log"};
-const Enum::Value EtherLinkOamEventActionEnum6Enum::efd {4, "efd"};
+const Enum::YLeaf EtherLinkOamEventActionEnum6Enum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum6Enum::log {3, "log"};
+const Enum::YLeaf EtherLinkOamEventActionEnum6Enum::efd {4, "efd"};
 
-const Enum::Value EtherLinkOamEventActionEnumEfdEnum::disable {1, "disable"};
-const Enum::Value EtherLinkOamEventActionEnumEfdEnum::error_disable {2, "error-disable"};
-const Enum::Value EtherLinkOamEventActionEnumEfdEnum::log {3, "log"};
-const Enum::Value EtherLinkOamEventActionEnumEfdEnum::efd {4, "efd"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEfdEnum::disable {1, "disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEfdEnum::error_disable {2, "error-disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEfdEnum::log {3, "log"};
+const Enum::YLeaf EtherLinkOamEventActionEnumEfdEnum::efd {4, "efd"};
 
-const Enum::Value EtherLinkOamEventActionEnum1Enum::error_disable {2, "error-disable"};
-const Enum::Value EtherLinkOamEventActionEnum1Enum::log {3, "log"};
+const Enum::YLeaf EtherLinkOamEventActionEnum1Enum::error_disable {2, "error-disable"};
+const Enum::YLeaf EtherLinkOamEventActionEnum1Enum::log {3, "log"};
 
-const Enum::Value EtherLinkOamInterfaceHelloIntervalEnumEnum::Y_1s {0, "1s"};
-const Enum::Value EtherLinkOamInterfaceHelloIntervalEnumEnum::Y_100ms {1, "100ms"};
+const Enum::YLeaf EtherLinkOamInterfaceHelloIntervalEnumEnum::Y_1s {0, "1s"};
+const Enum::YLeaf EtherLinkOamInterfaceHelloIntervalEnumEnum::Y_100ms {1, "100ms"};
 
 
 }

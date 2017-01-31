@@ -26,6 +26,7 @@ class Srms : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Mapping : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Srms : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class MappingIpv4 : public Entity
@@ -56,6 +58,7 @@ class Srms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MappingMi : public Entity
             {
                 public:
@@ -69,18 +72,19 @@ class Srms : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ip; //type: string
-                    Value prefix; //type: int32
-                    Value src; //type: SrmsMiSrcEBEnum
-                    Value router; //type: string
-                    Value area; //type: string
-                    Value prefix_xr; //type: uint8
-                    Value sid_start; //type: uint32
-                    Value sid_count; //type: uint32
-                    Value last_prefix; //type: string
-                    Value last_sid_index; //type: uint32
-                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                    YLeaf ip; //type: string
+                    YLeaf prefix; //type: int32
+                    YLeaf src; //type: SrmsMiSrcEBEnum
+                    YLeaf router; //type: string
+                    YLeaf area; //type: string
+                    YLeaf prefix_xr; //type: uint8
+                    YLeaf sid_start; //type: uint32
+                    YLeaf sid_count; //type: uint32
+                    YLeaf last_prefix; //type: string
+                    YLeaf last_sid_index; //type: uint32
+                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                 class Addr : public Entity
                 {
@@ -95,20 +99,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af; //type: SrmsMiAfEBEnum
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class SrmsMiAfEBEnum;
+                        YLeaf af; //type: SrmsMiAfEBEnum
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Srms::Mapping::MappingIpv4::MappingMi::Addr
 
 
                     std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Mapping::MappingIpv4::MappingMi::Addr> addr;
-                    class SrmsMiFlagEBEnum;
-                    class SrmsMiSrcEBEnum;
 
 
             }; // Srms::Mapping::MappingIpv4::MappingMi
@@ -135,6 +137,7 @@ class Srms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class MappingMi : public Entity
             {
                 public:
@@ -148,18 +151,19 @@ class Srms : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value ip; //type: string
-                    Value prefix; //type: int32
-                    Value src; //type: SrmsMiSrcEBEnum
-                    Value router; //type: string
-                    Value area; //type: string
-                    Value prefix_xr; //type: uint8
-                    Value sid_start; //type: uint32
-                    Value sid_count; //type: uint32
-                    Value last_prefix; //type: string
-                    Value last_sid_index; //type: uint32
-                    Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                    YLeaf ip; //type: string
+                    YLeaf prefix; //type: int32
+                    YLeaf src; //type: SrmsMiSrcEBEnum
+                    YLeaf router; //type: string
+                    YLeaf area; //type: string
+                    YLeaf prefix_xr; //type: uint8
+                    YLeaf sid_start; //type: uint32
+                    YLeaf sid_count; //type: uint32
+                    YLeaf last_prefix; //type: string
+                    YLeaf last_sid_index; //type: uint32
+                    YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                 class Addr : public Entity
                 {
@@ -174,20 +178,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value af; //type: SrmsMiAfEBEnum
-                        Value ipv4; //type: string
-                        Value ipv6; //type: string
 
 
-                        class SrmsMiAfEBEnum;
+                        YLeaf af; //type: SrmsMiAfEBEnum
+                        YLeaf ipv4; //type: string
+                        YLeaf ipv6; //type: string
+
 
 
                 }; // Srms::Mapping::MappingIpv6::MappingMi::Addr
 
 
                     std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Mapping::MappingIpv6::MappingMi::Addr> addr;
-                    class SrmsMiFlagEBEnum;
-                    class SrmsMiSrcEBEnum;
 
 
             }; // Srms::Mapping::MappingIpv6::MappingMi
@@ -221,6 +223,7 @@ class Srms : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class PolicyIpv4 : public Entity
         {
             public:
@@ -234,6 +237,7 @@ class Srms : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
+
 
 
             class PolicyIpv4Backup : public Entity
@@ -251,6 +255,7 @@ class Srms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PolicyMi : public Entity
                 {
                     public:
@@ -264,17 +269,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mi_id; //type: string
-                        Value src; //type: SrmsMiSrcEBEnum
-                        Value router; //type: string
-                        Value area; //type: string
-                        Value prefix_xr; //type: uint8
-                        Value sid_start; //type: uint32
-                        Value sid_count; //type: uint32
-                        Value last_prefix; //type: string
-                        Value last_sid_index; //type: uint32
-                        Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                        YLeaf mi_id; //type: string
+                        YLeaf src; //type: SrmsMiSrcEBEnum
+                        YLeaf router; //type: string
+                        YLeaf area; //type: string
+                        YLeaf prefix_xr; //type: uint8
+                        YLeaf sid_start; //type: uint32
+                        YLeaf sid_count; //type: uint32
+                        YLeaf last_prefix; //type: string
+                        YLeaf last_sid_index; //type: uint32
+                        YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                     class Addr : public Entity
                     {
@@ -289,20 +295,18 @@ class Srms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: SrmsMiAfEBEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class SrmsMiAfEBEnum;
+                            YLeaf af; //type: SrmsMiAfEBEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr
 
 
                         std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi::Addr> addr;
-                        class SrmsMiFlagEBEnum;
-                        class SrmsMiSrcEBEnum;
 
 
                 }; // Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi
@@ -329,6 +333,7 @@ class Srms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PolicyMi : public Entity
                 {
                     public:
@@ -342,17 +347,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mi_id; //type: string
-                        Value src; //type: SrmsMiSrcEBEnum
-                        Value router; //type: string
-                        Value area; //type: string
-                        Value prefix_xr; //type: uint8
-                        Value sid_start; //type: uint32
-                        Value sid_count; //type: uint32
-                        Value last_prefix; //type: string
-                        Value last_sid_index; //type: uint32
-                        Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                        YLeaf mi_id; //type: string
+                        YLeaf src; //type: SrmsMiSrcEBEnum
+                        YLeaf router; //type: string
+                        YLeaf area; //type: string
+                        YLeaf prefix_xr; //type: uint8
+                        YLeaf sid_start; //type: uint32
+                        YLeaf sid_count; //type: uint32
+                        YLeaf last_prefix; //type: string
+                        YLeaf last_sid_index; //type: uint32
+                        YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                     class Addr : public Entity
                     {
@@ -367,20 +373,18 @@ class Srms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: SrmsMiAfEBEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class SrmsMiAfEBEnum;
+                            YLeaf af; //type: SrmsMiAfEBEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr
 
 
                         std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi::Addr> addr;
-                        class SrmsMiFlagEBEnum;
-                        class SrmsMiSrcEBEnum;
 
 
                 }; // Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi
@@ -414,6 +418,7 @@ class Srms : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class PolicyIpv6Backup : public Entity
             {
                 public:
@@ -429,6 +434,7 @@ class Srms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PolicyMi : public Entity
                 {
                     public:
@@ -442,17 +448,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mi_id; //type: string
-                        Value src; //type: SrmsMiSrcEBEnum
-                        Value router; //type: string
-                        Value area; //type: string
-                        Value prefix_xr; //type: uint8
-                        Value sid_start; //type: uint32
-                        Value sid_count; //type: uint32
-                        Value last_prefix; //type: string
-                        Value last_sid_index; //type: uint32
-                        Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                        YLeaf mi_id; //type: string
+                        YLeaf src; //type: SrmsMiSrcEBEnum
+                        YLeaf router; //type: string
+                        YLeaf area; //type: string
+                        YLeaf prefix_xr; //type: uint8
+                        YLeaf sid_start; //type: uint32
+                        YLeaf sid_count; //type: uint32
+                        YLeaf last_prefix; //type: string
+                        YLeaf last_sid_index; //type: uint32
+                        YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                     class Addr : public Entity
                     {
@@ -467,20 +474,18 @@ class Srms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: SrmsMiAfEBEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class SrmsMiAfEBEnum;
+                            YLeaf af; //type: SrmsMiAfEBEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr
 
 
                         std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi::Addr> addr;
-                        class SrmsMiFlagEBEnum;
-                        class SrmsMiSrcEBEnum;
 
 
                 }; // Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi
@@ -507,6 +512,7 @@ class Srms : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PolicyMi : public Entity
                 {
                     public:
@@ -520,17 +526,18 @@ class Srms : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value mi_id; //type: string
-                        Value src; //type: SrmsMiSrcEBEnum
-                        Value router; //type: string
-                        Value area; //type: string
-                        Value prefix_xr; //type: uint8
-                        Value sid_start; //type: uint32
-                        Value sid_count; //type: uint32
-                        Value last_prefix; //type: string
-                        Value last_sid_index; //type: uint32
-                        Value flag_attached; //type: SrmsMiFlagEBEnum
 
+
+                        YLeaf mi_id; //type: string
+                        YLeaf src; //type: SrmsMiSrcEBEnum
+                        YLeaf router; //type: string
+                        YLeaf area; //type: string
+                        YLeaf prefix_xr; //type: uint8
+                        YLeaf sid_start; //type: uint32
+                        YLeaf sid_count; //type: uint32
+                        YLeaf last_prefix; //type: string
+                        YLeaf last_sid_index; //type: uint32
+                        YLeaf flag_attached; //type: SrmsMiFlagEBEnum
 
                     class Addr : public Entity
                     {
@@ -545,20 +552,18 @@ class Srms : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value af; //type: SrmsMiAfEBEnum
-                            Value ipv4; //type: string
-                            Value ipv6; //type: string
 
 
-                            class SrmsMiAfEBEnum;
+                            YLeaf af; //type: SrmsMiAfEBEnum
+                            YLeaf ipv4; //type: string
+                            YLeaf ipv6; //type: string
+
 
 
                     }; // Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr
 
 
                         std::unique_ptr<Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi::Addr> addr;
-                        class SrmsMiFlagEBEnum;
-                        class SrmsMiSrcEBEnum;
 
 
                 }; // Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi
@@ -594,26 +599,26 @@ class Srms : public Entity
 class SrmsMiAfEBEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
 
 };
 
 class SrmsMiFlagEBEnum : public Enum
 {
     public:
-        static const Enum::Value false_;
-        static const Enum::Value true_;
+        static const Enum::YLeaf false_;
+        static const Enum::YLeaf true_;
 
 };
 
 class SrmsMiSrcEBEnum : public Enum
 {
     public:
-        static const Enum::Value none;
-        static const Enum::Value local;
-        static const Enum::Value remote;
+        static const Enum::YLeaf none;
+        static const Enum::YLeaf local;
+        static const Enum::YLeaf remote;
 
 };
 

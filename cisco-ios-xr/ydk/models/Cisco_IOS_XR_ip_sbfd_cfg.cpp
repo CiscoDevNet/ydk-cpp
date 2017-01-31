@@ -43,7 +43,7 @@ EntityPath Sbfd::RemoteTarget::Ipv4Addresses::Ipv4Address::RemoteDiscriminator::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -347,7 +347,7 @@ EntityPath Sbfd::RemoteTarget::Ipv6Addresses::Ipv6Address::RemoteDiscriminator::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -642,8 +642,8 @@ bool Sbfd::RemoteTarget::has_data() const
 bool Sbfd::RemoteTarget::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_addresses !=  nullptr && is_set(ipv4_addresses->operation))
-	|| (ipv6_addresses !=  nullptr && is_set(ipv6_addresses->operation));
+	|| (ipv4_addresses !=  nullptr && ipv4_addresses->has_operation())
+	|| (ipv6_addresses !=  nullptr && ipv6_addresses->has_operation());
 }
 
 std::string Sbfd::RemoteTarget::get_segment_path() const
@@ -1534,10 +1534,10 @@ bool Sbfd::LocalDiscriminator::has_data() const
 bool Sbfd::LocalDiscriminator::has_operation() const
 {
     return is_set(operation)
-	|| (dynamic_discriminators !=  nullptr && is_set(dynamic_discriminators->operation))
-	|| (intf_discriminators !=  nullptr && is_set(intf_discriminators->operation))
-	|| (ipv4_discriminators !=  nullptr && is_set(ipv4_discriminators->operation))
-	|| (val32_discriminators !=  nullptr && is_set(val32_discriminators->operation));
+	|| (dynamic_discriminators !=  nullptr && dynamic_discriminators->has_operation())
+	|| (intf_discriminators !=  nullptr && intf_discriminators->has_operation())
+	|| (ipv4_discriminators !=  nullptr && ipv4_discriminators->has_operation())
+	|| (val32_discriminators !=  nullptr && val32_discriminators->has_operation());
 }
 
 std::string Sbfd::LocalDiscriminator::get_segment_path() const
@@ -1712,8 +1712,8 @@ bool Sbfd::has_data() const
 bool Sbfd::has_operation() const
 {
     return is_set(operation)
-	|| (local_discriminator !=  nullptr && is_set(local_discriminator->operation))
-	|| (remote_target !=  nullptr && is_set(remote_target->operation));
+	|| (local_discriminator !=  nullptr && local_discriminator->has_operation())
+	|| (remote_target !=  nullptr && remote_target->has_operation());
 }
 
 std::string Sbfd::get_segment_path() const
@@ -1730,7 +1730,7 @@ EntityPath Sbfd::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

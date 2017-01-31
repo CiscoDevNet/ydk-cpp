@@ -28,6 +28,7 @@ class SnmpColdStartRpc : public Entity
 
 
 
+
 }; // SnmpColdStartRpc
 
 class SnmpWarmStartRpc : public Entity
@@ -48,6 +49,7 @@ class SnmpWarmStartRpc : public Entity
 
 
 
+
 }; // SnmpWarmStartRpc
 
 class InterfaceLinkUpRpc : public Entity
@@ -64,8 +66,9 @@ class InterfaceLinkUpRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ifindex; //type: uint32
 
+
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -85,8 +88,9 @@ class InterfaceLinkDownRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ifindex; //type: uint32
 
+
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -106,8 +110,9 @@ class SonetSectionStatusRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ifindex; //type: uint32
 
+
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -127,8 +132,9 @@ class SonetLineStatusRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ifindex; //type: uint32
 
+
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -148,8 +154,9 @@ class SonetPathStatusRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value ifindex; //type: uint32
 
+
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -169,6 +176,7 @@ class InfraSyslogMessageGeneratedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 
@@ -193,6 +201,7 @@ class InfraFlashDeviceInsertedRpc : public Entity
 
 
 
+
 }; // InfraFlashDeviceInsertedRpc
 
 class InfraFlashDeviceRemovedRpc : public Entity
@@ -209,6 +218,7 @@ class InfraFlashDeviceRemovedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 
@@ -233,6 +243,7 @@ class InfraRedundancyProgressionRpc : public Entity
 
 
 
+
 }; // InfraRedundancyProgressionRpc
 
 class InfraRedundancySwitchRpc : public Entity
@@ -249,6 +260,7 @@ class InfraRedundancySwitchRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 
@@ -273,6 +285,7 @@ class InfraBridgeNewRootRpc : public Entity
 
 
 
+
 }; // InfraBridgeNewRootRpc
 
 class InfraBridgeTopologyChangeRpc : public Entity
@@ -289,6 +302,7 @@ class InfraBridgeTopologyChangeRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 
@@ -313,6 +327,7 @@ class InfraConfigEventRpc : public Entity
 
 
 
+
 }; // InfraConfigEventRpc
 
 class EntitySensorThresholdNotificationRpc : public Entity
@@ -329,8 +344,9 @@ class EntitySensorThresholdNotificationRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -350,8 +366,9 @@ class EntityFruPowerStatusChangeFailedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -371,8 +388,9 @@ class EntityFruModuleStatusChangeUpRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -392,8 +410,9 @@ class EntityFruModuleStatusChangeDownRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -413,8 +432,9 @@ class EntityFruFanTrayOperStatusUpRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -434,8 +454,9 @@ class EntityFruFanTrayInsertedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -455,8 +476,9 @@ class EntityFruFanTrayRemovedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entindex; //type: uint32
 
+
+        YLeaf entindex; //type: uint32
 
 
 
@@ -476,8 +498,9 @@ class PlatformHfrBundleDownedLinkRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value bundle_name; //type: string
 
+
+        YLeaf bundle_name; //type: string
 
 
 
@@ -497,8 +520,9 @@ class PlatformHfrBundleStateRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value bundle_name; //type: string
 
+
+        YLeaf bundle_name; //type: string
 
 
 
@@ -518,8 +542,9 @@ class PlatformHfrPlaneStateRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value plane_id; //type: uint32
 
+
+        YLeaf plane_id; //type: uint32
 
 
 
@@ -539,8 +564,9 @@ class RoutingBgpEstablishedRemotePeerRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value address; //type: string
 
+
+        YLeaf address; //type: string
 
 
 
@@ -560,8 +586,9 @@ class RoutingBgpStateChangeRemotePeerRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value address; //type: string
 
+
+        YLeaf address; //type: string
 
 
 
@@ -581,9 +608,10 @@ class RoutingOspfNeighborStateChangeRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value address; //type: string
-        Value ifindex; //type: uint32
 
+
+        YLeaf address; //type: string
+        YLeaf ifindex; //type: uint32
 
 
 
@@ -603,10 +631,11 @@ class RoutingMplsLdpSessionDownRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value entity_id; //type: string
-        Value entity_index; //type: uint32
-        Value peer_id; //type: string
 
+
+        YLeaf entity_id; //type: string
+        YLeaf entity_index; //type: uint32
+        YLeaf peer_id; //type: string
 
 
 
@@ -626,11 +655,12 @@ class RoutingMplsTunnelReRoutedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value index_; //type: uint32
-        Value instance; //type: uint32
-        Value source; //type: string
-        Value destination; //type: string
 
+
+        YLeaf index_; //type: uint32
+        YLeaf instance; //type: uint32
+        YLeaf source; //type: string
+        YLeaf destination; //type: string
 
 
 
@@ -650,11 +680,12 @@ class RoutingMplsTunnelReOptimizedRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value index_; //type: uint32
-        Value instance; //type: uint32
-        Value source; //type: string
-        Value destination; //type: string
 
+
+        YLeaf index_; //type: uint32
+        YLeaf instance; //type: uint32
+        YLeaf source; //type: string
+        YLeaf destination; //type: string
 
 
 
@@ -674,11 +705,12 @@ class RoutingMplsTunnelDownRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value index_; //type: uint32
-        Value instance; //type: uint32
-        Value source; //type: string
-        Value destination; //type: string
 
+
+        YLeaf index_; //type: uint32
+        YLeaf instance; //type: uint32
+        YLeaf source; //type: string
+        YLeaf destination; //type: string
 
 
 
@@ -698,6 +730,7 @@ class AllRpc : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
+
 
 
 

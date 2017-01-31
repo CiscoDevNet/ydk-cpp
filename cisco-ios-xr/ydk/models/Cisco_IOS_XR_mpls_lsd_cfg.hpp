@@ -24,10 +24,11 @@ class MplsLsd : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value app_reg_delay_disable; //type: empty
-        Value mpls_entropy_label; //type: empty
-        Value mpls_ip_ttl_propagate_disable; //type: MplsIpTtlPropagateDisableEnum
 
+
+        YLeaf app_reg_delay_disable; //type: empty
+        YLeaf mpls_entropy_label; //type: empty
+        YLeaf mpls_ip_ttl_propagate_disable; //type: MplsIpTtlPropagateDisableEnum
 
     class Ipv6 : public Entity
     {
@@ -42,8 +43,9 @@ class MplsLsd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ttl_expiration_pop; //type: uint32
 
+
+            YLeaf ttl_expiration_pop; //type: uint32
 
 
 
@@ -63,8 +65,9 @@ class MplsLsd : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ttl_expiration_pop; //type: uint32
 
+
+            YLeaf ttl_expiration_pop; //type: uint32
 
 
 
@@ -86,6 +89,7 @@ class MplsLsd : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class LabelDatabase : public Entity
         {
             public:
@@ -99,8 +103,9 @@ class MplsLsd : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value label_database_id; //type: uint32
 
+
+                YLeaf label_database_id; //type: uint32
 
             class LabelRange : public Entity
             {
@@ -115,11 +120,12 @@ class MplsLsd : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value minvalue; //type: uint32
-                    Value max_value; //type: uint32
-                    Value min_static_value; //type: uint32
-                    Value max_static_value; //type: uint32
 
+
+                    YLeaf minvalue; //type: uint32
+                    YLeaf max_value; //type: uint32
+                    YLeaf min_static_value; //type: uint32
+                    YLeaf max_static_value; //type: uint32
 
 
 
@@ -141,7 +147,6 @@ class MplsLsd : public Entity
         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_cfg::MplsLsd::Ipv4> ipv4;
         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_cfg::MplsLsd::Ipv6> ipv6;
         std::unique_ptr<Cisco_IOS_XR_mpls_lsd_cfg::MplsLsd::LabelDatabases> label_databases;
-        class MplsIpTtlPropagateDisableEnum;
 
 
 }; // MplsLsd
@@ -150,9 +155,9 @@ class MplsLsd : public Entity
 class MplsIpTtlPropagateDisableEnum : public Enum
 {
     public:
-        static const Enum::Value all;
-        static const Enum::Value forward;
-        static const Enum::Value local;
+        static const Enum::YLeaf all;
+        static const Enum::YLeaf forward;
+        static const Enum::YLeaf local;
 
 };
 

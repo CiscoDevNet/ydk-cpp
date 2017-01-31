@@ -7,7 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_ipv4_acl_datatypes.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_ipv4_acl_cfg {
@@ -28,6 +27,7 @@ class Ipv4AclAndPrefixList : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Accesses : public Entity
     {
         public:
@@ -43,6 +43,7 @@ class Ipv4AclAndPrefixList : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Access : public Entity
         {
             public:
@@ -56,8 +57,9 @@ class Ipv4AclAndPrefixList : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value access_list_name; //type: string
 
+
+                YLeaf access_list_name; //type: string
 
             class AccessListEntries : public Entity
             {
@@ -74,6 +76,7 @@ class Ipv4AclAndPrefixList : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class AccessListEntry : public Entity
                 {
                     public:
@@ -87,23 +90,24 @@ class Ipv4AclAndPrefixList : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value sequence_number; //type: uint32
-                        Value grant; //type: Ipv4AclGrantEnumEnum
-                        Value protocol; //type: one of uint32, enumeration
-                        Value counter_name; //type: string
-                        Value igmp_message_type; //type: one of uint32, enumeration
-                        Value precedence; //type: one of uint32, enumeration
-                        Value log_option; //type: Ipv4AclLoggingEnumEnum
-                        Value capture; //type: boolean
-                        Value icmp_off; //type: empty
-                        Value fragments; //type: empty
-                        Value remark; //type: string
-                        Value source_prefix_group; //type: string
-                        Value destination_prefix_group; //type: string
-                        Value source_port_group; //type: string
-                        Value destination_port_group; //type: string
-                        Value sequence_str; //type: string
 
+
+                        YLeaf sequence_number; //type: uint32
+                        YLeaf grant; //type: Ipv4AclGrantEnumEnum
+                        YLeaf protocol; //type: one of uint32, enumeration
+                        YLeaf counter_name; //type: string
+                        YLeaf igmp_message_type; //type: one of uint32, enumeration
+                        YLeaf precedence; //type: one of uint32, enumeration
+                        YLeaf log_option; //type: Ipv4AclLoggingEnumEnum
+                        YLeaf capture; //type: boolean
+                        YLeaf icmp_off; //type: empty
+                        YLeaf fragments; //type: empty
+                        YLeaf remark; //type: string
+                        YLeaf source_prefix_group; //type: string
+                        YLeaf destination_prefix_group; //type: string
+                        YLeaf source_port_group; //type: string
+                        YLeaf destination_port_group; //type: string
+                        YLeaf sequence_str; //type: string
 
                     class SourceNetwork : public Entity
                     {
@@ -118,9 +122,10 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_address; //type: string
-                            Value source_wild_card_bits; //type: string
 
+
+                            YLeaf source_address; //type: string
+                            YLeaf source_wild_card_bits; //type: string
 
 
 
@@ -140,9 +145,10 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_address; //type: string
-                            Value destination_wild_card_bits; //type: string
 
+
+                            YLeaf destination_address; //type: string
+                            YLeaf destination_wild_card_bits; //type: string
 
 
 
@@ -162,14 +168,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value source_operator; //type: Ipv4AclOperatorEnumEnum
-                            Value first_source_port; //type: one of uint32, enumeration
-                            Value second_source_port; //type: one of uint32, enumeration
 
 
-                            class Ipv4AclPortNumberEnum;
-                            class Ipv4AclPortNumberEnum;
-                            class Ipv4AclOperatorEnumEnum;
+                            YLeaf source_operator; //type: Ipv4AclOperatorEnumEnum
+                            YLeaf first_source_port; //type: one of uint32, enumeration
+                            YLeaf second_source_port; //type: one of uint32, enumeration
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort
@@ -188,14 +192,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value destination_operator; //type: Ipv4AclOperatorEnumEnum
-                            Value first_destination_port; //type: one of uint32, enumeration
-                            Value second_destination_port; //type: one of uint32, enumeration
 
 
-                            class Ipv4AclOperatorEnumEnum;
-                            class Ipv4AclPortNumberEnum;
-                            class Ipv4AclPortNumberEnum;
+                            YLeaf destination_operator; //type: Ipv4AclOperatorEnumEnum
+                            YLeaf first_destination_port; //type: one of uint32, enumeration
+                            YLeaf second_destination_port; //type: one of uint32, enumeration
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort
@@ -214,10 +216,10 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value icmp_type_code; //type: Ipv4AclIcmpTypeCodeEnumEnum
 
 
-                            class Ipv4AclIcmpTypeCodeEnumEnum;
+                            YLeaf icmp_type_code; //type: Ipv4AclIcmpTypeCodeEnumEnum
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp
@@ -236,14 +238,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value tcp_bits_match_operator; //type: Ipv4AclTcpMatchOperatorEnumEnum
-                            Value tcp_bits; //type: one of uint32, enumeration
-                            Value tcp_bits_mask; //type: one of uint32, enumeration
 
 
-                            class Ipv4AclTcpBitsNumberEnum;
-                            class Ipv4AclTcpBitsNumberEnum;
-                            class Ipv4AclTcpMatchOperatorEnumEnum;
+                            YLeaf tcp_bits_match_operator; //type: Ipv4AclTcpMatchOperatorEnumEnum
+                            YLeaf tcp_bits; //type: one of uint32, enumeration
+                            YLeaf tcp_bits_mask; //type: one of uint32, enumeration
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
@@ -262,12 +262,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value packet_length_operator; //type: Ipv4AclOperatorEnumEnum
-                            Value packet_length_min; //type: uint32
-                            Value packet_length_max; //type: uint32
 
 
-                            class Ipv4AclOperatorEnumEnum;
+                            YLeaf packet_length_operator; //type: Ipv4AclOperatorEnumEnum
+                            YLeaf packet_length_min; //type: uint32
+                            YLeaf packet_length_max; //type: uint32
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength
@@ -286,12 +286,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value time_to_live_operator; //type: Ipv4AclOperatorEnumEnum
-                            Value time_to_live_min; //type: uint32
-                            Value time_to_live_max; //type: uint32
 
 
-                            class Ipv4AclOperatorEnumEnum;
+                            YLeaf time_to_live_operator; //type: Ipv4AclOperatorEnumEnum
+                            YLeaf time_to_live_min; //type: uint32
+                            YLeaf time_to_live_max; //type: uint32
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive
@@ -310,8 +310,9 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value next_hop_type; //type: NextHopTypeEnum
 
+
+                            YLeaf next_hop_type; //type: NextHopTypeEnum
 
                         class NextHop1 : public Entity
                         {
@@ -326,10 +327,11 @@ class Ipv4AclAndPrefixList : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                Value vrf_name; //type: string
-                                Value track_name; //type: string
 
+
+                                YLeaf next_hop; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf track_name; //type: string
 
 
 
@@ -349,10 +351,11 @@ class Ipv4AclAndPrefixList : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                Value vrf_name; //type: string
-                                Value track_name; //type: string
 
+
+                                YLeaf next_hop; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf track_name; //type: string
 
 
 
@@ -372,10 +375,11 @@ class Ipv4AclAndPrefixList : public Entity
                                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                                 void set_value(const std::string & value_path, std::string value) override;
                                 std::map<std::string, Entity*> & get_children() override;
-                                Value next_hop; //type: string
-                                Value vrf_name; //type: string
-                                Value track_name; //type: string
 
+
+                                YLeaf next_hop; //type: string
+                                YLeaf vrf_name; //type: string
+                                YLeaf track_name; //type: string
 
 
 
@@ -385,7 +389,6 @@ class Ipv4AclAndPrefixList : public Entity
                             std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1> next_hop_1;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2> next_hop_2;
                             std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3> next_hop_3;
-                            class NextHopTypeEnum;
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop
@@ -404,14 +407,12 @@ class Ipv4AclAndPrefixList : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value dscp_operator; //type: Ipv4AclOperatorEnumEnum
-                            Value dscp_min; //type: one of uint32, enumeration
-                            Value dscp_max; //type: one of uint32, enumeration
 
 
-                            class Ipv4AclDscpNumberEnum;
-                            class Ipv4AclDscpNumberEnum;
-                            class Ipv4AclOperatorEnumEnum;
+                            YLeaf dscp_operator; //type: Ipv4AclOperatorEnumEnum
+                            YLeaf dscp_min; //type: one of uint32, enumeration
+                            YLeaf dscp_max; //type: one of uint32, enumeration
+
 
 
                     }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dscp
@@ -427,11 +428,6 @@ class Ipv4AclAndPrefixList : public Entity
                         std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort> source_port;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp> tcp;
                         std::unique_ptr<Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive> time_to_live;
-                        class Ipv4AclGrantEnumEnum;
-                        class Ipv4AclIgmpNumberEnum;
-                        class Ipv4AclLoggingEnumEnum;
-                        class Ipv4AclPrecedenceNumberEnum;
-                        class Ipv4AclProtocolNumberEnum;
 
 
                 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
@@ -470,6 +466,7 @@ class Ipv4AclAndPrefixList : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Prefix : public Entity
         {
             public:
@@ -483,8 +480,9 @@ class Ipv4AclAndPrefixList : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value prefix_list_name; //type: string
 
+
+                YLeaf prefix_list_name; //type: string
 
             class PrefixListEntries : public Entity
             {
@@ -501,6 +499,7 @@ class Ipv4AclAndPrefixList : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PrefixListEntry : public Entity
                 {
                     public:
@@ -514,20 +513,20 @@ class Ipv4AclAndPrefixList : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value sequence_number; //type: uint32
-                        Value grant; //type: Ipv4AclGrantEnumEnum
-                        Value prefix; //type: string
-                        Value netmask; //type: string
-                        Value match_exact_length; //type: empty
-                        Value exact_prefix_length; //type: uint32
-                        Value match_max_length; //type: empty
-                        Value max_prefix_length; //type: uint32
-                        Value match_min_length; //type: empty
-                        Value min_prefix_length; //type: uint32
-                        Value remark; //type: string
 
 
-                        class Ipv4AclGrantEnumEnum;
+                        YLeaf sequence_number; //type: uint32
+                        YLeaf grant; //type: Ipv4AclGrantEnumEnum
+                        YLeaf prefix; //type: string
+                        YLeaf netmask; //type: string
+                        YLeaf match_exact_length; //type: empty
+                        YLeaf exact_prefix_length; //type: uint32
+                        YLeaf match_max_length; //type: empty
+                        YLeaf max_prefix_length; //type: uint32
+                        YLeaf match_min_length; //type: empty
+                        YLeaf min_prefix_length; //type: uint32
+                        YLeaf remark; //type: string
+
 
 
                 }; // Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
@@ -564,9 +563,10 @@ class Ipv4AclAndPrefixList : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value threshold; //type: uint32
-            Value rate; //type: uint32
 
+
+            YLeaf threshold; //type: uint32
+            YLeaf rate; //type: uint32
 
 
 
@@ -584,9 +584,9 @@ class Ipv4AclAndPrefixList : public Entity
 class NextHopTypeEnum : public Enum
 {
     public:
-        static const Enum::Value none_next_hop;
-        static const Enum::Value regular_next_hop;
-        static const Enum::Value default_next_hop;
+        static const Enum::YLeaf none_next_hop;
+        static const Enum::YLeaf regular_next_hop;
+        static const Enum::YLeaf default_next_hop;
 
 };
 

@@ -26,6 +26,7 @@ class Vty : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class VtyPools : public Entity
     {
         public:
@@ -41,6 +42,7 @@ class Vty : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class VtyPool : public Entity
         {
             public:
@@ -54,12 +56,13 @@ class Vty : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value pool_name; //type: string
-                Value first_vty; //type: int32
-                Value last_vty; //type: int32
-                Value line_template; //type: string
-                Value none; //type: string
 
+
+                YLeaf pool_name; //type: string
+                YLeaf first_vty; //type: int32
+                YLeaf last_vty; //type: int32
+                YLeaf line_template; //type: string
+                YLeaf none; //type: string
 
 
 

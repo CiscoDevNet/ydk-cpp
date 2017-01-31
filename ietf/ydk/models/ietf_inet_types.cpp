@@ -8,9 +8,9 @@ namespace ydk {
 namespace ietf_inet_types {
 
 
-const Enum::Value IpVersionEnum::unknown {0, "unknown"};
-const Enum::Value IpVersionEnum::ipv4 {1, "ipv4"};
-const Enum::Value IpVersionEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf IpVersionEnum::unknown {0, "unknown"};
+const Enum::YLeaf IpVersionEnum::ipv4 {1, "ipv4"};
+const Enum::YLeaf IpVersionEnum::ipv6 {2, "ipv6"};
 
 
 }

@@ -46,7 +46,7 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -156,7 +156,7 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -290,7 +290,7 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -400,7 +400,7 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -532,8 +532,8 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::has_op
 	|| is_set(must_secure.operation)
 	|| is_set(replay_window_size.operation)
 	|| is_set(state.operation)
-	|| (decrypt_sc_status !=  nullptr && is_set(decrypt_sc_status->operation))
-	|| (encrypt_sc_status !=  nullptr && is_set(encrypt_sc_status->operation));
+	|| (decrypt_sc_status !=  nullptr && decrypt_sc_status->has_operation())
+	|| (encrypt_sc_status !=  nullptr && encrypt_sc_status->has_operation());
 }
 
 std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_segment_path() const
@@ -550,7 +550,7 @@ EntityPath MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -676,7 +676,7 @@ bool MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::has_operation() const
 {
     return is_set(operation)
 	|| is_set(name.operation)
-	|| (macsec_ctrlr_info !=  nullptr && is_set(macsec_ctrlr_info->operation));
+	|| (macsec_ctrlr_info !=  nullptr && macsec_ctrlr_info->has_operation());
 }
 
 std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_segment_path() const
@@ -890,7 +890,7 @@ bool MacsecCtrlrOper::has_data() const
 bool MacsecCtrlrOper::has_operation() const
 {
     return is_set(operation)
-	|| (macsec_ctrlr_ports !=  nullptr && is_set(macsec_ctrlr_ports->operation));
+	|| (macsec_ctrlr_ports !=  nullptr && macsec_ctrlr_ports->has_operation());
 }
 
 std::string MacsecCtrlrOper::get_segment_path() const
@@ -907,7 +907,7 @@ EntityPath MacsecCtrlrOper::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -971,13 +971,13 @@ std::unique_ptr<Entity> MacsecCtrlrOper::clone_ptr()
     return std::make_unique<MacsecCtrlrOper>();
 }
 
-const Enum::Value MacsecCtrlrCiphersuitEnum::gcm_aes_256 {0, "gcm-aes-256"};
-const Enum::Value MacsecCtrlrCiphersuitEnum::gcm_aes_128 {1, "gcm-aes-128"};
-const Enum::Value MacsecCtrlrCiphersuitEnum::gcm_aes_xpn_256 {2, "gcm-aes-xpn-256"};
+const Enum::YLeaf MacsecCtrlrCiphersuitEnum::gcm_aes_256 {0, "gcm-aes-256"};
+const Enum::YLeaf MacsecCtrlrCiphersuitEnum::gcm_aes_128 {1, "gcm-aes-128"};
+const Enum::YLeaf MacsecCtrlrCiphersuitEnum::gcm_aes_xpn_256 {2, "gcm-aes-xpn-256"};
 
-const Enum::Value MacsecCtrlrStateEnum::macsec_ctrlr_state_up {0, "macsec-ctrlr-state-up"};
-const Enum::Value MacsecCtrlrStateEnum::macsec_ctrlr_state_down {1, "macsec-ctrlr-state-down"};
-const Enum::Value MacsecCtrlrStateEnum::macsec_ctrlr_state_admin_down {2, "macsec-ctrlr-state-admin-down"};
+const Enum::YLeaf MacsecCtrlrStateEnum::macsec_ctrlr_state_up {0, "macsec-ctrlr-state-up"};
+const Enum::YLeaf MacsecCtrlrStateEnum::macsec_ctrlr_state_down {1, "macsec-ctrlr-state-down"};
+const Enum::YLeaf MacsecCtrlrStateEnum::macsec_ctrlr_state_admin_down {2, "macsec-ctrlr-state-admin-down"};
 
 
 }

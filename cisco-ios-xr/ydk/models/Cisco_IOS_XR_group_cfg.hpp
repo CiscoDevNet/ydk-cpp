@@ -26,6 +26,7 @@ class Groups : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Group : public Entity
     {
         public:
@@ -39,8 +40,9 @@ class Groups : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value group_name; //type: string
 
+
+            YLeaf group_name; //type: string
 
 
 
@@ -66,8 +68,9 @@ class ApplyGroups : public Entity
         void set_value(const std::string & value_path, std::string value) override;
         std::map<std::string, Entity*> & get_children() override;
         std::unique_ptr<Entity> clone_ptr() override;
-        Value apply_group; //type: string
 
+
+        YLeaf apply_group; //type: string
 
 
 

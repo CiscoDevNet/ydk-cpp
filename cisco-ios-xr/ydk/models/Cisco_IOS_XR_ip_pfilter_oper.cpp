@@ -46,7 +46,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -138,7 +138,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::InterfaceInfos::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -225,7 +225,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::has_data() const
 bool PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::has_operation() const
 {
     return is_set(operation)
-	|| (interface_infos !=  nullptr && is_set(interface_infos->operation));
+	|| (interface_infos !=  nullptr && interface_infos->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_segment_path() const
@@ -242,7 +242,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::AclInfoTable::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -326,7 +326,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv6::has_data() const
 bool PfilterMa::Nodes::Node::Process::Ipv6::has_operation() const
 {
     return is_set(operation)
-	|| (acl_info_table !=  nullptr && is_set(acl_info_table->operation));
+	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv6::get_segment_path() const
@@ -343,7 +343,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv6::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -444,7 +444,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -536,7 +536,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::InterfaceInfos::
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -623,7 +623,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_data() const
 bool PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::has_operation() const
 {
     return is_set(operation)
-	|| (interface_infos !=  nullptr && is_set(interface_infos->operation));
+	|| (interface_infos !=  nullptr && interface_infos->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_segment_path() const
@@ -640,7 +640,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::AclInfoTable::get_entity_path(
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -724,7 +724,7 @@ bool PfilterMa::Nodes::Node::Process::Ipv4::has_data() const
 bool PfilterMa::Nodes::Node::Process::Ipv4::has_operation() const
 {
     return is_set(operation)
-	|| (acl_info_table !=  nullptr && is_set(acl_info_table->operation));
+	|| (acl_info_table !=  nullptr && acl_info_table->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::Ipv4::get_segment_path() const
@@ -741,7 +741,7 @@ EntityPath PfilterMa::Nodes::Node::Process::Ipv4::get_entity_path(Entity* ancest
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -830,8 +830,8 @@ bool PfilterMa::Nodes::Node::Process::has_data() const
 bool PfilterMa::Nodes::Node::Process::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4 !=  nullptr && is_set(ipv4->operation))
-	|| (ipv6 !=  nullptr && is_set(ipv6->operation));
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::Process::get_segment_path() const
@@ -848,7 +848,7 @@ EntityPath PfilterMa::Nodes::Node::Process::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -959,7 +959,7 @@ bool PfilterMa::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (process !=  nullptr && is_set(process->operation));
+	|| (process !=  nullptr && process->has_operation());
 }
 
 std::string PfilterMa::Nodes::Node::get_segment_path() const
@@ -1173,7 +1173,7 @@ bool PfilterMa::has_data() const
 bool PfilterMa::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string PfilterMa::get_segment_path() const
@@ -1190,7 +1190,7 @@ EntityPath PfilterMa::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

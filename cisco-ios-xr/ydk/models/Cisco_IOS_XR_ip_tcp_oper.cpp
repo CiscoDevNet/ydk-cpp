@@ -61,7 +61,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Clients::Client::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -178,7 +178,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Clients::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -288,7 +288,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -392,7 +392,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::get
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -474,52 +474,52 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::~AsyncSess
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_data() const
 {
-    for (auto const & leaf : control_read_error_num.getValues())
+    for (auto const & leaf : control_read_error_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : control_read_success_num.getValues())
+    for (auto const & leaf : control_read_success_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : control_write_error_num.getValues())
+    for (auto const & leaf : control_write_error_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : control_write_success_num.getValues())
+    for (auto const & leaf : control_write_success_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_read_byte.getValues())
+    for (auto const & leaf : data_read_byte.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_read_error_num.getValues())
+    for (auto const & leaf : data_read_error_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_read_success_num.getValues())
+    for (auto const & leaf : data_read_success_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_write_byte.getValues())
+    for (auto const & leaf : data_write_byte.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_write_error_num.getValues())
+    for (auto const & leaf : data_write_error_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : data_write_success_num.getValues())
+    for (auto const & leaf : data_write_success_num.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -529,58 +529,68 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_d
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_operation() const
 {
-    for (auto const & leaf : control_read_error_num.getValues())
+    for (auto const & leaf : control_read_error_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : control_read_success_num.getValues())
+    for (auto const & leaf : control_read_success_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : control_write_error_num.getValues())
+    for (auto const & leaf : control_write_error_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : control_write_success_num.getValues())
+    for (auto const & leaf : control_write_success_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_read_byte.getValues())
+    for (auto const & leaf : data_read_byte.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_read_error_num.getValues())
+    for (auto const & leaf : data_read_error_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_read_success_num.getValues())
+    for (auto const & leaf : data_read_success_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_write_byte.getValues())
+    for (auto const & leaf : data_write_byte.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_write_error_num.getValues())
+    for (auto const & leaf : data_write_error_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : data_write_success_num.getValues())
+    for (auto const & leaf : data_write_success_num.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
     return is_set(operation)
-	|| is_set(async_session.operation);
+	|| is_set(async_session.operation)
+	|| is_set(control_read_error_num.operation)
+	|| is_set(control_read_success_num.operation)
+	|| is_set(control_write_error_num.operation)
+	|| is_set(control_write_success_num.operation)
+	|| is_set(data_read_byte.operation)
+	|| is_set(data_read_error_num.operation)
+	|| is_set(data_read_success_num.operation)
+	|| is_set(data_write_byte.operation)
+	|| is_set(data_write_error_num.operation)
+	|| is_set(data_write_success_num.operation);
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::get_segment_path() const
@@ -597,7 +607,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -785,9 +795,9 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::has_operation() const
 	|| is_set(vrf_id.operation)
 	|| is_set(write_io_time.operation)
 	|| is_set(xipc_pulse_received.operation)
-	|| (async_session_stats !=  nullptr && is_set(async_session_stats->operation))
-	|| (read_io_counts !=  nullptr && is_set(read_io_counts->operation))
-	|| (write_io_counts !=  nullptr && is_set(write_io_counts->operation));
+	|| (async_session_stats !=  nullptr && async_session_stats->has_operation())
+	|| (read_io_counts !=  nullptr && read_io_counts->has_operation())
+	|| (write_io_counts !=  nullptr && write_io_counts->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_segment_path() const
@@ -804,7 +814,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1040,7 +1050,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Pcbs::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1396,7 +1406,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::Summary::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -1897,9 +1907,9 @@ bool TcpConnection::Nodes::Node::Statistics::has_data() const
 bool TcpConnection::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (clients !=  nullptr && is_set(clients->operation))
-	|| (pcbs !=  nullptr && is_set(pcbs->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (clients !=  nullptr && clients->has_operation())
+	|| (pcbs !=  nullptr && pcbs->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::get_segment_path() const
@@ -1916,7 +1926,7 @@ EntityPath TcpConnection::Nodes::Node::Statistics::get_entity_path(Entity* ances
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2066,7 +2076,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2162,7 +2172,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2255,7 +2265,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2346,7 +2356,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2451,7 +2461,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2568,7 +2578,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2674,7 +2684,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2770,7 +2780,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -2881,9 +2891,9 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 	|| is_set(receive_remote_port.operation)
 	|| is_set(remote_length.operation)
 	|| is_set(ttl.operation)
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (packet_type !=  nullptr && is_set(packet_type->operation))
-	|| (remote_address !=  nullptr && is_set(remote_address->operation));
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (packet_type !=  nullptr && packet_type->has_operation())
+	|| (remote_address !=  nullptr && remote_address->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::get_segment_path() const
@@ -2900,7 +2910,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3097,9 +3107,9 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
     return is_set(operation)
 	|| is_set(flow_types_info.operation)
 	|| is_set(ttl.operation)
-	|| (accept_mask !=  nullptr && is_set(accept_mask->operation))
-	|| (lpts_flags !=  nullptr && is_set(lpts_flags->operation))
-	|| (options !=  nullptr && is_set(options->operation));
+	|| (accept_mask !=  nullptr && accept_mask->has_operation())
+	|| (lpts_flags !=  nullptr && lpts_flags->has_operation())
+	|| (options !=  nullptr && options->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::get_segment_path() const
@@ -3116,7 +3126,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3286,7 +3296,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 {
     return is_set(operation)
 	|| is_set(af_name.operation)
-	|| (lpts_pcb !=  nullptr && is_set(lpts_pcb->operation));
+	|| (lpts_pcb !=  nullptr && lpts_pcb->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::get_segment_path() const
@@ -3303,7 +3313,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3415,9 +3425,9 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 	|| is_set(foreign_port.operation)
 	|| is_set(l4_protocol.operation)
 	|| is_set(local_port.operation)
-	|| (common !=  nullptr && is_set(common->operation))
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation));
+	|| (common !=  nullptr && common->has_operation())
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_segment_path() const
@@ -3434,7 +3444,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3608,7 +3618,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3721,7 +3731,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3808,7 +3818,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::has_data() const
 bool TcpConnection::Nodes::Node::ExtendedInformation::has_operation() const
 {
     return is_set(operation)
-	|| (display_types !=  nullptr && is_set(display_types->operation));
+	|| (display_types !=  nullptr && display_types->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::ExtendedInformation::get_segment_path() const
@@ -3825,7 +3835,7 @@ EntityPath TcpConnection::Nodes::Node::ExtendedInformation::get_entity_path(Enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -3929,7 +3939,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Lo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4025,7 +4035,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Fo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4145,7 +4155,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::So
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4317,7 +4327,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::So
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4491,7 +4501,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Fe
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4632,7 +4642,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::St
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4771,7 +4781,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Re
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -4924,7 +4934,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Re
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5092,7 +5102,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5236,7 +5246,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Ti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5334,7 +5344,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Sa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5428,7 +5438,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Se
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -5622,12 +5632,12 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data
         if(timer[index]->has_data())
             return true;
     }
-    for (auto const & leaf : fib_label_output.getValues())
+    for (auto const & leaf : fib_label_output.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : fib_pd_ctx.getValues())
+    for (auto const & leaf : fib_pd_ctx.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -5729,12 +5739,12 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
         if(timer[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : fib_label_output.getValues())
+    for (auto const & leaf : fib_label_output.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : fib_pd_ctx.getValues())
+    for (auto const & leaf : fib_pd_ctx.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -5750,6 +5760,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
 	|| is_set(current_receive_queue_size.operation)
 	|| is_set(current_send_queue_size.operation)
 	|| is_set(established_time.operation)
+	|| is_set(fib_label_output.operation)
+	|| is_set(fib_pd_ctx.operation)
 	|| is_set(fib_pd_ctx_size.operation)
 	|| is_set(foreign_port.operation)
 	|| is_set(giveup_time.operation)
@@ -5809,15 +5821,15 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
 	|| is_set(time_stamp_recent.operation)
 	|| is_set(time_stamp_recent_age.operation)
 	|| is_set(vrf_id.operation)
-	|| (feature_flags !=  nullptr && is_set(feature_flags->operation))
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation))
-	|| (receive_buf_state_flags !=  nullptr && is_set(receive_buf_state_flags->operation))
-	|| (request_flags !=  nullptr && is_set(request_flags->operation))
-	|| (send_buf_state_flags !=  nullptr && is_set(send_buf_state_flags->operation))
-	|| (socket_option_flags !=  nullptr && is_set(socket_option_flags->operation))
-	|| (socket_state_flags !=  nullptr && is_set(socket_state_flags->operation))
-	|| (state_flags !=  nullptr && is_set(state_flags->operation));
+	|| (feature_flags !=  nullptr && feature_flags->has_operation())
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation())
+	|| (receive_buf_state_flags !=  nullptr && receive_buf_state_flags->has_operation())
+	|| (request_flags !=  nullptr && request_flags->has_operation())
+	|| (send_buf_state_flags !=  nullptr && send_buf_state_flags->has_operation())
+	|| (socket_option_flags !=  nullptr && socket_option_flags->has_operation())
+	|| (socket_state_flags !=  nullptr && socket_state_flags->has_operation())
+	|| (state_flags !=  nullptr && state_flags->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_segment_path() const
@@ -5834,7 +5846,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6558,7 +6570,7 @@ EntityPath TcpConnection::Nodes::Node::DetailInformations::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6665,7 +6677,7 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::Loca
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6761,7 +6773,7 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::Fore
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -6873,8 +6885,8 @@ bool TcpConnection::Nodes::Node::BriefInformations::BriefInformation::has_operat
 	|| is_set(local_port.operation)
 	|| is_set(pcb.operation)
 	|| is_set(vrf_id.operation)
-	|| (foreign_address !=  nullptr && is_set(foreign_address->operation))
-	|| (local_address !=  nullptr && is_set(local_address->operation));
+	|| (foreign_address !=  nullptr && foreign_address->has_operation())
+	|| (local_address !=  nullptr && local_address->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_segment_path() const
@@ -6891,7 +6903,7 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7069,7 +7081,7 @@ EntityPath TcpConnection::Nodes::Node::BriefInformations::get_entity_path(Entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7175,10 +7187,10 @@ bool TcpConnection::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(id.operation)
-	|| (brief_informations !=  nullptr && is_set(brief_informations->operation))
-	|| (detail_informations !=  nullptr && is_set(detail_informations->operation))
-	|| (extended_information !=  nullptr && is_set(extended_information->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (brief_informations !=  nullptr && brief_informations->has_operation())
+	|| (detail_informations !=  nullptr && detail_informations->has_operation())
+	|| (extended_information !=  nullptr && extended_information->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string TcpConnection::Nodes::Node::get_segment_path() const
@@ -7461,7 +7473,7 @@ bool TcpConnection::has_data() const
 bool TcpConnection::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string TcpConnection::get_segment_path() const
@@ -7478,7 +7490,7 @@ EntityPath TcpConnection::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -7589,7 +7601,7 @@ EntityPath Tcp::Nodes::Node::Statistics::Ipv4Traffic::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7701,7 +7713,7 @@ EntityPath Tcp::Nodes::Node::Statistics::Ipv6Traffic::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7792,8 +7804,8 @@ bool Tcp::Nodes::Node::Statistics::has_data() const
 bool Tcp::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (ipv4_traffic !=  nullptr && is_set(ipv4_traffic->operation))
-	|| (ipv6_traffic !=  nullptr && is_set(ipv6_traffic->operation));
+	|| (ipv4_traffic !=  nullptr && ipv4_traffic->has_operation())
+	|| (ipv6_traffic !=  nullptr && ipv6_traffic->has_operation());
 }
 
 std::string Tcp::Nodes::Node::Statistics::get_segment_path() const
@@ -7810,7 +7822,7 @@ EntityPath Tcp::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -7921,7 +7933,7 @@ bool Tcp::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(node_name.operation)
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string Tcp::Nodes::Node::get_segment_path() const
@@ -8135,7 +8147,7 @@ bool Tcp::has_data() const
 bool Tcp::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string Tcp::get_segment_path() const
@@ -8152,7 +8164,7 @@ EntityPath Tcp::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -8240,12 +8252,12 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::~BriefSession()
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 {
-    for (auto const & leaf : foreign_address.getValues())
+    for (auto const & leaf : foreign_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : local_address.getValues())
+    for (auto const & leaf : local_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8265,12 +8277,12 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() const
 {
-    for (auto const & leaf : foreign_address.getValues())
+    for (auto const & leaf : foreign_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : local_address.getValues())
+    for (auto const & leaf : local_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -8278,11 +8290,13 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() 
     return is_set(operation)
 	|| is_set(id.operation)
 	|| is_set(address_family.operation)
+	|| is_set(foreign_address.operation)
 	|| is_set(foreign_port.operation)
 	|| is_set(is_admin_configured_up.operation)
 	|| is_set(is_ds_operational_up.operation)
 	|| is_set(is_only_receive_path_replication.operation)
 	|| is_set(is_us_operational_up.operation)
+	|| is_set(local_address.operation)
 	|| is_set(local_port.operation)
 	|| is_set(pcb.operation)
 	|| is_set(sscb.operation)
@@ -8303,7 +8317,7 @@ EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_entity
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8452,7 +8466,7 @@ EntityPath TcpNsr::Nodes::Node::Session::BriefSessions::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8604,7 +8618,7 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInfor
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8775,7 +8789,7 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHo
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8871,7 +8885,7 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::Internal
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -8998,12 +9012,12 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() con
         if(packet_hold_queue[index]->has_data())
             return true;
     }
-    for (auto const & leaf : foreign_address.getValues())
+    for (auto const & leaf : foreign_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
     }
-    for (auto const & leaf : local_address.getValues())
+    for (auto const & leaf : local_address.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -9067,12 +9081,12 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
         if(packet_hold_queue[index]->has_operation())
             return true;
     }
-    for (auto const & leaf : foreign_address.getValues())
+    for (auto const & leaf : foreign_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
     }
-    for (auto const & leaf : local_address.getValues())
+    for (auto const & leaf : local_address.getYLeafs())
     {
         if(is_set(leaf.operation))
             return true;
@@ -9084,6 +9098,7 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
 	|| is_set(fist_standby_sequence_number.operation)
 	|| is_set(fist_standby_sequence_number_down_stream.operation)
 	|| is_set(fist_standby_sequence_number_up_stream.operation)
+	|| is_set(foreign_address.operation)
 	|| is_set(foreign_port.operation)
 	|| is_set(fssn_offset.operation)
 	|| is_set(init_sync_end_time.operation)
@@ -9103,6 +9118,7 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
 	|| is_set(is_session_replicated.operation)
 	|| is_set(is_session_synced.operation)
 	|| is_set(is_us_operational_up.operation)
+	|| is_set(local_address.operation)
 	|| is_set(local_port.operation)
 	|| is_set(max_number_of_held_internal_ack.operation)
 	|| is_set(max_number_of_held_internal_ack_reach_time.operation)
@@ -9122,7 +9138,7 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
 	|| is_set(sequence_number_of_init_sync_up_stream.operation)
 	|| is_set(sscb.operation)
 	|| is_set(vrf_id.operation)
-	|| (set_information !=  nullptr && is_set(set_information->operation));
+	|| (set_information !=  nullptr && set_information->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_segment_path() const
@@ -9139,7 +9155,7 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_enti
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9528,7 +9544,7 @@ EntityPath TcpNsr::Nodes::Node::Session::DetailSessions::get_entity_path(Entity*
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9620,8 +9636,8 @@ bool TcpNsr::Nodes::Node::Session::has_data() const
 bool TcpNsr::Nodes::Node::Session::has_operation() const
 {
     return is_set(operation)
-	|| (brief_sessions !=  nullptr && is_set(brief_sessions->operation))
-	|| (detail_sessions !=  nullptr && is_set(detail_sessions->operation));
+	|| (brief_sessions !=  nullptr && brief_sessions->has_operation())
+	|| (detail_sessions !=  nullptr && detail_sessions->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Session::get_segment_path() const
@@ -9638,7 +9654,7 @@ EntityPath TcpNsr::Nodes::Node::Session::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9789,7 +9805,7 @@ EntityPath TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_entity_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -9926,7 +9942,7 @@ EntityPath TcpNsr::Nodes::Node::Client::DetailClients::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10051,7 +10067,7 @@ EntityPath TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10178,7 +10194,7 @@ EntityPath TcpNsr::Nodes::Node::Client::BriefClients::get_entity_path(Entity* an
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10270,8 +10286,8 @@ bool TcpNsr::Nodes::Node::Client::has_data() const
 bool TcpNsr::Nodes::Node::Client::has_operation() const
 {
     return is_set(operation)
-	|| (brief_clients !=  nullptr && is_set(brief_clients->operation))
-	|| (detail_clients !=  nullptr && is_set(detail_clients->operation));
+	|| (brief_clients !=  nullptr && brief_clients->has_operation())
+	|| (detail_clients !=  nullptr && detail_clients->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Client::get_segment_path() const
@@ -10288,7 +10304,7 @@ EntityPath TcpNsr::Nodes::Node::Client::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10508,7 +10524,7 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_entity_pa
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10760,7 +10776,7 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::DetailSets::get_entity_path(Entity* 
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -10915,7 +10931,7 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_entity_path
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11092,7 +11108,7 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::BriefSets::get_entity_path(Entity* a
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11184,8 +11200,8 @@ bool TcpNsr::Nodes::Node::SessionSet::has_data() const
 bool TcpNsr::Nodes::Node::SessionSet::has_operation() const
 {
     return is_set(operation)
-	|| (brief_sets !=  nullptr && is_set(brief_sets->operation))
-	|| (detail_sets !=  nullptr && is_set(detail_sets->operation));
+	|| (brief_sets !=  nullptr && brief_sets->has_operation())
+	|| (detail_sets !=  nullptr && detail_sets->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::SessionSet::get_segment_path() const
@@ -11202,7 +11218,7 @@ EntityPath TcpNsr::Nodes::Node::SessionSet::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11395,7 +11411,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::get_en
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11616,7 +11632,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11722,8 +11738,8 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::has_data() const
 bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::has_operation() const
 {
     return is_set(operation)
-	|| (aggr_only !=  nullptr && is_set(aggr_only->operation))
-	|| (common !=  nullptr && is_set(common->operation));
+	|| (aggr_only !=  nullptr && aggr_only->has_operation())
+	|| (common !=  nullptr && common->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_segment_path() const
@@ -11740,7 +11756,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::get_entity_pat
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -11933,7 +11949,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12148,7 +12164,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::ge
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12244,8 +12260,8 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::has_data() const
 bool TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::has_operation() const
 {
     return is_set(operation)
-	|| (aggr_only !=  nullptr && is_set(aggr_only->operation))
-	|| (common !=  nullptr && is_set(common->operation));
+	|| (aggr_only !=  nullptr && aggr_only->has_operation())
+	|| (common !=  nullptr && common->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_segment_path() const
@@ -12262,7 +12278,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::get_entity_p
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12392,7 +12408,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get_
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12588,8 +12604,8 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::has_operation() const
 	|| is_set(number_of_received_internal_acks.operation)
 	|| is_set(number_of_sent_internal_acks.operation)
 	|| is_set(number_of_succeeded_init_sync.operation)
-	|| (audit_counters !=  nullptr && is_set(audit_counters->operation))
-	|| (snd_counters !=  nullptr && is_set(snd_counters->operation));
+	|| (audit_counters !=  nullptr && audit_counters->has_operation())
+	|| (snd_counters !=  nullptr && snd_counters->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Statistics::Summary::get_segment_path() const
@@ -12606,7 +12622,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::Summary::get_entity_path(Entity* anc
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -12927,7 +12943,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::N
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13059,7 +13075,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::g
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13217,7 +13233,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticClients::get_entity_path(En
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13342,7 +13358,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_ent
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13469,7 +13485,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSets::get_entity_path(Entit
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13642,7 +13658,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -13862,7 +13878,7 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::has_o
 	|| is_set(number_of_times_nsr_fail_over.operation)
 	|| is_set(number_of_times_nsr_up.operation)
 	|| is_set(pcb.operation)
-	|| (snd_counters !=  nullptr && is_set(snd_counters->operation));
+	|| (snd_counters !=  nullptr && snd_counters->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_segment_path() const
@@ -13879,7 +13895,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession:
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14039,7 +14055,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_entity_path(E
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14141,10 +14157,10 @@ bool TcpNsr::Nodes::Node::Statistics::has_data() const
 bool TcpNsr::Nodes::Node::Statistics::has_operation() const
 {
     return is_set(operation)
-	|| (statistic_clients !=  nullptr && is_set(statistic_clients->operation))
-	|| (statistic_sessions !=  nullptr && is_set(statistic_sessions->operation))
-	|| (statistic_sets !=  nullptr && is_set(statistic_sets->operation))
-	|| (summary !=  nullptr && is_set(summary->operation));
+	|| (statistic_clients !=  nullptr && statistic_clients->has_operation())
+	|| (statistic_sessions !=  nullptr && statistic_sessions->has_operation())
+	|| (statistic_sets !=  nullptr && statistic_sets->has_operation())
+	|| (summary !=  nullptr && summary->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::Statistics::get_segment_path() const
@@ -14161,7 +14177,7 @@ EntityPath TcpNsr::Nodes::Node::Statistics::get_entity_path(Entity* ancestor) co
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor cannot be nullptr as one of the ancestors is a list"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor cannot be nullptr as one of the ancestors is a list"});
     }
     else
     {
@@ -14333,10 +14349,10 @@ bool TcpNsr::Nodes::Node::has_operation() const
 {
     return is_set(operation)
 	|| is_set(id.operation)
-	|| (client !=  nullptr && is_set(client->operation))
-	|| (session !=  nullptr && is_set(session->operation))
-	|| (session_set !=  nullptr && is_set(session_set->operation))
-	|| (statistics !=  nullptr && is_set(statistics->operation));
+	|| (client !=  nullptr && client->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (session_set !=  nullptr && session_set->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
 std::string TcpNsr::Nodes::Node::get_segment_path() const
@@ -14619,7 +14635,7 @@ bool TcpNsr::has_data() const
 bool TcpNsr::has_operation() const
 {
     return is_set(operation)
-	|| (nodes !=  nullptr && is_set(nodes->operation));
+	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
 std::string TcpNsr::get_segment_path() const
@@ -14636,7 +14652,7 @@ EntityPath TcpNsr::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();
@@ -14700,140 +14716,140 @@ std::unique_ptr<Entity> TcpNsr::clone_ptr()
     return std::make_unique<TcpNsr>();
 }
 
-const Enum::Value MessageTypeIcmpv6Enum::destination_unreachable {1, "destination-unreachable"};
-const Enum::Value MessageTypeIcmpv6Enum::packet_too_big {2, "packet-too-big"};
-const Enum::Value MessageTypeIcmpv6Enum::time_exceeded {3, "time-exceeded"};
-const Enum::Value MessageTypeIcmpv6Enum::parameter_problem {4, "parameter-problem"};
-const Enum::Value MessageTypeIcmpv6Enum::echo_request {128, "echo-request"};
-const Enum::Value MessageTypeIcmpv6Enum::echo_reply {129, "echo-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_query {130, "multicast-listener-query"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_report {131, "multicast-listener-report"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_listener_done {132, "multicast-listener-done"};
-const Enum::Value MessageTypeIcmpv6Enum::router_solicitation {133, "router-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::router_advertisement {134, "router-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::neighbor_solicitation {135, "neighbor-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::neighbor_advertisement {136, "neighbor-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::redirect_message {137, "redirect-message"};
-const Enum::Value MessageTypeIcmpv6Enum::router_renumbering {138, "router-renumbering"};
-const Enum::Value MessageTypeIcmpv6Enum::node_information_query {139, "node-information-query"};
-const Enum::Value MessageTypeIcmpv6Enum::node_information_reply {140, "node-information-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
-const Enum::Value MessageTypeIcmpv6Enum::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
-const Enum::Value MessageTypeIcmpv6Enum::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
-const Enum::Value MessageTypeIcmpv6Enum::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
-const Enum::Value MessageTypeIcmpv6Enum::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
-const Enum::Value MessageTypeIcmpv6Enum::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
-const Enum::Value MessageTypeIcmpv6Enum::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_advertisement {151, "multicast-router-advertisement"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_solicitation {152, "multicast-router-solicitation"};
-const Enum::Value MessageTypeIcmpv6Enum::multicast_router_termination {153, "multicast-router-termination"};
-const Enum::Value MessageTypeIcmpv6Enum::fmipv6_messages {154, "fmipv6-messages"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::destination_unreachable {1, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::packet_too_big {2, "packet-too-big"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::time_exceeded {3, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::parameter_problem {4, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::echo_request {128, "echo-request"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::echo_reply {129, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_query {130, "multicast-listener-query"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_report {131, "multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_listener_done {132, "multicast-listener-done"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_solicitation {133, "router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_advertisement {134, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::neighbor_solicitation {135, "neighbor-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::neighbor_advertisement {136, "neighbor-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::redirect_message {137, "redirect-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::router_renumbering {138, "router-renumbering"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::node_information_query {139, "node-information-query"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::node_information_reply {140, "node-information-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::inverse_neighbor_discovery_solicitaion {141, "inverse-neighbor-discovery-solicitaion"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::inverse_neighbor_discover_advertisement {142, "inverse-neighbor-discover-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::v2_multicast_listener_report {143, "v2-multicast-listener-report"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::home_agent_address_discovery_request {144, "home-agent-address-discovery-request"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::home_agent_address_discovery_reply {145, "home-agent-address-discovery-reply"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::mobile_prefix_solicitation {146, "mobile-prefix-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::mobile_prefix_advertisement {147, "mobile-prefix-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::certification_path_solicitation_message {148, "certification-path-solicitation-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::certification_path_advertisement_message {149, "certification-path-advertisement-message"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::experimental_mobility_protocols {150, "experimental-mobility-protocols"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_advertisement {151, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_solicitation {152, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::multicast_router_termination {153, "multicast-router-termination"};
+const Enum::YLeaf MessageTypeIcmpv6Enum::fmipv6_messages {154, "fmipv6-messages"};
 
-const Enum::Value ShowEnum::all {0, "all"};
-const Enum::Value ShowEnum::static_policy {1, "static-policy"};
-const Enum::Value ShowEnum::interface_filter {2, "interface-filter"};
-const Enum::Value ShowEnum::packet_filter {3, "packet-filter"};
+const Enum::YLeaf ShowEnum::all {0, "all"};
+const Enum::YLeaf ShowEnum::static_policy {1, "static-policy"};
+const Enum::YLeaf ShowEnum::interface_filter {2, "interface-filter"};
+const Enum::YLeaf ShowEnum::packet_filter {3, "packet-filter"};
 
-const Enum::Value MessageTypeIgmpEnum::membership_query {17, "membership-query"};
-const Enum::Value MessageTypeIgmpEnum::v1_membership_report {18, "v1-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::dvmrp {19, "dvmrp"};
-const Enum::Value MessageTypeIgmpEnum::pi_mv1 {20, "pi-mv1"};
-const Enum::Value MessageTypeIgmpEnum::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::Value MessageTypeIgmpEnum::v2_membership_report {22, "v2-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::v2_leave_group {23, "v2-leave-group"};
-const Enum::Value MessageTypeIgmpEnum::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::Value MessageTypeIgmpEnum::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::Value MessageTypeIgmpEnum::v3_membership_report {34, "v3-membership-report"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::Value MessageTypeIgmpEnum::multicast_router_termination {50, "multicast-router-termination"};
+const Enum::YLeaf MessageTypeIgmpEnum::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmpEnum::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmpEnum::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmpEnum::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmpEnum::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmpEnum::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmpEnum::multicast_router_termination {50, "multicast-router-termination"};
 
-const Enum::Value TcpConnStateEnum::closed {0, "closed"};
-const Enum::Value TcpConnStateEnum::listen {1, "listen"};
-const Enum::Value TcpConnStateEnum::syn_sent {2, "syn-sent"};
-const Enum::Value TcpConnStateEnum::syn_received {3, "syn-received"};
-const Enum::Value TcpConnStateEnum::established {4, "established"};
-const Enum::Value TcpConnStateEnum::close_wait {5, "close-wait"};
-const Enum::Value TcpConnStateEnum::fin_wait1 {6, "fin-wait1"};
-const Enum::Value TcpConnStateEnum::closing {7, "closing"};
-const Enum::Value TcpConnStateEnum::last_ack {8, "last-ack"};
-const Enum::Value TcpConnStateEnum::fin_wait2 {9, "fin-wait2"};
-const Enum::Value TcpConnStateEnum::time_wait {10, "time-wait"};
+const Enum::YLeaf TcpConnStateEnum::closed {0, "closed"};
+const Enum::YLeaf TcpConnStateEnum::listen {1, "listen"};
+const Enum::YLeaf TcpConnStateEnum::syn_sent {2, "syn-sent"};
+const Enum::YLeaf TcpConnStateEnum::syn_received {3, "syn-received"};
+const Enum::YLeaf TcpConnStateEnum::established {4, "established"};
+const Enum::YLeaf TcpConnStateEnum::close_wait {5, "close-wait"};
+const Enum::YLeaf TcpConnStateEnum::fin_wait1 {6, "fin-wait1"};
+const Enum::YLeaf TcpConnStateEnum::closing {7, "closing"};
+const Enum::YLeaf TcpConnStateEnum::last_ack {8, "last-ack"};
+const Enum::YLeaf TcpConnStateEnum::fin_wait2 {9, "fin-wait2"};
+const Enum::YLeaf TcpConnStateEnum::time_wait {10, "time-wait"};
 
-const Enum::Value PakPrioEnum::unspecified_packet {0, "unspecified-packet"};
-const Enum::Value PakPrioEnum::normal_packet {1, "normal-packet"};
-const Enum::Value PakPrioEnum::medium_packet {2, "medium-packet"};
-const Enum::Value PakPrioEnum::high_packet {3, "high-packet"};
-const Enum::Value PakPrioEnum::crucial_packet {4, "crucial-packet"};
+const Enum::YLeaf PakPrioEnum::unspecified_packet {0, "unspecified-packet"};
+const Enum::YLeaf PakPrioEnum::normal_packet {1, "normal-packet"};
+const Enum::YLeaf PakPrioEnum::medium_packet {2, "medium-packet"};
+const Enum::YLeaf PakPrioEnum::high_packet {3, "high-packet"};
+const Enum::YLeaf PakPrioEnum::crucial_packet {4, "crucial-packet"};
 
-const Enum::Value MessageTypeIcmpEnum::echo_reply {0, "echo-reply"};
-const Enum::Value MessageTypeIcmpEnum::destination_unreachable {3, "destination-unreachable"};
-const Enum::Value MessageTypeIcmpEnum::source_quench {4, "source-quench"};
-const Enum::Value MessageTypeIcmpEnum::redirect {5, "redirect"};
-const Enum::Value MessageTypeIcmpEnum::alternate_host_address {6, "alternate-host-address"};
-const Enum::Value MessageTypeIcmpEnum::echo {8, "echo"};
-const Enum::Value MessageTypeIcmpEnum::router_advertisement {9, "router-advertisement"};
-const Enum::Value MessageTypeIcmpEnum::router_selection {10, "router-selection"};
-const Enum::Value MessageTypeIcmpEnum::time_exceeded {11, "time-exceeded"};
-const Enum::Value MessageTypeIcmpEnum::parameter_problem {12, "parameter-problem"};
-const Enum::Value MessageTypeIcmpEnum::time_stamp {13, "time-stamp"};
-const Enum::Value MessageTypeIcmpEnum::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::Value MessageTypeIcmpEnum::information_request {15, "information-request"};
-const Enum::Value MessageTypeIcmpEnum::information_reply {16, "information-reply"};
-const Enum::Value MessageTypeIcmpEnum::address_mask_request {17, "address-mask-request"};
-const Enum::Value MessageTypeIcmpEnum::address_mask_reply {18, "address-mask-reply"};
-const Enum::Value MessageTypeIcmpEnum::trace_route {30, "trace-route"};
-const Enum::Value MessageTypeIcmpEnum::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::Value MessageTypeIcmpEnum::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::Value MessageTypeIcmpEnum::where_are_you {33, "where-are-you"};
-const Enum::Value MessageTypeIcmpEnum::iam_here {34, "iam-here"};
-const Enum::Value MessageTypeIcmpEnum::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::Value MessageTypeIcmpEnum::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::Value MessageTypeIcmpEnum::domain_name_request {37, "domain-name-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmpEnum::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmpEnum::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmpEnum::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmpEnum::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmpEnum::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmpEnum::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmpEnum::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmpEnum::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmpEnum::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmpEnum::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmpEnum::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmpEnum::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmpEnum::domain_name_request {37, "domain-name-request"};
 
-const Enum::Value PacketEnum::icmp {0, "icmp"};
-const Enum::Value PacketEnum::icm_pv6 {1, "icm-pv6"};
-const Enum::Value PacketEnum::igmp {2, "igmp"};
-const Enum::Value PacketEnum::unknown {3, "unknown"};
+const Enum::YLeaf PacketEnum::icmp {0, "icmp"};
+const Enum::YLeaf PacketEnum::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf PacketEnum::igmp {2, "igmp"};
+const Enum::YLeaf PacketEnum::unknown {3, "unknown"};
 
-const Enum::Value AddrFamilyEnum::internetwork {2, "internetwork"};
-const Enum::Value AddrFamilyEnum::ip_version6 {10, "ip-version6"};
+const Enum::YLeaf AddrFamilyEnum::internetwork {2, "internetwork"};
+const Enum::YLeaf AddrFamilyEnum::ip_version6 {10, "ip-version6"};
 
-const Enum::Value NsrStatusEnum::down {0, "down"};
-const Enum::Value NsrStatusEnum::up {1, "up"};
-const Enum::Value NsrStatusEnum::na {2, "na"};
+const Enum::YLeaf NsrStatusEnum::down {0, "down"};
+const Enum::YLeaf NsrStatusEnum::up {1, "up"};
+const Enum::YLeaf NsrStatusEnum::na {2, "na"};
 
-const Enum::Value TcpAddressFamilyEnum::ipv4 {2, "ipv4"};
-const Enum::Value TcpAddressFamilyEnum::ipv6 {10, "ipv6"};
+const Enum::YLeaf TcpAddressFamilyEnum::ipv4 {2, "ipv4"};
+const Enum::YLeaf TcpAddressFamilyEnum::ipv6 {10, "ipv6"};
 
-const Enum::Value NsrDownReasonEnum::none {0, "none"};
-const Enum::Value NsrDownReasonEnum::init_sync_aborted {1, "init-sync-aborted"};
-const Enum::Value NsrDownReasonEnum::client_disabled {2, "client-disabled"};
-const Enum::Value NsrDownReasonEnum::client_disconnect {3, "client-disconnect"};
-const Enum::Value NsrDownReasonEnum::tcp_disconnect {4, "tcp-disconnect"};
-const Enum::Value NsrDownReasonEnum::failover {5, "failover"};
-const Enum::Value NsrDownReasonEnum::nsr_clear {6, "nsr-clear"};
-const Enum::Value NsrDownReasonEnum::internal_error {7, "internal-error"};
-const Enum::Value NsrDownReasonEnum::retransmit_threshold_exceed {8, "retransmit-threshold-exceed"};
-const Enum::Value NsrDownReasonEnum::init_sync_failure_thresh_exceeded {9, "init-sync-failure-thresh-exceeded"};
-const Enum::Value NsrDownReasonEnum::audit_timeout {10, "audit-timeout"};
-const Enum::Value NsrDownReasonEnum::audit_failed {11, "audit-failed"};
-const Enum::Value NsrDownReasonEnum::standby_sscb_deleted {12, "standby-sscb-deleted"};
-const Enum::Value NsrDownReasonEnum::standby_session_close {13, "standby-session-close"};
-const Enum::Value NsrDownReasonEnum::standby_rxpath_frozen {14, "standby-rxpath-frozen"};
-const Enum::Value NsrDownReasonEnum::partner_deleted {15, "partner-deleted"};
+const Enum::YLeaf NsrDownReasonEnum::none {0, "none"};
+const Enum::YLeaf NsrDownReasonEnum::init_sync_aborted {1, "init-sync-aborted"};
+const Enum::YLeaf NsrDownReasonEnum::client_disabled {2, "client-disabled"};
+const Enum::YLeaf NsrDownReasonEnum::client_disconnect {3, "client-disconnect"};
+const Enum::YLeaf NsrDownReasonEnum::tcp_disconnect {4, "tcp-disconnect"};
+const Enum::YLeaf NsrDownReasonEnum::failover {5, "failover"};
+const Enum::YLeaf NsrDownReasonEnum::nsr_clear {6, "nsr-clear"};
+const Enum::YLeaf NsrDownReasonEnum::internal_error {7, "internal-error"};
+const Enum::YLeaf NsrDownReasonEnum::retransmit_threshold_exceed {8, "retransmit-threshold-exceed"};
+const Enum::YLeaf NsrDownReasonEnum::init_sync_failure_thresh_exceeded {9, "init-sync-failure-thresh-exceeded"};
+const Enum::YLeaf NsrDownReasonEnum::audit_timeout {10, "audit-timeout"};
+const Enum::YLeaf NsrDownReasonEnum::audit_failed {11, "audit-failed"};
+const Enum::YLeaf NsrDownReasonEnum::standby_sscb_deleted {12, "standby-sscb-deleted"};
+const Enum::YLeaf NsrDownReasonEnum::standby_session_close {13, "standby-session-close"};
+const Enum::YLeaf NsrDownReasonEnum::standby_rxpath_frozen {14, "standby-rxpath-frozen"};
+const Enum::YLeaf NsrDownReasonEnum::partner_deleted {15, "partner-deleted"};
 
-const Enum::Value TcpTimerEnum::retransmission_timer {0, "retransmission-timer"};
-const Enum::Value TcpTimerEnum::window_probe_timer {1, "window-probe-timer"};
-const Enum::Value TcpTimerEnum::timewait_state_timer {2, "timewait-state-timer"};
-const Enum::Value TcpTimerEnum::ack_hold_timer {3, "ack-hold-timer"};
-const Enum::Value TcpTimerEnum::keep_alive_timer {4, "keep-alive-timer"};
-const Enum::Value TcpTimerEnum::pmtu_ager_timer {5, "pmtu-ager-timer"};
-const Enum::Value TcpTimerEnum::retransmission_giveup_timer {6, "retransmission-giveup-timer"};
-const Enum::Value TcpTimerEnum::throttle_timer {7, "throttle-timer"};
+const Enum::YLeaf TcpTimerEnum::retransmission_timer {0, "retransmission-timer"};
+const Enum::YLeaf TcpTimerEnum::window_probe_timer {1, "window-probe-timer"};
+const Enum::YLeaf TcpTimerEnum::timewait_state_timer {2, "timewait-state-timer"};
+const Enum::YLeaf TcpTimerEnum::ack_hold_timer {3, "ack-hold-timer"};
+const Enum::YLeaf TcpTimerEnum::keep_alive_timer {4, "keep-alive-timer"};
+const Enum::YLeaf TcpTimerEnum::pmtu_ager_timer {5, "pmtu-ager-timer"};
+const Enum::YLeaf TcpTimerEnum::retransmission_giveup_timer {6, "retransmission-giveup-timer"};
+const Enum::YLeaf TcpTimerEnum::throttle_timer {7, "throttle-timer"};
 
 
 }

@@ -26,6 +26,7 @@ class Hsrp : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Ipv4 : public Entity
     {
         public:
@@ -39,6 +40,7 @@ class Hsrp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
+
 
 
         class Groups : public Entity
@@ -56,6 +58,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Group : public Entity
             {
                 public:
@@ -69,72 +72,73 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value group_number; //type: int32
-                    Value authentication_string; //type: string
-                    Value virtual_mac_address; //type: string
-                    Value hsrp_group_number; //type: uint32
-                    Value address_family; //type: HsrpBAfEnum
-                    Value version; //type: uint8
-                    Value session_name; //type: string
-                    Value slaves; //type: uint32
-                    Value is_slave; //type: boolean
-                    Value followed_session_name; //type: string
-                    Value configured_priority; //type: uint8
-                    Value preempt_delay; //type: uint32
-                    Value preempt_timer_secs; //type: uint32
-                    Value hello_time; //type: uint32
-                    Value hold_time; //type: uint32
-                    Value learned_hello_time; //type: uint32
-                    Value learned_hold_time; //type: uint32
-                    Value min_delay_time; //type: uint32
-                    Value reload_delay_time; //type: uint32
-                    Value virtual_ip_address; //type: string
-                    Value virtual_linklocal_ipv6_address; //type: string
-                    Value active_ip_address; //type: string
-                    Value active_ipv6_address; //type: string
-                    Value active_mac_address; //type: string
-                    Value standby_ip_address; //type: string
-                    Value standby_ipv6_address; //type: string
-                    Value standby_mac_address; //type: string
-                    Value hsrp_router_state; //type: StandbyGrpStateEnum
-                    Value interface_name_xr; //type: string
-                    Value interface; //type: string
-                    Value router_priority; //type: uint8
-                    Value active_priority; //type: uint8
-                    Value active_timer_flag; //type: boolean
-                    Value active_timer_secs; //type: uint32
-                    Value active_timer_msecs; //type: uint32
-                    Value standby_timer_flag; //type: boolean
-                    Value standby_timer_secs; //type: uint32
-                    Value standby_timer_msecs; //type: uint32
-                    Value hello_timer_flag; //type: boolean
-                    Value hello_timer_secs; //type: uint32
-                    Value hello_timer_msecs; //type: uint32
-                    Value delay_timer_flag; //type: boolean
-                    Value delay_timer_secs; //type: uint32
-                    Value delay_timer_msecs; //type: uint32
-                    Value current_state_timer_secs; //type: uint32
-                    Value state_change_count; //type: uint32
-                    Value tracked_interface_count; //type: uint32
-                    Value tracked_interface_up_count; //type: uint32
-                    Value preempt_enabled; //type: boolean
-                    Value use_configured_timers; //type: boolean
-                    Value use_configured_virtual_ip; //type: boolean
-                    Value use_bia_configured; //type: boolean
-                    Value configured_timers; //type: boolean
-                    Value configured_mac_address; //type: boolean
-                    Value redirects_disabled; //type: boolean
-                    Value bfd_enabled; //type: boolean
-                    Value bfd_interface; //type: string
-                    Value bfd_peer_ip_address; //type: string
-                    Value bfd_peer_ipv6_address; //type: string
-                    Value bfd_session_state; //type: HsrpBfdSessionStateEnum
-                    Value bfd_interval; //type: uint32
-                    Value bfd_multiplier; //type: uint32
-                    Value virtual_mac_address_state; //type: HsrpVmacStateEnum
-                    ValueList secondary_address; //type: list of  string
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf group_number; //type: int32
+                    YLeaf authentication_string; //type: string
+                    YLeaf virtual_mac_address; //type: string
+                    YLeaf hsrp_group_number; //type: uint32
+                    YLeaf address_family; //type: HsrpBAfEnum
+                    YLeaf version; //type: uint8
+                    YLeaf session_name; //type: string
+                    YLeaf slaves; //type: uint32
+                    YLeaf is_slave; //type: boolean
+                    YLeaf followed_session_name; //type: string
+                    YLeaf configured_priority; //type: uint8
+                    YLeaf preempt_delay; //type: uint32
+                    YLeaf preempt_timer_secs; //type: uint32
+                    YLeaf hello_time; //type: uint32
+                    YLeaf hold_time; //type: uint32
+                    YLeaf learned_hello_time; //type: uint32
+                    YLeaf learned_hold_time; //type: uint32
+                    YLeaf min_delay_time; //type: uint32
+                    YLeaf reload_delay_time; //type: uint32
+                    YLeaf virtual_ip_address; //type: string
+                    YLeaf virtual_linklocal_ipv6_address; //type: string
+                    YLeaf active_ip_address; //type: string
+                    YLeaf active_ipv6_address; //type: string
+                    YLeaf active_mac_address; //type: string
+                    YLeaf standby_ip_address; //type: string
+                    YLeaf standby_ipv6_address; //type: string
+                    YLeaf standby_mac_address; //type: string
+                    YLeaf hsrp_router_state; //type: StandbyGrpStateEnum
+                    YLeaf interface_name_xr; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf router_priority; //type: uint8
+                    YLeaf active_priority; //type: uint8
+                    YLeaf active_timer_flag; //type: boolean
+                    YLeaf active_timer_secs; //type: uint32
+                    YLeaf active_timer_msecs; //type: uint32
+                    YLeaf standby_timer_flag; //type: boolean
+                    YLeaf standby_timer_secs; //type: uint32
+                    YLeaf standby_timer_msecs; //type: uint32
+                    YLeaf hello_timer_flag; //type: boolean
+                    YLeaf hello_timer_secs; //type: uint32
+                    YLeaf hello_timer_msecs; //type: uint32
+                    YLeaf delay_timer_flag; //type: boolean
+                    YLeaf delay_timer_secs; //type: uint32
+                    YLeaf delay_timer_msecs; //type: uint32
+                    YLeaf current_state_timer_secs; //type: uint32
+                    YLeaf state_change_count; //type: uint32
+                    YLeaf tracked_interface_count; //type: uint32
+                    YLeaf tracked_interface_up_count; //type: uint32
+                    YLeaf preempt_enabled; //type: boolean
+                    YLeaf use_configured_timers; //type: boolean
+                    YLeaf use_configured_virtual_ip; //type: boolean
+                    YLeaf use_bia_configured; //type: boolean
+                    YLeaf configured_timers; //type: boolean
+                    YLeaf configured_mac_address; //type: boolean
+                    YLeaf redirects_disabled; //type: boolean
+                    YLeaf bfd_enabled; //type: boolean
+                    YLeaf bfd_interface; //type: string
+                    YLeaf bfd_peer_ip_address; //type: string
+                    YLeaf bfd_peer_ipv6_address; //type: string
+                    YLeaf bfd_session_state; //type: HsrpBfdSessionStateEnum
+                    YLeaf bfd_interval; //type: uint32
+                    YLeaf bfd_multiplier; //type: uint32
+                    YLeaf virtual_mac_address_state; //type: HsrpVmacStateEnum
+                    YLeafList secondary_address; //type: list of  string
 
                 class ResignSentTime : public Entity
                 {
@@ -149,9 +153,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -171,9 +176,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -193,9 +199,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -215,9 +222,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -237,22 +245,23 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active_transitions; //type: uint32
-                        Value standby_transitions; //type: uint32
-                        Value speak_transitions; //type: uint32
-                        Value listen_transitions; //type: uint32
-                        Value learn_transitions; //type: uint32
-                        Value init_transitions; //type: uint32
-                        Value hello_packets_sent; //type: uint32
-                        Value resign_packets_sent; //type: uint32
-                        Value coup_packets_sent; //type: uint32
-                        Value hello_packets_received; //type: uint32
-                        Value resign_packets_received; //type: uint32
-                        Value coup_packets_received; //type: uint32
-                        Value auth_fail_received; //type: uint32
-                        Value invalid_timer_received; //type: uint32
-                        Value mismatch_virtual_ip_address_received; //type: uint32
 
+
+                        YLeaf active_transitions; //type: uint32
+                        YLeaf standby_transitions; //type: uint32
+                        YLeaf speak_transitions; //type: uint32
+                        YLeaf listen_transitions; //type: uint32
+                        YLeaf learn_transitions; //type: uint32
+                        YLeaf init_transitions; //type: uint32
+                        YLeaf hello_packets_sent; //type: uint32
+                        YLeaf resign_packets_sent; //type: uint32
+                        YLeaf coup_packets_sent; //type: uint32
+                        YLeaf hello_packets_received; //type: uint32
+                        YLeaf resign_packets_received; //type: uint32
+                        YLeaf coup_packets_received; //type: uint32
+                        YLeaf auth_fail_received; //type: uint32
+                        YLeaf invalid_timer_received; //type: uint32
+                        YLeaf mismatch_virtual_ip_address_received; //type: uint32
 
 
 
@@ -272,8 +281,9 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -293,10 +303,11 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value old_state; //type: StandbyGrpStateEnum
-                        Value new_state; //type: StandbyGrpStateEnum
-                        Value reason; //type: HsrpStateChangeReasonEnum
 
+
+                        YLeaf old_state; //type: StandbyGrpStateEnum
+                        YLeaf new_state; //type: StandbyGrpStateEnum
+                        YLeaf reason; //type: HsrpStateChangeReasonEnum
 
                     class Time : public Entity
                     {
@@ -311,9 +322,10 @@ class Hsrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nanoseconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nanoseconds; //type: uint32
 
 
 
@@ -321,9 +333,6 @@ class Hsrp : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::StateChangeHistory::Time> time;
-                        class StandbyGrpStateEnum;
-                        class StandbyGrpStateEnum;
-                        class HsrpStateChangeReasonEnum;
 
 
                 }; // Hsrp::Ipv4::Groups::Group::StateChangeHistory
@@ -336,10 +345,6 @@ class Hsrp : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::ResignSentTime> resign_sent_time;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::StateChangeHistory> > state_change_history;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv4::Groups::Group::Statistics> statistics;
-                    class HsrpBAfEnum;
-                    class HsrpBfdSessionStateEnum;
-                    class StandbyGrpStateEnum;
-                    class HsrpVmacStateEnum;
 
 
             }; // Hsrp::Ipv4::Groups::Group
@@ -366,6 +371,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TrackedInterface : public Entity
             {
                 public:
@@ -379,16 +385,17 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value group_number; //type: int32
-                    Value tracked_interface_name; //type: string
-                    Value interface; //type: string
-                    Value hsrp_group_number; //type: uint32
-                    Value priority_decrement; //type: uint32
-                    Value interface_up_flag; //type: boolean
-                    Value tracked_interface_name_xr; //type: string
-                    Value is_object; //type: boolean
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf group_number; //type: int32
+                    YLeaf tracked_interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf hsrp_group_number; //type: uint32
+                    YLeaf priority_decrement; //type: uint32
+                    YLeaf interface_up_flag; //type: boolean
+                    YLeaf tracked_interface_name_xr; //type: string
+                    YLeaf is_object; //type: boolean
 
 
 
@@ -416,6 +423,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -429,10 +437,11 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value interface; //type: string
-                    Value use_bia_flag; //type: boolean
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf use_bia_flag; //type: boolean
 
                 class Statistics : public Entity
                 {
@@ -447,16 +456,17 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value advert_packets_sent; //type: uint32
-                        Value advert_packets_received; //type: uint32
-                        Value long_packets_received; //type: uint32
-                        Value short_packets_received; //type: uint32
-                        Value invalid_version_received; //type: uint32
-                        Value invalid_operation_code_received; //type: uint32
-                        Value unknown_group_received; //type: uint32
-                        Value inoperational_group_received; //type: uint32
-                        Value conflict_source_ip_address_received; //type: uint32
 
+
+                        YLeaf advert_packets_sent; //type: uint32
+                        YLeaf advert_packets_received; //type: uint32
+                        YLeaf long_packets_received; //type: uint32
+                        YLeaf short_packets_received; //type: uint32
+                        YLeaf invalid_version_received; //type: uint32
+                        YLeaf invalid_operation_code_received; //type: uint32
+                        YLeaf unknown_group_received; //type: uint32
+                        YLeaf inoperational_group_received; //type: uint32
+                        YLeaf conflict_source_ip_address_received; //type: uint32
 
 
 
@@ -498,6 +508,7 @@ class Hsrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class MgoSession : public Entity
         {
             public:
@@ -511,13 +522,14 @@ class Hsrp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value session_name; //type: string
-                Value primary_session_name; //type: string
-                Value primary_session_interface; //type: string
-                Value primary_af_name; //type: HsrpBAfEnum
-                Value primary_session_number; //type: uint32
-                Value primary_session_state; //type: StandbyGrpStateEnum
 
+
+                YLeaf session_name; //type: string
+                YLeaf primary_session_name; //type: string
+                YLeaf primary_session_interface; //type: string
+                YLeaf primary_af_name; //type: HsrpBAfEnum
+                YLeaf primary_session_number; //type: uint32
+                YLeaf primary_session_state; //type: StandbyGrpStateEnum
 
             class Slave : public Entity
             {
@@ -532,9 +544,10 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value slave_group_interface; //type: string
-                    Value slave_group_number; //type: uint32
 
+
+                    YLeaf slave_group_interface; //type: string
+                    YLeaf slave_group_number; //type: uint32
 
 
 
@@ -542,8 +555,6 @@ class Hsrp : public Entity
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::MgoSessions::MgoSession::Slave> > slave;
-                class HsrpBAfEnum;
-                class StandbyGrpStateEnum;
 
 
         }; // Hsrp::MgoSessions::MgoSession
@@ -570,6 +581,7 @@ class Hsrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class TrackedInterfaces : public Entity
         {
             public:
@@ -585,6 +597,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class TrackedInterface : public Entity
             {
                 public:
@@ -598,16 +611,17 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value group_number; //type: int32
-                    Value tracked_interface_name; //type: string
-                    Value interface; //type: string
-                    Value hsrp_group_number; //type: uint32
-                    Value priority_decrement; //type: uint32
-                    Value interface_up_flag; //type: boolean
-                    Value tracked_interface_name_xr; //type: string
-                    Value is_object; //type: boolean
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf group_number; //type: int32
+                    YLeaf tracked_interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf hsrp_group_number; //type: uint32
+                    YLeaf priority_decrement; //type: uint32
+                    YLeaf interface_up_flag; //type: boolean
+                    YLeaf tracked_interface_name_xr; //type: string
+                    YLeaf is_object; //type: boolean
 
 
 
@@ -635,6 +649,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Group : public Entity
             {
                 public:
@@ -648,72 +663,73 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value group_number; //type: int32
-                    Value authentication_string; //type: string
-                    Value virtual_mac_address; //type: string
-                    Value hsrp_group_number; //type: uint32
-                    Value address_family; //type: HsrpBAfEnum
-                    Value version; //type: uint8
-                    Value session_name; //type: string
-                    Value slaves; //type: uint32
-                    Value is_slave; //type: boolean
-                    Value followed_session_name; //type: string
-                    Value configured_priority; //type: uint8
-                    Value preempt_delay; //type: uint32
-                    Value preempt_timer_secs; //type: uint32
-                    Value hello_time; //type: uint32
-                    Value hold_time; //type: uint32
-                    Value learned_hello_time; //type: uint32
-                    Value learned_hold_time; //type: uint32
-                    Value min_delay_time; //type: uint32
-                    Value reload_delay_time; //type: uint32
-                    Value virtual_ip_address; //type: string
-                    Value virtual_linklocal_ipv6_address; //type: string
-                    Value active_ip_address; //type: string
-                    Value active_ipv6_address; //type: string
-                    Value active_mac_address; //type: string
-                    Value standby_ip_address; //type: string
-                    Value standby_ipv6_address; //type: string
-                    Value standby_mac_address; //type: string
-                    Value hsrp_router_state; //type: StandbyGrpStateEnum
-                    Value interface_name_xr; //type: string
-                    Value interface; //type: string
-                    Value router_priority; //type: uint8
-                    Value active_priority; //type: uint8
-                    Value active_timer_flag; //type: boolean
-                    Value active_timer_secs; //type: uint32
-                    Value active_timer_msecs; //type: uint32
-                    Value standby_timer_flag; //type: boolean
-                    Value standby_timer_secs; //type: uint32
-                    Value standby_timer_msecs; //type: uint32
-                    Value hello_timer_flag; //type: boolean
-                    Value hello_timer_secs; //type: uint32
-                    Value hello_timer_msecs; //type: uint32
-                    Value delay_timer_flag; //type: boolean
-                    Value delay_timer_secs; //type: uint32
-                    Value delay_timer_msecs; //type: uint32
-                    Value current_state_timer_secs; //type: uint32
-                    Value state_change_count; //type: uint32
-                    Value tracked_interface_count; //type: uint32
-                    Value tracked_interface_up_count; //type: uint32
-                    Value preempt_enabled; //type: boolean
-                    Value use_configured_timers; //type: boolean
-                    Value use_configured_virtual_ip; //type: boolean
-                    Value use_bia_configured; //type: boolean
-                    Value configured_timers; //type: boolean
-                    Value configured_mac_address; //type: boolean
-                    Value redirects_disabled; //type: boolean
-                    Value bfd_enabled; //type: boolean
-                    Value bfd_interface; //type: string
-                    Value bfd_peer_ip_address; //type: string
-                    Value bfd_peer_ipv6_address; //type: string
-                    Value bfd_session_state; //type: HsrpBfdSessionStateEnum
-                    Value bfd_interval; //type: uint32
-                    Value bfd_multiplier; //type: uint32
-                    Value virtual_mac_address_state; //type: HsrpVmacStateEnum
-                    ValueList secondary_address; //type: list of  string
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf group_number; //type: int32
+                    YLeaf authentication_string; //type: string
+                    YLeaf virtual_mac_address; //type: string
+                    YLeaf hsrp_group_number; //type: uint32
+                    YLeaf address_family; //type: HsrpBAfEnum
+                    YLeaf version; //type: uint8
+                    YLeaf session_name; //type: string
+                    YLeaf slaves; //type: uint32
+                    YLeaf is_slave; //type: boolean
+                    YLeaf followed_session_name; //type: string
+                    YLeaf configured_priority; //type: uint8
+                    YLeaf preempt_delay; //type: uint32
+                    YLeaf preempt_timer_secs; //type: uint32
+                    YLeaf hello_time; //type: uint32
+                    YLeaf hold_time; //type: uint32
+                    YLeaf learned_hello_time; //type: uint32
+                    YLeaf learned_hold_time; //type: uint32
+                    YLeaf min_delay_time; //type: uint32
+                    YLeaf reload_delay_time; //type: uint32
+                    YLeaf virtual_ip_address; //type: string
+                    YLeaf virtual_linklocal_ipv6_address; //type: string
+                    YLeaf active_ip_address; //type: string
+                    YLeaf active_ipv6_address; //type: string
+                    YLeaf active_mac_address; //type: string
+                    YLeaf standby_ip_address; //type: string
+                    YLeaf standby_ipv6_address; //type: string
+                    YLeaf standby_mac_address; //type: string
+                    YLeaf hsrp_router_state; //type: StandbyGrpStateEnum
+                    YLeaf interface_name_xr; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf router_priority; //type: uint8
+                    YLeaf active_priority; //type: uint8
+                    YLeaf active_timer_flag; //type: boolean
+                    YLeaf active_timer_secs; //type: uint32
+                    YLeaf active_timer_msecs; //type: uint32
+                    YLeaf standby_timer_flag; //type: boolean
+                    YLeaf standby_timer_secs; //type: uint32
+                    YLeaf standby_timer_msecs; //type: uint32
+                    YLeaf hello_timer_flag; //type: boolean
+                    YLeaf hello_timer_secs; //type: uint32
+                    YLeaf hello_timer_msecs; //type: uint32
+                    YLeaf delay_timer_flag; //type: boolean
+                    YLeaf delay_timer_secs; //type: uint32
+                    YLeaf delay_timer_msecs; //type: uint32
+                    YLeaf current_state_timer_secs; //type: uint32
+                    YLeaf state_change_count; //type: uint32
+                    YLeaf tracked_interface_count; //type: uint32
+                    YLeaf tracked_interface_up_count; //type: uint32
+                    YLeaf preempt_enabled; //type: boolean
+                    YLeaf use_configured_timers; //type: boolean
+                    YLeaf use_configured_virtual_ip; //type: boolean
+                    YLeaf use_bia_configured; //type: boolean
+                    YLeaf configured_timers; //type: boolean
+                    YLeaf configured_mac_address; //type: boolean
+                    YLeaf redirects_disabled; //type: boolean
+                    YLeaf bfd_enabled; //type: boolean
+                    YLeaf bfd_interface; //type: string
+                    YLeaf bfd_peer_ip_address; //type: string
+                    YLeaf bfd_peer_ipv6_address; //type: string
+                    YLeaf bfd_session_state; //type: HsrpBfdSessionStateEnum
+                    YLeaf bfd_interval; //type: uint32
+                    YLeaf bfd_multiplier; //type: uint32
+                    YLeaf virtual_mac_address_state; //type: HsrpVmacStateEnum
+                    YLeafList secondary_address; //type: list of  string
 
                 class ResignSentTime : public Entity
                 {
@@ -728,9 +744,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -750,9 +767,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -772,9 +790,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -794,9 +813,10 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value seconds; //type: uint32
-                        Value nanoseconds; //type: uint32
 
+
+                        YLeaf seconds; //type: uint32
+                        YLeaf nanoseconds; //type: uint32
 
 
 
@@ -816,22 +836,23 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value active_transitions; //type: uint32
-                        Value standby_transitions; //type: uint32
-                        Value speak_transitions; //type: uint32
-                        Value listen_transitions; //type: uint32
-                        Value learn_transitions; //type: uint32
-                        Value init_transitions; //type: uint32
-                        Value hello_packets_sent; //type: uint32
-                        Value resign_packets_sent; //type: uint32
-                        Value coup_packets_sent; //type: uint32
-                        Value hello_packets_received; //type: uint32
-                        Value resign_packets_received; //type: uint32
-                        Value coup_packets_received; //type: uint32
-                        Value auth_fail_received; //type: uint32
-                        Value invalid_timer_received; //type: uint32
-                        Value mismatch_virtual_ip_address_received; //type: uint32
 
+
+                        YLeaf active_transitions; //type: uint32
+                        YLeaf standby_transitions; //type: uint32
+                        YLeaf speak_transitions; //type: uint32
+                        YLeaf listen_transitions; //type: uint32
+                        YLeaf learn_transitions; //type: uint32
+                        YLeaf init_transitions; //type: uint32
+                        YLeaf hello_packets_sent; //type: uint32
+                        YLeaf resign_packets_sent; //type: uint32
+                        YLeaf coup_packets_sent; //type: uint32
+                        YLeaf hello_packets_received; //type: uint32
+                        YLeaf resign_packets_received; //type: uint32
+                        YLeaf coup_packets_received; //type: uint32
+                        YLeaf auth_fail_received; //type: uint32
+                        YLeaf invalid_timer_received; //type: uint32
+                        YLeaf mismatch_virtual_ip_address_received; //type: uint32
 
 
 
@@ -851,8 +872,9 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value ipv6_address; //type: string
 
+
+                        YLeaf ipv6_address; //type: string
 
 
 
@@ -872,10 +894,11 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value old_state; //type: StandbyGrpStateEnum
-                        Value new_state; //type: StandbyGrpStateEnum
-                        Value reason; //type: HsrpStateChangeReasonEnum
 
+
+                        YLeaf old_state; //type: StandbyGrpStateEnum
+                        YLeaf new_state; //type: StandbyGrpStateEnum
+                        YLeaf reason; //type: HsrpStateChangeReasonEnum
 
                     class Time : public Entity
                     {
@@ -890,9 +913,10 @@ class Hsrp : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value seconds; //type: uint32
-                            Value nanoseconds; //type: uint32
 
+
+                            YLeaf seconds; //type: uint32
+                            YLeaf nanoseconds; //type: uint32
 
 
 
@@ -900,9 +924,6 @@ class Hsrp : public Entity
 
 
                         std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::StateChangeHistory::Time> time;
-                        class StandbyGrpStateEnum;
-                        class StandbyGrpStateEnum;
-                        class HsrpStateChangeReasonEnum;
 
 
                 }; // Hsrp::Ipv6::Groups::Group::StateChangeHistory
@@ -915,10 +936,6 @@ class Hsrp : public Entity
                     std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::ResignSentTime> resign_sent_time;
                     std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::StateChangeHistory> > state_change_history;
                     std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::Ipv6::Groups::Group::Statistics> statistics;
-                    class HsrpBAfEnum;
-                    class HsrpBfdSessionStateEnum;
-                    class StandbyGrpStateEnum;
-                    class HsrpVmacStateEnum;
 
 
             }; // Hsrp::Ipv6::Groups::Group
@@ -945,6 +962,7 @@ class Hsrp : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Interface : public Entity
             {
                 public:
@@ -958,10 +976,11 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value interface; //type: string
-                    Value use_bia_flag; //type: boolean
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf interface; //type: string
+                    YLeaf use_bia_flag; //type: boolean
 
                 class Statistics : public Entity
                 {
@@ -976,16 +995,17 @@ class Hsrp : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value advert_packets_sent; //type: uint32
-                        Value advert_packets_received; //type: uint32
-                        Value long_packets_received; //type: uint32
-                        Value short_packets_received; //type: uint32
-                        Value invalid_version_received; //type: uint32
-                        Value invalid_operation_code_received; //type: uint32
-                        Value unknown_group_received; //type: uint32
-                        Value inoperational_group_received; //type: uint32
-                        Value conflict_source_ip_address_received; //type: uint32
 
+
+                        YLeaf advert_packets_sent; //type: uint32
+                        YLeaf advert_packets_received; //type: uint32
+                        YLeaf long_packets_received; //type: uint32
+                        YLeaf short_packets_received; //type: uint32
+                        YLeaf invalid_version_received; //type: uint32
+                        YLeaf invalid_operation_code_received; //type: uint32
+                        YLeaf unknown_group_received; //type: uint32
+                        YLeaf inoperational_group_received; //type: uint32
+                        YLeaf conflict_source_ip_address_received; //type: uint32
 
 
 
@@ -1027,6 +1047,7 @@ class Hsrp : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class BfdSession : public Entity
         {
             public:
@@ -1040,16 +1061,17 @@ class Hsrp : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value interface_name; //type: string
-                Value ip_address; //type: string
-                Value bfd_interface_name; //type: string
-                Value session_address_family; //type: HsrpBAfEnum
-                Value destination_address; //type: string
-                Value destination_ipv6_address; //type: string
-                Value bfd_session_state; //type: HsrpBfdSessionStateEnum
-                Value bfd_interval; //type: uint32
-                Value bfd_multiplier; //type: uint32
 
+
+                YLeaf interface_name; //type: string
+                YLeaf ip_address; //type: string
+                YLeaf bfd_interface_name; //type: string
+                YLeaf session_address_family; //type: HsrpBAfEnum
+                YLeaf destination_address; //type: string
+                YLeaf destination_ipv6_address; //type: string
+                YLeaf bfd_session_state; //type: HsrpBfdSessionStateEnum
+                YLeaf bfd_interval; //type: uint32
+                YLeaf bfd_multiplier; //type: uint32
 
             class Group : public Entity
             {
@@ -1064,9 +1086,10 @@ class Hsrp : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value interface_name; //type: string
-                    Value hsrp_group_number; //type: uint32
 
+
+                    YLeaf interface_name; //type: string
+                    YLeaf hsrp_group_number; //type: uint32
 
 
 
@@ -1074,8 +1097,6 @@ class Hsrp : public Entity
 
 
                 std::vector<std::unique_ptr<Cisco_IOS_XR_ipv4_hsrp_oper::Hsrp::BfdSessions::BfdSession::Group> > group;
-                class HsrpBfdSessionStateEnum;
-                class HsrpBAfEnum;
 
 
         }; // Hsrp::BfdSessions::BfdSession
@@ -1100,68 +1121,69 @@ class Hsrp : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value ipv4_sessions_active; //type: uint32
-            Value ipv4_sessions_standby; //type: uint32
-            Value ipv4_sessions_speak; //type: uint32
-            Value ipv4_sessions_listen; //type: uint32
-            Value ipv4_sessions_learn; //type: uint32
-            Value ipv4_sessions_init; //type: uint32
-            Value ipv4_slaves_active; //type: uint32
-            Value ipv4_slaves_standby; //type: uint32
-            Value ipv4_slaves_speak; //type: uint32
-            Value ipv4_slaves_listen; //type: uint32
-            Value ipv4_slaves_learn; //type: uint32
-            Value ipv4_slaves_init; //type: uint32
-            Value ipv4_virtual_ip_addresses_active_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_active_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_standby_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_standby_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_speak_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_speak_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_listen_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_listen_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_learn_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_learn_down; //type: uint32
-            Value ipv4_virtual_ip_addresses_init_up; //type: uint32
-            Value ipv4_virtual_ip_addresses_init_down; //type: uint32
-            Value ipv6_sessions_active; //type: uint32
-            Value ipv6_sessions_standby; //type: uint32
-            Value ipv6_sessions_speak; //type: uint32
-            Value ipv6_sessions_listen; //type: uint32
-            Value ipv6_sessions_learn; //type: uint32
-            Value ipv6_sessions_init; //type: uint32
-            Value ipv6_slaves_active; //type: uint32
-            Value ipv6_slaves_standby; //type: uint32
-            Value ipv6_slaves_speak; //type: uint32
-            Value ipv6_slaves_listen; //type: uint32
-            Value ipv6_slaves_learn; //type: uint32
-            Value ipv6_slaves_init; //type: uint32
-            Value ipv6_virtual_ip_addresses_active_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_active_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_standby_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_standby_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_speak_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_speak_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_listen_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_listen_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_learn_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_learn_down; //type: uint32
-            Value ipv6_virtual_ip_addresses_init_up; //type: uint32
-            Value ipv6_virtual_ip_addresses_init_down; //type: uint32
-            Value interfaces_ipv4_state_up; //type: uint32
-            Value interfaces_ipv4_state_down; //type: uint32
-            Value tracked_interfaces_ipv4_state_up; //type: uint32
-            Value tracked_interfaces_ipv4_state_down; //type: uint32
-            Value tracked_objects_up; //type: uint32
-            Value tracked_objects_down; //type: uint32
-            Value interfaces_ipv6_state_up; //type: uint32
-            Value interfaces_ipv6_state_down; //type: uint32
-            Value tracked_interfaces_ipv6_state_up; //type: uint32
-            Value tracked_interfaces_ipv6_state_down; //type: uint32
-            Value bfd_sessions_up; //type: uint32
-            Value bfd_sessions_down; //type: uint32
-            Value bfd_session_inactive; //type: uint32
 
+
+            YLeaf ipv4_sessions_active; //type: uint32
+            YLeaf ipv4_sessions_standby; //type: uint32
+            YLeaf ipv4_sessions_speak; //type: uint32
+            YLeaf ipv4_sessions_listen; //type: uint32
+            YLeaf ipv4_sessions_learn; //type: uint32
+            YLeaf ipv4_sessions_init; //type: uint32
+            YLeaf ipv4_slaves_active; //type: uint32
+            YLeaf ipv4_slaves_standby; //type: uint32
+            YLeaf ipv4_slaves_speak; //type: uint32
+            YLeaf ipv4_slaves_listen; //type: uint32
+            YLeaf ipv4_slaves_learn; //type: uint32
+            YLeaf ipv4_slaves_init; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_active_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_active_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_standby_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_standby_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_speak_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_speak_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_listen_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_listen_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_learn_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_learn_down; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_init_up; //type: uint32
+            YLeaf ipv4_virtual_ip_addresses_init_down; //type: uint32
+            YLeaf ipv6_sessions_active; //type: uint32
+            YLeaf ipv6_sessions_standby; //type: uint32
+            YLeaf ipv6_sessions_speak; //type: uint32
+            YLeaf ipv6_sessions_listen; //type: uint32
+            YLeaf ipv6_sessions_learn; //type: uint32
+            YLeaf ipv6_sessions_init; //type: uint32
+            YLeaf ipv6_slaves_active; //type: uint32
+            YLeaf ipv6_slaves_standby; //type: uint32
+            YLeaf ipv6_slaves_speak; //type: uint32
+            YLeaf ipv6_slaves_listen; //type: uint32
+            YLeaf ipv6_slaves_learn; //type: uint32
+            YLeaf ipv6_slaves_init; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_active_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_active_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_standby_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_standby_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_speak_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_speak_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_listen_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_listen_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_learn_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_learn_down; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_init_up; //type: uint32
+            YLeaf ipv6_virtual_ip_addresses_init_down; //type: uint32
+            YLeaf interfaces_ipv4_state_up; //type: uint32
+            YLeaf interfaces_ipv4_state_down; //type: uint32
+            YLeaf tracked_interfaces_ipv4_state_up; //type: uint32
+            YLeaf tracked_interfaces_ipv4_state_down; //type: uint32
+            YLeaf tracked_objects_up; //type: uint32
+            YLeaf tracked_objects_down; //type: uint32
+            YLeaf interfaces_ipv6_state_up; //type: uint32
+            YLeaf interfaces_ipv6_state_down; //type: uint32
+            YLeaf tracked_interfaces_ipv6_state_up; //type: uint32
+            YLeaf tracked_interfaces_ipv6_state_down; //type: uint32
+            YLeaf bfd_sessions_up; //type: uint32
+            YLeaf bfd_sessions_down; //type: uint32
+            YLeaf bfd_session_inactive; //type: uint32
 
 
 
@@ -1181,73 +1203,73 @@ class Hsrp : public Entity
 class HsrpVmacStateEnum : public Enum
 {
     public:
-        static const Enum::Value stored;
-        static const Enum::Value reserved;
-        static const Enum::Value active;
-        static const Enum::Value reserving;
+        static const Enum::YLeaf stored;
+        static const Enum::YLeaf reserved;
+        static const Enum::YLeaf active;
+        static const Enum::YLeaf reserving;
 
 };
 
 class StandbyGrpStateEnum : public Enum
 {
     public:
-        static const Enum::Value state_initial;
-        static const Enum::Value state_learn;
-        static const Enum::Value state_listen;
-        static const Enum::Value state_speak;
-        static const Enum::Value state_standby;
-        static const Enum::Value state_active;
+        static const Enum::YLeaf state_initial;
+        static const Enum::YLeaf state_learn;
+        static const Enum::YLeaf state_listen;
+        static const Enum::YLeaf state_speak;
+        static const Enum::YLeaf state_standby;
+        static const Enum::YLeaf state_active;
 
 };
 
 class HsrpStateChangeReasonEnum : public Enum
 {
     public:
-        static const Enum::Value state_change_bfd_down;
-        static const Enum::Value state_change_vip_learnt;
-        static const Enum::Value state_change_interface_ip;
-        static const Enum::Value state_change_delay_timer;
-        static const Enum::Value state_change_startup;
-        static const Enum::Value state_change_shutdown;
-        static const Enum::Value state_change_interface_up;
-        static const Enum::Value state_change_interface_down;
-        static const Enum::Value state_change_active_timer;
-        static const Enum::Value state_change_standby_timer;
-        static const Enum::Value state_change_resign;
-        static const Enum::Value state_change_coup;
-        static const Enum::Value state_change_higher_priority_speak;
-        static const Enum::Value state_change_higher_priority_standby;
-        static const Enum::Value state_change_lower_priority_standby;
-        static const Enum::Value state_change_higher_priority_active;
-        static const Enum::Value state_change_lower_priority_active;
-        static const Enum::Value state_change_virtual_ip_configured;
-        static const Enum::Value state_change_virtual_ip_lost;
-        static const Enum::Value state_change_recovered_from_checkpoint;
-        static const Enum::Value state_change_mac_update;
-        static const Enum::Value state_change_admin;
-        static const Enum::Value state_change_parent;
-        static const Enum::Value state_change_chkpt_update;
-        static const Enum::Value state_change_issu_resync;
-        static const Enum::Value state_change_max;
+        static const Enum::YLeaf state_change_bfd_down;
+        static const Enum::YLeaf state_change_vip_learnt;
+        static const Enum::YLeaf state_change_interface_ip;
+        static const Enum::YLeaf state_change_delay_timer;
+        static const Enum::YLeaf state_change_startup;
+        static const Enum::YLeaf state_change_shutdown;
+        static const Enum::YLeaf state_change_interface_up;
+        static const Enum::YLeaf state_change_interface_down;
+        static const Enum::YLeaf state_change_active_timer;
+        static const Enum::YLeaf state_change_standby_timer;
+        static const Enum::YLeaf state_change_resign;
+        static const Enum::YLeaf state_change_coup;
+        static const Enum::YLeaf state_change_higher_priority_speak;
+        static const Enum::YLeaf state_change_higher_priority_standby;
+        static const Enum::YLeaf state_change_lower_priority_standby;
+        static const Enum::YLeaf state_change_higher_priority_active;
+        static const Enum::YLeaf state_change_lower_priority_active;
+        static const Enum::YLeaf state_change_virtual_ip_configured;
+        static const Enum::YLeaf state_change_virtual_ip_lost;
+        static const Enum::YLeaf state_change_recovered_from_checkpoint;
+        static const Enum::YLeaf state_change_mac_update;
+        static const Enum::YLeaf state_change_admin;
+        static const Enum::YLeaf state_change_parent;
+        static const Enum::YLeaf state_change_chkpt_update;
+        static const Enum::YLeaf state_change_issu_resync;
+        static const Enum::YLeaf state_change_max;
 
 };
 
 class HsrpBAfEnum : public Enum
 {
     public:
-        static const Enum::Value ipv4;
-        static const Enum::Value ipv6;
-        static const Enum::Value count;
+        static const Enum::YLeaf ipv4;
+        static const Enum::YLeaf ipv6;
+        static const Enum::YLeaf count;
 
 };
 
 class HsrpBfdSessionStateEnum : public Enum
 {
     public:
-        static const Enum::Value bfd_state_none;
-        static const Enum::Value bfd_state_inactive;
-        static const Enum::Value bfd_state_up;
-        static const Enum::Value bfd_state_down;
+        static const Enum::YLeaf bfd_state_none;
+        static const Enum::YLeaf bfd_state_inactive;
+        static const Enum::YLeaf bfd_state_up;
+        static const Enum::YLeaf bfd_state_down;
 
 };
 

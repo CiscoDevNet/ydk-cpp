@@ -224,15 +224,15 @@ UpIdentity::~UpIdentity()
 }
 
 
-const Enum::Value TunnelTypeEnum::P2P {0, "P2P"};
-const Enum::Value TunnelTypeEnum::P2MP {1, "P2MP"};
-const Enum::Value TunnelTypeEnum::MP2MP {2, "MP2MP"};
+const Enum::YLeaf TunnelTypeEnum::P2P {0, "P2P"};
+const Enum::YLeaf TunnelTypeEnum::P2MP {1, "P2MP"};
+const Enum::YLeaf TunnelTypeEnum::MP2MP {2, "MP2MP"};
 
-const Enum::Value MplsLabelEnum::IPV4_EXPLICIT_NULL {0, "IPV4_EXPLICIT_NULL"};
-const Enum::Value MplsLabelEnum::ROUTER_ALERT {1, "ROUTER_ALERT"};
-const Enum::Value MplsLabelEnum::IPV6_EXPLICIT_NULL {2, "IPV6_EXPLICIT_NULL"};
-const Enum::Value MplsLabelEnum::IMPLICIT_NULL {3, "IMPLICIT_NULL"};
-const Enum::Value MplsLabelEnum::ENTROPY_LABEL_INDICATOR {7, "ENTROPY_LABEL_INDICATOR"};
+const Enum::YLeaf MplsLabelEnum::IPV4_EXPLICIT_NULL {0, "IPV4_EXPLICIT_NULL"};
+const Enum::YLeaf MplsLabelEnum::ROUTER_ALERT {1, "ROUTER_ALERT"};
+const Enum::YLeaf MplsLabelEnum::IPV6_EXPLICIT_NULL {2, "IPV6_EXPLICIT_NULL"};
+const Enum::YLeaf MplsLabelEnum::IMPLICIT_NULL {3, "IMPLICIT_NULL"};
+const Enum::YLeaf MplsLabelEnum::ENTROPY_LABEL_INDICATOR {7, "ENTROPY_LABEL_INDICATOR"};
 
 
 }

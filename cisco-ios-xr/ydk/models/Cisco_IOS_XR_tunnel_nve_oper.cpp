@@ -690,8 +690,8 @@ bool Nve::has_data() const
 bool Nve::has_operation() const
 {
     return is_set(operation)
-	|| (interfaces !=  nullptr && is_set(interfaces->operation))
-	|| (vnis !=  nullptr && is_set(vnis->operation));
+	|| (interfaces !=  nullptr && interfaces->has_operation())
+	|| (vnis !=  nullptr && vnis->has_operation());
 }
 
 std::string Nve::get_segment_path() const
@@ -708,7 +708,7 @@ EntityPath Nve::get_entity_path(Entity* ancestor) const
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
     {
-        BOOST_THROW_EXCEPTION(YDKInvalidArgumentException{"ancestor has to be nullptr for top-level node"});
+        BOOST_THROW_EXCEPTION(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node"});
     }
 
     path_buffer << get_segment_path();

@@ -7,8 +7,6 @@
 #include "ydk/types.hpp"
 #include "ydk/errors.hpp"
 
-#include "Cisco_IOS_XR_lpts_pre_ifib_cfg.hpp"
-#include "Cisco_IOS_XR_lpts_punt_flowtrap_cfg.hpp"
 
 namespace ydk {
 namespace Cisco_IOS_XR_lpts_lib_cfg {
@@ -29,6 +27,7 @@ class Lpts : public Entity
         std::unique_ptr<Entity> clone_ptr() override;
 
 
+
     class Ipolicer : public Entity
     {
         public:
@@ -42,8 +41,9 @@ class Lpts : public Entity
             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
             void set_value(const std::string & value_path, std::string value) override;
             std::map<std::string, Entity*> & get_children() override;
-            Value enable; //type: empty
 
+
+            YLeaf enable; //type: empty
 
         class Ipv4Acls : public Entity
         {
@@ -60,6 +60,7 @@ class Lpts : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Ipv4Acl : public Entity
             {
                 public:
@@ -73,8 +74,9 @@ class Lpts : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value acl_name; //type: string
 
+
+                    YLeaf acl_name; //type: string
 
                 class Ipv4VrfNames : public Entity
                 {
@@ -91,6 +93,7 @@ class Lpts : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class Ipv4VrfName : public Entity
                     {
                         public:
@@ -104,9 +107,10 @@ class Lpts : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value vrf_name; //type: string
-                            Value acl_rate; //type: uint32
 
+
+                            YLeaf vrf_name; //type: string
+                            YLeaf acl_rate; //type: uint32
 
 
 
@@ -146,6 +150,7 @@ class Lpts : public Entity
                 std::map<std::string, Entity*> & get_children() override;
 
 
+
             class Flow : public Entity
             {
                 public:
@@ -159,9 +164,10 @@ class Lpts : public Entity
                     Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                     void set_value(const std::string & value_path, std::string value) override;
                     std::map<std::string, Entity*> & get_children() override;
-                    Value flow_type; //type: LptsFlowEnum
-                    Value rate; //type: int32
 
+
+                    YLeaf flow_type; //type: LptsFlowEnum
+                    YLeaf rate; //type: int32
 
                 class Precedences : public Entity
                 {
@@ -176,17 +182,16 @@ class Lpts : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        ValueList precedence; //type: list of  one of uint32, enumeration
 
 
-                        class LptsPreIFibPrecedenceNumberEnum;
+                        YLeafList precedence; //type: list of  one of uint32, enumeration
+
 
 
                 }; // Lpts::Ipolicer::Flows::Flow::Precedences
 
 
                     std::unique_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow::Precedences> precedences;
-                    class LptsFlowEnum;
 
 
             }; // Lpts::Ipolicer::Flows::Flow
@@ -220,6 +225,7 @@ class Lpts : public Entity
             std::map<std::string, Entity*> & get_children() override;
 
 
+
         class Flowtrap : public Entity
         {
             public:
@@ -233,18 +239,19 @@ class Lpts : public Entity
                 Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                 void set_value(const std::string & value_path, std::string value) override;
                 std::map<std::string, Entity*> & get_children() override;
-                Value max_flow_gap; //type: uint32
-                Value et_size; //type: uint32
-                Value eviction_threshold; //type: uint32
-                Value report_threshold; //type: uint16
-                Value non_subscriber_interfaces; //type: int32
-                Value sample_prob; //type: string
-                Value eviction_search_limit; //type: uint32
-                Value routing_protocols_enable; //type: boolean
-                Value subscriber_interfaces; //type: boolean
-                Value interface_based_flow; //type: boolean
-                Value dampening; //type: uint32
 
+
+                YLeaf max_flow_gap; //type: uint32
+                YLeaf et_size; //type: uint32
+                YLeaf eviction_threshold; //type: uint32
+                YLeaf report_threshold; //type: uint16
+                YLeaf non_subscriber_interfaces; //type: int32
+                YLeaf sample_prob; //type: string
+                YLeaf eviction_search_limit; //type: uint32
+                YLeaf routing_protocols_enable; //type: boolean
+                YLeaf subscriber_interfaces; //type: boolean
+                YLeaf interface_based_flow; //type: boolean
+                YLeaf dampening; //type: uint32
 
             class PenaltyRates : public Entity
             {
@@ -261,6 +268,7 @@ class Lpts : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PenaltyRate : public Entity
                 {
                     public:
@@ -274,11 +282,11 @@ class Lpts : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
-                        Value rate; //type: uint32
 
 
-                        class LptsPuntFlowtrapProtoIdEnum;
+                        YLeaf protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
+                        YLeaf rate; //type: uint32
+
 
 
                 }; // Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate
@@ -305,6 +313,7 @@ class Lpts : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class PenaltyTimeout : public Entity
                 {
                     public:
@@ -318,11 +327,11 @@ class Lpts : public Entity
                         Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                         void set_value(const std::string & value_path, std::string value) override;
                         std::map<std::string, Entity*> & get_children() override;
-                        Value protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
-                        Value timeout; //type: uint32
 
 
-                        class LptsPuntFlowtrapProtoIdEnum;
+                        YLeaf protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
+                        YLeaf timeout; //type: uint32
+
 
 
                 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
@@ -349,6 +358,7 @@ class Lpts : public Entity
                     std::map<std::string, Entity*> & get_children() override;
 
 
+
                 class InterfaceNames : public Entity
                 {
                     public:
@@ -364,6 +374,7 @@ class Lpts : public Entity
                         std::map<std::string, Entity*> & get_children() override;
 
 
+
                     class InterfaceName : public Entity
                     {
                         public:
@@ -377,9 +388,10 @@ class Lpts : public Entity
                             Entity* get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
                             void set_value(const std::string & value_path, std::string value) override;
                             std::map<std::string, Entity*> & get_children() override;
-                            Value ifname; //type: string
-                            Value id1; //type: boolean
 
+
+                            YLeaf ifname; //type: string
+                            YLeaf id1; //type: boolean
 
 
 
