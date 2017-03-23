@@ -22,6 +22,7 @@
 //////////////////////////////////////////////////////////////////
 
 #include <iostream>
+#include <memory>
 #include <sstream>
 
 #include "errors.hpp"
@@ -29,8 +30,7 @@
 #include "netconf_model_provider.hpp"
 #include "types.hpp"
 #include "ydk_yang.hpp"
-#include <memory>
-#include <boost/log/trivial.hpp>
+#include "logger.hpp"
 
 using namespace std;
 using namespace ydk;
@@ -38,7 +38,7 @@ using namespace ydk;
 namespace ydk
 {
 NetconfModelProvider::NetconfModelProvider(NetconfClient & client)
-	: client(client)
+    : client(client)
 {
 }
 
@@ -48,7 +48,7 @@ NetconfModelProvider::~NetconfModelProvider()
 
 std::string NetconfModelProvider::get_hostname_port()
 {
-	return client.get_hostname_port();
+    return client.get_hostname_port();
 }
 
 string NetconfModelProvider::get_model(const string& name, const string& version, Format format)
@@ -89,10 +89,7 @@ string NetconfModelProvider::get_model(const string& name, const string& version
     payload+="</get-schema>";
     payload+="</rpc>";
 
-    BOOST_LOG_TRIVIAL(trace) << "Get schema request " << payload;
     string reply = client.execute_payload(payload);
-    BOOST_LOG_TRIVIAL(trace) << "Get schema reply " << reply;
-
 
     auto data_start = reply.find("<data ");
     if(data_start == string::npos) {
@@ -122,8 +119,6 @@ string NetconfModelProvider::get_model(const string& name, const string& version
             model = model.substr(data_start, data_end - data_start);
         }
     }
-
-    BOOST_LOG_TRIVIAL(trace) << "Model " << model;
 
     return model;
 }

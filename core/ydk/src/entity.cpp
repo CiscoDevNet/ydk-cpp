@@ -40,9 +40,33 @@ Entity::~Entity()
 {
 }
 
-unique_ptr<Entity> Entity::clone_ptr()
+shared_ptr<Entity> Entity::clone_ptr() const
 {
-	return nullptr;
+    return nullptr;
 }
 
+void Entity::set_parent(Entity* p)
+{
+    parent = p;
+}
+
+Entity* Entity::get_parent() const
+{
+    return parent;
+}
+
+augment_capabilities_function Entity::get_augment_capabilities_function() const
+{
+    return nullptr;
+}
+
+std::string Entity::get_bundle_yang_models_location() const
+{
+    return "";
+}
+
+std::string Entity::get_bundle_name() const
+{
+    return "";
+}
 }
