@@ -22,12 +22,12 @@ before_install:
 
 script:
     - cd core/ydk
-    - mkdir build && cd build && cmake .. && sudo make install test
+    - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install test
 
     - cd ../../..
     - cd ietf
-    - mkdir build && cd build && cmake .. && sudo make install
+    - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
 
     - cd ../..
     - cd openconfig
-    - mkdir build && cd build && cmake .. && sudo make install
+    - mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
