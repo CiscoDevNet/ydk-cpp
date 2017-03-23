@@ -25,9 +25,8 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#define BOOST_TEST_MODULE EntityTest
-#include <boost/test/unit_test.hpp>
 #include "../src/types.hpp"
+#include "catch.hpp"
 
 using namespace ydk;
 using namespace std;
@@ -36,7 +35,7 @@ class TestEntity:public Entity
 {
   public:
 	TestEntity()
-		: name{YType::str, "name"}, enabled{YType::boolean, "enabled"}, bits_field{YType::bits, "bits-field"}, child(make_unique<TestEntity::Child>())
+		: name{YType::str, "name"}, enabled{YType::boolean, "enabled"}, bits_field{YType::bits, "bits-field"}, child(make_shared<TestEntity::Child>())
 	{
 		yang_name = "test"; yang_parent_name = "";
 	}
@@ -66,7 +65,7 @@ class TestEntity:public Entity
 		return {{"test"}, {name.get_name_leafdata(), enabled.get_name_leafdata(), bits_field.get_name_leafdata()}};
 	}
 
-	Entity* get_child_by_name(const std::string & child_name, const std::string & child_path)
+	std::shared_ptr<Entity> get_child_by_name(const std::string & child_name, const std::string & child_path)
 	{
 		if(child_name == child->yang_name)
 		{
@@ -76,10 +75,10 @@ class TestEntity:public Entity
 			}
 			else
 			{
-				child = make_unique<TestEntity::Child>();
+				child = make_shared<TestEntity::Child>();
 				child->parent = this;
-				children[child_name] = child.get();
-				return child.get();
+				children[child_name] = child;
+				return child;
 			}
 		}
 		return nullptr;
@@ -101,7 +100,7 @@ class TestEntity:public Entity
 		}
 	}
 
-	std::map<std::string, Entity*> & get_children()
+	std::map<std::string, std::shared_ptr<Entity>> & get_children()
 	{
 		return children;
 	}
@@ -135,7 +134,7 @@ class TestEntity:public Entity
 			return {{"child"}, {child_val.get_name_leafdata()}};
 		}
 
-		Entity* get_child_by_name(const std::string & child_name, const std::string & child_path)
+		std::shared_ptr<Entity> get_child_by_name(const std::string & child_name, const std::string & child_path)
 		{
 			if(child_name == "multi-child")
 			{
@@ -146,21 +145,21 @@ class TestEntity:public Entity
 					{
 						if(children.find(child_path)==children.end())
 						{
-							children[child_path] = ch.get();
+							children[child_path] = ch;
 						}
 						return children.at(child_path);
 					}
 				}
-				auto ch = make_unique<TestEntity::Child::MultiChild>();
+				auto ch = make_shared<TestEntity::Child::MultiChild>();
 				ch->parent = this;
 				multi_child.push_back(move(ch));
-				children[child_path] = multi_child.back().get();
-				return multi_child.back().get();
+				children[child_path] = multi_child.back();
+				return multi_child.back();
 			}
 			return nullptr;
 		}
 
-		std::map<std::string, Entity*> & get_children()
+		std::map<std::string, std::shared_ptr<Entity>> & get_children()
 		{
 			return children;
 		}
@@ -205,12 +204,12 @@ class TestEntity:public Entity
 				return {{"multi-child[multi-key='"+child_key.get()+"']"}, {child_key.get_name_leafdata()}};
 			}
 
-			Entity* get_child_by_name(const std::string & child_name, const std::string & child_path)
+			std::shared_ptr<Entity> get_child_by_name(const std::string & child_name, const std::string & child_path)
 			{
 				return nullptr;
 			}
 
-			std::map<std::string, Entity*> & get_children()
+			std::map<std::string, std::shared_ptr<Entity>> & get_children()
 			{
 				return children;
 			}
@@ -226,16 +225,16 @@ class TestEntity:public Entity
 			YLeaf child_key;
 		};
 
-		vector<unique_ptr<TestEntity::Child::MultiChild> > multi_child;
+		vector<shared_ptr<TestEntity::Child::MultiChild> > multi_child;
 	};
 
   YLeaf name;
   YLeaf enabled;
   YLeaf bits_field;
-  unique_ptr<TestEntity::Child> child;
+  shared_ptr<TestEntity::Child> child;
 };
 
-BOOST_AUTO_TEST_CASE(test_create)
+TEST_CASE("test_create")
 {
 	TestEntity test{};
 	string test_value = "value for test";
@@ -244,8 +243,8 @@ BOOST_AUTO_TEST_CASE(test_create)
 							 {"enabled", {"true", EditOperation::not_set, true}},
 							 {"bits-field", {"bit1 bit2", EditOperation::not_set, true}}}};
 
-	BOOST_REQUIRE(test.get_entity_path(nullptr).path == "test");
-	BOOST_REQUIRE(test.has_data() == false);
+	REQUIRE(test.get_entity_path(nullptr).path == "test");
+	REQUIRE(test.has_data() == false);
 
 	test.name = test_value;
 	test.enabled = true;
@@ -253,55 +252,55 @@ BOOST_AUTO_TEST_CASE(test_create)
 	test.bits_field["bit1"] = true;
 	test.bits_field["bit2"] = true;
 
-	BOOST_REQUIRE(test.has_data() == true);
-	BOOST_REQUIRE(test.get_entity_path(nullptr) == expected);
+	REQUIRE(test.has_data() == true);
+	REQUIRE(test.get_entity_path(nullptr) == expected);
 }
 
-BOOST_AUTO_TEST_CASE(test_read)
+TEST_CASE("test_read")
 {
 	TestEntity test{};
 
-	BOOST_REQUIRE(test.get_entity_path(nullptr).path == "test");
-	BOOST_REQUIRE(test.has_data() == false);
+	REQUIRE(test.get_entity_path(nullptr).path == "test");
+	REQUIRE(test.has_data() == false);
 
 	test.set_value("name", "test test");
-	BOOST_REQUIRE(test.has_data() == true);
+	REQUIRE(test.has_data() == true);
 
 	auto child = test.get_child_by_name("child", "");
-	BOOST_REQUIRE(child != nullptr);
+	REQUIRE(child != nullptr);
 
 	child->set_value("child-val", "123");
-	BOOST_REQUIRE(child->has_data() == true);
+	REQUIRE(child->has_data() == true);
 }
 
-BOOST_AUTO_TEST_CASE(test_multi_create)
+TEST_CASE("test_multi_create")
 {
 	TestEntity test{};
 
-	BOOST_REQUIRE(test.get_entity_path(nullptr).path == "test");
-	BOOST_REQUIRE(test.has_data() == false);
+	REQUIRE(test.get_entity_path(nullptr).path == "test");
+	REQUIRE(test.has_data() == false);
 
 	test.set_value("name", "test test");
-	BOOST_REQUIRE(test.has_data() == true);
+	REQUIRE(test.has_data() == true);
 
 	auto mchild = test.child->get_child_by_name("multi-child", "");
-	BOOST_REQUIRE(mchild != nullptr);
+	REQUIRE(mchild != nullptr);
 }
 
-BOOST_AUTO_TEST_CASE(test_multi_read)
+TEST_CASE("test_multi_read")
 {
 	TestEntity test{};
 
-	BOOST_REQUIRE(test.get_entity_path(nullptr).path == "test");
-	BOOST_REQUIRE(test.has_data() == false);
+	REQUIRE(test.get_entity_path(nullptr).path == "test");
+	REQUIRE(test.has_data() == false);
 
 	test.set_value("name", "test test");
-	BOOST_REQUIRE(test.has_data() == true);
+	REQUIRE(test.has_data() == true);
 
-	auto mchild = make_unique<TestEntity::Child::MultiChild>();
+	auto mchild = make_shared<TestEntity::Child::MultiChild>();
 	mchild->parent = test.child.get();
 	test.child->multi_child.push_back(move(mchild));
 
 	auto m = test.child->get_child_by_name("multi-child", "multi-child[multi-key='abc']");
-	BOOST_REQUIRE(m != nullptr);
+	REQUIRE(m != nullptr);
 }

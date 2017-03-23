@@ -31,22 +31,29 @@
 namespace ydk
 {
 class TopEntityLookUp;
+typedef void (*augment_capabilities_function)();
 
 class CodecServiceProvider
 {
 public:
+	CodecServiceProvider(EncodingFormat encoding);
 	CodecServiceProvider(path::Repository & repo, EncodingFormat encoding);
 	~CodecServiceProvider();
 
-	path::RootSchemaNode* get_root_schema();
-	std::unique_ptr<Entity> get_top_entity(std::string & payload);
+	void initialize(const std::string & bundle_name, const std::string & models_path, augment_capabilities_function get_caps_func);
+	path::RootSchemaNode& get_root_schema_for_bundle(const std::string & bundle_name);
+
+private:
+	void initialize_root_schema(const std::string & bundle_name, path::Repository & repo);
 
 public:
 	EncodingFormat m_encoding;
 
 private:
-	std::unique_ptr<path::RootSchemaNode> m_root_schema;
-	path::Repository & m_repo;
+	std::map<std::string, std::shared_ptr<path::RootSchemaNode>> m_root_schema_table;
+	bool user_provided_repo;
+	bool capabilities_augmented;
+	path::Repository m_repo;
 
 };
 }

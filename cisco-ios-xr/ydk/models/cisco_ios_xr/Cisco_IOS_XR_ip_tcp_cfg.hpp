@@ -1,0 +1,766 @@
+#ifndef _CISCO_IOS_XR_IP_TCP_CFG_
+#define _CISCO_IOS_XR_IP_TCP_CFG_
+
+#include <memory>
+#include <vector>
+#include <string>
+#include <ydk/types.hpp>
+#include <ydk/errors.hpp>
+
+namespace ydk {
+namespace Cisco_IOS_XR_ip_tcp_cfg {
+
+class IpTcp : public Entity
+{
+    public:
+        IpTcp();
+        ~IpTcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::shared_ptr<Entity> clone_ptr() const override;
+        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+
+
+        YLeaf accept_rate; //type: uint32
+        YLeaf selective_ack; //type: empty
+        YLeaf window_size; //type: uint32
+        YLeaf receive_q; //type: uint32
+        YLeaf maximum_segment_size; //type: uint32
+        YLeaf syn_wait_time; //type: uint32
+        YLeaf timestamp; //type: empty
+        YLeaf path_mtu_discovery; //type: int32
+
+        class Directory; //type: IpTcp::Directory
+        class Throttle; //type: IpTcp::Throttle
+        class NumThread; //type: IpTcp::NumThread
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Directory> directory; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::IpTcp::NumThread> num_thread; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::IpTcp::Throttle> throttle; // presence node
+
+
+}; // IpTcp
+
+
+class IpTcp::Directory : public Entity
+{
+    public:
+        Directory();
+        ~Directory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf directoryname; //type: string
+        YLeaf max_debug_files; //type: uint32
+        YLeaf max_file_size_files; //type: uint32
+
+
+
+}; // IpTcp::Directory
+
+
+class IpTcp::Throttle : public Entity
+{
+    public:
+        Throttle();
+        ~Throttle();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf tcpmin_throttle; //type: uint32
+        YLeaf tcpmaxthrottle; //type: uint32
+
+
+
+}; // IpTcp::Throttle
+
+
+class IpTcp::NumThread : public Entity
+{
+    public:
+        NumThread();
+        ~NumThread();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf tcp_in_q_threads; //type: uint32
+        YLeaf tcp_out_q_threads; //type: uint32
+
+
+
+}; // IpTcp::NumThread
+
+class Ip : public Entity
+{
+    public:
+        Ip();
+        ~Ip();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+        std::shared_ptr<Entity> clone_ptr() const override;
+        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+
+
+
+        class Cinetd; //type: Ip::Cinetd
+        class ForwardProtocol; //type: Ip::ForwardProtocol
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd> cinetd;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol> forward_protocol;
+
+
+}; // Ip
+
+
+class Ip::Cinetd : public Entity
+{
+    public:
+        Cinetd();
+        ~Cinetd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Services; //type: Ip::Cinetd::Services
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services> services;
+
+
+}; // Ip::Cinetd
+
+
+class Ip::Cinetd::Services : public Entity
+{
+    public:
+        Services();
+        ~Services();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Ipv4; //type: Ip::Cinetd::Services::Ipv4
+        class Vrfs; //type: Ip::Cinetd::Services::Vrfs
+        class Ipv6; //type: Ip::Cinetd::Services::Ipv6
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv4> ipv4;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv6> ipv6;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs> vrfs;
+
+
+}; // Ip::Cinetd::Services
+
+
+class Ip::Cinetd::Services::Ipv4 : public Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class SmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv4::SmallServers> small_servers;
+
+
+}; // Ip::Cinetd::Services::Ipv4
+
+
+class Ip::Cinetd::Services::Ipv4::SmallServers : public Entity
+{
+    public:
+        SmallServers();
+        ~SmallServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class TcpSmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers
+        class UdpSmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers> tcp_small_servers; // presence node
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers> udp_small_servers; // presence node
+
+
+}; // Ip::Cinetd::Services::Ipv4::SmallServers
+
+
+class Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers : public Entity
+{
+    public:
+        TcpSmallServers();
+        ~TcpSmallServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_control_list_name; //type: string
+        YLeaf small_server; //type: int32
+
+
+
+}; // Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers
+
+
+class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers : public Entity
+{
+    public:
+        UdpSmallServers();
+        ~UdpSmallServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_control_list_name; //type: string
+        YLeaf small_server; //type: uint32
+
+
+
+}; // Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers
+
+
+class Ip::Cinetd::Services::Vrfs : public Entity
+{
+    public:
+        Vrfs();
+        ~Vrfs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Vrf; //type: Ip::Cinetd::Services::Vrfs::Vrf
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf> > vrf;
+
+
+}; // Ip::Cinetd::Services::Vrfs
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf : public Entity
+{
+    public:
+        Vrf();
+        ~Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf vrf_name; //type: string
+
+        class Ipv6; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6
+        class Ipv4; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv4> ipv4;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv6> ipv6;
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6 : public Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Telnet; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet
+        class Tftp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet> telnet;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp> tftp;
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet : public Entity
+{
+    public:
+        Telnet();
+        ~Telnet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Tcp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp> tcp; // presence node
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp : public Entity
+{
+    public:
+        Tcp();
+        ~Tcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_list_name; //type: string
+        YLeaf maximum_server; //type: uint32
+
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp : public Entity
+{
+    public:
+        Tftp();
+        ~Tftp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Udp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp> udp; // presence node
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp : public Entity
+{
+    public:
+        Udp();
+        ~Udp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_list_name; //type: string
+        YLeaf maximum_server; //type: uint32
+        YLeaf home_directory; //type: string
+        YLeaf dscp_value; //type: int32
+
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4 : public Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Telnet; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet
+        class Tftp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet> telnet;
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp> tftp;
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet : public Entity
+{
+    public:
+        Telnet();
+        ~Telnet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Tcp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp> tcp; // presence node
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp : public Entity
+{
+    public:
+        Tcp();
+        ~Tcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_list_name; //type: string
+        YLeaf maximum_server; //type: uint32
+
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp : public Entity
+{
+    public:
+        Tftp();
+        ~Tftp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Udp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp> udp; // presence node
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp
+
+
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp : public Entity
+{
+    public:
+        Udp();
+        ~Udp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_list_name; //type: string
+        YLeaf maximum_server; //type: uint32
+        YLeaf home_directory; //type: string
+        YLeaf dscp_value; //type: int32
+
+
+
+}; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp
+
+
+class Ip::Cinetd::Services::Ipv6 : public Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class SmallServers; //type: Ip::Cinetd::Services::Ipv6::SmallServers
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv6::SmallServers> small_servers;
+
+
+}; // Ip::Cinetd::Services::Ipv6
+
+
+class Ip::Cinetd::Services::Ipv6::SmallServers : public Entity
+{
+    public:
+        SmallServers();
+        ~SmallServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class TcpSmallServers; //type: Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers> tcp_small_servers; // presence node
+
+
+}; // Ip::Cinetd::Services::Ipv6::SmallServers
+
+
+class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers : public Entity
+{
+    public:
+        TcpSmallServers();
+        ~TcpSmallServers();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf access_control_list_name; //type: string
+        YLeaf small_server; //type: int32
+
+
+
+}; // Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers
+
+
+class Ip::ForwardProtocol : public Entity
+{
+    public:
+        ForwardProtocol();
+        ~ForwardProtocol();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Udp; //type: Ip::ForwardProtocol::Udp
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol::Udp> udp;
+
+
+}; // Ip::ForwardProtocol
+
+
+class Ip::ForwardProtocol::Udp : public Entity
+{
+    public:
+        Udp();
+        ~Udp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf disable; //type: empty
+
+        class Ports; //type: Ip::ForwardProtocol::Udp::Ports
+
+        std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol::Udp::Ports> ports;
+
+
+}; // Ip::ForwardProtocol::Udp
+
+
+class Ip::ForwardProtocol::Udp::Ports : public Entity
+{
+    public:
+        Ports();
+        ~Ports();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+
+        class Port; //type: Ip::ForwardProtocol::Udp::Ports::Port
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol::Udp::Ports::Port> > port;
+
+
+}; // Ip::ForwardProtocol::Udp::Ports
+
+
+class Ip::ForwardProtocol::Udp::Ports::Port : public Entity
+{
+    public:
+        Port();
+        ~Port();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        EntityPath get_entity_path(Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, std::string value) override;
+        std::map<std::string, std::shared_ptr<Entity>> & get_children() override;
+
+
+        YLeaf port_id; //type: uint16
+        YLeaf enable; //type: boolean
+
+
+
+}; // Ip::ForwardProtocol::Udp::Ports::Port
+
+
+}
+}
+
+#endif /* _CISCO_IOS_XR_IP_TCP_CFG_ */
+
