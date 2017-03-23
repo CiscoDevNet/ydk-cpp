@@ -1,11 +1,11 @@
 ### 2017-03-17 version 0.5.4
 
 * Changed dependent libraries ([#382](https://github.com/CiscoDevNet/ydk-gen/pull/382))
-* Use header-only [spdlog](https://github.com/gabime/spdlog) library for logging
-* Use header-only [catch](https://github.com/philsquared/Catch) library for testing
-* Completely remove boost dependency
+  * Use header-only [spdlog](https://github.com/gabime/spdlog) library for logging
+  * Use header-only [catch](https://github.com/philsquared/Catch) library for testing
+  * Completely remove boost dependency
 * Create default yang models repository for each bundle. Install yang models as part of bundle shared library ([#292](https://github.com/CiscoDevNet/ydk-gen/pull/292))
-* Make passing in `path::Repository` object optional for `CodecServiceProvider`
+  * Make passing in `path::Repository` object optional for `CodecServiceProvider`
 * Fix issue with handling augmented leafs in `CrudService` ([#351](https://github.com/CiscoDevNet/ydk-gen/pull/351))
 * Use smart pointers (like `shared_ptr`) in place of raw pointers ([#382](https://github.com/CiscoDevNet/ydk-gen/pull/382)), ([#393](https://github.com/CiscoDevNet/ydk-gen/pull/393))
 * Support linking to multiple bundles ([#349](https://github.com/CiscoDevNet/ydk-gen/pull/349))
