@@ -43,7 +43,7 @@ public:
 							   const std::string & state_url_root = "/data");
 
         RestconfServiceProvider(std::unique_ptr<RestconfClient> client,
-        						std::unique_ptr<ydk::path::RootSchemaNode> root_schema,
+        						std::shared_ptr<ydk::path::RootSchemaNode> root_schema,
 								const std::string & edit_method,
 								const std::string & config_url_root,
 								const std::string & state_url_root,
@@ -51,20 +51,20 @@ public:
 
         ~RestconfServiceProvider();
 
-        path::RootSchemaNode* get_root_schema() const;
-        path::DataNode* invoke(path::Rpc* rpc) const;
+        path::RootSchemaNode& get_root_schema() const;
+        std::shared_ptr<path::DataNode> invoke(path::Rpc& rpc) const;
         EncodingFormat get_encoding() const;
 
 private:
-        path::DataNode* handle_edit(path::Rpc* rpc, const std::string & operation) const;
-        path::DataNode* handle_read(path::Rpc* rpc) const;
+        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, const std::string & operation) const;
+        std::shared_ptr<path::DataNode> handle_read(path::Rpc& rpc) const;
         void initialize(path::Repository & repo);
 
 private:
         std::unique_ptr<RestconfClient> client;
 
         std::unique_ptr<path::ModelProvider> model_provider;
-        std::unique_ptr<ydk::path::RootSchemaNode> root_schema;
+        std::shared_ptr<ydk::path::RootSchemaNode> root_schema;
 
         std::vector<std::string> server_capabilities;
 

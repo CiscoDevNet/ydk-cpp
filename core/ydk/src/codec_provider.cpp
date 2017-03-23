@@ -20,90 +20,87 @@
 //
 //////////////////////////////////////////////////////////////////
 
-#include <boost/format.hpp>
-#include <boost/log/trivial.hpp>
-#include <boost/xpressive/xpressive.hpp>
+#include <libyang/libyang.h>
+
 #include "codec_provider.hpp"
 #include "entity_lookup.hpp"
-
-namespace re = boost::xpressive;
+#include "logger.hpp"
 
 namespace ydk
 {
-static std::string get_xml_lookup_key(std::string & payload);
-static std::string get_json_lookup_key(std::string & payload);
 
-re::sregex XML_LOOKUP_KEY = re::sregex::compile("<(?P<entity>[^ ]+) xmlns=\"(?P<ns>[^\"]+)\"");
-re::sregex JSON_LOOKUP_KEY = re::sregex::compile("{[^\"]+\"(?P<key>[^\"]+)\"");
-std::string ERROR_MSG{"Failed to find namespace from %1% payload,"
-                      " please make sure payload format is consistent with encoding format."};
+#define USER_PROVIDED_REPO "ydk-user-provider-repo"
 
 CodecServiceProvider::CodecServiceProvider(path::Repository & repo, EncodingFormat encoding)
-    : m_encoding{encoding}, m_repo{repo}
+    : m_encoding{encoding}, user_provided_repo(true), capabilities_augmented(false), m_repo(repo)
 {
-    augment_lookup_tables();
-    m_root_schema = std::unique_ptr<ydk::path::RootSchemaNode>(m_repo.create_root_schema(get_global_capabilities()));
+}
+
+CodecServiceProvider::CodecServiceProvider(EncodingFormat encoding)
+    : m_encoding{encoding}, user_provided_repo(false), capabilities_augmented(false)
+{
 }
 
 CodecServiceProvider::~CodecServiceProvider()
 {
 }
 
-path::RootSchemaNode*
-CodecServiceProvider::get_root_schema()
+void CodecServiceProvider::initialize(const std::string & bundle_name,
+        const std::string & models_path, augment_capabilities_function augment_caps_function)
 {
-    return m_root_schema.get();
+    if(!capabilities_augmented)
+    {
+        YLOG_DEBUG("Augmenting global YDK capabilities for bundle {}", bundle_name);
+        augment_caps_function();
+    }
+
+    if(user_provided_repo)
+    {
+        YLOG_DEBUG("Using user provided repo");
+        initialize_root_schema(USER_PROVIDED_REPO, m_repo);
+        return;
+    }
+
+    if (m_root_schema_table.find(bundle_name) != m_root_schema_table.end())
+    {
+        return;
+    }
+
+    augment_caps_function();
+    capabilities_augmented = true;
+    YLOG_DEBUG("Creating repo in path {}", models_path);
+    path::Repository repo{models_path};
+    initialize_root_schema(bundle_name, repo);
 }
 
-std::unique_ptr<Entity>
-CodecServiceProvider::get_top_entity(std::string & payload)
+path::RootSchemaNode& CodecServiceProvider::get_root_schema_for_bundle(const std::string & bundle_name)
 {
-    if (m_encoding == EncodingFormat::XML)
+    if(user_provided_repo)
     {
-        return lookup_top_entity(get_xml_lookup_key(payload));
+        auto const & val = m_root_schema_table[USER_PROVIDED_REPO];
+        return *(val);
     }
-    else
+
+    if(m_root_schema_table.find(bundle_name) == m_root_schema_table.end())
     {
-        return lookup_top_entity(get_json_lookup_key(payload));
+        YLOG_ERROR("Root schema not created");
+        throw(YCPPServiceProviderError("Root schema not created"));
     }
+
+    auto const & val = m_root_schema_table[bundle_name];
+    return *(val);
 }
 
-static std::string get_xml_lookup_key(std::string & payload)
+void CodecServiceProvider::initialize_root_schema(const std::string & bundle_name, path::Repository & repo)
 {
-    std::string lookup_key;
-    re::smatch what;
-    if (re::regex_search(payload, what, XML_LOOKUP_KEY))
-    {
-        lookup_key += what["ns"];
-        lookup_key += ":";
-        lookup_key += what["entity"];
-    }
-    else
-    {
-        std::string error_msg{boost::str(boost::format(ERROR_MSG) % "XML")};
-        BOOST_LOG_TRIVIAL(error) << error_msg;
-        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(error_msg));
-    }
-    return lookup_key;
+    YLOG_DEBUG("Initializing root schema for {}", bundle_name);
+    ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
+    auto root_schema = repo.create_root_schema(get_global_capabilities());
+    std::string s{bundle_name};
+    std::pair<std::string, std::shared_ptr<path::RootSchemaNode>> entry {s, root_schema};
+    m_root_schema_table.insert(entry);
+    ly_verb(LY_LLVRB); // enable libyang logging after payload has been created
 }
 
-static std::string get_json_lookup_key(std::string & payload)
-{
-    std::string lookup_key;
-    re::smatch what;
-    if (re::regex_search(payload, what, JSON_LOOKUP_KEY))
-    {
-        lookup_key += "/";
-        lookup_key += what["key"];
-    }
-    else
-    {
-        std::string error_msg{boost::str(boost::format(ERROR_MSG) % "JSON")};
-        BOOST_LOG_TRIVIAL(error) << error_msg;
-        BOOST_THROW_EXCEPTION(YCPPServiceProviderError(error_msg));
-    }
-    return lookup_key;
-}
-
-
+#undef USER_PROVIDED_REPO
 }

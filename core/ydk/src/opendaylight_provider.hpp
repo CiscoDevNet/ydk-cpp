@@ -31,8 +31,6 @@ namespace path
 class Repository;
 class ServiceProvider;
 }
-#define ODLNode network_topology::NetworkTopology::Topology::Node
-
 class OpenDaylightServiceProvider
 {
 	public:
@@ -40,7 +38,7 @@ class OpenDaylightServiceProvider
 								   const std::string & address,
 								   const std::string & username,
 								   const std::string & password,
-								   int port = 80,
+								   int port = 8181,
 								   EncodingFormat encoding = EncodingFormat::JSON,
 								   Protocol protocol = Protocol::restconf);
 
@@ -62,7 +60,7 @@ class OpenDaylightServiceProvider
         int port;
         EncodingFormat encoding;
 
-        std::map<std::string, std::unique_ptr<ODLNode>> odl_nodes;
+        std::map<std::string, std::unique_ptr<network_topology::NetworkTopology::Topology::Node>> odl_nodes;
 		std::map<std::string, std::unique_ptr<path::ServiceProvider>> providers;
 		std::vector<std::string> node_ids;
 };

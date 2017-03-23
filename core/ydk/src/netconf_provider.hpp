@@ -38,20 +38,21 @@ public:
                                std::string password,
                                int port = 830);
         ~NetconfServiceProvider();
-        path::RootSchemaNode* get_root_schema() const;
-        path::DataNode* invoke(path::Rpc* rpc) const;
+        path::RootSchemaNode& get_root_schema() const;
+        std::shared_ptr<path::DataNode> invoke(path::Rpc& rpc) const;
         EncodingFormat get_encoding() const;
 
 private:
-        path::DataNode* handle_edit(path::Rpc* rpc, path::Annotation ann) const;
-        path::DataNode* handle_netconf_operation(path::Rpc* ydk_rpc) const;
-        path::DataNode* handle_read(path::Rpc* rpc) const;
-        void initialize(path::Repository & repo);
+        std::shared_ptr<path::DataNode> handle_edit(path::Rpc& rpc, path::Annotation ann) const;
+        std::shared_ptr<path::DataNode> handle_netconf_operation(path::Rpc& ydk_rpc) const;
+        std::shared_ptr<path::DataNode> handle_read(path::Rpc& rpc) const;
+        void initialize(path::Repository& repo);
+        std::string execute_payload(const std::string & payload) const;
 
 private:
         std::unique_ptr<NetconfClient> client;
         std::unique_ptr<path::ModelProvider> model_provider;
-        std::unique_ptr<ydk::path::RootSchemaNode> root_schema;
+        std::shared_ptr<ydk::path::RootSchemaNode> root_schema;
 
         std::vector<std::string> server_capabilities;
 
