@@ -6,7 +6,7 @@ First install the [system requirements](https://github.com/CiscoDevNet/ydk-cpp#s
 ### 1) Build the sample apps
 ```
 $ mkdir build && cd build
-$ cmake ..
+$ cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ ..
 $ make && sudo make install
 $ cd ..
 ```
